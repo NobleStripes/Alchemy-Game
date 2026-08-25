@@ -19,17 +19,25 @@ describe('alchemy worktable', () => {
     const user = userEvent.setup()
     render(<App />)
 
-    await user.click(screen.getByRole('button', { name: /Fire/i }))
-    await user.click(screen.getByRole('button', { name: /Water/i }))
+    await user.click(screen.getByRole('button', { name: 'Fire' }))
+    await user.click(screen.getByRole('button', { name: 'Water' }))
     await user.click(screen.getByRole('button', { name: /Transmute/i }))
 
     expect(screen.getByText('Discovered Steam')).toBeInTheDocument()
+    expect(screen.getAllByText('Empty vessel')).toHaveLength(2)
     expect(
-      screen.getByRole('button', { name: /Steam/i }),
+      screen.getByRole('button', { name: 'Steam' }),
     ).toBeInTheDocument()
     expect(window.localStorage.getItem('unwritten-atlas-progress')).toContain(
       'steam',
     )
+    expect(window.localStorage.getItem('unwritten-atlas-progress')).toContain(
+      'first-vapor',
+    )
+
+    await user.click(screen.getByRole('button', { name: 'Inspect Steam' }))
+    expect(screen.getByText('Fire + Water → Steam')).toBeInTheDocument()
+    expect(screen.getByText('2 formulas remain undeciphered.')).toBeInTheDocument()
   })
 
   it('allows the same element to fill both vessels', async () => {
@@ -41,7 +49,7 @@ describe('alchemy worktable', () => {
     await user.click(screen.getByRole('button', { name: /Transmute/i }))
 
     expect(screen.getByText('Discovered Heat')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /Heat/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Heat' })).toBeInTheDocument()
   })
 
   it('explains why an empty table cannot transmute', async () => {
@@ -52,5 +60,17 @@ describe('alchemy worktable', () => {
 
     expect(screen.getByText('The circle waits')).toBeInTheDocument()
     expect(screen.getByText('Two essences are required.')).toBeInTheDocument()
+  })
+
+  it('clears both vessels after an unsuccessful combination', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    await user.click(screen.getByRole('button', { name: 'Water' }))
+    await user.click(screen.getByRole('button', { name: 'Air' }))
+    await user.click(screen.getByRole('button', { name: /Transmute/i }))
+
+    expect(screen.getByText('No resonance')).toBeInTheDocument()
+    expect(screen.getAllByText('Empty vessel')).toHaveLength(2)
   })
 })

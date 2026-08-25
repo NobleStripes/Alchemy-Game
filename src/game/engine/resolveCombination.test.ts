@@ -44,4 +44,16 @@ describe('first-era content', () => {
   it('has no conflicting, dangling, or unreachable content', () => {
     expect(validateContent(elements, recipes, eras)).toEqual([])
   })
+
+  it('reaches life through the authored progression chain', () => {
+    expect(resolveCombination('stone', 'sea', recipeIndex)?.result).toBe(
+      'primordial-soup',
+    )
+    expect(
+      resolveCombination('primordial-soup', 'heat', recipeIndex)?.result,
+    ).toBe('life')
+    expect(resolveCombination('life', 'stone', recipeIndex)?.result).toBe(
+      'plant',
+    )
+  })
 })

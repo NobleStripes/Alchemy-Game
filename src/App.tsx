@@ -6,8 +6,9 @@ import {
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
-import { BookOpen, RotateCcw } from 'lucide-react'
+import { RotateCcw } from 'lucide-react'
 import { Codex } from './features/codex/Codex'
+import { Journal } from './features/journal/Journal'
 import { Worktable } from './features/worktable/Worktable'
 import { elements, eras } from './game/content'
 import { useGameStore } from './game/state/useGameStore'
@@ -22,7 +23,6 @@ function App() {
     useSensor(KeyboardSensor),
   )
   const era = eras[0]
-  const keystoneFound = discoveredIds.includes(era.keystone)
   const progress = Math.round((discoveredIds.length / elements.length) * 100)
 
   function handleDragEnd(event: DragEndEvent) {
@@ -68,48 +68,11 @@ function App() {
         <div className="game-layout">
           <Codex />
           <Worktable />
-          <aside className="journal" aria-labelledby="journal-title">
-            <div className="section-heading">
-              <span className="eyebrow">Era progress</span>
-              <h2 id="journal-title">
-                <BookOpen size={20} aria-hidden="true" />
-                Field Journal
-              </h2>
-            </div>
-
-            <p className="era-subtitle">{era.subtitle}</p>
-            <div className="journal-rule" />
-
-            <div className="objective" data-complete={discoveredIds.length >= era.discoveryGoal}>
-              <span className="objective-mark" aria-hidden="true" />
-              <div>
-                <strong>Catalogue {era.discoveryGoal} elements</strong>
-                <p>{Math.min(discoveredIds.length, era.discoveryGoal)} recorded</p>
-              </div>
-            </div>
-            <div className="objective" data-complete={keystoneFound}>
-              <span className="objective-mark" aria-hidden="true" />
-              <div>
-                <strong>Kindle the Beacon</strong>
-                <p>{keystoneFound ? 'Keystone discovered' : 'Keystone unknown'}</p>
-              </div>
-            </div>
-
-            <div className="discovery-grid" aria-label="Discovery record">
-              {elements.map((element) => {
-                const isFound = discoveredIds.includes(element.id)
-                return (
-                  <span
-                    key={element.id}
-                    data-found={isFound}
-                    title={isFound ? element.name : 'Unknown'}
-                  >
-                    {isFound ? element.sigil : '?'}
-                  </span>
-                )
-              })}
-            </div>
-          </aside>
+          <Journal
+            discoveryGoal={era.discoveryGoal}
+            eraSubtitle={era.subtitle}
+            keystoneId={era.keystone}
+          />
         </div>
       </DndContext>
     </div>

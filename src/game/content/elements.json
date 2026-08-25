@@ -17,5 +17,15 @@
   { "id": "brick", "name": "Brick", "sigil": "BR", "category": "craft", "description": "Clay given a permanent shape by flame.", "starter": false, "era": "first-light" },
   { "id": "bloom", "name": "Bloom", "sigil": "BL", "category": "life", "description": "A small color rising from dark earth.", "starter": false, "era": "first-light" },
   { "id": "beacon", "name": "Beacon", "sigil": "BE", "category": "craft", "description": "A sheltered signal that turns night into direction.", "starter": false, "era": "first-light" },
-  { "id": "compass", "name": "Compass", "sigil": "CO", "category": "craft", "description": "Metal persuaded to remember the north wind.", "starter": false, "era": "first-light" }
+  { "id": "compass", "name": "Compass", "sigil": "CO", "category": "craft", "description": "Metal persuaded to remember the north wind.", "starter": false, "era": "first-light" },
+  { "id": "primordial-soup", "name": "Primordial Soup", "sigil": "PS", "category": "life", "description": "A warm inland sea where simple matter begins to stir.", "starter": false, "era": "first-light" },
+  { "id": "life", "name": "Life", "sigil": "LI", "category": "life", "description": "Matter carrying the quiet insistence to continue.", "starter": false, "era": "first-light" },
+  { "id": "plant", "name": "Plant", "sigil": "PL", "category": "life", "description": "Life learning to drink light and root itself in place.", "starter": false, "era": "first-light" },
+  { "id": "reed", "name": "Reed", "sigil": "RE", "category": "life", "description": "A hollow green stem thriving at the water's edge.", "starter": false, "era": "first-light" },
+  { "id": "ash", "name": "Ash", "sigil": "AS", "category": "matter", "description": "The pale mineral memory left after flame.", "starter": false, "era": "first-light" },
+  { "id": "forest", "name": "Forest", "sigil": "FO", "category": "life", "description": "Plants gathered densely enough to make their own weather.", "starter": false, "era": "first-light" },
+  { "id": "seed", "name": "Seed", "sigil": "SD", "category": "life", "description": "A folded future waiting for favorable ground.", "starter": false, "era": "first-light" },
+  { "id": "tree", "name": "Tree", "sigil": "TR", "category": "life", "description": "A patient tower joining deep soil to open air.", "starter": false, "era": "first-light" },
+  { "id": "charcoal", "name": "Charcoal", "sigil": "CH", "category": "matter", "description": "Wood transformed into a dark reserve of heat.", "starter": false, "era": "first-light" },
+  { "id": "tool", "name": "Tool", "sigil": "TO", "category": "craft", "description": "Matter given purpose by an inventive hand.", "starter": false, "era": "first-light" }
 ]

@@ -18,5 +18,17 @@
   { "id": "heated-water", "inputs": ["heat", "tide"], "result": "steam", "flavor": "Water rises when heat leaves no room to rest." },
   { "id": "open-weather", "inputs": ["sea", "gale"], "result": "storm", "flavor": "The open sea gives the air a thunderous voice." },
   { "id": "watered-land", "inputs": ["land", "tide"], "result": "soil", "flavor": "Water wakes the dark promise within the land." },
-  { "id": "windborne-flame", "inputs": ["wind", "ember"], "result": "spark", "flavor": "Wind lifts a bright fragment from the fire." }
+  { "id": "windborne-flame", "inputs": ["wind", "ember"], "result": "spark", "flavor": "Wind lifts a bright fragment from the fire." },
+  { "id": "first-broth", "inputs": ["stone", "sea"], "result": "primordial-soup", "flavor": "Mineral earth gathers in a sea warm with possibility." },
+  { "id": "quickened-matter", "inputs": ["primordial-soup", "heat"], "result": "life", "flavor": "Warmth gives the patient mixture an urge of its own." },
+  { "id": "rooted-life", "inputs": ["life", "stone"], "result": "plant", "flavor": "Life takes hold where earth gives it purchase." },
+  { "id": "blooming-life", "inputs": ["life", "bloom"], "result": "plant", "flavor": "The first bloom teaches life the shape of green growth." },
+  { "id": "waterside-stem", "inputs": ["plant", "tide"], "result": "reed", "flavor": "Green life grows hollow and tall beside the water." },
+  { "id": "green-cinders", "inputs": ["plant", "ember"], "result": "ash", "flavor": "Fire leaves only the mineral ghost of green life." },
+  { "id": "woodland-rise", "inputs": ["plant", "land"], "result": "forest", "flavor": "One rooted life becomes a country of leaves." },
+  { "id": "windborne-future", "inputs": ["forest", "wind"], "result": "seed", "flavor": "The forest sends its future riding on the wind." },
+  { "id": "deep-root", "inputs": ["seed", "soil"], "result": "tree", "flavor": "A folded future opens and reaches in two directions." },
+  { "id": "banked-wood", "inputs": ["tree", "ember"], "result": "charcoal", "flavor": "Wood keeps part of the fire in a blackened form." },
+  { "id": "shaped-purpose", "inputs": ["tree", "metal"], "result": "tool", "flavor": "Wood and metal agree to become an extension of intent." },
+  { "id": "worked-earth", "inputs": ["tool", "land"], "result": "soil", "flavor": "Purposeful work turns broad land into fertile ground." }
 ]
