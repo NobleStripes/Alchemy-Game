@@ -1,0 +1,31 @@
+export type ElementCategory =
+  | 'essence'
+  | 'matter'
+  | 'weather'
+  | 'life'
+  | 'craft'
+
+export interface ElementDefinition {
+  id: string
+  name: string
+  sigil: string
+  category: ElementCategory
+  description: string
+  starter: boolean
+  era: string
+}
+
+export interface RecipeDefinition {
+  id: string
+  inputs: [string, string]
+  result: string
+  flavor: string
+}
+
+export interface EraDefinition {
+  id: string
+  name: string
+  subtitle: string
+  keystone: string
+  discoveryGoal: number
+}

@@ -1,0 +1,21 @@
+[
+  { "id": "ember", "name": "Fire", "sigil": "FI", "category": "essence", "description": "Heat and light in their most restless form.", "starter": true, "era": "first-light" },
+  { "id": "tide", "name": "Water", "sigil": "WA", "category": "essence", "description": "A patient current that takes the shape of its vessel.", "starter": true, "era": "first-light" },
+  { "id": "stone", "name": "Earth", "sigil": "EA", "category": "essence", "description": "The enduring matter beneath every foundation.", "starter": true, "era": "first-light" },
+  { "id": "gale", "name": "Air", "sigil": "AI", "category": "essence", "description": "An unseen current forever seeking motion.", "starter": true, "era": "first-light" },
+  { "id": "heat", "name": "Heat", "sigil": "HE", "category": "essence", "description": "Fire intensified until only its force remains.", "starter": false, "era": "first-light" },
+  { "id": "sea", "name": "Sea", "sigil": "SE", "category": "matter", "description": "Water gathered into a horizon without walls.", "starter": false, "era": "first-light" },
+  { "id": "land", "name": "Land", "sigil": "LA", "category": "matter", "description": "Earth joined into a place broad enough to cross.", "starter": false, "era": "first-light" },
+  { "id": "wind", "name": "Wind", "sigil": "WI", "category": "weather", "description": "Air made visible by the world it moves.", "starter": false, "era": "first-light" },
+  { "id": "steam", "name": "Steam", "sigil": "SM", "category": "weather", "description": "Water taught to climb by heat.", "starter": false, "era": "first-light" },
+  { "id": "dust", "name": "Dust", "sigil": "DU", "category": "matter", "description": "Stone made light enough to wander.", "starter": false, "era": "first-light" },
+  { "id": "spark", "name": "Spark", "sigil": "SP", "category": "essence", "description": "A bright instant searching for tinder.", "starter": false, "era": "first-light" },
+  { "id": "clay", "name": "Clay", "sigil": "CL", "category": "matter", "description": "Earth made willing beneath the hand.", "starter": false, "era": "first-light" },
+  { "id": "metal", "name": "Metal", "sigil": "ME", "category": "matter", "description": "Stone's hidden strength, coaxed into the open.", "starter": false, "era": "first-light" },
+  { "id": "storm", "name": "Storm", "sigil": "SO", "category": "weather", "description": "The sky arguing with its own fire.", "starter": false, "era": "first-light" },
+  { "id": "soil", "name": "Soil", "sigil": "SI", "category": "matter", "description": "Dust made fertile by a patient rain.", "starter": false, "era": "first-light" },
+  { "id": "brick", "name": "Brick", "sigil": "BR", "category": "craft", "description": "Clay given a permanent shape by flame.", "starter": false, "era": "first-light" },
+  { "id": "bloom", "name": "Bloom", "sigil": "BL", "category": "life", "description": "A small color rising from dark earth.", "starter": false, "era": "first-light" },
+  { "id": "beacon", "name": "Beacon", "sigil": "BE", "category": "craft", "description": "A sheltered signal that turns night into direction.", "starter": false, "era": "first-light" },
+  { "id": "compass", "name": "Compass", "sigil": "CO", "category": "craft", "description": "Metal persuaded to remember the north wind.", "starter": false, "era": "first-light" }
+]

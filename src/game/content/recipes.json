@@ -1,0 +1,22 @@
+[
+  { "id": "concentrated-flame", "inputs": ["ember", "ember"], "result": "heat", "flavor": "Flame answers flame with a deeper fever." },
+  { "id": "gathered-waters", "inputs": ["tide", "tide"], "result": "sea", "flavor": "Two waters forget where one ended." },
+  { "id": "broad-foundation", "inputs": ["stone", "stone"], "result": "land", "flavor": "Earth joins earth and becomes a country." },
+  { "id": "awakened-current", "inputs": ["gale", "gale"], "result": "wind", "flavor": "Air urges air into motion." },
+  { "id": "first-vapor", "inputs": ["ember", "tide"], "result": "steam", "flavor": "The tide lifts its veil." },
+  { "id": "weathered-stone", "inputs": ["stone", "gale"], "result": "dust", "flavor": "Even stone yields to a tireless wind." },
+  { "id": "kindled-air", "inputs": ["ember", "gale"], "result": "spark", "flavor": "The air carries one bright thought." },
+  { "id": "yielding-earth", "inputs": ["stone", "tide"], "result": "clay", "flavor": "Hard earth softens without surrendering." },
+  { "id": "vein-of-ore", "inputs": ["stone", "ember"], "result": "metal", "flavor": "Heat reveals the strength sleeping in stone." },
+  { "id": "sky-quarrel", "inputs": ["spark", "gale"], "result": "storm", "flavor": "A spark finds a voice large enough for the sky." },
+  { "id": "fertile-silt", "inputs": ["dust", "tide"], "result": "soil", "flavor": "Wandering dust settles into promise." },
+  { "id": "settled-vapor", "inputs": ["dust", "steam"], "result": "soil", "flavor": "Warm rain gathers the dust home." },
+  { "id": "kiln-work", "inputs": ["clay", "ember"], "result": "brick", "flavor": "Fire writes permanence into clay." },
+  { "id": "green-answer", "inputs": ["soil", "tide"], "result": "bloom", "flavor": "The earth answers water in color." },
+  { "id": "kept-flame", "inputs": ["brick", "spark"], "result": "beacon", "flavor": "A wall becomes a promise against the dark." },
+  { "id": "north-memory", "inputs": ["metal", "gale"], "result": "compass", "flavor": "The wind leaves a direction behind." },
+  { "id": "heated-water", "inputs": ["heat", "tide"], "result": "steam", "flavor": "Water rises when heat leaves no room to rest." },
+  { "id": "open-weather", "inputs": ["sea", "gale"], "result": "storm", "flavor": "The open sea gives the air a thunderous voice." },
+  { "id": "watered-land", "inputs": ["land", "tide"], "result": "soil", "flavor": "Water wakes the dark promise within the land." },
+  { "id": "windborne-flame", "inputs": ["wind", "ember"], "result": "spark", "flavor": "Wind lifts a bright fragment from the fire." }
+]
