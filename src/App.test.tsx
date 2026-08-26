@@ -37,7 +37,7 @@ describe('alchemy worktable', () => {
 
     await user.click(screen.getByRole('button', { name: 'Inspect Steam' }))
     expect(screen.getByText('Fire + Water → Steam')).toBeInTheDocument()
-    expect(screen.getByText('2 formulas remain undeciphered.')).toBeInTheDocument()
+    expect(screen.getByText('3 formulas remain undeciphered.')).toBeInTheDocument()
   })
 
   it('allows the same element to fill both vessels', async () => {
@@ -62,7 +62,7 @@ describe('alchemy worktable', () => {
     expect(screen.getByText('Two essences are required.')).toBeInTheDocument()
   })
 
-  it('clears both vessels after an unsuccessful combination', async () => {
+  it('retains slot I and records an unsuccessful combination', async () => {
     const user = userEvent.setup()
     render(<App />)
 
@@ -71,7 +71,15 @@ describe('alchemy worktable', () => {
     await user.click(screen.getByRole('button', { name: 'Combine' }))
 
     expect(screen.getByText('No resonance')).toBeInTheDocument()
-    expect(screen.getAllByText('Empty vessel')).toHaveLength(2)
+    expect(screen.getByRole('button', { name: 'Remove Water' })).toBeInTheDocument()
+    expect(screen.getAllByText('Empty vessel')).toHaveLength(1)
+    expect(window.localStorage.getItem('unwritten-atlas-progress')).toContain(
+      'gale::tide',
+    )
+
+    await user.click(screen.getByRole('button', { name: 'Inspect Water' }))
+    expect(screen.getByText('Tested, no reaction')).toBeInTheDocument()
+    expect(screen.getByText('Air — no reaction')).toBeInTheDocument()
   })
 
   it('spends a hint credit to reveal a viable combination', async () => {
@@ -85,5 +93,16 @@ describe('alchemy worktable', () => {
     expect(window.localStorage.getItem('unwritten-atlas-progress')).toContain(
       'concentrated-flame',
     )
+  })
+
+  it('shows category progress and unstudied discoveries', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    expect(screen.getByLabelText('Essence: 4 of 6')).toBeInTheDocument()
+    expect(screen.getByLabelText('Weather: 0 of 8')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Inspect Fire' }))
+    expect(screen.getAllByText('Unstudied').length).toBeGreaterThan(0)
   })
 })

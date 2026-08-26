@@ -1,14 +1,17 @@
 import { Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { elements, elementsById, recipes } from '../../game/content'
+import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
 
 interface JournalProps {
+  challengeName: string
   discoveryGoal: number
   keystoneId: string
 }
 
 export function Journal({
+  challengeName,
   discoveryGoal,
   keystoneId,
 }: JournalProps) {
@@ -24,6 +27,7 @@ export function Journal({
     (state) => state.activeHintRecipeId,
   )
   const requestHint = useGameStore((state) => state.requestHint)
+  const failedPairKeys = useGameStore((state) => state.failedPairKeys)
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null)
   const selectedElement = selectedElementId
     ? elementsById.get(selectedElementId)
@@ -40,6 +44,12 @@ export function Journal({
   )
   const hiddenRecipeCount = relatedRecipes.length - knownRecipes.length
   const keystoneFound = discoveredIds.includes(keystoneId)
+  const keystone = elementsById.get(keystoneId)
+  const failedPartners = selectedElement
+    ? elements.filter((element) =>
+        failedPairKeys.includes(pairKey(selectedElement.id, element.id)),
+      )
+    : []
   const activeHint = activeHintRecipeId
     ? recipes.find((recipe) => recipe.id === activeHintRecipeId)
     : null
@@ -55,6 +65,27 @@ export function Journal({
   const discoveredElements = elements.filter((element) =>
     discoveredIds.includes(element.id),
   )
+  const studiedElementIds = new Set(
+    recipes
+      .filter((recipe) => discoveredRecipeIds.includes(recipe.id))
+      .flatMap((recipe) => recipe.inputs),
+  )
+  const categoryProgress = [
+    ['essence', 'Essence'],
+    ['matter', 'Matter'],
+    ['weather', 'Weather'],
+    ['life', 'Life'],
+    ['craft', 'Craft'],
+  ].map(([category, label]) => ({
+    category,
+    label,
+    discovered: discoveredElements.filter(
+      (element) => element.category === category,
+    ).length,
+    total: elements.filter((element) => element.category === category).length,
+  }))
+  const challengeComplete =
+    discoveredIds.length >= discoveryGoal && keystoneFound
 
   return (
     <aside className="journal" aria-labelledby="journal-title">
@@ -88,12 +119,36 @@ export function Journal({
 
       <div className="progress-summary">
         <span><strong>{discoveredIds.length}</strong> discovered</span>
-        <span><strong>{discoveredRecipeIds.length}</strong> formulas</span>
+        <span><strong>{discoveredRecipeIds.length}</strong> formulas recorded</span>
       </div>
-      <p className="goal-status">
-        Goal: {Math.min(discoveredIds.length, discoveryGoal)}/{discoveryGoal}
-        {' · '}{keystoneFound ? 'Beacon found' : 'Beacon not found'}
-      </p>
+      <section className="challenge-status" aria-label={`${challengeName} challenge`}>
+        <strong>{challengeName} challenge</strong>
+        <p>
+          Catalogue {Math.min(discoveredIds.length, discoveryGoal)}/{discoveryGoal}
+          {keystone && ` · ${keystone.name} ${keystoneFound ? 'kindled' : 'not found'}`}
+        </p>
+        {challengeComplete && (
+          <p className="challenge-complete">
+            The first page is written. Continue exploring the Atlas.
+          </p>
+        )}
+      </section>
+
+      <div className="category-progress" aria-label="Category progress">
+        {categoryProgress.map(({ category, label, discovered, total }) => (
+          <div
+            key={category}
+            className="category-progress-row"
+            aria-label={`${label}: ${discovered} of ${total}`}
+          >
+            <span>{label}</span>
+            <div aria-hidden="true">
+              <span style={{ width: `${(discovered / total) * 100}%` }} />
+            </div>
+            <strong>{discovered}/{total}</strong>
+          </div>
+        ))}
+      </div>
 
       <div className="journal-record-heading">
         <strong>Discovered</strong>
@@ -108,6 +163,9 @@ export function Journal({
             aria-label={`Inspect ${element.name}`}
           >
             {element.name}
+            {!studiedElementIds.has(element.id) && (
+              <span className="unstudied-tag" aria-hidden="true">Unstudied</span>
+            )}
           </button>
         ))}
       </div>
@@ -152,6 +210,17 @@ export function Journal({
                 {hiddenRecipeCount === 1 ? 'formula remains' : 'formulas remain'}{' '}
                 undeciphered.
               </p>
+            )}
+
+            {failedPartners.length > 0 && (
+              <>
+                <h4>Tested, no reaction</h4>
+                <ul className="failed-partners">
+                  {failedPartners.map((partner) => (
+                    <li key={partner.id}>{partner.name} — no reaction</li>
+                  ))}
+                </ul>
+              </>
             )}
           </>
         ) : (

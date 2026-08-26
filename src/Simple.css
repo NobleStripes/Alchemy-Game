@@ -5,6 +5,9 @@
 }
 
 .game-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
   min-height: 58px;
   padding: 8px 24px;
   display: grid;
@@ -61,6 +64,7 @@
 
 .game-layout {
   width: min(1280px, 100%);
+  height: calc(100svh - 58px);
   min-height: calc(100svh - 58px);
   margin: 0 auto;
   display: grid;
@@ -70,7 +74,9 @@
 
 .codex,
 .journal {
+  height: 100%;
   padding: 24px 20px;
+  overflow-y: auto;
   background: #f6f4ed;
 }
 
@@ -123,7 +129,7 @@
 
 .element-tile {
   width: 100%;
-  min-height: 48px;
+  min-height: 44px;
   padding: 6px 8px;
   display: grid;
   grid-template-columns: 34px 1fr;
@@ -159,17 +165,19 @@
 .element-copy small { margin-top: 2px; color: #78807d; font-size: 9px; text-transform: uppercase; }
 
 .worktable {
+  height: 100%;
   min-width: 0;
-  padding: 48px 32px 28px;
+  padding: 40px 32px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
   background: #fbfaf6;
 }
 
 .transmutation-circle {
   width: min(560px, 100%);
-  margin: 32px 0 20px;
+  margin: 26px 0 16px;
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -284,7 +292,16 @@
 
 .progress-summary span { padding: 10px; background: #fff; border: 1px solid #d7d3c8; border-radius: 4px; font-size: 12px; }
 .progress-summary strong { display: block; color: #25302f; font: 600 20px/1.1 var(--display); }
-.goal-status { margin: 9px 0 0; color: #68706d; font-size: 12px; }
+.challenge-status { margin-top: 10px; padding: 10px; background: #fff; border: 1px solid #d7d3c8; border-radius: 4px; }
+.challenge-status > strong { font: 600 14px/1.2 var(--display); }
+.challenge-status p { margin: 5px 0 0; color: #68706d; font-size: 12px; line-height: 1.4; }
+.challenge-status .challenge-complete { color: #35665f; font-weight: 700; }
+
+.category-progress { margin-top: 14px; display: grid; gap: 7px; }
+.category-progress-row { display: grid; grid-template-columns: 54px 1fr 32px; gap: 7px; align-items: center; color: #68706d; font-size: 11px; }
+.category-progress-row > div { height: 4px; overflow: hidden; background: #ddd9cf; border-radius: 2px; }
+.category-progress-row > div span { height: 100%; display: block; background: #729b92; }
+.category-progress-row strong { color: #4f5956; text-align: right; }
 
 .journal-record-heading { margin-top: 20px; }
 .journal-record-heading strong { font: 600 15px/1.2 var(--display); }
@@ -300,8 +317,11 @@
   font-size: 11px;
   cursor: pointer;
 }
+.unstudied-tag { display: block; margin-top: 2px; color: #8a6941; font-size: 8px; line-height: 1; text-transform: uppercase; }
 .discovery-grid button:hover,
 .discovery-grid button[data-selected='true'] { color: #fff; background: #477c74; border-color: #35665f; }
+.discovery-grid button:hover .unstudied-tag,
+.discovery-grid button[data-selected='true'] .unstudied-tag { color: #eef7f4; }
 
 .element-detail { margin-top: 18px; padding-top: 16px; border-top: 1px solid #d7d3c8; }
 .element-detail-heading h3 { margin: 0; font: 600 20px/1.2 var(--display); }
@@ -315,11 +335,26 @@
 .journal-empty,
 .hidden-formulas { color: #68706d; font-size: 12px; font-style: italic; }
 .hidden-formulas { padding: 8px; background: #efeee8; }
+.failed-partners { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 5px; list-style: none; }
+.failed-partners li { padding: 5px 7px; color: #5f6663; background: #efeee8; border-radius: 3px; font-size: 11px; }
 .empty-note { color: #68706d; font-size: 13px; }
 
 @media (max-width: 1000px) {
-  .game-layout { grid-template-columns: 220px 1fr; }
-  .journal { grid-column: 1 / -1; border-top: 1px solid #d7d3c8; border-left: 0; }
+  .game-layout {
+    height: auto;
+    grid-template-columns: 220px 1fr;
+  }
+  .codex,
+  .journal,
+  .worktable {
+    height: auto;
+    overflow-y: visible;
+  }
+  .journal {
+    grid-column: 1 / -1;
+    border-top: 1px solid #d7d3c8;
+    border-left: 0;
+  }
 }
 
 @media (max-width: 700px) {

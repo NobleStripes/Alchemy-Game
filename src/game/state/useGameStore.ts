@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { elementsById, recipes, starterElementIds } from '../content'
 import {
   createRecipeIndex,
+  pairKey,
   resolveCombination,
 } from '../engine/resolveCombination'
 import { loadProgress, saveProgress } from './persistence'
@@ -21,6 +22,7 @@ interface GameState {
   hintCredits: number
   revealedHintRecipeIds: string[]
   activeHintRecipeId: string | null
+  failedPairKeys: string[]
   firstSlotId: string | null
   secondSlotId: string | null
   lastAttempt: AttemptResult | null
@@ -52,6 +54,10 @@ function initialProgress() {
     revealedHintRecipeIds: (savedProgress?.revealedHintRecipeIds ?? []).filter(
       (recipeId) => recipes.some((recipe) => recipe.id === recipeId),
     ),
+    failedPairKeys: (savedProgress?.failedPairKeys ?? []).filter((key) => {
+      const [firstId, secondId] = key.split('::')
+      return elementsById.has(firstId) && elementsById.has(secondId)
+    }),
   }
 }
 
@@ -63,6 +69,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   hintCredits: savedProgress.hintCredits,
   revealedHintRecipeIds: savedProgress.revealedHintRecipeIds,
   activeHintRecipeId: savedProgress.revealedHintRecipeIds.at(-1) ?? null,
+  failedPairKeys: savedProgress.failedPairKeys,
   firstSlotId: null,
   secondSlotId: null,
   lastAttempt: null,
@@ -99,6 +106,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       hintCredits,
       revealedHintRecipeIds,
       activeHintRecipeId,
+      failedPairKeys,
       firstSlotId,
       secondSlotId,
     } = get()
@@ -115,8 +123,19 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     const recipe = resolveCombination(firstSlotId, secondSlotId, recipeIndex)
     if (!recipe) {
+      const failedKey = pairKey(firstSlotId, secondSlotId)
+      const nextFailedPairs = failedPairKeys.includes(failedKey)
+        ? failedPairKeys
+        : [...failedPairKeys, failedKey]
+      saveProgress(
+        discoveredIds,
+        discoveredRecipeIds,
+        hintCredits,
+        revealedHintRecipeIds,
+        nextFailedPairs,
+      )
       set({
-        firstSlotId: null,
+        failedPairKeys: nextFailedPairs,
         secondSlotId: null,
         lastAttempt: {
           kind: 'failure',
@@ -142,6 +161,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       nextRecipeIds,
       hintCredits,
       revealedHintRecipeIds,
+      failedPairKeys,
     )
 
     set({
@@ -166,6 +186,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       discoveredRecipeIds,
       hintCredits,
       revealedHintRecipeIds,
+      failedPairKeys,
     } = get()
     if (hintCredits === 0) return
 
@@ -188,6 +209,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       discoveredRecipeIds,
       nextHintCredits,
       nextRevealedHints,
+      failedPairKeys,
     )
     set({
       hintCredits: nextHintCredits,
@@ -197,13 +219,14 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   resetProgress: () => {
-    saveProgress(starterElementIds, [], 3, [])
+    saveProgress(starterElementIds, [], 3, [], [])
     set({
       discoveredIds: [...starterElementIds],
       discoveredRecipeIds: [],
       hintCredits: 3,
       revealedHintRecipeIds: [],
       activeHintRecipeId: null,
+      failedPairKeys: [],
       firstSlotId: null,
       secondSlotId: null,
       lastAttempt: null,

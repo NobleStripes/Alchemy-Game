@@ -66,6 +66,7 @@ function App() {
           <Codex />
           <Worktable />
           <Journal
+            challengeName={era.name}
             discoveryGoal={era.discoveryGoal}
             keystoneId={era.keystone}
           />

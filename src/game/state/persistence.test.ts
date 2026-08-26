@@ -13,11 +13,12 @@ describe('progress persistence', () => {
     )
 
     expect(loadProgress()).toEqual({
-      version: 3,
+      version: 4,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: [],
       hintCredits: 3,
       revealedHintRecipeIds: [],
+      failedPairKeys: [],
     })
   })
 
@@ -32,29 +33,54 @@ describe('progress persistence', () => {
     )
 
     expect(loadProgress()).toEqual({
-      version: 3,
+      version: 4,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: ['first-vapor'],
       hintCredits: 3,
       revealedHintRecipeIds: [],
+      failedPairKeys: [],
     })
   })
 
-  it('writes version 3 progress and hint state', () => {
+  it('migrates version 3 progress without failed pair history', () => {
+    window.localStorage.setItem(
+      'unwritten-atlas-progress',
+      JSON.stringify({
+        version: 3,
+        discoveredIds: ['ember', 'steam'],
+        discoveredRecipeIds: ['first-vapor'],
+        hintCredits: 2,
+        revealedHintRecipeIds: ['concentrated-flame'],
+      }),
+    )
+
+    expect(loadProgress()).toEqual({
+      version: 4,
+      discoveredIds: ['ember', 'steam'],
+      discoveredRecipeIds: ['first-vapor'],
+      hintCredits: 2,
+      revealedHintRecipeIds: ['concentrated-flame'],
+      failedPairKeys: [],
+    })
+  })
+
+  it('writes version 4 progress, hints, and failed pairs', () => {
     expect(
       saveProgress(
         ['ember', 'steam'],
         ['first-vapor'],
         2,
         ['concentrated-flame'],
+        ['gale::tide'],
       ),
     ).toBe(true)
     expect(loadProgress()).toEqual({
-      version: 3,
+      version: 4,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: ['first-vapor'],
       hintCredits: 2,
       revealedHintRecipeIds: ['concentrated-flame'],
+      failedPairKeys: ['gale::tide'],
     })
   })
 })
