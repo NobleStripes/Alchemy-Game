@@ -1,16 +1,18 @@
 import { useDroppable } from '@dnd-kit/core'
-import { Sparkles, X } from 'lucide-react'
+import { CopyPlus, Sparkles, X } from 'lucide-react'
 import { elementsById } from '../../game/content'
 import { useGameStore } from '../../game/state/useGameStore'
 
 interface TableSlotProps {
   name: 'first' | 'second'
   elementId: string | null
+  canRepeat: boolean
 }
 
-function TableSlot({ name, elementId }: TableSlotProps) {
+function TableSlot({ name, elementId, canRepeat }: TableSlotProps) {
   const element = elementId ? elementsById.get(elementId) : null
   const clearSlot = useGameStore((state) => state.clearSlot)
+  const placeElement = useGameStore((state) => state.placeElement)
   const { isOver, setNodeRef } = useDroppable({ id: `slot-${name}` })
 
   return (
@@ -39,6 +41,19 @@ function TableSlot({ name, elementId }: TableSlotProps) {
           >
             <X size={16} />
           </button>
+          {canRepeat && (
+            <button
+              type="button"
+              className="repeat-element"
+              onClick={() =>
+                placeElement(name === 'first' ? 'second' : 'first', element.id)
+              }
+              aria-label={`Use ${element.name} again`}
+            >
+              <CopyPlus size={14} aria-hidden="true" />
+              Use again
+            </button>
+          )}
         </>
       ) : (
         <>
@@ -64,23 +79,28 @@ export function Worktable() {
   return (
     <main className="worktable" aria-labelledby="worktable-title">
       <div className="section-heading centered">
-        <span className="eyebrow">The brass athanor</span>
-        <h1 id="worktable-title">The Unwritten Atlas</h1>
-        <p>Set two known things upon the circle.</p>
+        <h1 id="worktable-title">Combine elements</h1>
+        <p>Click or drag two elements into the slots.</p>
       </div>
 
       <div className="transmutation-circle">
-        <span className="orbit-mark mark-one" aria-hidden="true">III</span>
-        <span className="orbit-mark mark-two" aria-hidden="true">VII</span>
         <div className="slot-row">
-          <TableSlot name="first" elementId={firstSlotId} />
+          <TableSlot
+            name="first"
+            elementId={firstSlotId}
+            canRepeat={Boolean(firstSlotId && !secondSlotId)}
+          />
           <span className="combine-mark" aria-hidden="true">+</span>
-          <TableSlot name="second" elementId={secondSlotId} />
+          <TableSlot
+            name="second"
+            elementId={secondSlotId}
+            canRepeat={Boolean(secondSlotId && !firstSlotId)}
+          />
         </div>
 
         <button type="button" className="transmute-button" onClick={transmute}>
           <Sparkles size={18} aria-hidden="true" />
-          Transmute
+          Combine
         </button>
       </div>
 

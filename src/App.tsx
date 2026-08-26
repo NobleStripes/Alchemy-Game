@@ -12,7 +12,7 @@ import { Journal } from './features/journal/Journal'
 import { Worktable } from './features/worktable/Worktable'
 import { elements, eras } from './game/content'
 import { useGameStore } from './game/state/useGameStore'
-import './App.css'
+import './Simple.css'
 
 function App() {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
@@ -42,11 +42,8 @@ function App() {
   return (
     <div className="game-shell">
       <header className="game-header">
-        <div className="brand-mark" aria-hidden="true">UA</div>
-        <div className="era-heading">
-          <span>Era I</span>
-          <strong>{era.name}</strong>
-        </div>
+        <strong className="app-name">The Unwritten Atlas</strong>
+        <span className="era-name">{era.name}</span>
         <div className="header-progress" aria-label={`${progress}% discovered`}>
           <span>{discoveredIds.length} / {elements.length}</span>
           <div className="progress-track" aria-hidden="true">
@@ -70,7 +67,6 @@ function App() {
           <Worktable />
           <Journal
             discoveryGoal={era.discoveryGoal}
-            eraSubtitle={era.subtitle}
             keystoneId={era.keystone}
           />
         </div>

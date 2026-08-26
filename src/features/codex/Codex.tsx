@@ -57,8 +57,7 @@ export function Codex() {
   return (
     <aside className="codex" aria-labelledby="codex-title">
       <div className="section-heading">
-        <span className="eyebrow">Known matter</span>
-        <h2 id="codex-title">The Codex</h2>
+        <h2 id="codex-title">Elements</h2>
       </div>
 
       <label className="search-field">
@@ -68,7 +67,7 @@ export function Codex() {
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search the leaves"
+          placeholder="Search elements"
         />
       </label>
 

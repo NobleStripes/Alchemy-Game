@@ -1,23 +1,29 @@
-import { BookOpen } from 'lucide-react'
+import { Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { elements, elementsById, recipes } from '../../game/content'
 import { useGameStore } from '../../game/state/useGameStore'
 
 interface JournalProps {
   discoveryGoal: number
-  eraSubtitle: string
   keystoneId: string
 }
 
 export function Journal({
   discoveryGoal,
-  eraSubtitle,
   keystoneId,
 }: JournalProps) {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const discoveredRecipeIds = useGameStore(
     (state) => state.discoveredRecipeIds,
   )
+  const hintCredits = useGameStore((state) => state.hintCredits)
+  const revealedHintRecipeIds = useGameStore(
+    (state) => state.revealedHintRecipeIds,
+  )
+  const activeHintRecipeId = useGameStore(
+    (state) => state.activeHintRecipeId,
+  )
+  const requestHint = useGameStore((state) => state.requestHint)
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null)
   const selectedElement = selectedElementId
     ? elementsById.get(selectedElementId)
@@ -34,81 +40,85 @@ export function Journal({
   )
   const hiddenRecipeCount = relatedRecipes.length - knownRecipes.length
   const keystoneFound = discoveredIds.includes(keystoneId)
+  const activeHint = activeHintRecipeId
+    ? recipes.find((recipe) => recipe.id === activeHintRecipeId)
+    : null
+  const activeHintInputs = activeHint
+    ? activeHint.inputs.map((inputId) => elementsById.get(inputId))
+    : []
+  const hasAvailableHint = recipes.some(
+    (recipe) =>
+      !discoveredRecipeIds.includes(recipe.id) &&
+      !revealedHintRecipeIds.includes(recipe.id) &&
+      recipe.inputs.every((inputId) => discoveredIds.includes(inputId)),
+  )
+  const discoveredElements = elements.filter((element) =>
+    discoveredIds.includes(element.id),
+  )
 
   return (
     <aside className="journal" aria-labelledby="journal-title">
       <div className="section-heading">
-        <span className="eyebrow">Era progress</span>
-        <h2 id="journal-title">
-          <BookOpen size={20} aria-hidden="true" />
-          Field Journal
-        </h2>
+        <h2 id="journal-title">Guide</h2>
       </div>
 
-      <p className="era-subtitle">{eraSubtitle}</p>
-      <div className="journal-rule" />
-
-      <div className="journal-objectives">
-        <div
-          className="objective"
-          data-complete={discoveredIds.length >= discoveryGoal}
+      <section className="hint-panel" aria-labelledby="hint-title">
+        <div className="hint-heading">
+          <strong id="hint-title">Hint</strong>
+          <span>{hintCredits} left</span>
+        </div>
+        {activeHint && activeHintInputs.every(Boolean) ? (
+          <p className="hint-text">
+            Try <strong>{activeHintInputs[0]?.name}</strong> +{' '}
+            <strong>{activeHintInputs[1]?.name}</strong>.
+          </p>
+        ) : (
+          <p className="hint-text">Reveal a combination using elements you know.</p>
+        )}
+        <button
+          type="button"
+          className="hint-button"
+          onClick={requestHint}
+          disabled={hintCredits === 0 || !hasAvailableHint}
         >
-          <span className="objective-mark" aria-hidden="true" />
-          <div>
-            <strong>Catalogue {discoveryGoal} elements</strong>
-            <p>{Math.min(discoveredIds.length, discoveryGoal)} recorded</p>
-          </div>
-        </div>
-        <div className="objective" data-complete={keystoneFound}>
-          <span className="objective-mark" aria-hidden="true" />
-          <div>
-            <strong>Kindle the Beacon</strong>
-            <p>{keystoneFound ? 'Keystone discovered' : 'Keystone unknown'}</p>
-          </div>
-        </div>
+          <Lightbulb size={16} aria-hidden="true" />
+          {hintCredits === 0 ? 'No hints left' : 'Show hint'}
+        </button>
+      </section>
+
+      <div className="progress-summary">
+        <span><strong>{discoveredIds.length}</strong> discovered</span>
+        <span><strong>{discoveredRecipeIds.length}</strong> formulas</span>
       </div>
+      <p className="goal-status">
+        Goal: {Math.min(discoveredIds.length, discoveryGoal)}/{discoveryGoal}
+        {' · '}{keystoneFound ? 'Beacon found' : 'Beacon not found'}
+      </p>
 
       <div className="journal-record-heading">
-        <strong>Discovery record</strong>
-        <span>{discoveredRecipeIds.length} formulas</span>
+        <strong>Discovered</strong>
       </div>
       <div className="discovery-grid" aria-label="Discovery record">
-        {elements.map((element) => {
-          const isFound = discoveredIds.includes(element.id)
-          return isFound ? (
-            <button
-              key={element.id}
-              type="button"
-              data-found="true"
-              data-selected={selectedElementId === element.id}
-              onClick={() => setSelectedElementId(element.id)}
-              aria-label={`Inspect ${element.name}`}
-              title={element.name}
-            >
-              {element.sigil}
-            </button>
-          ) : (
-            <span key={element.id} title="Unknown">
-              ?
-            </span>
-          )
-        })}
+        {discoveredElements.map((element) => (
+          <button
+            key={element.id}
+            type="button"
+            data-selected={selectedElementId === element.id}
+            onClick={() => setSelectedElementId(element.id)}
+            aria-label={`Inspect ${element.name}`}
+          >
+            {element.name}
+          </button>
+        ))}
       </div>
 
       <section className="element-detail" aria-live="polite">
         {selectedElement ? (
           <>
             <div className="element-detail-heading">
-              <span
-                className="element-sigil"
-                data-category={selectedElement.category}
-                aria-hidden="true"
-              >
-                {selectedElement.sigil}
-              </span>
               <div>
-                <span className="eyebrow">{selectedElement.category}</span>
                 <h3>{selectedElement.name}</h3>
+                <span>{selectedElement.category}</span>
               </div>
             </div>
             <p>{selectedElement.description}</p>
@@ -146,7 +156,7 @@ export function Journal({
           </>
         ) : (
           <p className="journal-empty">
-            Select a recorded sigil to inspect its formulas.
+            Select an element to inspect its formulas.
           </p>
         )}
       </section>

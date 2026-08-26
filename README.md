@@ -1,6 +1,8 @@
 # The Unwritten Atlas
 
-An original combination-discovery game presented as an arcane field journal. The current vertical slice includes the first era, 29 elements, 32 recipes, a two-slot transmutation table, an inspectable formula journal, local progress, and responsive pointer, touch, and keyboard controls.
+An original combination-discovery game with 29 elements, 32 recipes, a simple two-slot workspace, an inspectable formula guide, local progress, and responsive pointer, touch, and keyboard controls.
+
+The Guide includes three persisted hint charges. Each hint reveals an untried combination that can be made from currently discovered elements, prioritizing formulas that create something new.
 
 ## Run locally
 
@@ -24,4 +26,4 @@ The test suite validates recipe order independence, same-element combinations, u
 
 Game definitions live in `src/game/content`. Every recipe is an unordered pair with one deterministic result. `validateContent` checks references, duplicate pairs, era keystones, and reachability from the four starter essences.
 
-Progress is stored in browser local storage under a versioned schema. Version 2 records both discovered elements and the exact formulas performed, while transparently preserving element progress from version 1 saves. The reset control returns the journal to its four starting essences.
+Progress is stored in browser local storage under a versioned schema. Version 3 records discovered elements, performed formulas, hint charges, and revealed hints while transparently migrating version 1 and 2 saves. Reset returns the game to its four starting elements and three hints.

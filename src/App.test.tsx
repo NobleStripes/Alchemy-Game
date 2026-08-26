@@ -21,7 +21,7 @@ describe('alchemy worktable', () => {
 
     await user.click(screen.getByRole('button', { name: 'Fire' }))
     await user.click(screen.getByRole('button', { name: 'Water' }))
-    await user.click(screen.getByRole('button', { name: /Transmute/i }))
+    await user.click(screen.getByRole('button', { name: 'Combine' }))
 
     expect(screen.getByText('Discovered Steam')).toBeInTheDocument()
     expect(screen.getAllByText('Empty vessel')).toHaveLength(2)
@@ -45,8 +45,8 @@ describe('alchemy worktable', () => {
     render(<App />)
 
     await user.click(screen.getByRole('button', { name: 'Fire' }))
-    await user.click(screen.getByRole('button', { name: 'Fire' }))
-    await user.click(screen.getByRole('button', { name: /Transmute/i }))
+    await user.click(screen.getByRole('button', { name: 'Use Fire again' }))
+    await user.click(screen.getByRole('button', { name: 'Combine' }))
 
     expect(screen.getByText('Discovered Heat')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Heat' })).toBeInTheDocument()
@@ -56,7 +56,7 @@ describe('alchemy worktable', () => {
     const user = userEvent.setup()
     render(<App />)
 
-    await user.click(screen.getByRole('button', { name: /Transmute/i }))
+    await user.click(screen.getByRole('button', { name: 'Combine' }))
 
     expect(screen.getByText('The circle waits')).toBeInTheDocument()
     expect(screen.getByText('Two essences are required.')).toBeInTheDocument()
@@ -68,9 +68,22 @@ describe('alchemy worktable', () => {
 
     await user.click(screen.getByRole('button', { name: 'Water' }))
     await user.click(screen.getByRole('button', { name: 'Air' }))
-    await user.click(screen.getByRole('button', { name: /Transmute/i }))
+    await user.click(screen.getByRole('button', { name: 'Combine' }))
 
     expect(screen.getByText('No resonance')).toBeInTheDocument()
     expect(screen.getAllByText('Empty vessel')).toHaveLength(2)
+  })
+
+  it('spends a hint credit to reveal a viable combination', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    await user.click(screen.getByRole('button', { name: 'Show hint' }))
+
+    expect(screen.getByText(/Try/)).toHaveTextContent('Try Fire + Fire.')
+    expect(screen.getByText('2 left')).toBeInTheDocument()
+    expect(window.localStorage.getItem('unwritten-atlas-progress')).toContain(
+      'concentrated-flame',
+    )
   })
 })

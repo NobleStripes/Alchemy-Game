@@ -13,18 +13,48 @@ describe('progress persistence', () => {
     )
 
     expect(loadProgress()).toEqual({
-      version: 2,
+      version: 3,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: [],
+      hintCredits: 3,
+      revealedHintRecipeIds: [],
     })
   })
 
-  it('writes version 2 element and recipe progress', () => {
-    expect(saveProgress(['ember', 'steam'], ['first-vapor'])).toBe(true)
+  it('migrates version 2 progress with fresh hint credits', () => {
+    window.localStorage.setItem(
+      'unwritten-atlas-progress',
+      JSON.stringify({
+        version: 2,
+        discoveredIds: ['ember', 'steam'],
+        discoveredRecipeIds: ['first-vapor'],
+      }),
+    )
+
     expect(loadProgress()).toEqual({
-      version: 2,
+      version: 3,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: ['first-vapor'],
+      hintCredits: 3,
+      revealedHintRecipeIds: [],
+    })
+  })
+
+  it('writes version 3 progress and hint state', () => {
+    expect(
+      saveProgress(
+        ['ember', 'steam'],
+        ['first-vapor'],
+        2,
+        ['concentrated-flame'],
+      ),
+    ).toBe(true)
+    expect(loadProgress()).toEqual({
+      version: 3,
+      discoveredIds: ['ember', 'steam'],
+      discoveredRecipeIds: ['first-vapor'],
+      hintCredits: 2,
+      revealedHintRecipeIds: ['concentrated-flame'],
     })
   })
 })

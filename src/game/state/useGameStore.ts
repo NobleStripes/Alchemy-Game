@@ -18,6 +18,9 @@ interface AttemptResult {
 interface GameState {
   discoveredIds: string[]
   discoveredRecipeIds: string[]
+  hintCredits: number
+  revealedHintRecipeIds: string[]
+  activeHintRecipeId: string | null
   firstSlotId: string | null
   secondSlotId: string | null
   lastAttempt: AttemptResult | null
@@ -25,6 +28,7 @@ interface GameState {
   placeElement: (slot: SlotName, elementId: string) => void
   clearSlot: (slot: SlotName) => void
   transmute: () => void
+  requestHint: () => void
   resetProgress: () => void
 }
 
@@ -44,6 +48,10 @@ function initialProgress() {
     discoveredRecipeIds: (savedProgress?.discoveredRecipeIds ?? []).filter(
       (recipeId) => recipes.some((recipe) => recipe.id === recipeId),
     ),
+    hintCredits: savedProgress?.hintCredits ?? 3,
+    revealedHintRecipeIds: (savedProgress?.revealedHintRecipeIds ?? []).filter(
+      (recipeId) => recipes.some((recipe) => recipe.id === recipeId),
+    ),
   }
 }
 
@@ -52,6 +60,9 @@ const savedProgress = initialProgress()
 export const useGameStore = create<GameState>((set, get) => ({
   discoveredIds: savedProgress.discoveredIds,
   discoveredRecipeIds: savedProgress.discoveredRecipeIds,
+  hintCredits: savedProgress.hintCredits,
+  revealedHintRecipeIds: savedProgress.revealedHintRecipeIds,
+  activeHintRecipeId: savedProgress.revealedHintRecipeIds.at(-1) ?? null,
   firstSlotId: null,
   secondSlotId: null,
   lastAttempt: null,
@@ -82,7 +93,15 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   transmute: () => {
-    const { discoveredIds, discoveredRecipeIds, firstSlotId, secondSlotId } = get()
+    const {
+      discoveredIds,
+      discoveredRecipeIds,
+      hintCredits,
+      revealedHintRecipeIds,
+      activeHintRecipeId,
+      firstSlotId,
+      secondSlotId,
+    } = get()
     if (!firstSlotId || !secondSlotId) {
       set({
         lastAttempt: {
@@ -118,11 +137,18 @@ export const useGameStore = create<GameState>((set, get) => ({
     const nextRecipeIds = discoveredRecipeIds.includes(recipe.id)
       ? discoveredRecipeIds
       : [...discoveredRecipeIds, recipe.id]
-    saveProgress(nextDiscoveries, nextRecipeIds)
+    saveProgress(
+      nextDiscoveries,
+      nextRecipeIds,
+      hintCredits,
+      revealedHintRecipeIds,
+    )
 
     set({
       discoveredIds: nextDiscoveries,
       discoveredRecipeIds: nextRecipeIds,
+      activeHintRecipeId:
+        activeHintRecipeId === recipe.id ? null : activeHintRecipeId,
       firstSlotId: null,
       secondSlotId: null,
       lastAttempt: {
@@ -134,11 +160,50 @@ export const useGameStore = create<GameState>((set, get) => ({
     })
   },
 
+  requestHint: () => {
+    const {
+      discoveredIds,
+      discoveredRecipeIds,
+      hintCredits,
+      revealedHintRecipeIds,
+    } = get()
+    if (hintCredits === 0) return
+
+    const eligibleRecipes = recipes.filter(
+      (recipe) =>
+        !discoveredRecipeIds.includes(recipe.id) &&
+        !revealedHintRecipeIds.includes(recipe.id) &&
+        recipe.inputs.every((inputId) => discoveredIds.includes(inputId)),
+    )
+    const recipe =
+      eligibleRecipes.find((candidate) =>
+        !discoveredIds.includes(candidate.result),
+      ) ?? eligibleRecipes[0]
+    if (!recipe) return
+
+    const nextHintCredits = hintCredits - 1
+    const nextRevealedHints = [...revealedHintRecipeIds, recipe.id]
+    saveProgress(
+      discoveredIds,
+      discoveredRecipeIds,
+      nextHintCredits,
+      nextRevealedHints,
+    )
+    set({
+      hintCredits: nextHintCredits,
+      revealedHintRecipeIds: nextRevealedHints,
+      activeHintRecipeId: recipe.id,
+    })
+  },
+
   resetProgress: () => {
-    saveProgress(starterElementIds, [])
+    saveProgress(starterElementIds, [], 3, [])
     set({
       discoveredIds: [...starterElementIds],
       discoveredRecipeIds: [],
+      hintCredits: 3,
+      revealedHintRecipeIds: [],
+      activeHintRecipeId: null,
       firstSlotId: null,
       secondSlotId: null,
       lastAttempt: null,
