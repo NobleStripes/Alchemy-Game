@@ -61,7 +61,6 @@
   { "id": "sown-field", "inputs": ["field", "seed"], "result": "crop", "flavor": "A prepared field gives many seeds one shared season." },
   { "id": "rainy-harvest", "inputs": ["field", "rain"], "result": "crop", "flavor": "Rain turns ordered rows into a living harvest." },
   { "id": "prepared-harvest", "inputs": ["crop", "heat"], "result": "food", "flavor": "Heat makes the harvest ready to sustain life." },
-  { "id": "baked-food", "inputs": ["food", "ember"], "result": "bread", "flavor": "Fire gives prepared grain a lasting, nourishing form." },
   { "id": "forest-fire", "inputs": ["wildfire", "forest"], "result": "ash", "flavor": "Wildfire passes through the forest and leaves pale minerals behind." },
   { "id": "storm-bolt", "inputs": ["storm", "ember"], "result": "lightning", "flavor": "Fire gives the storm a brilliant path to the ground." },
   { "id": "charged-metal", "inputs": ["lightning", "metal"], "result": "magnet", "flavor": "A violent charge teaches metal an invisible pull." },

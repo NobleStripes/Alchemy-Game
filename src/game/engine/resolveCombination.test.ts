@@ -6,6 +6,10 @@ import {
 } from './resolveCombination'
 import { validateContent } from './validateContent'
 import { isElementUnstudied } from './isElementUnstudied'
+import {
+  areHintsUnlocked,
+  selectHintRecipe,
+} from './hintRules'
 
 const recipeIndex = createRecipeIndex(recipes)
 
@@ -121,6 +125,9 @@ describe('first-era content', () => {
     expect(resolveCombination('dough', 'heat', recipeIndex)?.result).toBe(
       'bread',
     )
+    expect(
+      recipes.filter((recipe) => recipe.result === 'bread').map((recipe) => recipe.id),
+    ).toEqual(['baked-dough'])
   })
 })
 
@@ -131,5 +138,36 @@ describe('journal guidance', () => {
       isElementUnstudied('ember', recipes, ['concentrated-flame']),
     ).toBe(false)
     expect(isElementUnstudied('bread', recipes, [])).toBe(false)
+  })
+
+  it('locks hints until the challenge or three failures', () => {
+    expect(areHintsUnlocked(['ember', 'tide'], [], 12, 'beacon')).toBe(false)
+    expect(
+      areHintsUnlocked(
+        ['ember', 'tide'],
+        ['a::b', 'a::c', 'a::d'],
+        12,
+        'beacon',
+      ),
+    ).toBe(true)
+    expect(
+      areHintsUnlocked(
+        ['beacon', ...Array.from({ length: 11 }, (_, index) => `e${index}`)],
+        [],
+        12,
+        'beacon',
+      ),
+    ).toBe(true)
+  })
+
+  it('prefers mixed unknown-result hints over obvious self-pairs', () => {
+    expect(
+      selectHintRecipe(
+        recipes,
+        ['ember', 'tide', 'stone', 'gale'],
+        [],
+        [],
+      )?.id,
+    ).toBe('first-vapor')
   })
 })

@@ -84,29 +84,44 @@ describe('alchemy worktable', () => {
 
   it('spends a hint credit to reveal a viable combination', async () => {
     const user = userEvent.setup()
+    useGameStore.setState({
+      failedPairKeys: ['gale::tide', 'ember::heat', 'stone::steam'],
+    })
     render(<App />)
 
     await user.click(screen.getByRole('button', { name: 'Show hint' }))
 
-    expect(screen.getByText('Fire + Fire')).toBeInTheDocument()
+    expect(screen.getByText('Fire + Water')).toBeInTheDocument()
     expect(screen.getByText('2 left')).toBeInTheDocument()
     expect(window.localStorage.getItem('unwritten-atlas-progress')).toContain(
-      'concentrated-flame',
+      'first-vapor',
     )
   })
 
   it('keeps every revealed, unperformed hint visible', async () => {
     const user = userEvent.setup()
+    useGameStore.setState({
+      failedPairKeys: ['gale::tide', 'ember::heat', 'stone::steam'],
+    })
     render(<App />)
 
     await user.click(screen.getByRole('button', { name: 'Show hint' }))
     await user.click(screen.getByRole('button', { name: 'Show hint' }))
     await user.click(screen.getByRole('button', { name: 'Show hint' }))
 
-    expect(screen.getByText('Fire + Fire')).toBeInTheDocument()
-    expect(screen.getByText('Water + Water')).toBeInTheDocument()
-    expect(screen.getByText('Earth + Earth')).toBeInTheDocument()
+    expect(screen.getByText('Fire + Water')).toBeInTheDocument()
+    expect(screen.getByText('Earth + Air')).toBeInTheDocument()
+    expect(screen.getByText('Fire + Air')).toBeInTheDocument()
     expect(screen.getByText('0 left')).toBeInTheDocument()
+  })
+
+  it('locks limited hints before First Light or three failures', () => {
+    render(<App />)
+
+    expect(screen.getByRole('button', { name: 'Hints locked' })).toBeDisabled()
+    expect(
+      screen.getByText('Hints unlock after First Light or 3 recorded failures (0/3).'),
+    ).toBeInTheDocument()
   })
 
   it('shows category progress and marks only elements with outgoing uses unstudied', () => {

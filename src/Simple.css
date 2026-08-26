@@ -280,6 +280,7 @@
 .hint-heading { display: flex; justify-content: space-between; gap: 12px; }
 .hint-heading span { color: #68706d; font-size: 12px; }
 .hint-text { min-height: 40px; margin: 10px 0; color: #4f5956; font-size: 13px; line-height: 1.45; }
+.hint-locked { color: #717875; }
 .open-leads { margin: 10px 0; color: #4f5956; font-size: 12px; }
 .open-leads > strong { display: block; margin-bottom: 5px; font-size: 11px; text-transform: uppercase; }
 .open-leads ul { margin: 0; padding: 0; display: grid; gap: 4px; list-style: none; }

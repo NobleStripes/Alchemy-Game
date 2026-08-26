@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { elementsById, recipes, starterElementIds } from '../content'
+import { elementsById, eras, recipes, starterElementIds } from '../content'
+import { areHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
 import {
   createRecipeIndex,
   pairKey,
@@ -188,18 +189,25 @@ export const useGameStore = create<GameState>((set, get) => ({
       revealedHintRecipeIds,
       failedPairKeys,
     } = get()
-    if (hintCredits === 0) return
+    const era = eras[0]
+    if (
+      hintCredits === 0 ||
+      !areHintsUnlocked(
+        discoveredIds,
+        failedPairKeys,
+        era.discoveryGoal,
+        era.keystone,
+      )
+    ) {
+      return
+    }
 
-    const eligibleRecipes = recipes.filter(
-      (recipe) =>
-        !discoveredRecipeIds.includes(recipe.id) &&
-        !revealedHintRecipeIds.includes(recipe.id) &&
-        recipe.inputs.every((inputId) => discoveredIds.includes(inputId)),
+    const recipe = selectHintRecipe(
+      recipes,
+      discoveredIds,
+      discoveredRecipeIds,
+      revealedHintRecipeIds,
     )
-    const recipe =
-      eligibleRecipes.find((candidate) =>
-        !discoveredIds.includes(candidate.result),
-      ) ?? eligibleRecipes[0]
     if (!recipe) return
 
     const nextHintCredits = hintCredits - 1

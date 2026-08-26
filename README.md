@@ -1,10 +1,12 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with 55 elements, 72 recipes, a simple two-slot workspace, an inspectable formula guide, local progress, and responsive pointer, touch, and keyboard controls.
+An original combination-discovery game with 55 elements, 71 recipes, a simple two-slot workspace, an inspectable formula guide, local progress, and responsive pointer, touch, and keyboard controls.
 
 The First Light challenge asks players to catalogue 12 elements and kindle the Beacon. Completing it writes the first page without ending free exploration. Weather, geography, life, materials, agriculture, navigation, and civilization remain open in parallel.
 
-The Guide includes category completion, **Unstudied** markers for elements not yet used as ingredients, and three persisted hint charges. Each hint reveals an untried combination that can be made from currently discovered elements, prioritizing formulas that create something new.
+The Guide includes category completion, **Unstudied** markers for elements with unresolved outgoing uses, and three persisted hint charges. Limited hints unlock after completing First Light or recording three distinct failures. They prioritize mixed-input formulas that create something new, and every revealed but unperformed formula remains under **Open leads**.
+
+Agriculture branches from Field into Crop. Crop + Heat creates broad Food, while Bread has one authored route: Crop + Tool → Flour, Flour + Water → Dough, and Dough + Heat → Bread.
 
 ## Run locally
 

@@ -2,6 +2,10 @@ import { Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { elements, elementsById, recipes } from '../../game/content'
 import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
+import {
+  areHintsUnlocked,
+  HINT_FAILURE_UNLOCK_COUNT,
+} from '../../game/engine/hintRules'
 import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
 
@@ -77,6 +81,12 @@ export function Journal({
   }))
   const challengeComplete =
     discoveredIds.length >= discoveryGoal && keystoneFound
+  const hintsUnlocked = areHintsUnlocked(
+    discoveredIds,
+    failedPairKeys,
+    discoveryGoal,
+    keystoneId,
+  )
 
   return (
     <aside className="journal" aria-labelledby="journal-title">
@@ -106,17 +116,27 @@ export function Journal({
               })}
             </ul>
           </div>
-        ) : (
+        ) : hintsUnlocked ? (
           <p className="hint-text">Reveal a combination using elements you know.</p>
+        ) : (
+          <p className="hint-text hint-locked">
+            Hints unlock after First Light or{' '}
+            {HINT_FAILURE_UNLOCK_COUNT} recorded failures ({failedPairKeys.length}/
+            {HINT_FAILURE_UNLOCK_COUNT}).
+          </p>
         )}
         <button
           type="button"
           className="hint-button"
           onClick={requestHint}
-          disabled={hintCredits === 0 || !hasAvailableHint}
+          disabled={!hintsUnlocked || hintCredits === 0 || !hasAvailableHint}
         >
           <Lightbulb size={16} aria-hidden="true" />
-          {hintCredits === 0 ? 'No hints left' : 'Show hint'}
+          {!hintsUnlocked
+            ? 'Hints locked'
+            : hintCredits === 0
+              ? 'No hints left'
+              : 'Show hint'}
         </button>
       </section>
 
