@@ -1,6 +1,7 @@
 import { Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { elements, elementsById, recipes } from '../../game/content'
+import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
 import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
 
@@ -22,9 +23,6 @@ export function Journal({
   const hintCredits = useGameStore((state) => state.hintCredits)
   const revealedHintRecipeIds = useGameStore(
     (state) => state.revealedHintRecipeIds,
-  )
-  const activeHintRecipeId = useGameStore(
-    (state) => state.activeHintRecipeId,
   )
   const requestHint = useGameStore((state) => state.requestHint)
   const failedPairKeys = useGameStore((state) => state.failedPairKeys)
@@ -50,12 +48,10 @@ export function Journal({
         failedPairKeys.includes(pairKey(selectedElement.id, element.id)),
       )
     : []
-  const activeHint = activeHintRecipeId
-    ? recipes.find((recipe) => recipe.id === activeHintRecipeId)
-    : null
-  const activeHintInputs = activeHint
-    ? activeHint.inputs.map((inputId) => elementsById.get(inputId))
-    : []
+  const openHintRecipes = revealedHintRecipeIds
+    .filter((recipeId) => !discoveredRecipeIds.includes(recipeId))
+    .map((recipeId) => recipes.find((recipe) => recipe.id === recipeId))
+    .filter((recipe) => recipe !== undefined)
   const hasAvailableHint = recipes.some(
     (recipe) =>
       !discoveredRecipeIds.includes(recipe.id) &&
@@ -64,11 +60,6 @@ export function Journal({
   )
   const discoveredElements = elements.filter((element) =>
     discoveredIds.includes(element.id),
-  )
-  const studiedElementIds = new Set(
-    recipes
-      .filter((recipe) => discoveredRecipeIds.includes(recipe.id))
-      .flatMap((recipe) => recipe.inputs),
   )
   const categoryProgress = [
     ['essence', 'Essence'],
@@ -98,11 +89,23 @@ export function Journal({
           <strong id="hint-title">Hint</strong>
           <span>{hintCredits} left</span>
         </div>
-        {activeHint && activeHintInputs.every(Boolean) ? (
-          <p className="hint-text">
-            Try <strong>{activeHintInputs[0]?.name}</strong> +{' '}
-            <strong>{activeHintInputs[1]?.name}</strong>.
-          </p>
+        {openHintRecipes.length > 0 ? (
+          <div className="open-leads">
+            <strong>Open leads</strong>
+            <ul>
+              {openHintRecipes.map((recipe) => {
+                const firstInput = elementsById.get(recipe.inputs[0])
+                const secondInput = elementsById.get(recipe.inputs[1])
+                if (!firstInput || !secondInput) return null
+
+                return (
+                  <li key={recipe.id}>
+                    {firstInput.name} + {secondInput.name}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         ) : (
           <p className="hint-text">Reveal a combination using elements you know.</p>
         )}
@@ -163,7 +166,7 @@ export function Journal({
             aria-label={`Inspect ${element.name}`}
           >
             {element.name}
-            {!studiedElementIds.has(element.id) && (
+            {isElementUnstudied(element.id, recipes, discoveredRecipeIds) && (
               <span className="unstudied-tag" aria-hidden="true">Unstudied</span>
             )}
           </button>

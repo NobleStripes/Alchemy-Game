@@ -1,6 +1,6 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with 53 elements, 67 recipes, a simple two-slot workspace, an inspectable formula guide, local progress, and responsive pointer, touch, and keyboard controls.
+An original combination-discovery game with 55 elements, 72 recipes, a simple two-slot workspace, an inspectable formula guide, local progress, and responsive pointer, touch, and keyboard controls.
 
 The First Light challenge asks players to catalogue 12 elements and kindle the Beacon. Completing it writes the first page without ending free exploration. Weather, geography, life, materials, agriculture, navigation, and civilization remain open in parallel.
 

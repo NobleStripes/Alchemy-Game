@@ -65,5 +65,10 @@
   { "id": "forest-fire", "inputs": ["wildfire", "forest"], "result": "ash", "flavor": "Wildfire passes through the forest and leaves pale minerals behind." },
   { "id": "storm-bolt", "inputs": ["storm", "ember"], "result": "lightning", "flavor": "Fire gives the storm a brilliant path to the ground." },
   { "id": "charged-metal", "inputs": ["lightning", "metal"], "result": "magnet", "flavor": "A violent charge teaches metal an invisible pull." },
-  { "id": "magnetic-north", "inputs": ["magnet", "metal"], "result": "compass", "flavor": "Magnetized metal settles into a memory of north." }
+  { "id": "magnetic-north", "inputs": ["magnet", "metal"], "result": "compass", "flavor": "Magnetized metal settles into a memory of north." },
+  { "id": "settled-fields", "inputs": ["house", "field"], "result": "village", "flavor": "A home amid cultivated land draws neighbors into a lasting settlement." },
+  { "id": "mapped-territory", "inputs": ["city", "map"], "result": "nation", "flavor": "A city with charted territory begins to imagine a shared realm." },
+  { "id": "milled-crop", "inputs": ["crop", "tool"], "result": "flour", "flavor": "Tools grind the harvest into a fine and useful meal." },
+  { "id": "mixed-dough", "inputs": ["flour", "tide"], "result": "dough", "flavor": "Water binds loose flour into a supple whole." },
+  { "id": "baked-dough", "inputs": ["dough", "heat"], "result": "bread", "flavor": "Steady heat lifts dough into a nourishing loaf." }
 ]

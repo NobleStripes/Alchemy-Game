@@ -5,6 +5,7 @@ import {
   resolveCombination,
 } from './resolveCombination'
 import { validateContent } from './validateContent'
+import { isElementUnstudied } from './isElementUnstudied'
 
 const recipeIndex = createRecipeIndex(recipes)
 
@@ -67,6 +68,12 @@ describe('first-era content', () => {
     expect(resolveCombination('house', 'house', recipeIndex)?.result).toBe(
       'village',
     )
+    expect(resolveCombination('house', 'field', recipeIndex)?.result).toBe(
+      'village',
+    )
+    expect(resolveCombination('city', 'map', recipeIndex)?.result).toBe(
+      'nation',
+    )
   })
 
   it('offers alternate life routes and reaches the Map capstone', () => {
@@ -105,5 +112,24 @@ describe('first-era content', () => {
     expect(resolveCombination('field', 'seed', recipeIndex)?.result).toBe(
       'crop',
     )
+    expect(resolveCombination('crop', 'tool', recipeIndex)?.result).toBe(
+      'flour',
+    )
+    expect(resolveCombination('flour', 'tide', recipeIndex)?.result).toBe(
+      'dough',
+    )
+    expect(resolveCombination('dough', 'heat', recipeIndex)?.result).toBe(
+      'bread',
+    )
+  })
+})
+
+describe('journal guidance', () => {
+  it('marks only elements with undiscovered outgoing uses as unstudied', () => {
+    expect(isElementUnstudied('ember', recipes, [])).toBe(true)
+    expect(
+      isElementUnstudied('ember', recipes, ['concentrated-flame']),
+    ).toBe(false)
+    expect(isElementUnstudied('bread', recipes, [])).toBe(false)
   })
 })

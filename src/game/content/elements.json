@@ -51,5 +51,7 @@
   { "id": "bread", "name": "Bread", "sigil": "BD", "category": "craft", "description": "Ground harvest transformed by patient heat.", "starter": false, "era": "first-light" },
   { "id": "wildfire", "name": "Wildfire", "sigil": "WF", "category": "weather", "description": "Flame carried beyond control by restless wind.", "starter": false, "era": "first-light" },
   { "id": "lightning", "name": "Lightning", "sigil": "LG", "category": "weather", "description": "A storm releasing its charge in one brilliant path.", "starter": false, "era": "first-light" },
-  { "id": "magnet", "name": "Magnet", "sigil": "MG", "category": "craft", "description": "Metal awakened to an invisible attraction.", "starter": false, "era": "first-light" }
+  { "id": "magnet", "name": "Magnet", "sigil": "MG", "category": "craft", "description": "Metal awakened to an invisible attraction.", "starter": false, "era": "first-light" },
+  { "id": "flour", "name": "Flour", "sigil": "FL", "category": "matter", "description": "A harvested crop ground into fine, workable meal.", "starter": false, "era": "first-light" },
+  { "id": "dough", "name": "Dough", "sigil": "DO", "category": "matter", "description": "Flour and water joined into something ready to rise.", "starter": false, "era": "first-light" }
 ]

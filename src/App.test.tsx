@@ -88,21 +88,36 @@ describe('alchemy worktable', () => {
 
     await user.click(screen.getByRole('button', { name: 'Show hint' }))
 
-    expect(screen.getByText(/Try/)).toHaveTextContent('Try Fire + Fire.')
+    expect(screen.getByText('Fire + Fire')).toBeInTheDocument()
     expect(screen.getByText('2 left')).toBeInTheDocument()
     expect(window.localStorage.getItem('unwritten-atlas-progress')).toContain(
       'concentrated-flame',
     )
   })
 
-  it('shows category progress and unstudied discoveries', async () => {
+  it('keeps every revealed, unperformed hint visible', async () => {
     const user = userEvent.setup()
+    render(<App />)
+
+    await user.click(screen.getByRole('button', { name: 'Show hint' }))
+    await user.click(screen.getByRole('button', { name: 'Show hint' }))
+    await user.click(screen.getByRole('button', { name: 'Show hint' }))
+
+    expect(screen.getByText('Fire + Fire')).toBeInTheDocument()
+    expect(screen.getByText('Water + Water')).toBeInTheDocument()
+    expect(screen.getByText('Earth + Earth')).toBeInTheDocument()
+    expect(screen.getByText('0 left')).toBeInTheDocument()
+  })
+
+  it('shows category progress and marks only elements with outgoing uses unstudied', () => {
     render(<App />)
 
     expect(screen.getByLabelText('Essence: 4 of 6')).toBeInTheDocument()
     expect(screen.getByLabelText('Weather: 0 of 8')).toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: 'Inspect Fire' }))
     expect(screen.getAllByText('Unstudied').length).toBeGreaterThan(0)
+    expect(
+      screen.getByRole('button', { name: 'Inspect Fire' }),
+    ).toHaveTextContent('Unstudied')
   })
 })
