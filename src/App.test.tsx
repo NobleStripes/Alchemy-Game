@@ -120,8 +120,47 @@ describe('alchemy worktable', () => {
 
     expect(screen.getByRole('button', { name: 'Hints locked' })).toBeDisabled()
     expect(
-      screen.getByText('Hints unlock after First Light or 3 recorded failures (0/3).'),
+      screen.getByText('Hints unlock after Origins or 3 recorded failures (0/3).'),
     ).toBeInTheDocument()
+  })
+
+  it('gates later recipes until Stone Age unlocks', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({
+      discoveredIds: ['ember', 'tide', 'stone', 'gale', 'clay'],
+    })
+    render(<App />)
+
+    await user.click(screen.getByRole('button', { name: 'Clay' }))
+    await user.click(screen.getByRole('button', { name: 'Fire' }))
+    await user.click(screen.getByRole('button', { name: 'Combine' }))
+
+    expect(screen.getByText('A later page')).toBeInTheDocument()
+    expect(screen.getByText('The Stone Age must be unlocked first.')).toBeInTheDocument()
+  })
+
+  it('unlocks Stone Age and grants Human from Origins landmarks', () => {
+    useGameStore.setState({
+      discoveredIds: [
+        'ember',
+        'tide',
+        'stone',
+        'gale',
+        'life',
+        'land',
+        'tree',
+        'rock',
+      ],
+      firstSlotId: 'life',
+      secondSlotId: 'land',
+    })
+
+    useGameStore.getState().transmute()
+    render(<App />)
+
+    expect(screen.getByRole('button', { name: 'Human' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'The Stone Age' })).toBeEnabled()
+    expect(screen.getByText(/The Stone Age unlocked/)).toBeInTheDocument()
   })
 
   it('shows category progress and marks only elements with outgoing uses unstudied', () => {

@@ -1,8 +1,10 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with 55 elements, 71 recipes, a simple two-slot workspace, an inspectable formula guide, local progress, and responsive pointer, touch, and keyboard controls.
+An original combination-discovery game with 73 elements and 88 recipes across a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
 
-The First Light challenge asks players to catalogue 12 elements and kindle the Beacon. Completing it writes the first page without ending free exploration. Weather, geography, life, materials, agriculture, navigation, and civilization remain open in parallel.
+**Origins** is the natural-world prologue. Discovering Life, Land, Tree, Rock, and Animal unlocks **The Stone Age**, grants Human as that page's starting element, and keeps all earlier matter available. Stone Age landmarks are Stone Tool, Hearth, Art, and Village; optional discoveries remain open after its challenge is complete.
+
+The Stone Age spreads across hunting, cooking, shelter, art, fibres, clothing, pottery, farming, bread, and settlement. Generic Metal Tool now requires Stone Tool + Metal, so pre-metal human craft has its own foundation.
 
 The Guide includes category completion, **Unstudied** markers for elements with unresolved outgoing uses, and three persisted hint charges. Limited hints unlock after completing First Light or recording three distinct failures. They prioritize mixed-input formulas that create something new, and every revealed but unperformed formula remains under **Open leads**.
 
@@ -28,6 +30,6 @@ The test suite validates recipe order independence, same-element combinations, u
 
 ## Content
 
-Game definitions live in `src/game/content`. Every recipe is an unordered pair with one deterministic result. `validateContent` checks references, duplicate pairs, era keystones, and reachability from the four starter essences.
+Game definitions live in `src/game/content`. Every recipe is an unordered pair with one deterministic result. Eras define unlock landmarks, granted elements, and optional challenge landmarks. `validateContent` checks references, duplicate pairs, era contracts, and global reachability from starters plus era grants.
 
-Progress is stored in browser local storage under a versioned schema. Version 4 records discovered elements, performed formulas, hint charges, revealed hints, and failed unordered pairs while transparently migrating earlier saves. Failed attempts retain slot I for faster experimentation and appear as tested partners in the Guide. Reset returns the game to its four starting elements and three hints.
+Progress is stored in browser local storage under a versioned schema. Version 5 records discovered elements, performed formulas, hint charges, revealed hints, failed unordered pairs, unlocked eras, and the active page while transparently migrating earlier saves. Legacy saves containing historical discoveries unlock the matching age automatically. Reset returns the game to Origins with four starting elements and three hints.

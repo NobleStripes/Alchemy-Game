@@ -10,15 +10,17 @@ import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
 
 interface JournalProps {
+  eraId: string
   challengeName: string
   discoveryGoal: number
-  keystoneId: string
+  landmarkIds: string[]
 }
 
 export function Journal({
+  eraId,
   challengeName,
   discoveryGoal,
-  keystoneId,
+  landmarkIds,
 }: JournalProps) {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const discoveredRecipeIds = useGameStore(
@@ -30,6 +32,7 @@ export function Journal({
   )
   const requestHint = useGameStore((state) => state.requestHint)
   const failedPairKeys = useGameStore((state) => state.failedPairKeys)
+  const unlockedEraIds = useGameStore((state) => state.unlockedEraIds)
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null)
   const selectedElement = selectedElementId
     ? elementsById.get(selectedElementId)
@@ -45,8 +48,12 @@ export function Journal({
     discoveredRecipeIds.includes(recipe.id),
   )
   const hiddenRecipeCount = relatedRecipes.length - knownRecipes.length
-  const keystoneFound = discoveredIds.includes(keystoneId)
-  const keystone = elementsById.get(keystoneId)
+  const foundLandmarkCount = landmarkIds.filter((elementId) =>
+    discoveredIds.includes(elementId),
+  ).length
+  const landmarks = landmarkIds
+    .map((elementId) => elementsById.get(elementId))
+    .filter((element) => element !== undefined)
   const failedPartners = selectedElement
     ? elements.filter((element) =>
         failedPairKeys.includes(pairKey(selectedElement.id, element.id)),
@@ -65,27 +72,38 @@ export function Journal({
   const discoveredElements = elements.filter((element) =>
     discoveredIds.includes(element.id),
   )
+  const availableElements = elements.filter((element) =>
+    unlockedEraIds.includes(element.era),
+  )
+  const eraDiscoveryCount = discoveredElements.filter(
+    (element) => element.era === eraId,
+  ).length
   const categoryProgress = [
     ['essence', 'Essence'],
     ['matter', 'Matter'],
     ['weather', 'Weather'],
     ['life', 'Life'],
     ['craft', 'Craft'],
-  ].map(([category, label]) => ({
-    category,
-    label,
-    discovered: discoveredElements.filter(
-      (element) => element.category === category,
-    ).length,
-    total: elements.filter((element) => element.category === category).length,
-  }))
+  ]
+    .map(([category, label]) => ({
+      category,
+      label,
+      discovered: discoveredElements.filter(
+        (element) => element.category === category,
+      ).length,
+      total: availableElements.filter(
+        (element) => element.category === category,
+      ).length,
+    }))
+    .filter(({ total }) => total > 0)
   const challengeComplete =
-    discoveredIds.length >= discoveryGoal && keystoneFound
+    eraDiscoveryCount >= discoveryGoal &&
+    foundLandmarkCount === landmarkIds.length
   const hintsUnlocked = areHintsUnlocked(
     discoveredIds,
     failedPairKeys,
     discoveryGoal,
-    keystoneId,
+    landmarkIds,
   )
 
   return (
@@ -120,7 +138,7 @@ export function Journal({
           <p className="hint-text">Reveal a combination using elements you know.</p>
         ) : (
           <p className="hint-text hint-locked">
-            Hints unlock after First Light or{' '}
+            Hints unlock after Origins or{' '}
             {HINT_FAILURE_UNLOCK_COUNT} recorded failures ({failedPairKeys.length}/
             {HINT_FAILURE_UNLOCK_COUNT}).
           </p>
@@ -147,12 +165,22 @@ export function Journal({
       <section className="challenge-status" aria-label={`${challengeName} challenge`}>
         <strong>{challengeName} challenge</strong>
         <p>
-          Catalogue {Math.min(discoveredIds.length, discoveryGoal)}/{discoveryGoal}
-          {keystone && ` · ${keystone.name} ${keystoneFound ? 'kindled' : 'not found'}`}
+          Catalogue {Math.min(eraDiscoveryCount, discoveryGoal)}/{discoveryGoal}
+          {' · '}Landmarks {foundLandmarkCount}/{landmarkIds.length}
         </p>
+        <div className="landmark-list">
+          {landmarks.map((landmark) => (
+            <span
+              key={landmark.id}
+              data-found={discoveredIds.includes(landmark.id)}
+            >
+              {landmark.name}
+            </span>
+          ))}
+        </div>
         {challengeComplete && (
           <p className="challenge-complete">
-            The first page is written. Continue exploring the Atlas.
+            This page's landmarks are recorded. Continue exploring the Atlas.
           </p>
         )}
       </section>

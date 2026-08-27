@@ -16,14 +16,25 @@ import './Simple.css'
 
 function App() {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
+  const unlockedEraIds = useGameStore((state) => state.unlockedEraIds)
+  const activeEraId = useGameStore((state) => state.activeEraId)
+  const setActiveEra = useGameStore((state) => state.setActiveEra)
   const placeElement = useGameStore((state) => state.placeElement)
   const resetProgress = useGameStore((state) => state.resetProgress)
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
     useSensor(KeyboardSensor),
   )
-  const era = eras[0]
-  const progress = Math.round((discoveredIds.length / elements.length) * 100)
+  const era = eras.find((candidate) => candidate.id === activeEraId) ?? eras[0]
+  const availableElements = elements.filter((element) =>
+    unlockedEraIds.includes(element.era),
+  )
+  const availableDiscoveryCount = availableElements.filter((element) =>
+    discoveredIds.includes(element.id),
+  ).length
+  const progress = Math.round(
+    (availableDiscoveryCount / availableElements.length) * 100,
+  )
 
   function handleDragEnd(event: DragEndEvent) {
     const elementId = String(event.active.id).replace('element/', '')
@@ -43,9 +54,24 @@ function App() {
     <div className="game-shell">
       <header className="game-header">
         <strong className="app-name">The Unwritten Atlas</strong>
-        <span className="era-name">{era.name}</span>
+        <nav className="era-switcher" aria-label="Atlas ages">
+          {eras.map((candidate) => {
+            const isUnlocked = unlockedEraIds.includes(candidate.id)
+            return (
+              <button
+                key={candidate.id}
+                type="button"
+                data-active={candidate.id === era.id}
+                disabled={!isUnlocked}
+                onClick={() => setActiveEra(candidate.id)}
+              >
+                {candidate.name}
+              </button>
+            )
+          })}
+        </nav>
         <div className="header-progress" aria-label={`${progress}% discovered`}>
-          <span>{discoveredIds.length} / {elements.length}</span>
+          <span>{availableDiscoveryCount} / {availableElements.length}</span>
           <div className="progress-track" aria-hidden="true">
             <span style={{ width: `${progress}%` }} />
           </div>
@@ -66,9 +92,10 @@ function App() {
           <Codex />
           <Worktable />
           <Journal
+            eraId={era.id}
             challengeName={era.name}
             discoveryGoal={era.discoveryGoal}
-            keystoneId={era.keystone}
+            landmarkIds={era.landmarkIds}
           />
         </div>
       </DndContext>

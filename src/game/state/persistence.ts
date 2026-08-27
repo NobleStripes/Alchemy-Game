@@ -21,7 +21,7 @@ const versionThreeProgressSchema = z.object({
   revealedHintRecipeIds: z.array(z.string()),
 })
 
-const progressSchema = z.object({
+const versionFourProgressSchema = z.object({
   version: z.literal(4),
   discoveredIds: z.array(z.string()),
   discoveredRecipeIds: z.array(z.string()),
@@ -30,13 +30,21 @@ const progressSchema = z.object({
   failedPairKeys: z.array(z.string()),
 })
 
+const progressSchema = versionFourProgressSchema.extend({
+  version: z.literal(5),
+  unlockedEraIds: z.array(z.string()),
+  activeEraId: z.string(),
+})
+
 export interface SavedProgress {
-  version: 4
+  version: 5
   discoveredIds: string[]
   discoveredRecipeIds: string[]
   hintCredits: number
   revealedHintRecipeIds: string[]
   failedPairKeys: string[]
+  unlockedEraIds: string[]
+  activeEraId: string
 }
 
 export function loadProgress(): SavedProgress | null {
@@ -50,36 +58,52 @@ export function loadProgress(): SavedProgress | null {
     const currentProgress = progressSchema.safeParse(parsedProgress)
     if (currentProgress.success) return currentProgress.data
 
+    const versionFourProgress = versionFourProgressSchema.safeParse(parsedProgress)
+    if (versionFourProgress.success) {
+      return {
+        ...versionFourProgress.data,
+        version: 5,
+        unlockedEraIds: ['first-light'],
+        activeEraId: 'first-light',
+      }
+    }
+
     const versionThreeProgress = versionThreeProgressSchema.safeParse(parsedProgress)
     if (versionThreeProgress.success) {
       return {
         ...versionThreeProgress.data,
-        version: 4,
+        version: 5,
         failedPairKeys: [],
+        unlockedEraIds: ['first-light'],
+        activeEraId: 'first-light',
       }
     }
 
     const versionTwoProgress = versionTwoProgressSchema.safeParse(parsedProgress)
     if (versionTwoProgress.success) {
       return {
-        version: 4,
+        version: 5,
         discoveredIds: versionTwoProgress.data.discoveredIds,
         discoveredRecipeIds: versionTwoProgress.data.discoveredRecipeIds,
         hintCredits: 3,
         revealedHintRecipeIds: [],
         failedPairKeys: [],
+        unlockedEraIds: ['first-light'],
+        activeEraId: 'first-light',
       }
     }
 
     const versionOneProgress = versionOneProgressSchema.safeParse(parsedProgress)
     if (versionOneProgress.success) {
       return {
-        version: 4,
+        version: 5,
         discoveredIds: versionOneProgress.data.discoveredIds,
         discoveredRecipeIds: [],
         hintCredits: 3,
         revealedHintRecipeIds: [],
         failedPairKeys: [],
+        unlockedEraIds: ['first-light'],
+        activeEraId: 'first-light',
       }
     }
 
@@ -95,6 +119,8 @@ export function saveProgress(
   hintCredits: number,
   revealedHintRecipeIds: string[],
   failedPairKeys: string[],
+  unlockedEraIds: string[],
+  activeEraId: string,
 ) {
   if (typeof window === 'undefined') return false
 
@@ -102,12 +128,14 @@ export function saveProgress(
     window.localStorage.setItem(
       SAVE_KEY,
       JSON.stringify({
-        version: 4,
+        version: 5,
         discoveredIds,
         discoveredRecipeIds,
         hintCredits,
         revealedHintRecipeIds,
         failedPairKeys,
+        unlockedEraIds,
+        activeEraId,
       }),
     )
     return true

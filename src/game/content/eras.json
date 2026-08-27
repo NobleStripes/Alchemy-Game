@@ -1,9 +1,20 @@
 [
   {
     "id": "first-light",
-    "name": "The First Light",
-    "subtitle": "Give shape to a world of four restless essences.",
-    "keystone": "beacon",
-    "discoveryGoal": 12
+    "name": "Origins",
+    "subtitle": "Build a living world from four restless essences.",
+    "unlockRequires": [],
+    "grants": [],
+    "landmarkIds": ["life", "land", "tree", "rock", "animal"],
+    "discoveryGoal": 18
+  },
+  {
+    "id": "stone-age",
+    "name": "The Stone Age",
+    "subtitle": "People learn to survive, remember, and settle the world.",
+    "unlockRequires": ["life", "land", "tree", "rock", "animal"],
+    "grants": ["human"],
+    "landmarkIds": ["stone-tool", "hearth", "art", "village"],
+    "discoveryGoal": 16
   }
 ]

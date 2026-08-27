@@ -26,6 +26,8 @@ export interface EraDefinition {
   id: string
   name: string
   subtitle: string
-  keystone: string
+  unlockRequires: string[]
+  grants: string[]
+  landmarkIds: string[]
   discoveryGoal: number
 }

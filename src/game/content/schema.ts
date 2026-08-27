@@ -21,7 +21,9 @@ export const eraSchema = z.object({
   id: z.string().regex(/^[a-z][a-z0-9-]*$/),
   name: z.string().min(1),
   subtitle: z.string().min(1),
-  keystone: z.string().min(1),
+  unlockRequires: z.array(z.string().min(1)),
+  grants: z.array(z.string().min(1)),
+  landmarkIds: z.array(z.string().min(1)),
   discoveryGoal: z.number().int().positive(),
 })
 

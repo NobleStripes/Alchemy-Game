@@ -10,6 +10,7 @@ import {
   areHintsUnlocked,
   selectHintRecipe,
 } from './hintRules'
+import { reconcileEraProgress } from './eraProgress'
 
 const recipeIndex = createRecipeIndex(recipes)
 
@@ -141,13 +142,13 @@ describe('journal guidance', () => {
   })
 
   it('locks hints until the challenge or three failures', () => {
-    expect(areHintsUnlocked(['ember', 'tide'], [], 12, 'beacon')).toBe(false)
+    expect(areHintsUnlocked(['ember', 'tide'], [], 12, ['beacon'])).toBe(false)
     expect(
       areHintsUnlocked(
         ['ember', 'tide'],
         ['a::b', 'a::c', 'a::d'],
         12,
-        'beacon',
+        ['beacon'],
       ),
     ).toBe(true)
     expect(
@@ -155,7 +156,7 @@ describe('journal guidance', () => {
         ['beacon', ...Array.from({ length: 11 }, (_, index) => `e${index}`)],
         [],
         12,
-        'beacon',
+        ['beacon'],
       ),
     ).toBe(true)
   })
@@ -169,5 +170,31 @@ describe('journal guidance', () => {
         [],
       )?.id,
     ).toBe('first-vapor')
+  })
+})
+
+describe('era progression', () => {
+  it('unlocks Stone Age and grants Human when Origins landmarks are known', () => {
+    const progress = reconcileEraProgress(
+      ['life', 'land', 'tree', 'rock', 'animal'],
+      ['first-light'],
+      elements,
+      eras,
+    )
+
+    expect(progress.unlockedEraIds).toEqual(['first-light', 'stone-age'])
+    expect(progress.discoveredIds).toContain('human')
+  })
+
+  it('retroactively unlocks an era represented in an older save', () => {
+    const progress = reconcileEraProgress(
+      ['ember', 'brick'],
+      ['first-light'],
+      elements,
+      eras,
+    )
+
+    expect(progress.unlockedEraIds).toContain('stone-age')
+    expect(progress.discoveredIds).toContain('human')
   })
 })

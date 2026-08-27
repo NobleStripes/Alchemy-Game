@@ -41,13 +41,24 @@ export function validateContent(
   }
 
   for (const era of eras) {
-    if (!elementIds.has(era.keystone)) {
-      errors.push(`Era ${era.id} references missing keystone ${era.keystone}.`)
+    for (const elementId of [
+      ...era.unlockRequires,
+      ...era.grants,
+      ...era.landmarkIds,
+    ]) {
+      if (!elementIds.has(elementId)) {
+        errors.push(`Era ${era.id} references missing element ${elementId}.`)
+      }
     }
   }
 
   const reachable = new Set(
-    elements.filter((element) => element.starter).map((element) => element.id),
+    [
+      ...elements
+        .filter((element) => element.starter)
+        .map((element) => element.id),
+      ...eras.flatMap((era) => era.grants),
+    ],
   )
   let changed = true
 
