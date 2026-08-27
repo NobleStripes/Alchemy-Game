@@ -310,7 +310,7 @@
 .landmark-list span[data-found='true'] { color: #285a52; background: #dcebe6; }
 
 .category-progress { margin-top: 14px; display: grid; gap: 7px; }
-.category-progress-row { display: grid; grid-template-columns: 54px 1fr 32px; gap: 7px; align-items: center; color: #68706d; font-size: 11px; }
+.category-progress-row { display: grid; grid-template-columns: 68px 1fr 32px; gap: 7px; align-items: center; color: #68706d; font-size: 11px; }
 .category-progress-row > div { height: 4px; overflow: hidden; background: #ddd9cf; border-radius: 2px; }
 .category-progress-row > div span { height: 100%; display: block; background: #729b92; }
 .category-progress-row strong { color: #4f5956; text-align: right; }

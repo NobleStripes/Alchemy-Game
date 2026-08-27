@@ -283,6 +283,91 @@ describe('era progression', () => {
       'Era stone-age is unreachable from prior era content.',
     )
   })
+
+  it('unlocks Bronze Age and grants Copper Ore from Stone Age landmarks', () => {
+    const progress = reconcileEraProgress(
+      ['village', 'pottery', 'metal', 'quarry'],
+      ['first-light', 'stone-age'],
+      elements,
+      eras,
+    )
+
+    expect(progress.unlockedEraIds).toEqual([
+      'first-light',
+      'stone-age',
+      'bronze-age',
+    ])
+    expect(progress.discoveredIds).toContain('copper-ore')
+  })
+
+  it('retroactively unlocks Bronze Age for moved legacy discoveries', () => {
+    const progress = reconcileEraProgress(
+      ['ember', 'tool'],
+      ['first-light', 'stone-age'],
+      elements,
+      eras,
+    )
+
+    expect(progress.unlockedEraIds).toContain('bronze-age')
+    expect(progress.discoveredIds).toContain('copper-ore')
+  })
+
+  it('rejects a Bronze gate that depends on its own grant', () => {
+    const circularEras = eras.map((era) =>
+      era.id === 'bronze-age'
+        ? { ...era, unlockRequires: ['copper-ore'] }
+        : era,
+    )
+
+    expect(validateContent(elements, recipes, circularEras)).toContain(
+      'Era bronze-age is unreachable from prior era content.',
+    )
+  })
+})
+
+describe('Bronze Age content', () => {
+  it('connects metallurgy, transport, writing, and the first city', () => {
+    expect(resolveCombination('copper-ore', 'ember', recipeIndex)?.result).toBe(
+      'copper',
+    )
+    expect(resolveCombination('quarry', 'tide', recipeIndex)?.result).toBe(
+      'tin',
+    )
+    expect(resolveCombination('copper', 'tin', recipeIndex)?.result).toBe(
+      'bronze',
+    )
+    expect(resolveCombination('bronze', 'stone-tool', recipeIndex)?.result).toBe(
+      'bronze-tool',
+    )
+    expect(resolveCombination('rock', 'tool', recipeIndex)?.result).toBe(
+      'wheel',
+    )
+    expect(resolveCombination('cart', 'village', recipeIndex)?.result).toBe(
+      'trade',
+    )
+    expect(resolveCombination('papyrus', 'pigment', recipeIndex)?.result).toBe(
+      'writing',
+    )
+    expect(resolveCombination('writing', 'human', recipeIndex)?.result).toBe(
+      'scribe',
+    )
+    expect(resolveCombination('town', 'brick', recipeIndex)?.result).toBe(
+      'city',
+    )
+  })
+
+  it('prioritizes a Bronze discovery when Bronze Age is active', () => {
+    expect(
+      selectHintRecipe(
+        recipes,
+        ['ember', 'tide', 'stone', 'gale', 'copper-ore'],
+        [],
+        [],
+        elements,
+        'bronze-age',
+      )?.id,
+    ).toBe('smelted-copper')
+  })
 })
 
 describe('Insight wallet', () => {

@@ -257,6 +257,35 @@ describe('alchemy worktable', () => {
     expect(screen.getByRole('button', { name: 'Inspect Brick' })).toBeInTheDocument()
   })
 
+  it('unlocks Bronze Age and grants Copper Ore', () => {
+    useGameStore.setState({
+      discoveredIds: [
+        'ember',
+        'tide',
+        'stone',
+        'gale',
+        'metal',
+        'human',
+        'stone-tool',
+        'village',
+        'pottery',
+      ],
+      unlockedEraIds: ['first-light', 'stone-age'],
+      activeEraId: 'stone-age',
+      firstSlotId: 'stone',
+      secondSlotId: 'stone-tool',
+      insightCredits: 1,
+    })
+
+    useGameStore.getState().transmute()
+    render(<App />)
+
+    expect(screen.getByRole('button', { name: 'Copper Ore' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'The Bronze Age' })).toBeEnabled()
+    expect(screen.getByText(/The Bronze Age unlocked/)).toBeInTheDocument()
+    expect(useGameStore.getState().insightCredits).toBe(2)
+  })
+
   it('removes stale failure history when a pair succeeds', () => {
     useGameStore.setState({
       discoveredIds: ['ember', 'tide', 'stone', 'gale'],

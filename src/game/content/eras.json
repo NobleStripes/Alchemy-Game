@@ -16,5 +16,14 @@
     "grants": ["human"],
     "landmarkIds": ["stone-tool", "hearth", "art", "village"],
     "discoveryGoal": 16
+  },
+  {
+    "id": "bronze-age",
+    "name": "The Bronze Age",
+    "subtitle": "Metal, wheels, trade, and writing bind the first cities together.",
+    "unlockRequires": ["village", "pottery", "metal", "quarry"],
+    "grants": ["copper-ore"],
+    "landmarkIds": ["bronze", "wheel", "writing", "city"],
+    "discoveryGoal": 12
   }
 ]

@@ -4,6 +4,9 @@ export type ElementCategory =
   | 'weather'
   | 'life'
   | 'craft'
+  | 'society'
+  | 'knowledge'
+  | 'transport'
 
 export interface ElementDefinition {
   id: string

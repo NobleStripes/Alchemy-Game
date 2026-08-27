@@ -96,6 +96,9 @@ export function Journal({
     ['weather', 'Weather'],
     ['life', 'Life'],
     ['craft', 'Craft'],
+    ['society', 'Society'],
+    ['knowledge', 'Knowledge'],
+    ['transport', 'Transport'],
   ]
     .map(([category, label]) => ({
       category,

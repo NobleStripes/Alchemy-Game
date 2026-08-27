@@ -92,5 +92,16 @@
   { "id": "settled-hearth", "inputs": ["shelter", "hearth"], "result": "home", "flavor": "A shared hearth turns simple shelter into a home." },
   { "id": "stored-harvest", "inputs": ["basket", "crop"], "result": "storage", "flavor": "Baskets keep the harvest safe for another season." },
   { "id": "served-food", "inputs": ["pottery", "food"], "result": "meal", "flavor": "Pottery lets prepared food become a shared meal." },
-  { "id": "painted-rock", "inputs": ["art", "rock"], "result": "cave-painting", "flavor": "Art placed on stone becomes a memory that outlives its maker." }
+  { "id": "painted-rock", "inputs": ["art", "rock"], "result": "cave-painting", "flavor": "Art placed on stone becomes a memory that outlives its maker." },
+  { "id": "smelted-copper", "inputs": ["copper-ore", "ember"], "result": "copper", "flavor": "Fire releases a warm red metal from green-stained stone." },
+  { "id": "washed-tin", "inputs": ["quarry", "tide"], "result": "tin", "flavor": "Water sorts pale tin from the broken stone of a quarry." },
+  { "id": "alloyed-bronze", "inputs": ["copper", "tin"], "result": "bronze", "flavor": "Copper and tin join into a metal stronger than either alone." },
+  { "id": "cast-bronze-tool", "inputs": ["bronze", "stone-tool"], "result": "bronze-tool", "flavor": "A stone pattern teaches molten bronze the shape of a durable edge." },
+  { "id": "turned-wheel", "inputs": ["rock", "tool"], "result": "wheel", "flavor": "Metal tools shape stone and wood around a turning center." },
+  { "id": "wheeled-cart", "inputs": ["wheel", "tree"], "result": "cart", "flavor": "Wheels carry a wooden platform beyond the strength of one back." },
+  { "id": "carried-trade", "inputs": ["cart", "village"], "result": "trade", "flavor": "A cart lets one village exchange its surplus with another." },
+  { "id": "written-marks", "inputs": ["papyrus", "pigment"], "result": "writing", "flavor": "Pigment gives repeatable meaning to the patient surface of papyrus." },
+  { "id": "trained-scribe", "inputs": ["writing", "human"], "result": "scribe", "flavor": "A human learns to preserve accounts and memory in written marks." },
+  { "id": "market-town", "inputs": ["village", "trade"], "result": "town", "flavor": "Regular exchange draws roads and people into a growing town." },
+  { "id": "brick-city", "inputs": ["town", "brick"], "result": "city", "flavor": "A town built upward in brick becomes a lasting city." }
 ]
