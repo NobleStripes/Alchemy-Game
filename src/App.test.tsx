@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import '@testing-library/jest-dom/vitest'
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import App from './App'
@@ -309,5 +309,51 @@ describe('alchemy worktable', () => {
     expect(
       screen.getByRole('button', { name: 'Inspect Fire' }),
     ).toHaveTextContent('Unstudied')
+  })
+
+  it('returns to Combine after selecting an element from the mobile panel', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    await user.click(
+      screen.getByRole('button', { name: 'Show Elements panel' }),
+    )
+    expect(
+      screen.getByRole('button', { name: 'Show Elements panel' }),
+    ).toHaveAttribute('aria-pressed', 'true')
+
+    await user.click(screen.getByRole('button', { name: 'Fire' }))
+
+    expect(
+      screen.getByRole('button', { name: 'Show Combine panel' }),
+    ).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByText('Slot 1')).toBeInTheDocument()
+  })
+
+  it('searches discovered elements by category', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({
+      discoveredIds: ['ember', 'tide', 'stone', 'gale', 'clay'],
+    })
+    render(<App />)
+
+    await user.type(
+      screen.getByRole('searchbox', { name: 'Search discovered elements' }),
+      'matter',
+    )
+
+    expect(await screen.findByRole('button', { name: 'Clay' })).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.queryByRole('button', { name: 'Fire' })).toBeNull()
+    })
+  })
+
+  it('marks the selected era as the current page', () => {
+    render(<App />)
+
+    expect(screen.getByRole('button', { name: 'Origins' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
   })
 })

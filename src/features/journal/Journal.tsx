@@ -206,45 +206,51 @@ export function Journal({
         )}
       </section>
 
-      <div className="category-progress" aria-label="Category progress">
-        {categoryProgress.map(({ category, label, discovered, total }) => (
-          <div
-            key={category}
-            className="category-progress-row"
-            aria-label={`${label}: ${discovered} of ${total}`}
-          >
-            <span>{label}</span>
-            <div aria-hidden="true">
-              <span style={{ width: `${(discovered / total) * 100}%` }} />
+      <details className="guide-section" open>
+        <summary>Collections</summary>
+        <div className="category-progress" aria-label="Category progress">
+          {categoryProgress.map(({ category, label, discovered, total }) => (
+            <div
+              key={category}
+              className="category-progress-row"
+              aria-label={`${label}: ${discovered} of ${total}`}
+            >
+              <span>{label}</span>
+              <div aria-hidden="true">
+                <span style={{ width: `${(discovered / total) * 100}%` }} />
+              </div>
+              <strong>{discovered}/{total}</strong>
             </div>
-            <strong>{discovered}/{total}</strong>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="journal-record-heading">
-        <strong>Discovered</strong>
-      </div>
-      <div className="discovery-grid" aria-label="Discovery record">
-        {discoveredElements.map((element) => (
-          <button
-            key={element.id}
-            type="button"
-            data-selected={selectedElementId === element.id}
-            onClick={() => setSelectedElementId(element.id)}
-            aria-label={`Inspect ${element.name}`}
-          >
-            {element.name}
-            {isElementUnstudied(element.id, recipes, discoveredRecipeIds) && (
-              <span className="unstudied-tag" aria-hidden="true">Unstudied</span>
-            )}
-          </button>
-        ))}
-      </div>
+        <div className="journal-record-heading">
+          <strong>Discovered on this page</strong>
+        </div>
+        <div className="discovery-grid" aria-label="Discovery record">
+          {discoveredElements.map((element) => (
+            <button
+              key={element.id}
+              type="button"
+              data-selected={selectedElementId === element.id}
+              aria-pressed={selectedElementId === element.id}
+              onClick={() => setSelectedElementId(element.id)}
+              aria-label={`Inspect ${element.name}`}
+            >
+              {element.name}
+              {isElementUnstudied(element.id, recipes, discoveredRecipeIds) && (
+                <span className="unstudied-tag" aria-hidden="true">Unstudied</span>
+              )}
+            </button>
+          ))}
+        </div>
+      </details>
 
-      <section className="element-detail" aria-live="polite">
-        {selectedElement ? (
-          <>
+      <details className="guide-section research-section" open={Boolean(selectedElement)}>
+        <summary>Element research</summary>
+        <section className="element-detail" aria-live="polite">
+          {selectedElement ? (
+            <>
             <div className="element-detail-heading">
               <div>
                 <h3>{selectedElement.name}</h3>
@@ -294,13 +300,14 @@ export function Journal({
                 </ul>
               </>
             )}
-          </>
-        ) : (
-          <p className="journal-empty">
-            Select an element to inspect its formulas.
-          </p>
-        )}
-      </section>
+            </>
+          ) : (
+            <p className="journal-empty">
+              Select an element above to inspect its formulas and experiments.
+            </p>
+          )}
+        </section>
+      </details>
     </aside>
   )
 }

@@ -6,7 +6,8 @@ import {
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
-import { RotateCcw } from 'lucide-react'
+import { BookOpen, FlaskConical, RotateCcw, Shapes } from 'lucide-react'
+import { useState } from 'react'
 import { Codex } from './features/codex/Codex'
 import { Journal } from './features/journal/Journal'
 import { Worktable } from './features/worktable/Worktable'
@@ -15,6 +16,9 @@ import { useGameStore } from './game/state/useGameStore'
 import './Simple.css'
 
 function App() {
+  const [activePanel, setActivePanel] = useState<
+    'combine' | 'elements' | 'guide'
+  >('combine')
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const unlockedEraIds = useGameStore((state) => state.unlockedEraIds)
   const activeEraId = useGameStore((state) => state.activeEraId)
@@ -54,6 +58,7 @@ function App() {
                 key={candidate.id}
                 type="button"
                 data-active={candidate.id === era.id}
+                aria-current={candidate.id === era.id ? 'page' : undefined}
                 disabled={!isUnlocked}
                 onClick={() => setActiveEra(candidate.id)}
               >
@@ -80,8 +85,8 @@ function App() {
       </header>
 
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-        <div className="game-layout">
-          <Codex />
+        <div className="game-layout" data-active-panel={activePanel}>
+          <Codex onElementSelected={() => setActivePanel('combine')} />
           <Worktable />
           <Journal
             eraId={era.id}
@@ -91,6 +96,39 @@ function App() {
           />
         </div>
       </DndContext>
+
+      <nav className="mobile-panel-nav" aria-label="Game panels">
+        <button
+          type="button"
+          aria-label="Show Combine panel"
+          data-active={activePanel === 'combine'}
+          aria-pressed={activePanel === 'combine'}
+          onClick={() => setActivePanel('combine')}
+        >
+          <FlaskConical size={18} aria-hidden="true" />
+          Combine
+        </button>
+        <button
+          type="button"
+          aria-label="Show Elements panel"
+          data-active={activePanel === 'elements'}
+          aria-pressed={activePanel === 'elements'}
+          onClick={() => setActivePanel('elements')}
+        >
+          <Shapes size={18} aria-hidden="true" />
+          Elements
+        </button>
+        <button
+          type="button"
+          aria-label="Show Guide panel"
+          data-active={activePanel === 'guide'}
+          aria-pressed={activePanel === 'guide'}
+          onClick={() => setActivePanel('guide')}
+        >
+          <BookOpen size={18} aria-hidden="true" />
+          Guide
+        </button>
+      </nav>
     </div>
   )
 }

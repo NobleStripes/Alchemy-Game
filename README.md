@@ -2,6 +2,8 @@
 
 An original combination-discovery game with 89 elements and 105 recipes across a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
 
+Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed three-tab navigator; choosing an element returns directly to Combine, while the Elements list marks occupied slots. Search matches names and categories, and the Guide separates collections from optional element research with native disclosure controls.
+
 **Origins** is the natural-world prologue. Discovering Life, Land, Tree, Rock, and Animal unlocks **The Stone Age**, grants Human as that page's starting element, and keeps all earlier matter available. Stone Age landmarks are Stone Tool, Hearth, Art, and Village; optional discoveries remain open after its challenge is complete.
 
 The Stone Age spreads across hunting, cooking, shelter, art, fibres, clothing, pottery, farming, bread, and settlement. Stone Tool opens Field and Quarry without metal. Generic Metal Tool requires Stone Tool + Metal, so pre-metal human craft has its own foundation. Spear, Hearth, Shelter, Basket, Pottery, and Art now lead into Hunt, Home, Storage, Meal, and Cave Painting.

@@ -46,8 +46,8 @@ input {
 
 button:focus-visible,
 input:focus-visible {
-  outline: 3px solid var(--verdigris);
-  outline-offset: 3px;
+  outline: 3px solid #d7b763;
+  outline-offset: 2px;
 }
 
 .sr-only {
