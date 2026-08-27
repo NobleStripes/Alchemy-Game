@@ -3,13 +3,20 @@ import { elements, elementsById, eras, recipes, starterElementIds } from '../con
 import { reconcileEraProgress } from '../engine/eraProgress'
 import { areGlobalHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
 import {
+  awardInsight,
+  isEraChallengeComplete,
+  recordUniqueFailure,
+  resetInsightProgress,
+} from '../engine/insightRules'
+import {
   createRecipeIndex,
   pairKey,
   resolveCombination,
 } from '../engine/resolveCombination'
-import { loadProgress, saveProgress } from './persistence'
+import { loadProgress, saveProgress, type SavedProgress } from './persistence'
 
 type SlotName = 'first' | 'second'
+type PersistedState = Omit<SavedProgress, 'version'>
 
 interface AttemptResult {
   kind: 'discovery' | 'known' | 'failure'
@@ -20,17 +27,10 @@ interface AttemptResult {
     name: string
     grantNames: string[]
   }
+  insightEarned?: number
 }
 
-interface GameState {
-  discoveredIds: string[]
-  discoveredRecipeIds: string[]
-  hintCredits: number
-  revealedHintRecipeIds: string[]
-  activeHintRecipeId: string | null
-  failedPairKeys: string[]
-  unlockedEraIds: string[]
-  activeEraId: string
+interface GameState extends PersistedState {
   firstSlotId: string | null
   secondSlotId: string | null
   lastAttempt: AttemptResult | null
@@ -45,7 +45,11 @@ interface GameState {
 
 const recipeIndex = createRecipeIndex(recipes)
 
-function initialProgress() {
+function writeProgress(state: PersistedState) {
+  saveProgress(state)
+}
+
+function initialProgress(): PersistedState {
   const savedProgress = loadProgress()
   const eraProgress = reconcileEraProgress(
     [
@@ -68,14 +72,14 @@ function initialProgress() {
     discoveredRecipeIds: (savedProgress?.discoveredRecipeIds ?? []).filter(
       (recipeId) => recipes.some((recipe) => recipe.id === recipeId),
     ),
-    hintCredits: savedProgress?.hintCredits ?? 3,
+    insightCredits: savedProgress?.insightCredits ?? 3,
+    insightFailureProgress: savedProgress?.insightFailureProgress ?? 0,
+    rewardedChallengeEraIds:
+      savedProgress?.rewardedChallengeEraIds ?? [],
     revealedHintRecipeIds: (savedProgress?.revealedHintRecipeIds ?? []).filter(
       (recipeId) => recipes.some((recipe) => recipe.id === recipeId),
     ),
-    failedPairKeys: (savedProgress?.failedPairKeys ?? []).filter((key) => {
-      const [firstId, secondId] = key.split('::')
-      return elementsById.has(firstId) && elementsById.has(secondId)
-    }),
+    failedPairKeys: savedProgress?.failedPairKeys ?? [],
     unlockedEraIds: eraProgress.unlockedEraIds,
     activeEraId,
   }
@@ -85,7 +89,6 @@ const savedProgress = initialProgress()
 
 export const useGameStore = create<GameState>((set, get) => ({
   ...savedProgress,
-  activeHintRecipeId: savedProgress.revealedHintRecipeIds.at(-1) ?? null,
   firstSlotId: null,
   secondSlotId: null,
   lastAttempt: null,
@@ -136,15 +139,8 @@ export const useGameStore = create<GameState>((set, get) => ({
       const nextOpenLeads = state.revealedHintRecipeIds.includes(recipe!.id)
         ? state.revealedHintRecipeIds
         : [...state.revealedHintRecipeIds, recipe!.id]
-      saveProgress(
-        state.discoveredIds,
-        state.discoveredRecipeIds,
-        state.hintCredits,
-        nextOpenLeads,
-        state.failedPairKeys,
-        state.unlockedEraIds,
-        state.activeEraId,
-      )
+      const progress = { ...state, revealedHintRecipeIds: nextOpenLeads }
+      writeProgress(progress)
       set({
         revealedHintRecipeIds: nextOpenLeads,
         secondSlotId: null,
@@ -159,25 +155,36 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     if (!recipe || !result) {
       const failedKey = pairKey(firstSlotId, secondSlotId)
-      const nextFailedPairs = state.failedPairKeys.includes(failedKey)
-        ? state.failedPairKeys
-        : [...state.failedPairKeys, failedKey]
-      saveProgress(
-        state.discoveredIds,
-        state.discoveredRecipeIds,
-        state.hintCredits,
-        state.revealedHintRecipeIds,
-        nextFailedPairs,
-        state.unlockedEraIds,
-        state.activeEraId,
+      const isUniqueFailure = !state.failedPairKeys.includes(failedKey)
+      const nextFailedPairs = isUniqueFailure
+        ? [...state.failedPairKeys, failedKey]
+        : state.failedPairKeys
+      const insight = recordUniqueFailure(
+        {
+          credits: state.insightCredits,
+          failureProgress: state.insightFailureProgress,
+        },
+        isUniqueFailure,
       )
+      const progress = {
+        ...state,
+        failedPairKeys: nextFailedPairs,
+        insightCredits: insight.credits,
+        insightFailureProgress: insight.failureProgress,
+      }
+      writeProgress(progress)
       set({
         failedPairKeys: nextFailedPairs,
+        insightCredits: insight.credits,
+        insightFailureProgress: insight.failureProgress,
         secondSlotId: null,
         lastAttempt: {
           kind: 'failure',
           title: 'No resonance',
-          detail: 'These essences remain unchanged.',
+          detail: isUniqueFailure
+            ? 'No reaction. The experiment has been recorded.'
+            : 'No reaction. This pairing was already tested.',
+          insightEarned: insight.credits - state.insightCredits,
         },
       })
       return
@@ -208,25 +215,48 @@ export const useGameStore = create<GameState>((set, get) => ({
       ? eras.find((era) => era.id === unlockedEraId)
       : undefined
 
-    saveProgress(
-      nextEraProgress.discoveredIds,
-      nextRecipeIds,
-      state.hintCredits,
-      state.revealedHintRecipeIds,
-      nextFailedPairKeys,
-      nextEraProgress.unlockedEraIds,
-      nextActiveEraId,
+    let insight = resetInsightProgress(
+      {
+        credits: state.insightCredits,
+        failureProgress: state.insightFailureProgress,
+      },
+      isNew,
     )
-    set({
+    if (unlockedEraId) insight = awardInsight(insight)
+
+    const newlyCompletedEraIds = eras
+      .filter(
+        (era) =>
+          !state.rewardedChallengeEraIds.includes(era.id) &&
+          isEraChallengeComplete(
+            era,
+            nextEraProgress.discoveredIds,
+            elements,
+          ),
+      )
+      .map((era) => era.id)
+    for (let index = 0; index < newlyCompletedEraIds.length; index += 1) {
+      insight = awardInsight(insight)
+    }
+    const nextRewardedChallengeEraIds = [
+      ...state.rewardedChallengeEraIds,
+      ...newlyCompletedEraIds,
+    ]
+
+    const progress: PersistedState = {
       discoveredIds: nextEraProgress.discoveredIds,
       discoveredRecipeIds: nextRecipeIds,
+      insightCredits: insight.credits,
+      insightFailureProgress: insight.failureProgress,
+      rewardedChallengeEraIds: nextRewardedChallengeEraIds,
+      revealedHintRecipeIds: state.revealedHintRecipeIds,
       failedPairKeys: nextFailedPairKeys,
       unlockedEraIds: nextEraProgress.unlockedEraIds,
       activeEraId: nextActiveEraId,
-      activeHintRecipeId:
-        state.activeHintRecipeId === recipe.id
-          ? null
-          : state.activeHintRecipeId,
+    }
+    writeProgress(progress)
+    set({
+      ...progress,
       firstSlotId: null,
       secondSlotId: null,
       lastAttempt: {
@@ -242,6 +272,7 @@ export const useGameStore = create<GameState>((set, get) => ({
                 .filter((name) => name !== undefined),
             }
           : undefined,
+        insightEarned: insight.credits - state.insightCredits,
       },
     })
   },
@@ -250,7 +281,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     const state = get()
     const origins = eras[0]
     if (
-      state.hintCredits === 0 ||
+      state.insightCredits === 0 ||
       !areGlobalHintsUnlocked(
         state.discoveredIds,
         state.failedPairKeys,
@@ -270,24 +301,20 @@ export const useGameStore = create<GameState>((set, get) => ({
       state.discoveredIds,
       state.discoveredRecipeIds,
       state.revealedHintRecipeIds,
+      elements,
+      state.activeEraId,
     )
     if (!recipe) return
 
-    const nextHintCredits = state.hintCredits - 1
-    const nextRevealedHints = [...state.revealedHintRecipeIds, recipe.id]
-    saveProgress(
-      state.discoveredIds,
-      state.discoveredRecipeIds,
-      nextHintCredits,
-      nextRevealedHints,
-      state.failedPairKeys,
-      state.unlockedEraIds,
-      state.activeEraId,
-    )
+    const progress = {
+      ...state,
+      insightCredits: state.insightCredits - 1,
+      revealedHintRecipeIds: [...state.revealedHintRecipeIds, recipe.id],
+    }
+    writeProgress(progress)
     set({
-      hintCredits: nextHintCredits,
-      revealedHintRecipeIds: nextRevealedHints,
-      activeHintRecipeId: recipe.id,
+      insightCredits: progress.insightCredits,
+      revealedHintRecipeIds: progress.revealedHintRecipeIds,
     })
   },
 
@@ -295,37 +322,25 @@ export const useGameStore = create<GameState>((set, get) => ({
     const state = get()
     if (!state.unlockedEraIds.includes(eraId)) return
 
-    saveProgress(
-      state.discoveredIds,
-      state.discoveredRecipeIds,
-      state.hintCredits,
-      state.revealedHintRecipeIds,
-      state.failedPairKeys,
-      state.unlockedEraIds,
-      eraId,
-    )
+    writeProgress({ ...state, activeEraId: eraId })
     set({ activeEraId: eraId })
   },
 
   resetProgress: () => {
-    saveProgress(
-      starterElementIds,
-      [],
-      3,
-      [],
-      [],
-      ['first-light'],
-      'first-light',
-    )
-    set({
+    const progress: PersistedState = {
       discoveredIds: [...starterElementIds],
       discoveredRecipeIds: [],
-      hintCredits: 3,
+      insightCredits: 3,
+      insightFailureProgress: 0,
+      rewardedChallengeEraIds: [],
       revealedHintRecipeIds: [],
-      activeHintRecipeId: null,
       failedPairKeys: [],
       unlockedEraIds: ['first-light'],
       activeEraId: 'first-light',
+    }
+    writeProgress(progress)
+    set({
+      ...progress,
       firstSlotId: null,
       secondSlotId: null,
       lastAttempt: null,

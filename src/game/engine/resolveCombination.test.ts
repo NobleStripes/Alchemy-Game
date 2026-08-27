@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { elements, eras, recipes } from '../content'
+import { elements, elementsById, eras, recipes } from '../content'
 import {
   createRecipeIndex,
   resolveCombination,
@@ -12,6 +12,12 @@ import {
   selectHintRecipe,
 } from './hintRules'
 import { reconcileEraProgress } from './eraProgress'
+import {
+  awardInsight,
+  isEraChallengeComplete,
+  recordUniqueFailure,
+  resetInsightProgress,
+} from './insightRules'
 
 const recipeIndex = createRecipeIndex(recipes)
 
@@ -184,8 +190,34 @@ describe('journal guidance', () => {
         ['ember', 'tide', 'stone', 'gale'],
         [],
         [],
+        elements,
+        'first-light',
       )?.id,
     ).toBe('first-vapor')
+  })
+
+  it('prefers unknown results from the active age', () => {
+    const discoveredIds = [
+      'ember',
+      'tide',
+      'stone',
+      'gale',
+      'human',
+      'rock',
+    ]
+
+    expect(
+      elementsById.get(
+        selectHintRecipe(
+          recipes,
+          discoveredIds,
+          [],
+          [],
+          elements,
+          'stone-age',
+        )?.result ?? '',
+      )?.era,
+    ).toBe('stone-age')
   })
 
   it('does not count Stone Age grants toward Origins hint access', () => {
@@ -250,5 +282,59 @@ describe('era progression', () => {
     expect(validateContent(elements, recipes, circularEras)).toContain(
       'Era stone-age is unreachable from prior era content.',
     )
+  })
+})
+
+describe('Insight wallet', () => {
+  it('earns one credit after five unique failures', () => {
+    let state = { credits: 1, failureProgress: 0 }
+    for (let count = 0; count < 5; count += 1) {
+      state = recordUniqueFailure(state, true)
+    }
+
+    expect(state).toEqual({ credits: 2, failureProgress: 0 })
+  })
+
+  it('ignores repeated failures and resets only for new discoveries', () => {
+    const stalled = { credits: 1, failureProgress: 3 }
+
+    expect(recordUniqueFailure(stalled, false)).toEqual(stalled)
+    expect(resetInsightProgress(stalled, false)).toEqual(stalled)
+    expect(resetInsightProgress(stalled, true)).toEqual({
+      credits: 1,
+      failureProgress: 0,
+    })
+  })
+
+  it('pauses at four failures while full and pays out after a credit is spent', () => {
+    const paused = recordUniqueFailure(
+      { credits: 3, failureProgress: 4 },
+      true,
+    )
+    expect(paused).toEqual({ credits: 3, failureProgress: 4 })
+
+    expect(recordUniqueFailure({ ...paused, credits: 2 }, true)).toEqual({
+      credits: 3,
+      failureProgress: 0,
+    })
+  })
+
+  it('caps milestone awards and recognizes completed era challenges', () => {
+    expect(awardInsight({ credits: 3, failureProgress: 2 }).credits).toBe(3)
+    expect(awardInsight({ credits: 1, failureProgress: 2 }).credits).toBe(2)
+
+    const origins = eras[0]
+    const completedIds = [
+      ...origins.landmarkIds,
+      ...elements
+        .filter(
+          (element) =>
+            element.era === origins.id &&
+            !origins.landmarkIds.includes(element.id),
+        )
+        .slice(0, origins.discoveryGoal - origins.landmarkIds.length)
+        .map((element) => element.id),
+    ]
+    expect(isEraChallengeComplete(origins, completedIds, elements)).toBe(true)
   })
 })

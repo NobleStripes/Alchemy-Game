@@ -281,6 +281,8 @@
 
 .hint-heading { display: flex; justify-content: space-between; gap: 12px; }
 .hint-heading span { color: #68706d; font-size: 12px; }
+.insight-progress { margin: 8px 0 0; color: #56615e; font-size: 11px; line-height: 1.4; }
+.attempt-result .insight-earned { margin-top: 7px; color: #8a6429; font-weight: 700; }
 .hint-text { min-height: 40px; margin: 10px 0; color: #4f5956; font-size: 13px; line-height: 1.45; }
 .hint-locked { color: #717875; }
 .open-leads { margin: 10px 0; color: #4f5956; font-size: 12px; }

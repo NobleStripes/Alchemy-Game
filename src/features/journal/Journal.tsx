@@ -1,11 +1,12 @@
 import { Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { elements, elementsById, eras, recipes } from '../../game/content'
-import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
+import { areGlobalHintsUnlocked } from '../../game/engine/hintRules'
 import {
-  areGlobalHintsUnlocked,
-  HINT_FAILURE_UNLOCK_COUNT,
-} from '../../game/engine/hintRules'
+  FAILURES_PER_INSIGHT,
+  MAX_INSIGHT_CREDITS,
+} from '../../game/engine/insightRules'
+import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
 import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
 
@@ -26,19 +27,23 @@ export function Journal({
   const discoveredRecipeIds = useGameStore(
     (state) => state.discoveredRecipeIds,
   )
-  const hintCredits = useGameStore((state) => state.hintCredits)
+  const insightCredits = useGameStore((state) => state.insightCredits)
+  const insightFailureProgress = useGameStore(
+    (state) => state.insightFailureProgress,
+  )
   const revealedHintRecipeIds = useGameStore(
     (state) => state.revealedHintRecipeIds,
   )
-  const requestHint = useGameStore((state) => state.requestHint)
   const failedPairKeys = useGameStore((state) => state.failedPairKeys)
   const unlockedEraIds = useGameStore((state) => state.unlockedEraIds)
+  const requestHint = useGameStore((state) => state.requestHint)
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null)
-  const selectedElementCandidate = selectedElementId
+
+  const selectedCandidate = selectedElementId
     ? elementsById.get(selectedElementId)
     : null
   const selectedElement =
-    selectedElementCandidate?.era === eraId ? selectedElementCandidate : null
+    selectedCandidate?.era === eraId ? selectedCandidate : null
   const relatedRecipes = selectedElement
     ? recipes.filter(
         (recipe) =>
@@ -50,12 +55,6 @@ export function Journal({
     discoveredRecipeIds.includes(recipe.id),
   )
   const hiddenRecipeCount = relatedRecipes.length - knownRecipes.length
-  const foundLandmarkCount = landmarkIds.filter((elementId) =>
-    discoveredIds.includes(elementId),
-  ).length
-  const landmarks = landmarkIds
-    .map((elementId) => elementsById.get(elementId))
-    .filter((element) => element !== undefined)
   const failedPartners = selectedElement
     ? elements.filter((element) =>
         failedPairKeys.includes(pairKey(selectedElement.id, element.id)),
@@ -72,16 +71,25 @@ export function Journal({
       unlockedEraIds.includes(elementsById.get(recipe.result)?.era ?? '') &&
       recipe.inputs.every((inputId) => discoveredIds.includes(inputId)),
   )
+
   const discoveredElements = elements.filter(
     (element) =>
       element.era === eraId && discoveredIds.includes(element.id),
   )
   const availableElements = elements.filter((element) => element.era === eraId)
-  const eraDiscoveryCount = discoveredElements.length
   const eraFormulaCount = discoveredRecipeIds.filter((recipeId) => {
     const recipe = recipes.find((candidate) => candidate.id === recipeId)
     return recipe && elementsById.get(recipe.result)?.era === eraId
   }).length
+  const landmarks = landmarkIds
+    .map((elementId) => elementsById.get(elementId))
+    .filter((element) => element !== undefined)
+  const foundLandmarkCount = landmarkIds.filter((elementId) =>
+    discoveredIds.includes(elementId),
+  ).length
+  const challengeComplete =
+    discoveredElements.length >= discoveryGoal &&
+    foundLandmarkCount === landmarkIds.length
   const categoryProgress = [
     ['essence', 'Essence'],
     ['matter', 'Matter'],
@@ -100,15 +108,15 @@ export function Journal({
       ).length,
     }))
     .filter(({ total }) => total > 0)
-  const challengeComplete =
-    eraDiscoveryCount >= discoveryGoal &&
-    foundLandmarkCount === landmarkIds.length
-  const hintsUnlocked = areGlobalHintsUnlocked(
+  const insightsUnlocked = areGlobalHintsUnlocked(
     discoveredIds,
     failedPairKeys,
     elements,
     eras[0],
   )
+  const walletPaused =
+    insightCredits >= MAX_INSIGHT_CREDITS &&
+    insightFailureProgress === FAILURES_PER_INSIGHT - 1
 
   return (
     <aside className="journal" aria-labelledby="journal-title">
@@ -116,11 +124,16 @@ export function Journal({
         <h2 id="journal-title">Guide</h2>
       </div>
 
-      <section className="hint-panel" aria-labelledby="hint-title">
+      <section className="hint-panel" aria-labelledby="insight-title">
         <div className="hint-heading">
-          <strong id="hint-title">Hint</strong>
-          <span>{hintCredits} left</span>
+          <strong id="insight-title">Insight</strong>
+          <span>{insightCredits} available</span>
         </div>
+        <p className="insight-progress">
+          Insight: {insightFailureProgress}/{FAILURES_PER_INSIGHT} unsuccessful
+          experiments{walletPaused ? ' · paused while wallet is full' : ''}
+        </p>
+
         {openHintRecipes.length > 0 ? (
           <div className="open-leads">
             <strong>Open leads</strong>
@@ -138,39 +151,40 @@ export function Journal({
               })}
             </ul>
           </div>
-        ) : hintsUnlocked ? (
-          <p className="hint-text">Reveal a combination using elements you know.</p>
+        ) : insightsUnlocked ? (
+          <p className="hint-text">Reveal a promising combination when needed.</p>
         ) : (
           <p className="hint-text hint-locked">
-            Hints unlock after Origins or{' '}
-            {HINT_FAILURE_UNLOCK_COUNT} recorded failures ({failedPairKeys.length}/
-            {HINT_FAILURE_UNLOCK_COUNT}).
+            Insights unlock after Origins or 3 recorded failures.
           </p>
         )}
+
         <button
           type="button"
           className="hint-button"
           onClick={requestHint}
-          disabled={!hintsUnlocked || hintCredits === 0 || !hasAvailableHint}
+          disabled={
+            !insightsUnlocked || insightCredits === 0 || !hasAvailableHint
+          }
         >
           <Lightbulb size={16} aria-hidden="true" />
-          {!hintsUnlocked
-            ? 'Hints locked'
-            : hintCredits === 0
-              ? 'No hints left'
-              : 'Show hint'}
+          {!insightsUnlocked
+            ? 'Insights locked'
+            : insightCredits === 0
+              ? 'No Insights available'
+              : 'Reveal lead'}
         </button>
       </section>
 
       <div className="progress-summary">
-        <span><strong>{eraDiscoveryCount}</strong> discovered</span>
+        <span><strong>{discoveredElements.length}</strong> discovered</span>
         <span><strong>{eraFormulaCount}</strong> formulas recorded</span>
       </div>
       <section className="challenge-status" aria-label={`${challengeName} challenge`}>
         <strong>{challengeName} challenge</strong>
         <p>
-          Catalogue {Math.min(eraDiscoveryCount, discoveryGoal)}/{discoveryGoal}
-          {' · '}Landmarks {foundLandmarkCount}/{landmarkIds.length}
+          Catalogue {Math.min(discoveredElements.length, discoveryGoal)}/
+          {discoveryGoal} · Landmarks {foundLandmarkCount}/{landmarkIds.length}
         </p>
         <div className="landmark-list">
           {landmarks.map((landmark) => (

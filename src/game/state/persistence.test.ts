@@ -13,10 +13,12 @@ describe('progress persistence', () => {
     )
 
     expect(loadProgress()).toEqual({
-      version: 5,
+      version: 6,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: [],
-      hintCredits: 3,
+      insightCredits: 3,
+      insightFailureProgress: 0,
+      rewardedChallengeEraIds: [],
       revealedHintRecipeIds: [],
       failedPairKeys: [],
       unlockedEraIds: ['first-light'],
@@ -35,10 +37,12 @@ describe('progress persistence', () => {
     )
 
     expect(loadProgress()).toEqual({
-      version: 5,
+      version: 6,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: ['first-vapor'],
-      hintCredits: 3,
+      insightCredits: 3,
+      insightFailureProgress: 0,
+      rewardedChallengeEraIds: [],
       revealedHintRecipeIds: [],
       failedPairKeys: [],
       unlockedEraIds: ['first-light'],
@@ -59,10 +63,12 @@ describe('progress persistence', () => {
     )
 
     expect(loadProgress()).toEqual({
-      version: 5,
+      version: 6,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: ['first-vapor'],
-      hintCredits: 2,
+      insightCredits: 2,
+      insightFailureProgress: 0,
+      rewardedChallengeEraIds: [],
       revealedHintRecipeIds: ['concentrated-flame'],
       failedPairKeys: [],
       unlockedEraIds: ['first-light'],
@@ -84,10 +90,12 @@ describe('progress persistence', () => {
     )
 
     expect(loadProgress()).toEqual({
-      version: 5,
+      version: 6,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: ['first-vapor'],
-      hintCredits: 2,
+      insightCredits: 2,
+      insightFailureProgress: 0,
+      rewardedChallengeEraIds: [],
       revealedHintRecipeIds: [],
       failedPairKeys: ['gale::tide'],
       unlockedEraIds: ['first-light'],
@@ -111,23 +119,50 @@ describe('progress persistence', () => {
     expect(loadProgress()?.failedPairKeys).toEqual(['gale::tide'])
   })
 
-  it('writes version 5 progress, hints, failures, and era state', () => {
+  it('migrates version 5 credits and open leads into Insights', () => {
+    window.localStorage.setItem(
+      'unwritten-atlas-progress',
+      JSON.stringify({
+        version: 5,
+        discoveredIds: ['ember', 'steam'],
+        discoveredRecipeIds: ['first-vapor'],
+        hintCredits: 2,
+        revealedHintRecipeIds: ['concentrated-flame'],
+        failedPairKeys: ['gale::tide'],
+        unlockedEraIds: ['first-light'],
+        activeEraId: 'first-light',
+      }),
+    )
+
+    expect(loadProgress()).toMatchObject({
+      version: 6,
+      insightCredits: 2,
+      insightFailureProgress: 0,
+      revealedHintRecipeIds: ['concentrated-flame'],
+    })
+  })
+
+  it('writes version 6 Insight, failure, and era state', () => {
     expect(
-      saveProgress(
-        ['ember', 'steam'],
-        ['first-vapor'],
-        2,
-        ['concentrated-flame'],
-        ['gale::tide'],
-        ['first-light', 'stone-age'],
-        'stone-age',
-      ),
+      saveProgress({
+        discoveredIds: ['ember', 'steam'],
+        discoveredRecipeIds: ['first-vapor'],
+        insightCredits: 2,
+        insightFailureProgress: 4,
+        rewardedChallengeEraIds: ['first-light'],
+        revealedHintRecipeIds: ['concentrated-flame'],
+        failedPairKeys: ['gale::tide'],
+        unlockedEraIds: ['first-light', 'stone-age'],
+        activeEraId: 'stone-age',
+      }),
     ).toBe(true)
     expect(loadProgress()).toEqual({
-      version: 5,
+      version: 6,
       discoveredIds: ['ember', 'steam'],
       discoveredRecipeIds: ['first-vapor'],
-      hintCredits: 2,
+      insightCredits: 2,
+      insightFailureProgress: 4,
+      rewardedChallengeEraIds: ['first-light'],
       revealedHintRecipeIds: ['concentrated-flame'],
       failedPairKeys: ['gale::tide'],
       unlockedEraIds: ['first-light', 'stone-age'],

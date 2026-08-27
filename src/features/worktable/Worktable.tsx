@@ -130,6 +130,11 @@ export function Worktable() {
                     ` ${lastAttempt.unlockedEra.grantNames.join(', ')} added to the Atlas.`}
                 </p>
               )}
+              {Boolean(lastAttempt.insightEarned) && (
+                <p className="insight-earned">
+                  +{lastAttempt.insightEarned} Insight earned.
+                </p>
+              )}
             </div>
           </>
         ) : (

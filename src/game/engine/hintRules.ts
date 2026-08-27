@@ -24,6 +24,8 @@ export function selectHintRecipe(
   discoveredIds: string[],
   discoveredRecipeIds: string[],
   revealedHintRecipeIds: string[],
+  elements: ElementDefinition[] = [],
+  activeEraId?: string,
 ) {
   const eligibleRecipes = recipes.filter(
     (recipe) =>
@@ -31,18 +33,35 @@ export function selectHintRecipe(
       !revealedHintRecipeIds.includes(recipe.id) &&
       recipe.inputs.every((inputId) => discoveredIds.includes(inputId)),
   )
+  const elementEraById = new Map(
+    elements.map((element) => [element.id, element.era]),
+  )
+  const preferMixed = (candidates: RecipeDefinition[]) =>
+    candidates.find((recipe) => recipe.inputs[0] !== recipe.inputs[1]) ??
+    candidates[0]
+  const unknownRecipes = eligibleRecipes.filter(
+    (recipe) => !discoveredIds.includes(recipe.result),
+  )
+  const activeEraUnknownRecipes = activeEraId
+    ? unknownRecipes.filter(
+        (recipe) => elementEraById.get(recipe.result) === activeEraId,
+      )
+    : []
+  const crossEraActiveInputRecipes = activeEraId
+    ? unknownRecipes.filter(
+        (recipe) =>
+          elementEraById.get(recipe.result) !== activeEraId &&
+          recipe.inputs.some(
+            (inputId) => elementEraById.get(inputId) === activeEraId,
+          ),
+      )
+    : []
 
   return (
-    eligibleRecipes.find(
-      (recipe) =>
-        recipe.inputs[0] !== recipe.inputs[1] &&
-        !discoveredIds.includes(recipe.result),
-    ) ??
-    eligibleRecipes.find(
-      (recipe) => !discoveredIds.includes(recipe.result),
-    ) ??
-    eligibleRecipes.find((recipe) => recipe.inputs[0] !== recipe.inputs[1]) ??
-    eligibleRecipes[0] ??
+    preferMixed(activeEraUnknownRecipes) ??
+    preferMixed(crossEraActiveInputRecipes) ??
+    preferMixed(unknownRecipes) ??
+    preferMixed(eligibleRecipes) ??
     null
   )
 }

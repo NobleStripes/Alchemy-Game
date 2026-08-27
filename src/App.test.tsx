@@ -82,17 +82,18 @@ describe('alchemy worktable', () => {
     expect(screen.getByText('Air — no reaction')).toBeInTheDocument()
   })
 
-  it('spends a hint credit to reveal a viable combination', async () => {
+  it('spends an Insight to reveal a viable combination', async () => {
     const user = userEvent.setup()
     useGameStore.setState({
       failedPairKeys: ['gale::tide', 'ember::heat', 'stone::steam'],
+      insightFailureProgress: 3,
     })
     render(<App />)
 
-    await user.click(screen.getByRole('button', { name: 'Show hint' }))
+    await user.click(screen.getByRole('button', { name: 'Reveal lead' }))
 
     expect(screen.getByText('Fire + Water')).toBeInTheDocument()
-    expect(screen.getByText('2 left')).toBeInTheDocument()
+    expect(screen.getByText('2 available')).toBeInTheDocument()
     expect(window.localStorage.getItem('unwritten-atlas-progress')).toContain(
       'first-vapor',
     )
@@ -102,26 +103,51 @@ describe('alchemy worktable', () => {
     const user = userEvent.setup()
     useGameStore.setState({
       failedPairKeys: ['gale::tide', 'ember::heat', 'stone::steam'],
+      insightFailureProgress: 3,
     })
     render(<App />)
 
-    await user.click(screen.getByRole('button', { name: 'Show hint' }))
-    await user.click(screen.getByRole('button', { name: 'Show hint' }))
-    await user.click(screen.getByRole('button', { name: 'Show hint' }))
+    await user.click(screen.getByRole('button', { name: 'Reveal lead' }))
+    await user.click(screen.getByRole('button', { name: 'Reveal lead' }))
+    await user.click(screen.getByRole('button', { name: 'Reveal lead' }))
 
     expect(screen.getByText('Fire + Water')).toBeInTheDocument()
     expect(screen.getByText('Earth + Air')).toBeInTheDocument()
     expect(screen.getByText('Fire + Air')).toBeInTheDocument()
-    expect(screen.getByText('0 left')).toBeInTheDocument()
+    expect(screen.getByText('0 available')).toBeInTheDocument()
   })
 
-  it('locks limited hints before First Light or three failures', () => {
+  it('locks Insights before Origins or three failures', () => {
     render(<App />)
 
-    expect(screen.getByRole('button', { name: 'Hints locked' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Insights locked' })).toBeDisabled()
     expect(
-      screen.getByText('Hints unlock after Origins or 3 recorded failures (0/3).'),
+      screen.getByText('Insights unlock after Origins or 3 recorded failures.'),
     ).toBeInTheDocument()
+  })
+
+  it('earns Insight from five unique failures and resets on discovery', () => {
+    useGameStore.setState({
+      insightCredits: 1,
+      insightFailureProgress: 4,
+      failedPairKeys: ['a::b', 'a::c', 'a::d', 'a::e'],
+      firstSlotId: 'tide',
+      secondSlotId: 'gale',
+    })
+
+    useGameStore.getState().transmute()
+    expect(useGameStore.getState()).toMatchObject({
+      insightCredits: 2,
+      insightFailureProgress: 0,
+    })
+
+    useGameStore.setState({
+      insightFailureProgress: 3,
+      firstSlotId: 'ember',
+      secondSlotId: 'tide',
+    })
+    useGameStore.getState().transmute()
+    expect(useGameStore.getState().insightFailureProgress).toBe(0)
   })
 
   it('gates later recipes until Stone Age unlocks', async () => {
@@ -158,6 +184,7 @@ describe('alchemy worktable', () => {
       ],
       firstSlotId: 'life',
       secondSlotId: 'land',
+      insightCredits: 1,
     })
 
     useGameStore.getState().transmute()
@@ -166,6 +193,54 @@ describe('alchemy worktable', () => {
     expect(screen.getByRole('button', { name: 'Human' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'The Stone Age' })).toBeEnabled()
     expect(screen.getByText(/The Stone Age unlocked/)).toBeInTheDocument()
+    expect(useGameStore.getState().insightCredits).toBe(2)
+  })
+
+  it('awards a completed challenge once and keeps known formulas neutral', () => {
+    const origins = [
+      'life',
+      'land',
+      'tree',
+      'rock',
+      'animal',
+      'ember',
+      'tide',
+      'stone',
+      'gale',
+      'heat',
+      'sea',
+      'wind',
+      'steam',
+      'dust',
+      'spark',
+      'clay',
+      'metal',
+      'soil',
+    ]
+    useGameStore.setState({
+      discoveredIds: origins,
+      discoveredRecipeIds: ['first-vapor'],
+      insightCredits: 1,
+      insightFailureProgress: 3,
+      rewardedChallengeEraIds: [],
+      firstSlotId: 'ember',
+      secondSlotId: 'tide',
+    })
+
+    useGameStore.getState().transmute()
+    expect(useGameStore.getState()).toMatchObject({
+      insightCredits: 3,
+      insightFailureProgress: 3,
+      rewardedChallengeEraIds: ['first-light'],
+    })
+
+    useGameStore.setState({ firstSlotId: 'ember', secondSlotId: 'tide' })
+    useGameStore.getState().transmute()
+    expect(useGameStore.getState()).toMatchObject({
+      insightCredits: 3,
+      insightFailureProgress: 3,
+      rewardedChallengeEraIds: ['first-light'],
+    })
   })
 
   it('filters Guide entries to the active era while keeping the Codex global', () => {

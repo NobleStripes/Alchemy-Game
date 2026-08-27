@@ -1,5 +1,6 @@
 import { z } from 'zod'
-import { recipes } from '../content'
+import { elements, eras, recipes } from '../content'
+import { isEraChallengeComplete } from '../engine/insightRules'
 import { pairKey } from '../engine/resolveCombination'
 
 const SAVE_KEY = 'unwritten-atlas-progress'
@@ -39,17 +40,29 @@ const versionFourProgressSchema = z.object({
   failedPairKeys: z.array(z.string()),
 })
 
-const progressSchema = versionFourProgressSchema.extend({
+const versionFiveProgressSchema = versionFourProgressSchema.extend({
   version: z.literal(5),
   unlockedEraIds: z.array(z.string()),
   activeEraId: z.string(),
 })
 
+const progressSchema = versionFiveProgressSchema.omit({
+  version: true,
+  hintCredits: true,
+}).extend({
+  version: z.literal(6),
+  insightCredits: z.number().int().min(0).max(3),
+  insightFailureProgress: z.number().int().min(0).max(4),
+  rewardedChallengeEraIds: z.array(z.string()),
+})
+
 export interface SavedProgress {
-  version: 5
+  version: 6
   discoveredIds: string[]
   discoveredRecipeIds: string[]
-  hintCredits: number
+  insightCredits: number
+  insightFailureProgress: number
+  rewardedChallengeEraIds: string[]
   revealedHintRecipeIds: string[]
   failedPairKeys: string[]
   unlockedEraIds: string[]
@@ -74,11 +87,44 @@ export function loadProgress(): SavedProgress | null {
       }
     }
 
+    const versionFiveProgress = versionFiveProgressSchema.safeParse(parsedProgress)
+    if (versionFiveProgress.success) {
+      const rewardedChallengeEraIds = eras
+        .filter((era) =>
+          isEraChallengeComplete(
+            era,
+            versionFiveProgress.data.discoveredIds,
+            elements,
+          ),
+        )
+        .map((era) => era.id)
+
+      return {
+        version: 6,
+        discoveredIds: versionFiveProgress.data.discoveredIds,
+        discoveredRecipeIds: versionFiveProgress.data.discoveredRecipeIds,
+        insightCredits: versionFiveProgress.data.hintCredits,
+        insightFailureProgress: 0,
+        rewardedChallengeEraIds,
+        revealedHintRecipeIds: versionFiveProgress.data.revealedHintRecipeIds,
+        failedPairKeys: removeNowValidFailures(
+          versionFiveProgress.data.failedPairKeys,
+        ),
+        unlockedEraIds: versionFiveProgress.data.unlockedEraIds,
+        activeEraId: versionFiveProgress.data.activeEraId,
+      }
+    }
+
     const versionFourProgress = versionFourProgressSchema.safeParse(parsedProgress)
     if (versionFourProgress.success) {
       return {
-        ...versionFourProgress.data,
-        version: 5,
+        version: 6,
+        discoveredIds: versionFourProgress.data.discoveredIds,
+        discoveredRecipeIds: versionFourProgress.data.discoveredRecipeIds,
+        insightCredits: versionFourProgress.data.hintCredits,
+        insightFailureProgress: 0,
+        rewardedChallengeEraIds: [],
+        revealedHintRecipeIds: versionFourProgress.data.revealedHintRecipeIds,
         failedPairKeys: removeNowValidFailures(
           versionFourProgress.data.failedPairKeys,
         ),
@@ -90,8 +136,13 @@ export function loadProgress(): SavedProgress | null {
     const versionThreeProgress = versionThreeProgressSchema.safeParse(parsedProgress)
     if (versionThreeProgress.success) {
       return {
-        ...versionThreeProgress.data,
-        version: 5,
+        version: 6,
+        discoveredIds: versionThreeProgress.data.discoveredIds,
+        discoveredRecipeIds: versionThreeProgress.data.discoveredRecipeIds,
+        insightCredits: versionThreeProgress.data.hintCredits,
+        insightFailureProgress: 0,
+        rewardedChallengeEraIds: [],
+        revealedHintRecipeIds: versionThreeProgress.data.revealedHintRecipeIds,
         failedPairKeys: [],
         unlockedEraIds: ['first-light'],
         activeEraId: 'first-light',
@@ -101,10 +152,12 @@ export function loadProgress(): SavedProgress | null {
     const versionTwoProgress = versionTwoProgressSchema.safeParse(parsedProgress)
     if (versionTwoProgress.success) {
       return {
-        version: 5,
+        version: 6,
         discoveredIds: versionTwoProgress.data.discoveredIds,
         discoveredRecipeIds: versionTwoProgress.data.discoveredRecipeIds,
-        hintCredits: 3,
+        insightCredits: 3,
+        insightFailureProgress: 0,
+        rewardedChallengeEraIds: [],
         revealedHintRecipeIds: [],
         failedPairKeys: [],
         unlockedEraIds: ['first-light'],
@@ -115,10 +168,12 @@ export function loadProgress(): SavedProgress | null {
     const versionOneProgress = versionOneProgressSchema.safeParse(parsedProgress)
     if (versionOneProgress.success) {
       return {
-        version: 5,
+        version: 6,
         discoveredIds: versionOneProgress.data.discoveredIds,
         discoveredRecipeIds: [],
-        hintCredits: 3,
+        insightCredits: 3,
+        insightFailureProgress: 0,
+        rewardedChallengeEraIds: [],
         revealedHintRecipeIds: [],
         failedPairKeys: [],
         unlockedEraIds: ['first-light'],
@@ -132,25 +187,30 @@ export function loadProgress(): SavedProgress | null {
   }
 }
 
-export function saveProgress(
-  discoveredIds: string[],
-  discoveredRecipeIds: string[],
-  hintCredits: number,
-  revealedHintRecipeIds: string[],
-  failedPairKeys: string[],
-  unlockedEraIds: string[],
-  activeEraId: string,
-) {
+export function saveProgress(progress: Omit<SavedProgress, 'version'>) {
   if (typeof window === 'undefined') return false
 
   try {
+    const {
+      discoveredIds,
+      discoveredRecipeIds,
+      insightCredits,
+      insightFailureProgress,
+      rewardedChallengeEraIds,
+      revealedHintRecipeIds,
+      failedPairKeys,
+      unlockedEraIds,
+      activeEraId,
+    } = progress
     window.localStorage.setItem(
       SAVE_KEY,
       JSON.stringify({
-        version: 5,
+        version: 6,
         discoveredIds,
         discoveredRecipeIds,
-        hintCredits,
+        insightCredits,
+        insightFailureProgress,
+        rewardedChallengeEraIds,
         revealedHintRecipeIds,
         failedPairKeys,
         unlockedEraIds,
