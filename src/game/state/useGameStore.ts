@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { elements, elementsById, eras, recipes, starterElementIds } from '../content'
 import { reconcileEraProgress } from '../engine/eraProgress'
-import { areHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
+import { areGlobalHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
 import {
   createRecipeIndex,
   pairKey,
@@ -16,7 +16,10 @@ interface AttemptResult {
   title: string
   detail: string
   resultId?: string
-  unlockedEraName?: string
+  unlockedEra?: {
+    name: string
+    grantNames: string[]
+  }
 }
 
 interface GameState {
@@ -130,12 +133,25 @@ export const useGameStore = create<GameState>((set, get) => ({
     const result = recipe ? elementsById.get(recipe.result) : null
     if (result && !state.unlockedEraIds.includes(result.era)) {
       const lockedEra = eras.find((era) => era.id === result.era)
+      const nextOpenLeads = state.revealedHintRecipeIds.includes(recipe!.id)
+        ? state.revealedHintRecipeIds
+        : [...state.revealedHintRecipeIds, recipe!.id]
+      saveProgress(
+        state.discoveredIds,
+        state.discoveredRecipeIds,
+        state.hintCredits,
+        nextOpenLeads,
+        state.failedPairKeys,
+        state.unlockedEraIds,
+        state.activeEraId,
+      )
       set({
+        revealedHintRecipeIds: nextOpenLeads,
         secondSlotId: null,
         lastAttempt: {
           kind: 'failure',
           title: 'A later page',
-          detail: `${lockedEra?.name ?? 'Another age'} must be unlocked first.`,
+          detail: `${lockedEra?.name ?? 'Another age'} must be unlocked first. Recorded as an open lead.`,
         },
       })
       return
@@ -174,6 +190,10 @@ export const useGameStore = create<GameState>((set, get) => ({
     const nextRecipeIds = state.discoveredRecipeIds.includes(recipe.id)
       ? state.discoveredRecipeIds
       : [...state.discoveredRecipeIds, recipe.id]
+    const successfulPairKey = pairKey(firstSlotId, secondSlotId)
+    const nextFailedPairKeys = state.failedPairKeys.filter(
+      (key) => key !== successfulPairKey,
+    )
     const nextEraProgress = reconcileEraProgress(
       nextDiscoveries,
       state.unlockedEraIds,
@@ -184,19 +204,23 @@ export const useGameStore = create<GameState>((set, get) => ({
       (eraId) => !state.unlockedEraIds.includes(eraId),
     )
     const nextActiveEraId = unlockedEraId ?? state.activeEraId
+    const unlockedEra = unlockedEraId
+      ? eras.find((era) => era.id === unlockedEraId)
+      : undefined
 
     saveProgress(
       nextEraProgress.discoveredIds,
       nextRecipeIds,
       state.hintCredits,
       state.revealedHintRecipeIds,
-      state.failedPairKeys,
+      nextFailedPairKeys,
       nextEraProgress.unlockedEraIds,
       nextActiveEraId,
     )
     set({
       discoveredIds: nextEraProgress.discoveredIds,
       discoveredRecipeIds: nextRecipeIds,
+      failedPairKeys: nextFailedPairKeys,
       unlockedEraIds: nextEraProgress.unlockedEraIds,
       activeEraId: nextActiveEraId,
       activeHintRecipeId:
@@ -210,8 +234,13 @@ export const useGameStore = create<GameState>((set, get) => ({
         title: isNew ? `Discovered ${result.name}` : result.name,
         detail: recipe.flavor,
         resultId: result.id,
-        unlockedEraName: unlockedEraId
-          ? eras.find((era) => era.id === unlockedEraId)?.name
+        unlockedEra: unlockedEra
+          ? {
+              name: unlockedEra.name,
+              grantNames: unlockedEra.grants
+                .map((elementId) => elementsById.get(elementId)?.name)
+                .filter((name) => name !== undefined),
+            }
           : undefined,
       },
     })
@@ -222,11 +251,11 @@ export const useGameStore = create<GameState>((set, get) => ({
     const origins = eras[0]
     if (
       state.hintCredits === 0 ||
-      !areHintsUnlocked(
+      !areGlobalHintsUnlocked(
         state.discoveredIds,
         state.failedPairKeys,
-        origins.discoveryGoal,
-        origins.landmarkIds,
+        elements,
+        origins,
       )
     ) {
       return

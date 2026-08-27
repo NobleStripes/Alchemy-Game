@@ -26,15 +26,7 @@ function App() {
     useSensor(KeyboardSensor),
   )
   const era = eras.find((candidate) => candidate.id === activeEraId) ?? eras[0]
-  const availableElements = elements.filter((element) =>
-    unlockedEraIds.includes(element.era),
-  )
-  const availableDiscoveryCount = availableElements.filter((element) =>
-    discoveredIds.includes(element.id),
-  ).length
-  const progress = Math.round(
-    (availableDiscoveryCount / availableElements.length) * 100,
-  )
+  const progress = Math.round((discoveredIds.length / elements.length) * 100)
 
   function handleDragEnd(event: DragEndEvent) {
     const elementId = String(event.active.id).replace('element/', '')
@@ -71,7 +63,7 @@ function App() {
           })}
         </nav>
         <div className="header-progress" aria-label={`${progress}% discovered`}>
-          <span>{availableDiscoveryCount} / {availableElements.length}</span>
+          <span>{discoveredIds.length} / {elements.length}</span>
           <div className="progress-track" aria-hidden="true">
             <span style={{ width: `${progress}%` }} />
           </div>

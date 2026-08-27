@@ -123,9 +123,11 @@ export function Worktable() {
             <div>
               <strong>{lastAttempt.title}</strong>
               <p>{lastAttempt.detail}</p>
-              {lastAttempt.unlockedEraName && (
+              {lastAttempt.unlockedEra && (
                 <p className="era-unlocked">
-                  {lastAttempt.unlockedEraName} unlocked. Human added to the Atlas.
+                  {lastAttempt.unlockedEra.name} unlocked.
+                  {lastAttempt.unlockedEra.grantNames.length > 0 &&
+                    ` ${lastAttempt.unlockedEra.grantNames.join(', ')} added to the Atlas.`}
                 </p>
               )}
             </div>

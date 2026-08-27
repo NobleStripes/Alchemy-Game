@@ -30,11 +30,11 @@
   { "id": "deep-root", "inputs": ["seed", "soil"], "result": "tree", "flavor": "A folded future opens and reaches in two directions." },
   { "id": "banked-wood", "inputs": ["tree", "ember"], "result": "charcoal", "flavor": "Wood keeps part of the fire in a blackened form." },
   { "id": "shaped-purpose", "inputs": ["stone-tool", "metal"], "result": "tool", "flavor": "Metal replaces the stone edge with a stronger working surface." },
-  { "id": "cultivated-land", "inputs": ["tool", "land"], "result": "field", "flavor": "Purposeful work divides broad land into rows of promise." },
+  { "id": "cultivated-land", "inputs": ["stone-tool", "land"], "result": "field", "flavor": "Stone tools divide broad land into rows of promise." },
   { "id": "first-wall", "inputs": ["brick", "brick"], "result": "wall", "flavor": "One brick supports another until a boundary stands." },
   { "id": "sheltered-space", "inputs": ["wall", "wall"], "result": "house", "flavor": "Walls turn toward one another and make a home." },
   { "id": "gathered-homes", "inputs": ["house", "house"], "result": "village", "flavor": "Homes gather until neighbors become a community." },
-  { "id": "opened-stone", "inputs": ["stone", "tool"], "result": "quarry", "flavor": "Tools open the earth where strong stone lies hidden." },
+  { "id": "opened-stone", "inputs": ["stone", "stone-tool"], "result": "quarry", "flavor": "Stone tools open the earth where strong rock lies hidden." },
   { "id": "stonecraft", "inputs": ["quarry", "tool"], "result": "masonry", "flavor": "Quarried stone learns precision beneath practiced tools." },
   { "id": "rising-city", "inputs": ["masonry", "village"], "result": "city", "flavor": "Skilled building gives a growing community a lasting form." },
   { "id": "joined-cities", "inputs": ["city", "city"], "result": "nation", "flavor": "Cities bind their roads and stories into something larger." },
@@ -86,5 +86,11 @@
   { "id": "plant-fibre", "inputs": ["plant", "stone-tool"], "result": "fibre", "flavor": "A sharp edge separates strong strands from a plant." },
   { "id": "twisted-fibre", "inputs": ["fibre", "fibre"], "result": "cordage", "flavor": "Many weak strands twist into one strong line." },
   { "id": "tied-hide", "inputs": ["cordage", "hide"], "result": "clothing", "flavor": "Cordage shapes hide into protection that travels with the wearer." },
-  { "id": "shaped-clay", "inputs": ["clay", "stone-tool"], "result": "pottery", "flavor": "Tools shape clay into a vessel before the fire hardens it." }
+  { "id": "shaped-clay", "inputs": ["clay", "hearth"], "result": "pottery", "flavor": "A hearth hardens shaped clay into a durable vessel." },
+  { "id": "spear-hunt", "inputs": ["spear", "animal"], "result": "hunt", "flavor": "A spear turns the pursuit of game into an organized hunt." },
+  { "id": "hunted-meat", "inputs": ["hunt", "animal"], "result": "meat", "flavor": "A successful hunt brings meat back to the camp." },
+  { "id": "settled-hearth", "inputs": ["shelter", "hearth"], "result": "home", "flavor": "A shared hearth turns simple shelter into a home." },
+  { "id": "stored-harvest", "inputs": ["basket", "crop"], "result": "storage", "flavor": "Baskets keep the harvest safe for another season." },
+  { "id": "served-food", "inputs": ["pottery", "food"], "result": "meal", "flavor": "Pottery lets prepared food become a shared meal." },
+  { "id": "painted-rock", "inputs": ["art", "rock"], "result": "cave-painting", "flavor": "Art placed on stone becomes a memory that outlives its maker." }
 ]

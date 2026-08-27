@@ -1,9 +1,9 @@
 import { Lightbulb } from 'lucide-react'
 import { useState } from 'react'
-import { elements, elementsById, recipes } from '../../game/content'
+import { elements, elementsById, eras, recipes } from '../../game/content'
 import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
 import {
-  areHintsUnlocked,
+  areGlobalHintsUnlocked,
   HINT_FAILURE_UNLOCK_COUNT,
 } from '../../game/engine/hintRules'
 import { pairKey } from '../../game/engine/resolveCombination'
@@ -34,9 +34,11 @@ export function Journal({
   const failedPairKeys = useGameStore((state) => state.failedPairKeys)
   const unlockedEraIds = useGameStore((state) => state.unlockedEraIds)
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null)
-  const selectedElement = selectedElementId
+  const selectedElementCandidate = selectedElementId
     ? elementsById.get(selectedElementId)
     : null
+  const selectedElement =
+    selectedElementCandidate?.era === eraId ? selectedElementCandidate : null
   const relatedRecipes = selectedElement
     ? recipes.filter(
         (recipe) =>
@@ -67,17 +69,19 @@ export function Journal({
     (recipe) =>
       !discoveredRecipeIds.includes(recipe.id) &&
       !revealedHintRecipeIds.includes(recipe.id) &&
+      unlockedEraIds.includes(elementsById.get(recipe.result)?.era ?? '') &&
       recipe.inputs.every((inputId) => discoveredIds.includes(inputId)),
   )
-  const discoveredElements = elements.filter((element) =>
-    discoveredIds.includes(element.id),
+  const discoveredElements = elements.filter(
+    (element) =>
+      element.era === eraId && discoveredIds.includes(element.id),
   )
-  const availableElements = elements.filter((element) =>
-    unlockedEraIds.includes(element.era),
-  )
-  const eraDiscoveryCount = discoveredElements.filter(
-    (element) => element.era === eraId,
-  ).length
+  const availableElements = elements.filter((element) => element.era === eraId)
+  const eraDiscoveryCount = discoveredElements.length
+  const eraFormulaCount = discoveredRecipeIds.filter((recipeId) => {
+    const recipe = recipes.find((candidate) => candidate.id === recipeId)
+    return recipe && elementsById.get(recipe.result)?.era === eraId
+  }).length
   const categoryProgress = [
     ['essence', 'Essence'],
     ['matter', 'Matter'],
@@ -99,11 +103,11 @@ export function Journal({
   const challengeComplete =
     eraDiscoveryCount >= discoveryGoal &&
     foundLandmarkCount === landmarkIds.length
-  const hintsUnlocked = areHintsUnlocked(
+  const hintsUnlocked = areGlobalHintsUnlocked(
     discoveredIds,
     failedPairKeys,
-    discoveryGoal,
-    landmarkIds,
+    elements,
+    eras[0],
   )
 
   return (
@@ -159,8 +163,8 @@ export function Journal({
       </section>
 
       <div className="progress-summary">
-        <span><strong>{discoveredIds.length}</strong> discovered</span>
-        <span><strong>{discoveredRecipeIds.length}</strong> formulas recorded</span>
+        <span><strong>{eraDiscoveryCount}</strong> discovered</span>
+        <span><strong>{eraFormulaCount}</strong> formulas recorded</span>
       </div>
       <section className="challenge-status" aria-label={`${challengeName} challenge`}>
         <strong>{challengeName} challenge</strong>

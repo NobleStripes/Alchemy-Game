@@ -1,6 +1,15 @@
 import { z } from 'zod'
+import { recipes } from '../content'
+import { pairKey } from '../engine/resolveCombination'
 
 const SAVE_KEY = 'unwritten-atlas-progress'
+const validRecipePairKeys = new Set(
+  recipes.map((recipe) => pairKey(...recipe.inputs)),
+)
+
+function removeNowValidFailures(failedPairKeys: string[]) {
+  return failedPairKeys.filter((key) => !validRecipePairKeys.has(key))
+}
 
 const versionOneProgressSchema = z.object({
   version: z.literal(1),
@@ -56,13 +65,23 @@ export function loadProgress(): SavedProgress | null {
 
     const parsedProgress: unknown = JSON.parse(rawProgress)
     const currentProgress = progressSchema.safeParse(parsedProgress)
-    if (currentProgress.success) return currentProgress.data
+    if (currentProgress.success) {
+      return {
+        ...currentProgress.data,
+        failedPairKeys: removeNowValidFailures(
+          currentProgress.data.failedPairKeys,
+        ),
+      }
+    }
 
     const versionFourProgress = versionFourProgressSchema.safeParse(parsedProgress)
     if (versionFourProgress.success) {
       return {
         ...versionFourProgress.data,
         version: 5,
+        failedPairKeys: removeNowValidFailures(
+          versionFourProgress.data.failedPairKeys,
+        ),
         unlockedEraIds: ['first-light'],
         activeEraId: 'first-light',
       }

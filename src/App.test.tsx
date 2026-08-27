@@ -136,7 +136,12 @@ describe('alchemy worktable', () => {
     await user.click(screen.getByRole('button', { name: 'Combine' }))
 
     expect(screen.getByText('A later page')).toBeInTheDocument()
-    expect(screen.getByText('The Stone Age must be unlocked first.')).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        'The Stone Age must be unlocked first. Recorded as an open lead.',
+      ),
+    ).toBeInTheDocument()
+    expect(screen.getByText('Clay + Fire')).toBeInTheDocument()
   })
 
   it('unlocks Stone Age and grants Human from Origins landmarks', () => {
@@ -161,6 +166,33 @@ describe('alchemy worktable', () => {
     expect(screen.getByRole('button', { name: 'Human' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'The Stone Age' })).toBeEnabled()
     expect(screen.getByText(/The Stone Age unlocked/)).toBeInTheDocument()
+  })
+
+  it('filters Guide entries to the active era while keeping the Codex global', () => {
+    useGameStore.setState({
+      discoveredIds: ['ember', 'tide', 'stone', 'gale', 'human', 'brick'],
+      unlockedEraIds: ['first-light', 'stone-age'],
+      activeEraId: 'stone-age',
+    })
+    render(<App />)
+
+    expect(screen.getByRole('button', { name: 'Fire' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Inspect Fire' })).toBeNull()
+    expect(screen.getByRole('button', { name: 'Inspect Human' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Inspect Brick' })).toBeInTheDocument()
+  })
+
+  it('removes stale failure history when a pair succeeds', () => {
+    useGameStore.setState({
+      discoveredIds: ['ember', 'tide', 'stone', 'gale'],
+      failedPairKeys: ['ember::tide'],
+      firstSlotId: 'ember',
+      secondSlotId: 'tide',
+    })
+
+    useGameStore.getState().transmute()
+
+    expect(useGameStore.getState().failedPairKeys).not.toContain('ember::tide')
   })
 
   it('shows category progress and marks only elements with outgoing uses unstudied', () => {

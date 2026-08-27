@@ -71,5 +71,10 @@
   { "id": "fibre", "name": "Fibre", "sigil": "FB", "category": "matter", "description": "Plant strands separated for twisting and weaving.", "starter": false, "era": "stone-age" },
   { "id": "cordage", "name": "Cordage", "sigil": "COG", "category": "craft", "description": "Fibres twisted together into a stronger line.", "starter": false, "era": "stone-age" },
   { "id": "clothing", "name": "Clothing", "sigil": "CLO", "category": "craft", "description": "Hide shaped and tied to protect the human body.", "starter": false, "era": "stone-age" },
-  { "id": "pottery", "name": "Pottery", "sigil": "PO", "category": "craft", "description": "Clay shaped with tools into a useful container.", "starter": false, "era": "stone-age" }
+  { "id": "pottery", "name": "Pottery", "sigil": "PO", "category": "craft", "description": "Clay shaped and fired into a useful container.", "starter": false, "era": "stone-age" },
+  { "id": "hunt", "name": "Hunt", "sigil": "HN", "category": "craft", "description": "People coordinating with a spear to pursue game.", "starter": false, "era": "stone-age" },
+  { "id": "home", "name": "Home", "sigil": "HM", "category": "craft", "description": "A shelter made enduring by a shared hearth.", "starter": false, "era": "stone-age" },
+  { "id": "storage", "name": "Storage", "sigil": "STG", "category": "craft", "description": "A harvest kept in containers against future need.", "starter": false, "era": "stone-age" },
+  { "id": "meal", "name": "Meal", "sigil": "ML", "category": "craft", "description": "Food gathered, prepared, and shared from a vessel.", "starter": false, "era": "stone-age" },
+  { "id": "cave-painting", "name": "Cave Painting", "sigil": "CP", "category": "craft", "description": "Art fixed to stone as a durable memory of life.", "starter": false, "era": "stone-age" }
 ]

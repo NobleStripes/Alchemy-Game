@@ -95,6 +95,22 @@ describe('progress persistence', () => {
     })
   })
 
+  it('drops failed pairs that are valid in the current recipe graph', () => {
+    window.localStorage.setItem(
+      'unwritten-atlas-progress',
+      JSON.stringify({
+        version: 4,
+        discoveredIds: ['ember', 'land', 'stone'],
+        discoveredRecipeIds: [],
+        hintCredits: 3,
+        revealedHintRecipeIds: [],
+        failedPairKeys: ['land::stone', 'gale::tide'],
+      }),
+    )
+
+    expect(loadProgress()?.failedPairKeys).toEqual(['gale::tide'])
+  })
+
   it('writes version 5 progress, hints, failures, and era state', () => {
     expect(
       saveProgress(

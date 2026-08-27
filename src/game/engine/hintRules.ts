@@ -1,4 +1,8 @@
-import type { RecipeDefinition } from '../domain/types'
+import type {
+  ElementDefinition,
+  EraDefinition,
+  RecipeDefinition,
+} from '../domain/types'
 
 export const HINT_FAILURE_UNLOCK_COUNT = 3
 
@@ -40,5 +44,25 @@ export function selectHintRecipe(
     eligibleRecipes.find((recipe) => recipe.inputs[0] !== recipe.inputs[1]) ??
     eligibleRecipes[0] ??
     null
+  )
+}
+
+export function areGlobalHintsUnlocked(
+  discoveredIds: string[],
+  failedPairKeys: string[],
+  elements: ElementDefinition[],
+  origins: EraDefinition,
+) {
+  const originsDiscoveryCount = elements.filter(
+    (element) =>
+      element.era === origins.id && discoveredIds.includes(element.id),
+  ).length
+
+  return (
+    (originsDiscoveryCount >= origins.discoveryGoal &&
+      origins.landmarkIds.every((elementId) =>
+        discoveredIds.includes(elementId),
+      )) ||
+    failedPairKeys.length >= HINT_FAILURE_UNLOCK_COUNT
   )
 }

@@ -7,6 +7,7 @@ import {
 import { validateContent } from './validateContent'
 import { isElementUnstudied } from './isElementUnstudied'
 import {
+  areGlobalHintsUnlocked,
   areHintsUnlocked,
   selectHintRecipe,
 } from './hintRules'
@@ -111,7 +112,7 @@ describe('first-era content', () => {
     expect(resolveCombination('sand', 'heat', recipeIndex)?.result).toBe(
       'glass',
     )
-    expect(resolveCombination('tool', 'land', recipeIndex)?.result).toBe(
+    expect(resolveCombination('stone-tool', 'land', recipeIndex)?.result).toBe(
       'field',
     )
     expect(resolveCombination('field', 'seed', recipeIndex)?.result).toBe(
@@ -129,6 +130,21 @@ describe('first-era content', () => {
     expect(
       recipes.filter((recipe) => recipe.result === 'bread').map((recipe) => recipe.id),
     ).toEqual(['baked-dough'])
+    expect(resolveCombination('spear', 'animal', recipeIndex)?.result).toBe(
+      'hunt',
+    )
+    expect(resolveCombination('shelter', 'hearth', recipeIndex)?.result).toBe(
+      'home',
+    )
+    expect(resolveCombination('basket', 'crop', recipeIndex)?.result).toBe(
+      'storage',
+    )
+    expect(resolveCombination('pottery', 'food', recipeIndex)?.result).toBe(
+      'meal',
+    )
+    expect(resolveCombination('art', 'rock', recipeIndex)?.result).toBe(
+      'cave-painting',
+    )
   })
 })
 
@@ -171,6 +187,32 @@ describe('journal guidance', () => {
       )?.id,
     ).toBe('first-vapor')
   })
+
+  it('does not count Stone Age grants toward Origins hint access', () => {
+    const origins = eras[0]
+    const remainingOrigins = elements
+      .filter(
+        (element) =>
+          element.era === origins.id &&
+          !origins.landmarkIds.includes(element.id),
+      )
+      .slice(0, 17 - origins.landmarkIds.length)
+      .map((element) => element.id)
+    const withLandmarksAndHuman = [
+      ...origins.landmarkIds,
+      ...remainingOrigins,
+      'human',
+    ]
+
+    expect(
+      areGlobalHintsUnlocked(
+        withLandmarksAndHuman,
+        [],
+        elements,
+        origins,
+      ),
+    ).toBe(false)
+  })
 })
 
 describe('era progression', () => {
@@ -196,5 +238,17 @@ describe('era progression', () => {
 
     expect(progress.unlockedEraIds).toContain('stone-age')
     expect(progress.discoveredIds).toContain('human')
+  })
+
+  it('rejects circular era gates even when the gated era grants an input', () => {
+    const circularEras = eras.map((era) =>
+      era.id === 'stone-age'
+        ? { ...era, unlockRequires: ['human'] }
+        : era,
+    )
+
+    expect(validateContent(elements, recipes, circularEras)).toContain(
+      'Era stone-age is unreachable from prior era content.',
+    )
   })
 })
