@@ -1,5 +1,5 @@
 import { useDroppable } from '@dnd-kit/core'
-import { CopyPlus, Sparkles, X } from 'lucide-react'
+import { CopyPlus, Sparkles, Trash2, X } from 'lucide-react'
 import { elementsById } from '../../game/content'
 import { useGameStore } from '../../game/state/useGameStore'
 
@@ -29,9 +29,10 @@ function TableSlot({ name, elementId, canRepeat }: TableSlotProps) {
             data-category={element.category}
             aria-hidden="true"
           >
-            {element.sigil}
+            {element.icon || element.sigil}
           </span>
-          <strong>{element.name}</strong>
+          <strong className="slot-name">{element.name}</strong>
+          <span className="slot-cat">{element.category}</span>
           <button
             type="button"
             className="icon-button clear-slot"
@@ -56,12 +57,13 @@ function TableSlot({ name, elementId, canRepeat }: TableSlotProps) {
           )}
         </>
       ) : (
-        <>
+        <div className="empty-slot-content">
           <span className="empty-sigil" aria-hidden="true">
             {name === 'first' ? 'I' : 'II'}
           </span>
-          <span>Empty vessel</span>
-        </>
+          <span className="empty-text">Empty vessel</span>
+          <small className="empty-hint">Drop or tap element</small>
+        </div>
       )}
     </div>
   )
@@ -72,25 +74,33 @@ export function Worktable() {
   const secondSlotId = useGameStore((state) => state.secondSlotId)
   const lastAttempt = useGameStore((state) => state.lastAttempt)
   const transmute = useGameStore((state) => state.transmute)
+  const clearAllSlots = useGameStore((state) => state.clearAllSlots)
   const result = lastAttempt?.resultId
     ? elementsById.get(lastAttempt.resultId)
     : null
+
+  const isReady = Boolean(firstSlotId && secondSlotId)
+  const hasAnyElement = Boolean(firstSlotId || secondSlotId)
 
   return (
     <main className="worktable" aria-labelledby="worktable-title">
       <div className="section-heading centered">
         <h1 id="worktable-title">Combine elements</h1>
-        <p>Click or drag two elements into the slots.</p>
+        <p>Drop or select elements onto the altar to forge new discoveries.</p>
       </div>
 
-      <div className="transmutation-circle">
+      <div className="transmutation-circle" data-ready={isReady}>
+        <div className="altar-glow" aria-hidden="true" />
+
         <div className="slot-row">
           <TableSlot
             name="first"
             elementId={firstSlotId}
             canRepeat={Boolean(firstSlotId && !secondSlotId)}
           />
-          <span className="combine-mark" aria-hidden="true">+</span>
+          <div className="combine-mark-wrap">
+            <span className="combine-mark" aria-hidden="true">+</span>
+          </div>
           <TableSlot
             name="second"
             elementId={secondSlotId}
@@ -98,10 +108,30 @@ export function Worktable() {
           />
         </div>
 
-        <button type="button" className="transmute-button" onClick={transmute}>
-          <Sparkles size={18} aria-hidden="true" />
-          Combine
-        </button>
+        <div className="altar-actions">
+          <button
+            type="button"
+            className="transmute-button"
+            data-ready={isReady}
+            onClick={transmute}
+          >
+            <Sparkles size={18} aria-hidden="true" />
+            <span>Combine</span>
+          </button>
+
+          {hasAnyElement && (
+            <button
+              type="button"
+              className="clear-table-btn"
+              onClick={clearAllSlots}
+              aria-label="Clear table"
+              title="Clear both slots"
+            >
+              <Trash2 size={16} aria-hidden="true" />
+              <span>Clear</span>
+            </button>
+          )}
+        </div>
       </div>
 
       <div
@@ -117,15 +147,15 @@ export function Worktable() {
                 data-category={result.category}
                 aria-hidden="true"
               >
-                {result.sigil}
+                {result.icon || result.sigil}
               </span>
             )}
-            <div>
+            <div className="attempt-copy">
               <strong>{lastAttempt.title}</strong>
               <p>{lastAttempt.detail}</p>
               {lastAttempt.unlockedEra && (
                 <p className="era-unlocked">
-                  {lastAttempt.unlockedEra.name} unlocked.
+                  ✨ {lastAttempt.unlockedEra.name} unlocked!
                   {lastAttempt.unlockedEra.grantNames.length > 0 &&
                     ` ${lastAttempt.unlockedEra.grantNames.join(', ')} added to the Atlas.`}
                 </p>
@@ -138,7 +168,7 @@ export function Worktable() {
             </div>
           </>
         ) : (
-          <p>The circle is quiet.</p>
+          <p className="circle-quiet">The circle is quiet.</p>
         )}
       </div>
     </main>

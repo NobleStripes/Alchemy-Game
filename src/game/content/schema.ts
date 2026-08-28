@@ -4,6 +4,7 @@ export const elementSchema = z.object({
   id: z.string().regex(/^[a-z][a-z0-9-]*$/),
   name: z.string().min(1),
   sigil: z.string().min(1).max(3),
+  icon: z.string().optional(),
   category: z.enum([
     'essence',
     'matter',

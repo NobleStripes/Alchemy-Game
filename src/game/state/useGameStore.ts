@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { soundEngine } from '../audio/audioEngine'
 import { elements, elementsById, eras, recipes, starterElementIds } from '../content'
 import { reconcileEraProgress } from '../engine/eraProgress'
 import { areGlobalHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
@@ -13,6 +14,7 @@ import {
   pairKey,
   resolveCombination,
 } from '../engine/resolveCombination'
+import { triggerConfetti } from '../fx/confetti'
 import { loadProgress, saveProgress, type SavedProgress } from './persistence'
 
 type SlotName = 'first' | 'second'
@@ -34,10 +36,16 @@ interface GameState extends PersistedState {
   firstSlotId: string | null
   secondSlotId: string | null
   lastAttempt: AttemptResult | null
+  soundEnabled: boolean
+  favoriteIds: string[]
+  toggleSound: () => void
+  toggleFavorite: (elementId: string) => void
   selectElement: (elementId: string) => void
   placeElement: (slot: SlotName, elementId: string) => void
   clearSlot: (slot: SlotName) => void
+  clearAllSlots: () => void
   transmute: () => void
+  transmuteWith: (firstId: string, secondId: string) => void
   requestHint: () => void
   setActiveEra: (eraId: string) => void
   resetProgress: () => void
@@ -92,8 +100,25 @@ export const useGameStore = create<GameState>((set, get) => ({
   firstSlotId: null,
   secondSlotId: null,
   lastAttempt: null,
+  soundEnabled: true,
+  favoriteIds: [],
+
+  toggleSound: () => {
+    const next = !get().soundEnabled
+    soundEngine.setEnabled(next)
+    set({ soundEnabled: next })
+  },
+
+  toggleFavorite: (elementId: string) => {
+    const { favoriteIds } = get()
+    const next = favoriteIds.includes(elementId)
+      ? favoriteIds.filter((id) => id !== elementId)
+      : [...favoriteIds, elementId]
+    set({ favoriteIds: next })
+  },
 
   selectElement: (elementId) => {
+    soundEngine.playSelect()
     const { firstSlotId, secondSlotId } = get()
     if (!firstSlotId) {
       set({ firstSlotId: elementId, lastAttempt: null })
@@ -105,6 +130,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   placeElement: (slot, elementId) => {
+    soundEngine.playSelect()
     set({
       [slot === 'first' ? 'firstSlotId' : 'secondSlotId']: elementId,
       lastAttempt: null,
@@ -112,16 +138,32 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   clearSlot: (slot) => {
+    soundEngine.playClear()
     set({
       [slot === 'first' ? 'firstSlotId' : 'secondSlotId']: null,
       lastAttempt: null,
     })
   },
 
+  clearAllSlots: () => {
+    soundEngine.playClear()
+    set({
+      firstSlotId: null,
+      secondSlotId: null,
+      lastAttempt: null,
+    })
+  },
+
+  transmuteWith: (firstId: string, secondId: string) => {
+    set({ firstSlotId: firstId, secondSlotId: secondId })
+    get().transmute()
+  },
+
   transmute: () => {
     const state = get()
     const { firstSlotId, secondSlotId } = state
     if (!firstSlotId || !secondSlotId) {
+      soundEngine.playFailure()
       set({
         lastAttempt: {
           kind: 'failure',
@@ -135,6 +177,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     const recipe = resolveCombination(firstSlotId, secondSlotId, recipeIndex)
     const result = recipe ? elementsById.get(recipe.result) : null
     if (result && !state.unlockedEraIds.includes(result.era)) {
+      soundEngine.playFailure()
       const lockedEra = eras.find((era) => era.id === result.era)
       const nextOpenLeads = state.revealedHintRecipeIds.includes(recipe!.id)
         ? state.revealedHintRecipeIds
@@ -154,6 +197,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     }
 
     if (!recipe || !result) {
+      soundEngine.playFailure()
       const failedKey = pairKey(firstSlotId, secondSlotId)
       const isUniqueFailure = !state.failedPairKeys.includes(failedKey)
       const nextFailedPairs = isUniqueFailure
@@ -255,6 +299,18 @@ export const useGameStore = create<GameState>((set, get) => ({
       activeEraId: nextActiveEraId,
     }
     writeProgress(progress)
+
+    if (isNew || unlockedEraId) {
+      soundEngine.playNewDiscovery()
+      triggerConfetti()
+    } else {
+      soundEngine.playMerge()
+    }
+
+    if (unlockedEraId) {
+      soundEngine.playUnlock()
+    }
+
     set({
       ...progress,
       firstSlotId: null,
@@ -305,6 +361,8 @@ export const useGameStore = create<GameState>((set, get) => ({
       state.activeEraId,
     )
     if (!recipe) return
+
+    soundEngine.playHint()
 
     const progress = {
       ...state,

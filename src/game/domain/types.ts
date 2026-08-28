@@ -12,6 +12,7 @@ export interface ElementDefinition {
   id: string
   name: string
   sigil: string
+  icon?: string
   category: ElementCategory
   description: string
   starter: boolean

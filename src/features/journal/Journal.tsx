@@ -189,19 +189,22 @@ export function Journal({
           Catalogue {Math.min(discoveredElements.length, discoveryGoal)}/
           {discoveryGoal} · Landmarks {foundLandmarkCount}/{landmarkIds.length}
         </p>
-        <div className="landmark-list">
-          {landmarks.map((landmark) => (
+        <div className="landmark-list">            {landmarks.map((landmark) => (
             <span
               key={landmark.id}
+              className="landmark-chip"
               data-found={discoveredIds.includes(landmark.id)}
             >
-              {landmark.name}
+              <span className="landmark-icon" aria-hidden="true">
+                {landmark.icon || landmark.sigil}
+              </span>
+              <span>{landmark.name}</span>
             </span>
           ))}
         </div>
         {challengeComplete && (
           <p className="challenge-complete">
-            This page's landmarks are recorded. Continue exploring the Atlas.
+            🏆 This page's landmarks are recorded. Continue exploring the Atlas.
           </p>
         )}
       </section>
@@ -216,7 +219,7 @@ export function Journal({
               aria-label={`${label}: ${discovered} of ${total}`}
             >
               <span>{label}</span>
-              <div aria-hidden="true">
+              <div aria-hidden="true" className="cat-progress-track">
                 <span style={{ width: `${(discovered / total) * 100}%` }} />
               </div>
               <strong>{discovered}/{total}</strong>
@@ -232,12 +235,16 @@ export function Journal({
             <button
               key={element.id}
               type="button"
+              className="journal-element-btn"
               data-selected={selectedElementId === element.id}
               aria-pressed={selectedElementId === element.id}
               onClick={() => setSelectedElementId(element.id)}
               aria-label={`Inspect ${element.name}`}
             >
-              {element.name}
+              <span className="journal-el-icon" aria-hidden="true">
+                {element.icon || element.sigil}
+              </span>
+              <span className="journal-el-name">{element.name}</span>
               {isElementUnstudied(element.id, recipes, discoveredRecipeIds) && (
                 <span className="unstudied-tag" aria-hidden="true">Unstudied</span>
               )}
@@ -252,12 +259,15 @@ export function Journal({
           {selectedElement ? (
             <>
             <div className="element-detail-heading">
+              <span className="detail-sigil" data-category={selectedElement.category} aria-hidden="true">
+                {selectedElement.icon || selectedElement.sigil}
+              </span>
               <div>
                 <h3>{selectedElement.name}</h3>
-                <span>{selectedElement.category}</span>
+                <span className="detail-cat-badge">{selectedElement.category}</span>
               </div>
             </div>
-            <p>{selectedElement.description}</p>
+            <p className="detail-desc">{selectedElement.description}</p>
 
             <h4>Recorded formulas</h4>
             {knownRecipes.length > 0 ? (
@@ -269,7 +279,7 @@ export function Journal({
                   if (!firstInput || !secondInput || !result) return null
 
                   return (
-                    <li key={recipe.id}>
+                    <li key={recipe.id} className="formula-card">
                       <strong>
                         {firstInput.name} + {secondInput.name} → {result.name}
                       </strong>
@@ -295,7 +305,10 @@ export function Journal({
                 <h4>Tested, no reaction</h4>
                 <ul className="failed-partners">
                   {failedPartners.map((partner) => (
-                    <li key={partner.id}>{partner.name} — no reaction</li>
+                    <li key={partner.id}>
+                      <span>{partner.icon || '•'}</span>
+                      <span>{partner.name} — no reaction</span>
+                    </li>
                   ))}
                 </ul>
               </>

@@ -6,7 +6,15 @@ import {
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
-import { BookOpen, FlaskConical, RotateCcw, Shapes } from 'lucide-react'
+import {
+  BookOpen,
+  FlaskConical,
+  RotateCcw,
+  Shapes,
+  Sparkles,
+  Volume2,
+  VolumeX,
+} from 'lucide-react'
 import { useState } from 'react'
 import { Codex } from './features/codex/Codex'
 import { Journal } from './features/journal/Journal'
@@ -25,6 +33,8 @@ function App() {
   const setActiveEra = useGameStore((state) => state.setActiveEra)
   const placeElement = useGameStore((state) => state.placeElement)
   const resetProgress = useGameStore((state) => state.resetProgress)
+  const soundEnabled = useGameStore((state) => state.soundEnabled)
+  const toggleSound = useGameStore((state) => state.toggleSound)
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
     useSensor(KeyboardSensor),
@@ -49,7 +59,11 @@ function App() {
   return (
     <div className="game-shell">
       <header className="game-header">
-        <strong className="app-name">The Unwritten Atlas</strong>
+        <div className="header-brand">
+          <Sparkles className="brand-icon" size={20} aria-hidden="true" />
+          <strong className="app-name">The Unwritten Atlas</strong>
+        </div>
+
         <nav className="era-switcher" aria-label="Atlas ages">
           {eras.map((candidate) => {
             const isUnlocked = unlockedEraIds.includes(candidate.id)
@@ -67,21 +81,35 @@ function App() {
             )
           })}
         </nav>
+
         <div className="header-progress" aria-label={`${progress}% discovered`}>
-          <span>{discoveredIds.length} / {elements.length}</span>
+          <span className="progress-label">{discoveredIds.length} / {elements.length}</span>
           <div className="progress-track" aria-hidden="true">
             <span style={{ width: `${progress}%` }} />
           </div>
         </div>
-        <button
-          type="button"
-          className="icon-button"
-          onClick={handleReset}
-          aria-label="Reset journal"
-          title="Reset journal"
-        >
-          <RotateCcw size={18} />
-        </button>
+
+        <div className="header-actions">
+          <button
+            type="button"
+            className="icon-button sound-btn"
+            onClick={toggleSound}
+            aria-label={soundEnabled ? 'Mute sound' : 'Unmute sound'}
+            title={soundEnabled ? 'Mute sound' : 'Unmute sound'}
+          >
+            {soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
+          </button>
+
+          <button
+            type="button"
+            className="icon-button reset-btn"
+            onClick={handleReset}
+            aria-label="Reset journal"
+            title="Reset journal"
+          >
+            <RotateCcw size={18} />
+          </button>
+        </div>
       </header>
 
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>

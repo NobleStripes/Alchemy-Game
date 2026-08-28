@@ -356,4 +356,51 @@ describe('alchemy worktable', () => {
       'page',
     )
   })
+
+  it('toggles sound mute setting from the header', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    const soundBtn = screen.getByRole('button', { name: 'Mute sound' })
+    expect(soundBtn).toBeInTheDocument()
+
+    await user.click(soundBtn)
+    expect(screen.getByRole('button', { name: 'Unmute sound' })).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Unmute sound' }))
+    expect(screen.getByRole('button', { name: 'Mute sound' })).toBeInTheDocument()
+  })
+
+  it('clears both slots when the Clear button is clicked', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    await user.click(screen.getByRole('button', { name: 'Fire' }))
+    await user.click(screen.getByRole('button', { name: 'Water' }))
+
+    const clearBtn = screen.getByRole('button', { name: 'Clear table' })
+    expect(clearBtn).toBeInTheDocument()
+
+    await user.click(clearBtn)
+    expect(screen.getAllByText('Empty vessel')).toHaveLength(2)
+  })
+
+  it('filters elements by category tab and starred favorites', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    // Star Fire
+    const starFireBtn = screen.getByRole('button', { name: 'Favorite Fire' })
+    await user.click(starFireBtn)
+
+    // Switch to Starred tab
+    await user.click(screen.getByRole('tab', { name: /Starred/ }))
+    expect(screen.getByRole('button', { name: 'Fire' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Water' })).toBeNull()
+
+    // Switch to All tab
+    await user.click(screen.getByRole('tab', { name: /All/ }))
+    expect(screen.getByRole('button', { name: 'Fire' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Water' })).toBeInTheDocument()
+  })
 })
