@@ -20,10 +20,10 @@
   {
     "id": "bronze-age",
     "name": "The Bronze Age",
-    "subtitle": "Metal, wheels, trade, and writing bind the first cities together.",
+    "subtitle": "Metalwork, law, and distant trade extend the reach of the first cities.",
     "unlockRequires": ["village", "pottery", "metal", "quarry"],
     "grants": ["copper-ore"],
-    "landmarkIds": ["bronze", "wheel", "writing", "city"],
-    "discoveryGoal": 12
+    "landmarkIds": ["bronze", "wheel", "writing", "city", "forge", "law", "voyage"],
+    "discoveryGoal": 23
   }
 ]

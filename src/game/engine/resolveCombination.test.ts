@@ -356,6 +356,77 @@ describe('Bronze Age content', () => {
     )
   })
 
+  it.each([
+    ['hearth', 'bronze-tool', 'forge'],
+    ['forge', 'bronze', 'anvil'],
+    ['anvil', 'clay', 'mold'],
+    ['mold', 'bronze', 'sword'],
+    ['bronze-tool', 'field', 'plow'],
+    ['animal', 'cart', 'chariot'],
+    ['field', 'plow', 'crop'],
+    ['forge', 'clay', 'mold'],
+    ['anvil', 'bronze-tool', 'sword'],
+    ['forge', 'metal', 'tool'],
+  ])('resolves metalwork recipe %s + %s -> %s', (first, second, result) => {
+    expect(resolveCombination(first, second, recipeIndex)?.result).toBe(result)
+    expect(resolveCombination(second, first, recipeIndex)?.result).toBe(result)
+  })
+
+  it.each([
+    ['pigment', 'charcoal', 'ink'],
+    ['animal', 'scribe', 'quill'],
+    ['papyrus', 'cordage', 'scroll'],
+    ['bronze', 'clay', 'seal'],
+    ['ink', 'quill', 'writing'],
+    ['scroll', 'scribe', 'archive'],
+    ['scroll', 'scroll', 'archive'],
+    ['town', 'writing', 'archive'],
+    ['seal', 'writing', 'law'],
+    ['city', 'law', 'nation'],
+    ['law', 'map', 'nation'],
+  ])('resolves records recipe %s + %s -> %s', (first, second, result) => {
+    expect(resolveCombination(first, second, recipeIndex)?.result).toBe(result)
+    expect(resolveCombination(second, first, recipeIndex)?.result).toBe(result)
+  })
+
+  it.each([
+    ['cordage', 'tree', 'boat'],
+    ['fibre', 'hide', 'sail'],
+    ['boat', 'metal', 'anchor'],
+    ['sea', 'village', 'harbor'],
+    ['human', 'trade', 'merchant'],
+    ['map', 'merchant', 'voyage'],
+    ['boat', 'sail', 'voyage'],
+    ['boat', 'compass', 'voyage'],
+    ['anchor', 'village', 'harbor'],
+    ['harbor', 'merchant', 'trade'],
+    ['city', 'harbor', 'trade'],
+    ['archive', 'voyage', 'map'],
+    ['plow', 'trade', 'town'],
+  ])('resolves trade recipe %s + %s -> %s', (first, second, result) => {
+    expect(resolveCombination(first, second, recipeIndex)?.result).toBe(result)
+    expect(resolveCombination(second, first, recipeIndex)?.result).toBe(result)
+  })
+
+  it('tracks the expanded Bronze challenge', () => {
+    const bronzeElements = elements.filter(
+      (element) => element.era === 'bronze-age',
+    )
+    const bronzeEra = eras.find((era) => era.id === 'bronze-age')
+
+    expect(bronzeElements).toHaveLength(34)
+    expect(bronzeEra?.discoveryGoal).toBe(23)
+    expect(bronzeEra?.landmarkIds).toEqual([
+      'bronze',
+      'wheel',
+      'writing',
+      'city',
+      'forge',
+      'law',
+      'voyage',
+    ])
+  })
+
   it('prioritizes a Bronze discovery when Bronze Age is active', () => {
     expect(
       selectHintRecipe(
