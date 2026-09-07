@@ -39,9 +39,8 @@ function ElementTile({ elementId, onSelected }: ElementTileProps) {
   }
 
   return (
-    <button
+    <div
       ref={setNodeRef}
-      type="button"
       className="element-tile"
       aria-label={element.name}
       data-selected={Boolean(slotLabel)}
@@ -76,7 +75,7 @@ function ElementTile({ elementId, onSelected }: ElementTileProps) {
       >
         <Star size={13} fill={isFavorite ? 'currentColor' : 'none'} aria-hidden="true" />
       </button>
-    </button>
+    </div>
   )
 }
 
