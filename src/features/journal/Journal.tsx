@@ -124,12 +124,15 @@ export function Journal({
   return (
     <aside className="journal" aria-labelledby="journal-title">
       <div className="section-heading">
-        <h2 id="journal-title">Guide</h2>
+        <div>
+          <span className="panel-kicker">Keep exploring</span>
+          <h2 id="journal-title">Discoveries</h2>
+        </div>
       </div>
 
       <section className="hint-panel" aria-labelledby="insight-title">
         <div className="hint-heading">
-          <strong id="insight-title">Insight</strong>
+          <strong id="insight-title">💡 Hints</strong>
           <span>{insightCredits} available</span>
         </div>
         <p className="insight-progress">

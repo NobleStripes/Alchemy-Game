@@ -1,5 +1,5 @@
 import { useDroppable } from '@dnd-kit/core'
-import { CopyPlus, Sparkles, Trash2, X } from 'lucide-react'
+import { CopyPlus, FlaskConical, Sparkles, Trash2, X } from 'lucide-react'
 import { elementsById } from '../../game/content'
 import { useGameStore } from '../../game/state/useGameStore'
 
@@ -59,10 +59,10 @@ function TableSlot({ name, elementId, canRepeat }: TableSlotProps) {
       ) : (
         <div className="empty-slot-content">
           <span className="empty-sigil" aria-hidden="true">
-            {name === 'first' ? 'I' : 'II'}
+            ?
           </span>
           <span className="empty-text">Empty vessel</span>
-          <small className="empty-hint">Drop or tap element</small>
+          <small className="empty-hint">Choose an element</small>
         </div>
       )}
     </div>
@@ -84,13 +84,17 @@ export function Worktable() {
 
   return (
     <main className="worktable" aria-labelledby="worktable-title">
-      <div className="section-heading centered">
-        <h1 id="worktable-title">Combine elements</h1>
-        <p>Drop or select elements onto the altar to forge new discoveries.</p>
+      <div className="mix-heading">
+        <span className="mix-kicker">
+          <FlaskConical size={14} aria-hidden="true" />
+          Experiment table
+        </span>
+        <h1 id="worktable-title">What will you make?</h1>
+        <p>Pick two elements and mix them together.</p>
       </div>
 
       <div className="transmutation-circle" data-ready={isReady}>
-        <div className="altar-glow" aria-hidden="true" />
+        <span className="mix-step" aria-hidden="true">1 · Choose</span>
 
         <div className="slot-row">
           <TableSlot
@@ -114,9 +118,10 @@ export function Worktable() {
             className="transmute-button"
             data-ready={isReady}
             onClick={transmute}
+            aria-label="Combine"
           >
             <Sparkles size={18} aria-hidden="true" />
-            <span>Combine</span>
+            <span>Mix it!</span>
           </button>
 
           {hasAnyElement && (
@@ -168,7 +173,10 @@ export function Worktable() {
             </div>
           </>
         ) : (
-          <p className="circle-quiet">The circle is quiet.</p>
+          <div className="circle-quiet">
+            <span aria-hidden="true">✨</span>
+            <p>Your next discovery will appear here.</p>
+          </div>
         )}
       </div>
     </main>

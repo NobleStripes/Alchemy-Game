@@ -9,9 +9,10 @@ import {
 import {
   BookOpen,
   FlaskConical,
+  Layers3,
   RotateCcw,
-  Shapes,
   Sparkles,
+  Trophy,
   Volume2,
   VolumeX,
 } from 'lucide-react'
@@ -60,8 +61,13 @@ function App() {
     <div className="game-shell">
       <header className="game-header">
         <div className="header-brand">
-          <Sparkles className="brand-icon" size={20} aria-hidden="true" />
-          <strong className="app-name">The Unwritten Atlas</strong>
+          <span className="brand-mark" aria-hidden="true">
+            <FlaskConical className="brand-icon" size={22} />
+          </span>
+          <span className="brand-copy">
+            <small>The Unwritten Atlas</small>
+            <strong className="app-name">Mix Lab</strong>
+          </span>
         </div>
 
         <nav className="era-switcher" aria-label="Atlas ages">
@@ -83,10 +89,11 @@ function App() {
         </nav>
 
         <div className="header-progress" aria-label={`${progress}% discovered`}>
-          <span className="progress-label">{discoveredIds.length} / {elements.length}</span>
-          <div className="progress-track" aria-hidden="true">
-            <span style={{ width: `${progress}%` }} />
-          </div>
+          <Trophy size={17} aria-hidden="true" />
+          <span className="progress-label">
+            <strong>{discoveredIds.length}</strong> / {elements.length}
+          </span>
+          <div className="progress-track" aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
         </div>
 
         <div className="header-actions">
@@ -133,8 +140,8 @@ function App() {
           aria-pressed={activePanel === 'combine'}
           onClick={() => setActivePanel('combine')}
         >
-          <FlaskConical size={18} aria-hidden="true" />
-          Combine
+          <Sparkles size={18} aria-hidden="true" />
+          Mix
         </button>
         <button
           type="button"
@@ -143,7 +150,7 @@ function App() {
           aria-pressed={activePanel === 'elements'}
           onClick={() => setActivePanel('elements')}
         >
-          <Shapes size={18} aria-hidden="true" />
+          <Layers3 size={18} aria-hidden="true" />
           Elements
         </button>
         <button
@@ -154,7 +161,7 @@ function App() {
           onClick={() => setActivePanel('guide')}
         >
           <BookOpen size={18} aria-hidden="true" />
-          Guide
+          Progress
         </button>
       </nav>
     </div>

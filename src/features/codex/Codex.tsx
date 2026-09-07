@@ -140,8 +140,11 @@ export function Codex({ onElementSelected }: CodexProps) {
   return (
     <aside className="codex" aria-labelledby="codex-title">
       <div className="section-heading">
-        <h2 id="codex-title">Elements</h2>
-        <span className="section-count">{discoveredIds.length} known</span>
+        <div>
+          <span className="panel-kicker">Your collection</span>
+          <h2 id="codex-title">Element shelf</h2>
+        </div>
+        <span className="section-count">{discoveredIds.length} unlocked</span>
       </div>
 
       <div className="codex-search-row">
@@ -152,7 +155,7 @@ export function Codex({ onElementSelected }: CodexProps) {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search elements..."
+            placeholder="Find an element"
           />
           {query && (
             <button
