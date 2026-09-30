@@ -35,3 +35,10 @@ export interface EraDefinition {
   landmarkIds: string[]
   discoveryGoal: number
 }
+
+export interface CollectionDefinition {
+  id: string
+  name: string
+  era: string
+  elementIds: string[]
+}

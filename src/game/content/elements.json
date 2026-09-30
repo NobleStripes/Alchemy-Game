@@ -105,5 +105,13 @@
   { "id": "anchor", "name": "Anchor", "sigil": "ANK", "icon": "⚓", "category": "craft", "description": "A heavy metal holdfast that gives a vessel patience against the tide.", "starter": false, "era": "bronze-age" },
   { "id": "harbor", "name": "Harbor", "sigil": "HBR", "icon": "🌊", "category": "society", "description": "Sheltered water where vessels, goods, and distant travelers gather.", "starter": false, "era": "bronze-age" },
   { "id": "merchant", "name": "Merchant", "sigil": "MER", "icon": "🧑‍💼", "category": "society", "description": "A traveler who turns distant needs and surpluses into exchange.", "starter": false, "era": "bronze-age" },
-  { "id": "voyage", "name": "Voyage", "sigil": "VOY", "icon": "🌅", "category": "knowledge", "description": "A journey beyond familiar shores, guided by direction and remembered routes.", "starter": false, "era": "bronze-age" }
+  { "id": "voyage", "name": "Voyage", "sigil": "VOY", "icon": "🌅", "category": "knowledge", "description": "A journey beyond familiar shores, guided by direction and remembered routes.", "starter": false, "era": "bronze-age" },
+  { "id": "iron-ore", "name": "Iron Ore", "sigil": "IOR", "icon": "🪨", "category": "matter", "description": "A heavy stone holding metal that asks for a hotter fire.", "starter": false, "era": "iron-age" },
+  { "id": "iron", "name": "Iron", "sigil": "FE", "icon": "⛓️", "category": "matter", "description": "A tough metal freed from ore by patient heat and air.", "starter": false, "era": "iron-age" },
+  { "id": "bellows", "name": "Bellows", "sigil": "BEL", "icon": "💨", "category": "craft", "description": "Folded hide drives a steady breath into the workshop fire.", "starter": false, "era": "iron-age" },
+  { "id": "bloomery", "name": "Bloomery", "sigil": "BLO", "icon": "🔥", "category": "craft", "description": "A furnace feeds on forced air to draw iron from stone.", "starter": false, "era": "iron-age" },
+  { "id": "iron-tool", "name": "Iron Tool", "sigil": "IT", "icon": "🔨", "category": "craft", "description": "Hammered iron keeps a working edge through demanding labor.", "starter": false, "era": "iron-age" },
+  { "id": "sickle", "name": "Sickle", "sigil": "SK", "icon": "🌾", "category": "craft", "description": "A curved iron edge gathers ripe stalks into the harvest.", "starter": false, "era": "iron-age" },
+  { "id": "road", "name": "Road", "sigil": "RD", "icon": "🏞️", "category": "transport", "description": "Worked ground becomes a dependable route between settlements.", "starter": false, "era": "iron-age" },
+  { "id": "market", "name": "Market", "sigil": "MKT", "icon": "⚖️", "category": "society", "description": "Travelers and townspeople gather to exchange the fruits of their work.", "starter": false, "era": "iron-age" }
 ]

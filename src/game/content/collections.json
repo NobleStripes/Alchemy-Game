@@ -1,0 +1,20 @@
+[
+  {
+    "id": "stormwatch",
+    "name": "Stormwatch",
+    "era": "first-light",
+    "elementIds": ["mist", "cloud", "rain", "storm", "lightning"]
+  },
+  {
+    "id": "harvest-table",
+    "name": "Harvest Table",
+    "era": "stone-age",
+    "elementIds": ["field", "crop", "flour", "dough", "bread"]
+  },
+  {
+    "id": "ironworkers",
+    "name": "Ironworkers",
+    "era": "iron-age",
+    "elementIds": ["iron-ore", "bellows", "bloomery", "iron", "iron-tool"]
+  }
+]

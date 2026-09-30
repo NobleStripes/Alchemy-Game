@@ -11,20 +11,37 @@ import {
   FlaskConical,
   Layers3,
   RotateCcw,
+  Settings,
   Sparkles,
   Trophy,
   Volume2,
   VolumeX,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Codex } from './features/codex/Codex'
+import { ChallengeRun } from './features/challenges/ChallengeRun'
 import { Journal } from './features/journal/Journal'
+import { SaveSettings } from './features/settings/SaveSettings'
 import { Worktable } from './features/worktable/Worktable'
 import { elements, eras } from './game/content'
 import { useGameStore } from './game/state/useGameStore'
 import './Simple.css'
 
 function App() {
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [challengeActive, setChallengeActive] = useState(false)
+  const challengeButton = useRef<HTMLButtonElement>(null)
+  const challengeSurface = useRef<HTMLDivElement>(null)
+  const returningFromChallenge = useRef(false)
+  useEffect(() => {
+    if (challengeActive) {
+      challengeSurface.current?.querySelector<HTMLButtonElement>('button')?.focus()
+      returningFromChallenge.current = true
+    } else if (returningFromChallenge.current) {
+      challengeButton.current?.focus()
+      returningFromChallenge.current = false
+    }
+  }, [challengeActive])
   const [activePanel, setActivePanel] = useState<
     'combine' | 'elements' | 'guide'
   >('combine')
@@ -36,6 +53,7 @@ function App() {
   const resetProgress = useGameStore((state) => state.resetProgress)
   const soundEnabled = useGameStore((state) => state.soundEnabled)
   const toggleSound = useGameStore((state) => state.toggleSound)
+  const persistenceError = useGameStore((state) => state.persistenceError)
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
     useSensor(KeyboardSensor),
@@ -55,6 +73,14 @@ function App() {
     if (window.confirm('Return the journal to its first four essences?')) {
       resetProgress()
     }
+  }
+
+  if (challengeActive) {
+    return (
+      <div className="game-shell" ref={challengeSurface}>
+        <ChallengeRun onExit={() => setChallengeActive(false)} />
+      </div>
+    )
   }
 
   return (
@@ -99,6 +125,25 @@ function App() {
         <div className="header-actions">
           <button
             type="button"
+            className="icon-button"
+            onClick={() => setChallengeActive(true)}
+            ref={challengeButton}
+            aria-label="Play Rainmaker challenge"
+            title="Play Rainmaker challenge"
+          >
+            <Trophy size={18} />
+          </button>
+          <button
+            type="button"
+            className="icon-button"
+            onClick={() => setSettingsOpen(true)}
+            aria-label="Open settings"
+            title="Save and settings"
+          >
+            <Settings size={18} />
+          </button>
+          <button
+            type="button"
             className="icon-button sound-btn"
             onClick={toggleSound}
             aria-label={soundEnabled ? 'Mute sound' : 'Unmute sound'}
@@ -119,6 +164,14 @@ function App() {
         </div>
       </header>
 
+      {persistenceError && <p className="persistence-error" role="alert">{persistenceError}</p>}
+      {settingsOpen && (
+        <SaveSettings
+          onClose={() => setSettingsOpen(false)}
+          onImported={() => setActivePanel('combine')}
+        />
+      )}
+
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
         <div className="game-layout" data-active-panel={activePanel}>
           <Codex onElementSelected={() => setActivePanel('combine')} />
@@ -128,6 +181,7 @@ function App() {
             challengeName={era.name}
             discoveryGoal={era.discoveryGoal}
             landmarkIds={era.landmarkIds}
+            onCombinationPrepared={() => setActivePanel('combine')}
           />
         </div>
       </DndContext>

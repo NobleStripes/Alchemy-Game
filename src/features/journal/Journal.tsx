@@ -1,6 +1,6 @@
-import { Lightbulb } from 'lucide-react'
+import { FlaskConical, Lightbulb } from 'lucide-react'
 import { useState } from 'react'
-import { elements, elementsById, eras, recipes } from '../../game/content'
+import { collections, elements, elementsById, eras, recipes } from '../../game/content'
 import { areGlobalHintsUnlocked } from '../../game/engine/hintRules'
 import {
   FAILURES_PER_INSIGHT,
@@ -15,6 +15,7 @@ interface JournalProps {
   challengeName: string
   discoveryGoal: number
   landmarkIds: string[]
+  onCombinationPrepared?: () => void
 }
 
 export function Journal({
@@ -22,6 +23,7 @@ export function Journal({
   challengeName,
   discoveryGoal,
   landmarkIds,
+  onCombinationPrepared,
 }: JournalProps) {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const discoveredRecipeIds = useGameStore(
@@ -37,13 +39,41 @@ export function Journal({
   const failedPairKeys = useGameStore((state) => state.failedPairKeys)
   const unlockedEraIds = useGameStore((state) => state.unlockedEraIds)
   const requestHint = useGameStore((state) => state.requestHint)
+  const prepareCombination = useGameStore((state) => state.prepareCombination)
+  const experimentHistory = useGameStore((state) => state.experimentHistory)
+  const rewardedCollectionIds = useGameStore((state) => state.rewardedCollectionIds)
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null)
+
+  function prepareButton(inputs: [string, string], requiredEraId?: string) {
+    const firstInput = elementsById.get(inputs[0])
+    const secondInput = elementsById.get(inputs[1])
+    if (!firstInput || !secondInput) return null
+    const label = `Prepare ${firstInput.name} + ${secondInput.name}`
+    return (
+      <button
+        type="button"
+        className="prepare-button"
+        aria-label={label}
+        title={label}
+        disabled={
+          !inputs.every((inputId) => discoveredIds.includes(inputId)) ||
+          Boolean(requiredEraId && !unlockedEraIds.includes(requiredEraId))
+        }
+        onClick={() => {
+          if (prepareCombination(...inputs)) onCombinationPrepared?.()
+        }}
+      >
+        <FlaskConical size={16} aria-hidden="true" />
+      </button>
+    )
+  }
 
   const selectedCandidate = selectedElementId
     ? elementsById.get(selectedElementId)
     : null
   const selectedElement =
-    selectedCandidate?.era === eraId ? selectedCandidate : null
+    selectedCandidate?.era === eraId && discoveredIds.includes(selectedCandidate.id)
+      ? selectedCandidate : null
   const relatedRecipes = selectedElement
     ? recipes.filter(
         (recipe) =>
@@ -147,11 +177,17 @@ export function Journal({
               {openHintRecipes.map((recipe) => {
                 const firstInput = elementsById.get(recipe.inputs[0])
                 const secondInput = elementsById.get(recipe.inputs[1])
+                const resultEraId = elementsById.get(recipe.result)?.era
+                const lockedEra = eras.find(
+                  (era) => era.id === resultEraId && !unlockedEraIds.includes(era.id),
+                )
                 if (!firstInput || !secondInput) return null
 
                 return (
                   <li key={recipe.id}>
-                    {firstInput.name} + {secondInput.name}
+                    <span>{firstInput.name} + {secondInput.name}</span>
+                    {lockedEra && <span className="era-requirement">Requires {lockedEra.name}</span>}
+                    {prepareButton(recipe.inputs, resultEraId)}
                   </li>
                 )
               })}
@@ -214,6 +250,28 @@ export function Journal({
 
       <details className="guide-section" open>
         <summary>Collections</summary>
+        <ul className="collection-goals" aria-label="Collection goals">
+          {collections.filter((collection) => collection.era === eraId).map((collection) => {
+            const foundCount = collection.elementIds.filter((id) => discoveredIds.includes(id)).length
+            const rewarded = rewardedCollectionIds.includes(collection.id)
+            return (
+              <li key={collection.id} className="collection-goal">
+                <strong>{collection.name}</strong>
+                <span className="collection-count">{foundCount}/{collection.elementIds.length}</span>
+                <span className="collection-reward">
+                  {rewarded ? '+1 Insight reward earned' : '+1 Insight on completion'}
+                </span>
+                <ul className="collection-members">
+                  {collection.elementIds.map((id) => (
+                    <li key={id} data-found={discoveredIds.includes(id)}>
+                      {discoveredIds.includes(id) ? elementsById.get(id)?.name : 'Unknown element'}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )
+          })}
+        </ul>
         <div className="category-progress" aria-label="Category progress">
           {categoryProgress.map(({ category, label, discovered, total }) => (
             <div
@@ -256,6 +314,39 @@ export function Journal({
         </div>
       </details>
 
+      <details className="guide-section experiment-section">
+        <summary>Recent Experiments</summary>
+        {experimentHistory.length === 0 ? (
+          <p className="journal-empty">No experiments recorded yet.</p>
+        ) : (
+          <ol className="experiment-list">
+            {[...experimentHistory].reverse().map((experiment) => {
+              const firstInput = elementsById.get(experiment.inputs[0])
+              const secondInput = elementsById.get(experiment.inputs[1])
+              if (!firstInput || !secondInput) return null
+              const requiredEra = experiment.outcome === 'locked'
+                ? eras.find((era) => era.id === experiment.lockedEraId)
+                : undefined
+              const result = experiment.outcome === 'discovery' || experiment.outcome === 'known'
+                ? elementsById.get(experiment.resultId ?? '')
+                : undefined
+              return (
+                <li key={experiment.id} className="experiment-row" data-outcome={experiment.outcome}>
+                  <span className="experiment-pair"><span>{firstInput.name}</span> + <span>{secondInput.name}</span></span>
+                  <span className="experiment-outcome">
+                    {experiment.outcome === 'discovery' ? `Discovery: ${result?.name ?? 'element'}`
+                      : experiment.outcome === 'known' ? `Known: ${result?.name ?? 'element'}`
+                        : experiment.outcome === 'no-reaction' ? 'No reaction'
+                          : `Requires ${requiredEra?.name ?? 'a later age'}`}
+                  </span>
+                  {prepareButton(experiment.inputs, experiment.outcome === 'locked' ? experiment.lockedEraId : undefined)}
+                </li>
+              )
+            })}
+          </ol>
+        )}
+      </details>
+
       <details className="guide-section research-section" open={Boolean(selectedElement)}>
         <summary>Element research</summary>
         <section className="element-detail" aria-live="polite">
@@ -286,6 +377,7 @@ export function Journal({
                       <strong>
                         {firstInput.name} + {secondInput.name} → {result.name}
                       </strong>
+                      {prepareButton(recipe.inputs)}
                       <p>{recipe.flavor}</p>
                     </li>
                   )

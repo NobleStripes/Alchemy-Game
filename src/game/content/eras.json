@@ -25,5 +25,14 @@
     "grants": ["copper-ore"],
     "landmarkIds": ["bronze", "wheel", "writing", "city", "forge", "law", "voyage"],
     "discoveryGoal": 23
+  },
+  {
+    "id": "iron-age",
+    "name": "The Iron Age",
+    "subtitle": "Hotter fires and lasting tools connect fields, roads, and markets.",
+    "unlockRequires": ["bronze", "forge", "law", "city"],
+    "grants": ["iron-ore"],
+    "landmarkIds": ["iron", "iron-tool", "road", "market"],
+    "discoveryGoal": 6
   }
 ]

@@ -40,3 +40,15 @@ export const eraSchema = z.object({
 export const elementsSchema = z.array(elementSchema)
 export const recipesSchema = z.array(recipeSchema)
 export const erasSchema = z.array(eraSchema)
+
+export const collectionSchema = z.object({
+  id: z.string().regex(/^[a-z][a-z0-9-]*$/),
+  name: z.string().min(1),
+  era: z.string().min(1),
+  elementIds: z.array(z.string().min(1)).nonempty().refine(
+    (ids) => new Set(ids).size === ids.length,
+    'Collection members must be unique.',
+  ),
+})
+
+export const collectionsSchema = z.array(collectionSchema)

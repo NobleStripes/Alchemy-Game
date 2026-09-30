@@ -137,5 +137,12 @@
   { "id": "maritime-trade", "inputs": ["harbor", "merchant"], "result": "trade", "flavor": "A sheltered port lets merchants exchange the abundance of distant shores." },
   { "id": "port-commerce", "inputs": ["city", "harbor"], "result": "trade", "flavor": "A city facing the water sends its goods farther than any road can reach." },
   { "id": "recorded-voyage", "inputs": ["archive", "voyage"], "result": "map", "flavor": "Many remembered journeys refine the uncertain coast into a trusted chart." },
-  { "id": "market-surplus", "inputs": ["plow", "trade"], "result": "town", "flavor": "Abundant harvests draw regular exchange until a market gathers around them." }
+  { "id": "market-surplus", "inputs": ["plow", "trade"], "result": "town", "flavor": "Abundant harvests draw regular exchange until a market gathers around them." },
+  { "id": "smelting-air", "inputs": ["hide", "gale"], "result": "bellows", "flavor": "Folded hide catches the air and sends a steady breath toward the fire." },
+  { "id": "bloomery-workshop", "inputs": ["bellows", "forge"], "result": "bloomery", "flavor": "A forced breath lifts the forge into a furnace hot enough for iron." },
+  { "id": "smelted-iron", "inputs": ["iron-ore", "bloomery"], "result": "iron", "flavor": "Heat and patient air release tough iron from its stony bed." },
+  { "id": "worked-iron", "inputs": ["iron", "anvil"], "result": "iron-tool", "flavor": "The anvil gives heated iron an edge made for daily work." },
+  { "id": "harvest-edge", "inputs": ["iron-tool", "crop"], "result": "sickle", "flavor": "An iron edge curves to meet the stalks of a ripened field." },
+  { "id": "opened-road", "inputs": ["iron-tool", "land"], "result": "road", "flavor": "Strong tools clear and level the ground into a lasting passage." },
+  { "id": "roadside-market", "inputs": ["road", "town"], "result": "market", "flavor": "A road brings distant goods to the town and exchange finds a shared home." }
 ]

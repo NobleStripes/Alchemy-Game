@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { soundEngine } from '../audio/audioEngine'
-import { elements, elementsById, eras, recipes, starterElementIds } from '../content'
+import { collections, elements, elementsById, eras, recipes, starterElementIds } from '../content'
+import { getNewlyCompletedCollectionIds } from '../engine/collectionRules'
 import { reconcileEraProgress } from '../engine/eraProgress'
 import { areGlobalHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
 import {
@@ -15,7 +16,7 @@ import {
   resolveCombination,
 } from '../engine/resolveCombination'
 import { triggerConfetti } from '../fx/confetti'
-import { loadProgress, saveProgress, type SavedProgress } from './persistence'
+import { loadProgress, MAX_EXPERIMENT_HISTORY, parseProgress, saveProgress, type ExperimentEntry, type SavedProgress } from './persistence'
 
 type SlotName = 'first' | 'second'
 type PersistedState = Omit<SavedProgress, 'version'>
@@ -36,8 +37,10 @@ interface GameState extends PersistedState {
   firstSlotId: string | null
   secondSlotId: string | null
   lastAttempt: AttemptResult | null
-  soundEnabled: boolean
-  favoriteIds: string[]
+  persistenceError: string | null
+  prepareCombination: (firstId: string, secondId: string) => boolean
+  importProgress: (progress: SavedProgress) => boolean
+  recordChallengeCompletion: (challengeId: string, attemptCount: number) => boolean
   toggleSound: () => void
   toggleFavorite: (elementId: string) => void
   selectElement: (elementId: string) => void
@@ -53,68 +56,116 @@ interface GameState extends PersistedState {
 
 const recipeIndex = createRecipeIndex(recipes)
 
-function writeProgress(state: PersistedState) {
-  saveProgress(state)
-}
-
-function initialProgress(): PersistedState {
-  const savedProgress = loadProgress()
-  const eraProgress = reconcileEraProgress(
-    [
-      ...starterElementIds,
-      ...(savedProgress?.discoveredIds ?? []).filter((elementId) =>
-        elementsById.has(elementId),
-      ),
-    ],
-    savedProgress?.unlockedEraIds ?? ['first-light'],
-    elements,
-    eras,
-  )
-  const savedActiveEraId = savedProgress?.activeEraId ?? ''
-  const activeEraId = eraProgress.unlockedEraIds.includes(savedActiveEraId)
-    ? savedActiveEraId
-    : eraProgress.unlockedEraIds.at(-1) ?? eras[0].id
-
+export function snapshotProgress(state: PersistedState): PersistedState {
   return {
-    discoveredIds: eraProgress.discoveredIds,
-    discoveredRecipeIds: (savedProgress?.discoveredRecipeIds ?? []).filter(
-      (recipeId) => recipes.some((recipe) => recipe.id === recipeId),
-    ),
-    insightCredits: savedProgress?.insightCredits ?? 3,
-    insightFailureProgress: savedProgress?.insightFailureProgress ?? 0,
-    rewardedChallengeEraIds:
-      savedProgress?.rewardedChallengeEraIds ?? [],
-    revealedHintRecipeIds: (savedProgress?.revealedHintRecipeIds ?? []).filter(
-      (recipeId) => recipes.some((recipe) => recipe.id === recipeId),
-    ),
-    failedPairKeys: savedProgress?.failedPairKeys ?? [],
-    unlockedEraIds: eraProgress.unlockedEraIds,
-    activeEraId,
+    discoveredIds: state.discoveredIds,
+    discoveredRecipeIds: state.discoveredRecipeIds,
+    insightCredits: state.insightCredits,
+    insightFailureProgress: state.insightFailureProgress,
+    rewardedChallengeEraIds: state.rewardedChallengeEraIds,
+    revealedHintRecipeIds: state.revealedHintRecipeIds,
+    failedPairKeys: state.failedPairKeys,
+    unlockedEraIds: state.unlockedEraIds,
+    activeEraId: state.activeEraId,
+    favoriteIds: state.favoriteIds,
+    soundEnabled: state.soundEnabled,
+    experimentHistory: state.experimentHistory,
+    rewardedCollectionIds: state.rewardedCollectionIds,
+    challengeRecords: state.challengeRecords,
   }
 }
 
+function writeProgress(state: PersistedState): string | null {
+  return saveProgress(snapshotProgress(state)) ? null : 'Progress could not be saved.'
+}
+
+function appendExperiment(state: PersistedState, entry: Omit<ExperimentEntry, 'id'>): ExperimentEntry[] {
+  const maximumId = Math.max(0, ...state.experimentHistory.map((experiment) => experiment.id))
+  const history = maximumId >= Number.MAX_SAFE_INTEGER
+    ? state.experimentHistory.map((experiment, index) => ({ ...experiment, id: index + 1 }))
+    : state.experimentHistory
+  const id = Math.max(0, ...history.map((experiment) => experiment.id)) + 1
+  return [...history, { ...entry, id }].slice(-MAX_EXPERIMENT_HISTORY)
+}
+
+function initialProgress(): PersistedState {
+  return snapshotProgress(loadProgress() ?? parseProgress(JSON.stringify({ version: 1, discoveredIds: [] }))!)
+}
+
 const savedProgress = initialProgress()
+soundEngine.setEnabled(savedProgress.soundEnabled)
 
 export const useGameStore = create<GameState>((set, get) => ({
   ...savedProgress,
   firstSlotId: null,
   secondSlotId: null,
   lastAttempt: null,
-  soundEnabled: true,
-  favoriteIds: [],
+  persistenceError: null,
+
+  prepareCombination: (firstId, secondId) => {
+    const state = get()
+    if (![firstId, secondId].every((id) => elementsById.has(id) && state.discoveredIds.includes(id))) return false
+    set({ firstSlotId: firstId, secondSlotId: secondId, lastAttempt: null })
+    return true
+  },
+
+  importProgress: (progress) => {
+    let normalized: SavedProgress | null
+    try {
+      normalized = parseProgress(JSON.stringify(progress))
+    } catch {
+      normalized = null
+    }
+    if (!normalized) {
+      set({ persistenceError: 'Invalid save data.' })
+      return false
+    }
+    const next = snapshotProgress(normalized)
+    const persistenceError = writeProgress(next)
+    if (persistenceError) {
+      set({ persistenceError })
+      return false
+    }
+    soundEngine.setEnabled(next.soundEnabled)
+    set({ ...next, firstSlotId: null, secondSlotId: null, lastAttempt: null, persistenceError: null })
+    return true
+  },
+
+  recordChallengeCompletion: (challengeId, attemptCount) => {
+    if (challengeId !== 'rainmaker' || !Number.isSafeInteger(attemptCount) || attemptCount < 4) return false
+    const state = get()
+    const previous = state.challengeRecords.find((record) => record.challengeId === challengeId)
+    const record = {
+      challengeId, completed: true,
+      bestAttemptCount: Math.min(previous?.bestAttemptCount ?? attemptCount, attemptCount),
+    }
+    const challengeRecords = [...state.challengeRecords.filter((entry) => entry.challengeId !== challengeId), record]
+    const insightCredits = previous?.completed ? state.insightCredits : awardInsight({ credits: state.insightCredits, failureProgress: state.insightFailureProgress }).credits
+    const persistenceError = writeProgress({ ...state, challengeRecords, insightCredits })
+    if (persistenceError) {
+      set({ persistenceError })
+      return false
+    }
+    set({ challengeRecords, insightCredits, persistenceError: null })
+    return true
+  },
 
   toggleSound: () => {
     const next = !get().soundEnabled
     soundEngine.setEnabled(next)
-    set({ soundEnabled: next })
+    const persistenceError = writeProgress({ ...get(), soundEnabled: next })
+    set({ soundEnabled: next, persistenceError })
   },
 
   toggleFavorite: (elementId: string) => {
-    const { favoriteIds } = get()
+    const state = get()
+    if (!elementsById.has(elementId) || !state.discoveredIds.includes(elementId)) return
+    const { favoriteIds } = state
     const next = favoriteIds.includes(elementId)
       ? favoriteIds.filter((id) => id !== elementId)
       : [...favoriteIds, elementId]
-    set({ favoriteIds: next })
+    const persistenceError = writeProgress({ ...state, favoriteIds: next })
+    set({ favoriteIds: next, persistenceError })
   },
 
   selectElement: (elementId) => {
@@ -182,9 +233,14 @@ export const useGameStore = create<GameState>((set, get) => ({
       const nextOpenLeads = state.revealedHintRecipeIds.includes(recipe!.id)
         ? state.revealedHintRecipeIds
         : [...state.revealedHintRecipeIds, recipe!.id]
-      const progress = { ...state, revealedHintRecipeIds: nextOpenLeads }
-      writeProgress(progress)
+      const experimentHistory = appendExperiment(state, {
+        inputs: [firstSlotId, secondSlotId], outcome: 'locked', lockedEraId: result.era,
+      })
+      const progress = { ...state, revealedHintRecipeIds: nextOpenLeads, experimentHistory }
+      const persistenceError = writeProgress(progress)
       set({
+        experimentHistory,
+        persistenceError,
         revealedHintRecipeIds: nextOpenLeads,
         secondSlotId: null,
         lastAttempt: {
@@ -212,12 +268,15 @@ export const useGameStore = create<GameState>((set, get) => ({
       )
       const progress = {
         ...state,
+        experimentHistory: appendExperiment(state, { inputs: [firstSlotId, secondSlotId], outcome: 'no-reaction' }),
         failedPairKeys: nextFailedPairs,
         insightCredits: insight.credits,
         insightFailureProgress: insight.failureProgress,
       }
-      writeProgress(progress)
+      const persistenceError = writeProgress(progress)
       set({
+        experimentHistory: progress.experimentHistory,
+        persistenceError,
         failedPairKeys: nextFailedPairs,
         insightCredits: insight.credits,
         insightFailureProgress: insight.failureProgress,
@@ -287,7 +346,19 @@ export const useGameStore = create<GameState>((set, get) => ({
       ...newlyCompletedEraIds,
     ]
 
+    const newlyCompletedCollectionIds = getNewlyCompletedCollectionIds(
+      collections, nextEraProgress.discoveredIds, state.rewardedCollectionIds,
+    )
+    for (let index = 0; index < newlyCompletedCollectionIds.length; index += 1) {
+      insight = awardInsight(insight)
+    }
+
     const progress: PersistedState = {
+      ...snapshotProgress(state),
+      experimentHistory: appendExperiment(state, {
+        inputs: [firstSlotId, secondSlotId], outcome: isNew ? 'discovery' : 'known', resultId: result.id, recipeId: recipe.id,
+      }),
+      rewardedCollectionIds: [...state.rewardedCollectionIds, ...newlyCompletedCollectionIds],
       discoveredIds: nextEraProgress.discoveredIds,
       discoveredRecipeIds: nextRecipeIds,
       insightCredits: insight.credits,
@@ -298,7 +369,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       unlockedEraIds: nextEraProgress.unlockedEraIds,
       activeEraId: nextActiveEraId,
     }
-    writeProgress(progress)
+    const persistenceError = writeProgress(progress)
 
     if (isNew || unlockedEraId) {
       soundEngine.playNewDiscovery()
@@ -313,6 +384,7 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     set({
       ...progress,
+      persistenceError,
       firstSlotId: null,
       secondSlotId: null,
       lastAttempt: {
@@ -369,8 +441,9 @@ export const useGameStore = create<GameState>((set, get) => ({
       insightCredits: state.insightCredits - 1,
       revealedHintRecipeIds: [...state.revealedHintRecipeIds, recipe.id],
     }
-    writeProgress(progress)
+    const persistenceError = writeProgress(progress)
     set({
+      persistenceError,
       insightCredits: progress.insightCredits,
       revealedHintRecipeIds: progress.revealedHintRecipeIds,
     })
@@ -380,12 +453,17 @@ export const useGameStore = create<GameState>((set, get) => ({
     const state = get()
     if (!state.unlockedEraIds.includes(eraId)) return
 
-    writeProgress({ ...state, activeEraId: eraId })
-    set({ activeEraId: eraId })
+    const persistenceError = writeProgress({ ...state, activeEraId: eraId })
+    set({ activeEraId: eraId, persistenceError })
   },
 
   resetProgress: () => {
     const progress: PersistedState = {
+      favoriteIds: [],
+      soundEnabled: get().soundEnabled,
+      experimentHistory: [],
+      rewardedCollectionIds: [],
+      challengeRecords: [],
       discoveredIds: [...starterElementIds],
       discoveredRecipeIds: [],
       insightCredits: 3,
@@ -396,9 +474,11 @@ export const useGameStore = create<GameState>((set, get) => ({
       unlockedEraIds: ['first-light'],
       activeEraId: 'first-light',
     }
-    writeProgress(progress)
+    const persistenceError = writeProgress(progress)
+    soundEngine.setEnabled(progress.soundEnabled)
     set({
       ...progress,
+      persistenceError,
       firstSlotId: null,
       secondSlotId: null,
       lastAttempt: null,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { elements, elementsById, eras, recipes } from '../content'
+import { collections, elements, elementsById, eras, recipes } from '../content'
 import {
   createRecipeIndex,
   resolveCombination,
@@ -55,7 +55,7 @@ describe('resolveCombination', () => {
 
 describe('first-era content', () => {
   it('has no conflicting, dangling, or unreachable content', () => {
-    expect(validateContent(elements, recipes, eras)).toEqual([])
+    expect(validateContent(elements, recipes, eras, collections)).toEqual([])
   })
 
   it('reaches life through the authored progression chain', () => {
@@ -438,6 +438,101 @@ describe('Bronze Age content', () => {
         'bronze-age',
       )?.id,
     ).toBe('smelted-copper')
+  })
+})
+
+describe('Iron Age content', () => {
+  it.each([
+    ['smelting-air', 'hide', 'gale', 'bellows'],
+    ['bloomery-workshop', 'bellows', 'forge', 'bloomery'],
+    ['smelted-iron', 'iron-ore', 'bloomery', 'iron'],
+    ['worked-iron', 'iron', 'anvil', 'iron-tool'],
+    ['harvest-edge', 'iron-tool', 'crop', 'sickle'],
+    ['opened-road', 'iron-tool', 'land', 'road'],
+    ['roadside-market', 'road', 'town', 'market'],
+  ])('resolves %s in both orders', (id, first, second, result) => {
+    expect(resolveCombination(first, second, recipeIndex)).toMatchObject({ id, result })
+    expect(resolveCombination(second, first, recipeIndex)).toMatchObject({ id, result })
+    expect(elementsById.get(result)?.era).toBe('iron-age')
+  })
+
+  it('contains exactly eight nonstarter elements and the approved gate', () => {
+    const ironElements = elements.filter((element) => element.era === 'iron-age')
+    expect(ironElements).toHaveLength(8)
+    expect(ironElements.every((element) => !element.starter)).toBe(true)
+    expect(eras.find((era) => era.id === 'iron-age')).toMatchObject({
+      unlockRequires: ['bronze', 'forge', 'law', 'city'],
+      grants: ['iron-ore'],
+      landmarkIds: ['iron', 'iron-tool', 'road', 'market'],
+      discoveryGoal: 6,
+    })
+  })
+
+  it('reconciles the gate, grants ore once, and preserves earlier era ordering', () => {
+    const progress = reconcileEraProgress(
+      ['bronze', 'forge', 'law', 'city'], ['first-light', 'stone-age', 'bronze-age'], elements, eras,
+    )
+    expect(progress.unlockedEraIds).toEqual(['first-light', 'stone-age', 'bronze-age', 'iron-age'])
+    expect(progress.discoveredIds).toContain('iron-ore')
+    expect(reconcileEraProgress(progress.discoveredIds, progress.unlockedEraIds, elements, eras)).toEqual(progress)
+  })
+
+  it.each(['bronze', 'forge', 'law', 'city'])('does not unlock before discovering %s', (missing) => {
+    const progress = reconcileEraProgress(
+      ['bronze', 'forge', 'law', 'city', 'hide', 'gale'].filter((id) => id !== missing),
+      ['first-light', 'stone-age', 'bronze-age'], elements, eras,
+    )
+    expect(progress.unlockedEraIds).not.toContain('iron-age')
+    expect(progress.discoveredIds).not.toContain('iron-ore')
+    expect(resolveCombination('hide', 'gale', recipeIndex)?.result).toBe('bellows')
+    expect(progress.unlockedEraIds).not.toContain(elementsById.get('bellows')?.era)
+  })
+
+  it('reconciles legacy Iron discoveries with their ore grant', () => {
+    const progress = reconcileEraProgress(['iron'], ['first-light'], elements, eras)
+    expect(progress.unlockedEraIds).toContain('iron-age')
+    expect(progress.discoveredIds).toContain('iron-ore')
+  })
+
+  it('counts granted ore toward the six-discovery goal but requires every landmark', () => {
+    const ironEra = eras.find((era) => era.id === 'iron-age')!
+    const completed = [...ironEra.landmarkIds, 'iron-ore', 'bellows']
+    expect(isEraChallengeComplete(ironEra, completed, elements)).toBe(true)
+    expect(isEraChallengeComplete(ironEra, completed.filter((id) => id !== 'iron-ore'), elements)).toBe(false)
+    expect(isEraChallengeComplete(ironEra, [...completed.filter((id) => id !== 'market'), 'bloomery'], elements)).toBe(false)
+  })
+
+  it('prioritizes an Iron recipe when Iron Age is active', () => {
+    expect(selectHintRecipe(
+      recipes, ['ember', 'tide', 'stone', 'gale', 'hide', 'iron-ore'], [], [], elements, 'iron-age',
+    )?.id).toBe('smelting-air')
+  })
+})
+
+describe('content contracts', () => {
+  it('rejects duplicate element, recipe, and era IDs', () => {
+    expect(validateContent([...elements, elements[0]], [...recipes, recipes[0]], [...eras, eras[0]])).toEqual(
+      expect.arrayContaining([
+        'Duplicate element id ember.',
+        `Duplicate recipe id ${recipes[0].id}.`,
+        'Duplicate era id first-light.',
+      ]),
+    )
+  })
+
+  it.each([0, -1, 1.5, 9])('rejects an impossible Iron discovery goal of %s', (discoveryGoal) => {
+    const invalidEras = eras.map((era) => era.id === 'iron-age' ? { ...era, discoveryGoal } : era)
+    expect(validateContent(elements, recipes, invalidEras)).toContain(
+      `Era iron-age has impossible discovery goal ${discoveryGoal} with 8 reachable elements.`,
+    )
+  })
+
+  it('uses gated reachable discoveries, not nominal element count, to validate goals', () => {
+    const disconnected = recipes.filter((recipe) => recipe.result !== 'market')
+    const invalidEras = eras.map((era) => era.id === 'iron-age' ? { ...era, discoveryGoal: 8 } : era)
+    expect(validateContent(elements, disconnected, invalidEras)).toContain(
+      'Era iron-age has impossible discovery goal 8 with 7 reachable elements.',
+    )
   })
 })
 

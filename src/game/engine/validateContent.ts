@@ -1,4 +1,5 @@
 import type {
+  CollectionDefinition,
   ElementDefinition,
   EraDefinition,
   RecipeDefinition,
@@ -9,11 +10,46 @@ export function validateContent(
   elements: ElementDefinition[],
   recipes: RecipeDefinition[],
   eras: EraDefinition[],
+  collections: CollectionDefinition[] = [],
 ) {
   const errors: string[] = []
   const elementIds = new Set(elements.map((element) => element.id))
   const eraIds = new Set(eras.map((era) => era.id))
   const recipePairs = new Map<string, string>()
+
+  for (const [kind, definitions] of [
+    ['Element', elements],
+    ['Recipe', recipes],
+    ['Era', eras],
+    ['Collection', collections],
+  ] as const) {
+    const ids = new Set<string>()
+    for (const definition of definitions) {
+      if (ids.has(definition.id)) {
+        errors.push(`Duplicate ${kind.toLowerCase()} id ${definition.id}.`)
+      }
+      ids.add(definition.id)
+    }
+  }
+
+  for (const collection of collections) {
+    if (!eraIds.has(collection.era)) {
+      errors.push(`Collection ${collection.id} references missing era ${collection.era}.`)
+    }
+    if (collection.elementIds.length === 0) {
+      errors.push(`Collection ${collection.id} must have at least one member.`)
+    }
+    const members = new Set<string>()
+    for (const elementId of collection.elementIds) {
+      if (members.has(elementId)) {
+        errors.push(`Collection ${collection.id} repeats member ${elementId}.`)
+      }
+      members.add(elementId)
+      if (!elementIds.has(elementId)) {
+        errors.push(`Collection ${collection.id} references missing element ${elementId}.`)
+      }
+    }
+  }
 
   for (const element of elements) {
     if (!eraIds.has(element.era)) {
@@ -98,6 +134,18 @@ export function validateContent(
   for (const era of eras) {
     if (!unlockedEras.has(era.id)) {
       errors.push(`Era ${era.id} is unreachable from prior era content.`)
+    }
+    const reachableCount = new Set(
+      elements
+        .filter((element) => element.era === era.id && reachable.has(element.id))
+        .map((element) => element.id),
+    ).size
+    if (
+      !Number.isInteger(era.discoveryGoal) ||
+      era.discoveryGoal <= 0 ||
+      era.discoveryGoal > reachableCount
+    ) {
+      errors.push(`Era ${era.id} has impossible discovery goal ${era.discoveryGoal} with ${reachableCount} reachable elements.`)
     }
   }
 

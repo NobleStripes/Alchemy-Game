@@ -1,6 +1,6 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with 89 elements and 105 recipes across a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
+An original combination-discovery game with 115 elements and 146 recipes across four ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
 
 Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed three-tab navigator; choosing an element returns directly to Combine, while the Elements list marks occupied slots. Search matches names and categories, and the Guide separates collections from optional element research with native disclosure controls.
 
@@ -8,7 +8,19 @@ Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed
 
 The Stone Age spreads across hunting, cooking, shelter, art, fibres, clothing, pottery, farming, bread, and settlement. Stone Tool opens Field and Quarry without metal. Generic Metal Tool requires Stone Tool + Metal, so pre-metal human craft has its own foundation. Spear, Hearth, Shelter, Basket, Pottery, and Art now lead into Hunt, Home, Storage, Meal, and Cave Painting.
 
-**The Bronze Age** unlocks after Village, Pottery, Metal, and Quarry, then grants Copper Ore. Its first page branches through Copper and Tin into Bronze and Bronze Tool; through Metal Tool into Wheel and Cart; through Trade into Town and City; and through Papyrus into Writing and Scribe. Bronze, Wheel, Writing, and City are the age landmarks.
+**The Bronze Age** unlocks after Village, Pottery, Metal, and Quarry, then grants Copper Ore. Its page branches through Copper and Tin into Bronze and Bronze Tool; through Metal Tool into Wheel and Cart; through Trade into Town and City; and through Papyrus into Writing and Scribe. Metalworking, records, and maritime trade extend through Forge, Anvil, Law, Harbor, and Voyage. Its seven landmarks are Bronze, Wheel, Writing, City, Forge, Law, and Voyage; completing its age challenge requires all seven and 23 Bronze Age discoveries.
+
+**The Iron Age** is a compact chapter with eight elements and seven recipes. Discovering Bronze, Forge, Law, and City unlocks it and grants Iron Ore. Its elements are Iron Ore, Iron, Bellows, Bloomery, Iron Tool, Sickle, Road, and Market. The age challenge requires Iron, Iron Tool, Road, and Market plus six Iron Age discoveries, including the granted ore. All earlier matter remains available.
+
+The seven new unordered recipes are:
+
+- Hide + Air -> Bellows
+- Bellows + Forge -> Bloomery
+- Iron Ore + Bloomery -> Iron
+- Iron + Anvil -> Iron Tool
+- Iron Tool + Crop -> Sickle
+- Iron Tool + Land -> Road
+- Road + Town -> Market
 
 Society, Knowledge, and Transport join the original categories. Village and City are Society; Papyrus, Map, Writing, and Scribe are Knowledge; Wheel and Cart are Transport. Legacy saves containing reclassified Metal Tool, Glass, Papyrus, Map, or City unlock Bronze Age automatically.
 
@@ -16,7 +28,17 @@ The Guide includes active-era category completion, **Unstudied** markers for ele
 
 Spending Insight reveals one lead without automatically performing it. Selection prioritizes unknown results from the active age, then cross-age formulas using active-age elements, then other unlocked discoveries. Every revealed but unperformed formula remains under **Open leads** regardless of the selected page.
 
+Recorded formulas, eligible Open Leads, and Recent Experiments have prepare-only actions: they fill both slots without combining, spending Insight, or recording an attempt. Locked leads keep their result hidden and their prepare action disabled until the required age unlocks. The Guide retains the latest 50 complete experiments, including repeated pairs, with discovery, known-result, no-reaction, or locked outcomes. Empty-slot submissions and hint requests are excluded; locked outcomes do not reveal the result.
+
+Three themed collections appear separately from category completion: **Stormwatch** (Mist, Cloud, Rain, Storm, Lightning), **Harvest Table** (Field, Crop, Flour, Dough, Bread), and **Ironworkers** (Iron Ore, Bellows, Bloomery, Iron, Iron Tool). Each first completion awards +1 Insight, capped at three. Completing a collection with a full wallet still consumes its one-time reward; overflow is not banked. Loading or importing a save does not award collection rewards.
+
 Agriculture branches from Field into Crop. Crop + Heat creates broad Food, while Bread has one authored route: Crop + Tool → Flour, Flour + Water → Dough, and Dough + Heat → Bread.
+
+## Rainmaker
+
+Rainmaker is an isolated replay challenge targeting Rain, starting with only Fire, Water, Earth, and Air and allowing only recipes with Origins results. Each complete combination counts as an attempt, including repeats and failures; empty submissions do not count. It has no campaign age unlocks or hints.
+
+Challenge discoveries, formulas, experiments, and occupied slots do not change the campaign. A completed run changes campaign metadata only through explicit **Save result**: the first saved completion awards +1 Insight up to the three-credit cap and records the best attempt count. The reward is consumed even at a full wallet; later saved wins can improve the best score but never award another Insight. Returning, abandoning, or retrying does not copy challenge discoveries into the Atlas. Runs are transient: reloading abandons the run and returns to the campaign, with no active-run resume.
 
 ## Run locally
 
@@ -34,12 +56,20 @@ npm test
 npm run build
 ```
 
-The test suite validates recipe order independence, same-element combinations, unknown combinations, alternate discovery routes, graph reachability, rendered tap controls, failure feedback, and local save creation.
+The test suite covers recipe order independence, same-element combinations, unknown combinations, alternate discovery routes, gated graph reachability, rendered controls, failure feedback, prepare-only actions, experiment history, collection rewards, save migration/import/reset, and Rainmaker isolation and completion records.
 
 ## Content
 
 Game definitions live in `src/game/content`. Every recipe is an unordered pair with one deterministic result. Eras define unlock requirements, granted elements, and optional challenge landmarks. `validateContent` checks references, duplicate pairs, era contracts, and simulates gated recipe reachability before applying each era grant.
 
-Progress is stored in browser local storage under a versioned schema. Version 6 records discovered elements, performed formulas, Insight credits and stall progress, rewarded challenges, Open Leads, failed unordered pairs, unlocked eras, and the active page while transparently migrating earlier saves. Migration preserves old hint credits as Insights and marks already-completed challenges as rewarded. Migration removes failed pairs that are valid in the current graph, and successful formulas defensively clear stale failures. Correct guesses from locked pages are preserved as free Open Leads. Legacy saves containing historical discoveries unlock the matching age automatically. Reset returns the game to Origins with four starting elements and three Insights.
-
 Content validation simulates actual play: resolve recipes only in unlocked eras, check landmark requirements, grant newly unlocked elements, and repeat. Circular era gates and unreachable page content fail validation before build.
+
+## Saves And Settings
+
+Progress is stored locally in the browser under `unwritten-atlas-progress`. Version 7 includes discovered elements, performed formulas, Insight credits and stall progress, age challenge reward markers, Open Leads, failed unordered pairs, unlocked ages, and the active page, plus favorites, sound preference, the latest 50 experiments, collection reward markers, and Rainmaker completion/best-score records. In-flight challenge state is not saved. There are no accounts or cloud sync.
+
+Settings exports the campaign as a JSON save file. Import validates and normalizes the file, previews its discovery count and active age, and requires confirmation to **replace**, not merge, current progress. Invalid JSON, malformed saves, unsupported or future versions, and files larger than 1 MiB are rejected. Rejected or canceled imports leave current progress unchanged; replacement is applied only after local storage succeeds. Import and reset are unavailable during an active challenge; export contains the campaign, never the temporary run. Storage failures are reported, so continued in-memory play is not a guarantee that progress was saved.
+
+Earlier saves migrate to v7, preserving old hint credits as Insights within the three-credit cap. Favorites, experiment history, and challenge records default to empty, and sound defaults to enabled. Already-completed collections in v1-v6 saves are marked rewarded without retroactive Insight; existing age challenge reward migration is retained. Migration removes failed pairs that are valid in the current graph, and successful formulas defensively clear stale failures. Correct guesses from locked pages remain free Open Leads. Historical discoveries reconcile matching age unlocks and grants without retroactive unlock rewards.
+
+Reset returns the campaign to Origins with four starting elements and three Insights. It clears discoveries beyond the starters, formulas, leads, failure progress, favorites, experiment history, reward markers, and challenge completion/best-score records, while preserving the sound preference.
