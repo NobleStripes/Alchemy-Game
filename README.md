@@ -30,7 +30,7 @@ Spending Insight reveals one lead without automatically performing it. Selection
 
 Recorded formulas, eligible Open Leads, and Recent Experiments have prepare-only actions: they fill both slots without combining, spending Insight, or recording an attempt. Locked leads keep their result hidden and their prepare action disabled until the required age unlocks. The Guide retains the latest 50 complete experiments, including repeated pairs, with discovery, known-result, no-reaction, or locked outcomes. Empty-slot submissions and hint requests are excluded; locked outcomes do not reveal the result.
 
-Three themed collections appear separately from category completion: **Stormwatch** (Mist, Cloud, Rain, Storm, Lightning), **Harvest Table** (Field, Crop, Flour, Dough, Bread), and **Ironworkers** (Iron Ore, Bellows, Bloomery, Iron, Iron Tool). Each first completion awards +1 Insight, capped at three. Completing a collection with a full wallet still consumes its one-time reward; overflow is not banked. Loading or importing a save does not award collection rewards.
+Three themed collections appear separately from category completion: **Stormwatch** (Mist, Cloud, Rain, Storm, Lightning), **Harvest Table** (Field, Crop, Flour, Dough, Bread), and **Ironworkers** (Iron Ore, Bellows, Bloomery, Iron, Iron Tool). Each first completion awards +1 Insight, capped at three. Completing a collection with a full wallet still consumes its one-time reward; overflow is not banked. Loading a save does not award collection rewards.
 
 Agriculture branches from Field into Crop. Crop + Heat creates broad Food, while Bread has one authored route: Crop + Tool → Flour, Flour + Water → Dough, and Dough + Heat → Bread.
 
@@ -56,7 +56,7 @@ npm test
 npm run build
 ```
 
-The test suite covers recipe order independence, same-element combinations, unknown combinations, alternate discovery routes, gated graph reachability, rendered controls, failure feedback, prepare-only actions, experiment history, collection rewards, save migration/import/reset, and Rainmaker isolation and completion records.
+The test suite covers recipe order independence, same-element combinations, unknown combinations, alternate discovery routes, gated graph reachability, rendered controls, failure feedback, prepare-only actions, experiment history, collection rewards, local autosave, persistent preferences, save migration/reset, and Rainmaker isolation and completion records.
 
 ## Content
 
@@ -68,7 +68,7 @@ Content validation simulates actual play: resolve recipes only in unlocked eras,
 
 Progress is stored locally in the browser under `unwritten-atlas-progress`. Version 7 includes discovered elements, performed formulas, Insight credits and stall progress, age challenge reward markers, Open Leads, failed unordered pairs, unlocked ages, and the active page, plus favorites, sound preference, the latest 50 experiments, collection reward markers, and Rainmaker completion/best-score records. In-flight challenge state is not saved. There are no accounts or cloud sync.
 
-Settings exports the campaign as a JSON save file. Import validates and normalizes the file, previews its discovery count and active age, and requires confirmation to **replace**, not merge, current progress. Invalid JSON, malformed saves, unsupported or future versions, and files larger than 1 MiB are rejected. Rejected or canceled imports leave current progress unchanged; replacement is applied only after local storage succeeds. Import and reset are unavailable during an active challenge; export contains the campaign, never the temporary run. Storage failures are reported, so continued in-memory play is not a guarantee that progress was saved.
+Campaign progress is saved automatically and restored on reload. Settings controls the persistent sound preference; favorites also persist immediately. Manual file import and export are not available. Existing local saves remain compatible. Storage failures are reported, so continued in-memory play is not a guarantee that progress was saved.
 
 Earlier saves migrate to v7, preserving old hint credits as Insights within the three-credit cap. Favorites, experiment history, and challenge records default to empty, and sound defaults to enabled. Already-completed collections in v1-v6 saves are marked rewarded without retroactive Insight; existing age challenge reward migration is retained. Migration removes failed pairs that are valid in the current graph, and successful formulas defensively clear stale failures. Correct guesses from locked pages remain free Open Leads. Historical discoveries reconcile matching age unlocks and grants without retroactive unlock rewards.
 

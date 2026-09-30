@@ -4,7 +4,6 @@ import '@testing-library/jest-dom/vitest'
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { exportProgress } from './game/state/persistence'
 import App from './App'
 import { useGameStore } from './game/state/useGameStore'
 
@@ -41,20 +40,6 @@ describe('alchemy worktable', () => {
     expect(screen.getByRole('button', { name: 'Show Combine panel' })).toHaveAttribute('aria-pressed', 'true')
     expect(useGameStore.getState().discoveredIds).not.toContain('steam')
     expect(useGameStore.getState().experimentHistory).toEqual([])
-  })
-
-  it('hides removed element research after confirming a replacement import', async () => {
-    const user = userEvent.setup()
-    const freshSave = exportProgress(useGameStore.getState())
-    useGameStore.getState().transmuteWith('ember', 'tide')
-    render(<App />)
-    await user.click(screen.getByRole('button', { name: 'Inspect Steam' }))
-    expect(screen.getByText('Fire + Water → Steam')).toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: 'Open settings' }))
-    await user.upload(screen.getByLabelText('Import save'), new File([freshSave], 'fresh.json', { type: 'application/json' }))
-    await user.click(await screen.findByRole('button', { name: 'Replace progress' }))
-    expect(screen.queryByText('Fire + Water → Steam')).toBeNull()
-    expect(screen.queryByRole('heading', { name: 'Steam' })).toBeNull()
   })
 
   beforeEach(() => {

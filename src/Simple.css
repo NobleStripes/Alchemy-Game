@@ -731,17 +731,11 @@
 .save-dialog::backdrop { background: rgba(38, 50, 56, 0.5); }
 .dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
 .dialog-heading h2 { margin: 0; font: 900 24px/1.2 var(--display); }
-.dialog-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 18px 0; }
-.dialog-actions button, .save-file-label, .challenge-run button:not(.element-tile) { min-height: 44px; display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--surface); font: 800 13px/1.3 var(--ui); cursor: pointer; }
-.dialog-actions button:hover:not(:disabled), .challenge-run button:hover:not(:disabled):not(.element-tile) { border-color: var(--teal); background: #e7f6f2; }
-.dialog-actions button:disabled, .challenge-run button:disabled { opacity: 0.5; cursor: not-allowed; }
-.dialog-actions input[type='file'] { width: 100%; min-width: 0; font: 12px var(--ui); }
-.dialog-actions input[type='file']::file-selector-button { min-height: 44px; margin-right: 8px; color: var(--ink); background: #e7f6f2; border: 1px solid var(--line); border-radius: 5px; cursor: pointer; }
+.challenge-run button:not(.element-tile) { min-height: 44px; display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--surface); font: 800 13px/1.3 var(--ui); cursor: pointer; }
+.challenge-run button:hover:not(:disabled):not(.element-tile) { border-color: var(--teal); background: #e7f6f2; }
+.challenge-run button:disabled { opacity: 0.5; cursor: not-allowed; }
 .sound-preference { min-height: 44px; display: flex; align-items: center; gap: 10px; font-weight: 800; }
 .sound-preference input { width: 20px; height: 20px; accent-color: var(--teal); }
-.save-preview { border-top: 1px solid var(--line); padding-top: 12px; }
-.save-preview h3 { font-size: 16px; margin: 8px 0; }
-.save-preview p { font-size: 14px; margin: 8px 0; }
 
 .challenge-run { width: min(1120px, 100%); margin: 0 auto; padding: 24px; box-sizing: border-box; }
 .challenge-header { display: flex; align-items: center; gap: 16px; padding-bottom: 22px; border-bottom: 2px solid var(--ink); }

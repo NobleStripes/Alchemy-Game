@@ -21,7 +21,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Codex } from './features/codex/Codex'
 import { ChallengeRun } from './features/challenges/ChallengeRun'
 import { Journal } from './features/journal/Journal'
-import { SaveSettings } from './features/settings/SaveSettings'
+import { Settings as SettingsDialog } from './features/settings/Settings'
 import { Worktable } from './features/worktable/Worktable'
 import { elements, eras } from './game/content'
 import { useGameStore } from './game/state/useGameStore'
@@ -138,7 +138,7 @@ function App() {
             className="icon-button"
             onClick={() => setSettingsOpen(true)}
             aria-label="Open settings"
-            title="Save and settings"
+            title="Settings"
           >
             <Settings size={18} />
           </button>
@@ -166,9 +166,8 @@ function App() {
 
       {persistenceError && <p className="persistence-error" role="alert">{persistenceError}</p>}
       {settingsOpen && (
-        <SaveSettings
+        <SettingsDialog
           onClose={() => setSettingsOpen(false)}
-          onImported={() => setActivePanel('combine')}
         />
       )}
 

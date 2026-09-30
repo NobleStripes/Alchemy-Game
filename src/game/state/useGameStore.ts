@@ -39,7 +39,6 @@ interface GameState extends PersistedState {
   lastAttempt: AttemptResult | null
   persistenceError: string | null
   prepareCombination: (firstId: string, secondId: string) => boolean
-  importProgress: (progress: SavedProgress) => boolean
   recordChallengeCompletion: (challengeId: string, attemptCount: number) => boolean
   toggleSound: () => void
   toggleFavorite: (elementId: string) => void
@@ -106,28 +105,6 @@ export const useGameStore = create<GameState>((set, get) => ({
     const state = get()
     if (![firstId, secondId].every((id) => elementsById.has(id) && state.discoveredIds.includes(id))) return false
     set({ firstSlotId: firstId, secondSlotId: secondId, lastAttempt: null })
-    return true
-  },
-
-  importProgress: (progress) => {
-    let normalized: SavedProgress | null
-    try {
-      normalized = parseProgress(JSON.stringify(progress))
-    } catch {
-      normalized = null
-    }
-    if (!normalized) {
-      set({ persistenceError: 'Invalid save data.' })
-      return false
-    }
-    const next = snapshotProgress(normalized)
-    const persistenceError = writeProgress(next)
-    if (persistenceError) {
-      set({ persistenceError })
-      return false
-    }
-    soundEngine.setEnabled(next.soundEnabled)
-    set({ ...next, firstSlotId: null, secondSlotId: null, lastAttempt: null, persistenceError: null })
     return true
   },
 

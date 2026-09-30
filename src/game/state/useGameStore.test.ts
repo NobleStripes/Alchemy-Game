@@ -24,7 +24,7 @@ describe('campaign state', () => {
   it('rebases exhausted history IDs so the next saved attempt remains loadable', () => {
     const progress = fresh()
     progress.experimentHistory = [{ id: Number.MAX_SAFE_INTEGER, inputs: ['gale', 'tide'], outcome: 'no-reaction' }]
-    expect(state().importProgress(progress)).toBe(true)
+    useGameStore.setState(snapshotProgress(progress))
     state().transmuteWith('ember', 'tide')
     expect(state().experimentHistory.map((entry) => entry.id)).toEqual([1, 2])
     expect(loadProgress()?.discoveredIds).toContain('steam')
@@ -117,32 +117,6 @@ describe('campaign state', () => {
     expect(disk()).toBe(saved)
     state().toggleFavorite('ember')
     expect(loadProgress()?.favoriteIds).toEqual([])
-  })
-
-  it('replaces rather than merges imports, normalizes them and clears transient slots', () => {
-    state().transmuteWith('ember', 'tide')
-    state().prepareCombination('steam', 'ember')
-    const progress = { ...fresh(), discoveredIds: ['gale', 'gale', 'unknown'], favoriteIds: ['gale'], soundEnabled: false }
-    expect(state().importProgress(progress)).toBe(true)
-    expect(campaign()).toEqual(snapshotProgress(parseProgress(exportProgress(progress))!))
-    expect(state()).toMatchObject({ firstSlotId: null, secondSlotId: null, lastAttempt: null, persistenceError: null })
-    expect(state().discoveredIds).not.toContain('steam')
-    expect(soundEngine.setEnabled).toHaveBeenCalledWith(false)
-    expect(loadProgress()).toEqual({ version: 7, ...campaign() })
-  })
-
-  it('leaves all campaign data, slots and disk untouched after failed or invalid imports', () => {
-    state().transmuteWith('gale', 'tide')
-    const before = state()
-    const saved = disk()
-    failWrites()
-    expect(state().importProgress({ ...fresh(), soundEnabled: false })).toBe(false)
-    expect(state()).toEqual({ ...before, persistenceError: 'Progress could not be saved.' })
-    expect(disk()).toBe(saved)
-    expect(soundEngine.setEnabled).not.toHaveBeenCalled()
-    expect(state().importProgress({ ...fresh(), version: 99 } as unknown as SavedProgress)).toBe(false)
-    expect(state()).toEqual({ ...before, persistenceError: 'Invalid save data.' })
-    expect(disk()).toBe(saved)
   })
 
   it('resets favorites, history and rewards but preserves and synchronizes sound', () => {
@@ -289,7 +263,7 @@ describe('campaign state', () => {
     expect(state().rewardedCollectionIds).toEqual([collection.id])
     expect(state().lastAttempt?.insightEarned).toBe(0)
     const progress = loadProgress()!
-    expect(state().importProgress(progress)).toBe(true)
+    useGameStore.setState(snapshotProgress(progress))
     expect(state().insightCredits).toBe(1)
     state().transmuteWith(...recipe.inputs)
     expect(state().insightCredits).toBe(1)
@@ -309,16 +283,19 @@ describe('campaign state', () => {
     expect(state().insightCredits).toBe(0)
   })
 
-  it('does not award collections on import, loading, preparation or a failed reaction', async () => {
+  it('does not award collections on loading, preparation or a failed reaction', async () => {
     const collection = collections[0]
     const progress = { ...fresh(), discoveredIds: [...starterElementIds, ...collection.elementIds], insightCredits: 0 }
-    expect(state().importProgress(progress)).toBe(true)
-    expect(state().rewardedCollectionIds).toEqual([])
-    expect(state().prepareCombination('gale', 'tide')).toBe(true)
-    expect(state().insightCredits).toBe(0)
-    state().transmute()
-    expect(state().rewardedCollectionIds).toEqual([])
-    expect(state().insightCredits).toBe(0)
+    window.localStorage.setItem(saveKey, exportProgress(progress))
+    vi.resetModules()
+    const loadedStore = (await import('./useGameStore')).useGameStore
+    const loadedState = () => loadedStore.getState()
+    expect(loadedState().rewardedCollectionIds).toEqual([])
+    expect(loadedState().prepareCombination('gale', 'tide')).toBe(true)
+    expect(loadedState().insightCredits).toBe(0)
+    loadedState().transmute()
+    expect(loadedState().rewardedCollectionIds).toEqual([])
+    expect(loadedState().insightCredits).toBe(0)
     vi.resetModules()
     const reloaded = (await import('./useGameStore')).useGameStore.getState()
     expect(reloaded.rewardedCollectionIds).toEqual([])
