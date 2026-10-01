@@ -33,6 +33,7 @@ function App() {
   const challengeButton = useRef<HTMLButtonElement>(null)
   const challengeSurface = useRef<HTMLDivElement>(null)
   const returningFromChallenge = useRef(false)
+  useEffect(() => useGameStore.connectProgress(), [])
   useEffect(() => {
     if (challengeActive) {
       challengeSurface.current?.querySelector<HTMLButtonElement>('button')?.focus()
@@ -78,6 +79,7 @@ function App() {
   if (challengeActive) {
     return (
       <div className="game-shell" ref={challengeSurface}>
+        {persistenceError && <p className="persistence-error" role="alert">{persistenceError}</p>}
         <ChallengeRun onExit={() => setChallengeActive(false)} />
       </div>
     )

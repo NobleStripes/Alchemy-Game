@@ -2,7 +2,7 @@
 
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { collections, elements, eras, starterElementIds } from '../content'
-import { exportProgress, loadProgress, MAX_EXPERIMENT_HISTORY, MAX_SAVE_BYTES, parseProgress, saveProgress, type SavedProgress } from './persistence'
+import { createProgressPersistence, CONFLICT_ERROR, exportProgress, loadProgress, readProgress, MAX_EXPERIMENT_HISTORY, MAX_SAVE_BYTES, parseProgress, saveProgress, type SavedProgress } from './persistence'
 
 const defaults = {
   favoriteIds: [], soundEnabled: true, experimentHistory: [],
@@ -16,7 +16,84 @@ function fresh(): SavedProgress {
 describe('progress persistence', () => {
   beforeEach(() => {
     vi.restoreAllMocks()
+    vi.unstubAllGlobals()
     window.localStorage.clear()
+  })
+
+  it('distinguishes missing, invalid, loaded and unreadable saves without writing', () => {
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    expect(readProgress()).toEqual({ status: 'missing', raw: null })
+    for (const raw of ['', '{', JSON.stringify({ version: 99 })]) {
+      window.localStorage.setItem('unwritten-atlas-progress', raw)
+      writes.mockClear()
+      expect(readProgress()).toEqual({ status: 'failed', reason: 'invalid' })
+      expect(window.localStorage.getItem('unwritten-atlas-progress')).toBe(raw)
+      expect(writes).not.toHaveBeenCalled()
+    }
+    const raw = exportProgress(fresh())
+    window.localStorage.setItem('unwritten-atlas-progress', raw)
+    expect(readProgress()).toEqual({ status: 'loaded', raw, progress: fresh() })
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new Error('denied') })
+    expect(readProgress()).toEqual({ status: 'failed', reason: 'unavailable' })
+  })
+
+  it('serializes competing tabs and refuses a stale queued snapshot', async () => {
+    const callbacks: Array<() => void> = []
+    vi.stubGlobal('navigator', { locks: { request: vi.fn((_name, _options, callback) =>
+      new Promise((resolve) => { callbacks.push(() => resolve(callback())) })) } })
+    const first = createProgressPersistence()
+    const second = createProgressPersistence()
+    const firstProgress = { ...fresh(), favoriteIds: ['ember'] }
+    const secondProgress = { ...fresh(), soundEnabled: false }
+    const firstWrite = first.write(firstProgress)
+    const secondWrite = second.write(secondProgress)
+    callbacks.shift()!()
+    expect(await firstWrite).toBe(true)
+    const original = localStorage.getItem('unwritten-atlas-progress')
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    callbacks.shift()!()
+    expect(await secondWrite).toBe(false)
+    expect(second.error).toBe(CONFLICT_ERROR)
+    expect(localStorage.getItem('unwritten-atlas-progress')).toBe(original)
+    expect(writes).not.toHaveBeenCalled()
+    vi.unstubAllGlobals()
+  })
+
+  it('adopts external saves only when clean and ignores delayed unchanged events', () => {
+    const clean = createProgressPersistence()
+    const dirty = createProgressPersistence()
+    const progress = { ...fresh(), favoriteIds: ['ember'] }
+    saveProgress(progress)
+    expect(clean.synchronize(fresh())).toEqual(progress)
+    expect(clean.synchronize(progress)).toBeNull()
+    expect(dirty.synchronize({ ...fresh(), soundEnabled: false })).toBeNull()
+    expect(dirty.error).toBe(CONFLICT_ERROR)
+    localStorage.removeItem('unwritten-atlas-progress')
+    expect(clean.synchronize(progress)).toEqual(fresh())
+    expect(dirty.synchronize(fresh())).toBeNull()
+    expect(dirty.error).toBe(CONFLICT_ERROR)
+  })
+
+  it('blocks saving without Web Locks rather than using unsafe writes', async () => {
+    vi.stubGlobal('navigator', {})
+    const persistence = createProgressPersistence()
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    expect(await persistence.write(fresh())).toBe(false)
+    expect(persistence.error).toContain('Safe saving is unavailable')
+    expect(writes).not.toHaveBeenCalled()
+    vi.unstubAllGlobals()
+  })
+
+  it('latches lock rejection and preserves the original save', async () => {
+    const original = exportProgress(fresh())
+    localStorage.setItem('unwritten-atlas-progress', original)
+    vi.stubGlobal('navigator', { locks: { request: () => Promise.reject(new Error('denied')) } })
+    const persistence = createProgressPersistence()
+    expect(await persistence.write({ ...fresh(), soundEnabled: false })).toBe(false)
+    expect(persistence.error).toContain('Safe saving is unavailable')
+    expect(localStorage.getItem('unwritten-atlas-progress')).toBe(original)
+    expect(persistence.synchronize(fresh())).toBeNull()
+    vi.unstubAllGlobals()
   })
 
   it('migrates version 1 element progress without inventing recipe history', () => {

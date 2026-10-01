@@ -43,6 +43,7 @@ export function Journal({
   const experimentHistory = useGameStore((state) => state.experimentHistory)
   const rewardedCollectionIds = useGameStore((state) => state.rewardedCollectionIds)
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null)
+  const [formulaSearch, setFormulaSearch] = useState('')
 
   function prepareButton(inputs: [string, string], requiredEraId?: string) {
     const firstInput = elementsById.get(inputs[0])
@@ -107,10 +108,16 @@ export function Journal({
       element.era === eraId && discoveredIds.includes(element.id),
   )
   const availableElements = elements.filter((element) => element.era === eraId)
-  const eraFormulaCount = discoveredRecipeIds.filter((recipeId) => {
-    const recipe = recipes.find((candidate) => candidate.id === recipeId)
-    return recipe && elementsById.get(recipe.result)?.era === eraId
-  }).length
+  const recordedFormulas = recipes.filter((recipe) =>
+    discoveredRecipeIds.includes(recipe.id) && elementsById.get(recipe.result)?.era === eraId,
+  )
+  const formulaQuery = formulaSearch.trim().toLocaleLowerCase()
+  const matchingFormulas = recordedFormulas.filter((recipe) =>
+    [...recipe.inputs, recipe.result].some((id) =>
+      elementsById.get(id)?.name.toLocaleLowerCase().includes(formulaQuery),
+    ),
+  )
+  const eraFormulaCount = recordedFormulas.length
   const landmarks = landmarkIds
     .map((elementId) => elementsById.get(elementId))
     .filter((element) => element !== undefined)
@@ -312,6 +319,34 @@ export function Journal({
             </button>
           ))}
         </div>
+      </details>
+
+      <details className="guide-section formula-archive">
+        <summary>Recorded Formulas ({eraFormulaCount})</summary>
+        <label className="formula-search-label" htmlFor="formula-search">Search formulas</label>
+        <input
+          id="formula-search"
+          className="formula-search"
+          type="search"
+          value={formulaSearch}
+          onChange={(event) => setFormulaSearch(event.target.value)}
+        />
+        {recordedFormulas.length === 0 ? (
+          <p className="journal-empty">No formulas recorded in this age yet.</p>
+        ) : matchingFormulas.length === 0 ? (
+          <p className="journal-empty">No matching formulas.</p>
+        ) : (
+          <ul className="formula-list" aria-label="Recorded formula archive">
+            {matchingFormulas.map((recipe) => (
+              <li key={recipe.id} className="formula-card archive-formula">
+                <strong>
+                  {elementsById.get(recipe.inputs[0])?.name} + {elementsById.get(recipe.inputs[1])?.name} → {elementsById.get(recipe.result)?.name}
+                </strong>
+                {prepareButton(recipe.inputs)}
+              </li>
+            ))}
+          </ul>
+        )}
       </details>
 
       <details className="guide-section experiment-section">

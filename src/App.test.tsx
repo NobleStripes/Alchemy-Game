@@ -1,13 +1,20 @@
 // @vitest-environment jsdom
 
+import './game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
-import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import App from './App'
 import { useGameStore } from './game/state/useGameStore'
 
 describe('alchemy worktable', () => {
+  it('keeps a save-protection warning visible during an isolated challenge', async () => {
+    useGameStore.setState({ persistenceError: 'Autosaving is paused; this session is not saved.' })
+    render(<App />)
+    await userEvent.setup().click(screen.getByRole('button', { name: 'Play Rainmaker challenge' }))
+    expect(screen.getByRole('alert')).toHaveTextContent('Autosaving is paused')
+  })
   it('opens settings and restores focus to its trigger', async () => {
     const user = userEvent.setup()
     render(<App />)
@@ -70,7 +77,7 @@ describe('alchemy worktable', () => {
     )
 
     await user.click(screen.getByRole('button', { name: 'Inspect Steam' }))
-    expect(screen.getByText('Fire + Water → Steam')).toBeInTheDocument()
+    expect(within(screen.getByText('Recorded formulas').closest('section')!).getByText('Fire + Water → Steam')).toBeInTheDocument()
     expect(screen.getByText('3 formulas remain undeciphered.')).toBeInTheDocument()
   })
 

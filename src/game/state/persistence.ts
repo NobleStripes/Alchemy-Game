@@ -5,7 +5,7 @@ import { reconcileEraProgress } from '../engine/eraProgress'
 import { isEraChallengeComplete } from '../engine/insightRules'
 import { pairKey } from '../engine/resolveCombination'
 
-const SAVE_KEY = 'unwritten-atlas-progress'
+export const SAVE_KEY = 'unwritten-atlas-progress'
 const validRecipePairKeys = new Set(
   recipes.map((recipe) => pairKey(...recipe.inputs)),
 )
@@ -183,16 +183,121 @@ function normalizeProgress(progress: SavedProgress, legacy: boolean): SavedProgr
   }
 }
 
-export function loadProgress(): SavedProgress | null {
-  if (typeof window === 'undefined') return null
+export type ProgressLoad =
+  | { status: 'missing'; raw: null }
+  | { status: 'loaded'; raw: string; progress: SavedProgress }
+  | { status: 'failed'; reason: 'unavailable' | 'invalid' }
+
+export function readProgress(): ProgressLoad {
+  if (typeof window === 'undefined') return { status: 'failed', reason: 'unavailable' }
 
   try {
     const rawProgress = window.localStorage.getItem(SAVE_KEY)
-    if (!rawProgress) return null
+    if (rawProgress === null) return { status: 'missing', raw: null }
 
-    return parseProgress(rawProgress)
+    const progress = parseProgress(rawProgress)
+    return progress ? { status: 'loaded', raw: rawProgress, progress } : { status: 'failed', reason: 'invalid' }
   } catch {
-    return null
+    return { status: 'failed', reason: 'unavailable' }
+  }
+}
+
+export function loadProgress(): SavedProgress | null {
+  const result = readProgress()
+  return result.status === 'loaded' ? result.progress : null
+}
+
+export const LOAD_PROTECTION_ERROR = 'Existing progress could not be read. Autosaving is paused; this session is not saved. Reload to try again.'
+export const CONFLICT_ERROR = 'Progress changed in another tab while this session had unsaved changes. Autosaving is paused. Reload to use the saved progress.'
+const LOCK_ERROR = 'Safe saving is unavailable in this browser. This session is not saved. Reload in a browser with Web Locks support.'
+
+export function freshProgress(): SavedProgress {
+  return parseProgress(JSON.stringify({ version: 1, discoveredIds: [] }))!
+}
+
+export function createProgressPersistence() {
+  const loaded = readProgress()
+  let accepted = loaded.status === 'loaded' ? loaded.progress : freshProgress()
+  let raw = loaded.status === 'loaded' ? loaded.raw : null
+  let blocked = loaded.status === 'failed' ? LOAD_PROTECTION_ERROR : null
+  let error: string | null = blocked
+  const pending = new Set<Promise<boolean>>()
+  let notify = (_error: string | null) => { void _error }
+
+  function fail(message: string, protect = false) {
+    if (protect) blocked = message
+    error = blocked ?? message
+    notify(error)
+    return false
+  }
+
+  function synchronize(current: Omit<SavedProgress, 'version'>): SavedProgress | null {
+    if (blocked) return null
+    const next = readProgress()
+    if (next.status === 'failed') {
+      fail(LOAD_PROTECTION_ERROR, true)
+      return null
+    }
+    if (next.raw === raw) return null
+    if (exportProgress(current) !== exportProgress(accepted)) {
+      fail(CONFLICT_ERROR, true)
+      return null
+    }
+    accepted = next.status === 'loaded' ? next.progress : freshProgress()
+    raw = next.raw
+    error = null
+    notify(null)
+    return accepted
+  }
+
+  function write(progress: Omit<SavedProgress, 'version'>, commit?: () => void): Promise<boolean> {
+    if (blocked) return Promise.resolve(false)
+    if (typeof navigator === 'undefined' || !navigator.locks?.request) {
+      fail(LOCK_ERROR, true)
+      return Promise.resolve(false)
+    }
+    const serialized = exportProgress(progress)
+    let request: Promise<boolean>
+    try {
+      request = navigator.locks.request(`${SAVE_KEY}:write`, { mode: 'exclusive' }, () => {
+        if (blocked) return false
+        const next = readProgress()
+        if (next.status === 'failed') return fail(LOAD_PROTECTION_ERROR, true)
+        if (next.raw !== raw) return fail(CONFLICT_ERROR, true)
+        try {
+          if (new TextEncoder().encode(serialized).byteLength > MAX_SAVE_BYTES) return fail('Progress could not be saved.')
+          window.localStorage.setItem(SAVE_KEY, serialized)
+          raw = serialized
+          accepted = { ...progress, version: 7 }
+          error = null
+          commit?.()
+          notify(null)
+          return true
+        } catch {
+          return fail('Progress could not be saved.')
+        }
+      })
+    } catch {
+      fail(LOCK_ERROR, true)
+      return Promise.resolve(false)
+    }
+    const settled = Promise.resolve(request).catch(() => fail(LOCK_ERROR, true))
+    pending.add(settled)
+    void settled.then(() => pending.delete(settled))
+    return settled
+  }
+
+  async function flush() {
+    while (pending.size) await Promise.all([...pending])
+  }
+
+  return {
+    initial: accepted,
+    get error() { return error },
+    synchronize,
+    write,
+    flush,
+    onError(listener: (error: string | null) => void) { notify = listener },
   }
 }
 

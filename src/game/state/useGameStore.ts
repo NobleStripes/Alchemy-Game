@@ -16,7 +16,7 @@ import {
   resolveCombination,
 } from '../engine/resolveCombination'
 import { triggerConfetti } from '../fx/confetti'
-import { loadProgress, MAX_EXPERIMENT_HISTORY, parseProgress, saveProgress, type ExperimentEntry, type SavedProgress } from './persistence'
+import { createProgressPersistence, SAVE_KEY, MAX_EXPERIMENT_HISTORY, type ExperimentEntry, type SavedProgress } from './persistence'
 
 type SlotName = 'first' | 'second'
 type PersistedState = Omit<SavedProgress, 'version'>
@@ -39,7 +39,7 @@ interface GameState extends PersistedState {
   lastAttempt: AttemptResult | null
   persistenceError: string | null
   prepareCombination: (firstId: string, secondId: string) => boolean
-  recordChallengeCompletion: (challengeId: string, attemptCount: number) => boolean
+  recordChallengeCompletion: (challengeId: string, attemptCount: number) => Promise<ChallengeSaveReceipt>
   toggleSound: () => void
   toggleFavorite: (elementId: string) => void
   selectElement: (elementId: string) => void
@@ -51,6 +51,12 @@ interface GameState extends PersistedState {
   requestHint: () => void
   setActiveEra: (eraId: string) => void
   resetProgress: () => void
+}
+
+interface ChallengeSaveReceipt {
+  saved: boolean
+  firstCompletion: boolean
+  insightEarned: number
 }
 
 const recipeIndex = createRecipeIndex(recipes)
@@ -74,10 +80,6 @@ export function snapshotProgress(state: PersistedState): PersistedState {
   }
 }
 
-function writeProgress(state: PersistedState): string | null {
-  return saveProgress(snapshotProgress(state)) ? null : 'Progress could not be saved.'
-}
-
 function appendExperiment(state: PersistedState, entry: Omit<ExperimentEntry, 'id'>): ExperimentEntry[] {
   const maximumId = Math.max(0, ...state.experimentHistory.map((experiment) => experiment.id))
   const history = maximumId >= Number.MAX_SAFE_INTEGER
@@ -87,19 +89,27 @@ function appendExperiment(state: PersistedState, entry: Omit<ExperimentEntry, 'i
   return [...history, { ...entry, id }].slice(-MAX_EXPERIMENT_HISTORY)
 }
 
-function initialProgress(): PersistedState {
-  return snapshotProgress(loadProgress() ?? parseProgress(JSON.stringify({ version: 1, discoveredIds: [] }))!)
-}
+export function createGameStore() {
+  const persistence = createProgressPersistence()
+  let challengePending = false
+  const savedProgress = snapshotProgress(persistence.initial)
+  soundEngine.setEnabled(savedProgress.soundEnabled)
+  function writeProgress(state: PersistedState): string | null {
+    void persistence.write(snapshotProgress(state))
+    return persistence.error
+  }
 
-const savedProgress = initialProgress()
-soundEngine.setEnabled(savedProgress.soundEnabled)
-
-export const useGameStore = create<GameState>((set, get) => ({
+  const store = create<GameState>((set, read) => {
+    const get = () => {
+      synchronizeProgress()
+      return read()
+    }
+    return ({
   ...savedProgress,
   firstSlotId: null,
   secondSlotId: null,
   lastAttempt: null,
-  persistenceError: null,
+  persistenceError: persistence.error,
 
   prepareCombination: (firstId, secondId) => {
     const state = get()
@@ -108,9 +118,14 @@ export const useGameStore = create<GameState>((set, get) => ({
     return true
   },
 
-  recordChallengeCompletion: (challengeId, attemptCount) => {
-    if (challengeId !== 'rainmaker' || !Number.isSafeInteger(attemptCount) || attemptCount < 4) return false
+  recordChallengeCompletion: async (challengeId, attemptCount) => {
+    const failure = { saved: false, firstCompletion: false, insightEarned: 0 }
+    if (challengePending || challengeId !== 'rainmaker' || !Number.isSafeInteger(attemptCount) || attemptCount < 4) return failure
+    challengePending = true
+    await persistence.flush()
+    challengePending = false
     const state = get()
+    challengePending = true
     const previous = state.challengeRecords.find((record) => record.challengeId === challengeId)
     const record = {
       challengeId, completed: true,
@@ -118,16 +133,18 @@ export const useGameStore = create<GameState>((set, get) => ({
     }
     const challengeRecords = [...state.challengeRecords.filter((entry) => entry.challengeId !== challengeId), record]
     const insightCredits = previous?.completed ? state.insightCredits : awardInsight({ credits: state.insightCredits, failureProgress: state.insightFailureProgress }).credits
-    const persistenceError = writeProgress({ ...state, challengeRecords, insightCredits })
-    if (persistenceError) {
-      set({ persistenceError })
-      return false
+    try {
+      const saved = await persistence.write(snapshotProgress({ ...state, challengeRecords, insightCredits }), () => {
+        set({ challengeRecords, insightCredits, persistenceError: null })
+      })
+      return saved ? { saved, firstCompletion: !previous?.completed, insightEarned: insightCredits - state.insightCredits } : failure
+    } finally {
+      challengePending = false
     }
-    set({ challengeRecords, insightCredits, persistenceError: null })
-    return true
   },
 
   toggleSound: () => {
+    if (challengePending) return
     const next = !get().soundEnabled
     soundEngine.setEnabled(next)
     const persistenceError = writeProgress({ ...get(), soundEnabled: next })
@@ -135,6 +152,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   toggleFavorite: (elementId: string) => {
+    if (challengePending) return
     const state = get()
     if (!elementsById.has(elementId) || !state.discoveredIds.includes(elementId)) return
     const { favoriteIds } = state
@@ -183,11 +201,13 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   transmuteWith: (firstId: string, secondId: string) => {
+    if (challengePending) return
     set({ firstSlotId: firstId, secondSlotId: secondId })
     get().transmute()
   },
 
   transmute: () => {
+    if (challengePending) return
     const state = get()
     const { firstSlotId, secondSlotId } = state
     if (!firstSlotId || !secondSlotId) {
@@ -383,6 +403,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   requestHint: () => {
+    if (challengePending) return
     const state = get()
     const origins = eras[0]
     if (
@@ -427,6 +448,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   setActiveEra: (eraId) => {
+    if (challengePending) return
     const state = get()
     if (!state.unlockedEraIds.includes(eraId)) return
 
@@ -435,6 +457,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   resetProgress: () => {
+    if (challengePending) return
     const progress: PersistedState = {
       favoriteIds: [],
       soundEnabled: get().soundEnabled,
@@ -461,4 +484,46 @@ export const useGameStore = create<GameState>((set, get) => ({
       lastAttempt: null,
     })
   },
-}))
+    })
+  })
+  persistence.onError((persistenceError) => store.setState({ persistenceError }))
+
+  function synchronizeProgress() {
+    if (challengePending) return
+    const current = store.getState()
+    const next = persistence.synchronize(snapshotProgress(current))
+    if (!next) return
+    soundEngine.setEnabled(next.soundEnabled)
+    store.setState({
+      ...snapshotProgress(next),
+      firstSlotId: current.firstSlotId && next.discoveredIds.includes(current.firstSlotId) ? current.firstSlotId : null,
+      secondSlotId: current.secondSlotId && next.discoveredIds.includes(current.secondSlotId) ? current.secondSlotId : null,
+      lastAttempt: null,
+      persistenceError: null,
+    })
+  }
+
+  function connectProgress() {
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== null && event.key !== SAVE_KEY) return
+      if (event.storageArea !== null) {
+        try { if (event.storageArea !== window.localStorage) return } catch { return }
+      }
+      synchronizeProgress()
+    }
+    const onVisible = () => { if (document.visibilityState === 'visible') synchronizeProgress() }
+    window.addEventListener('storage', onStorage)
+    window.addEventListener('focus', synchronizeProgress)
+    document.addEventListener('visibilitychange', onVisible)
+    synchronizeProgress()
+    return () => {
+      window.removeEventListener('storage', onStorage)
+      window.removeEventListener('focus', synchronizeProgress)
+      document.removeEventListener('visibilitychange', onVisible)
+    }
+  }
+
+  return Object.assign(store, { synchronizeProgress, connectProgress, flushProgress: persistence.flush })
+}
+
+export const useGameStore = createGameStore()

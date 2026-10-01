@@ -1,5 +1,5 @@
 import { ArrowLeft, Check, FlaskConical, Plus, RotateCcw, Save, Trash2, Trophy, X } from 'lucide-react'
-import { useReducer, useRef, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 import { soundEngine } from '../../game/audio/audioEngine'
 import { elementsById } from '../../game/content'
 import { rainmakerChallenge } from '../../game/content/challenges'
@@ -15,6 +15,13 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
   const [savedMessage, setSavedMessage] = useState<string | null>(null)
   const [saveError, setSaveError] = useState<string | null>(null)
   const saved = useRef(false)
+  const saving = useRef(false)
+  const mounted = useRef(false)
+  const [savePending, setSavePending] = useState(false)
+  useEffect(() => {
+    mounted.current = true
+    return () => { mounted.current = false }
+  }, [])
   const best = useGameStore((state) => state.challengeRecords.find((record) => record.challengeId === rainmakerChallenge.id)?.bestAttemptCount)
   const soundEnabled = useGameStore((state) => state.soundEnabled)
   const target = elementsById.get(rainmakerChallenge.targetId)!
@@ -33,6 +40,7 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
   }
 
   function confirmDiscard() {
+    if (saving.current) return false
     if (run.completed && !saved.current) return window.confirm('Your Rainmaker result has not been saved. Discard it?')
     if (!run.completed && (run.attemptCount > 0 || run.firstSlotId || run.secondSlotId)) {
       return window.confirm('Leave this unfinished Rainmaker run?')
@@ -48,20 +56,22 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
     setSaveError(null)
   }
 
-  function saveResult() {
-    if (!run.completed || saved.current) return
-    const campaign = useGameStore.getState()
-    const firstCompletion = !campaign.challengeRecords.some((record) => record.challengeId === rainmakerChallenge.id && record.completed)
-    const previousCredits = campaign.insightCredits
-    if (!campaign.recordChallengeCompletion(rainmakerChallenge.id, run.attemptCount)) {
+  async function saveResult() {
+    if (!run.completed || saved.current || saving.current) return
+    saving.current = true
+    setSavePending(true)
+    const receipt = await useGameStore.getState().recordChallengeCompletion(rainmakerChallenge.id, run.attemptCount)
+    saving.current = false
+    if (!mounted.current) return
+    setSavePending(false)
+    if (!receipt.saved) {
       setSaveError(useGameStore.getState().persistenceError ?? 'Result could not be saved. Try again.')
       return
     }
     saved.current = true
     setSaveError(null)
-    const earned = useGameStore.getState().insightCredits - previousCredits
-    setSavedMessage(firstCompletion
-      ? earned > 0 ? 'Result saved. First reward: +1 Insight.' : 'Result saved. First reward claimed; Insight wallet is full.'
+    setSavedMessage(receipt.firstCompletion
+      ? receipt.insightEarned > 0 ? 'Result saved. First reward: +1 Insight.' : 'Result saved. First reward claimed; Insight wallet is full.'
       : 'Result saved. No additional reward.')
   }
 
@@ -70,7 +80,7 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
   return (
     <section className="challenge-run" aria-labelledby="challenge-title">
       <header className="challenge-header">
-        <button type="button" onClick={() => { if (confirmDiscard()) onExit() }} aria-label="Return to Atlas" title="Return to Atlas">
+        <button type="button" disabled={savePending} onClick={() => { if (confirmDiscard()) onExit() }} aria-label="Return to Atlas" title="Return to Atlas">
           <ArrowLeft size={20} aria-hidden="true" />
         </button>
         <div>
@@ -144,10 +154,10 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
           </div>
           {saveError && <p role="alert">{saveError}</p>}
           <div className="challenge-actions">
-            {run.completed && <button type="button" disabled={Boolean(savedMessage)} onClick={saveResult} title="Save result">
-              <Save size={20} aria-hidden="true" /> Save result
+            {run.completed && <button type="button" disabled={savePending || Boolean(savedMessage)} onClick={saveResult} title="Save result">
+              <Save size={20} aria-hidden="true" /> {savePending ? 'Saving result' : 'Save result'}
             </button>}
-            <button type="button" onClick={retry} title="Retry Rainmaker"><RotateCcw size={20} aria-hidden="true" /> Retry</button>
+            <button type="button" disabled={savePending} onClick={retry} title="Retry Rainmaker"><RotateCcw size={20} aria-hidden="true" /> Retry</button>
           </div>
         </section>
       </div>

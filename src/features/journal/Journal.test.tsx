@@ -1,18 +1,21 @@
 // @vitest-environment jsdom
 
+import '../../game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
 import { cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { collections, elementsById, eras, recipes } from '../../game/content'
-import { useGameStore } from '../../game/state/useGameStore'
+import { collections, elements, elementsById, eras, recipes } from '../../game/content'
+import { freshProgress, parseProgress } from '../../game/state/persistence'
+import { createGameStore, snapshotProgress, useGameStore } from '../../game/state/useGameStore'
 import { Journal } from './Journal'
 
 const props = { eraId: 'first-light', challengeName: 'Origins', discoveryGoal: 18, landmarkIds: [] }
-const realPrepareCombination = useGameStore.getState().prepareCombination
+let realPrepareCombination = useGameStore.getState().prepareCombination
 
 beforeEach(() => {
   localStorage.clear()
+  realPrepareCombination = useGameStore.getState().prepareCombination
   useGameStore.setState({ prepareCombination: realPrepareCombination })
   useGameStore.getState().resetProgress()
 })
@@ -23,16 +26,86 @@ afterEach(() => {
 })
 
 describe('Guide preparation', () => {
+  it('archives a formula after its attempt is evicted and reloaded, without saving on preparation', async () => {
+    useGameStore.getState().transmuteWith('ember', 'tide')
+    for (let index = 0; index < 55; index += 1) useGameStore.getState().transmuteWith('gale', 'tide')
+    const reloaded = createGameStore().getState()
+    expect(reloaded.experimentHistory).toHaveLength(50)
+    expect(reloaded.experimentHistory.some((entry) => entry.recipeId === 'first-vapor')).toBe(false)
+    useGameStore.setState(snapshotProgress(reloaded))
+    const callback = vi.fn()
+    render(<Journal {...props} onCombinationPrepared={callback} />)
+    const summary = screen.getByText('Recorded Formulas (1)')
+    const archive = summary.parentElement!
+    expect(archive).not.toHaveAttribute('open')
+    const user = userEvent.setup()
+    await user.click(summary)
+    await user.type(within(archive).getByRole('searchbox', { name: 'Search formulas' }), 'STEAM')
+    expect(within(archive).getByText('Fire + Water → Steam')).toBeInTheDocument()
+    const progress = snapshotProgress(useGameStore.getState())
+    const saved = localStorage.getItem('unwritten-atlas-progress')
+    await user.tab()
+    expect(within(archive).getByRole('button', { name: 'Prepare Fire + Water' })).toHaveFocus()
+    await user.keyboard('[Enter]')
+    expect(useGameStore.getState()).toMatchObject({ firstSlotId: 'ember', secondSlotId: 'tide' })
+    expect(snapshotProgress(useGameStore.getState())).toEqual(progress)
+    expect(localStorage.getItem('unwritten-atlas-progress')).toBe(saved)
+    expect(callback).toHaveBeenCalledOnce()
+  })
+
+  it.each([1, 2, 3, 4, 5, 6])('browses legacy v%i formula records without inventing attempt history', async (version) => {
+    const progress = parseProgress(JSON.stringify({
+      ...freshProgress(), version, discoveredIds: ['steam'], discoveredRecipeIds: ['first-vapor'], hintCredits: 3,
+    }))!
+    useGameStore.setState(snapshotProgress(progress))
+    expect(progress.experimentHistory).toEqual([])
+    render(<Journal {...props} />)
+    const summary = screen.getByText(`Recorded Formulas (${version === 1 ? 0 : 1})`)
+    await userEvent.setup().click(summary)
+    if (version === 1) {
+      expect(within(summary.parentElement!).getByText('No formulas recorded in this age yet.')).toBeInTheDocument()
+    } else {
+      expect(within(summary.parentElement!).getByText('Fire + Water → Steam')).toBeInTheDocument()
+    }
+  })
+
+  it('filters by active age and ingredient or result name, keeping alternate performed formulas', async () => {
+    const formulas = recipes.filter((recipe) => recipe.result === 'village')
+    expect(formulas.length).toBeGreaterThan(1)
+    useGameStore.setState({
+      discoveredIds: elements.map((element) => element.id), unlockedEraIds: eras.map((era) => era.id),
+      discoveredRecipeIds: ['first-vapor', ...formulas.map((recipe) => recipe.id)],
+    })
+    render(<Journal {...props} eraId="stone-age" />)
+    const summary = screen.getByText(`Recorded Formulas (${formulas.length})`)
+    const user = userEvent.setup()
+    await user.click(summary)
+    const archive = within(summary.parentElement!)
+    expect(archive.getAllByRole('listitem')).toHaveLength(formulas.length)
+    expect(archive.queryByText('Fire + Water → Steam')).toBeNull()
+    const search = archive.getByRole('searchbox', { name: 'Search formulas' })
+    await user.type(search, 'Village')
+    expect(archive.getAllByRole('listitem')).toHaveLength(formulas.length)
+    await user.clear(search)
+    await user.type(search, 'not-an-element')
+    expect(archive.getByText('No matching formulas.')).toBeInTheDocument()
+    expect(archive.queryByRole('button')).toBeNull()
+    await user.clear(search)
+    await user.type(search, elementsById.get(formulas[0].inputs[0])!.name)
+    expect(archive.getAllByRole('listitem').length).toBeGreaterThan(0)
+  })
+
   it('prepares a recorded formula without performing it or changing progress', async () => {
     useGameStore.setState({ discoveredIds: ['ember', 'tide', 'stone', 'gale', 'steam'], discoveredRecipeIds: ['first-vapor'] })
     const callback = vi.fn()
     render(<Journal {...props} onCombinationPrepared={callback} />)
     const user = userEvent.setup()
     await user.click(screen.getByRole('button', { name: 'Inspect Steam' }))
-    expect(screen.getByText('Fire + Water → Steam')).toBeInTheDocument()
+    const research = within(screen.getByText('Recorded formulas').closest('section')!)
+    expect(research.getByText('Fire + Water → Steam')).toBeInTheDocument()
     const progress = useGameStore.getState()
     const saved = localStorage.getItem('unwritten-atlas-progress')
-    await user.click(screen.getByRole('button', { name: 'Prepare Fire + Water' }))
+    await user.click(research.getByRole('button', { name: 'Prepare Fire + Water' }))
     expect(useGameStore.getState()).toMatchObject({ firstSlotId: 'ember', secondSlotId: 'tide', lastAttempt: null })
     expect(useGameStore.getState().experimentHistory).toBe(progress.experimentHistory)
     expect(useGameStore.getState().discoveredIds).toBe(progress.discoveredIds)

@@ -1,11 +1,12 @@
 // @vitest-environment jsdom
 
+import './testSupport'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { soundEngine } from '../audio/audioEngine'
 import { collections, elements, elementsById, eras, recipes, starterElementIds } from '../content'
 import { pairKey } from '../engine/resolveCombination'
 import { exportProgress, loadProgress, MAX_EXPERIMENT_HISTORY, parseProgress, type SavedProgress } from './persistence'
-import { snapshotProgress, useGameStore } from './useGameStore'
+import { createGameStore, snapshotProgress, useGameStore } from './useGameStore'
 
 vi.mock('../audio/audioEngine', () => ({ soundEngine: {
   setEnabled: vi.fn(), playSelect: vi.fn(), playClear: vi.fn(), playFailure: vi.fn(),
@@ -21,6 +22,39 @@ const fresh = (): SavedProgress => parseProgress(JSON.stringify({ version: 1, di
 const failWrites = () => vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
 
 describe('campaign state', () => {
+  it.each(['', '{', JSON.stringify({ version: 99 })])('protects an unreadable original throughout in-memory play: %s', async (raw) => {
+    localStorage.setItem(saveKey, raw)
+    const store = createGameStore()
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    expect(store.getState().persistenceError).toContain('Autosaving is paused')
+    store.getState().transmuteWith('ember', 'tide')
+    expect(store.getState().discoveredIds).toContain('steam')
+    store.getState().toggleFavorite('steam')
+    store.getState().toggleSound()
+    expect((await store.getState().recordChallengeCompletion('rainmaker', 4)).saved).toBe(false)
+    expect(store.getState().challengeRecords).toEqual([])
+    store.getState().resetProgress()
+    expect(store.getState().persistenceError).toContain('Autosaving is paused')
+    expect(localStorage.getItem(saveKey)).toBe(raw)
+    expect(writes).not.toHaveBeenCalled()
+  })
+
+  it('keeps a read-failure latch even when storage becomes readable again', () => {
+    const raw = exportProgress(fresh())
+    localStorage.setItem(saveKey, raw)
+    const reads = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new Error('denied') })
+    const store = createGameStore()
+    reads.mockRestore()
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    store.getState().toggleSound()
+    expect(writes).not.toHaveBeenCalled()
+    expect(localStorage.getItem(saveKey)).toBe(raw)
+    const reloaded = createGameStore()
+    reloaded.getState().toggleSound()
+    expect(reloaded.getState().persistenceError).toBeNull()
+    expect(writes).toHaveBeenCalledOnce()
+  })
+
   it('rebases exhausted history IDs so the next saved attempt remains loadable', () => {
     const progress = fresh()
     progress.experimentHistory = [{ id: Number.MAX_SAFE_INTEGER, inputs: ['gale', 'tide'], outcome: 'no-reaction' }]
@@ -37,6 +71,114 @@ describe('campaign state', () => {
     useGameStore.setState({ soundEnabled: true })
     state().resetProgress()
     vi.clearAllMocks()
+  })
+
+  it('adopts a clean external save before deriving an action even without a storage event', () => {
+    const other = createGameStore()
+    other.getState().transmuteWith('ember', 'ember')
+    state().transmuteWith('ember', 'tide')
+    expect(state().discoveredIds).toEqual(expect.arrayContaining(['heat', 'steam']))
+    expect(state().experimentHistory.map((entry) => entry.resultId)).toEqual(['heat', 'steam'])
+    expect(loadProgress()).toEqual({ version: 7, ...campaign() })
+    expect(state().persistenceError).toBeNull()
+  })
+
+  it('synchronizes sound and valid slots, clears removed slots, and cleans up listeners', () => {
+    state().prepareCombination('ember', 'tide')
+    const disconnect = useGameStore.connectProgress()
+    const other = createGameStore()
+    other.getState().transmuteWith('ember', 'tide')
+    other.getState().toggleSound()
+    const saved = disk()
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    window.dispatchEvent(new StorageEvent('storage', { key: saveKey, newValue: '{' }))
+    expect(state().soundEnabled).toBe(false)
+    expect(state().firstSlotId).toBe('ember')
+    expect(state().secondSlotId).toBe('tide')
+    expect(disk()).toBe(saved)
+    expect(writes).not.toHaveBeenCalled()
+    state().prepareCombination('steam', 'ember')
+    localStorage.clear()
+    window.dispatchEvent(new StorageEvent('storage', { key: null }))
+    expect(state().firstSlotId).toBeNull()
+    expect(state().secondSlotId).toBe('ember')
+    expect(state().soundEnabled).toBe(true)
+    expect(state().lastAttempt).toBeNull()
+    disconnect()
+    localStorage.setItem(saveKey, exportProgress({ ...fresh(), soundEnabled: false }))
+    window.dispatchEvent(new StorageEvent('storage', { key: saveKey }))
+    expect(state().soundEnabled).toBe(true)
+  })
+
+  it('keeps newer queued memory dirty after the first write and blocks external conflict', async () => {
+    const callbacks: Array<() => void> = []
+    vi.spyOn(navigator.locks, 'request').mockImplementation((_name, _options, callback) =>
+      new Promise((resolve) => { callbacks.push(() => resolve(callback!(null))) }))
+    state().transmuteWith('ember', 'tide')
+    state().transmuteWith('ember', 'ember')
+    expect(state().experimentHistory).toHaveLength(2)
+    callbacks.shift()!()
+    expect(loadProgress()?.experimentHistory).toHaveLength(1)
+    const external = exportProgress({ ...loadProgress()!, favoriteIds: ['ember'] })
+    localStorage.setItem(saveKey, external)
+    useGameStore.synchronizeProgress()
+    expect(state().persistenceError).toContain('unsaved changes')
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    callbacks.shift()!()
+    await useGameStore.flushProgress()
+    expect(state().experimentHistory).toHaveLength(2)
+    expect(disk()).toBe(external)
+    state().resetProgress()
+    expect(disk()).toBe(external)
+    expect(writes).not.toHaveBeenCalled()
+  })
+
+  it('preserves unsaved progress instead of adopting an external save after a quota failure', () => {
+    const writes = failWrites()
+    state().transmuteWith('ember', 'tide')
+    writes.mockRestore()
+    const other = createGameStore()
+    other.getState().toggleSound()
+    const saved = disk()
+    useGameStore.synchronizeProgress()
+    expect(state().discoveredIds).toContain('steam')
+    expect(state().soundEnabled).toBe(true)
+    expect(state().persistenceError).toContain('unsaved changes')
+    state().toggleFavorite('steam')
+    expect(disk()).toBe(saved)
+  })
+
+  it('does not acknowledge or reward a pending challenge and rejects conflicting saves', async () => {
+    useGameStore.setState({ insightCredits: 0 })
+    const callbacks: Array<() => void> = []
+    vi.spyOn(navigator.locks, 'request').mockImplementation((_name, _options, callback) =>
+      new Promise((resolve) => { callbacks.push(() => resolve(callback!(null))) }))
+    const result = state().recordChallengeCompletion('rainmaker', 4)
+    await vi.waitFor(() => expect(callbacks).toHaveLength(1))
+    expect(state().challengeRecords).toEqual([])
+    expect(state().insightCredits).toBe(0)
+    const before = campaign()
+    state().toggleSound()
+    state().resetProgress()
+    expect(campaign()).toEqual(before)
+    const external = exportProgress({ ...fresh(), favoriteIds: ['ember'] })
+    localStorage.setItem(saveKey, external)
+    callbacks.shift()!()
+    expect((await result).saved).toBe(false)
+    expect(state().challengeRecords).toEqual([])
+    expect(state().insightCredits).toBe(0)
+    expect(disk()).toBe(external)
+  })
+
+  it('preserves current memory and blocks writes when an external save becomes invalid', () => {
+    state().transmuteWith('ember', 'tide')
+    const before = campaign()
+    localStorage.setItem(saveKey, '{')
+    useGameStore.synchronizeProgress()
+    expect(campaign()).toEqual(before)
+    expect(state().persistenceError).toContain('could not be read')
+    state().toggleSound()
+    expect(disk()).toBe('{')
   })
 
   it('prepares discovered inputs atomically, accepts duplicates and changes no progress or storage', () => {
@@ -94,11 +236,11 @@ describe('campaign state', () => {
     expect(loadProgress()?.experimentHistory).toEqual(state().experimentHistory)
   })
 
-  it('persists preferences immediately and carries every new field through success', () => {
+  it('persists preferences immediately and carries every new field through success', async () => {
     useGameStore.setState({ rewardedCollectionIds: [collections[0].id] })
     state().toggleFavorite('ember')
     state().toggleSound()
-    state().recordChallengeCompletion('rainmaker', 8)
+    await state().recordChallengeCompletion('rainmaker', 8)
     state().transmuteWith('gale', 'tide')
     const before = campaign()
     state().transmuteWith('ember', 'tide')
@@ -119,12 +261,12 @@ describe('campaign state', () => {
     expect(loadProgress()?.favoriteIds).toEqual([])
   })
 
-  it('resets favorites, history and rewards but preserves and synchronizes sound', () => {
+  it('resets favorites, history and rewards but preserves and synchronizes sound', async () => {
     useGameStore.setState({ rewardedCollectionIds: [collections[0].id] })
     state().toggleFavorite('ember')
     state().toggleSound()
     state().transmuteWith('ember', 'tide')
-    state().recordChallengeCompletion('rainmaker', 4)
+    await state().recordChallengeCompletion('rainmaker', 4)
     state().resetProgress()
     expect(campaign()).toEqual(snapshotProgress({ ...fresh(), soundEnabled: false }))
     expect(state()).toMatchObject({ firstSlotId: null, secondSlotId: null, lastAttempt: null })
@@ -146,60 +288,60 @@ describe('campaign state', () => {
     expect(loadProgress()).toEqual({ version: 7, ...campaign() })
   })
 
-  it('challenge completion changes only records and credits, is idempotent and improves the best score', () => {
+  it('challenge completion changes only records and credits, is idempotent and improves the best score', async () => {
     state().transmuteWith('gale', 'tide')
     useGameStore.setState({ insightCredits: 0 })
     const before = state()
-    expect(state().recordChallengeCompletion('rainmaker', 8)).toBe(true)
+    expect((await state().recordChallengeCompletion('rainmaker', 8)).saved).toBe(true)
     const first = { challengeId: 'rainmaker', completed: true, bestAttemptCount: 8 }
     expect(state()).toEqual({ ...before, insightCredits: 1, challengeRecords: [first] })
     expect(loadProgress()).toEqual({ version: 7, ...campaign() })
     const saved = disk()
-    expect(state().recordChallengeCompletion('rainmaker', 10)).toBe(true)
+    expect((await state().recordChallengeCompletion('rainmaker', 10)).saved).toBe(true)
     expect(state()).toEqual({ ...before, insightCredits: 1, challengeRecords: [first] })
     expect(disk()).toBe(saved)
-    expect(state().recordChallengeCompletion('rainmaker', 4)).toBe(true)
+    expect((await state().recordChallengeCompletion('rainmaker', 4)).saved).toBe(true)
     expect(state()).toEqual({ ...before, insightCredits: 1, challengeRecords: [{ ...first, bestAttemptCount: 4 }] })
   })
 
-  it('caps first challenge reward at 3 and never banks overflow', () => {
-    expect(state().recordChallengeCompletion('rainmaker', 4)).toBe(true)
+  it('caps first challenge reward at 3 and never banks overflow', async () => {
+    expect((await state().recordChallengeCompletion('rainmaker', 4)).saved).toBe(true)
     expect(state().insightCredits).toBe(3)
     useGameStore.setState({ insightCredits: 1 })
-    expect(state().recordChallengeCompletion('rainmaker', 4)).toBe(true)
+    expect((await state().recordChallengeCompletion('rainmaker', 4)).saved).toBe(true)
     expect(state().insightCredits).toBe(1)
   })
 
   it.each([['other', 4], ['rainmaker', 0], ['rainmaker', 3], ['rainmaker', 4.5], ['rainmaker', Infinity]])(
-    'rejects invalid challenge completion %s/%s without side effects', (challengeId, attempts) => {
+    'rejects invalid challenge completion %s/%s without side effects', async (challengeId, attempts) => {
       const before = state()
       const saved = disk()
-      expect(state().recordChallengeCompletion(challengeId, attempts)).toBe(false)
+      expect((await state().recordChallengeCompletion(challengeId, attempts)).saved).toBe(false)
       expect(state()).toBe(before)
       expect(disk()).toBe(saved)
     },
   )
 
-  it('does not grant credits or mark challenge completion on failed writes and permits retry', () => {
+  it('does not grant credits or mark challenge completion on failed writes and permits retry', async () => {
     useGameStore.setState({ insightCredits: 0 })
     const before = state()
     const saved = disk()
     const writes = failWrites()
-    expect(state().recordChallengeCompletion('rainmaker', 4)).toBe(false)
+    expect((await state().recordChallengeCompletion('rainmaker', 4)).saved).toBe(false)
     expect(state()).toEqual({ ...before, persistenceError: 'Progress could not be saved.' })
     expect(disk()).toBe(saved)
     writes.mockRestore()
-    expect(state().recordChallengeCompletion('rainmaker', 4)).toBe(true)
+    expect((await state().recordChallengeCompletion('rainmaker', 4)).saved).toBe(true)
     expect(state()).toEqual({ ...before, insightCredits: 1, challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }] })
   })
 
-  it('leaves a completed challenge best score untouched when its improvement cannot be saved', () => {
-    expect(state().recordChallengeCompletion('rainmaker', 8)).toBe(true)
+  it('leaves a completed challenge best score untouched when its improvement cannot be saved', async () => {
+    expect((await state().recordChallengeCompletion('rainmaker', 8)).saved).toBe(true)
     state().prepareCombination('ember', 'tide')
     const before = state()
     const saved = disk()
     failWrites()
-    expect(state().recordChallengeCompletion('rainmaker', 4)).toBe(false)
+    expect((await state().recordChallengeCompletion('rainmaker', 4)).saved).toBe(false)
     expect(state()).toEqual({ ...before, persistenceError: 'Progress could not be saved.' })
     expect(disk()).toBe(saved)
   })
@@ -237,8 +379,7 @@ describe('campaign state', () => {
 
   it('loads persisted preferences and synchronizes audio during initialization', async () => {
     window.localStorage.setItem(saveKey, exportProgress({ ...fresh(), soundEnabled: false, favoriteIds: ['ember'] }))
-    vi.resetModules()
-    const reloaded = (await import('./useGameStore')).useGameStore.getState()
+    const reloaded = createGameStore().getState()
     expect(reloaded.soundEnabled).toBe(false)
     expect(reloaded.favoriteIds).toEqual(['ember'])
     expect(reloaded.persistenceError).toBeNull()
@@ -287,8 +428,7 @@ describe('campaign state', () => {
     const collection = collections[0]
     const progress = { ...fresh(), discoveredIds: [...starterElementIds, ...collection.elementIds], insightCredits: 0 }
     window.localStorage.setItem(saveKey, exportProgress(progress))
-    vi.resetModules()
-    const loadedStore = (await import('./useGameStore')).useGameStore
+    const loadedStore = createGameStore()
     const loadedState = () => loadedStore.getState()
     expect(loadedState().rewardedCollectionIds).toEqual([])
     expect(loadedState().prepareCombination('gale', 'tide')).toBe(true)
@@ -296,8 +436,7 @@ describe('campaign state', () => {
     loadedState().transmute()
     expect(loadedState().rewardedCollectionIds).toEqual([])
     expect(loadedState().insightCredits).toBe(0)
-    vi.resetModules()
-    const reloaded = (await import('./useGameStore')).useGameStore.getState()
+    const reloaded = createGameStore().getState()
     expect(reloaded.rewardedCollectionIds).toEqual([])
     expect(reloaded.insightCredits).toBe(0)
   })

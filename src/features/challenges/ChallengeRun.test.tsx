@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 
+import '../../game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { StrictMode } from 'react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -37,13 +38,34 @@ describe('ChallengeRun', () => {
   beforeEach(() => {
     window.localStorage.clear()
     useGameStore.getState().resetProgress()
-    useGameStore.setState({ soundEnabled: false })
+    useGameStore.getState().toggleSound()
     useGameStore.getState().prepareCombination('ember', 'stone')
   })
 
   afterEach(() => {
     cleanup()
     vi.restoreAllMocks()
+  })
+
+  it('waits for confirmation, disables duplicate saves and navigation, then rewards once', async () => {
+    useGameStore.setState({ insightCredits: 0 })
+    const user = userEvent.setup()
+    render(<ChallengeRun onExit={vi.fn()} />)
+    await win(user)
+    let release: (() => void) | undefined
+    vi.spyOn(navigator.locks, 'request').mockImplementation((_name, _options, callback) =>
+      new Promise((resolve) => { release = () => resolve(callback!(null)) }))
+    await user.click(screen.getByRole('button', { name: 'Save result' }))
+    expect(screen.getByRole('button', { name: 'Saving result' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Return to Atlas' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Retry' })).toBeDisabled()
+    expect(useGameStore.getState().challengeRecords).toEqual([])
+    expect(useGameStore.getState().insightCredits).toBe(0)
+    release!()
+    await waitFor(() => expect(screen.getByText(/First reward: \+1 Insight/)).toBeInTheDocument())
+    expect(useGameStore.getState().insightCredits).toBe(1)
+    expect(screen.getByRole('button', { name: 'Save result' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Return to Atlas' })).toBeEnabled()
   })
 
   it('runs immediately and completes without changing campaign memory or storage, even in StrictMode', async () => {
