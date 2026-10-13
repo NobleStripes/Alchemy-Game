@@ -100,6 +100,21 @@ const recordSchema = z.strictObject({
   elementId: id,
   elementName: text,
   historicalOverview: citedText,
+  manufactureOrUse: citedText,
+  agePlacement: z.strictObject({
+    status: z.enum(['earlier-precedents', 'regional-gameplay-placement', 'fictional-prologue']),
+    text,
+    sourceIds: uniqueIds,
+  }),
+  relatedDiscoveries: z.array(z.strictObject({
+    elementId: id,
+    relationship: z.enum(['documented', 'gameplay-abstraction']),
+    explanation: text,
+    sourceIds: uniqueIds,
+  })).refine(
+    (links) => new Set(links.map((link) => link.elementId)).size === links.length,
+    'Related discoveries must be unique.',
+  ),
   approximateDates: z.array(chronologySchema).nonempty(),
   associatedRegions: regions,
   archaeologicalEvidence: z.array(z.strictObject({
@@ -123,7 +138,7 @@ const recordSchema = z.strictObject({
 })
 
 const databaseSchema = z.strictObject({
-  schemaVersion: z.literal(1),
+  schemaVersion: z.literal(2),
   sources: z.array(sourceSchema).nonempty(),
   records: z.array(recordSchema).nonempty(),
 })
@@ -133,7 +148,7 @@ export type HistoricalResearchRecord = z.infer<typeof recordSchema>
 export type HistoricalResearchDatabase = z.infer<typeof databaseSchema>
 
 export function createResearchDatabaseSchema(
-  catalog: readonly { id: string; name: string }[],
+  catalog: readonly { id: string; name: string; era: string }[],
 ) {
   return databaseSchema.superRefine((database, ctx) => {
     const catalogById = new Map(catalog.map((element) => [element.id, element]))
@@ -195,7 +210,42 @@ export function createResearchDatabaseSchema(
       }
 
       checkSources(record.historicalOverview.sourceIds, ['historicalOverview'])
+      checkSources(record.manufactureOrUse.sourceIds, ['manufactureOrUse'])
       checkSources(record.historicalSignificance.sourceIds, ['historicalSignificance'])
+      checkSources(record.agePlacement.sourceIds, ['agePlacement'])
+      if (record.agePlacement.status === 'fictional-prologue') {
+        if (element && element.era !== 'first-light') {
+          ctx.addIssue({
+            code: 'custom',
+            path: [...path, 'agePlacement', 'status'],
+            message: 'Only Origins discoveries belong to the fictional prologue.',
+          })
+        }
+      } else if (record.agePlacement.sourceIds.length === 0) {
+        ctx.addIssue({
+          code: 'custom',
+          path: [...path, 'agePlacement', 'sourceIds'],
+          message: 'Historical age-placement context requires verified sources.',
+        })
+      }
+      record.relatedDiscoveries.forEach((link, linkIndex) => {
+        const linkPath = ['relatedDiscoveries', linkIndex]
+        if (!catalogById.has(link.elementId) || link.elementId === record.elementId) {
+          ctx.addIssue({
+            code: 'custom',
+            path: [...path, ...linkPath, 'elementId'],
+            message: 'Related discoveries must reference another catalog element.',
+          })
+        }
+        checkSources(link.sourceIds, linkPath)
+        if (link.relationship === 'documented' && link.sourceIds.length === 0) {
+          ctx.addIssue({
+            code: 'custom',
+            path: [...path, ...linkPath, 'sourceIds'],
+            message: 'Documented relationships require verified sources.',
+          })
+        }
+      })
       for (const field of [
         'approximateDates', 'archaeologicalEvidence', 'independentDevelopments',
       ] as const) {
@@ -221,7 +271,7 @@ export function createResearchDatabaseSchema(
   })
 }
 
-// Authoring-only: do not import this dataset into the gameplay content barrel.
+// Historical metadata stays separate from recipes, progression and save data.
 export const historicalResearch = createResearchDatabaseSchema(elements).parse(rawResearch)
 export const researchByElementId = new Map(
   historicalResearch.records.map((record) => [record.elementId, record]),

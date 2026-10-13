@@ -631,6 +631,20 @@
 .detail-cat-badge { color: var(--teal-dark); font-size: 8px; font-weight: 900; text-transform: uppercase; }
 .detail-desc { margin: 6px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.45; }
 .element-detail h4 { margin: 12px 0 5px; color: var(--ink-soft); font-size: 9px; text-transform: uppercase; }
+.history-search { margin: 12px 0 8px; display: grid; gap: 5px; color: var(--ink-soft); font-size: 11px; }
+.history-search input { width: 100%; min-width: 0; padding: 8px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 4px; font: inherit; }
+.history-index { max-height: 180px; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 5px; }
+.history-entry { color: var(--ink-soft); font-size: 12px; line-height: 1.55; overflow-wrap: anywhere; }
+.history-entry h3 { margin: 0; color: var(--ink); font: 900 17px/1.3 var(--display); }
+.history-entry h4 { font-size: 11px; }
+.history-entry p { margin: 6px 0; }
+.history-entry ul, .history-entry ol { margin: 6px 0; padding-left: 20px; }
+.history-entry li { margin-bottom: 9px; }
+.history-entry a { color: var(--teal-dark); text-decoration: underline; }
+.history-entry .journal-element-btn { min-height: 36px; font-size: 12px; }
+.history-indicator { margin: 4px 0; padding: 3px 6px; display: block; width: fit-content; max-width: 100%; color: var(--teal-dark); background: #e3f5f1; border: 1px solid #badad4; border-radius: 4px; font-size: 10px; font-weight: 700; }
+.history-indicator[data-interpretation='disputed'], .history-indicator[data-interpretation='hypothesis'] { color: #805a12; background: #fff1c6; border-color: #d8bd78; }
+.history-sources summary { cursor: pointer; font-size: 11px; }
 .formula-list { margin: 0; padding: 0; display: grid; gap: 5px; list-style: none; }
 .formula-card { padding: 7px 8px; background: #f4f2eb; border: 1px solid var(--line); border-radius: 4px; }
 .formula-card strong { color: var(--ink); font-size: 10px; }

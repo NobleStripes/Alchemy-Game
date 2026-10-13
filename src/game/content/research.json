@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "sources": [
     {
       "id": "rmg-compass",
@@ -156,6 +156,11 @@
     {
       "elementId": "compass",
       "elementName": "Wayfinding",
+      "manufactureOrUse": { "text": "The museum describes navigation through observations of the sun, stars, sea, waves, wind and birds. This later example shows a practice based on environmental knowledge rather than a manufactured magnetic instrument.", "sourceIds": ["rmg-wayfinding"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age placement represents directional knowledge. The reviewed museum accounts are later comparisons and do not establish a Stone Age invention date.", "sourceIds": ["rmg-wayfinding", "rmg-compass"] },
+      "relatedDiscoveries": [
+        { "elementId": "map", "relationship": "gameplay-abstraction", "explanation": "Maps are another Atlas theme for representing direction, not a prerequisite for the navigation described here.", "sourceIds": [] }
+      ],
       "historicalOverview": { "text": "Directional knowledge and magnetic navigation are different subjects. The museum describes Viking navigation using the sun, stars and environmental observations, while dating the compass's introduction to Europe to the late twelfth century. Neither passage establishes the invention of prehistoric wayfinding.", "sourceIds": ["rmg-wayfinding", "rmg-compass"] },
       "approximateDates": [
         { "dateRange": "No earliest date established for wayfinding", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": [], "note": "The Stone Age assignment is a gameplay association, not a dated archaeological claim." },
@@ -175,6 +180,11 @@
     {
       "elementId": "lens",
       "elementName": "Lens",
+      "manufactureOrUse": { "text": "The Nimrud crystal was ground and polished. Although it bends light, its manufacture does not prove an optical purpose; the museum considers decorative inlay more likely than magnification or fire-making.", "sourceIds": ["bm-nimrud"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Iron Age page groups an optical concept with later crafts. The date of the Nimrud object is not proof of practical lens use in that period.", "sourceIds": ["bm-nimrud"] },
+      "relatedDiscoveries": [
+        { "elementId": "glass", "relationship": "gameplay-abstraction", "explanation": "The Atlas connects transparent materials with optics. This does not mean the Nimrud crystal was glass or a working optical instrument.", "sourceIds": [] }
+      ],
       "historicalOverview": { "text": "A shaped transparent object can have optical properties without having been made for optical use. The British Museum interprets the Nimrud rock crystal as probably an inlay rather than a magnifier or fire-making lens.", "sourceIds": ["bm-nimrud"] },
       "approximateDates": [
         { "dateRange": "About 870-612 BCE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Nimrud, Assyria (present-day Iraq)"], "sourceIds": ["bm-nimrud"], "note": "Broad museum dating of a crystal object; not a secure invention date for optical lenses." }
@@ -193,6 +203,12 @@
     {
       "elementId": "nation",
       "elementName": "Polity",
+      "manufactureOrUse": { "text": "Uruk illustrates urban administration, and a surviving clay account records grain distribution. Such records are a way to study institutional activity, not a complete reconstruction of how a particular political system operated.", "sourceIds": ["whe-uruk", "met-barley-account"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The Uruk period, c. 4000-3100 BCE, includes urban administration earlier than the Atlas's c. 3300 BCE Bronze Age starting label. This regional precedent does not date the first political community worldwide.", "sourceIds": ["whe-uruk"] },
+      "relatedDiscoveries": [
+        { "elementId": "writing", "relationship": "documented", "explanation": "A Mesopotamian grain account is evidence of administrative recordkeeping, without establishing a particular form of state.", "sourceIds": ["met-barley-account"] },
+        { "elementId": "city", "relationship": "documented", "explanation": "Uruk provides a regional urban context for administration and debated political authority.", "sourceIds": ["whe-uruk"] }
+      ],
       "historicalOverview": { "text": "Polity is a broad gameplay term for an organized political community. Uruk provides one regional example of urban administration; its political reach and institutions are debated. Administrative tablets are evidence of recordkeeping, not an automatic proof of a modern nation-state.", "sourceIds": ["whe-uruk", "met-barley-account"] },
       "approximateDates": [
         { "dateRange": "c. 4000-3100 BCE (Uruk period)", "dateType": "regional-development", "precision": "approximate", "regions": ["Southern Mesopotamia (present-day Iraq)"], "sourceIds": ["whe-uruk"], "note": "One regional context for urban political organization, not the first polity or a universal state-formation date." },
@@ -212,6 +228,11 @@
     {
       "elementId": "metal",
       "elementName": "Metal",
+      "manufactureOrUse": { "text": "The Tel Tsaf study analyzes a copper awl and its burial context. Heavy corrosion prevents a firm reconstruction of smelting and melting, so this specimen must not be turned into a certain manufacturing recipe.", "sourceIds": ["tel-tsaf-metallurgy"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins is a fictional, undated prologue. Its generic Metal discovery represents an alchemical idea, not a historical event or the first manufacture of metal.", "sourceIds": [] },
+      "relatedDiscoveries": [
+        { "elementId": "copper", "relationship": "documented", "explanation": "The Tel Tsaf awl is a specific copper object; it supplies a material example rather than a universal metallurgy sequence.", "sourceIds": ["tel-tsaf-metallurgy"] }
+      ],
       "historicalOverview": { "text": "Origins Metal is fictional and undated. Historical metallurgy must instead be investigated through particular materials and contexts. The copper awl at Tel Tsaf provides an early southern Levantine example, with uncertainties about manufacturing and origin explicitly discussed by its excavators.", "sourceIds": ["tel-tsaf-metallurgy"] },
       "approximateDates": [
         { "dateRange": "Undated fictional Origins", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": [], "note": "No historical date is assigned to the game's alchemical creation of Metal." },
@@ -231,6 +252,12 @@
     {
       "elementId": "quill",
       "elementName": "Writing Reed",
+      "manufactureOrUse": { "text": "Bibliotheca Alexandrina catalogs a reed pen made of organic plant material. The Met's wood-and-pigment palette supplies a separate example of scribal equipment. These records do not specify the pen's nib construction or a complete production technique.", "sourceIds": ["ba-reed-pen", "met-scribe-palette"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement groups early writing equipment. The reed catalog gives only a broad Egyptian period, and a palette's date must not become the invention date of a pen.", "sourceIds": ["ba-reed-pen", "met-scribe-palette"] },
+      "relatedDiscoveries": [
+        { "elementId": "reed", "relationship": "documented", "explanation": "The museum identifies reed as the writing implement's plant material.", "sourceIds": ["ba-reed-pen"] },
+        { "elementId": "writing", "relationship": "documented", "explanation": "The catalog identifies the object as writing equipment, while leaving its detailed construction uncertain.", "sourceIds": ["ba-reed-pen"] }
+      ],
       "historicalOverview": { "text": "Museum collections attest plant-based writing equipment and clay writing as different material traditions. Bibliotheca Alexandrina catalogs an ancient Egyptian reed pen; the Met catalogs a wood-and-pigment scribal palette and a much earlier clay account. These catalog records do not establish the first reed stylus, brush or cut-nib pen.", "sourceIds": ["ba-reed-pen", "met-scribe-palette", "met-barley-account"] },
       "approximateDates": [
         { "dateRange": "Ancient Egyptian period; narrower date not established", "dateType": "undated", "precision": "undated", "regions": ["Egypt"], "sourceIds": ["ba-reed-pen"], "note": "The museum supplies a broad period attribution for its reed pen, not a numeric invention date." },
@@ -251,6 +278,13 @@
     {
       "elementId": "writing",
       "elementName": "Writing",
+      "manufactureOrUse": { "text": "A Mesopotamian clay tablet records grain distribution. The comparative study describes Chinese inscriptions engraved on turtle plastrons and bovine scapulas for divination, administration and writing exercises. These different surfaces and uses did not require one universal writing implement.", "sourceIds": ["met-barley-account", "writing-origins"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Bronze Age label is a broad regional association. Mesopotamian, Egyptian, Chinese and Mesoamerican traditions have different chronologies; a single game page does not date their invention or widespread adoption.", "sourceIds": ["writing-origins"] },
+      "relatedDiscoveries": [
+        { "elementId": "clay", "relationship": "documented", "explanation": "The early grain-distribution account is a clay tablet, not a papyrus document.", "sourceIds": ["met-barley-account"] },
+        { "elementId": "quill", "relationship": "documented", "explanation": "The museum's plant-material pen is an example of writing equipment, distinct from the clay account's unspecified inscribing tool.", "sourceIds": ["ba-reed-pen", "met-barley-account"] },
+        { "elementId": "papyrus", "relationship": "gameplay-abstraction", "explanation": "This Atlas writing-surface association is not a requirement for early clay accounts or every writing tradition.", "sourceIds": [] }
+      ],
       "historicalOverview": { "text": "Writing has multiple regional histories, not one necessary route through papyrus or alphabets. The comparative study treats Mesopotamia, Egypt, China and Mesoamerica as primary inventions. It also distinguishes early proto-cuneiform accounting from later explicit language notation and warns that the earliest Egyptian signs are contested.", "sourceIds": ["writing-origins", "met-barley-account"] },
       "approximateDates": [
         { "dateRange": "c. 3300-2900 BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Southern Mesopotamia (present-day Iraq)"], "sourceIds": ["writing-origins"], "note": "Proto-cuneiform accounting phase. Its relationship to spoken language remains debated; this is not an exact invention year." },
@@ -278,6 +312,11 @@
     {
       "elementId": "road",
       "elementName": "Road",
+      "manufactureOrUse": { "text": "The Sweet Track crossed wetlands using sharpened poles, planks and stabilizing pegs. Its builders worked with stone axes and wooden wedges, not saws or steel axes.", "sourceIds": ["sweet-track"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The Neolithic Post Track and Sweet Track, dated to 3838 and 3806 BCE, precede the Atlas's Iron Age page by millennia. They are specific wooden routes, not invention dates for all roads.", "sourceIds": ["sweet-track"] },
+      "relatedDiscoveries": [
+        { "elementId": "stone-tool", "relationship": "documented", "explanation": "Stone axes and wooden wedges were used to construct the trackway, showing that iron tools were not necessary for this infrastructure.", "sourceIds": ["sweet-track"] }
+      ],
       "historicalOverview": { "text": "Built transport routes predate widespread ironworking. Somerset's wooden trackways give excavated Neolithic examples. They are not the same structure as later paved roads, nor do they establish when people first used paths.", "sourceIds": ["sweet-track"] },
       "approximateDates": [
         { "dateRange": "3838 BCE", "dateType": "dated-evidence", "precision": "year-resolved", "regions": ["Somerset Levels, Britain"], "sourceIds": ["sweet-track"], "note": "Reported construction year of the Post Track; a specific trackway, not an invention date for roads." },
@@ -296,6 +335,12 @@
     {
       "elementId": "market",
       "elementName": "Market",
+      "manufactureOrUse": { "text": "The regional trade overview describes silver and grain as exchange media before minted coins. Tel Tsaf's imported materials and the clay grain account concern connections and distribution; they do not reconstruct transactions in a formal market square.", "sourceIds": ["whe-trade", "tel-tsaf-metallurgy", "met-barley-account"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Exchange and distribution evidence predates the Iron Age gameplay page. Earlier exchange is not, by itself, proof of an early formal marketplace; that narrower claim remains open.", "sourceIds": ["tel-tsaf-metallurgy", "met-barley-account"] },
+      "relatedDiscoveries": [
+        { "elementId": "trade", "relationship": "documented", "explanation": "Regional accounts of exchange provide context for trade, while the mechanism of particular prehistoric transactions remains uncertain.", "sourceIds": ["whe-trade", "tel-tsaf-metallurgy"] },
+        { "elementId": "coin", "relationship": "gameplay-abstraction", "explanation": "Coins are part of the Atlas's exchange theme, not a necessary condition for the earlier exchange discussed here.", "sourceIds": [] }
+      ],
       "historicalOverview": { "text": "Exchange networks, redistribution and formal marketplaces must be distinguished. Tel Tsaf's nonlocal materials indicate early connections; Mesopotamian accounts and the regional trade overview show exchange and distribution long before the game's Iron Age page. Neither observation alone identifies a market square.", "sourceIds": ["tel-tsaf-metallurgy", "met-barley-account", "whe-trade"] },
       "approximateDates": [
         { "dateRange": "c. 5100-4600 calibrated BCE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Tel Tsaf, Jordan Valley, southern Levant"], "sourceIds": ["tel-tsaf-metallurgy"], "note": "Site context containing nonlocal materials interpreted as exchange connections; not a dated formal marketplace." },
@@ -317,6 +362,12 @@
     {
       "elementId": "plow",
       "elementName": "Ard",
+      "manufactureOrUse": { "text": "The authors interpret the Sion plough marks as evidence of animal traction in cultivation. The reviewed abstract does not establish the exact shape or material of the implement that made them.", "sourceIds": ["sion-ploughing"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The reported early fifth-millennium BCE plough marks predate the Atlas's Bronze Age starting label. This regional evidence does not establish a global first plough or the use of a metal share.", "sourceIds": ["sion-ploughing"] },
+      "relatedDiscoveries": [
+        { "elementId": "field", "relationship": "documented", "explanation": "The study connects preserved plough marks with cultivation and animal traction, without reconstructing every part of the implement.", "sourceIds": ["sion-ploughing"] },
+        { "elementId": "bronze", "relationship": "gameplay-abstraction", "explanation": "The Atlas groups this implement on the Bronze Age page; that placement does not require a bronze component.", "sourceIds": [] }
+      ],
       "historicalOverview": { "text": "Evidence for ploughing predates the game's Bronze Age assignment. A 2024 study reports early fifth-millennium BCE plough marks at Anciens Arsenaux in Sion and interprets them as animal traction. The verified abstract does not reconstruct a complete implement or establish a global first plough.", "sourceIds": ["sion-ploughing"] },
       "approximateDates": [
         { "dateRange": "Beginning of the fifth millennium BCE", "dateType": "earliest-known-evidence", "precision": "approximate", "regions": ["Sion, Valais, Switzerland"], "sourceIds": ["sion-ploughing"], "note": "The authors describe these as the oldest known European plough marks in their 2024 abstract. This is an evidence claim with regional and publication limits, not an exact invention date." }
@@ -335,6 +386,11 @@
     {
       "elementId": "glass",
       "elementName": "Glass",
+      "manufactureOrUse": { "text": "For the later Roman mosaic bowl, conservators reconstruct glass canes fused in a kiln, pressed and slumped over a mold, then polished. They consider alternative ways to form its base ring. This later object's technique is not a verified recipe for every Bronze Age glass vessel.", "sourceIds": ["smithsonian-glass-bowl"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Egyptian vase supports an early glass-vessel example on the Bronze Age page. The Roman bowl belongs to a later manufacturing tradition, and neither specimen dates the first glass or first glassblowing.", "sourceIds": ["met-glass-vase", "smithsonian-glass-bowl"] },
+      "relatedDiscoveries": [
+        { "elementId": "lens", "relationship": "gameplay-abstraction", "explanation": "Optics is a related Atlas topic, not proof that either glass specimen was made as a lens or that every transparent object had an optical purpose.", "sourceIds": [] }
+      ],
       "historicalOverview": { "text": "Ancient glass is attested before the later Roman manufacturing traditions. A glass vase excavated at Malqata gives an Egyptian New Kingdom example; a Roman mosaic bowl examined by Smithsonian conservators illustrates a different combination of fused canes, molding, slumping and polishing.", "sourceIds": ["met-glass-vase", "smithsonian-glass-bowl"] },
       "approximateDates": [
         { "dateRange": "c. 1386-1347 BCE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Malqata, Thebes, Egypt"], "sourceIds": ["met-glass-vase"], "note": "Museum date label for a specific vase from the palace of Amenhotep III, not the beginning of glassmaking." },

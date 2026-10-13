@@ -243,10 +243,51 @@ describe('historical research database', () => {
 
   it('rejects unknown fields and unsupported schema versions', () => {
     expect(schema.safeParse({
-      ...fixture(), schemaVersion: 2,
+      ...fixture(), schemaVersion: 3,
     }).success).toBe(false)
     expect(schema.safeParse({
       ...fixture(), accidentallyRenamedRecords: [],
     }).success).toBe(false)
+  })
+
+  it.each(['manufactureOrUse', 'agePlacement', 'relatedDiscoveries'] as const)('requires the Atlas %s field', (field) => {
+    const data = fixture()
+    const { [field]: omitted, ...incomplete } = data.records[0]
+    expect(omitted).toBeDefined()
+    expect(schema.safeParse({ ...data, records: [incomplete] }).success).toBe(false)
+  })
+
+  it.each(['manufactureOrUse', 'agePlacement'] as const)('rejects unverified Atlas claims in %s', (field) => {
+    const data = fixture()
+    data.records[0][field].sourceIds = ['bm-scribal-palette']
+    expect(schema.safeParse(data).success).toBe(false)
+  })
+
+  it.each(['missing-element', 'compass'])('rejects invalid related target %s', (elementId) => {
+    const data = fixture()
+    data.records[0].relatedDiscoveries[0].elementId = elementId
+    expect(schema.safeParse(data).success).toBe(false)
+  })
+
+  it('rejects duplicate related targets and unsupported documented relationships', () => {
+    const data = fixture()
+    const link = data.records[0].relatedDiscoveries[0]
+    data.records[0].relatedDiscoveries.push(structuredClone(link))
+    expect(schema.safeParse(data).success).toBe(false)
+    data.records[0].relatedDiscoveries.pop()
+    link.relationship = 'documented'
+    expect(schema.safeParse(data).success).toBe(false)
+    link.sourceIds = ['bm-scribal-palette']
+    expect(schema.safeParse(data).success).toBe(false)
+    link.sourceIds = ['missing-source']
+    expect(schema.safeParse(data).success).toBe(false)
+  })
+
+  it('requires historical placement citations and reserves the fictional prologue for Origins', () => {
+    const data = fixture()
+    data.records[0].agePlacement.sourceIds = []
+    expect(schema.safeParse(data).success).toBe(false)
+    data.records[0].agePlacement.status = 'fictional-prologue'
+    expect(schema.safeParse(data).success).toBe(false)
   })
 })

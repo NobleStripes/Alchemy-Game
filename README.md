@@ -130,7 +130,7 @@ Content validation simulates actual play: resolve recipes only in unlocked eras,
 
 ## Historical research database (Phase 2)
 
-Authoring research lives in [`src/game/content/research.json`](src/game/content/research.json), validated by [`research.ts`](src/game/content/research.ts) and [`research.test.ts`](src/game/content/research.test.ts). This is version-controlled JSON, not a hosted database. It is intentionally separate from the gameplay content exports: it adds no player-facing UI, save fields, age gates, recipes or runtime research payload.
+Research lives in [`src/game/content/research.json`](src/game/content/research.json), validated by [`research.ts`](src/game/content/research.ts) and [`research.test.ts`](src/game/content/research.test.ts). This is version-controlled JSON, not a hosted database. Schema version 2 adds educational Atlas fields. The Guide now loads this metadata, but it remains separate from gameplay content exports and changes no save fields, age gates or recipes.
 
 The initial batch covers **10 of 144 elements**: Wayfinding (legacy Compass), Lens, Polity (legacy Nation), Metal, Writing Reed (legacy Quill), Writing, Road, Market, Ard (legacy Plow), and Glass. It contains **14 consulted sources and one pending source**. These are focused research records, not exhaustive histories or certification of every claim in an existing description. The remaining 134 elements have no research record yet.
 
@@ -138,6 +138,9 @@ The initial batch covers **10 of 144 elements**: Wayfinding (legacy Compass), Le
 | --- | --- |
 | `elementId`, `elementName` | Stable gameplay ID and current display name; stale names and unknown IDs fail validation. |
 | `historicalOverview` | A sourced overview, with references to the central source registry. |
+| `manufactureOrUse` | Sourced material, production or usage context; gaps in reconstruction remain explicit. |
+| `agePlacement` | Cited earlier precedents or regional gameplay placement, or an explicitly fictional prologue. This does not infer chronology from date strings. |
+| `relatedDiscoveries` | Curated topic links, not inferred recipe edges. Documented relationships require verified citations; gameplay associations are labeled separately. Unknown targets, self-links and duplicates fail validation. |
 | `approximateDates` | Regional dates labeled as dated evidence, earliest known evidence, regional development, widespread adoption, or undated; each has a precision and explanatory note. |
 | `associatedRegions` | Relevant findspots or regions, not necessarily invention locations. |
 | `archaeologicalEvidence` | Artifact, excavated-context, textual-evidence or interpretation entries, distinguished as attested, hypothetical or disputed. This can be empty when no material evidence is established. |
@@ -156,6 +159,16 @@ Prioritize excavation publications, peer-reviewed archaeology/archaeometry, muse
 For new records, add sources and their receipts first, then reference verified source IDs from overviews, dates, evidence, significance and independent developments. Pending sources may appear only in `furtherResearch`. Validation rejects duplicate records/source IDs, dangling references, missing required fields, invalid web URLs/dates and historical dates without sources or geography. Year-resolved dates are reserved for specific dated evidence, such as the Sweet Track's construction, not exact invention/adoption claims. Unknown beginnings and fictional Origins remain undated; first surviving evidence is not widespread adoption.
 
 Run the focused authoring checks with `npm test -- src\game\content\research.test.ts`, then the normal validation commands above. These checks enforce the research structure and citation relationships, **not historical truth or live URL availability**; original-source review remains necessary.
+
+## Educational Atlas (Phase 3)
+
+Open **Historical Encyclopedia** in the Guide to search and revisit discovered elements from any age. This optional section is independent of recipe research, formulas and hints. Undiscovered entries and their related-discovery links stay hidden. Following a related discovery changes only the local reading selection, not the active gameplay age or worktable.
+
+The ten researched entries show regional dates and their meaning, geographical associations, manufacture/use, significance, evidence, independent developments, historical uncertainty and numbered references. Citations link each supported passage to source titles, authors/institutions, publication dates when known, and original URLs. Verification disclosures distinguish catalog metadata, selected passages and abstract-only access; pending sources do not support displayed references. Historical vocabulary and source titles can mention materials, but no unperformed formula pairs or preparation controls appear in this section.
+
+Indicators distinguish documented evidence, hypotheses, contested interpretations, documented topic relationships and gameplay associations. Symbolic combinations are explicitly gameplay abstractions; age-placement notes identify earlier precedents or regional simplifications rather than imposing a worldwide timeline. Origins stays fictional and undated.
+
+The remaining 134 discoveries show an honest **historical notes not yet researched** state, not invented dates or citations. Their existing description is labeled as gameplay text, not verified history. Reading costs no Insight, changes no progress or rewards, and creates no saved history-viewing state. Discovered notes remain available after reloading existing saves; resetting discoveries hides the corresponding entries immediately. Rainmaker remains separate from the campaign Guide.
 
 ## Saves And Settings
 

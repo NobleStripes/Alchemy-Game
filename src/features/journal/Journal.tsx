@@ -9,6 +9,7 @@ import {
 import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
 import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
+import { HistoricalAtlas } from './HistoricalAtlas'
 
 interface JournalProps {
   eraId: string
@@ -451,6 +452,7 @@ export function Journal({
           )}
         </section>
       </details>
+      <HistoricalAtlas />
     </aside>
   )
 }
