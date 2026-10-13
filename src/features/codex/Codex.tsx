@@ -1,7 +1,7 @@
 import { useDraggable } from '@dnd-kit/core'
 import { ArrowUpDown, Search, Star, X } from 'lucide-react'
 import { useDeferredValue, useMemo, useState, type CSSProperties, type MouseEvent } from 'react'
-import { elements, elementsById } from '../../game/content'
+import { elements, elementsById, eras } from '../../game/content'
 import type { ElementCategory } from '../../game/domain/types'
 import { useGameStore } from '../../game/state/useGameStore'
 
@@ -54,6 +54,16 @@ function ElementTile({ elementId, onSelected }: ElementTileProps) {
       {...listeners}
       {...attributes}
       aria-pressed={Boolean(slotLabel)}
+      onKeyDown={(event) => {
+        if (event.target !== event.currentTarget) return
+        if (event.key === 'Enter' && !isDragging) {
+          event.preventDefault()
+          selectElement(element.id)
+          onSelected?.()
+        } else {
+          listeners?.onKeyDown?.(event)
+        }
+      }}
     >
       <span className="element-sigil" data-category={element.category} aria-hidden="true">
         {element.icon || element.sigil}
@@ -87,15 +97,19 @@ type SortOrder = 'alphabetical' | 'category' | 'recent'
 
 export function Codex({ onElementSelected }: CodexProps) {
   const [query, setQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState<string>('all')
+  const [selectedCategory, setSelectedCategory] = useState<ElementCategory | 'all'>('all')
+  const [selectedAge, setSelectedAge] = useState('all')
+  const [starredOnly, setStarredOnly] = useState(false)
+  const [compact, setCompact] = useState(false)
   const [sortOrder, setSortOrder] = useState<SortOrder>('alphabetical')
   const deferredQuery = useDeferredValue(query.trim().toLowerCase())
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const favoriteIds = useGameStore((state) => state.favoriteIds)
+  const recentIngredientIds = useGameStore((state) => state.recentIngredientIds)
+  const selectElement = useGameStore((state) => state.selectElement)
 
-  const categories: Array<{ id: string; label: string; icon?: string }> = [
+  const categories: Array<{ id: ElementCategory | 'all'; label: string }> = [
     { id: 'all', label: 'All' },
-    { id: 'favorites', label: 'Starred', icon: '⭐' },
     { id: 'essence', label: 'Essence' },
     { id: 'matter', label: 'Matter' },
     { id: 'weather', label: 'Weather' },
@@ -106,15 +120,11 @@ export function Codex({ onElementSelected }: CodexProps) {
     { id: 'transport', label: 'Transport' },
   ]
 
-  const visibleElements = useMemo(() => {
-    const result = elements.filter((element) => {
+  const matchingElements = useMemo(() => {
+    return elements.filter((element) => {
       if (!discoveredIds.includes(element.id)) return false
-
-      if (selectedCategory === 'favorites') {
-        if (!favoriteIds.includes(element.id)) return false
-      } else if (selectedCategory !== 'all') {
-        if (element.category !== (selectedCategory as ElementCategory)) return false
-      }
+      if (starredOnly && !favoriteIds.includes(element.id)) return false
+      if (selectedAge !== 'all' && element.era !== selectedAge) return false
 
       if (deferredQuery) {
         const matchesName = element.name.toLowerCase().includes(deferredQuery)
@@ -124,7 +134,12 @@ export function Codex({ onElementSelected }: CodexProps) {
 
       return true
     })
+  }, [discoveredIds, favoriteIds, starredOnly, selectedAge, deferredQuery])
 
+  const visibleElements = useMemo(() => {
+    const result = matchingElements.filter(
+      (element) => selectedCategory === 'all' || element.category === selectedCategory,
+    )
     if (sortOrder === 'alphabetical') {
       result.sort((a, b) => a.name.localeCompare(b.name))
     } else if (sortOrder === 'category') {
@@ -134,103 +149,178 @@ export function Codex({ onElementSelected }: CodexProps) {
     }
 
     return result
-  }, [discoveredIds, favoriteIds, selectedCategory, deferredQuery, sortOrder])
+  }, [matchingElements, selectedCategory, sortOrder, discoveredIds])
+
+  const recentElements = recentIngredientIds
+    .filter((id) => discoveredIds.includes(id))
+    .map((id) => elementsById.get(id))
+    .filter((element) => element !== undefined)
+  const hasFilters = query !== '' || selectedAge !== 'all' || selectedCategory !== 'all' || starredOnly
+
+  function clearFilters() {
+    setQuery('')
+    setSelectedAge('all')
+    setSelectedCategory('all')
+    setStarredOnly(false)
+  }
 
   return (
     <aside className="codex" aria-labelledby="codex-title">
-      <div className="section-heading">
-        <div>
-          <span className="panel-kicker">Your collection</span>
-          <h2 id="codex-title" tabIndex={-1}>Element shelf</h2>
+      <div className="codex-toolbar">
+        <div className="section-heading">
+          <div>
+            <span className="panel-kicker">Your collection</span>
+            <h2 id="codex-title" tabIndex={-1}>Element shelf</h2>
+          </div>
+          <span className="section-count">{discoveredIds.length} unlocked</span>
         </div>
-        <span className="section-count">{discoveredIds.length} unlocked</span>
-      </div>
 
-      <div className="codex-search-row">
-        <label className="search-field">
-          <Search size={16} aria-hidden="true" />
-          <span className="sr-only">Search discovered elements</span>
-          <input
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Find an element"
-          />
-          {query && (
-            <button
-              type="button"
-              className="search-clear-btn"
-              onClick={() => setQuery('')}
-              aria-label="Clear search"
-            >
-              <X size={14} />
-            </button>
-          )}
-        </label>
+        <div className="codex-search-row">
+          <label className="search-field">
+            <Search size={16} aria-hidden="true" />
+            <span className="sr-only">Search discovered elements</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Find an element"
+            />
+            {query && (
+              <button
+                type="button"
+                className="search-clear-btn"
+                onClick={() => setQuery('')}
+                aria-label="Clear search"
+              >
+                <X size={14} />
+              </button>
+            )}
+          </label>
 
-        <div className="sort-control">
-          <label htmlFor="sort-select" className="sr-only">Sort elements</label>
-          <div className="sort-select-wrapper">
-            <ArrowUpDown size={14} aria-hidden="true" />
-            <select
-              id="sort-select"
-              value={sortOrder}
-              onChange={(e) => setSortOrder(e.target.value as SortOrder)}
-            >
-              <option value="alphabetical">A-Z</option>
-              <option value="recent">Recent</option>
-              <option value="category">Category</option>
-            </select>
+          <div className="sort-control">
+            <label htmlFor="sort-select" className="sr-only">Sort elements</label>
+            <div className="sort-select-wrapper">
+              <ArrowUpDown size={14} aria-hidden="true" />
+              <select
+                id="sort-select"
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value as SortOrder)}
+              >
+                <option value="alphabetical">A-Z</option>
+                <option value="recent">Recent</option>
+                <option value="category">Category</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="category-tabs" role="tablist" aria-label="Element categories">
-        {categories.map((cat) => {
-          const count =
-            cat.id === 'all'
-              ? discoveredIds.length
-              : cat.id === 'favorites'
-                ? favoriteIds.filter((id) => discoveredIds.includes(id)).length
-                : elements.filter(
-                    (el) => el.category === cat.id && discoveredIds.includes(el.id),
-                  ).length
+        <div className="codex-filter-row">
+          <label className="age-filter">
+            Age
+            <select value={selectedAge} onChange={(event) => setSelectedAge(event.target.value)}>
+              <option value="all">All Ages</option>
+              {eras.map((era) => <option key={era.id} value={era.id}>{era.name}</option>)}
+            </select>
+          </label>
+          <button
+            type="button"
+            className="category-tab"
+            aria-pressed={starredOnly}
+            data-active={starredOnly}
+            onClick={() => setStarredOnly((current) => !current)}
+          >
+            <Star size={13} aria-hidden="true" />
+            Starred
+          </button>
+        </div>
 
-          if (cat.id !== 'all' && cat.id !== 'favorites' && count === 0) return null
+        <div className="category-tabs" role="tablist" aria-label="Element categories">
+          {categories.map((cat) => {
+            const count =
+              cat.id === 'all'
+                ? matchingElements.length
+                : matchingElements.filter((element) => element.category === cat.id).length
 
-          return (
-            <button
-              key={cat.id}
-              type="button"
-              role="tab"
-              aria-selected={selectedCategory === cat.id}
-              className="category-tab"
-              data-active={selectedCategory === cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-            >
-              {cat.icon && <span aria-hidden="true">{cat.icon}</span>}
-              <span>{cat.label}</span>
-              <span className="tab-count">{count}</span>
-            </button>
-          )
-        })}
-      </div>
+            if (cat.id !== 'all' && selectedCategory !== cat.id && !elements.some(
+              (element) => element.category === cat.id && discoveredIds.includes(element.id),
+            )) return null
 
-      <div className="element-list">
-        {visibleElements.map((element) => (
-          <ElementTile
-            key={element.id}
-            elementId={element.id}
-            onSelected={onElementSelected}
-          />
-        ))}
-        {visibleElements.length === 0 && (
-          <p className="empty-note">
-            {query.trim()
-              ? `No discovered element matches “${query.trim()}”.`
-              : 'No elements found in this category.'}
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                role="tab"
+                aria-selected={selectedCategory === cat.id}
+                className="category-tab"
+                data-active={selectedCategory === cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+              >
+                <span>{cat.label}</span>
+                <span className="tab-count">{count}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        <div className="codex-results-row">
+          <p className="codex-results-count" role="status" aria-label="Element filter results" aria-live="polite" aria-atomic="true">
+            {visibleElements.length} of {discoveredIds.length} discovered elements
           </p>
+          <button type="button" className="codex-clear-filters" onClick={clearFilters} disabled={!hasFilters}>
+            Clear filters
+          </button>
+        </div>
+        <button
+          type="button"
+          className="category-tab codex-layout-toggle"
+          aria-pressed={compact}
+          aria-controls="codex-elements"
+          data-active={compact}
+          onClick={() => setCompact((current) => !current)}
+        >
+          Compact layout
+        </button>
+        {recentElements.length > 0 && (
+          <section className="recent-ingredients" aria-labelledby="recent-ingredients-title">
+            <h3 id="recent-ingredients-title">Recently used <small>Across all filters</small></h3>
+            <div className="recent-ingredient-list">
+              {recentElements.map((element) => (
+                <button
+                  key={element.id}
+                  type="button"
+                  className="category-tab"
+                  aria-label={`Use recent ingredient ${element.name}`}
+                  onClick={() => {
+                    selectElement(element.id)
+                    onElementSelected?.()
+                  }}
+                >
+                  <span aria-hidden="true">{element.icon || element.sigil}</span>
+                  {element.name}
+                </button>
+              ))}
+            </div>
+          </section>
         )}
+      </div>
+
+      <div className="codex-results" role="region" aria-label="Matching discovered elements" tabIndex={0}>
+        <div id="codex-elements" className="element-list" data-layout={compact ? 'compact' : 'tiles'}>
+          {visibleElements.map((element) => (
+            <ElementTile
+              key={element.id}
+              elementId={element.id}
+              onSelected={onElementSelected}
+            />
+          ))}
+          {visibleElements.length === 0 && (
+            <p className="empty-note">
+              {query.trim()
+                ? `No discovered element matches “${query.trim()}”.`
+                : 'No discovered elements match these filters.'}
+            </p>
+          )}
+        </div>
       </div>
     </aside>
   )

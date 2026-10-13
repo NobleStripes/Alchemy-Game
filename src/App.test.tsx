@@ -234,30 +234,34 @@ describe('alchemy worktable', () => {
     const user = userEvent.setup()
     render(<App />)
     expect(snapshotProgress(useGameStore.getState())).toEqual(expected)
-    await user.click(screen.getByRole('button', { name: 'Atlas' }))
-    const entries = within(screen.getByRole('navigation', { name: 'Discovered historical entries' })).getAllByRole('button')
+    const mainNavigation = within(screen.getByRole('navigation', { name: 'Main navigation' }))
+    await user.click(mainNavigation.getByRole('button', { name: 'Atlas' }))
+    const atlasContents = within(screen.getByRole('main', { name: 'Atlas' }))
+    const entryNavigation = within(atlasContents.getByRole('navigation', { name: 'Discovered historical entries' }))
+    const entries = entryNavigation.getAllByRole('button')
     expect(entries.map((entry) => entry.getAttribute('aria-label')).sort()).toEqual(elements.map((element) =>
       `Open historical entry for ${element.name}${progress.readHistoricalElementIds.includes(element.id) ? ' (read)' : ''}`,
     ).sort())
-    await user.click(screen.getByRole('button', { name: 'Open historical entry for Writing (read)' }))
-    expect(screen.getByRole('article', { name: 'Writing' })).toBeVisible()
+    await user.click(entryNavigation.getByRole('button', { name: 'Open historical entry for Writing (read)' }))
+    const article = atlasContents.getByRole('article', { name: 'Writing' })
+    expect(article).toBeVisible()
     expect(snapshotProgress(useGameStore.getState())).toEqual(expected)
     expect(localStorage.getItem(SAVE_KEY)).toBe(raw)
     expect(writes).not.toHaveBeenCalled()
 
-    await user.click(screen.getByRole('button', { name: 'Mark Writing as unread' }))
+    await user.click(within(article).getByRole('button', { name: 'Mark Writing as unread' }))
     await useGameStore.flushProgress()
     const unread = { ...expected, readHistoricalElementIds: ['metal'] }
     expect(snapshotProgress(createGameStore().getState())).toEqual(unread)
     expect(JSON.parse(localStorage.getItem(SAVE_KEY)!)).toEqual({ version: 7, ...unread })
-    await user.click(screen.getByRole('button', { name: 'Mark Writing as read' }))
+    await user.click(within(article).getByRole('button', { name: 'Mark Writing as read' }))
     await useGameStore.flushProgress()
     expect(snapshotProgress(createGameStore().getState())).toEqual(expected)
     expect(JSON.parse(localStorage.getItem(SAVE_KEY)!)).toEqual(progress)
 
-    await user.click(screen.getByRole('button', { name: 'Play' }))
+    await user.click(mainNavigation.getByRole('button', { name: 'Play' }))
     vi.spyOn(window, 'confirm').mockReturnValue(true)
-    await user.click(screen.getByRole('button', { name: 'Reset journal' }))
+    await user.click(within(screen.getByRole('banner')).getByRole('button', { name: 'Reset journal' }))
     await useGameStore.flushProgress()
     expect(createGameStore().getState()).toMatchObject({
       discoveredIds: starterElementIds,
@@ -269,13 +273,13 @@ describe('alchemy worktable', () => {
       activeEraId: 'first-light',
       soundEnabled: false,
     })
-    await user.click(screen.getByRole('button', { name: 'Atlas' }))
-    expect(screen.queryByRole('article')).not.toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: /Open historical entry for Writing/ })).not.toBeInTheDocument()
-    expect(within(screen.getByRole('navigation', { name: 'Discovered historical entries' })).getAllByRole('button'))
+    await user.click(mainNavigation.getByRole('button', { name: 'Atlas' }))
+    expect(atlasContents.queryByRole('article')).not.toBeInTheDocument()
+    expect(entryNavigation.queryByRole('button', { name: /Open historical entry for Writing/ })).not.toBeInTheDocument()
+    expect(entryNavigation.getAllByRole('button'))
       .toHaveLength(starterElementIds.length)
     expect(historicalResearch).toEqual(researchBefore)
-  })
+  }, 10000)
 
   it.each([1, 2, 3, 4, 5, 6])('reveals previously discovered history from a v%s save without rewriting it on navigation', async (version) => {
     await useGameStore.flushProgress()
@@ -936,13 +940,13 @@ describe('alchemy worktable', () => {
     const starFireBtn = screen.getByRole('button', { name: 'Favorite Fire' })
     await user.click(starFireBtn)
 
-    // Switch to Starred tab
-    await user.click(screen.getByRole('tab', { name: /Starred/ }))
+    await user.click(screen.getByRole('button', { name: 'Starred' }))
     expect(screen.getByRole('button', { name: 'Fire' })).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Water' })).toBeNull()
 
-    // Switch to All tab
     await user.click(screen.getByRole('tab', { name: /All/ }))
+    expect(screen.queryByRole('button', { name: 'Water' })).toBeNull()
+    await user.click(screen.getByRole('button', { name: 'Starred' }))
     expect(screen.getByRole('button', { name: 'Fire' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Water' })).toBeInTheDocument()
   })

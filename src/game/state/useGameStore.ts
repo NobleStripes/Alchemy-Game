@@ -36,6 +36,7 @@ interface AttemptResult {
 }
 
 interface GameState extends PersistedState {
+  recentIngredientIds: string[]
   firstSlotId: string | null
   secondSlotId: string | null
   lastAttempt: AttemptResult | null
@@ -93,6 +94,12 @@ function appendExperiment(state: PersistedState, entry: Omit<ExperimentEntry, 'i
   return [...history, { ...entry, id }].slice(-MAX_EXPERIMENT_HISTORY)
 }
 
+function recentIngredients(state: GameState, selectedIds: string[]): string[] {
+  return [...new Set([...selectedIds].reverse().concat(state.recentIngredientIds))]
+    .filter((id) => state.discoveredIds.includes(id) && elementsById.has(id))
+    .slice(0, 8)
+}
+
 export function createGameStore() {
   const persistence = createProgressPersistence()
   let challengePending = false
@@ -110,6 +117,7 @@ export function createGameStore() {
     }
     return ({
   ...savedProgress,
+  recentIngredientIds: [],
   firstSlotId: null,
   secondSlotId: null,
   lastAttempt: null,
@@ -118,7 +126,10 @@ export function createGameStore() {
   prepareCombination: (firstId, secondId) => {
     const state = get()
     if (![firstId, secondId].every((id) => elementsById.has(id) && state.discoveredIds.includes(id))) return false
-    set({ firstSlotId: firstId, secondSlotId: secondId, lastAttempt: null })
+    set({
+      firstSlotId: firstId, secondSlotId: secondId, lastAttempt: null,
+      recentIngredientIds: recentIngredients(state, [firstId, secondId]),
+    })
     return true
   },
 
@@ -181,21 +192,25 @@ export function createGameStore() {
 
   selectElement: (elementId) => {
     soundEngine.playSelect()
-    const { firstSlotId, secondSlotId } = get()
+    const state = get()
+    const { firstSlotId, secondSlotId } = state
+    const recentIngredientIds = recentIngredients(state, [elementId])
     if (!firstSlotId) {
-      set({ firstSlotId: elementId, lastAttempt: null })
+      set({ firstSlotId: elementId, lastAttempt: null, recentIngredientIds })
     } else if (!secondSlotId) {
-      set({ secondSlotId: elementId, lastAttempt: null })
+      set({ secondSlotId: elementId, lastAttempt: null, recentIngredientIds })
     } else {
-      set({ secondSlotId: elementId, lastAttempt: null })
+      set({ secondSlotId: elementId, lastAttempt: null, recentIngredientIds })
     }
   },
 
   placeElement: (slot, elementId) => {
     soundEngine.playSelect()
+    const state = get()
     set({
       [slot === 'first' ? 'firstSlotId' : 'secondSlotId']: elementId,
       lastAttempt: null,
+      recentIngredientIds: recentIngredients(state, [elementId]),
     })
   },
 
@@ -218,7 +233,10 @@ export function createGameStore() {
 
   transmuteWith: (firstId: string, secondId: string) => {
     if (challengePending) return
-    set({ firstSlotId: firstId, secondSlotId: secondId })
+    set({
+      firstSlotId: firstId, secondSlotId: secondId,
+      recentIngredientIds: recentIngredients(get(), [firstId, secondId]),
+    })
     get().transmute()
   },
 
@@ -496,6 +514,7 @@ export function createGameStore() {
     set({
       ...progress,
       persistenceError,
+      recentIngredientIds: [],
       firstSlotId: null,
       secondSlotId: null,
       lastAttempt: null,
@@ -513,6 +532,7 @@ export function createGameStore() {
     soundEngine.setEnabled(next.soundEnabled)
     store.setState({
       ...snapshotProgress(next),
+      recentIngredientIds: current.recentIngredientIds.filter((id) => next.discoveredIds.includes(id)),
       firstSlotId: current.firstSlotId && next.discoveredIds.includes(current.firstSlotId) ? current.firstSlotId : null,
       secondSlotId: current.secondSlotId && next.discoveredIds.includes(current.secondSlotId) ? current.secondSlotId : null,
       lastAttempt: null,

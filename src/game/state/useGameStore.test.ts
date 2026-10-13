@@ -23,6 +23,60 @@ const fresh = (): SavedProgress => parseProgress(JSON.stringify({ version: 1, di
 const failWrites = () => vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
 
 describe('campaign state', () => {
+  it('keeps eight distinct recent ingredients in selection order without saving or changing progression', () => {
+    const ids = elements.slice(0, 10).map((element) => element.id)
+    useGameStore.setState({ discoveredIds: ids })
+    const before = campaign()
+    const savedBefore = disk()
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    for (const id of ids) state().selectElement(id)
+    expect(state().recentIngredientIds).toEqual(ids.slice(-8).reverse())
+    state().placeElement('second', ids[3])
+    expect(state().recentIngredientIds).toEqual([ids[3], ...ids.slice(-8).reverse().filter((id) => id !== ids[3])])
+    state().prepareCombination(ids[7], ids[9])
+    expect(state().recentIngredientIds.slice(0, 3)).toEqual([ids[9], ids[7], ids[3]])
+    state().prepareCombination(ids[7], ids[7])
+    expect(state().recentIngredientIds[0]).toBe(ids[7])
+    expect(state().recentIngredientIds).toHaveLength(8)
+    expect(new Set(state().recentIngredientIds).size).toBe(8)
+    state().clearSlot('first')
+    state().clearSlot('second')
+    expect(state().recentIngredientIds).toHaveLength(8)
+    expect(campaign()).toEqual(before)
+    expect(writes).not.toHaveBeenCalled()
+    expect(disk()).toBe(savedBefore)
+    expect(createGameStore().getState().recentIngredientIds).toEqual([])
+  })
+
+  it('tracks immediate combinations through successful discoveries but excludes recents from version 7 saves', () => {
+    state().transmuteWith('stone', 'ember')
+    expect(state().recentIngredientIds).toEqual(['ember', 'stone'])
+    state().placeElement('first', 'metal')
+    expect(state().recentIngredientIds).toEqual(['metal', 'ember', 'stone'])
+    state().toggleSound()
+    expect(loadProgress()).toEqual({ version: 7, ...campaign() })
+    expect(JSON.parse(disk()!)).not.toHaveProperty('recentIngredientIds')
+    expect(createGameStore().getState().recentIngredientIds).toEqual([])
+    state().resetProgress()
+    expect(state().recentIngredientIds).toEqual([])
+  })
+
+  it('removes recent ingredients no longer discovered after adopting external progress', () => {
+    state().transmuteWith('stone', 'ember')
+    state().placeElement('first', 'metal')
+    localStorage.setItem(saveKey, exportProgress(fresh()))
+    useGameStore.synchronizeProgress()
+    expect(state().recentIngredientIds).toEqual(['ember', 'stone'])
+    expect(state().firstSlotId).toBeNull()
+  })
+
+  it('never records hidden or unknown ingredients in recent history', () => {
+    expect(state().prepareCombination('ember', 'metal')).toBe(false)
+    state().selectElement('metal')
+    state().placeElement('second', 'missing')
+    expect(state().recentIngredientIds).toEqual([])
+  })
+
   it('persists explicit reading without spending Insight or affecting rewards, then clears it on reset', () => {
     state().transmuteWith('stone', 'ember')
     state().transmuteWith('ember', 'ember')

@@ -22,6 +22,14 @@ Switching sections does not spend Insight, perform experiments, change the selec
 
 The header also remains available during isolated challenges. Visiting Atlas does not abandon the run; returning to Play resumes it. **Return to Play** exits the challenge using its existing discard-confirmation rules and restores focus to its launch control. Campaign reset and starting another run are disabled while a challenge is active.
 
+## Finding ingredients
+
+The Element shelf defaults to **All Ages**, because earlier ingredients remain useful for cross-age combinations. Choose Origins, Stone Age, Bronze Age, or Iron Age to filter the shelf without changing the playable age. Search, category tabs, and the independent **Starred** toggle combine; none exposes undiscovered ingredients. The counter shows matching discoveries out of the whole collection. **Clear filters** resets search, age, category, and Starred while retaining the selected sort and layout.
+
+Search and filter controls remain visible while the results scroll separately. **Compact layout** replaces illustrated tiles with denser rows; selection, favorites, occupied-slot markers, and dragging still work. Focus an ingredient and press Enter to select it; the existing Space-based keyboard dragging remains available.
+
+**Recently used** offers the last eight distinct ingredients selected in this campaign session, newest first. Selecting again moves an ingredient to the front. Drops, repeated inputs, prepared formulas, and immediate combinations also update this list. Its shortcuts span all shelf filters and return mobile players to Combine as usual. This differs from **Recent** sorting, which still orders elements by discovery. Clearing slots or visiting Atlas does not clear the shortcuts; reload or campaign reset does. Neither selections nor shelf controls spend Insight or trigger a save.
+
 ## Four ages
 
 Origins is an undated, symbolic gameplay prologue, not an archaeological period or a scientific account of creation. Its four starting essences draw on documented Greek natural philosophy, not modern chemical elements or a universal ancient belief; their free Atlas histories explain the distinction. The historical pages draw on several traditions; their approximate dates are explained in the [chronology guide](historical-interpretation.md), not a single worldwide timeline.
