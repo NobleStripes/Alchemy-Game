@@ -128,6 +128,35 @@ Game definitions live in `src/game/content`. Every recipe is an unordered pair w
 
 Content validation simulates actual play: resolve recipes only in unlocked eras, check landmark requirements, grant newly unlocked elements, and repeat. Circular era gates and unreachable page content fail validation before build.
 
+## Historical research database (Phase 2)
+
+Authoring research lives in [`src/game/content/research.json`](src/game/content/research.json), validated by [`research.ts`](src/game/content/research.ts) and [`research.test.ts`](src/game/content/research.test.ts). This is version-controlled JSON, not a hosted database. It is intentionally separate from the gameplay content exports: it adds no player-facing UI, save fields, age gates, recipes or runtime research payload.
+
+The initial batch covers **10 of 144 elements**: Wayfinding (legacy Compass), Lens, Polity (legacy Nation), Metal, Writing Reed (legacy Quill), Writing, Road, Market, Ard (legacy Plow), and Glass. It contains **14 consulted sources and one pending source**. These are focused research records, not exhaustive histories or certification of every claim in an existing description. The remaining 134 elements have no research record yet.
+
+| Record field | Meaning |
+| --- | --- |
+| `elementId`, `elementName` | Stable gameplay ID and current display name; stale names and unknown IDs fail validation. |
+| `historicalOverview` | A sourced overview, with references to the central source registry. |
+| `approximateDates` | Regional dates labeled as dated evidence, earliest known evidence, regional development, widespread adoption, or undated; each has a precision and explanatory note. |
+| `associatedRegions` | Relevant findspots or regions, not necessarily invention locations. |
+| `archaeologicalEvidence` | Artifact, excavated-context, textual-evidence or interpretation entries, distinguished as attested, hypothetical or disputed. This can be empty when no material evidence is established. |
+| `historicalSignificance` | A sourced explanation of why the evidence matters. |
+| `independentDevelopments` | Separately referenced regional developments when supported. Writing records Mesopotamian, Egyptian, Chinese and Mesoamerican primary inventions; missing dates are not invented. An empty list means none is established by this source set, not that no independent development occurred. |
+| `historicalUncertainty` | Dating, definition, preservation, provenance and interpretation limits, including any gaps in access or regional coverage. |
+| `gameplaySimplifications` | What the page assignment, generic element, legacy ID or symbolic combinations omit; these are not historical prerequisites. |
+| `furtherResearch` | Open questions and source leads, including inaccessible material that must not support accepted claims. |
+
+Each source records its **title, authors (where credited), institution, source type, original URL, publication date when known, and verification receipt**. An unknown publication date is `null`; artifact dates and API metadata-update timestamps are not publication dates. A verified receipt records the check date, actual accessed URL, access level and supporting passage or catalog fields. Museum-owned APIs and legitimate article archives may supply original records when the main site is unavailable.
+
+Verification is **claim- and passage-specific**, not blanket approval of an entire website or paper. The Met API entries establish catalog metadata, not unread descriptive essays. The Sion ploughing study was checked through its publisher-deposited abstract in Crossref; the full paper was not accessible. The British Museum scribal palette returned HTTP 403 and remains pending. Earlier reference links in this README do not automatically become verified research sources.
+
+Prioritize excavation publications, peer-reviewed archaeology/archaeometry, museum collections and institutional research. World History Encyclopedia is supplementary regional context, not a replacement for primary evidence. AI-assisted searches may find leads, but **read the original supporting passage before accepting a claim or updating game content**. Check the title, credited author/institution, geography, dating method and alternative interpretations. Retain discrepancies and limitations rather than resolving them through an AI summary.
+
+For new records, add sources and their receipts first, then reference verified source IDs from overviews, dates, evidence, significance and independent developments. Pending sources may appear only in `furtherResearch`. Validation rejects duplicate records/source IDs, dangling references, missing required fields, invalid web URLs/dates and historical dates without sources or geography. Year-resolved dates are reserved for specific dated evidence, such as the Sweet Track's construction, not exact invention/adoption claims. Unknown beginnings and fictional Origins remain undated; first surviving evidence is not widespread adoption.
+
+Run the focused authoring checks with `npm test -- src\game\content\research.test.ts`, then the normal validation commands above. These checks enforce the research structure and citation relationships, **not historical truth or live URL availability**; original-source review remains necessary.
+
 ## Saves And Settings
 
 Progress is stored locally in the browser under `unwritten-atlas-progress`. Version 7 includes discovered elements, performed formulas, Insight credits and stall progress, age challenge reward markers, Open Leads, failed unordered pairs, unlocked ages, and the active page, plus favorites, sound preference, the latest 50 experiments, collection reward markers, and Rainmaker completion/best-score records. In-flight challenge state is not saved. There are no accounts or cloud sync.
