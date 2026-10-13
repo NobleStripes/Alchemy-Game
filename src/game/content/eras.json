@@ -12,7 +12,7 @@
     "id": "stone-age",
     "name": "Stone Age",
     "dateRange": "c. 3.3 million years ago–c. 3300 BCE",
-    "subtitle": "A broad stone-tool horizon; dates and lifeways differ by region.",
+    "subtitle": "Stone tools and varied ways of life; dates differ by region.",
     "unlockRequires": ["life", "land", "tree", "rock", "animal"],
     "grants": ["human"],
     "landmarkIds": ["stone-tool", "hearth", "art", "village"],

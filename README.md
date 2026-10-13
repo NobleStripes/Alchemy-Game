@@ -23,6 +23,7 @@ npm run dev
 | [Chronology and historical interpretation](docs/historical-interpretation.md) | Regional dates, fictional gates, element corrections, and historical references. |
 | [Historical research](docs/research.md) | Research coverage, record fields, source verification, and authoring standards. |
 | [Recipe review](docs/recipe-review.md) | Recipe classifications, historical-context disclosures, and citation limits. |
+| [Educational QA](docs/educational-qa.md) | Source-review findings, coverage gaps, and the pending human-playtest protocol. |
 | [Saves and settings](docs/saves.md) | Local storage, reading markers, migration, cross-tab synchronization, failures, and reset. |
 
 ## Validate

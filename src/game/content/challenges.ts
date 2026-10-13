@@ -41,7 +41,7 @@ export const learningChallenges: ChallengeDefinition[] = [
     allowedResultEraIds: ['first-light', 'stone-age', 'bronze-age'],
     minimumAttempts: 3,
     education: {
-      overview: 'Explore extraction, alloying and toolmaking. Ore reduction, alloy composition and working methods matter; the two-input puzzles omit equipment and controlled conditions. Tin bronze is one copper-alloy tradition, not the only history of metalworking. A stone edge here is a gameplay association, not a mandatory casting pattern.',
+      overview: 'Explore extraction, alloying and toolmaking. Smelting extracts metal from ore; alloying mixes metals. The mixture and working methods matter, and the two-input puzzles omit equipment and controlled conditions. Tin bronze is one copper-alloy tradition, not the only history of metalworking. A stone edge here is a gameplay association, not a mandatory casting pattern.',
       sourceIds: ['penn-metallurgy', 'penn-tin'],
     },
   },

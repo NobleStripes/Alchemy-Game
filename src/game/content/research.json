@@ -308,7 +308,7 @@
     {
       "elementId": "metal",
       "elementName": "Metal",
-      "manufactureOrUse": { "text": "The Tel Tsaf study analyzes a copper awl and its burial context. Heavy corrosion prevents a firm reconstruction of smelting and melting, so this specimen must not be turned into a certain manufacturing recipe.", "sourceIds": ["tel-tsaf-metallurgy"] },
+      "manufactureOrUse": { "text": "The Tel Tsaf study analyzes a copper awl, a small pointed tool, and its burial context. Heavy corrosion prevents a firm reconstruction of smelting (extracting metal from ore) and melting (making metal liquid), so this specimen must not be turned into a certain manufacturing recipe.", "sourceIds": ["tel-tsaf-metallurgy"] },
       "agePlacement": { "status": "fictional-prologue", "text": "Origins is a fictional, undated prologue. Its generic Metal discovery represents an alchemical idea, not a historical event or the first manufacture of metal.", "sourceIds": [] },
       "relatedDiscoveries": [
         { "elementId": "copper", "relationship": "documented", "explanation": "The Tel Tsaf awl is a specific copper object; it supplies a material example rather than a universal metallurgy sequence.", "sourceIds": ["tel-tsaf-metallurgy"] }
@@ -358,7 +358,7 @@
     {
       "elementId": "writing",
       "elementName": "Writing",
-      "manufactureOrUse": { "text": "A Mesopotamian clay tablet records grain distribution. The comparative study describes Chinese inscriptions engraved on turtle plastrons and bovine scapulas for divination, administration and writing exercises. These different surfaces and uses did not require one universal writing implement.", "sourceIds": ["met-barley-account", "writing-origins"] },
+      "manufactureOrUse": { "text": "A Mesopotamian clay tablet records grain distribution. The comparative study describes Chinese inscriptions engraved on turtle undershells (plastrons) and cattle shoulder blades (scapulas). They were used for divination (seeking guidance through rituals), administration and writing exercises. These different surfaces and uses did not require one universal writing implement.", "sourceIds": ["met-barley-account", "writing-origins"] },
       "agePlacement": { "status": "regional-gameplay-placement", "text": "The Bronze Age label is a broad regional association. Mesopotamian, Egyptian, Chinese and Mesoamerican traditions have different chronologies; a single game page does not date their invention or widespread adoption.", "sourceIds": ["writing-origins"] },
       "relatedDiscoveries": [
         { "elementId": "clay", "relationship": "documented", "explanation": "The early grain-distribution account is a clay tablet, not a papyrus document.", "sourceIds": ["met-barley-account"] },
@@ -376,7 +376,7 @@
       "archaeologicalEvidence": [
         { "text": "The museum catalogs a clay grain-distribution account from c. 3100-2900 BCE, probably from Uruk.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["met-barley-account"] },
         { "text": "Whether the signs on Abydos U-j tags should count as the earliest Egyptian hieroglyphs remains contested in the comparative study.", "evidenceType": "interpretation", "interpretation": "disputed", "sourceIds": ["writing-origins"] },
-        { "text": "The study describes late Shang inscriptions on turtle plastrons and bovine scapulas, including divinatory, administrative and training contexts.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["writing-origins"] }
+        { "text": "The study describes late Shang inscriptions on turtle undershells and cattle shoulder blades, including ritual, administrative and training contexts.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["writing-origins"] }
       ],
       "historicalSignificance": { "text": "The sources link early scripts to accounting, administration and divination, while showing that sign systems and language notation developed through different regional histories.", "sourceIds": ["writing-origins", "met-barley-account"] },
       "independentDevelopments": [
@@ -404,7 +404,7 @@
       ],
       "associatedRegions": ["Somerset Levels, Britain"],
       "archaeologicalEvidence": [
-        { "text": "Wetland preservation allowed excavation of wooden trackways. The Sweet Track used poles, planks and pegs; its timber was dated by dendrochronology.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["sweet-track"] }
+        { "text": "Wetland preservation allowed excavation of wooden trackways. The Sweet Track used poles, planks and pegs; its timber was dated by tree-ring dating (dendrochronology).", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["sweet-track"] }
       ],
       "historicalSignificance": { "text": "The trackways show planned infrastructure for crossing wetlands using stone axes and wooden wedges rather than iron tools.", "sourceIds": ["sweet-track"] },
       "independentDevelopments": [],
@@ -466,7 +466,7 @@
     {
       "elementId": "glass",
       "elementName": "Glass",
-      "manufactureOrUse": { "text": "For the later Roman mosaic bowl, conservators reconstruct glass canes fused in a kiln, pressed and slumped over a mold, then polished. They consider alternative ways to form its base ring. This later object's technique is not a verified recipe for every Bronze Age glass vessel.", "sourceIds": ["smithsonian-glass-bowl"] },
+      "manufactureOrUse": { "text": "For the later Roman mosaic bowl, conservators reconstruct glass canes (patterned rods) fused in a kiln, pressed and slumped (softened and bent) over a mold, then polished. They consider alternative ways to form its base ring. This later object's technique is not a verified recipe for every Bronze Age glass vessel.", "sourceIds": ["smithsonian-glass-bowl"] },
       "agePlacement": { "status": "regional-gameplay-placement", "text": "The Egyptian vase supports an early glass-vessel example on the Bronze Age page. The Roman bowl belongs to a later manufacturing tradition, and neither specimen dates the first glass or first glassblowing.", "sourceIds": ["met-glass-vase", "smithsonian-glass-bowl"] },
       "relatedDiscoveries": [
         { "elementId": "lens", "relationship": "gameplay-abstraction", "explanation": "Optics is a related Atlas topic, not proof that either glass specimen was made as a lens or that every transparent object had an optical purpose.", "sourceIds": [] }

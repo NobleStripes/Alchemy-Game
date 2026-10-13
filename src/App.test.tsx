@@ -6,9 +6,36 @@ import { cleanup, render, screen, waitFor, within } from '@testing-library/react
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import App from './App'
-import { useGameStore } from './game/state/useGameStore'
+import { snapshotProgress, useGameStore } from './game/state/useGameStore'
 
 describe('alchemy worktable', () => {
+  it('lets a fresh player discover Metal, read free history and resume a prepared combination', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({ insightCredits: 0 })
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Fire' }))
+    await user.click(screen.getByRole('button', { name: 'Earth' }))
+    await user.click(screen.getByRole('button', { name: 'Combine' }))
+    expect(screen.getByText('Discovered Metal')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Fire' }))
+    await user.click(screen.getByRole('button', { name: 'Water' }))
+    const before = snapshotProgress(useGameStore.getState())
+    const disk = localStorage.getItem('unwritten-atlas-progress')
+    await user.click(screen.getByRole('button', { name: 'Show Guide panel' }))
+    await user.click(screen.getByText('Historical Encyclopedia'))
+    await user.type(screen.getByRole('searchbox', { name: 'Search discovered historical entries' }), 'smelting')
+    await user.click(screen.getByRole('button', { name: 'Open historical entry for Metal' }))
+    const article = within(screen.getByRole('article', { name: 'Metal' }))
+    expect(article.getByText(/extracting metal from ore/)).toBeVisible()
+    expect(article.getByText(/an alchemical idea, not a historical event/)).toBeVisible()
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+    expect(localStorage.getItem('unwritten-atlas-progress')).toBe(disk)
+    expect(useGameStore.getState().insightCredits).toBe(0)
+    await user.click(screen.getByRole('button', { name: 'Show Combine panel' }))
+    await user.click(screen.getByRole('button', { name: 'Combine' }))
+    expect(screen.getByText('Discovered Steam')).toBeInTheDocument()
+  })
+
   it('launches a learning lab from any age and restores focus to its Guide trigger', async () => {
     const user = userEvent.setup()
     render(<App />)

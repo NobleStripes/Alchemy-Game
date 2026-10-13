@@ -104,6 +104,7 @@ function ResearchEntry({
         : <p>No geographical associations are recorded for this entry.</p>}
       {record.approximateDates.length > 0 ? (
         <>
+          <p>BCE means Before the Common Era; CE means Common Era. “c.” means approximately.</p>
           <p>Dates describe particular evidence or regional histories, not universal invention dates.</p>
           <ul>
             {record.approximateDates.map((entry, index) => (

@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/vitest'
 import { act, cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { elements, starterElementIds } from '../../game/content'
+import { elements, recipes, starterElementIds } from '../../game/content'
 import { historicalResearch, researchByElementId } from '../../game/content/research'
 import { historicalEntrySchema } from '../../game/content/schema'
 import { SAVE_KEY } from '../../game/state/persistence'
@@ -38,6 +38,34 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
+  it.each(historicalResearch.records)('renders sourced dates without recipe instructions for $elementName', async (record) => {
+    discover(record.elementId)
+    useGameStore.setState({ insightCredits: 0 })
+    const before = snapshotProgress(useGameStore.getState())
+    const disk = localStorage.getItem(SAVE_KEY)
+    const user = await openAtlas()
+    const article = await selectEntry(user, record.elementName)
+    expect(within(article).getByText(/BCE means Before the Common Era/)).toBeVisible()
+    for (const date of record.approximateDates) {
+      expect(within(article).getByText(date.dateRange, { exact: true })).toBeVisible()
+    }
+    const names = new Map(elements.map((element) => [element.id, element.name]))
+    for (const recipe of recipes) {
+      const formula = `${recipe.inputs.map((id) => names.get(id)).join(' + ')} → ${names.get(recipe.result)}`
+      expect(article.textContent).not.toContain(formula)
+    }
+    expect(within(article).queryByRole('button', { name: /^Prepare / })).not.toBeInTheDocument()
+    for (const link of record.relatedDiscoveries) {
+      if (!useGameStore.getState().discoveredIds.includes(link.elementId)) {
+        expect(within(article).queryByRole('button', { name: `Read history of ${names.get(link.elementId)}` }))
+          .not.toBeInTheDocument()
+        expect(article.textContent).not.toContain(link.explanation)
+      }
+    }
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(disk)
+  })
+
   it.each([
     ['Mesopotamia', 'Writing'],
     ['cuneiform', 'Writing'],
