@@ -41,6 +41,8 @@ npm run build
 
 The test suite covers combination rules, gated reachability, rendered controls, experimentation, collection and challenge rewards, reading markers, persistence, and save migration/reset.
 
+Production builds separate third-party dependencies into a shared vendor chunk using Vite's Rolldown configuration. This keeps application code and dependencies independently cacheable while retaining the default 500 kB chunk-size warning.
+
 ## Content
 
 Game definitions live in [`src/game/content`](src/game/content). Every recipe is an unordered pair with one deterministic result. Eras define unlock requirements, granted elements, and optional challenge landmarks.
