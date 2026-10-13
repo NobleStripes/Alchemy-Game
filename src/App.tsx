@@ -107,6 +107,7 @@ function App() {
                 type="button"
                 data-active={candidate.id === era.id}
                 aria-current={candidate.id === era.id ? 'page' : undefined}
+                title={candidate.subtitle}
                 disabled={!isUnlocked}
                 onClick={() => setActiveEra(candidate.id)}
               >

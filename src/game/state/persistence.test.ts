@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { collections, elements, eras, starterElementIds } from '../content'
+import { collections, elements, eras, recipes, starterElementIds } from '../content'
 import { createProgressPersistence, CONFLICT_ERROR, exportProgress, loadProgress, readProgress, MAX_EXPERIMENT_HISTORY, MAX_SAVE_BYTES, parseProgress, saveProgress, type SavedProgress } from './persistence'
 
 const defaults = {
@@ -227,6 +227,53 @@ describe('progress persistence', () => {
       ...progress,
       failedPairKeys: ['gale::tide'],
     })
+  })
+
+  it('preserves renamed discoveries, original formulas, history and rewards after the historical review', () => {
+    const progress: SavedProgress = {
+      ...fresh(),
+      discoveredIds: elements.map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 175).map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      activeEraId: 'stone-age',
+      favoriteIds: ['compass', 'lens', 'nation', 'quill', 'plow', 'brick', 'magnet'],
+      experimentHistory: [
+        { id: 1, inputs: ['metal', 'gale'], outcome: 'discovery', resultId: 'compass', recipeId: 'north-memory' },
+        { id: 2, inputs: ['glass', 'tool'], outcome: 'discovery', resultId: 'lens', recipeId: 'ground-glass' },
+        { id: 3, inputs: ['city', 'city'], outcome: 'discovery', resultId: 'nation', recipeId: 'joined-cities' },
+        { id: 4, inputs: ['animal', 'scribe'], outcome: 'discovery', resultId: 'quill', recipeId: 'scribe-quill' },
+        { id: 5, inputs: ['bronze-tool', 'field'], outcome: 'discovery', resultId: 'plow', recipeId: 'field-plow' },
+      ],
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      insightCredits: 1,
+    }
+    expect(parseProgress(JSON.stringify(progress))).toEqual(progress)
+  })
+
+  it.each([
+    ['nation', 'bronze-age', 'copper-ore'],
+    ['lens', 'iron-age', 'iron-ore'],
+  ])('reconciles an old Stone Age %s discovery without removing progress or replaying rewards', (id, eraId, grantId) => {
+    const progress: SavedProgress = {
+      ...fresh(),
+      discoveredIds: [...starterElementIds, 'human', id],
+      unlockedEraIds: ['first-light', 'stone-age'],
+      activeEraId: 'stone-age',
+      favoriteIds: [id],
+      insightCredits: 1,
+      rewardedChallengeEraIds: ['first-light', 'stone-age'],
+      rewardedCollectionIds: ['stormwatch'],
+    }
+    const loaded = parseProgress(JSON.stringify(progress))!
+    expect(loaded.discoveredIds).toEqual([...progress.discoveredIds, grantId])
+    expect(loaded.unlockedEraIds).toEqual([...progress.unlockedEraIds, eraId])
+    expect(loaded.activeEraId).toBe('stone-age')
+    expect(loaded.favoriteIds).toEqual([id])
+    expect(loaded.insightCredits).toBe(1)
+    expect(loaded.rewardedChallengeEraIds).toEqual(progress.rewardedChallengeEraIds)
+    expect(loaded.rewardedCollectionIds).toEqual(progress.rewardedCollectionIds)
+    expect(parseProgress(JSON.stringify(loaded))).toEqual(loaded)
   })
 
   it('migrates version 5 credits and open leads into Insights', () => {

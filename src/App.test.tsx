@@ -64,16 +64,19 @@ describe('alchemy worktable', () => {
     )
     expect(
       ageSwitcher.getByRole('button', { name: /Stone Age/ }),
-    ).toHaveTextContent('c. 3.3 million BCE–c. 3300 BCE')
+    ).toHaveTextContent('c. 3.3 million years ago–c. 3300 BCE')
     expect(
       ageSwitcher.getByRole('button', { name: /Bronze Age/ }),
     ).toHaveTextContent('c. 3300 BCE–c. 1200 BCE')
     expect(
       ageSwitcher.getByRole('button', { name: /Iron Age/ }),
-    ).toHaveTextContent('c. 1200 BCE–c. 500 CE')
+    ).toHaveTextContent('From c. 1200 BCE; regional end dates vary')
     expect(
       ageSwitcher.getByRole('button', { name: 'Origins' }),
     ).not.toHaveTextContent(/BCE|CE/)
+    expect(ageSwitcher.getByRole('button', { name: 'Origins' })).toHaveAttribute(
+      'title', 'A fictional, undated prologue: imagine a world from four essences.',
+    )
   })
 
   it('discovers and persists an element through tap controls', async () => {
@@ -315,7 +318,7 @@ describe('alchemy worktable', () => {
     expect(screen.getByRole('button', { name: 'Fire' })).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Inspect Fire' })).toBeNull()
     expect(screen.getByRole('button', { name: 'Inspect Human' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Inspect Brick' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Inspect Mud Brick' })).toBeInTheDocument()
   })
 
   it('unlocks Bronze Age and grants Copper Ore', () => {

@@ -414,7 +414,7 @@ describe('Bronze Age content', () => {
     )
     const bronzeEra = eras.find((era) => era.id === 'bronze-age')
 
-    expect(bronzeElements).toHaveLength(40)
+    expect(bronzeElements).toHaveLength(41)
     expect(bronzeEra?.discoveryGoal).toBe(23)
     expect(bronzeEra?.landmarkIds).toEqual([
       'bronze',
@@ -461,11 +461,11 @@ describe('Iron Age content', () => {
     expect(elementsById.get(result)?.era).toBe('iron-age')
   })
 
-  it('contains nineteen nonstarter elements and preserves the approved gate', () => {
+  it('contains twenty nonstarter elements and preserves the approved gate', () => {
     const ironElements = elements.filter((element) => element.era === 'iron-age')
-    expect(ironElements).toHaveLength(19)
+    expect(ironElements).toHaveLength(20)
     expect(ironElements.every((element) => !element.starter)).toBe(true)
-    expect(recipes.filter((recipe) => elementsById.get(recipe.result)?.era === 'iron-age')).toHaveLength(18)
+    expect(recipes.filter((recipe) => elementsById.get(recipe.result)?.era === 'iron-age')).toHaveLength(19)
     expect(eras.find((era) => era.id === 'iron-age')).toMatchObject({
       unlockRequires: ['bronze', 'forge', 'law', 'city'],
       grants: ['iron-ore'],
@@ -556,8 +556,8 @@ describe('four-age expansion', () => {
   it('expands exactly four ages with fully reachable, nonconflicting content', () => {
     expect(eras.map((era) => era.id)).toEqual(['first-light', 'stone-age', 'bronze-age', 'iron-age'])
     expect(elements).toHaveLength(144)
-    expect(recipes).toHaveLength(175)
-    expect(eras.map((era) => elements.filter((element) => element.era === era.id).length)).toEqual([41, 44, 40, 19])
+    expect(recipes).toHaveLength(178)
+    expect(eras.map((era) => elements.filter((element) => element.era === era.id).length)).toEqual([41, 42, 41, 20])
     expect(elements.filter((element) => element.starter).map((element) => element.id)).toEqual(['ember', 'tide', 'stone', 'gale'])
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
   })
@@ -580,6 +580,53 @@ describe('four-age expansion', () => {
   })
 })
 
+describe('historical interpretation', () => {
+  it('identifies Origins as fictional and undated, with regionally qualified historical dates', () => {
+    expect(eras[0].dateRange).toBeUndefined()
+    expect(eras[0].subtitle).toContain('fictional, undated')
+    expect(eras[1].dateRange).toBe('c. 3.3 million years ago–c. 3300 BCE')
+    expect(eras[2].dateRange).toBe('c. 3300 BCE–c. 1200 BCE')
+    expect(eras[3].dateRange).toBe('From c. 1200 BCE; regional end dates vary')
+  })
+
+  it.each([
+    ['compass', 'Wayfinding', 'stone-age'],
+    ['magnet', 'Lodestone', 'stone-age'],
+    ['brick', 'Mud Brick', 'stone-age'],
+    ['nation', 'Polity', 'bronze-age'],
+    ['quill', 'Writing Reed', 'bronze-age'],
+    ['plow', 'Ard', 'bronze-age'],
+    ['lens', 'Lens', 'iron-age'],
+  ])('preserves legacy ID %s for the corrected concept %s on %s', (id, name, era) => {
+    expect(elementsById.get(id)).toMatchObject({ id, name, era, starter: false })
+  })
+
+  it.each([
+    ['remembered-direction', 'human', 'wind', 'compass'],
+    ['shaped-writing-reed', 'reed', 'scribe', 'quill'],
+    ['impressed-clay', 'clay', 'reed', 'writing'],
+  ])('resolves historically informed route %s in both orders', (id, first, second, result) => {
+    expect(resolveCombination(first, second, recipeIndex)).toMatchObject({ id, result })
+    expect(resolveCombination(second, first, recipeIndex)).toMatchObject({ id, result })
+  })
+
+  it('retains earlier map and voyage routes without optical or magnetic instruments', () => {
+    expect(resolveCombination('papyrus', 'charcoal', recipeIndex)?.result).toBe('map')
+    expect(resolveCombination('boat', 'sail', recipeIndex)?.result).toBe('voyage')
+    expect(resolveCombination('boat', 'compass', recipeIndex)?.result).toBe('voyage')
+    expect(elementsById.get('compass')?.description).toContain('long before magnetic')
+    expect(elementsById.get('metal')?.description).toContain('symbolic, not historical smelting')
+  })
+
+  it.each([
+    ['stone-age', ['life', 'land', 'tree', 'rock', 'animal'], ['human']],
+    ['bronze-age', ['village', 'pottery', 'metal', 'quarry'], ['copper-ore']],
+    ['iron-age', ['bronze', 'forge', 'law', 'city'], ['iron-ore']],
+  ])('preserves the fictional %s unlock requirements and grants', (eraId, unlockRequires, grants) => {
+    expect(eras.find((era) => era.id === eraId)).toMatchObject({ unlockRequires, grants })
+  })
+})
+
 describe('content contracts', () => {
   it('rejects duplicate element, recipe, and era IDs', () => {
     expect(validateContent([...elements, elements[0]], [...recipes, recipes[0]], [...eras, eras[0]])).toEqual(
@@ -591,18 +638,18 @@ describe('content contracts', () => {
     )
   })
 
-  it.each([0, -1, 1.5, 20])('rejects an impossible Iron discovery goal of %s', (discoveryGoal) => {
+  it.each([0, -1, 1.5, 21])('rejects an impossible Iron discovery goal of %s', (discoveryGoal) => {
     const invalidEras = eras.map((era) => era.id === 'iron-age' ? { ...era, discoveryGoal } : era)
     expect(validateContent(elements, recipes, invalidEras)).toContain(
-      `Era iron-age has impossible discovery goal ${discoveryGoal} with 19 reachable elements.`,
+      `Era iron-age has impossible discovery goal ${discoveryGoal} with 20 reachable elements.`,
     )
   })
 
   it('uses gated reachable discoveries, not nominal element count, to validate goals', () => {
     const disconnected = recipes.filter((recipe) => recipe.result !== 'market')
-    const invalidEras = eras.map((era) => era.id === 'iron-age' ? { ...era, discoveryGoal: 18 } : era)
+    const invalidEras = eras.map((era) => era.id === 'iron-age' ? { ...era, discoveryGoal: 19 } : era)
     expect(validateContent(elements, disconnected, invalidEras)).toContain(
-      'Era iron-age has impossible discovery goal 18 with 17 reachable elements.',
+      'Era iron-age has impossible discovery goal 19 with 18 reachable elements.',
     )
   })
 })

@@ -308,6 +308,55 @@ describe('campaign state', () => {
     expect(snapshotProgress(createGameStore().getState())).toEqual(snapshotProgress(next))
   })
 
+  it('keeps Lens gated to Iron Age while Wayfinding remains available in Stone Age', () => {
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, 'human', 'wind', 'glass', 'tool', 'copper-ore'],
+      unlockedEraIds: ['first-light', 'stone-age', 'bronze-age'],
+      activeEraId: 'stone-age',
+    })
+    state().transmuteWith('human', 'wind')
+    expect(state().lastAttempt).toMatchObject({ kind: 'discovery', resultId: 'compass' })
+    expect(state().discoveredIds).toContain('compass')
+    state().transmuteWith('glass', 'tool')
+    expect(state().lastAttempt).toMatchObject({ kind: 'failure', title: 'A later page' })
+    expect(state().lastAttempt?.detail).toContain('Iron Age must be unlocked first')
+    expect(state().discoveredIds).not.toContain('lens')
+    expect(state().revealedHintRecipeIds).toContain('ground-glass')
+    expect(state().discoveredRecipeIds).not.toContain('ground-glass')
+    expect(state().experimentHistory.at(-1)).toEqual({
+      id: 2, inputs: ['glass', 'tool'], outcome: 'locked', lockedEraId: 'iron-age',
+    })
+    expect(snapshotProgress(createGameStore().getState())).toEqual(campaign())
+  })
+
+  it('loads a moved Lens without retroactive Insight and retains its formula, history and favorite', () => {
+    const progress: SavedProgress = {
+      ...fresh(),
+      discoveredIds: [...starterElementIds, 'human', 'glass', 'tool', 'lens', 'copper-ore'],
+      unlockedEraIds: ['first-light', 'stone-age', 'bronze-age'],
+      activeEraId: 'stone-age',
+      discoveredRecipeIds: ['ground-glass'],
+      experimentHistory: [{ id: 1, inputs: ['glass', 'tool'], outcome: 'discovery', resultId: 'lens', recipeId: 'ground-glass' }],
+      favoriteIds: ['lens'],
+      rewardedChallengeEraIds: ['first-light', 'stone-age'],
+      insightCredits: 1,
+    }
+    const serialized = JSON.stringify(progress)
+    window.localStorage.setItem(saveKey, serialized)
+    const loadedStore = createGameStore()
+    const loaded = loadedStore.getState()
+    expect(loaded.unlockedEraIds).toContain('iron-age')
+    expect(loaded.discoveredIds).toEqual([...progress.discoveredIds, 'iron-ore'])
+    expect(loaded.discoveredRecipeIds).toEqual(['ground-glass'])
+    expect(loaded.experimentHistory).toEqual(progress.experimentHistory)
+    expect(loaded.favoriteIds).toEqual(['lens'])
+    expect(loaded.insightCredits).toBe(1)
+    expect(loaded.rewardedChallengeEraIds).toEqual(progress.rewardedChallengeEraIds)
+    expect(window.localStorage.getItem(saveKey)).toBe(serialized)
+    loadedStore.getState().toggleSound()
+    expect(snapshotProgress(createGameStore().getState())).toEqual(snapshotProgress(loadedStore.getState()))
+  })
+
   it('keeps the newest 50 attempts and uses max existing sequence plus one', () => {
     useGameStore.setState({ experimentHistory: [{ id: 80, inputs: ['gale', 'tide'], outcome: 'no-reaction' }] })
     for (let index = 0; index < 55; index += 1) state().transmuteWith('gale', 'tide')
