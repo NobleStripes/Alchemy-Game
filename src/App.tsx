@@ -111,6 +111,9 @@ function App() {
                 onClick={() => setActiveEra(candidate.id)}
               >
                 {candidate.name}
+                {candidate.dateRange && (
+                  <small className="era-date-range">{candidate.dateRange}</small>
+                )}
               </button>
             )
           })}

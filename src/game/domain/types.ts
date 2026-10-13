@@ -29,6 +29,7 @@ export interface RecipeDefinition {
 export interface EraDefinition {
   id: string
   name: string
+  dateRange?: string
   subtitle: string
   unlockRequires: string[]
   grants: string[]

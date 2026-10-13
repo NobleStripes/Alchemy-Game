@@ -56,6 +56,26 @@ describe('alchemy worktable', () => {
 
   afterEach(cleanup)
 
+  it('shows approximate date ranges for historical ages but not Origins', () => {
+    render(<App />)
+
+    const ageSwitcher = within(
+      screen.getByRole('navigation', { name: 'Atlas ages' }),
+    )
+    expect(
+      ageSwitcher.getByRole('button', { name: /Stone Age/ }),
+    ).toHaveTextContent('c. 3.3 million BCE–c. 3300 BCE')
+    expect(
+      ageSwitcher.getByRole('button', { name: /Bronze Age/ }),
+    ).toHaveTextContent('c. 3300 BCE–c. 1200 BCE')
+    expect(
+      ageSwitcher.getByRole('button', { name: /Iron Age/ }),
+    ).toHaveTextContent('c. 1200 BCE–c. 500 CE')
+    expect(
+      ageSwitcher.getByRole('button', { name: 'Origins' }),
+    ).not.toHaveTextContent(/BCE|CE/)
+  })
+
   it('discovers and persists an element through tap controls', async () => {
     const user = userEvent.setup()
     render(<App />)
@@ -205,7 +225,7 @@ describe('alchemy worktable', () => {
     expect(screen.getByText('A later page')).toBeInTheDocument()
     expect(
       screen.getByText(
-        'The Stone Age must be unlocked first. Recorded as an open lead.',
+        'Stone Age must be unlocked first. Recorded as an open lead.',
       ),
     ).toBeInTheDocument()
     expect(screen.getByText('Clay + Fire')).toBeInTheDocument()
@@ -232,8 +252,8 @@ describe('alchemy worktable', () => {
     render(<App />)
 
     expect(screen.getByRole('button', { name: 'Human' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'The Stone Age' })).toBeEnabled()
-    expect(screen.getByText(/The Stone Age unlocked/)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Stone Age/ })).toBeEnabled()
+    expect(screen.getByText(/Stone Age unlocked/)).toBeInTheDocument()
     expect(useGameStore.getState().insightCredits).toBe(2)
   })
 
@@ -322,8 +342,8 @@ describe('alchemy worktable', () => {
     render(<App />)
 
     expect(screen.getByRole('button', { name: 'Copper Ore' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'The Bronze Age' })).toBeEnabled()
-    expect(screen.getByText(/The Bronze Age unlocked/)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Bronze Age/ })).toBeEnabled()
+    expect(screen.getByText(/Bronze Age unlocked/)).toBeInTheDocument()
     expect(useGameStore.getState().insightCredits).toBe(2)
   })
 

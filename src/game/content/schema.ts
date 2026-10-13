@@ -30,6 +30,7 @@ export const recipeSchema = z.object({
 export const eraSchema = z.object({
   id: z.string().regex(/^[a-z][a-z0-9-]*$/),
   name: z.string().min(1),
+  dateRange: z.string().min(1).optional(),
   subtitle: z.string().min(1),
   unlockRequires: z.array(z.string().min(1)),
   grants: z.array(z.string().min(1)),

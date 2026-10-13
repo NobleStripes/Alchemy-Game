@@ -10,7 +10,8 @@
   },
   {
     "id": "stone-age",
-    "name": "The Stone Age",
+    "name": "Stone Age",
+    "dateRange": "c. 3.3 million BCE–c. 3300 BCE",
     "subtitle": "People learn to survive, remember, and settle the world.",
     "unlockRequires": ["life", "land", "tree", "rock", "animal"],
     "grants": ["human"],
@@ -19,7 +20,8 @@
   },
   {
     "id": "bronze-age",
-    "name": "The Bronze Age",
+    "name": "Bronze Age",
+    "dateRange": "c. 3300 BCE–c. 1200 BCE",
     "subtitle": "Metalwork, law, and distant trade extend the reach of the first cities.",
     "unlockRequires": ["village", "pottery", "metal", "quarry"],
     "grants": ["copper-ore"],
@@ -28,7 +30,8 @@
   },
   {
     "id": "iron-age",
-    "name": "The Iron Age",
+    "name": "Iron Age",
+    "dateRange": "c. 1200 BCE–c. 500 CE",
     "subtitle": "Hotter fires and lasting tools connect fields, roads, and markets.",
     "unlockRequires": ["bronze", "forge", "law", "city"],
     "grants": ["iron-ore"],
