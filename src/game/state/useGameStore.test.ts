@@ -227,6 +227,87 @@ describe('campaign state', () => {
     expect(loadProgress()?.experimentHistory).toEqual(state().experimentHistory)
   })
 
+  it.each([
+    ['stone-age', 'prepared-leather', 'hide', 'ash', 'leather'],
+    ['bronze-age', 'threaded-frame', 'fibre', 'tree', 'loom'],
+    ['iron-age', 'iron-specialist', 'iron-tool', 'human', 'blacksmith'],
+  ])('keeps new %s discoveries locked until their age is available', (eraId, recipeId, firstId, secondId, resultId) => {
+    const eraIndex = eras.findIndex((era) => era.id === eraId)
+    useGameStore.setState({
+      discoveredIds: [...new Set([...starterElementIds, firstId, secondId])],
+      unlockedEraIds: eras.slice(0, eraIndex).map((era) => era.id),
+    })
+    state().transmuteWith(firstId, secondId)
+    expect(state().discoveredIds).not.toContain(resultId)
+    expect(state().discoveredRecipeIds).not.toContain(recipeId)
+    expect(state().revealedHintRecipeIds).toEqual([recipeId])
+    expect(state().experimentHistory).toEqual([{
+      id: 1, inputs: [firstId, secondId], outcome: 'locked', lockedEraId: eraId,
+    }])
+    expect(state().lastAttempt?.resultId).toBeUndefined()
+    expect(state().insightCredits).toBe(3)
+  })
+
+  it.each([
+    ['first-light', 'drying-sea', 'sea', 'wind', 'salt'],
+    ['stone-age', 'prepared-leather', 'hide', 'ash', 'leather'],
+    ['bronze-age', 'threaded-frame', 'fibre', 'tree', 'loom'],
+    ['iron-age', 'iron-specialist', 'iron-tool', 'human', 'blacksmith'],
+  ])('persists a new %s discovery and its formula across reload', (eraId, recipeId, firstId, secondId, resultId) => {
+    const unlockedEras = eras.slice(0, eras.findIndex((era) => era.id === eraId) + 1)
+    useGameStore.setState({
+      discoveredIds: [...new Set([
+        ...starterElementIds, firstId, secondId,
+        ...unlockedEras.flatMap((era) => era.grants),
+      ])],
+      unlockedEraIds: unlockedEras.map((era) => era.id),
+      activeEraId: eraId,
+    })
+    state().transmuteWith(firstId, secondId)
+    expect(state().lastAttempt).toMatchObject({ kind: 'discovery', resultId })
+    expect(state().discoveredIds).toContain(resultId)
+    expect(state().discoveredRecipeIds).toContain(recipeId)
+    expect(loadProgress()).toEqual({ version: 7, ...campaign() })
+    const reloaded = createGameStore().getState()
+    expect(snapshotProgress(reloaded)).toEqual(campaign())
+    expect(reloaded.persistenceError).toBeNull()
+    expect(reloaded.activeEraId).toBe(eraId)
+  })
+
+  it('loads a pre-expansion complete catalog without granting new discoveries or repeating rewards', () => {
+    const progress: SavedProgress = {
+      ...fresh(),
+      discoveredIds: elements.slice(0, 120).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 151).map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      activeEraId: 'iron-age',
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+      insightCredits: 1,
+      favoriteIds: ['steel'],
+      soundEnabled: false,
+    }
+    const serialized = JSON.stringify(progress)
+    window.localStorage.setItem(saveKey, serialized)
+    const loadedStore = createGameStore()
+    expect(snapshotProgress(loadedStore.getState())).toEqual(snapshotProgress(progress))
+    expect(window.localStorage.getItem(saveKey)).toBe(serialized)
+    expect(loadedStore.getState().discoveredIds).toHaveLength(120)
+
+    loadedStore.getState().transmuteWith('rain', 'rock')
+    const next = loadedStore.getState()
+    expect(next.discoveredIds).toEqual([...progress.discoveredIds, 'river'])
+    expect(next.discoveredRecipeIds).toEqual([...progress.discoveredRecipeIds, 'rain-cut-river'])
+    expect(next.insightCredits).toBe(1)
+    expect(next.rewardedChallengeEraIds).toEqual(progress.rewardedChallengeEraIds)
+    expect(next.rewardedCollectionIds).toEqual(progress.rewardedCollectionIds)
+    expect(next.challengeRecords).toEqual(progress.challengeRecords)
+    expect(next.favoriteIds).toEqual(['steel'])
+    expect(next.soundEnabled).toBe(false)
+    expect(snapshotProgress(createGameStore().getState())).toEqual(snapshotProgress(next))
+  })
+
   it('keeps the newest 50 attempts and uses max existing sequence plus one', () => {
     useGameStore.setState({ experimentHistory: [{ id: 80, inputs: ['gale', 'tide'], outcome: 'no-reaction' }] })
     for (let index = 0; index < 55; index += 1) state().transmuteWith('gale', 'tide')

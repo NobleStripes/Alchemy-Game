@@ -70,6 +70,59 @@ describe('Rainmaker reducer', () => {
     expect(next.discoveredIds).toEqual(state.discoveredIds)
   })
 
+  it.each([
+    ['rain', 'rock', 'river'],
+    ['river', 'land', 'lake'],
+    ['lake', 'life', 'algae'],
+    ['algae', 'animal', 'fish'],
+    ['sea', 'wind', 'salt'],
+    ['sea', 'rock', 'limestone'],
+  ])('allows expanded Origins recipe %s + %s -> %s in the sandbox', (firstId, secondId, resultId) => {
+    const state = {
+      ...createChallengeState(),
+      discoveredIds: [...new Set([...rainmakerChallenge.starterIds, firstId, secondId])],
+    }
+    const next = combine(state, firstId, secondId)
+    expect(next.result).toEqual({ kind: 'discovery', resultId })
+    expect(next.discoveredIds).toContain(resultId)
+    expect(next.attemptCount).toBe(1)
+    expect(next.completed).toBe(false)
+  })
+
+  it('discovers optional marine minerals from starters before completing Rainmaker', () => {
+    let state = createChallengeState()
+    for (const [firstId, secondId] of [
+      ['tide', 'tide'], ['gale', 'gale'], ['sea', 'wind'],
+      ['stone', 'stone'], ['land', 'stone'], ['sea', 'rock'],
+    ]) state = combine(state, firstId, secondId)
+    expect(state.discoveredIds).toEqual([
+      ...rainmakerChallenge.starterIds, 'sea', 'wind', 'salt', 'land', 'rock', 'limestone',
+    ])
+    expect(state.attemptCount).toBe(6)
+    expect(state.completed).toBe(false)
+    for (const [firstId, secondId] of [['sea', 'gale'], ['mist', 'gale'], ['cloud', 'tide']]) {
+      state = combine(state, firstId, secondId)
+    }
+    expect(state.completed).toBe(true)
+    expect(state.attemptCount).toBe(9)
+    expect(state.result).toEqual({ kind: 'discovery', resultId: 'rain' })
+  })
+
+  it.each([
+    ['hide', 'ash', 'leather'],
+    ['fibre', 'tree', 'loom'],
+    ['iron-tool', 'human', 'blacksmith'],
+  ])('excludes expanded later-era recipe %s + %s -> %s', (firstId, secondId, resultId) => {
+    const state = {
+      ...createChallengeState(),
+      discoveredIds: [...new Set([...rainmakerChallenge.starterIds, firstId, secondId])],
+    }
+    const next = combine(state, firstId, secondId)
+    expect(next.result).toEqual({ kind: 'failure' })
+    expect(next.discoveredIds).not.toContain(resultId)
+    expect(next.discoveredIds).toEqual(state.discoveredIds)
+  })
+
   it('reaches Rain in four attempts and freezes every gameplay action', () => {
     const state = win()
     expect(state).toMatchObject({ completed: true, attemptCount: 4, result: { kind: 'discovery', resultId: 'rain' } })

@@ -213,6 +213,22 @@ describe('progress persistence', () => {
     expect(loadProgress()?.failedPairKeys).toEqual(['gale::tide'])
   })
 
+  it('clears newly valid failed pairs while preserving historical attempts and earned rewards', () => {
+    const progress: SavedProgress = {
+      ...fresh(),
+      discoveredIds: [...starterElementIds, 'sea', 'wind'],
+      failedPairKeys: ['sea::wind', 'gale::tide'],
+      experimentHistory: [{ id: 1, inputs: ['sea', 'wind'], outcome: 'no-reaction' }],
+      rewardedChallengeEraIds: ['first-light'],
+      rewardedCollectionIds: ['stormwatch'],
+      insightCredits: 1,
+    }
+    expect(parseProgress(JSON.stringify(progress))).toEqual({
+      ...progress,
+      failedPairKeys: ['gale::tide'],
+    })
+  })
+
   it('migrates version 5 credits and open leads into Insights', () => {
     window.localStorage.setItem(
       'unwritten-atlas-progress',

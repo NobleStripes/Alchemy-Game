@@ -32,7 +32,7 @@
     "id": "iron-age",
     "name": "Iron Age",
     "dateRange": "c. 1200 BCE–c. 500 CE",
-    "subtitle": "Hotter fires and lasting tools connect fields, roads, and markets.",
+    "subtitle": "Ironworking, civic works, and shared knowledge sustain growing realms.",
     "unlockRequires": ["bronze", "forge", "law", "city"],
     "grants": ["iron-ore"],
     "landmarkIds": ["iron", "iron-tool", "road", "market"],

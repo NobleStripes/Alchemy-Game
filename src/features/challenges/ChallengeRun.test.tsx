@@ -84,6 +84,20 @@ describe('ChallengeRun', () => {
     expect(window.localStorage.getItem(storageKey)).toBe(disk)
   })
 
+  it('explores new Origins content without changing campaign progress or storage', async () => {
+    const user = userEvent.setup()
+    const before = campaignSnapshot()
+    const disk = window.localStorage.getItem(storageKey)
+    render(<ChallengeRun onExit={vi.fn()} />)
+    await combine(user, 'Water', 'Water')
+    await combine(user, 'Air', 'Air')
+    await combine(user, 'Sea', 'Wind')
+    expect(screen.getByRole('button', { name: 'Challenge Salt' })).toBeInTheDocument()
+    expect(screen.queryByText('Rainmaker complete')).toBeNull()
+    expect(campaignSnapshot()).toEqual(before)
+    expect(window.localStorage.getItem(storageKey)).toBe(disk)
+  })
+
   it.each([0, 3])('explicit save only changes completion records and capped credits (wallet %i)', async (credits) => {
     const user = userEvent.setup()
     useGameStore.setState({ insightCredits: credits })

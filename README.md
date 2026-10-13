@@ -1,6 +1,6 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with 115 elements and 146 recipes across four ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
+An original combination-discovery game with 144 elements and 175 recipes across four ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
 
 Historical age labels use approximate Near Eastern/Mediterranean date ranges; boundaries vary by region. Origins is an undated game prologue.
 
@@ -8,21 +8,19 @@ Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed
 
 **Origins** is the natural-world prologue. Discovering Life, Land, Tree, Rock, and Animal unlocks **Stone Age** (c. 3.3 million BCE–c. 3300 BCE), grants Human as that page's starting element, and keeps all earlier matter available. Stone Age landmarks are Stone Tool, Hearth, Art, and Village; optional discoveries remain open after its challenge is complete.
 
+Origins has 41 elements, with optional waterways, aquatic life, and marine minerals: River, Lake, Algae, Fish, Salt, and Limestone deepen the natural world.
+
 Stone Age spreads across hunting, cooking, shelter, art, fibres, clothing, pottery, farming, bread, and settlement. Stone Tool opens Field and Quarry without metal. Generic Metal Tool requires Stone Tool + Metal, so pre-metal human craft has its own foundation. Spear, Hearth, Shelter, Basket, Pottery, and Art now lead into Hunt, Home, Storage, Meal, and Cave Painting.
+
+Stone Age has 44 elements. Bone, Needle, Leather, Tent, Flute, and Net broaden portable shelter, fine craft, and music.
 
 **Bronze Age** (c. 3300 BCE–c. 1200 BCE) unlocks after Village, Pottery, Metal, and Quarry, then grants Copper Ore. Its page branches through Copper and Tin into Bronze and Bronze Tool; through Metal Tool into Wheel and Cart; through Trade into Town and City; and through Papyrus into Writing and Scribe. Metalworking, records, and maritime trade extend through Forge, Anvil, Law, Harbor, and Voyage. Its seven landmarks are Bronze, Wheel, Writing, City, Forge, Law, and Voyage; completing its age challenge requires all seven and 23 Bronze Age discoveries.
 
-**Iron Age** (c. 1200 BCE–c. 500 CE) is a compact chapter with eight elements and seven recipes. Discovering Bronze, Forge, Law, and City unlocks it and grants Iron Ore. Its elements are Iron Ore, Iron, Bellows, Bloomery, Iron Tool, Sickle, Road, and Market. The age challenge requires Iron, Iron Tool, Road, and Market plus six Iron Age discoveries, including the granted ore. All earlier matter remains available.
+Bronze Age has 40 elements. Irrigation, Canal, Granary, Loom, Textile, and Balance extend water management, shared harvests, weaving, and measured exchange.
 
-The seven new unordered recipes are:
+**Iron Age** (c. 1200 BCE–c. 500 CE) spans nineteen elements and eighteen recipes, with discoveries that carry its story toward a future age. Discovering Bronze, Forge, Law, and City unlocks it and grants Iron Ore. Ironworking, roads, markets, Steel, Coin, Aqueduct, Empire, and Manuscript are joined by Blacksmith, Nail, Saw, Timber, Bridge, and Wagon for specialized workshops and heavier construction. The age challenge still requires Iron, Iron Tool, Road, and Market plus six Iron Age discoveries, including the granted ore. All earlier matter remains available.
 
-- Hide + Air -> Bellows
-- Bellows + Forge -> Bloomery
-- Iron Ore + Bloomery -> Iron
-- Iron + Anvil -> Iron Tool
-- Iron Tool + Crop -> Sickle
-- Iron Tool + Land -> Road
-- Road + Town -> Market
+The expanded branches are optional: existing age unlocks, landmarks, discovery goals, and collection rewards are unchanged. Existing saves retain their earned progress; catalog completion percentages now include the additional discoveries. Classical Antiquity is reserved for a later update, not a fifth playable age yet. Age assignments organize gameplay rather than claim exact invention dates.
 
 Society, Knowledge, and Transport join the original categories. Village and City are Society; Papyrus, Map, Writing, and Scribe are Knowledge; Wheel and Cart are Transport. Legacy saves containing reclassified Metal Tool, Glass, Papyrus, Map, or City unlock Bronze Age automatically.
 
@@ -40,7 +38,7 @@ Agriculture branches from Field into Crop. Crop + Heat creates broad Food, while
 
 ## Rainmaker
 
-Rainmaker is an isolated replay challenge targeting Rain, starting with only Fire, Water, Earth, and Air and allowing only recipes with Origins results. Each complete combination counts as an attempt, including repeats and failures; empty submissions do not count. It has no campaign age unlocks or hints.
+Rainmaker is an isolated replay challenge targeting Rain, starting with only Fire, Water, Earth, and Air and allowing only recipes with Origins results, including the expanded Origins content. The existing four-attempt winning route is unchanged; the run still ends when Rain is discovered. Each complete combination counts as an attempt, including repeats and failures; empty submissions do not count. It has no campaign age unlocks or hints.
 
 Challenge discoveries, formulas, experiments, and occupied slots do not change the campaign. A completed run changes campaign metadata only through explicit **Save result**: the first saved completion awards +1 Insight up to the three-credit cap and records the best attempt count. The reward is consumed even at a full wallet; later saved wins can improve the best score but never award another Insight. Returning, abandoning, or retrying does not copy challenge discoveries into the Atlas. Runs are transient: reloading abandons the run and returns to the campaign, with no active-run resume.
 
