@@ -141,7 +141,7 @@ export function Codex({ onElementSelected }: CodexProps) {
       <div className="section-heading">
         <div>
           <span className="panel-kicker">Your collection</span>
-          <h2 id="codex-title">Element shelf</h2>
+          <h2 id="codex-title" tabIndex={-1}>Element shelf</h2>
         </div>
         <span className="section-count">{discoveredIds.length} unlocked</span>
       </div>

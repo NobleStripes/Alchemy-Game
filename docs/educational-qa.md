@@ -179,3 +179,18 @@ This software review is separate from the historical review and does not establi
 - Browser navigation left existing saved bytes unchanged and restored the gameplay panel. No browser save was reset, seeded, or deliberately changed.
 
 Keyboard behavior has automated coverage; actual screen-reader and human usability observations remain pending.
+
+## Save compatibility and interface regression review
+
+This later interface-validation snapshot supplements, rather than replaces, the initial navigation review above.
+
+- Version 7 save fields and existing v1-v6 loading behavior are unchanged; no navigation migration or second progress store was introduced.
+- Application tests load a complete v7 campaign and retain all discovery/recipe IDs, favorites, Insight and stall progress, collection/age rewards, challenge records, experiments, leads, reading markers, ages and sound preference. Every discovered encyclopedia entry remains available.
+- Read/unread controls are checked against the exact persisted save shape and a newly loaded store; reset clears reading markers and hides removed discoveries, including a previously selected article.
+- Interface tests open history from each v1-v6 save without rewriting the save on navigation. Actual quota failures while marking reading retain the original saved bytes and leave a single visible warning across sections.
+- Research rendering, marker changes and reset leave the historical research database unchanged. The Guide's component test excludes encyclopedia headings and search controls while preserving its View History callback and gameplay research.
+- All four required commands passed: `npm run typecheck`, `npm run lint`, `npm test`, and `npm run build`. The complete suite passed **512 tests across 13 files**. The production build retains the existing nonfatal bundle-size warning.
+- Browser-guided checks at 1440, 740 and 375px confirmed section/article focus, restored mobile Guide context with exactly three gameplay tabs, no horizontal overflow, and normal Rainmaker launch, Atlas detour, resume and exit focus. No new console or runtime errors occurred during these actions; saved bytes, occupied-slot contents and the selected age were unchanged.
+- Historical research, element/recipe catalogs and persistence/store implementation files were checked against pre-review file hashes. This update changes tests and documentation only. Optional Atlas filters, timelines, bibliography browsing and Classical Antiquity remain deferred.
+
+These checks verify software behavior, not historical claim accuracy or real-player learning. Screen-reader and human playtest observations remain pending.

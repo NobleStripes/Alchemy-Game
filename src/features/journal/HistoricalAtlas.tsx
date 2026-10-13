@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react'
 import { elements, elementsById, eras } from '../../game/content'
 import {
   historicalResearch,
@@ -194,7 +194,11 @@ function ResearchEntry({
   )
 }
 
-export function HistoricalAtlas() {
+export interface HistoricalAtlasHandle {
+  openEntry: (elementId: string) => void
+}
+
+export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const readHistoricalElementIds = useGameStore((state) => state.readHistoricalElementIds)
   const toggleHistoricalRead = useGameStore((state) => state.toggleHistoricalRead)
@@ -202,6 +206,12 @@ export function HistoricalAtlas() {
   const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
+  useImperativeHandle(ref, () => ({
+    openEntry(elementId) {
+      setQuery('')
+      setSelectedId(elementId)
+    },
+  }), [])
   const discovered = elements.filter((element) => discoveredIds.includes(element.id))
   const selected = discovered.find((element) => element.id === selectedId)
   const record = selected ? researchByElementId.get(selected.id) : undefined
@@ -226,20 +236,24 @@ export function HistoricalAtlas() {
 
   return (
     <section className="historical-atlas" aria-labelledby="encyclopedia-title">
-      <h1>Atlas</h1>
+      <h1 id="atlas-title" tabIndex={-1}>Atlas</h1>
       <h2 id="encyclopedia-title">Historical Encyclopedia</h2>
       <p className="detail-desc">
         Optional historical notes, separate from formulas and hints. Browse discoveries from any age.
         Undiscovered entries stay hidden; not every discovery has researched notes yet.
       </p>
       <p className="detail-desc">Historical explanations are always free. Insight reveals recipe leads, not facts.</p>
+      <p className="atlas-discovery-count">
+        {discovered.length} discovered encyclopedia {discovered.length === 1 ? 'entry' : 'entries'}.
+      </p>
       <p className="detail-desc">
         Optional reading: {readCount}/{readable.length} discovered researched entries marked as read.
         Reading is never required for rewards.
       </p>
       {persistenceError && <p className="save-error" role="alert">{persistenceError}</p>}
       <div className="atlas-browser">
-        <div className="atlas-sidebar">
+        <aside className="atlas-sidebar" aria-labelledby="atlas-browse-title">
+          <h3 id="atlas-browse-title">Browse discoveries</h3>
           <label className="history-search">
             Search discovered historical entries
             <input
@@ -265,7 +279,10 @@ export function HistoricalAtlas() {
                 aria-label={`Open historical entry for ${element.name}${readHistoricalElementIds.includes(element.id) ? ' (read)' : ''}`}
                 aria-pressed={selected?.id === element.id}
                 data-selected={selected?.id === element.id}
-                onClick={() => setSelectedId(element.id)}
+                onClick={() => {
+                  setSelectedId(element.id)
+                  if (selectedId === element.id) headingRef.current?.focus()
+                }}
               >
                 {element.name}
                 {readHistoricalElementIds.includes(element.id) && <span className="history-read-tag">Read</span>}
@@ -273,7 +290,7 @@ export function HistoricalAtlas() {
             ))}
             {matches.length === 0 && <p className="journal-empty">No matching discovered entries.</p>}
           </nav>
-        </div>
+        </aside>
         {selected ? (
           <article className="element-detail history-entry" aria-labelledby="atlas-history-title">
             <h3 id="atlas-history-title" tabIndex={-1} ref={headingRef}>{selected.name}</h3>

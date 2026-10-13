@@ -8,6 +8,30 @@ This separation keeps factual entries and bibliographic references out of gamepl
 
 Historical entries now appear in the top-level **Atlas** section, reached from the persistent application header. **Play** retains the gameplay Guide and recipe assistance. Atlas is independent of the currently selected age and shares the same discoveries and reading markers; moving between sections neither changes gameplay context nor adds save fields.
 
+## Application views and state
+
+[`App.tsx`](../src/App.tsx) owns local `activeSection: 'play' | 'atlas'` state, defaulting to Play, separately from the existing mobile `activePanel`. Both views remain mounted; the inactive view is hidden rather than replaced. This preserves component-local filters and selections as well as unsaved worktable slots and the last result. `DndContext` wraps only the Play workspace, not the encyclopedia.
+
+Both views use the existing [`useGameStore`](../src/game/state/useGameStore.ts) Zustand store. There is no second discovery or reading-progress store. Navigation does not change the active gameplay age, reconnect progress synchronization, or write a save; it does not persist the selected view. Explicit read/unread actions still save personal reading markers without changing progression or rewards.
+
+The age switcher is labeled **Play ages**. Isolated challenges return via **Return to Play**, restoring focus to the Rainmaker header button or the originating Learning Lab control. Switching to Atlas temporarily hides, rather than discards, an active run.
+
+The Guide's discovered-element **View History** action uses the mounted encyclopedia's `openEntry` command to select a local reading entry and clear stale historical search text. It neither updates the game store nor marks reading. Returning to Play restores focus to the originating control; direct entry requests still pass through the encyclopedia's discovered-only filter.
+
+Ordinary header navigation focuses the Atlas heading or the remembered gameplay panel heading, or the active challenge's Return control. It does not steal focus on initial load or mobile-tab changes. Selecting an entry, including reselecting the current entry, focuses its article heading; bibliography targets remain keyboard-focusable. Inactive views are excluded from the keyboard and accessibility tree.
+
+## Interface compatibility and scope
+
+The interface separation introduces no save fields or migration. The existing version 7 format continues to preserve valid discovery and recipe IDs, reading markers, favorites, Insight and failure progress, collection rewards, challenge records, experiments, leads, ages and sound preference. Versions 1-6 still use the existing loader and its historical defaults; loading old research-free v7 saves still defaults reading markers to unread.
+
+Application regression tests load an existing complete v7 campaign and check every discovered encyclopedia entry, all persisted fields, and no writes while navigating. Explicit read/unread actions are checked against a newly loaded store and the exact v7 save shape; reset clears reading and immediately hides removed discoveries. Tests also browse existing v1-v6 saves without rewriting them merely to open Atlas, and exercise real failed reading-marker writes with visible errors in both sections.
+
+Research records and verified references remain content data, not navigation state. Regression coverage checks that rendering, reading markers and reset do not mutate the research database. The existing discovered-only search, related-entry filtering, zero-Insight reading and challenge focus tests remain in place.
+
+[`HistoricalAtlas.tsx`](../src/features/journal/HistoricalAtlas.tsx) remains in `src/features/journal` for this update. A future `src/features/atlas` directory could clarify ownership as independent Atlas features grow, but moving files now would add import churn without changing behavior. The Guide already has no encyclopedia import; its recipe disclosures and shared source presentation remain gameplay features. No old embedded-encyclopedia disclosure styles remain; shared historical-context styles still serve Atlas, recipe notes and Learning Labs. Optional filters, timelines, bibliography browsing and Classical Antiquity remain outside this interface update.
+
+## Research coverage
+
 Research covers **13 of 147 elements**: the original ten entries for Wayfinding (legacy Compass), Lens, Polity (legacy Nation), Metal, Writing Reed (legacy Quill), Writing, Road, Market, Ard (legacy Plow), and Glass, plus Rotary Quern, Lathe, and Alphabet. The registry contains **26 consulted sources and one pending source**, including recipe-review background. These are focused research records, not exhaustive histories or certification of every claim in an existing description. The remaining 134 elements have no research record yet.
 
 The optional Iron Age batch uses Northampton Museums' regional quern account, the V&A's contextual turning essay, Yigal Sitry's original 2022 journal abstract, and inspected sections of Penn Museum's alphabet essay. The lathe pivots are a proposed identification, not confirmed worldwide first-use evidence; the full study remains unread. Alphabetic precedents predate their gameplay page, and a displayed cast is distinguished from its ancient original. No source establishes uniform adoption across all societies. **Lock remains deferred** because an appropriate original archaeological account was not verified; reconstructions, medieval key guides and search summaries were not accepted as ancient evidence.
@@ -42,7 +66,7 @@ Prioritize excavation publications, peer-reviewed archaeology/archaeometry, muse
 
 For new records, add sources and their receipts first, then reference verified source IDs from overviews, dates, evidence, significance and independent developments. Pending sources may appear only in `furtherResearch`. Validation rejects duplicate records/source IDs, dangling references, missing required fields, invalid web URLs/dates and historical dates without sources or geography. Year-resolved dates are reserved for specific dated evidence, such as the Sweet Track's construction, not exact invention/adoption claims. Unknown beginnings and fictional Origins remain undated; first surviving evidence is not widespread adoption.
 
-Chronology and geographical metadata may be omitted when unsupported. This never relaxes required claims, citations, uncertainty, or gameplay caveats. If dated evidence or independent regional developments are supplied, their regions must appear in `associatedRegions`; duplicate regions and unsupported references fail validation. The Guide explicitly identifies absent date or geographical metadata rather than displaying empty labels or inventing facts.
+Chronology and geographical metadata may be omitted when unsupported. This never relaxes required claims, citations, uncertainty, or gameplay caveats. If dated evidence or independent regional developments are supplied, their regions must appear in `associatedRegions`; duplicate regions and unsupported references fail validation. Atlas explicitly identifies absent date or geographical metadata rather than displaying empty labels or inventing facts.
 
 Run the focused authoring checks with `npm test -- src\game\content\research.test.ts` from the repository root, then the [normal validation commands](../README.md#validate). These checks enforce the research structure and citation relationships, **not historical truth or live URL availability**; original-source review remains necessary.
 

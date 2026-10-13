@@ -27,6 +27,22 @@ afterEach(() => {
 })
 
 describe('Guide preparation', () => {
+  it('offers history only for an inspected discovery and passes its originating control without changing gameplay', async () => {
+    useGameStore.getState().transmuteWith('stone', 'ember')
+    const callback = vi.fn()
+    const user = userEvent.setup()
+    render(<Journal {...props} onViewHistory={callback} />)
+    expect(screen.queryByRole('heading', { name: 'Historical Encyclopedia', hidden: true })).not.toBeInTheDocument()
+    expect(screen.queryByRole('searchbox', { name: 'Search discovered historical entries', hidden: true })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /^View history of / })).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Inspect Metal' }))
+    const button = screen.getByRole('button', { name: 'View history of Metal' })
+    const before = useGameStore.getState()
+    await user.click(button)
+    expect(callback).toHaveBeenCalledExactlyOnceWith('metal', button)
+    expect(useGameStore.getState()).toBe(before)
+  })
+
   it('labels discovered earlier materials without revealing unknown collection members', async () => {
     useGameStore.setState({ discoveredIds: ['clay', 'reed', 'hearth', 'charcoal'] })
     render(<Journal {...props} eraId="bronze-age" />)

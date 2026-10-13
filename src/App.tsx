@@ -21,7 +21,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Codex } from './features/codex/Codex'
 import { ChallengeRun } from './features/challenges/ChallengeRun'
 import { Journal } from './features/journal/Journal'
-import { HistoricalAtlas } from './features/journal/HistoricalAtlas'
+import { HistoricalAtlas, type HistoricalAtlasHandle } from './features/journal/HistoricalAtlas'
 import { Settings as SettingsDialog } from './features/settings/Settings'
 import { Worktable } from './features/worktable/Worktable'
 import { elements, eras } from './game/content'
@@ -31,6 +31,12 @@ import './Simple.css'
 
 function App() {
   const [activeSection, setActiveSection] = useState<'play' | 'atlas'>('play')
+  const previousSection = useRef(activeSection)
+  const [activePanel, setActivePanel] = useState<
+    'combine' | 'elements' | 'guide'
+  >('combine')
+  const atlas = useRef<HistoricalAtlasHandle>(null)
+  const historyReturnTarget = useRef<HTMLButtonElement | null>(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [activeChallenge, setActiveChallenge] = useState<ChallengeDefinition | null>(null)
   const challengeLaunchId = useRef(rainmakerChallenge.id)
@@ -38,6 +44,29 @@ function App() {
   const challengeSurface = useRef<HTMLDivElement>(null)
   const returningFromChallenge = useRef(false)
   useEffect(() => useGameStore.connectProgress(), [])
+  useEffect(() => {
+    if (previousSection.current === activeSection) return
+    previousSection.current = activeSection
+    if (historyReturnTarget.current) {
+      if (activeSection === 'atlas') {
+        document.getElementById('atlas-history-title')?.focus()
+      } else {
+        historyReturnTarget.current.focus()
+        historyReturnTarget.current = null
+      }
+      return
+    }
+    if (activeSection === 'play' && activeChallenge) {
+      challengeSurface.current?.querySelector<HTMLButtonElement>('button')?.focus()
+      return
+    }
+    const headingId = activeSection === 'atlas' ? 'atlas-title' : {
+      combine: 'worktable-title',
+      elements: 'codex-title',
+      guide: 'journal-title',
+    }[activePanel]
+    document.getElementById(headingId)?.focus()
+  }, [activeSection, activePanel, activeChallenge])
   useEffect(() => {
     if (activeChallenge) {
       challengeSurface.current?.querySelector<HTMLButtonElement>('button')?.focus()
@@ -50,9 +79,6 @@ function App() {
       returningFromChallenge.current = false
     }
   }, [activeChallenge])
-  const [activePanel, setActivePanel] = useState<
-    'combine' | 'elements' | 'guide'
-  >('combine')
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const unlockedEraIds = useGameStore((state) => state.unlockedEraIds)
   const activeEraId = useGameStore((state) => state.activeEraId)
@@ -84,9 +110,16 @@ function App() {
   }
 
   function launchChallenge(challenge: ChallengeDefinition) {
+    historyReturnTarget.current = null
     challengeLaunchId.current = challenge.id
     setActiveSection('play')
     setActiveChallenge(challenge)
+  }
+
+  function viewHistory(elementId: string, trigger: HTMLButtonElement) {
+    historyReturnTarget.current = trigger
+    atlas.current?.openEntry(elementId)
+    setActiveSection('atlas')
   }
 
   return (
@@ -106,6 +139,7 @@ function App() {
           <button
             type="button"
             aria-controls="play-section"
+            aria-describedby="play-navigation-help"
             aria-pressed={activeSection === 'play'}
             data-active={activeSection === 'play'}
             onClick={() => setActiveSection('play')}
@@ -116,6 +150,7 @@ function App() {
           <button
             type="button"
             aria-controls="atlas-section"
+            aria-describedby="atlas-navigation-help"
             aria-pressed={activeSection === 'atlas'}
             data-active={activeSection === 'atlas'}
             onClick={() => setActiveSection('atlas')}
@@ -123,6 +158,8 @@ function App() {
             <BookOpen size={18} aria-hidden="true" />
             Atlas
           </button>
+          <span id="play-navigation-help" className="sr-only">Gameplay: Elements, Combine, and Guide.</span>
+          <span id="atlas-navigation-help" className="sr-only">Historical Encyclopedia for discovered entries. Reading is free.</span>
         </nav>
 
         <nav className="era-switcher" aria-label="Play ages" hidden={activeSection !== 'play' || Boolean(activeChallenge)}>
@@ -206,6 +243,7 @@ function App() {
         />
       )}
 
+      {/* Keep both views mounted to preserve gameplay and reading context while switching. */}
       <main id="play-section" className="play-section" aria-label="Play" hidden={activeSection !== 'play'}>
         <div className="play-workspace" hidden={Boolean(activeChallenge)}>
           <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
@@ -219,6 +257,7 @@ function App() {
                 landmarkIds={era.landmarkIds}
                 onCombinationPrepared={() => setActivePanel('combine')}
                 onChallengeSelected={launchChallenge}
+                onViewHistory={viewHistory}
               />
             </div>
           </DndContext>
@@ -263,7 +302,7 @@ function App() {
         )}
       </main>
       <main id="atlas-section" className="atlas-page" aria-label="Atlas" hidden={activeSection !== 'atlas'}>
-        <HistoricalAtlas />
+        <HistoricalAtlas ref={atlas} />
       </main>
     </div>
   )

@@ -89,7 +89,7 @@ export function Worktable() {
           <FlaskConical size={14} aria-hidden="true" />
           Experiment table
         </span>
-        <h1 id="worktable-title">What will you make?</h1>
+        <h1 id="worktable-title" tabIndex={-1}>What will you make?</h1>
         <p>Pick two elements and mix them together.</p>
       </div>
 

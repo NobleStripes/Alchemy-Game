@@ -1,4 +1,4 @@
-import { FlaskConical, Lightbulb } from 'lucide-react'
+import { BookOpen, FlaskConical, Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { collections, elements, elementsById, eras, recipes } from '../../game/content'
 import { learningChallenges, type ChallengeDefinition } from '../../game/content/challenges'
@@ -19,6 +19,7 @@ interface JournalProps {
   landmarkIds: string[]
   onCombinationPrepared?: () => void
   onChallengeSelected?: (challenge: ChallengeDefinition) => void
+  onViewHistory?: (elementId: string, trigger: HTMLButtonElement) => void
 }
 
 export function Journal({
@@ -28,6 +29,7 @@ export function Journal({
   landmarkIds,
   onCombinationPrepared,
   onChallengeSelected,
+  onViewHistory,
 }: JournalProps) {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const discoveredRecipeIds = useGameStore(
@@ -167,7 +169,7 @@ export function Journal({
       <div className="section-heading">
         <div>
           <span className="panel-kicker">Keep exploring</span>
-          <h2 id="journal-title">Discoveries</h2>
+          <h2 id="journal-title" tabIndex={-1}>Discoveries</h2>
         </div>
       </div>
 
@@ -436,6 +438,17 @@ export function Journal({
               </div>
             </div>
             <p className="detail-desc">{selectedElement.description}</p>
+            {onViewHistory && (
+              <button
+                type="button"
+                className="journal-element-btn view-history-button"
+                aria-label={`View history of ${selectedElement.name}`}
+                onClick={(event) => onViewHistory(selectedElement.id, event.currentTarget)}
+              >
+                <BookOpen size={16} aria-hidden="true" />
+                View History
+              </button>
+            )}
 
             <h4>Recorded formulas</h4>
             {knownRecipes.length > 0 ? (

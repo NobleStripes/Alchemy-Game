@@ -2,11 +2,14 @@
 
 import './game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
-import { cleanup, render, screen, waitFor, within } from '@testing-library/react'
+import { act, cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
-import { snapshotProgress, useGameStore } from './game/state/useGameStore'
+import { collections, elements, eras, recipes, starterElementIds } from './game/content'
+import { historicalResearch } from './game/content/research'
+import { exportProgress, SAVE_KEY, type SavedProgress } from './game/state/persistence'
+import { createGameStore, snapshotProgress, useGameStore } from './game/state/useGameStore'
 
 describe('alchemy worktable', () => {
   it('defaults to Play and separates two top-level sections from the three gameplay tabs', async () => {
@@ -28,7 +31,7 @@ describe('alchemy worktable', () => {
     expect(screen.getByText('The Unwritten Atlas')).toBeVisible()
   })
 
-  it('supports native keyboard section switching and keeps focus on the active navigation control', async () => {
+  it('focuses the active section heading and skips inactive controls during keyboard navigation', async () => {
     const user = userEvent.setup()
     render(<App />)
     await user.tab()
@@ -38,11 +41,37 @@ describe('alchemy worktable', () => {
     expect(atlas).toHaveFocus()
     await user.keyboard('[Enter]')
     expect(atlas).toHaveAttribute('aria-pressed', 'true')
-    expect(atlas).toHaveFocus()
-    await user.tab({ shift: true })
+    expect(atlas).toHaveAccessibleDescription(/Historical Encyclopedia.*Reading is free/)
+    expect(screen.getByRole('heading', { level: 1, name: 'Atlas' })).toHaveFocus()
+    await user.tab()
+    expect(screen.getByRole('searchbox', { name: 'Search discovered historical entries' })).toHaveFocus()
+    const play = screen.getByRole('button', { name: 'Play' })
+    act(() => play.focus())
     await user.keyboard(' ')
-    expect(screen.getByRole('button', { name: 'Play' })).toHaveAttribute('aria-pressed', 'true')
+    expect(play).toHaveAttribute('aria-pressed', 'true')
+    expect(play).toHaveAccessibleDescription('Gameplay: Elements, Combine, and Guide.')
+    expect(screen.getByRole('heading', { name: 'What will you make?' })).toHaveFocus()
     expect(screen.getByRole('main', { name: 'Play' })).toBeVisible()
+    for (let step = 0; step < 20; step += 1) {
+      await user.tab()
+      expect(document.activeElement?.closest('#atlas-section')).toBeNull()
+    }
+  })
+
+  it.each([
+    ['Elements', 'Element shelf'],
+    ['Guide', 'Discoveries'],
+  ])('restores focus to the remembered %s gameplay panel without stealing mobile-tab focus', async (panel, heading) => {
+    const user = userEvent.setup()
+    render(<App />)
+    const panelButton = screen.getByRole('button', { name: `Show ${panel} panel` })
+    await user.click(panelButton)
+    expect(panelButton).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    expect(screen.getByRole('heading', { level: 1, name: 'Atlas' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    expect(panelButton).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('heading', { name: heading })).toHaveFocus()
   })
 
   it('restores gameplay filters, Guide selection, mobile tab and prepared slots without saving on navigation', async () => {
@@ -104,6 +133,51 @@ describe('alchemy worktable', () => {
     })
   })
 
+  it('preserves unsaved Zustand state and mounted views without reconnecting or rewriting saves', async () => {
+    const user = userEvent.setup()
+    const connection = vi.spyOn(useGameStore, 'connectProgress')
+    render(<App />)
+    act(() => { useGameStore.getState().transmuteWith('stone', 'ember') })
+    await useGameStore.flushProgress()
+    act(() => {
+      useGameStore.setState({
+        unlockedEraIds: ['first-light', 'stone-age'],
+        activeEraId: 'stone-age',
+        firstSlotId: 'ember',
+        secondSlotId: 'tide',
+      })
+    })
+    const state = useGameStore.getState()
+    const saved = localStorage.getItem('unwritten-atlas-progress')
+    expect(JSON.parse(saved!).activeEraId).toBe('first-light')
+    expect(state.lastAttempt).not.toBeNull()
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    const play = screen.getByRole('main', { name: 'Play' })
+    const worktableControl = screen.getByRole('button', { name: 'Combine' })
+    let atlas: HTMLElement | undefined
+    for (let visit = 0; visit < 2; visit += 1) {
+      await user.click(screen.getByRole('button', { name: 'Atlas' }))
+      const currentAtlas = screen.getByRole('main', { name: 'Atlas' })
+      if (atlas) expect(currentAtlas).toBe(atlas)
+      atlas = currentAtlas
+      expect(play).toBeInTheDocument()
+      expect(play).not.toBeVisible()
+      expect(worktableControl).toBeInTheDocument()
+      await user.click(screen.getByRole('button', { name: 'Open historical entry for Metal' }))
+      expect(useGameStore.getState()).toBe(state)
+      await user.click(screen.getByRole('button', { name: 'Play' }))
+      expect(screen.getByRole('main', { name: 'Play' })).toBe(play)
+      expect(screen.getByRole('button', { name: 'Combine' })).toBe(worktableControl)
+      expect(screen.getByText('Discovered Metal')).toBeVisible()
+      expect(screen.getByRole('button', { name: 'Remove Fire' })).toBeVisible()
+      expect(screen.getByRole('button', { name: 'Remove Water' })).toBeVisible()
+      expect(useGameStore.getState()).toBe(state)
+    }
+    expect(connection).toHaveBeenCalledTimes(1)
+    expect(writes).not.toHaveBeenCalled()
+    expect(localStorage.getItem('unwritten-atlas-progress')).toBe(saved)
+  })
+
   it('keeps gameplay research and all gameplay Guide surfaces separate from historical reading', async () => {
     const user = userEvent.setup()
     useGameStore.setState({ revealedHintRecipeIds: ['first-vapor'] })
@@ -126,6 +200,195 @@ describe('alchemy worktable', () => {
     expect(atlas.queryByRole('button', { name: /Reveal lead|Prepare / })).not.toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'Play' }))
     expect(contents.getByRole('heading', { name: 'Fire' })).toBeVisible()
+  })
+
+  it('loads an existing complete v7 campaign, preserves its fields, and persists only explicit reading and reset actions', async () => {
+    await useGameStore.flushProgress()
+    const progress: SavedProgress = {
+      version: 7,
+      ...snapshotProgress(useGameStore.getState()),
+      discoveredIds: [...new Set([...starterElementIds, ...elements.map((element) => element.id)])],
+      discoveredRecipeIds: recipes.map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      activeEraId: 'bronze-age',
+      favoriteIds: ['metal', 'writing'],
+      insightCredits: 1,
+      insightFailureProgress: 2,
+      rewardedChallengeEraIds: ['first-light'],
+      revealedHintRecipeIds: ['first-vapor'],
+      failedPairKeys: ['gale::tide'],
+      soundEnabled: false,
+      experimentHistory: [{ id: 1, inputs: ['ember', 'tide'], outcome: 'discovery', resultId: 'steam', recipeId: 'first-vapor' }],
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+      readHistoricalElementIds: ['metal', 'writing'],
+    }
+    const raw = exportProgress(progress)
+    localStorage.setItem(SAVE_KEY, raw)
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    const researchBefore = structuredClone(historicalResearch)
+    const { version, ...expected } = progress
+    expect(version).toBe(7)
+    expect(snapshotProgress(createGameStore().getState())).toEqual(expected)
+
+    const user = userEvent.setup()
+    render(<App />)
+    expect(snapshotProgress(useGameStore.getState())).toEqual(expected)
+    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    const entries = within(screen.getByRole('navigation', { name: 'Discovered historical entries' })).getAllByRole('button')
+    expect(entries.map((entry) => entry.getAttribute('aria-label')).sort()).toEqual(elements.map((element) =>
+      `Open historical entry for ${element.name}${progress.readHistoricalElementIds.includes(element.id) ? ' (read)' : ''}`,
+    ).sort())
+    await user.click(screen.getByRole('button', { name: 'Open historical entry for Writing (read)' }))
+    expect(screen.getByRole('article', { name: 'Writing' })).toBeVisible()
+    expect(snapshotProgress(useGameStore.getState())).toEqual(expected)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(raw)
+    expect(writes).not.toHaveBeenCalled()
+
+    await user.click(screen.getByRole('button', { name: 'Mark Writing as unread' }))
+    await useGameStore.flushProgress()
+    const unread = { ...expected, readHistoricalElementIds: ['metal'] }
+    expect(snapshotProgress(createGameStore().getState())).toEqual(unread)
+    expect(JSON.parse(localStorage.getItem(SAVE_KEY)!)).toEqual({ version: 7, ...unread })
+    await user.click(screen.getByRole('button', { name: 'Mark Writing as read' }))
+    await useGameStore.flushProgress()
+    expect(snapshotProgress(createGameStore().getState())).toEqual(expected)
+    expect(JSON.parse(localStorage.getItem(SAVE_KEY)!)).toEqual(progress)
+
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    vi.spyOn(window, 'confirm').mockReturnValue(true)
+    await user.click(screen.getByRole('button', { name: 'Reset journal' }))
+    await useGameStore.flushProgress()
+    expect(createGameStore().getState()).toMatchObject({
+      discoveredIds: starterElementIds,
+      discoveredRecipeIds: [],
+      readHistoricalElementIds: [],
+      favoriteIds: [],
+      rewardedCollectionIds: [],
+      challengeRecords: [],
+      activeEraId: 'first-light',
+      soundEnabled: false,
+    })
+    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    expect(screen.queryByRole('article')).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Open historical entry for Writing/ })).not.toBeInTheDocument()
+    expect(within(screen.getByRole('navigation', { name: 'Discovered historical entries' })).getAllByRole('button'))
+      .toHaveLength(starterElementIds.length)
+    expect(historicalResearch).toEqual(researchBefore)
+  })
+
+  it.each([1, 2, 3, 4, 5, 6])('reveals previously discovered history from a v%s save without rewriting it on navigation', async (version) => {
+    await useGameStore.flushProgress()
+    const raw = JSON.stringify({
+      ...snapshotProgress(useGameStore.getState()),
+      version,
+      discoveredIds: [...starterElementIds, 'metal', 'writing'],
+      discoveredRecipeIds: [recipes.find((recipe) => recipe.result === 'metal')!.id],
+      hintCredits: 1,
+      insightCredits: 1,
+      unlockedEraIds: ['first-light', 'stone-age', 'bronze-age'],
+      activeEraId: 'bronze-age',
+    })
+    localStorage.setItem(SAVE_KEY, raw)
+    const expected = snapshotProgress(createGameStore().getState())
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    const user = userEvent.setup()
+    render(<App />)
+    expect(snapshotProgress(useGameStore.getState())).toEqual(expected)
+    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    expect(screen.getByRole('button', { name: 'Open historical entry for Metal' })).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Open historical entry for Writing' }))
+    expect(screen.getByRole('article', { name: 'Writing' })).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Mark Writing as read' })).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    expect(snapshotProgress(useGameStore.getState())).toEqual(expected)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(raw)
+    expect(writes).not.toHaveBeenCalled()
+  })
+
+  it('keeps failed reading-marker writes visible in both sections without retrying or overwriting on navigation', async () => {
+    act(() => useGameStore.getState().transmuteWith('stone', 'ember'))
+    await useGameStore.flushProgress()
+    const raw = localStorage.getItem(SAVE_KEY)
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    await user.click(screen.getByRole('button', { name: 'Open historical entry for Metal' }))
+    const writes = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
+    await user.click(screen.getByRole('button', { name: 'Mark Metal as read' }))
+    await useGameStore.flushProgress()
+    const error = useGameStore.getState().persistenceError
+    expect(error).not.toBeNull()
+    expect(screen.getByRole('alert').textContent).toBe(error)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(raw)
+    writes.mockClear()
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    expect(screen.getByRole('alert').textContent).toBe(error)
+    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    expect(screen.getByRole('alert').textContent).toBe(error)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(raw)
+    expect(writes).not.toHaveBeenCalled()
+  })
+
+  it('opens history directly at zero Insight, clears stale searches and restores the Guide and worktable', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({
+      discoveredIds: [...useGameStore.getState().discoveredIds, 'metal', 'writing'],
+      unlockedEraIds: ['first-light', 'stone-age', 'bronze-age'],
+      insightCredits: 0,
+    })
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Fire' }))
+    await user.click(screen.getByRole('button', { name: 'Water' }))
+    await user.click(screen.getByRole('button', { name: 'Show Guide panel' }))
+    await user.click(screen.getByRole('button', { name: 'Inspect Metal' }))
+    const shortcut = screen.getByRole('button', { name: 'View history of Metal' })
+    const before = useGameStore.getState()
+    const saved = localStorage.getItem('unwritten-atlas-progress')
+    await user.click(shortcut)
+    expect(screen.getByRole('article', { name: 'Metal' })).toBeVisible()
+    expect(screen.getByRole('heading', { name: 'Metal', level: 3 })).toHaveFocus()
+    expect(screen.getByRole('button', { name: 'Mark Metal as read' })).toBeVisible()
+    expect(useGameStore.getState()).toBe(before)
+    await user.type(screen.getByRole('searchbox', { name: 'Search discovered historical entries' }), 'cuneiform')
+    await user.click(screen.getByRole('button', { name: 'Open historical entry for Writing' }))
+    expect(screen.getByRole('article', { name: 'Writing' })).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    expect(shortcut).toHaveFocus()
+    expect(screen.getByRole('button', { name: 'Show Guide panel' })).toHaveAttribute('aria-pressed', 'true')
+    await user.click(shortcut)
+    expect(screen.getByRole('searchbox', { name: 'Search discovered historical entries' })).toHaveValue('')
+    expect(screen.getByRole('article', { name: 'Metal' })).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    await user.click(shortcut)
+    expect(screen.getByRole('heading', { name: 'Metal', level: 3 })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    expect(shortcut).toHaveFocus()
+    expect(useGameStore.getState()).toBe(before)
+    expect(before).toMatchObject({
+      firstSlotId: 'ember', secondSlotId: 'tide', activeEraId: 'first-light',
+      insightCredits: 0, readHistoricalElementIds: [],
+    })
+    expect(localStorage.getItem('unwritten-atlas-progress')).toBe(saved)
+    await user.click(screen.getByRole('button', { name: 'Show Combine panel' }))
+    expect(screen.getByRole('button', { name: 'Remove Fire' })).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Remove Water' })).toBeVisible()
+  })
+
+  it('opens the unresearched-entry message from a discovered gameplay element without marking it read', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Show Guide panel' }))
+    await user.click(screen.getByRole('button', { name: 'Inspect Fire' }))
+    const before = useGameStore.getState()
+    await user.click(screen.getByRole('button', { name: 'View history of Fire' }))
+    const article = within(screen.getByRole('article', { name: 'Fire' }))
+    expect(article.getByText('Historical notes not yet researched')).toBeVisible()
+    expect(article.getByText(/No verified historical record is available/)).toBeVisible()
+    expect(article.getByText('Origins · essence')).toBeVisible()
+    expect(article.queryByRole('button', { name: /Mark .* as read/ })).not.toBeInTheDocument()
+    expect(article.queryByRole('button', { name: /^Prepare / })).not.toBeInTheDocument()
+    expect(useGameStore.getState()).toBe(before)
   })
 
   it('starts on Play again after remount without persisting the section or changing progress', async () => {
@@ -226,6 +489,10 @@ describe('alchemy worktable', () => {
     await user.click(screen.getByRole('button', { name: 'Play Rainmaker challenge' }))
     expect(screen.getByRole('button', { name: 'Return to Play' })).toHaveFocus()
     expect(screen.queryByRole('navigation', { name: 'Play ages' })).toBeNull()
+    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    expect(screen.getByRole('heading', { level: 1, name: 'Atlas' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    expect(screen.getByRole('button', { name: 'Return to Play' })).toHaveFocus()
     await user.click(screen.getByRole('button', { name: 'Return to Play' }))
     expect(screen.getByRole('button', { name: 'Play Rainmaker challenge' })).toHaveFocus()
     expect(screen.getByRole('button', { name: 'Remove Fire' })).toBeInTheDocument()

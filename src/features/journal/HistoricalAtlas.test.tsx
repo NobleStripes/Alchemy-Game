@@ -4,13 +4,14 @@ import '../../game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
 import { act, cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { createRef } from 'react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { elements, recipes, starterElementIds } from '../../game/content'
 import { historicalResearch, researchByElementId } from '../../game/content/research'
 import { historicalEntrySchema } from '../../game/content/schema'
 import { SAVE_KEY } from '../../game/state/persistence'
 import { createGameStore, snapshotProgress, useGameStore } from '../../game/state/useGameStore'
-import { HistoricalAtlas } from './HistoricalAtlas'
+import { HistoricalAtlas, type HistoricalAtlasHandle } from './HistoricalAtlas'
 
 beforeEach(() => {
   localStorage.clear()
@@ -71,6 +72,8 @@ describe('Historical Encyclopedia', () => {
     ['3200 BCE', 'Writing'],
     ['Ottaviano', 'Writing'],
     ['Metaphors Invention', 'Writing'],
+    ['mEsOpOtAmIa CuNeIfOrM', 'Writing'],
+    ['OTTAVIANO metaphors', 'Writing'],
     ['cRyStAl', 'Lens'],
   ])('finds %s in discovered research, not just element names', async (query, name) => {
     discover('writing', 'lens')
@@ -122,6 +125,10 @@ describe('Historical Encyclopedia', () => {
       }],
     } : originalGet(id))
     const user = await openAtlas()
+    const article = await selectEntry(user, 'Metal')
+    expect(article).not.toHaveTextContent('Hiddenregionalcontext')
+    expect(within(article).queryByRole('button', { name: 'Read history of Writing' })).not.toBeInTheDocument()
+    expect(within(article).queryByRole('link', { name: source.title })).not.toBeInTheDocument()
     const search = screen.getByRole('searchbox')
     for (const query of ['Hiddenregionalcontext', source.title]) {
       await user.clear(search)
@@ -176,6 +183,19 @@ describe('Historical Encyclopedia', () => {
     expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
   })
 
+  it('focuses the article heading when reselecting the current entry without marking reading', async () => {
+    discover('writing')
+    render(<HistoricalAtlas />)
+    const user = userEvent.setup()
+    const entry = screen.getByRole('button', { name: 'Open historical entry for Writing' })
+    await user.click(entry)
+    await user.tab()
+    expect(screen.getByRole('button', { name: 'Mark Writing as read' })).toHaveFocus()
+    await user.click(entry)
+    expect(screen.getByRole('heading', { name: 'Writing', level: 3 })).toHaveFocus()
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+  })
+
   it('marks reading only on explicit request, for free, without changing rewards or worktable progress', async () => {
     useGameStore.getState().transmuteWith('stone', 'ember')
     useGameStore.setState({ insightCredits: 0 })
@@ -210,6 +230,35 @@ describe('Historical Encyclopedia', () => {
     await user.type(screen.getByRole('searchbox'), 'writing')
     expect(screen.getByText('No matching discovered entries.')).toBeVisible()
     expect(screen.queryByRole('article')).not.toBeInTheDocument()
+  })
+
+  it('keeps the total discovered count and researched reading counter independent of search results', async () => {
+    discover('metal', 'writing')
+    const user = await openAtlas()
+    const search = screen.getByRole('searchbox')
+    expect(screen.getByText('6 discovered encyclopedia entries.')).toBeVisible()
+    expect(screen.getByText(/0\/2 discovered researched entries/)).toBeVisible()
+    await user.type(search, 'cuneiform')
+    expect(screen.getByRole('status')).toHaveTextContent('1 discovered entry found.')
+    expect(screen.getByText('6 discovered encyclopedia entries.')).toBeVisible()
+    await user.type(search, ' impossible-search-term')
+    expect(screen.getByRole('status')).toHaveTextContent('0 discovered entries found.')
+    expect(screen.getByText('6 discovered encyclopedia entries.')).toBeVisible()
+    expect(screen.getByText(/0\/2 discovered researched entries/)).toBeVisible()
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+  })
+
+  it('keeps an undiscovered entry hidden even when directly requested', () => {
+    const ref = createRef<HistoricalAtlasHandle>()
+    render(<HistoricalAtlas ref={ref} />)
+    const before = useGameStore.getState()
+    const saved = localStorage.getItem(SAVE_KEY)
+    act(() => { ref.current?.openEntry('writing') })
+    expect(screen.queryByRole('article')).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Open historical entry for Writing' })).not.toBeInTheDocument()
+    expect(screen.queryByText('Historical overview')).not.toBeInTheDocument()
+    expect(useGameStore.getState()).toBe(before)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(saved)
   })
 
   it('unlocks notes on discovery and removes the selected entry immediately on reset', async () => {

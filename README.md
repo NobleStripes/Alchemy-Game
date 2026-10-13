@@ -8,6 +8,8 @@ Origins is a fictional, undated prologue. Stone, Bronze, and Iron Age pages orga
 
 Historical explanations are free; **Insight reveals recipe leads, never factual information**. Optional collections, learning labs, and explicit Atlas reading markers complement the discovery game.
 
+Inspect a discovered element in the Guide and choose **View History** to open its Atlas entry directly; returning to Play restores focus to that shortcut. Ordinary section switches focus the Atlas heading or remembered gameplay panel. Navigation does not rewrite saves or change their version 7 format.
+
 ## Run locally
 
 ```powershell

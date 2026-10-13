@@ -8,6 +8,8 @@ Progress is stored locally in the browser under `unwritten-atlas-progress`. Vers
 
 Campaign progress is saved automatically and restored on reload. Settings controls the persistent sound preference; favorites also persist immediately. Manual file import and export are not available. Existing local saves remain compatible. Storage failures are reported, so continued in-memory play is not a guarantee that progress was saved.
 
+Play/Atlas navigation is local interface state, not a saved field. Opening either section or using View History does not autosave, spend Insight, change the active age, or clear prepared ingredients. No migration exists solely for this navigation. Explicit read/unread controls still persist reading markers, and local save errors remain visible whichever section is active.
+
 ## Save protection and synchronization
 
 A missing save starts a writable campaign. An existing save that is invalid, unsupported, too large, or unreadable instead starts in-memory play with autosaving blocked for that page session. Nothing overwrites the original, including reset, preference changes, and challenge-result saving. The warning remains visible; reload after addressing the storage problem to try loading again. Reloading discards unsaved session changes.
