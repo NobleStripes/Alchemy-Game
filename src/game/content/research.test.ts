@@ -20,7 +20,7 @@ describe('historical research database', () => {
       .toEqual(priorityIds)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(14)
+    )).toHaveLength(22)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
@@ -127,7 +127,7 @@ describe('historical research database', () => {
       expect(result.error.issues.map((issue) => issue.message)).toEqual(
         expect.arrayContaining([
           'Duplicate research record: compass.',
-          'Duplicate research source: rmg-compass.',
+          `Duplicate research source: ${data.sources[0].id}.`,
         ]),
       )
     }

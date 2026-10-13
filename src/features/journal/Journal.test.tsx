@@ -6,6 +6,7 @@ import { cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { collections, elements, elementsById, eras, recipes } from '../../game/content'
+import { reviewsByRecipeId } from '../../game/content/recipeReviews'
 import { freshProgress, parseProgress } from '../../game/state/persistence'
 import { createGameStore, snapshotProgress, useGameStore } from '../../game/state/useGameStore'
 import { Journal } from './Journal'
@@ -66,7 +67,96 @@ describe('Guide preparation', () => {
       expect(within(summary.parentElement!).getByText('No formulas recorded in this age yet.')).toBeInTheDocument()
     } else {
       expect(within(summary.parentElement!).getByText('Fire + Water → Steam')).toBeInTheDocument()
+      expect(within(summary.parentElement!).getByText('Historical context: Material process')).toBeInTheDocument()
     }
+    expect(useGameStore.getState().experimentHistory).toEqual([])
+  })
+
+  describe('performed formula historical context', () => {
+    it('keeps notes out of unperformed leads and locked or unsuccessful experiments', () => {
+      useGameStore.setState({
+        discoveredIds: elements.map((element) => element.id),
+        revealedHintRecipeIds: ['first-vapor'],
+        discoveredRecipeIds: [],
+        experimentHistory: [
+          { id: 1, inputs: ['ember', 'tide'], outcome: 'no-reaction' },
+          { id: 2, inputs: ['clay', 'hearth'], outcome: 'locked', lockedEraId: 'stone-age', recipeId: 'shaped-clay' },
+        ],
+      })
+      render(<Journal {...props} />)
+      expect(screen.queryByText(/Historical context:/)).toBeNull()
+      expect(screen.queryByText(reviewsByRecipeId.get('first-vapor')!.caution)).toBeNull()
+      expect(screen.queryByText(reviewsByRecipeId.get('shaped-clay')!.caution)).toBeNull()
+    })
+
+    it('unlocks each alternate formula separately even when its result is discovered', async () => {
+      useGameStore.setState({
+        discoveredIds: ['ember', 'tide', 'stone', 'gale', 'heat', 'steam'],
+        discoveredRecipeIds: ['first-vapor'],
+        revealedHintRecipeIds: ['heated-water'],
+      })
+      const view = render(<Journal {...props} />)
+      await userEvent.setup().click(screen.getByRole('button', { name: 'Inspect Steam' }))
+      const research = within(screen.getByText('Recorded formulas').closest('section')!)
+      expect(research.getByText(reviewsByRecipeId.get('first-vapor')!.caution)).toBeInTheDocument()
+      expect(research.queryByText(reviewsByRecipeId.get('heated-water')!.caution)).toBeNull()
+      view.unmount()
+      useGameStore.getState().transmuteWith('heat', 'tide')
+      render(<Journal {...props} />)
+      await userEvent.setup().click(screen.getByText('Recorded Formulas (2)'))
+      const archive = within(screen.getByRole('list', { name: 'Recorded formula archive' }))
+      expect(archive.getByText(reviewsByRecipeId.get('first-vapor')!.caution)).toBeInTheDocument()
+      expect(archive.getByText(reviewsByRecipeId.get('heated-water')!.caution)).toBeInTheDocument()
+    })
+
+    it('makes reading optional and preserves slots, progress, rewards and storage', async () => {
+      useGameStore.getState().transmuteWith('ember', 'tide')
+      useGameStore.getState().prepareCombination('ember', 'tide')
+      const before = useGameStore.getState()
+      const saved = localStorage.getItem('unwritten-atlas-progress')
+      render(<Journal {...props} />)
+      const user = userEvent.setup()
+      await user.click(screen.getByText('Recorded Formulas (1)'))
+      const disclosure = screen.getByText('Historical context: Material process')
+      expect(disclosure.parentElement).not.toHaveAttribute('open')
+      await user.click(disclosure)
+      expect(disclosure.parentElement).toHaveAttribute('open')
+      expect(screen.getByText(/No supporting reference attached/)).toBeInTheDocument()
+      await user.click(disclosure)
+      expect(useGameStore.getState()).toBe(before)
+      expect(localStorage.getItem('unwritten-atlas-progress')).toBe(saved)
+    })
+
+    it('shows original references and access limits only for performed formulas', async () => {
+      useGameStore.setState({
+        discoveredIds: elements.map((element) => element.id),
+        unlockedEraIds: eras.map((era) => era.id),
+      })
+      useGameStore.getState().transmuteWith('clay', 'hearth')
+      render(<Journal {...props} eraId="stone-age" />)
+      const user = userEvent.setup()
+      await user.click(screen.getByText('Recorded Formulas (1)'))
+      await user.click(screen.getByText('Historical context: Simplified process'))
+      const archive = within(screen.getByRole('list', { name: 'Recorded formula archive' }))
+      expect(archive.getByText(reviewsByRecipeId.get('shaped-clay')!.caution)).toBeInTheDocument()
+      expect(archive.getByRole('link', { name: 'Early pottery at 20,000 years ago in Xianrendong Cave, China' }))
+        .toHaveAttribute('href', 'https://doi.org/10.1126/science.1218643')
+      expect(archive.getByText('Abstract only; full paper not reviewed')).toBeInTheDocument()
+      expect(archive.queryByRole('link', { name: 'Stone Tools' })).toBeNull()
+      await user.click(archive.getByText('Abstract only; full paper not reviewed'))
+      expect(archive.getByText(/Mobile foragers produced pottery before agriculture/)).toBeInTheDocument()
+      expect(archive.getByText(/not this exact two-input combination/)).toBeInTheDocument()
+    })
+
+    it('hides recipe context again after progress is reset', async () => {
+      useGameStore.getState().transmuteWith('ember', 'tide')
+      const view = render(<Journal {...props} />)
+      expect(screen.getByText('Historical context: Material process')).toBeInTheDocument()
+      view.unmount()
+      useGameStore.getState().resetProgress()
+      render(<Journal {...props} />)
+      expect(screen.queryByText(/Historical context:/)).toBeNull()
+    })
   })
 
   it('filters by active age and ingredient or result name, keeping alternate performed formulas', async () => {

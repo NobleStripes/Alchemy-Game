@@ -130,9 +130,9 @@ Content validation simulates actual play: resolve recipes only in unlocked eras,
 
 ## Historical research database (Phase 2)
 
-Research lives in [`src/game/content/research.json`](src/game/content/research.json), validated by [`research.ts`](src/game/content/research.ts) and [`research.test.ts`](src/game/content/research.test.ts). This is version-controlled JSON, not a hosted database. Schema version 2 adds educational Atlas fields. The Guide now loads this metadata, but it remains separate from gameplay content exports and changes no save fields, age gates or recipes.
+Research lives in [`src/game/content/research.json`](src/game/content/research.json), validated by [`research.ts`](src/game/content/research.ts) and [`research.test.ts`](src/game/content/research.test.ts). This is version-controlled JSON, not a hosted database. Schema version 2 adds educational Atlas fields. The Guide now loads this metadata, but it remains separate from gameplay content exports and changes no save fields, age gates or recipe routes.
 
-The initial batch covers **10 of 144 elements**: Wayfinding (legacy Compass), Lens, Polity (legacy Nation), Metal, Writing Reed (legacy Quill), Writing, Road, Market, Ard (legacy Plow), and Glass. It contains **14 consulted sources and one pending source**. These are focused research records, not exhaustive histories or certification of every claim in an existing description. The remaining 134 elements have no research record yet.
+The initial batch covers **10 of 144 elements**: Wayfinding (legacy Compass), Lens, Polity (legacy Nation), Metal, Writing Reed (legacy Quill), Writing, Road, Market, Ard (legacy Plow), and Glass. The registry now contains **22 consulted sources and one pending source**, including the Phase 4 recipe-review background. These are focused research records, not exhaustive histories or certification of every claim in an existing description. The remaining 134 elements have no research record yet.
 
 | Record field | Meaning |
 | --- | --- |
@@ -169,6 +169,24 @@ The ten researched entries show regional dates and their meaning, geographical a
 Indicators distinguish documented evidence, hypotheses, contested interpretations, documented topic relationships and gameplay associations. Symbolic combinations are explicitly gameplay abstractions; age-placement notes identify earlier precedents or regional simplifications rather than imposing a worldwide timeline. Origins stays fictional and undated.
 
 The remaining 134 discoveries show an honest **historical notes not yet researched** state, not invented dates or citations. Their existing description is labeled as gameplay text, not verified history. Reading costs no Insight, changes no progress or rewards, and creates no saved history-viewing state. Discovered notes remain available after reloading existing saves; resetting discoveries hides the corresponding entries immediately. Rainmaker remains separate from the campaign Guide.
+
+## Historical technology and recipe review (Phase 4)
+
+The current catalog contains **178 recipes**, rather than the earlier 146. Every route has an individual review in [`recipeReviews.json`](src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](src/game/content/recipeReviews.ts). This companion dataset changes no recipe IDs, pairs, results, age gates, rewards or save fields, and preserves alternate discovery routes.
+
+| Classification | Count | Meaning |
+| --- | ---: | --- |
+| Material process | 13 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
+| Simplified process | 90 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
+| Symbolic association | 75 | A conceptual, social or fictional link; it must not be read as historical causation. |
+
+Performed formulas have an optional **Historical context** disclosure in both Recorded Formulas and selected-element research. Each formula unlocks its own note; discovering a result does not reveal unperformed alternate routes. Notes do not appear in Open Leads or locked/unsuccessful experiments, and stay separate from the element encyclopedia. Reading changes no worktable slots, Insight, progress or storage.
+
+The audit separates maintaining fire from making it; stone tool evidence from identifying its makers; food processing and early pottery from agricultural prerequisites; drying mud brick from firing ceramics; ore reduction from ordinary heating; alloy composition, casting and working from universal strength claims; papyrus sheets and joined rolls from writing's independent traditions; and maritime knowledge from magnetic navigation. It distinguishes bloomery iron from liquid cast iron and carburization from tempering, and flags earlier precedents for harvesting implements, roads, exchange and worked timber. Institutional recipes remain abstractions, not automatic city, currency or empire creation.
+
+References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **73 recipe notes have background references; 105 have no attached source.** The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
+
+Validation rejects missing, duplicate or unknown recipe reviews, empty cautions, invalid classifications and dangling, duplicate or pending source references. [`recipeReviews.test.ts`](src/game/content/recipeReviews.test.ts) also pins the pre-audit recipe graph and checks priority-chain cautions. Original-source checking remains necessary; schema validation cannot establish historical truth.
 
 ## Saves And Settings
 

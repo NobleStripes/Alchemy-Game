@@ -10,6 +10,7 @@ import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
 import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
 import { HistoricalAtlas } from './HistoricalAtlas'
+import { RecipeHistory } from './RecipeHistory'
 
 interface JournalProps {
   eraId: string
@@ -344,6 +345,7 @@ export function Journal({
                   {elementsById.get(recipe.inputs[0])?.name} + {elementsById.get(recipe.inputs[1])?.name} → {elementsById.get(recipe.result)?.name}
                 </strong>
                 {prepareButton(recipe.inputs)}
+                <RecipeHistory recipeId={recipe.id} />
               </li>
             ))}
           </ul>
@@ -415,6 +417,7 @@ export function Journal({
                       </strong>
                       {prepareButton(recipe.inputs)}
                       <p>{recipe.flavor}</p>
+                      <RecipeHistory recipeId={recipe.id} />
                     </li>
                   )
                 })}

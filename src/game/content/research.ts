@@ -24,6 +24,7 @@ const sourceSchema = z.strictObject({
   sourceType: z.enum([
     'museum-collection',
     'museum-essay',
+    'library-collection',
     'archaeology-institution',
     'peer-reviewed-study',
     'reference-encyclopedia',

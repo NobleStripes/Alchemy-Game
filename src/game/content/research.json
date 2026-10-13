@@ -2,6 +2,86 @@
   "schemaVersion": 2,
   "sources": [
     {
+      "id": "smithsonian-stone-tools",
+      "title": "Stone Tools",
+      "authors": [],
+      "institution": "Smithsonian Institution, Human Origins Program",
+      "sourceType": "archaeology-institution",
+      "url": "https://humanorigins.si.edu/evidence/behavior/stone-tools",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://humanorigins.si.edu/evidence/behavior/stone-tools", "accessLevel": "selected-passages", "locator": "Original HTML paragraphs on hammerstones, cores, flakes and difficulty identifying the maker's hominin species. Only these process and attribution passages are used; the page's older earliest-tool timeline is not adopted as a global first." }
+    },
+    {
+      "id": "smithsonian-hearths",
+      "title": "Hearths & Shelters",
+      "authors": [],
+      "institution": "Smithsonian Institution, Human Origins Program",
+      "sourceType": "archaeology-institution",
+      "url": "https://humanorigins.si.edu/evidence/behavior/hearths-shelters",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://humanorigins.si.edu/evidence/behavior/hearths-shelters", "accessLevel": "selected-passages", "locator": "Original HTML introductory paragraph on control of fire, cooking and social use of hearths. Its stated early dates and tentative cooking chronology are not adopted as exact invention dates or proof of fire-making." }
+    },
+    {
+      "id": "prehistoric-bread",
+      "title": "Archaeobotanical evidence reveals the origins of bread 14,400 years ago in northeastern Jordan",
+      "authors": ["Amaia Arranz-Otaegui", "Lara Gonzalez Carretero", "Monica N. Ramsey", "Dorian Q. Fuller", "Tobias Richter"],
+      "institution": "Proceedings of the National Academy of Sciences",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1073/pnas.1801071115",
+      "publicationDate": "2018-07-16",
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6077754/", "accessLevel": "selected-passages", "locator": "Significance and Abstract: charred bread-like products made by Natufian hunter-gatherers, wild plant ingredients and production before Neolithic agriculture. Original article metadata confirms authors and first online publication. A reported early find is not a universal invention date." }
+    },
+    {
+      "id": "xianrendong-pottery",
+      "title": "Early pottery at 20,000 years ago in Xianrendong Cave, China",
+      "authors": ["Xiaohong Wu", "Chi Zhang", "Paul Goldberg", "David Cohen", "Yan Pan", "Trina Arpin", "Ofer Bar-Yosef"],
+      "institution": "Science",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1126/science.1218643",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1126/science.1218643&format=json&resultType=core", "accessLevel": "abstract-only", "locator": "Original article abstract and credited authors in the Europe PMC bibliographic record, Science 336 (2012), 1696-1700. Mobile foragers produced pottery before agriculture; cooking use is proposed, not established. Full paper not reviewed; a month-resolved index date is not treated as an exact publication day." }
+    },
+    {
+      "id": "penn-metallurgy",
+      "title": "From Mine to Microscope: Analyzing Archaeological Metals",
+      "authors": ["Vanessa Workman"],
+      "institution": "Penn Museum, Expedition Magazine",
+      "sourceType": "museum-essay",
+      "url": "https://www.penn.museum/sites/expedition/from-mine-to-microscope-analyzing-archaeological-metals/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://www.penn.museum/sites/expedition/from-mine-to-microscope-analyzing-archaeological-metals/", "accessLevel": "selected-passages", "locator": "Primary production paragraph defines smelting as reduction of ore and discusses slag, fuels and pyrotechnology; figure caption identifies a tuyere directing air into a furnace or hearth. Credited author and CAAM role checked. No unsupported casting or tempering details are inferred." }
+    },
+    {
+      "id": "penn-tin",
+      "title": "Tin in the Ancient Near East",
+      "authors": ["Robert Maddin", "Tamara Stech Wheeler", "James D. Muhly"],
+      "institution": "Penn Museum, Expedition Magazine",
+      "sourceType": "museum-essay",
+      "url": "https://www.penn.museum/sites/expedition/tin-in-the-ancient-near-east/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://www.penn.museum/sites/expedition/tin-in-the-ancient-near-east/", "accessLevel": "selected-passages", "locator": "Opening alloy definition; cassiterite versus metallic tin; alloying, co-smelting and composition-dependent properties; casting, coldworking and annealing. Byline and citation identify Expedition 19(2), January 1977. Older regional first-bronze dates and unresolved ore-source claims are not adopted." }
+    },
+    {
+      "id": "nps-bloomery",
+      "title": "Iron Making: Introduction",
+      "authors": [],
+      "institution": "U.S. National Park Service, Saugus Iron Works",
+      "sourceType": "archaeology-institution",
+      "url": "https://www.nps.gov/articles/000/iron-making-introduction.htm",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://www.nps.gov/articles/000/iron-making-introduction.htm", "accessLevel": "selected-passages", "locator": "Introductory direct bloomery process versus later indirect cast-iron process: hammering removes impurities from iron. Used as a technical distinction, not a chronology of global first ironmaking; later water-powered equipment is not projected onto antiquity." }
+    },
+    {
+      "id": "um-papyrus",
+      "title": "From Egypt To Ann Arbor: The Building of the Papyrus Collection",
+      "authors": ["Arthur E. R. Boak (adapted article)"],
+      "institution": "University of Michigan Library",
+      "sourceType": "library-collection",
+      "url": "https://apps.lib.umich.edu/files/collections/papyrus/exhibits/introduction/from_egypt_1.new.html",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://apps.lib.umich.edu/files/collections/papyrus/exhibits/introduction/from_egypt_1.new.html", "accessLevel": "selected-passages", "locator": "Papyrus as Cyperus papyrus and pith-based sheets; crossed strips, drying and smoothing; rolls of sheets glued together; lamp-black, gum and water as a later Greek/Roman ink example. Hypothesized pith-cutting methods are not presented as established ancient practice; later ink and pens are not dated to the first writing." }
+    },
+    {
       "id": "rmg-compass",
       "title": "Mariner's compass",
       "authors": [],

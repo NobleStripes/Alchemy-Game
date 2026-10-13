@@ -649,6 +649,12 @@
 .formula-card { padding: 7px 8px; background: #f4f2eb; border: 1px solid var(--line); border-radius: 4px; }
 .formula-card strong { color: var(--ink); font-size: 10px; }
 .formula-card p { margin: 2px 0 0; color: var(--ink-soft); font-size: 9px; }
+.recipe-history { margin-top: 7px; overflow-wrap: anywhere; }
+.recipe-history summary { color: var(--teal-dark); font-size: 11px; cursor: pointer; }
+.recipe-history p, .recipe-history li { margin-top: 6px; font-size: 11px; line-height: 1.5; }
+.recipe-history .recipe-history-limit { font-style: italic; }
+.recipe-history ol { margin: 6px 0 0; padding-left: 20px; }
+.recipe-history a { color: var(--teal-dark); text-decoration: underline; }
 .failed-partners { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; list-style: none; }
 .failed-partners li { padding: 4px 6px; color: var(--ink-soft); background: #f4f2eb; border-radius: 3px; font-size: 9px; }
 .journal-empty, .hidden-formulas, .empty-note { color: var(--ink-soft); font-size: 10px; font-style: italic; }

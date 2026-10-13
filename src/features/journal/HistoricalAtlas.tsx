@@ -6,6 +6,7 @@ import {
   type HistoricalResearchRecord,
 } from '../../game/content/research'
 import { useGameStore } from '../../game/state/useGameStore'
+import { SourceReference } from './SourceReference'
 
 const dateLabels = {
   'dated-evidence': 'Dated evidence',
@@ -23,11 +24,6 @@ const placementLabels = {
   'earlier-precedents': 'Predates its gameplay age: earlier precedents',
   'regional-gameplay-placement': 'Regional gameplay placement',
   'fictional-prologue': 'Fictional, undated prologue',
-}
-const accessLabels = {
-  'collection-record': 'Collection metadata reviewed',
-  'selected-passages': 'Selected original passages reviewed',
-  'abstract-only': 'Abstract only; full paper not reviewed',
 }
 
 function ResearchEntry({
@@ -152,23 +148,7 @@ function ResearchEntry({
       <ol className="history-sources">
         {sources.map((source) => (
           <li id={`history-source-${source.id}`} key={source.id}>
-            <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
-            <p>
-              {source.authors.length > 0 && `${source.authors.join(', ')}. `}
-              {source.institution}
-              {source.publicationDate && `. Published ${source.publicationDate}`}
-            </p>
-            {source.verification.status === 'verified' && (
-              <details>
-                <summary>{accessLabels[source.verification.accessLevel]}</summary>
-                <p>Checked {source.verification.checkedOn}. {source.verification.locator}</p>
-                {source.verification.accessedUrl !== source.url && (
-                  <a href={source.verification.accessedUrl} target="_blank" rel="noreferrer">
-                    Consulted original record
-                  </a>
-                )}
-              </details>
-            )}
+            <SourceReference source={source} />
           </li>
         ))}
       </ol>
