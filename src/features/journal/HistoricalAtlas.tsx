@@ -225,8 +225,9 @@ export function HistoricalAtlas() {
   }, [selected])
 
   return (
-    <details className="guide-section historical-atlas">
-      <summary>Historical Encyclopedia</summary>
+    <section className="historical-atlas" aria-labelledby="encyclopedia-title">
+      <h1>Atlas</h1>
+      <h2 id="encyclopedia-title">Historical Encyclopedia</h2>
       <p className="detail-desc">
         Optional historical notes, separate from formulas and hints. Browse discoveries from any age.
         Undiscovered entries stay hidden; not every discovery has researched notes yet.
@@ -237,73 +238,77 @@ export function HistoricalAtlas() {
         Reading is never required for rewards.
       </p>
       {persistenceError && <p className="save-error" role="alert">{persistenceError}</p>}
-      <label className="history-search">
-        Search discovered historical entries
-        <input
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          aria-describedby="history-search-help"
-        />
-      </label>
-      <p id="history-search-help" className="detail-desc">
-        Search names, historical topics, regions, dates, or cited sources. Every search word must match.
-        Only discovered entries and their visible research are searched.
-      </p>
-      <p className="detail-desc" role="status" aria-live="polite" aria-atomic="true">
-        {matches.length} discovered {matches.length === 1 ? 'entry' : 'entries'} found.
-      </p>
-      <nav className="history-index" aria-label="Discovered historical entries">
-        {matches.map((element) => (
-          <button
-            className="journal-element-btn"
-            type="button"
-            key={element.id}
-            aria-label={`Open historical entry for ${element.name}${readHistoricalElementIds.includes(element.id) ? ' (read)' : ''}`}
-            aria-pressed={selected?.id === element.id}
-            data-selected={selected?.id === element.id}
-            onClick={() => setSelectedId(element.id)}
-          >
-            {element.name}
-            {readHistoricalElementIds.includes(element.id) && <span className="history-read-tag">Read</span>}
-          </button>
-        ))}
-        {matches.length === 0 && <p className="journal-empty">No matching discovered entries.</p>}
-      </nav>
-      {selected ? (
-        <article className="element-detail history-entry" aria-labelledby="atlas-history-title">
-          <h3 id="atlas-history-title" tabIndex={-1} ref={headingRef}>{selected.name}</h3>
-          <p className="detail-cat-badge">
-            {eras.find((era) => era.id === selected.era)?.name} · {selected.category}
+      <div className="atlas-browser">
+        <div className="atlas-sidebar">
+          <label className="history-search">
+            Search discovered historical entries
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              aria-describedby="history-search-help"
+            />
+          </label>
+          <p id="history-search-help" className="detail-desc">
+            Search names, historical topics, regions, dates, or cited sources. Every search word must match.
+            Only discovered entries and their visible research are searched.
           </p>
-          <p>
-            Origins is a fictional, undated prologue. The Three-Age System reflects particular
-            archaeological traditions, not one worldwide sequence. Boundaries vary geographically;
-            first appearance and widespread adoption are different.
+          <p className="detail-desc" role="status" aria-live="polite" aria-atomic="true">
+            {matches.length} discovered {matches.length === 1 ? 'entry' : 'entries'} found.
           </p>
-          {record ? (
-            <>
+          <nav className="history-index" aria-label="Discovered historical entries">
+            {matches.map((element) => (
               <button
+                className="journal-element-btn"
                 type="button"
-                className="journal-element-btn history-read-control"
-                onClick={() => toggleHistoricalRead(selected.id)}
+                key={element.id}
+                aria-label={`Open historical entry for ${element.name}${readHistoricalElementIds.includes(element.id) ? ' (read)' : ''}`}
+                aria-pressed={selected?.id === element.id}
+                data-selected={selected?.id === element.id}
+                onClick={() => setSelectedId(element.id)}
               >
-                Mark {selected.name} as {readHistoricalElementIds.includes(selected.id) ? 'unread' : 'read'}
+                {element.name}
+                {readHistoricalElementIds.includes(element.id) && <span className="history-read-tag">Read</span>}
               </button>
-              <p className="detail-desc">A personal reading marker, not a knowledge test. It costs no Insight and earns no reward.</p>
-              <ResearchEntry record={record} discoveredIds={discoveredIds} onSelect={setSelectedId} />
-            </>
-          ) : (
-            <>
-              <h4>Historical notes not yet researched</h4>
-              <p>No verified historical record is available for this discovery yet. No historical date is assigned here.</p>
-              <h4>Atlas description (gameplay, not verified history)</h4>
-              <p>{selected.description}</p>
-              <span className="history-indicator">Symbolic combinations: gameplay abstractions</span>
-            </>
-          )}
-        </article>
-      ) : <p className="journal-empty">Select a discovered entry to read its historical notes.</p>}
-    </details>
+            ))}
+            {matches.length === 0 && <p className="journal-empty">No matching discovered entries.</p>}
+          </nav>
+        </div>
+        {selected ? (
+          <article className="element-detail history-entry" aria-labelledby="atlas-history-title">
+            <h3 id="atlas-history-title" tabIndex={-1} ref={headingRef}>{selected.name}</h3>
+            <p className="detail-cat-badge">
+              {eras.find((era) => era.id === selected.era)?.name} · {selected.category}
+            </p>
+            <p>
+              Origins is a fictional, undated prologue. The Three-Age System reflects particular
+              archaeological traditions, not one worldwide sequence. Boundaries vary geographically;
+              first appearance and widespread adoption are different.
+            </p>
+            {record ? (
+              <>
+                <button
+                  type="button"
+                  className="journal-element-btn history-read-control"
+                  onClick={() => toggleHistoricalRead(selected.id)}
+                >
+                  Mark {selected.name} as {readHistoricalElementIds.includes(selected.id) ? 'unread' : 'read'}
+                </button>
+                <p className="detail-desc">A personal reading marker, not a knowledge test. It costs no Insight and earns no reward.</p>
+                <ResearchEntry record={record} discoveredIds={discoveredIds} onSelect={setSelectedId} />
+              </>
+            ) : (
+              <>
+                <h4>Historical notes not yet researched</h4>
+                <p>No verified historical record is available for this discovery yet. No historical date is assigned here.</p>
+                <h4>Atlas description (gameplay, not verified history)</h4>
+                <p>{selected.description}</p>
+                <span className="history-indicator">Symbolic combinations: gameplay abstractions</span>
+              </>
+            )}
+          </article>
+        ) : <p className="journal-empty">Select a discovered entry to read its historical notes.</p>}
+      </div>
+    </section>
   )
 }

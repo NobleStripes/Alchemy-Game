@@ -124,7 +124,7 @@ Human comprehension and misconception results remain **pending**. Relevant futur
 ### Tasks and neutral prompts
 
 1. Let the participant begin an age and think aloud if comfortable. Record stuck points, help, abandoned combinations and whether normal progression is understandable.
-2. After a researched discovery, ask them to find more information about it. Record success, time, route and assistance before mentioning the Guide or search.
+2. After a researched discovery, ask them to find more information about it. Record success, time, route and assistance before mentioning Atlas or search.
 3. Ask them to return to combining. Observe whether reading or labs interfere, clear slots, appear mandatory, spend Insight or reveal undiscovered formulas.
 4. After actual age completion, ask: "What did you learn? Describe one discovery and the evidence behind it in your own words." Record the answer verbatim before corrective prompts.
 5. Ask: "Which parts seemed historical, and which seemed like puzzle shortcuts?" Then ask how they interpreted displayed dates and whether another region could have a different timeline.
@@ -166,3 +166,16 @@ Copy one blank record per participant/task; there are no completed participant r
 Separate task completion, factual comprehension and engagement. Review actual quotes and help needed, not just collection completion. Investigate every observed spoiler, currency charge, progression obstruction or misconception and retest any correction. Agree participant coverage and success criteria before recruitment; do not retrofit thresholds to make results pass.
 
 Human comprehension, discoverability and misconception outcomes remain **pending** until real observations are recorded.
+
+## Play and Atlas navigation review
+
+This software review is separate from the historical review and does not establish human learning outcomes.
+
+- Play loads by default; the persistent header offers two keyboard-accessible section controls with an explicit active state.
+- Desktop Play retains Elements, Combine, and Guide. Mobile Play retains exactly three tabs; Atlas is a separate encyclopedia page without gameplay tabs.
+- Application tests cover cross-age access, discovered-only history, shared free reading markers, unchanged saves on navigation, and restoration of filters, selected entries, prepared combinations, results, mobile tab, and isolated challenge context.
+- The complete regression suite passed 492 tests across 13 files. Production build/type-check, focused lint, and 40 local documentation links/anchors passed.
+- Live browser checks covered Play at 1440, 1024, 768, 740, 375, and 320px widths, and Atlas with an open entry at 1440, 375, and 320px. No page-level horizontal overflow occurred; Atlas hid the gameplay tabs and its article fit the available width.
+- Browser navigation left existing saved bytes unchanged and restored the gameplay panel. No browser save was reset, seeded, or deliberately changed.
+
+Keyboard behavior has automated coverage; actual screen-reader and human usability observations remain pending.

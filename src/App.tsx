@@ -21,6 +21,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Codex } from './features/codex/Codex'
 import { ChallengeRun } from './features/challenges/ChallengeRun'
 import { Journal } from './features/journal/Journal'
+import { HistoricalAtlas } from './features/journal/HistoricalAtlas'
 import { Settings as SettingsDialog } from './features/settings/Settings'
 import { Worktable } from './features/worktable/Worktable'
 import { elements, eras } from './game/content'
@@ -29,6 +30,7 @@ import { useGameStore } from './game/state/useGameStore'
 import './Simple.css'
 
 function App() {
+  const [activeSection, setActiveSection] = useState<'play' | 'atlas'>('play')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [activeChallenge, setActiveChallenge] = useState<ChallengeDefinition | null>(null)
   const challengeLaunchId = useRef(rainmakerChallenge.id)
@@ -83,32 +85,47 @@ function App() {
 
   function launchChallenge(challenge: ChallengeDefinition) {
     challengeLaunchId.current = challenge.id
+    setActiveSection('play')
     setActiveChallenge(challenge)
   }
 
-  if (activeChallenge) {
-    return (
-      <div className="game-shell" ref={challengeSurface}>
-        {persistenceError && <p className="persistence-error" role="alert">{persistenceError}</p>}
-        <ChallengeRun key={activeChallenge.id} challenge={activeChallenge} onExit={() => setActiveChallenge(null)} />
-      </div>
-    )
-  }
-
   return (
-    <div className="game-shell">
+    <div className="game-shell" data-active-section={activeSection} data-challenge-active={Boolean(activeChallenge)}>
       <header className="game-header">
         <div className="header-brand">
           <span className="brand-mark" aria-hidden="true">
             <FlaskConical className="brand-icon" size={22} />
           </span>
           <span className="brand-copy">
-            <small>The Unwritten Atlas</small>
-            <strong className="app-name">Mix Lab</strong>
+            <small>Mix Lab</small>
+            <strong className="app-name">The Unwritten Atlas</strong>
           </span>
         </div>
 
-        <nav className="era-switcher" aria-label="Atlas ages">
+        <nav className="section-nav" aria-label="Main navigation">
+          <button
+            type="button"
+            aria-controls="play-section"
+            aria-pressed={activeSection === 'play'}
+            data-active={activeSection === 'play'}
+            onClick={() => setActiveSection('play')}
+          >
+            <FlaskConical size={18} aria-hidden="true" />
+            Play
+          </button>
+          <button
+            type="button"
+            aria-controls="atlas-section"
+            aria-pressed={activeSection === 'atlas'}
+            data-active={activeSection === 'atlas'}
+            onClick={() => setActiveSection('atlas')}
+          >
+            <BookOpen size={18} aria-hidden="true" />
+            Atlas
+          </button>
+        </nav>
+
+        <nav className="era-switcher" aria-label="Play ages" hidden={activeSection !== 'play' || Boolean(activeChallenge)}>
           {eras.map((candidate) => {
             const isUnlocked = unlockedEraIds.includes(candidate.id)
             return (
@@ -144,6 +161,7 @@ function App() {
             className="icon-button"
             onClick={() => launchChallenge(rainmakerChallenge)}
             ref={challengeButton}
+            disabled={Boolean(activeChallenge)}
             aria-label="Play Rainmaker challenge"
             title="Play Rainmaker challenge"
           >
@@ -171,6 +189,7 @@ function App() {
           <button
             type="button"
             className="icon-button reset-btn"
+            disabled={Boolean(activeChallenge)}
             onClick={handleReset}
             aria-label="Reset journal"
             title="Reset journal"
@@ -180,60 +199,72 @@ function App() {
         </div>
       </header>
 
-      {persistenceError && <p className="persistence-error" role="alert">{persistenceError}</p>}
+      {persistenceError && activeSection === 'play' && <p className="persistence-error" role="alert">{persistenceError}</p>}
       {settingsOpen && (
         <SettingsDialog
           onClose={() => setSettingsOpen(false)}
         />
       )}
 
-      <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-        <div className="game-layout" data-active-panel={activePanel}>
-          <Codex onElementSelected={() => setActivePanel('combine')} />
-          <Worktable />
-          <Journal
-            eraId={era.id}
-            challengeName={era.name}
-            discoveryGoal={era.discoveryGoal}
-            landmarkIds={era.landmarkIds}
-            onCombinationPrepared={() => setActivePanel('combine')}
-            onChallengeSelected={launchChallenge}
-          />
-        </div>
-      </DndContext>
+      <main id="play-section" className="play-section" aria-label="Play" hidden={activeSection !== 'play'}>
+        <div className="play-workspace" hidden={Boolean(activeChallenge)}>
+          <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
+            <div className="game-layout" data-active-panel={activePanel}>
+              <Codex onElementSelected={() => setActivePanel('combine')} />
+              <Worktable />
+              <Journal
+                eraId={era.id}
+                challengeName={era.name}
+                discoveryGoal={era.discoveryGoal}
+                landmarkIds={era.landmarkIds}
+                onCombinationPrepared={() => setActivePanel('combine')}
+                onChallengeSelected={launchChallenge}
+              />
+            </div>
+          </DndContext>
 
-      <nav className="mobile-panel-nav" aria-label="Game panels">
-        <button
-          type="button"
-          aria-label="Show Combine panel"
-          data-active={activePanel === 'combine'}
-          aria-pressed={activePanel === 'combine'}
-          onClick={() => setActivePanel('combine')}
-        >
-          <Sparkles size={18} aria-hidden="true" />
-          Mix
-        </button>
-        <button
-          type="button"
-          aria-label="Show Elements panel"
-          data-active={activePanel === 'elements'}
-          aria-pressed={activePanel === 'elements'}
-          onClick={() => setActivePanel('elements')}
-        >
-          <Layers3 size={18} aria-hidden="true" />
-          Elements
-        </button>
-        <button
-          type="button"
-          aria-label="Show Guide panel"
-          data-active={activePanel === 'guide'}
-          aria-pressed={activePanel === 'guide'}
-          onClick={() => setActivePanel('guide')}
-        >
-          <BookOpen size={18} aria-hidden="true" />
-          Progress
-        </button>
-      </nav>
+          <nav className="mobile-panel-nav" aria-label="Game panels">
+            <button
+              type="button"
+              aria-label="Show Combine panel"
+              data-active={activePanel === 'combine'}
+              aria-pressed={activePanel === 'combine'}
+              onClick={() => setActivePanel('combine')}
+            >
+              <Sparkles size={18} aria-hidden="true" />
+              Combine
+            </button>
+            <button
+              type="button"
+              aria-label="Show Elements panel"
+              data-active={activePanel === 'elements'}
+              aria-pressed={activePanel === 'elements'}
+              onClick={() => setActivePanel('elements')}
+            >
+              <Layers3 size={18} aria-hidden="true" />
+              Elements
+            </button>
+            <button
+              type="button"
+              aria-label="Show Guide panel"
+              data-active={activePanel === 'guide'}
+              aria-pressed={activePanel === 'guide'}
+              onClick={() => setActivePanel('guide')}
+            >
+              <BookOpen size={18} aria-hidden="true" />
+              Guide
+            </button>
+          </nav>
+        </div>
+        {activeChallenge && (
+          <div className="challenge-surface" ref={challengeSurface}>
+            <ChallengeRun key={activeChallenge.id} challenge={activeChallenge} onExit={() => setActiveChallenge(null)} />
+          </div>
+        )}
+      </main>
+      <main id="atlas-section" className="atlas-page" aria-label="Atlas" hidden={activeSection !== 'atlas'}>
+        <HistoricalAtlas />
+      </main>
     </div>
   )
 }

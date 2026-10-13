@@ -28,7 +28,6 @@ function discover(...ids: string[]) {
 async function openAtlas() {
   const user = userEvent.setup()
   render(<HistoricalAtlas />)
-  await user.click(screen.getByText('Historical Encyclopedia'))
   return user
 }
 
@@ -153,13 +152,10 @@ describe('Historical Encyclopedia', () => {
     expect(within(article).getAllByRole('link').length).toBeGreaterThan(0)
   })
 
-  it('supports keyboard expansion, searching, selecting, reading controls and citation navigation', async () => {
+  it('supports keyboard searching, selecting, reading controls and citation navigation', async () => {
     discover('writing')
     render(<HistoricalAtlas />)
     const user = userEvent.setup()
-    await user.tab()
-    expect(screen.getByText('Historical Encyclopedia')).toHaveFocus()
-    await user.keyboard('[Enter]')
     await user.tab()
     expect(screen.getByRole('searchbox')).toHaveFocus()
     await user.keyboard('mesopotamia')
@@ -201,11 +197,14 @@ describe('Historical Encyclopedia', () => {
     expect(screen.queryByRole('button', { name: /Mark .* as read/ })).not.toBeInTheDocument()
   })
 
-  it('is optional and hides undiscovered entries even when searched', async () => {
+  it('shows the encyclopedia directly while keeping undiscovered entries hidden when searched', async () => {
     render(<HistoricalAtlas />)
-    expect(screen.getByText(/Optional historical notes/)).not.toBeVisible()
+    expect(screen.getByRole('heading', { name: 'Atlas', level: 1 })).toBeVisible()
+    const encyclopedia = screen.getByRole('heading', { name: 'Historical Encyclopedia', level: 2 })
+    expect(encyclopedia).toBeVisible()
+    expect(encyclopedia.closest('details')).toBeNull()
+    expect(screen.getByText(/Optional historical notes/)).toBeVisible()
     const user = userEvent.setup()
-    await user.click(screen.getByText('Historical Encyclopedia'))
     expect(screen.queryByRole('button', { name: /historical entry for Writing$/ })).not.toBeInTheDocument()
     expect(screen.queryByText('Historical overview')).not.toBeInTheDocument()
     await user.type(screen.getByRole('searchbox'), 'writing')
@@ -290,7 +289,6 @@ describe('Historical Encyclopedia', () => {
     useGameStore.getState().transmuteWith('stone', 'ember')
     const first = render(<HistoricalAtlas />)
     const user = userEvent.setup()
-    await user.click(screen.getByText('Historical Encyclopedia'))
     await selectEntry(user, 'Metal')
     const saved = localStorage.getItem(SAVE_KEY)
     first.unmount()

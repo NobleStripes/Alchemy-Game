@@ -10,7 +10,6 @@ import {
 import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
 import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
-import { HistoricalAtlas } from './HistoricalAtlas'
 import { RecipeHistory } from './RecipeHistory'
 
 interface JournalProps {
@@ -492,7 +491,6 @@ export function Journal({
           )}
         </section>
       </details>
-      <HistoricalAtlas />
     </aside>
   )
 }

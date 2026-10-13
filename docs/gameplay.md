@@ -6,6 +6,20 @@ The game has 147 elements and 183 recipes across four ages in a persistent histo
 
 Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed three-tab navigator; choosing an element returns directly to Combine, while the Elements list marks occupied slots. Search matches names and categories, and the Guide separates collections from optional element research with native disclosure controls.
 
+## Main navigation
+
+The persistent **The Unwritten Atlas** header offers **Play** and **Atlas**. Play is the default on load. The keyboard-accessible buttons identify the active section and the section they control; inactive sections are hidden from display, keyboard navigation, and assistive technology.
+
+**Play** contains the existing Elements, Combine, and Guide layout, including its age switcher and the three mobile gameplay tabs. **Atlas** opens the Historical Encyclopedia directly and can browse all discovered entries regardless of the selected gameplay age. It is not a fourth mobile tab, and it does not include recipe hints.
+
+Atlas has its own page heading and introduction. Desktop places the searchable discovered-entry list beside the historical reading area; mobile stacks browsing above reading. Research explanations, citations, and explicit **Mark as Read / Mark as Unread** controls remain available without Insight.
+
+The Guide keeps the Insight wallet and hints, Open Leads, Recorded Formulas, Recent Experiments, recipe-related Element research, age challenges and landmarks, collections and rewards, and Learning Challenges. Gameplay research stays in the Guide; only the Historical Encyclopedia moves to Atlas.
+
+Switching sections does not spend Insight, perform experiments, change the selected age, or write a save. The prepared slots, last result, element filters, Guide selection, mobile tab, and Atlas search/entry remain in memory while switching. Explicit reading markers still use shared saved progress. The chosen top-level section and reading selection are not saved; a reload begins on Play.
+
+The header also remains available during isolated challenges. Visiting Atlas does not abandon the run; returning to Play resumes it. **Return to Play** exits the challenge using its existing discard-confirmation rules and restores focus to its launch control. Campaign reset and starting another run are disabled while a challenge is active.
+
 ## Four ages
 
 Origins is an explicitly fictional, undated prologue, not an archaeological period or a scientific account of creation. The historical pages draw on several traditions; their approximate dates are explained in the [chronology guide](historical-interpretation.md), not a single worldwide timeline.
@@ -26,7 +40,7 @@ Bronze Age has 41 elements. Irrigation, Canal, Granary, Loom, Textile, and Balan
 
 The expanded branches are optional: existing age unlocks, landmarks, discovery goals, and collection reward rules are unchanged. Existing saves retain their earned progress; catalog completion percentages now include the additional discoveries. Classical Antiquity is reserved for a later update, not a fifth playable age yet. Age assignments organize gameplay rather than claim exact invention dates.
 
-## Atlas features
+## Gameplay Guide features
 
 Society, Knowledge, and Transport join the original categories. Village and City are Society; Papyrus, Map, Writing, and Scribe are Knowledge; Wheel and Cart are Transport. Legacy saves containing reclassified Metal Tool, Glass, Papyrus, Map, or City unlock Bronze Age automatically.
 
@@ -57,9 +71,9 @@ Save result waits for confirmed storage before acknowledging completion or grant
 
 ## Historical Encyclopedia
 
-Open **Historical Encyclopedia** in the Guide to search and revisit discovered elements from any age. This optional section is independent of recipe research, formulas and hints. Undiscovered entries and their related-discovery links stay hidden. Following a related discovery changes only the local reading selection, not the active gameplay age or worktable.
+Select **Atlas** in the application header to search and revisit discovered elements from any age in the **Historical Encyclopedia**. This optional section is independent of recipe research, formulas and hints. Undiscovered entries and their related-discovery links stay hidden. Following a related discovery changes only the local reading selection, not the active gameplay age or worktable.
 
-Search covers names, historical topics, regions, dates, and cited source titles, institutions, and authors. Matching is case-insensitive and every search word must match. Only discovered entries and their visible research are indexed: undiscovered related context, references used only by those hidden links, and pending further-research leads are excluded. Search and reading do not perform formulas or alter progression. Keyboard users can expand the section, search, select entries, and follow references; selection focuses the entry heading, search results are announced politely, and citation targets support focus. The layout wraps long research text and source titles on mobile.
+Search covers names, historical topics, regions, dates, and cited source titles, institutions, and authors. Matching is case-insensitive and every search word must match. Only discovered entries and their visible research are indexed: undiscovered related context, references used only by those hidden links, and pending further-research leads are excluded. Search and reading do not perform formulas or alter progression. Keyboard users can switch sections, search, select entries, and follow references; selection focuses the entry heading, search results are announced politely, and citation targets support focus. The layout wraps long research text and source titles on mobile.
 
 The thirteen researched entries show regional dates and their meaning, geographical associations, manufacture/use, significance, evidence, independent developments, historical uncertainty and numbered references. Citations link each supported passage to source titles, authors/institutions, publication dates when known, and original URLs. Verification disclosures distinguish catalog metadata, selected passages and abstract-only access; pending sources do not support displayed references. Historical vocabulary and source titles can mention materials, but no unperformed formula pairs or preparation controls appear in this section.
 

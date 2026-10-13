@@ -2,7 +2,7 @@
 
 An original combination-discovery game with **147 elements and 183 recipes across four ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
 
-Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a three-tab navigator. Pointer, touch, and keyboard controls are supported.
+The persistent header switches between **Play** (the default) and **Atlas** (Historical Encyclopedia). Play keeps Elements, Combine, and Guide together on desktop and in three mobile tabs; Atlas is not a fourth gameplay tab. Both sections share discoveries and saved progress, and returning to Play preserves the previous gameplay context. Pointer, touch, and keyboard controls are supported.
 
 Origins is a fictional, undated prologue. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Classical Antiquity is a possible future chapter, not a requirement for the next update.
 
