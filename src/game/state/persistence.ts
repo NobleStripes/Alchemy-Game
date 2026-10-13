@@ -1,5 +1,7 @@
 import { z } from 'zod'
 import { collections, elements, elementsById, eras, recipes, starterElementIds } from '../content'
+import { challengesById } from '../content/challenges'
+import { researchByElementId } from '../content/research'
 import { isCollectionComplete } from '../engine/collectionRules'
 import { reconcileEraProgress } from '../engine/eraProgress'
 import { isEraChallengeComplete } from '../engine/insightRules'
@@ -95,8 +97,12 @@ const progressSchema = versionSixProgressSchema.extend({
   challengeRecords: z.array(z.object({
     challengeId: z.string(),
     completed: z.boolean(),
-    bestAttemptCount: z.number().int().min(4).max(Number.MAX_SAFE_INTEGER),
-  })),
+    bestAttemptCount: z.number().int().min(1).max(Number.MAX_SAFE_INTEGER),
+  }).refine((record) => {
+    const challenge = challengesById.get(record.challengeId)
+    return !challenge || record.bestAttemptCount >= challenge.minimumAttempts
+  }, 'Challenge attempt count cannot be below its shortest route.')),
+  readHistoricalElementIds: z.array(z.string()).default([]),
 })
 
 export interface SavedProgress {
@@ -115,9 +121,13 @@ export interface SavedProgress {
   experimentHistory: ExperimentEntry[]
   rewardedCollectionIds: string[]
   challengeRecords: ChallengeRecord[]
+  readHistoricalElementIds: string[]
 }
 
-function normalizeProgress(progress: SavedProgress, legacy: boolean): SavedProgress {
+function normalizeProgress(
+  progress: Omit<SavedProgress, 'readHistoricalElementIds'> & Partial<Pick<SavedProgress, 'readHistoricalElementIds'>>,
+  legacy: boolean,
+): SavedProgress {
   const knownIds = (ids: string[]) => [...new Set(ids)].filter((id) => elementsById.has(id))
   const eraIds = new Set(eras.map((era) => era.id))
   const eraProgress = reconcileEraProgress(
@@ -157,7 +167,7 @@ function normalizeProgress(progress: SavedProgress, legacy: boolean): SavedProgr
   const collectionIds = new Set(collections.map((collection) => collection.id))
   const challengeRecords: ChallengeRecord[] = []
   for (const record of progress.challengeRecords) {
-    if (record.challengeId !== 'rainmaker') continue
+    if (!challengesById.has(record.challengeId)) continue
     const existing = challengeRecords.find((candidate) => candidate.challengeId === record.challengeId)
     if (existing) {
       existing.completed ||= record.completed
@@ -180,6 +190,8 @@ function normalizeProgress(progress: SavedProgress, legacy: boolean): SavedProgr
       ? collections.filter((collection) => isCollectionComplete(collection, eraProgress.discoveredIds)).map((collection) => collection.id)
       : [...new Set(progress.rewardedCollectionIds)].filter((id) => collectionIds.has(id)),
     challengeRecords,
+    readHistoricalElementIds: knownIds(progress.readHistoricalElementIds ?? [])
+      .filter((id) => discovered.has(id) && researchByElementId.has(id)),
   }
 }
 
@@ -445,11 +457,12 @@ export function exportProgress(progress: Omit<SavedProgress, 'version'>): string
     experimentHistory: progress.experimentHistory ?? [],
     rewardedCollectionIds: progress.rewardedCollectionIds ?? [],
     challengeRecords: progress.challengeRecords ?? [],
+    readHistoricalElementIds: progress.readHistoricalElementIds ?? [],
   })
 }
 
-type LegacySaveInput = Omit<SavedProgress, 'version' | 'favoriteIds' | 'soundEnabled' | 'experimentHistory' | 'rewardedCollectionIds' | 'challengeRecords'> &
-  Partial<Pick<SavedProgress, 'favoriteIds' | 'soundEnabled' | 'experimentHistory' | 'rewardedCollectionIds' | 'challengeRecords'>>
+type LegacySaveInput = Omit<SavedProgress, 'version' | 'favoriteIds' | 'soundEnabled' | 'experimentHistory' | 'rewardedCollectionIds' | 'challengeRecords' | 'readHistoricalElementIds'> &
+  Partial<Pick<SavedProgress, 'favoriteIds' | 'soundEnabled' | 'experimentHistory' | 'rewardedCollectionIds' | 'challengeRecords' | 'readHistoricalElementIds'>>
 
 export function saveProgress(progress: LegacySaveInput): boolean {
   if (typeof window === 'undefined') return false
@@ -462,6 +475,7 @@ export function saveProgress(progress: LegacySaveInput): boolean {
       experimentHistory: progress.experimentHistory ?? [],
       rewardedCollectionIds: progress.rewardedCollectionIds ?? [],
       challengeRecords: progress.challengeRecords ?? [],
+      readHistoricalElementIds: progress.readHistoricalElementIds ?? [],
     })
     if (new TextEncoder().encode(serialized).byteLength > MAX_SAVE_BYTES) return false
     window.localStorage.setItem(SAVE_KEY, serialized)

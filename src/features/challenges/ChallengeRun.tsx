@@ -1,17 +1,22 @@
 import { ArrowLeft, Check, FlaskConical, Plus, RotateCcw, Save, Trash2, Trophy, X } from 'lucide-react'
-import { useEffect, useReducer, useRef, useState } from 'react'
+import { useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { soundEngine } from '../../game/audio/audioEngine'
 import { elementsById } from '../../game/content'
-import { rainmakerChallenge } from '../../game/content/challenges'
-import { challengeReducer, createChallengeState, type ChallengeAction, type ChallengeSlot } from '../../game/engine/challengeRules'
+import { rainmakerChallenge, type ChallengeDefinition } from '../../game/content/challenges'
+import { historicalResearch } from '../../game/content/research'
+import { createChallengeReducer, createChallengeState, type ChallengeAction, type ChallengeSlot } from '../../game/engine/challengeRules'
 import { useGameStore } from '../../game/state/useGameStore'
+import { RecipeHistory } from '../journal/RecipeHistory'
+import { SourceReference } from '../journal/SourceReference'
 
 export interface ChallengeRunProps {
   onExit: () => void
+  challenge?: ChallengeDefinition
 }
 
-export function ChallengeRun({ onExit }: ChallengeRunProps) {
-  const [run, dispatch] = useReducer(challengeReducer, undefined, createChallengeState)
+export function ChallengeRun({ onExit, challenge = rainmakerChallenge }: ChallengeRunProps) {
+  const reducer = useMemo(() => createChallengeReducer(challenge), [challenge])
+  const [run, dispatch] = useReducer(reducer, challenge, createChallengeState)
   const [savedMessage, setSavedMessage] = useState<string | null>(null)
   const [saveError, setSaveError] = useState<string | null>(null)
   const saved = useRef(false)
@@ -22,12 +27,13 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
     mounted.current = true
     return () => { mounted.current = false }
   }, [])
-  const best = useGameStore((state) => state.challengeRecords.find((record) => record.challengeId === rainmakerChallenge.id)?.bestAttemptCount)
+  const best = useGameStore((state) => state.challengeRecords.find((record) => record.challengeId === challenge.id)?.bestAttemptCount)
   const soundEnabled = useGameStore((state) => state.soundEnabled)
-  const target = elementsById.get(rainmakerChallenge.targetId)!
+  const target = elementsById.get(challenge.targetId)!
+  const sources = historicalResearch.sources.filter((source) => challenge.education?.sourceIds.includes(source.id))
 
   function act(action: ChallengeAction) {
-    const next = challengeReducer(run, action)
+    const next = reducer(run, action)
     if (next === run) return
     dispatch(action)
     if (!soundEnabled) return
@@ -41,9 +47,9 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
 
   function confirmDiscard() {
     if (saving.current) return false
-    if (run.completed && !saved.current) return window.confirm('Your Rainmaker result has not been saved. Discard it?')
+    if (run.completed && !saved.current) return window.confirm(`Your ${challenge.name} result has not been saved. Discard it?`)
     if (!run.completed && (run.attemptCount > 0 || run.firstSlotId || run.secondSlotId)) {
-      return window.confirm('Leave this unfinished Rainmaker run?')
+      return window.confirm(`Leave this unfinished ${challenge.name} run?`)
     }
     return true
   }
@@ -60,7 +66,7 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
     if (!run.completed || saved.current || saving.current) return
     saving.current = true
     setSavePending(true)
-    const receipt = await useGameStore.getState().recordChallengeCompletion(rainmakerChallenge.id, run.attemptCount)
+    const receipt = await useGameStore.getState().recordChallengeCompletion(challenge.id, run.attemptCount)
     saving.current = false
     if (!mounted.current) return
     setSavePending(false)
@@ -84,7 +90,7 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
           <ArrowLeft size={20} aria-hidden="true" />
         </button>
         <div>
-          <h1 id="challenge-title">{rainmakerChallenge.name}</h1>
+          <h1 id="challenge-title">{challenge.name}</h1>
           <p><span aria-hidden="true">{target.icon || target.sigil} </span>Target: {target.name}</p>
         </div>
         <div className="challenge-score">
@@ -92,6 +98,19 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
           <p>Best: <strong>{best === undefined ? 'Not completed' : `${best} attempts`}</strong></p>
         </div>
       </header>
+
+      {challenge.education && (
+        <section className="challenge-education history-entry" aria-label="Free historical explanation">
+          <p>Experiment with the supplied elements. No facts quiz, Insight cost, or reading requirement. Only a saved first completion earns +1 Insight; lab discoveries do not unlock campaign entries.</p>
+          <details>
+            <summary>About this theme (free)</summary>
+            <p>{challenge.education.overview}</p>
+            <ol className="history-sources">
+              {sources.map((source) => <li key={source.id}><SourceReference source={source} /></li>)}
+            </ol>
+          </details>
+        </section>
+      )}
 
       <div className="challenge-layout">
         <aside className="challenge-shelf" aria-labelledby="challenge-shelf-title">
@@ -145,19 +164,20 @@ export function ChallengeRun({ onExit }: ChallengeRunProps) {
           </div>
 
           <div className="challenge-result" role="status" aria-live="polite" data-outcome={run.result?.kind}>
-            {run.completed ? <h2><Trophy size={22} aria-hidden="true" /> Rainmaker complete</h2>
+            {run.completed ? <h2><Trophy size={22} aria-hidden="true" /> {challenge.name} complete</h2>
               : run.result?.kind === 'failure' ? <p>No reaction</p>
                 : resultElement ? <p><span aria-hidden="true">{resultElement.icon || resultElement.sigil} </span>{run.result?.kind === 'known' ? 'Known' : 'Discovered'} {resultElement.name}</p>
                   : null}
-            {run.completed && <p>Rain in {run.attemptCount} attempts</p>}
+            {run.completed && <p>{target.name} in {run.attemptCount} attempts</p>}
             {savedMessage && <p><Check size={18} aria-hidden="true" /> {savedMessage}</p>}
           </div>
+          {run.result?.recipeId && <RecipeHistory recipeId={run.result.recipeId} />}
           {saveError && <p role="alert">{saveError}</p>}
           <div className="challenge-actions">
             {run.completed && <button type="button" disabled={savePending || Boolean(savedMessage)} onClick={saveResult} title="Save result">
               <Save size={20} aria-hidden="true" /> {savePending ? 'Saving result' : 'Save result'}
             </button>}
-            <button type="button" disabled={savePending} onClick={retry} title="Retry Rainmaker"><RotateCcw size={20} aria-hidden="true" /> Retry</button>
+            <button type="button" disabled={savePending} onClick={retry} title={`Retry ${challenge.name}`}><RotateCcw size={20} aria-hidden="true" /> Retry</button>
           </div>
         </section>
       </div>

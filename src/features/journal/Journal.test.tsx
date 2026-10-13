@@ -27,6 +27,18 @@ afterEach(() => {
 })
 
 describe('Guide preparation', () => {
+  it('labels discovered earlier materials without revealing unknown collection members', async () => {
+    useGameStore.setState({ discoveredIds: ['clay', 'reed', 'hearth', 'charcoal'] })
+    render(<Journal {...props} eraId="bronze-age" />)
+    const objectives = screen.getByText('Collections').parentElement!
+    expect(within(objectives).getAllByText('Optional historical discovery objective')).toHaveLength(2)
+    expect(within(objectives).getByText('Earlier gameplay page: Stone Age')).toBeVisible()
+    expect(within(objectives).getAllByText('Earlier gameplay page: Origins')).toHaveLength(3)
+    expect(within(objectives).getAllByText('Unknown element')).toHaveLength(8)
+    expect(within(objectives).queryByText('Writing Reed')).not.toBeInTheDocument()
+    expect(within(objectives).queryByText('Bronze Tool')).not.toBeInTheDocument()
+  })
+
   it('archives a formula after its attempt is evicted and reloaded, without saving on preparation', async () => {
     useGameStore.getState().transmuteWith('ember', 'tide')
     for (let index = 0; index < 55; index += 1) useGameStore.getState().transmuteWith('gale', 'tide')

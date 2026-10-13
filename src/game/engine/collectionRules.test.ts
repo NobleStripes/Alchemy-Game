@@ -21,7 +21,7 @@ describe('collection completion', () => {
     const discovered = collections.flatMap((collection) => collection.elementIds)
     expect(getNewlyCompletedCollectionIds(collections, [], [])).toEqual([])
     expect(getNewlyCompletedCollectionIds(collections, discovered, ['stormwatch'])).toEqual([
-      'harvest-table', 'ironworkers',
+      'harvest-table', 'ironworkers', 'bronze-workshop', 'marks-and-materials',
     ])
     expect(getNewlyCompletedCollectionIds(collections, discovered, collections.map((collection) => collection.id))).toEqual([])
   })
@@ -41,12 +41,22 @@ describe('collection completion', () => {
     const newlyCompleted = getNewlyCompletedCollectionIds(collections, discovered, [])
     const wallet = newlyCompleted.reduce((state) => awardInsight(state), { credits: 2, failureProgress: 0 })
     expect(wallet.credits).toBe(3)
-    expect(newlyCompleted).toHaveLength(3)
+    expect(newlyCompleted).toHaveLength(5)
     expect(getNewlyCompletedCollectionIds(collections, discovered, newlyCompleted)).toEqual([])
   })
 })
 
 describe('collection contracts', () => {
+  it('connects optional educational objectives to earlier gameplay materials', () => {
+    const educational = collections.filter((collection) => collection.education)
+    expect(educational.map((collection) => collection.id)).toEqual([
+      'harvest-table', 'bronze-workshop', 'marks-and-materials',
+    ])
+    for (const collection of educational.filter((candidate) => candidate.era === 'bronze-age')) {
+      expect(collection.elementIds.some((id) => elements.find((element) => element.id === id)?.era !== collection.era)).toBe(true)
+    }
+  })
+
   it('validates the complete authored graph including collections', () => {
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
   })

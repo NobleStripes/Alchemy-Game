@@ -168,7 +168,7 @@ The ten researched entries show regional dates and their meaning, geographical a
 
 Indicators distinguish documented evidence, hypotheses, contested interpretations, documented topic relationships and gameplay associations. Symbolic combinations are explicitly gameplay abstractions; age-placement notes identify earlier precedents or regional simplifications rather than imposing a worldwide timeline. Origins stays fictional and undated.
 
-The remaining 134 discoveries show an honest **historical notes not yet researched** state, not invented dates or citations. Their existing description is labeled as gameplay text, not verified history. Reading costs no Insight, changes no progress or rewards, and creates no saved history-viewing state. Discovered notes remain available after reloading existing saves; resetting discoveries hides the corresponding entries immediately. Rainmaker remains separate from the campaign Guide.
+The remaining 134 discoveries show an honest **historical notes not yet researched** state, not invented dates or citations. Their existing description is labeled as gameplay text, not verified history. Reading costs no Insight and changes no discoveries or rewards. Opening a note never automatically records reading; the optional explicit marker described below is saved separately. Discovered notes remain available after reloading existing saves; resetting discoveries hides the corresponding entries immediately. Rainmaker remains separate from the campaign Guide.
 
 ## Historical technology and recipe review (Phase 4)
 
@@ -188,9 +188,21 @@ References reuse the central source registry and show the original URL, credited
 
 Validation rejects missing, duplicate or unknown recipe reviews, empty cautions, invalid classifications and dangling, duplicate or pending source references. [`recipeReviews.test.ts`](src/game/content/recipeReviews.test.ts) also pins the pre-audit recipe graph and checks priority-chain cautions. Original-source checking remains necessary; schema validation cannot establish historical truth.
 
+## Educational gameplay (Phase 5)
+
+The Guide's **Learning Challenges** offers three optional, isolated labs from any age: **Harvest Lab**, **Bronze Lab**, and **Records Lab**. They reuse existing combinations and supplied discoveries to explore food processing, metallurgy, and record keeping without quizzes or memorized historical facts. Alternate routes remain valid, including a shorter records route and a longer writing-focused route. Supplied materials and earlier gameplay pages are puzzle foundations, not universal historical prerequisites.
+
+Each lab has optional, free theme notes with existing verified references and their access limits. A successful combination unlocks that route's historical-context disclosure within the run. These notes distinguish documented background from simplified or symbolic combinations; they are not manufacturing instructions. Lab discoveries, attempts, and formulas never enter the campaign or unlock its encyclopedia entries. Rainmaker remains the same gameplay-only challenge and four-attempt route.
+
+Saving a first completion earns the existing **one-time +1 Insight**, subject to the three-credit cap; later completions update the best attempt count without another reward. Reading is never required. Failed saves do not commit a completion or reward. In-flight runs are still unsaved.
+
+There are now **five optional collections**. Harvest Table gains educational context; Bronze Workshop and Marks and Materials connect later discoveries to earlier gameplay foundations. Undiscovered members remain anonymous, and only discovered members show their earlier page. Collection completion still means discovering every member, with the existing one-time capped +1 Insight reward, not reading notes.
+
+In the Historical Encyclopedia, explicitly choose **Mark as read** or **Mark as unread** on a researched, discovered entry. The optional counter includes only discovered entries with researched notes, not unresearched gameplay descriptions. Opening entries, navigating related topics, and following references never automatically mark reading. Markers are local save metadata, survive reload, and clear on reset; they cost no Insight and earn no reward. Save errors remain visible. Historical explanations are available to everyone with the corresponding discovery; **Insight purchases recipe leads, never factual information**.
+
 ## Saves And Settings
 
-Progress is stored locally in the browser under `unwritten-atlas-progress`. Version 7 includes discovered elements, performed formulas, Insight credits and stall progress, age challenge reward markers, Open Leads, failed unordered pairs, unlocked ages, and the active page, plus favorites, sound preference, the latest 50 experiments, collection reward markers, and Rainmaker completion/best-score records. In-flight challenge state is not saved. There are no accounts or cloud sync.
+Progress is stored locally in the browser under `unwritten-atlas-progress`. Version 7 includes discovered elements, performed formulas, Insight credits and stall progress, age challenge reward markers, Open Leads, failed unordered pairs, unlocked ages, and the active page, plus favorites, sound preference, the latest 50 experiments, collection reward markers, Rainmaker and learning-lab completion/best-score records, and explicit historical reading markers. The reading field is additive: older v7 saves default to an empty list, as do migrated v1-v6 saves. Only discovered, researched element IDs are retained as reading markers. In-flight challenge state is not saved. There are no accounts or cloud sync.
 
 Campaign progress is saved automatically and restored on reload. Settings controls the persistent sound preference; favorites also persist immediately. Manual file import and export are not available. Existing local saves remain compatible. Storage failures are reported, so continued in-memory play is not a guarantee that progress was saved.
 
@@ -202,4 +214,4 @@ Safe autosaving requires Web Locks support (and a secure context, including loca
 
 Earlier saves migrate to v7, preserving old hint credits as Insights within the three-credit cap. Favorites, experiment history, and challenge records default to empty, and sound defaults to enabled. Already-completed collections in v1-v6 saves are marked rewarded without retroactive Insight; existing age challenge reward migration is retained. Migration removes failed pairs that are valid in the current graph, and successful formulas defensively clear stale failures. Correct guesses from locked pages remain free Open Leads. Historical discoveries reconcile matching age unlocks and grants without retroactive unlock rewards.
 
-Reset returns the campaign to Origins with four starting elements and three Insights. It clears discoveries beyond the starters, formulas, leads, failure progress, favorites, experiment history, reward markers, and challenge completion/best-score records, while preserving the sound preference.
+Reset returns the campaign to Origins with four starting elements and three Insights. It clears discoveries beyond the starters, formulas, leads, failure progress, favorites, experiment history, reward markers, historical reading markers, and challenge completion/best-score records, while preserving the sound preference.

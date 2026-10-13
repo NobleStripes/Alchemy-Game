@@ -4,6 +4,7 @@ import './testSupport'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { soundEngine } from '../audio/audioEngine'
 import { collections, elements, elementsById, eras, recipes, starterElementIds } from '../content'
+import { learningChallenges } from '../content/challenges'
 import { pairKey } from '../engine/resolveCombination'
 import { exportProgress, loadProgress, MAX_EXPERIMENT_HISTORY, parseProgress, type SavedProgress } from './persistence'
 import { createGameStore, snapshotProgress, useGameStore } from './useGameStore'
@@ -22,6 +23,62 @@ const fresh = (): SavedProgress => parseProgress(JSON.stringify({ version: 1, di
 const failWrites = () => vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
 
 describe('campaign state', () => {
+  it('persists explicit reading without spending Insight or affecting rewards, then clears it on reset', () => {
+    state().transmuteWith('stone', 'ember')
+    useGameStore.setState({ insightCredits: 0 })
+    state().prepareCombination('ember', 'tide')
+    const before = campaign()
+    state().toggleHistoricalRead('writing')
+    state().toggleHistoricalRead('ember')
+    state().toggleHistoricalRead('missing')
+    expect(campaign()).toEqual(before)
+    state().toggleHistoricalRead('metal')
+    expect(campaign()).toEqual({ ...before, readHistoricalElementIds: ['metal'] })
+    expect(state().firstSlotId).toBe('ember')
+    expect(state().secondSlotId).toBe('tide')
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual(['metal'])
+    state().resetProgress()
+    expect(state().readHistoricalElementIds).toEqual([])
+    expect(loadProgress()?.readHistoricalElementIds).toEqual([])
+  })
+
+  it('surfaces failed reading-marker saves without overwriting the existing save', () => {
+    state().transmuteWith('stone', 'ember')
+    const original = disk()
+    failWrites()
+    state().toggleHistoricalRead('metal')
+    expect(state().persistenceError).not.toBeNull()
+    expect(disk()).toBe(original)
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual([])
+  })
+
+  it.each(learningChallenges)('saves and rewards $name once without campaign discoveries or reading requirements', async (challenge) => {
+    useGameStore.setState({ insightCredits: 0 })
+    const before = campaign()
+    expect((await state().recordChallengeCompletion(challenge.id, challenge.minimumAttempts - 1)).saved).toBe(false)
+    expect(campaign()).toEqual(before)
+    const receipt = await state().recordChallengeCompletion(challenge.id, challenge.minimumAttempts)
+    expect(receipt).toMatchObject({ saved: true, firstCompletion: true, insightEarned: 1 })
+    expect(campaign()).toEqual({
+      ...before, insightCredits: 1,
+      challengeRecords: [{ challengeId: challenge.id, completed: true, bestAttemptCount: challenge.minimumAttempts }],
+    })
+    expect(createGameStore().getState().challengeRecords).toEqual(state().challengeRecords)
+    expect((await state().recordChallengeCompletion(challenge.id, challenge.minimumAttempts + 1)).firstCompletion).toBe(false)
+    expect(state().insightCredits).toBe(1)
+    expect(state().challengeRecords[0].bestAttemptCount).toBe(challenge.minimumAttempts)
+  })
+
+  it.each(learningChallenges)('consumes the $name first reward at the cap without banking overflow', async (challenge) => {
+    expect(state().insightCredits).toBe(3)
+    expect(await state().recordChallengeCompletion(challenge.id, challenge.minimumAttempts))
+      .toMatchObject({ saved: true, firstCompletion: true, insightEarned: 0 })
+    useGameStore.setState({ insightCredits: 0 })
+    expect(await state().recordChallengeCompletion(challenge.id, challenge.minimumAttempts))
+      .toMatchObject({ saved: true, firstCompletion: false, insightEarned: 0 })
+    expect(state().insightCredits).toBe(0)
+  })
+
   it.each(['', '{', JSON.stringify({ version: 99 })])('protects an unreadable original throughout in-memory play: %s', async (raw) => {
     localStorage.setItem(saveKey, raw)
     const store = createGameStore()
@@ -516,18 +573,21 @@ describe('campaign state', () => {
     expect(soundEngine.setEnabled).toHaveBeenLastCalledWith(false)
   })
 
-  it('rewards a newly completed collection in the discovery transaction exactly once', () => {
-    const collection = collections.find((entry) => entry.name === 'Stormwatch')!
-    const recipe = recipes.find((entry) => entry.result === 'lightning')!
+  it.each(collections)('rewards $name in the discovery transaction exactly once without reading', (collection) => {
+    const resultId = collection.elementIds[collection.elementIds.length - 1]
+    const recipe = recipes.find((entry) => entry.result === resultId)!
     useGameStore.setState({
       discoveredIds: [...new Set([...starterElementIds, ...collection.elementIds.filter((id) => id !== recipe.result), ...recipe.inputs])],
       insightCredits: 0, favoriteIds: ['ember'], soundEnabled: false,
       challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 5 }],
+      unlockedEraIds: eras.map((era) => era.id),
+      rewardedChallengeEraIds: eras.map((era) => era.id),
     })
     state().transmuteWith(...recipe.inputs)
     expect(state().rewardedCollectionIds).toEqual([collection.id])
     expect(state().insightCredits).toBe(1)
     expect(state().lastAttempt?.insightEarned).toBe(1)
+    expect(state().readHistoricalElementIds).toEqual([])
     expect(loadProgress()).toEqual({ version: 7, ...campaign() })
     state().transmuteWith(...recipe.inputs)
     expect(state().insightCredits).toBe(1)

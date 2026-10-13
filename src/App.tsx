@@ -24,25 +24,30 @@ import { Journal } from './features/journal/Journal'
 import { Settings as SettingsDialog } from './features/settings/Settings'
 import { Worktable } from './features/worktable/Worktable'
 import { elements, eras } from './game/content'
+import { rainmakerChallenge, type ChallengeDefinition } from './game/content/challenges'
 import { useGameStore } from './game/state/useGameStore'
 import './Simple.css'
 
 function App() {
   const [settingsOpen, setSettingsOpen] = useState(false)
-  const [challengeActive, setChallengeActive] = useState(false)
+  const [activeChallenge, setActiveChallenge] = useState<ChallengeDefinition | null>(null)
+  const challengeLaunchId = useRef(rainmakerChallenge.id)
   const challengeButton = useRef<HTMLButtonElement>(null)
   const challengeSurface = useRef<HTMLDivElement>(null)
   const returningFromChallenge = useRef(false)
   useEffect(() => useGameStore.connectProgress(), [])
   useEffect(() => {
-    if (challengeActive) {
+    if (activeChallenge) {
       challengeSurface.current?.querySelector<HTMLButtonElement>('button')?.focus()
       returningFromChallenge.current = true
     } else if (returningFromChallenge.current) {
-      challengeButton.current?.focus()
+      const trigger = challengeLaunchId.current === rainmakerChallenge.id
+        ? challengeButton.current
+        : document.querySelector<HTMLButtonElement>(`button[data-challenge-id="${challengeLaunchId.current}"]`)
+      trigger?.focus()
       returningFromChallenge.current = false
     }
-  }, [challengeActive])
+  }, [activeChallenge])
   const [activePanel, setActivePanel] = useState<
     'combine' | 'elements' | 'guide'
   >('combine')
@@ -76,11 +81,16 @@ function App() {
     }
   }
 
-  if (challengeActive) {
+  function launchChallenge(challenge: ChallengeDefinition) {
+    challengeLaunchId.current = challenge.id
+    setActiveChallenge(challenge)
+  }
+
+  if (activeChallenge) {
     return (
       <div className="game-shell" ref={challengeSurface}>
         {persistenceError && <p className="persistence-error" role="alert">{persistenceError}</p>}
-        <ChallengeRun onExit={() => setChallengeActive(false)} />
+        <ChallengeRun key={activeChallenge.id} challenge={activeChallenge} onExit={() => setActiveChallenge(null)} />
       </div>
     )
   }
@@ -132,7 +142,7 @@ function App() {
           <button
             type="button"
             className="icon-button"
-            onClick={() => setChallengeActive(true)}
+            onClick={() => launchChallenge(rainmakerChallenge)}
             ref={challengeButton}
             aria-label="Play Rainmaker challenge"
             title="Play Rainmaker challenge"
@@ -187,6 +197,7 @@ function App() {
             discoveryGoal={era.discoveryGoal}
             landmarkIds={era.landmarkIds}
             onCombinationPrepared={() => setActivePanel('combine')}
+            onChallengeSelected={launchChallenge}
           />
         </div>
       </DndContext>

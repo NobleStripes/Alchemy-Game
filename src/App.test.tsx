@@ -9,6 +9,20 @@ import App from './App'
 import { useGameStore } from './game/state/useGameStore'
 
 describe('alchemy worktable', () => {
+  it('launches a learning lab from any age and restores focus to its Guide trigger', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Show Guide panel' }))
+    const before = localStorage.getItem('unwritten-atlas-progress')
+    await user.click(screen.getByRole('button', { name: 'Play Bronze Lab' }))
+    expect(screen.getByRole('heading', { name: 'Bronze Lab' })).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Return to Atlas' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Return to Atlas' }))
+    expect(screen.getByRole('button', { name: 'Play Bronze Lab' })).toHaveFocus()
+    expect(screen.getByRole('button', { name: 'Show Guide panel' })).toHaveAttribute('aria-pressed', 'true')
+    expect(localStorage.getItem('unwritten-atlas-progress')).toBe(before)
+  })
+
   it('keeps a save-protection warning visible during an isolated challenge', async () => {
     useGameStore.setState({ persistenceError: 'Autosaving is paused; this session is not saved.' })
     render(<App />)

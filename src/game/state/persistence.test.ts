@@ -2,11 +2,12 @@
 
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { collections, elements, eras, recipes, starterElementIds } from '../content'
+import { learningChallenges } from '../content/challenges'
 import { createProgressPersistence, CONFLICT_ERROR, exportProgress, loadProgress, readProgress, MAX_EXPERIMENT_HISTORY, MAX_SAVE_BYTES, parseProgress, saveProgress, type SavedProgress } from './persistence'
 
 const defaults = {
   favoriteIds: [], soundEnabled: true, experimentHistory: [],
-  rewardedCollectionIds: [], challengeRecords: [],
+  rewardedCollectionIds: [], challengeRecords: [], readHistoricalElementIds: [],
 }
 
 function fresh(): SavedProgress {
@@ -14,6 +15,30 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('defaults older v7 saves to unread and only retains discovered researched reading markers', () => {
+    const progress = fresh()
+    const { readHistoricalElementIds, ...older } = progress
+    expect(readHistoricalElementIds).toEqual([])
+    expect(parseProgress(JSON.stringify(older))?.readHistoricalElementIds).toEqual([])
+    const normalized = parseProgress(JSON.stringify({
+      ...progress,
+      discoveredIds: [...starterElementIds, 'metal'],
+      readHistoricalElementIds: ['metal', 'metal', 'writing', 'ember', 'missing'],
+    }))!
+    expect(normalized.readHistoricalElementIds).toEqual(['metal'])
+    expect(parseProgress(exportProgress(normalized))).toEqual(normalized)
+    expect(parseProgress(JSON.stringify({ ...progress, readHistoricalElementIds: 'metal' }))).toBeNull()
+  })
+
+  it.each(learningChallenges)('round-trips $name records and rejects impossible scores', (challenge) => {
+    const record = { challengeId: challenge.id, completed: true, bestAttemptCount: challenge.minimumAttempts }
+    const progress = { ...fresh(), challengeRecords: [record] }
+    expect(parseProgress(exportProgress(progress))?.challengeRecords).toEqual([record])
+    expect(parseProgress(JSON.stringify({
+      ...progress, challengeRecords: [{ ...record, bestAttemptCount: challenge.minimumAttempts - 1 }],
+    }))).toBeNull()
+  })
+
   beforeEach(() => {
     vi.restoreAllMocks()
     vi.unstubAllGlobals()

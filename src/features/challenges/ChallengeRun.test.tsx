@@ -7,6 +7,7 @@ import userEvent from '@testing-library/user-event'
 import { StrictMode } from 'react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { soundEngine } from '../../game/audio/audioEngine'
+import { learningChallenges } from '../../game/content/challenges'
 import { snapshotProgress, useGameStore } from '../../game/state/useGameStore'
 import { ChallengeRun } from './ChallengeRun'
 
@@ -35,6 +36,33 @@ async function win(user: ReturnType<typeof userEvent.setup>) {
 }
 
 describe('ChallengeRun', () => {
+  it.each([
+    ['harvest-lab', [['Field', 'Seed'], ['Crop', 'Metal Tool'], ['Flour', 'Water'], ['Dough', 'Heat']]],
+    ['bronze-lab', [['Copper Ore', 'Fire'], ['Copper', 'Tin'], ['Bronze', 'Stone Tool']]],
+    ['records-lab', [['Papyrus', 'Cordage'], ['Scroll', 'Scroll']]],
+  ] as const)('completes %s through experimentation with free optional context and isolated progress', async (id, route) => {
+    const challenge = learningChallenges.find((candidate) => candidate.id === id)!
+    useGameStore.setState({ insightCredits: 0 })
+    const before = campaignSnapshot()
+    const user = userEvent.setup()
+    render(<ChallengeRun challenge={challenge} onExit={vi.fn()} />)
+    const theme = screen.getByText('About this theme (free)')
+    expect(theme.closest('details')).not.toHaveAttribute('open')
+    await user.click(theme)
+    expect(screen.getByText(challenge.education!.overview)).toBeVisible()
+    expect(screen.getAllByRole('link').length).toBeGreaterThan(0)
+    expect(screen.queryByText(/^Historical context:/)).not.toBeInTheDocument()
+    for (const [first, second] of route) await combine(user, first, second)
+    expect(screen.getByRole('heading', { name: `${challenge.name} complete` })).toBeVisible()
+    expect(screen.getByText(/^Historical context:/)).toBeVisible()
+    expect(campaignSnapshot()).toEqual(before)
+    await user.click(screen.getByRole('button', { name: 'Save result' }))
+    await waitFor(() => expect(screen.getByText(/First reward: \+1 Insight/)).toBeVisible())
+    expect(useGameStore.getState().insightCredits).toBe(1)
+    expect(useGameStore.getState().discoveredIds).toEqual(before.discoveredIds)
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+  })
+
   beforeEach(() => {
     window.localStorage.clear()
     useGameStore.getState().resetProgress()

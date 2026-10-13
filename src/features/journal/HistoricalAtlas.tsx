@@ -158,12 +158,17 @@ function ResearchEntry({
 
 export function HistoricalAtlas() {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
+  const readHistoricalElementIds = useGameStore((state) => state.readHistoricalElementIds)
+  const toggleHistoricalRead = useGameStore((state) => state.toggleHistoricalRead)
+  const persistenceError = useGameStore((state) => state.persistenceError)
   const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
   const discovered = elements.filter((element) => discoveredIds.includes(element.id))
   const selected = discovered.find((element) => element.id === selectedId)
   const record = selected ? researchByElementId.get(selected.id) : undefined
+  const readable = discovered.filter((element) => researchByElementId.has(element.id))
+  const readCount = readable.filter((element) => readHistoricalElementIds.includes(element.id)).length
   const matches = discovered
     .filter((element) => element.name.toLowerCase().includes(query.trim().toLowerCase()))
     .sort((a, b) => a.name.localeCompare(b.name))
@@ -179,6 +184,12 @@ export function HistoricalAtlas() {
         Optional historical notes, separate from formulas and hints. Browse discoveries from any age.
         Undiscovered entries stay hidden; not every discovery has researched notes yet.
       </p>
+      <p className="detail-desc">Historical explanations are always free. Insight reveals recipe leads, not facts.</p>
+      <p className="detail-desc">
+        Optional reading: {readCount}/{readable.length} discovered researched entries marked as read.
+        Reading is never required for rewards.
+      </p>
+      {persistenceError && <p className="save-error" role="alert">{persistenceError}</p>}
       <label className="history-search">
         Search discovered historical entries
         <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} />
@@ -189,12 +200,13 @@ export function HistoricalAtlas() {
             className="journal-element-btn"
             type="button"
             key={element.id}
-            aria-label={`Open historical entry for ${element.name}`}
+            aria-label={`Open historical entry for ${element.name}${readHistoricalElementIds.includes(element.id) ? ' (read)' : ''}`}
             aria-pressed={selected?.id === element.id}
             data-selected={selected?.id === element.id}
             onClick={() => setSelectedId(element.id)}
           >
             {element.name}
+            {readHistoricalElementIds.includes(element.id) && <span className="history-read-tag">Read</span>}
           </button>
         ))}
         {matches.length === 0 && <p className="journal-empty">No matching discovered entries.</p>}
@@ -211,7 +223,17 @@ export function HistoricalAtlas() {
             first appearance and widespread adoption are different.
           </p>
           {record ? (
-            <ResearchEntry record={record} discoveredIds={discoveredIds} onSelect={setSelectedId} />
+            <>
+              <button
+                type="button"
+                className="journal-element-btn history-read-control"
+                onClick={() => toggleHistoricalRead(selected.id)}
+              >
+                Mark {selected.name} as {readHistoricalElementIds.includes(selected.id) ? 'unread' : 'read'}
+              </button>
+              <p className="detail-desc">A personal reading marker, not a knowledge test. It costs no Insight and earns no reward.</p>
+              <ResearchEntry record={record} discoveredIds={discoveredIds} onSelect={setSelectedId} />
+            </>
           ) : (
             <>
               <h4>Historical notes not yet researched</h4>

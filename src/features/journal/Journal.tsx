@@ -1,6 +1,7 @@
 import { FlaskConical, Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { collections, elements, elementsById, eras, recipes } from '../../game/content'
+import { learningChallenges, type ChallengeDefinition } from '../../game/content/challenges'
 import { areGlobalHintsUnlocked } from '../../game/engine/hintRules'
 import {
   FAILURES_PER_INSIGHT,
@@ -18,6 +19,7 @@ interface JournalProps {
   discoveryGoal: number
   landmarkIds: string[]
   onCombinationPrepared?: () => void
+  onChallengeSelected?: (challenge: ChallengeDefinition) => void
 }
 
 export function Journal({
@@ -26,6 +28,7 @@ export function Journal({
   discoveryGoal,
   landmarkIds,
   onCombinationPrepared,
+  onChallengeSelected,
 }: JournalProps) {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const discoveredRecipeIds = useGameStore(
@@ -270,10 +273,26 @@ export function Journal({
                 <span className="collection-reward">
                   {rewarded ? '+1 Insight reward earned' : '+1 Insight on completion'}
                 </span>
+                {collection.education && (
+                  <>
+                    <span className="history-indicator">Optional historical discovery objective</span>
+                    <p className="detail-desc">{collection.education}</p>
+                    <p className="detail-desc">Earlier gameplay pages connect these discoveries; they are not universal historical prerequisites. Reading is free and does not affect this reward.</p>
+                  </>
+                )}
                 <ul className="collection-members">
                   {collection.elementIds.map((id) => (
                     <li key={id} data-found={discoveredIds.includes(id)}>
-                      {discoveredIds.includes(id) ? elementsById.get(id)?.name : 'Unknown element'}
+                      {discoveredIds.includes(id) ? (
+                        <>
+                          {elementsById.get(id)?.name}
+                          {collection.education && elementsById.get(id)?.era !== eraId && (
+                            <small className="collection-foundation">
+                              Earlier gameplay page: {eras.find((candidate) => candidate.id === elementsById.get(id)?.era)?.name}
+                            </small>
+                          )}
+                        </>
+                      ) : 'Unknown element'}
                     </li>
                   ))}
                 </ul>
@@ -322,6 +341,24 @@ export function Journal({
           ))}
         </div>
       </details>
+
+      {onChallengeSelected && (
+        <details className="guide-section learning-challenges" open>
+          <summary>Learning Challenges</summary>
+          <p className="detail-desc">Optional isolated labs, available from any age. Experiment with existing combinations; no historical facts to memorize or Insight to spend. +1 Insight for each saved first completion.</p>
+          {learningChallenges.map((challenge) => (
+            <button
+              type="button"
+              className="journal-element-btn"
+              key={challenge.id}
+              data-challenge-id={challenge.id}
+              onClick={() => onChallengeSelected(challenge)}
+            >
+              Play {challenge.name}
+            </button>
+          ))}
+        </details>
+      )}
 
       <details className="guide-section formula-archive">
         <summary>Recorded Formulas ({eraFormulaCount})</summary>

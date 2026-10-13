@@ -42,4 +42,5 @@ export interface CollectionDefinition {
   name: string
   era: string
   elementIds: string[]
+  education?: string
 }

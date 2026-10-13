@@ -9,6 +9,7 @@
     "id": "harvest-table",
     "name": "Harvest Table",
     "era": "stone-age",
+    "education": "An optional discovery objective about cultivation and food processing. Bread-making predates farming; this gameplay chain is not a universal chronology. Historical explanations are free and reading is not required for the reward.",
     "elementIds": ["field", "crop", "flour", "dough", "bread"]
   },
   {
@@ -16,5 +17,19 @@
     "name": "Ironworkers",
     "era": "iron-age",
     "elementIds": ["iron-ore", "bellows", "bloomery", "iron", "iron-tool"]
+  },
+  {
+    "id": "bronze-workshop",
+    "name": "Bronze Workshop",
+    "era": "bronze-age",
+    "education": "Connect earlier gameplay foundations with ore reduction, alloying and working metal. These are discovery objectives, not a complete historical manufacturing procedure.",
+    "elementIds": ["hearth", "charcoal", "copper", "tin", "bronze", "bronze-tool"]
+  },
+  {
+    "id": "marks-and-materials",
+    "name": "Marks and Materials",
+    "era": "bronze-age",
+    "education": "Explore earlier plant and clay materials alongside writing and records. Writing has independent traditions; this collection does not require one historical sequence or any reading to earn its discovery reward.",
+    "elementIds": ["clay", "reed", "papyrus", "quill", "writing", "archive"]
   }
 ]

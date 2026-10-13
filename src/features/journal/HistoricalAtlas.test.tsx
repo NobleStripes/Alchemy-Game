@@ -34,6 +34,27 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
+  it('marks reading only on explicit request, for free, without changing rewards or worktable progress', async () => {
+    useGameStore.getState().transmuteWith('stone', 'ember')
+    useGameStore.setState({ insightCredits: 0 })
+    const user = await openAtlas()
+    const before = snapshotProgress(useGameStore.getState())
+    const disk = localStorage.getItem(SAVE_KEY)
+    await selectEntry(user, 'Metal')
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+    expect(localStorage.getItem(SAVE_KEY)).toBe(disk)
+    expect(screen.getByText(/0\/1 discovered researched entries/)).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Mark Metal as read' }))
+    expect(snapshotProgress(useGameStore.getState())).toEqual({ ...before, readHistoricalElementIds: ['metal'] })
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual(['metal'])
+    expect(screen.getByRole('button', { name: 'Open historical entry for Metal (read)' })).toBeVisible()
+    expect(screen.getByText(/1\/1 discovered researched entries/)).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Mark Metal as unread' }))
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual([])
+    await selectEntry(user, 'Fire')
+    expect(screen.queryByRole('button', { name: /Mark .* as read/ })).not.toBeInTheDocument()
+  })
+
   it('is optional and hides undiscovered entries even when searched', async () => {
     render(<HistoricalAtlas />)
     expect(screen.getByText(/Optional historical notes/)).not.toBeVisible()
@@ -184,7 +205,9 @@ describe('Historical Encyclopedia', () => {
     expect(within(entry).getByText('Historical uncertainty')).toBeVisible()
     expect(within(entry).getByText('Symbolic combinations: gameplay abstractions')).toBeVisible()
     expect(within(entry).getAllByRole('link').length).toBeGreaterThan(0)
-    expect(within(entry).queryByRole('button')).not.toBeInTheDocument()
+    expect(within(entry).getAllByRole('button')).toHaveLength(1)
+    expect(within(entry).getByRole('button', { name: `Mark ${record.elementName} as read` })).toBeVisible()
+    expect(within(entry).queryByRole('button', { name: /Prepare|Insight/ })).not.toBeInTheDocument()
     expect(screen.getByRole('button', { name: `Open historical entry for ${record.elementName}` }))
       .toHaveAttribute('aria-pressed', 'true')
     expect(elements.find((element) => element.id === record.elementId)).toBeDefined()

@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { soundEngine } from '../audio/audioEngine'
 import { collections, elements, elementsById, eras, recipes, starterElementIds } from '../content'
+import { challengesById } from '../content/challenges'
+import { researchByElementId } from '../content/research'
 import { getNewlyCompletedCollectionIds } from '../engine/collectionRules'
 import { reconcileEraProgress } from '../engine/eraProgress'
 import { areGlobalHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
@@ -42,6 +44,7 @@ interface GameState extends PersistedState {
   recordChallengeCompletion: (challengeId: string, attemptCount: number) => Promise<ChallengeSaveReceipt>
   toggleSound: () => void
   toggleFavorite: (elementId: string) => void
+  toggleHistoricalRead: (elementId: string) => void
   selectElement: (elementId: string) => void
   placeElement: (slot: SlotName, elementId: string) => void
   clearSlot: (slot: SlotName) => void
@@ -77,6 +80,7 @@ export function snapshotProgress(state: PersistedState): PersistedState {
     experimentHistory: state.experimentHistory,
     rewardedCollectionIds: state.rewardedCollectionIds,
     challengeRecords: state.challengeRecords,
+    readHistoricalElementIds: state.readHistoricalElementIds,
   }
 }
 
@@ -120,7 +124,8 @@ export function createGameStore() {
 
   recordChallengeCompletion: async (challengeId, attemptCount) => {
     const failure = { saved: false, firstCompletion: false, insightEarned: 0 }
-    if (challengePending || challengeId !== 'rainmaker' || !Number.isSafeInteger(attemptCount) || attemptCount < 4) return failure
+    const challenge = challengesById.get(challengeId)
+    if (challengePending || !challenge || !Number.isSafeInteger(attemptCount) || attemptCount < challenge.minimumAttempts) return failure
     challengePending = true
     await persistence.flush()
     challengePending = false
@@ -161,6 +166,17 @@ export function createGameStore() {
       : [...favoriteIds, elementId]
     const persistenceError = writeProgress({ ...state, favoriteIds: next })
     set({ favoriteIds: next, persistenceError })
+  },
+
+  toggleHistoricalRead: (elementId) => {
+    if (challengePending) return
+    const state = get()
+    if (!state.discoveredIds.includes(elementId) || !researchByElementId.has(elementId)) return
+    const readHistoricalElementIds = state.readHistoricalElementIds.includes(elementId)
+      ? state.readHistoricalElementIds.filter((id) => id !== elementId)
+      : [...state.readHistoricalElementIds, elementId]
+    const persistenceError = writeProgress({ ...state, readHistoricalElementIds })
+    set({ readHistoricalElementIds, persistenceError })
   },
 
   selectElement: (elementId) => {
@@ -464,6 +480,7 @@ export function createGameStore() {
       experimentHistory: [],
       rewardedCollectionIds: [],
       challengeRecords: [],
+      readHistoricalElementIds: [],
       discoveredIds: [...starterElementIds],
       discoveredRecipeIds: [],
       insightCredits: 3,
