@@ -262,6 +262,56 @@
       "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://www.penn.museum/sites/expedition/the-alphabet/", "accessLevel": "selected-passages", "locator": "Introduction and Herrmann's Early to Rise, Late to Bloom and ABCD or HLHM? sections: literacy without alphabets, consonant-based sign values, Wadi el-Hol context around 1900-1800 BCE, Greek inscriptions in the 700s BCE, contested beginnings and uneven later use. Beth Shemesh display is explicitly a plaster cast, not the original ancient tablet. Third-millennium alphabet proposals and a single causal explanation of diffusion are not adopted; image-upload dates are not publication dates." }
     },
     {
+      "id": "sep-empedocles",
+      "title": "Empedocles",
+      "authors": ["K. Scarlett Kingsley", "Richard Parry"],
+      "institution": "Stanford Encyclopedia of Philosophy",
+      "sourceType": "reference-encyclopedia",
+      "url": "https://plato.stanford.edu/entries/empedocles/",
+      "publicationDate": "2019-09-26",
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://plato.stanford.edu/entries/empedocles/", "accessLevel": "selected-passages", "locator": "Life and Writings and Roots and Forces: Acragas, fifth-century BCE lifetime, four roots, Love and Strife, fragments B6/B17, disputed divine-name identifications and air/aither distinction. Original HTML credits Kingsley and Parry; first publication 2019-09-26, revision 2024-09-25. Textual history, not experimental confirmation of the theory." }
+    },
+    {
+      "id": "mit-aristotle-elements",
+      "title": "On Generation and Corruption, Book II",
+      "authors": ["Aristotle", "H. H. Joachim (translator)"],
+      "institution": "The Internet Classics Archive, Massachusetts Institute of Technology",
+      "sourceType": "library-collection",
+      "url": "https://classics.mit.edu/Aristotle/gener_corr.2.ii.html",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://classics.mit.edu/Aristotle/gener_corr.2.ii.html", "accessLevel": "selected-passages", "locator": "Archive title, author and translator; Book II, Parts 2-3: hot/cold and moist/dry, hardness and solidity, fire hot/dry, air hot/moist, water cold/moist, earth cold/dry; simple bodies distinguished from ordinary examples. Archive's Written 350 BCE is used only for fourth-century context, not an exact composition date or the web publication date." }
+    },
+    {
+      "id": "sep-chinese-metaphysics",
+      "title": "Metaphysics in Chinese Philosophy",
+      "authors": ["Franklin Perkins"],
+      "institution": "Stanford Encyclopedia of Philosophy",
+      "sourceType": "reference-encyclopedia",
+      "url": "https://plato.stanford.edu/entries/chinese-metaphysics/",
+      "publicationDate": "2015-04-02",
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://plato.stanford.edu/entries/chinese-metaphysics/", "accessLevel": "selected-passages", "locator": "Discussion of cyclical change: wuxing's five phases, wood, earth, fire, water and metal, with generation and overcoming. Original HTML credits Franklin Perkins; first publication 2015-04-02, revision 2023-10-16. Supports a distinct intellectual context, not identical Greek roots, a universal ancient belief or an independent invention of the same theory." }
+    },
+    {
+      "id": "openstax-matter",
+      "title": "Chemistry 2e: 1.2 Phases and Classification of Matter",
+      "authors": ["Paul Flowers", "Klaus Theopold", "Richard Langley", "William R. Robinson"],
+      "institution": "OpenStax, Rice University",
+      "sourceType": "reference-textbook",
+      "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+      "publicationDate": "2019-02-14",
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter", "accessLevel": "selected-passages", "locator": "Classification of Matter and Atoms and Molecules: chemical elements versus compounds, granite as a mineral mixture, air as a homogeneous mixture, each water molecule containing two hydrogen atoms and one oxygen atom. Authors checked in the original preface; original book HTML citation metadata gives publication 2019-02-14. Modern chemistry reference, not evidence for ancient philosophical chronology." }
+    },
+    {
+      "id": "openstax-combustion",
+      "title": "Chemistry 2e: 4.2 Classifying Chemical Reactions",
+      "authors": ["Paul Flowers", "Klaus Theopold", "Richard Langley", "William R. Robinson"],
+      "institution": "OpenStax, Rice University",
+      "sourceType": "reference-textbook",
+      "url": "https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions",
+      "publicationDate": "2019-02-14",
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions", "accessLevel": "selected-passages", "locator": "Oxidation-Reduction Reactions: combustion as vigorous fuel/oxidant reactions producing heat and often light or flame; molecular oxygen is common but not required for every combustion reaction. Authors and book publication checked against the original preface and HTML citation metadata. Does not date human fire use or Greek elemental philosophy." }
+    },
+    {
       "id": "bm-scribal-palette",
       "title": "scribal palette; pen",
       "authors": [],
@@ -601,6 +651,107 @@
       "historicalUncertainty": ["This museum synthesis is not a full review of the original excavation and decipherment literature.", "The early marks, associated dating contexts and proposed places of origin have competing interpretations.", "Contested third-millennium alphabet identifications and a single explanation for diffusion are not accepted here.", "Surviving inscriptions do not directly measure literacy or the extent of adoption in a whole society."],
       "gameplaySimplifications": ["Alphabet groups different alphabetic traditions, including early consonant-based signs; it does not represent only modern Latin letters.", "Iron Age placement does not date its beginning or make metalworking a historical prerequisite.", "The puzzle's scribal association is symbolic, not an inevitable development from every writing system.", "Papyrus is only one possible writing surface, and a blank sheet plus a script does not itself make meaningful writing."],
       "furtherResearch": [{ "question": "Add original excavation and decipherment studies, review newer interpretations, and document particular regional adaptations without assuming one diffusion path.", "sourceIds": [] }]
+    },
+    {
+      "elementId": "ember",
+      "elementName": "Fire",
+      "historicalOverview": { "text": "Fire belonged to a documented Greek theory of nature, not a fictional invention of this game. Empedocles of Acragas was a major early formulator of the four-root theory in the fifth century BCE: fire, water, earth and air were fundamental constituents of nature. In the fourth century BCE, Aristotle developed an account based on hot/cold and dry/moist qualities, describing elemental fire as hot and dry. This natural philosophy is superseded by modern chemistry, which describes combustion as a chemical reaction rather than a chemical element.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements", "openstax-matter", "openstax-combustion"] },
+      "manufactureOrUse": { "text": "Empedocles used roots and the forces Love and Strife to explain composition and change; this was an explanatory theory, not a way to manufacture fire. In modern chemistry, combustion involves a fuel and an oxidant reacting to release heat and often light or flame.", "sourceIds": ["sep-empedocles", "openstax-combustion"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins is an undated, symbolic gameplay prologue. Its placement does not date Greek philosophy before prehistory or characterize the historical four-root theory as fiction.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements"] },
+      "relatedDiscoveries": [
+        { "elementId": "tide", "relationship": "documented", "explanation": "Water and fire belong to the same Greek four-root theory; this topic link is not a recipe or a modern chemical relationship.", "sourceIds": ["sep-empedocles"] },
+        { "elementId": "stone", "relationship": "documented", "explanation": "Earth and fire are fellow roots in Empedocles' theory, not ingredients required to make each other.", "sourceIds": ["sep-empedocles"] },
+        { "elementId": "gale", "relationship": "documented", "explanation": "Aristotle describes fire as hot/dry and air as hot/moist within his philosophical account, not as modern chemical elements.", "sourceIds": ["mit-aristotle-elements"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Fifth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Acragas, Greek Sicily"], "sourceIds": ["sep-empedocles"], "note": "Context for Empedocles' formulation, not an exact composition date, the origin of fire or widespread adoption of the theory." },
+        { "dateRange": "Fourth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Greek intellectual world"], "sourceIds": ["mit-aristotle-elements"], "note": "Context for Aristotle's subsequent account, not the date of the undated gameplay prologue." }
+      ],
+      "associatedRegions": ["Acragas, Greek Sicily", "Greek intellectual world"],
+      "archaeologicalEvidence": [
+        { "text": "Empedocles' transmitted fragments B6 and B17 discuss the roots and their combination. These are textual evidence for a philosophical theory, not proof that the theory is scientifically correct.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["sep-empedocles"] },
+        { "text": "Aristotle's On Generation and Corruption, Book II, Parts 2-3 relates elementary bodies to qualities and distinguishes them from ordinary fire and other familiar substances.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["mit-aristotle-elements"] }
+      ],
+      "historicalSignificance": { "text": "The Greek roots offered an account of what nature is made of. This was not a universal ancient belief: Chinese wuxing discusses five phases, wood, fire, earth, metal and water, through cycles of generation and overcoming in a distinct intellectual context. Similar names do not make these traditions identical or modern chemistry.", "sourceIds": ["sep-empedocles", "sep-chinese-metaphysics", "openstax-matter"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Empedocles' precise lifetime and aspects of his fragmentary poems remain debated; identifying the four roots does not settle every divine-name correspondence or interpretation.", "The cited Aristotle text is an English translation, not an inspected ancient manuscript. Century labels are historical context, not exact invention dates.", "The dates describe philosophy, not the earliest human control of fire; this record does not establish that separate archaeological chronology."],
+      "gameplaySimplifications": ["The opening sentence of the element description is gameplay flavor; its Historical context summary is supported by the separate cited notes here.", "The game's two-input combinations are symbolic mechanics, not a reconstruction of Empedocles' roots and forces or Aristotle's elemental qualities.", "Starting discoveries, recipe routes and the undated Origins chronology do not assert that Greek theory is modern science or was shared by every ancient society."],
+      "furtherResearch": []
+    },
+    {
+      "elementId": "tide",
+      "elementName": "Water",
+      "historicalOverview": { "text": "Water was a fundamental constituent of nature in Greek four-element philosophy. Empedocles of Acragas was a major early formulator of the four-root theory in the fifth century BCE, alongside fire, earth and air. Aristotle developed his account in the fourth century BCE, associating elemental water with cold and moist qualities. The historical theory is documented but superseded as chemistry: pure water is the compound H2O, with two hydrogen atoms and one oxygen atom per molecule, not a chemical element.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements", "openstax-matter"] },
+      "manufactureOrUse": { "text": "Elemental water served as a category in an explanation of nature, not a claim about hydrogen and oxygen known to these philosophers. Modern chemistry distinguishes a compound with definite composition from a mixture; water molecules contain hydrogen and oxygen, while a drink or other solution can contain additional substances.", "sourceIds": ["mit-aristotle-elements", "openstax-matter"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins is an undated, symbolic gameplay prologue, not a date for the Greek theory or the appearance of water. The documented philosophy and the game's imagined transformations have different classifications.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements"] },
+      "relatedDiscoveries": [
+        { "elementId": "ember", "relationship": "documented", "explanation": "Fire and water are fellow roots in Empedocles' account, not a statement of a modern chemical formula.", "sourceIds": ["sep-empedocles"] },
+        { "elementId": "stone", "relationship": "documented", "explanation": "Aristotle describes water as cold/moist and earth as cold/dry; these are philosophical qualities, not a recipe.", "sourceIds": ["mit-aristotle-elements"] },
+        { "elementId": "gale", "relationship": "documented", "explanation": "Water and air belong to the same Greek four-root theory without implying identical modern composition.", "sourceIds": ["sep-empedocles"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Fifth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Acragas, Greek Sicily"], "sourceIds": ["sep-empedocles"], "note": "Context for Empedocles' formulation, not the origin of water or a worldwide belief." },
+        { "dateRange": "Fourth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Greek intellectual world"], "sourceIds": ["mit-aristotle-elements"], "note": "Context for Aristotle's subsequent account, not an exact composition or adoption date." }
+      ],
+      "associatedRegions": ["Acragas, Greek Sicily", "Greek intellectual world"],
+      "archaeologicalEvidence": [
+        { "text": "Empedocles' roots are discussed in transmitted poetic fragments; Aristotle's Book II, Part 3 describes elemental water as cold and moist. These texts attest philosophical categories, not modern chemical analysis.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["sep-empedocles", "mit-aristotle-elements"] }
+      ],
+      "historicalSignificance": { "text": "Water illustrates the difference between a historical elemental category and a modern compound. Greek four-root theory was not universal: Chinese wuxing includes water among five phases in a different account of cyclical change, not the same four constituents or a modern periodic table.", "sourceIds": ["sep-empedocles", "sep-chinese-metaphysics", "openstax-matter"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Surviving fragments and later discussions do not establish an exact date when everyone accepted the Greek theory.", "The modern formula H2O does not describe what Empedocles or Aristotle knew, and the compound's composition should not be confused with dissolved substances in natural waters.", "The cited primary text is read in translation, and the divine-name identifications in Empedocles' fragments remain debated."],
+      "gameplaySimplifications": ["The description's opening sentence is gameplay flavor; Historical context is a short summary of the cited explanation here.", "The undated starter and symbolic two-input recipes do not simulate atomic chemistry or reproduce the ancient theories.", "Reading dates apply to Greek natural philosophy, not Origins chronology or a universal sequence of civilizations."],
+      "furtherResearch": []
+    },
+    {
+      "elementId": "stone",
+      "elementName": "Earth",
+      "historicalOverview": { "text": "Greek elemental earth was associated with solid terrestrial matter, not a single modern chemical element. Empedocles of Acragas was a major early formulator of the four-root theory in the fifth century BCE, treating earth, fire, water and air as fundamental constituents of nature. In the fourth century BCE, Aristotle developed the theory through elementary qualities and described earth as cold and dry. This historical theory is superseded by modern chemistry, which distinguishes chemical elements, compounds and mixtures; granite, for example, is a mixture of minerals.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements", "openstax-matter"] },
+      "manufactureOrUse": { "text": "Earth was a philosophical category for explaining nature, not a recipe for rock or soil. Aristotle relates hardness and solidity to dryness and assigns cold/dry qualities to elemental earth, while distinguishing simple bodies from ordinary examples. Modern rock can contain multiple minerals, as the textbook's granite example illustrates.", "sourceIds": ["mit-aristotle-elements", "openstax-matter"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins is an undated, symbolic gameplay prologue. Earth remains a starting essence there; this does not place fifth-century BCE Greek theory before the Stone Age or call the historical theory fictional.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements"] },
+      "relatedDiscoveries": [
+        { "elementId": "ember", "relationship": "documented", "explanation": "Earth and fire are fellow roots in Empedocles' account, not a historical manufacturing route.", "sourceIds": ["sep-empedocles"] },
+        { "elementId": "tide", "relationship": "documented", "explanation": "Aristotle associates earth with cold/dry and water with cold/moist; this topic connection is not a recipe.", "sourceIds": ["mit-aristotle-elements"] },
+        { "elementId": "gale", "relationship": "documented", "explanation": "Earth and air appear in the same Greek four-root theory without being modern chemical elements.", "sourceIds": ["sep-empedocles"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Fifth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Acragas, Greek Sicily"], "sourceIds": ["sep-empedocles"], "note": "Context for Empedocles' theory, not the geological formation of terrestrial matter." },
+        { "dateRange": "Fourth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Greek intellectual world"], "sourceIds": ["mit-aristotle-elements"], "note": "Context for Aristotle's qualities, not a precise invention or universal adoption date." }
+      ],
+      "associatedRegions": ["Acragas, Greek Sicily", "Greek intellectual world"],
+      "archaeologicalEvidence": [
+        { "text": "Empedocles' transmitted roots passage and Aristotle's Book II, Parts 2-3 provide textual evidence for elemental earth and its qualities. They do not establish that all solid matter is one chemical substance.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["sep-empedocles", "mit-aristotle-elements"] }
+      ],
+      "historicalSignificance": { "text": "The theory is part of documented Greek natural philosophy, now superseded as chemistry. Similar words appear in different traditions: Chinese wuxing's earth belongs to a five-phase account of cyclical change. It must not be treated as an identical Greek root or a belief shared by every ancient civilization.", "sourceIds": ["sep-empedocles", "sep-chinese-metaphysics", "openstax-matter"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Elemental earth is not interchangeable with every real rock, soil or solid; Aristotle explicitly distinguishes elementary bodies from familiar examples.", "The roots are known through fragmentary textual transmission, and their divine-name correspondences remain debated.", "The modern mineral-mixture example is not evidence for ancient knowledge of chemical composition."],
+      "gameplaySimplifications": ["The description's opening sentence is gameplay flavor; Historical context is explained with separate citations here.", "The legacy ID stone still names the starting Earth essence, not the distinct Rock discovery.", "Origins and its two-input transformations are symbolic mechanics, not historical geology, ancient theory or a modern chemical model."],
+      "furtherResearch": []
+    },
+    {
+      "elementId": "gale",
+      "elementName": "Air",
+      "historicalOverview": { "text": "Air belonged to Greek four-element natural philosophy as a fundamental constituent of nature. Empedocles of Acragas was a major early formulator of the four-root theory in the fifth century BCE, alongside fire, water and earth. Aristotle developed his account in the fourth century BCE, describing elemental air as hot and moist. These are documented historical theories, now superseded by modern chemistry: atmospheric air is a mixture of gases, not a single chemical element.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements", "openstax-matter"] },
+      "manufactureOrUse": { "text": "Air served as an explanatory category in a theory of nature. The scholarly account distinguishes Empedocles' root, aither or upper atmospheric air, from ordinary breathing air. Aristotle's hot/moist elemental body is likewise a philosophical category, not the modern gaseous mixture described in chemistry.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements", "openstax-matter"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins is an undated, symbolic gameplay prologue, not the historical date of Greek four-root theory. Air remains a starting discovery without implying that the philosophy itself is fictional.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements"] },
+      "relatedDiscoveries": [
+        { "elementId": "ember", "relationship": "documented", "explanation": "Aristotle associates air with hot/moist and fire with hot/dry; this is a philosophical topic connection, not a recipe.", "sourceIds": ["mit-aristotle-elements"] },
+        { "elementId": "tide", "relationship": "documented", "explanation": "Air and water are fellow roots in Empedocles' account without being the same modern substance.", "sourceIds": ["sep-empedocles"] },
+        { "elementId": "stone", "relationship": "documented", "explanation": "Earth and air belong to the Greek four-root theory, not a universal classification of all ancient societies.", "sourceIds": ["sep-empedocles"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Fifth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Acragas, Greek Sicily"], "sourceIds": ["sep-empedocles"], "note": "Context for Empedocles' formulation, not the formation of the atmosphere or an exact composition date." },
+        { "dateRange": "Fourth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Greek intellectual world"], "sourceIds": ["mit-aristotle-elements"], "note": "Context for Aristotle's subsequent theory, not worldwide adoption or a date assigned to Origins." }
+      ],
+      "associatedRegions": ["Acragas, Greek Sicily", "Greek intellectual world"],
+      "archaeologicalEvidence": [
+        { "text": "Empedocles' transmitted roots passage, as discussed by the scholarly encyclopedia, and Aristotle's Book II, Part 3 attest air's philosophical role. These texts are evidence of the theory, not chemical analyses of atmospheric gases.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["sep-empedocles", "mit-aristotle-elements"] }
+      ],
+      "historicalSignificance": { "text": "Air highlights why ancient elemental names should not be equated with modern chemical elements. Greek roots were not universal: Chinese wuxing uses wood, fire, earth, metal and water in a five-phase account of cyclical change, a different intellectual context that does not simply add another Greek element.", "sourceIds": ["sep-empedocles", "sep-chinese-metaphysics", "openstax-matter"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The term translated as air in Empedocles' roots should not be reduced to modern breathing-air composition.", "The cited texts and translations establish philosophical positions, not an exact first invention, adoption rate or every ancient society's beliefs.", "Interpretations of the fragmentary poems and divine-name identifications remain debated; this record does not reconstruct every aspect of Greek cosmology."],
+      "gameplaySimplifications": ["The description's opening sentence is gameplay flavor; Historical context is supported by the cited notes here.", "The starting essence and two-input recipes are symbolic mechanics, not a model of gaseous composition or of the ancient theories.", "The undated gameplay prologue does not make Greek philosophy prehistoric, universally shared or valid modern chemistry."],
+      "furtherResearch": []
     }
   ]
 }

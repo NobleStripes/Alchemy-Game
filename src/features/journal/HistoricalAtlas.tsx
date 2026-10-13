@@ -23,7 +23,7 @@ const evidenceLabels = {
 const placementLabels = {
   'earlier-precedents': 'Predates its gameplay age: earlier precedents',
   'regional-gameplay-placement': 'Regional gameplay placement',
-  'fictional-prologue': 'Fictional, undated prologue',
+  'fictional-prologue': 'Undated, symbolic gameplay prologue',
 }
 
 function entrySources(record: HistoricalResearchRecord, discoveredIds: readonly string[]) {
@@ -298,7 +298,8 @@ export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
               {eras.find((era) => era.id === selected.era)?.name} · {selected.category}
             </p>
             <p>
-              Origins is a fictional, undated prologue. The Three-Age System reflects particular
+              Origins is an undated, symbolic gameplay prologue, not a date for Greek elemental
+              philosophy. The Three-Age System reflects particular
               archaeological traditions, not one worldwide sequence. Boundaries vary geographically;
               first appearance and widespread adoption are different.
             </p>

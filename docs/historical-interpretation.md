@@ -6,12 +6,33 @@ The **Three-Age System** originated in the classification of Scandinavian archae
 
 | Page | Date label and scope |
 | --- | --- |
-| Origins | Fictional and undated. Its essences, life-making, and transformations are alchemical symbols, not historical events. |
+| Origins | Undated, symbolic gameplay prologue. The four-root theory is documented Greek philosophy; life-making and puzzle transformations are fictional or simplified mechanics, not historical events. |
 | Stone Age | c. 3.3 million years ago–c. 3300 BCE. The opening anchor is the Lomekwi stone-tool evidence in Kenya, not the appearance of Homo sapiens. The closing anchor is a conventional Near Eastern Bronze Age transition, not the end of stone-tool use everywhere. This intentionally broad page combines Paleolithic and later Neolithic lifeways; it is not one regional chronology. |
 | Bronze Age | c. 3300–1200 BCE is a conventional approximate Near Eastern/eastern Mediterranean frame, not a date for the first copper or the arrival of bronze in every region. Local chronologies differ: the National Museum of Denmark uses 1700–500 BCE for its Bronze Age. Earlier copper-working/Chalcolithic traditions are not a separate playable page here. |
 | Iron Age | From c. 1200 BCE is an approximate Near Eastern transition toward wider iron use, not the first iron object. There is no global end date: the Ashmolean uses c. 800 BCE–43 CE for Britain. The former c. 500 CE endpoint has been removed because it mixed regional conventions into a misleading universal range. |
 
 **Earliest evidence is not widespread adoption.** A rare artifact, experimental process, or first surviving written reference does not establish when a technology became common. Nor does absence of surviving evidence prove absence of a practice. Page placement may represent an intensified craft tradition or an optional later refinement, not invention. Dates and political labels are geographically dependent; Classical Antiquity can overlap iron-using societies rather than follow a worldwide Iron Age boundary.
+
+## Classical elements: historical theory, symbolic gameplay
+
+The four-element theory is **documented historical natural philosophy**, not a fictional invention of the game. **Empedocles of Acragas**, in Greek Sicily, was a major early formulator of the four-root theory in the **fifth century BCE**: fire, water, earth and air were fundamental constituents of nature. The surviving poetic fragments and later accounts are textual evidence for the theory, not scientific proof of its validity. Precise biographical dates and some fragment interpretations remain uncertain.
+
+**Aristotle** developed an account in the **fourth century BCE** linking elemental bodies to qualities: fire hot/dry, air hot/moist, water cold/moist, and earth cold/dry. His account distinguishes elementary bodies from ordinary examples; it should not be conflated with Empedocles' roots and forces or modern chemical composition. The air root discussed in Empedocles' scholarship is *aither*, upper atmospheric air, not simply modern breathing air.
+
+| Aspect | Classification |
+| --- | --- |
+| Four-element theory | Documented Greek natural philosophy, superseded as chemistry |
+| Empedocles' four roots | Fifth-century BCE Greek philosophical theory |
+| Aristotle's elemental qualities | Fourth-century BCE Greek natural philosophy |
+| Origins gameplay chronology | Undated, symbolic prologue; not a historical date for the theory |
+| Element-combination recipes | Symbolic or simplified game mechanics, not reconstructions of either theory |
+| Modern scientific status | Fire accompanies combustion, a chemical reaction; pure water is the compound H2O; earth denotes terrestrial matter, not one chemical element; atmospheric air is a mixture of gases |
+
+This is a particular Greek intellectual tradition, **not a universal belief of every ancient civilization or every Greek thinker**. For comparison, Chinese *wuxing* discusses five phases named wood, fire, earth, metal and water through cycles of generation and overcoming. It belongs to a distinct cultural and intellectual context; similar labels do not establish identical theories, a common origin or independent inventions of the Greek roots.
+
+The four starters retain their IDs, categories, icons, age, starting status and recipes. Each description keeps its opening flavor sentence separate from a labeled **Historical context** summary. The Atlas supplies the verified explanation, century-level philosophical dates, textual evidence, uncertainty and citations; Origins itself remains undated. No Classical Antiquity chapter or new progression requirement is introduced.
+
+The earlier blanket subtitle, Atlas placement label and chronology-table phrase describing Origins' "essences" as fictional have been clarified. References below and the [research registry](../src/game/content/research.json) support these corrections. Fictional life-making, symbolic Metal creation and unrelated gameplay gates remain disclosed as such.
 
 ## Unlock requirements are fictional gameplay gates
 
@@ -51,6 +72,10 @@ Stable element and recipe IDs, existing ingredient pairs, saved discoveries, for
 
 ## Historical references
 
+- [Kingsley and Parry: Empedocles, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/empedocles/), especially Life and Writings and Roots and Forces (first published 2019; revised 2024).
+- [Aristotle: On Generation and Corruption, Book II, Parts 2-3, translated by H. H. Joachim](https://classics.mit.edu/Aristotle/gener_corr.2.ii.html), MIT's Internet Classics Archive. Its "350 BCE" heading is not an exact composition date or a modern publication date.
+- [Franklin Perkins: Metaphysics in Chinese Philosophy, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/chinese-metaphysics/), discussion of cyclical change and five phases (first published 2015; revised 2023).
+- [Flowers, Theopold, Langley and Robinson: Chemistry 2e, OpenStax (2019), classification of matter](https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter) and [combustion as a redox reaction](https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions). These support modern scientific distinctions, not ancient chronology.
 - [Rundetaarn: development of Thomsen's Three-Age System](https://www.rundetaarn.dk/en/article/the-development-of-the-three-age-system/) and [National Museum of Denmark: regional prehistoric chronology](https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/).
 - [Harmand et al., Nature (2015): 3.3-million-year-old tools at Lomekwi](https://doi.org/10.1038/nature14464); [Bronze Age overview](https://en.wikipedia.org/wiki/Bronze_Age) for the approximate regional frame; [Ashmolean: Britain's Iron Age](https://britisharchaeology.ashmus.ox.ac.uk/collections/iron-age.html).
 - [Royal Museums Greenwich: mariner's compass chronology](https://www.rmg.co.uk/collections/objects/rmgc-object-42488); [British Museum: Nimrud crystal inlay](https://www.britishmuseum.org/collection/object/W_1850-0227-6).

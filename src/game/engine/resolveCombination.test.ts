@@ -593,12 +593,26 @@ describe('four-age expansion', () => {
 })
 
 describe('historical interpretation', () => {
-  it('identifies Origins as fictional and undated, with regionally qualified historical dates', () => {
+  it('identifies Origins as an undated symbolic prologue, with regionally qualified historical dates', () => {
     expect(eras[0].dateRange).toBeUndefined()
-    expect(eras[0].subtitle).toContain('fictional, undated')
+    expect(eras[0].subtitle).toContain('undated, symbolic gameplay prologue')
+    expect(eras[0].subtitle).toContain('Greek four-element philosophy')
     expect(eras[1].dateRange).toBe('c. 3.3 million years ago–c. 3300 BCE')
     expect(eras[2].dateRange).toBe('c. 3300 BCE–c. 1200 BCE')
     expect(eras[3].dateRange).toBe('From c. 1200 BCE; regional end dates vary')
+  })
+
+  it.each([
+    ['ember', 'Fire', 'FI', '🔥'],
+    ['tide', 'Water', 'WA', '💧'],
+    ['stone', 'Earth', 'EA', '🌍'],
+    ['gale', 'Air', 'AI', '💨'],
+  ])('preserves %s as a starting essence and separates flavor from historical context', (id, name, sigil, icon) => {
+    expect(elementsById.get(id)).toMatchObject({
+      id, name, sigil, icon, starter: true, category: 'essence', era: 'first-light',
+    })
+    expect(elementsById.get(id)?.description).toContain('Historical context:')
+    expect(elementsById.get(id)?.description).not.toContain('fictional')
   })
 
   it.each([

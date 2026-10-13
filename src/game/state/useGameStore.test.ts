@@ -25,11 +25,12 @@ const failWrites = () => vi.spyOn(Storage.prototype, 'setItem').mockImplementati
 describe('campaign state', () => {
   it('persists explicit reading without spending Insight or affecting rewards, then clears it on reset', () => {
     state().transmuteWith('stone', 'ember')
+    state().transmuteWith('ember', 'ember')
     useGameStore.setState({ insightCredits: 0 })
     state().prepareCombination('ember', 'tide')
     const before = campaign()
     state().toggleHistoricalRead('writing')
-    state().toggleHistoricalRead('ember')
+    state().toggleHistoricalRead('heat')
     state().toggleHistoricalRead('missing')
     expect(campaign()).toEqual(before)
     state().toggleHistoricalRead('metal')
@@ -40,6 +41,19 @@ describe('campaign state', () => {
     state().resetProgress()
     expect(state().readHistoricalElementIds).toEqual([])
     expect(loadProgress()?.readHistoricalElementIds).toEqual([])
+  })
+
+  it.each(starterElementIds)('makes %s history readable from a fresh campaign without changing gameplay', (id) => {
+    useGameStore.setState({ insightCredits: 0 })
+    state().prepareCombination('ember', 'tide')
+    const before = campaign()
+    expect(before.readHistoricalElementIds).toEqual([])
+    state().toggleHistoricalRead(id)
+    expect(campaign()).toEqual({ ...before, readHistoricalElementIds: [id] })
+    expect(state()).toMatchObject({ firstSlotId: 'ember', secondSlotId: 'tide' })
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual([id])
+    state().toggleHistoricalRead(id)
+    expect(campaign()).toEqual(before)
   })
 
   it('surfaces failed reading-marker saves without overwriting the existing save', () => {

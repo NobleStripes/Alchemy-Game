@@ -375,14 +375,32 @@ describe('alchemy worktable', () => {
     expect(screen.getByRole('button', { name: 'Remove Water' })).toBeVisible()
   })
 
-  it('opens the unresearched-entry message from a discovered gameplay element without marking it read', async () => {
+  it('opens a starting essence history from the Guide without spending Insight or marking reading', async () => {
+    useGameStore.setState({ insightCredits: 0 })
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('button', { name: 'Show Guide panel' }))
     await user.click(screen.getByRole('button', { name: 'Inspect Fire' }))
-    const before = useGameStore.getState()
+    const before = snapshotProgress(useGameStore.getState())
+    const saved = localStorage.getItem('unwritten-atlas-progress')
     await user.click(screen.getByRole('button', { name: 'View history of Fire' }))
     const article = within(screen.getByRole('article', { name: 'Fire' }))
+    expect(article.getByText('Historical overview')).toBeVisible()
+    expect(article.getByRole('button', { name: 'Mark Fire as read' })).toBeVisible()
+    expect(article.queryByRole('button', { name: /^Prepare / })).not.toBeInTheDocument()
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+    expect(localStorage.getItem('unwritten-atlas-progress')).toBe(saved)
+  })
+
+  it('opens the unresearched-entry message from a discovered gameplay element without marking it read', async () => {
+    useGameStore.getState().transmuteWith('ember', 'ember')
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Show Guide panel' }))
+    await user.click(screen.getByRole('button', { name: 'Inspect Heat' }))
+    const before = useGameStore.getState()
+    await user.click(screen.getByRole('button', { name: 'View history of Heat' }))
+    const article = within(screen.getByRole('article', { name: 'Heat' }))
     expect(article.getByText('Historical notes not yet researched')).toBeVisible()
     expect(article.getByText(/No verified historical record is available/)).toBeVisible()
     expect(article.getByText('Origins · essence')).toBeVisible()
@@ -536,7 +554,7 @@ describe('alchemy worktable', () => {
       ageSwitcher.getByRole('button', { name: 'Origins' }),
     ).not.toHaveTextContent(/BCE|CE/)
     expect(ageSwitcher.getByRole('button', { name: 'Origins' })).toHaveAttribute(
-      'title', 'A fictional, undated prologue: imagine a world from four essences.',
+      'title', 'An undated, symbolic gameplay prologue inspired by Greek four-element philosophy.',
     )
   })
 

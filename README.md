@@ -4,7 +4,7 @@ An original combination-discovery game with **147 elements and 183 recipes acros
 
 The persistent header switches between **Play** (the default) and **Atlas** (Historical Encyclopedia). Play keeps Elements, Combine, and Guide together on desktop and in three mobile tabs; Atlas is not a fourth gameplay tab. Both sections share discoveries and saved progress, and returning to Play preserves the previous gameplay context. Pointer, touch, and keyboard controls are supported.
 
-Origins is a fictional, undated prologue. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Classical Antiquity is a possible future chapter, not a requirement for the next update.
+Origins is an undated, symbolic gameplay prologue. Its four starting essences draw on documented Greek elemental philosophy, not modern chemistry; the combination mechanics are symbolic. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Classical Antiquity is a possible future chapter, not a requirement for the next update.
 
 Historical explanations are free; **Insight reveals recipe leads, never factual information**. Optional collections, learning labs, and explicit Atlas reading markers complement the discovery game.
 

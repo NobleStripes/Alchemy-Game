@@ -194,3 +194,18 @@ This later interface-validation snapshot supplements, rather than replaces, the 
 - Historical research, element/recipe catalogs and persistence/store implementation files were checked against pre-review file hashes. This update changes tests and documentation only. Optional Atlas filters, timelines, bibliography browsing and Classical Antiquity remain deferred.
 
 These checks verify software behavior, not historical claim accuracy or real-player learning. Screen-reader and human playtest observations remain pending.
+
+## Classical-element classification review
+
+This subsequent content correction distinguishes documented Greek natural philosophy from the game's symbolic mechanics; earlier review counts above remain historical snapshots.
+
+- Reviewed original passages from Kingsley and Parry's *Empedocles*, Aristotle's *On Generation and Corruption* Book II in Joachim's translation, and Perkins' *Metaphysics in Chinese Philosophy*. Source receipts preserve authors, initial publication/revision metadata and the limits of translated, fragmentary textual evidence.
+- Empedocles of Acragas is identified as a major early fifth-century BCE formulator of the four-root theory. Aristotle's fourth-century BCE account and hot/cold, dry/moist qualities are distinguished from it. These dates describe Greek philosophy, not Origins, natural phenomena or universal adoption.
+- Checked OpenStax *Chemistry 2e* passages for combustion reactions, elements versus compounds, water's two hydrogen atoms and one oxygen atom, air as a mixture, and granite's mineral mixture. These modern scientific contrasts do not imply ancient knowledge of molecular composition.
+- Greek roots are not presented as every ancient civilization's belief. Chinese *wuxing* is a distinct five-phase context, not an equivalent theory or evidence of a common origin. Scientific validity is distinguished from historical attestation.
+- Clarified the blanket Origins subtitle, Atlas placement label and chronology-table framing. The four descriptions retain their flavor sentences with separately labeled historical summaries; four cited Atlas records now provide the fuller explanations.
+- Coverage is now **17 of 147 elements**, with **31 verified sources and one pending source**; **130 elements** still lack researched histories. Existing records remain intact. Fictional life-making and symbolic Metal creation remain disclosed.
+- Starting IDs, categories, icons, ages and recipe associations are unchanged. Recipe and persistence/store implementation hashes match the pre-correction baseline; version 7 remains unchanged. New starter reading markers use the existing explicit, free mechanism, with no automatic reading, currency charge, reward or navigation save.
+- `npm run typecheck`, `npm run lint`, `npm test` and `npm run build` passed; **546 tests across 13 files** include starter identity, sourced rendering, topical search, recipe secrecy, reachability, free reading and legacy-save coverage. The existing nonfatal production bundle-size warning remains.
+
+The starter-history live browser smoke check remains pending: the available shared page could not be isolated safely, and no player progress was deliberately changed. Automated rendering, search, focus and persistence checks passed. Human learning and screen-reader observations remain pending; these checks do not certify every claim or establish learning outcomes.

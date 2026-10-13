@@ -14,6 +14,7 @@ const priorityIds = [
   'writing', 'road', 'market', 'plow', 'glass',
 ]
 const expansionIds = ['rotary-quern', 'lathe', 'alphabet']
+const classicalIds = ['ember', 'tide', 'stone', 'gale']
 
 describe('historical research database', () => {
   it('exposes historical structural schemas from the shared content schema module', () => {
@@ -56,19 +57,19 @@ describe('historical research database', () => {
     }
   })
 
-  it('validates the original ten records, three additions and source registry', () => {
+  it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(26)
+    )).toHaveLength(31)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
   })
 
-  it.each([...priorityIds, ...expansionIds])('links %s research to its current name and stable ID', (elementId) => {
+  it.each([...priorityIds, ...expansionIds, ...classicalIds])('links %s research to its current name and stable ID', (elementId) => {
     const record = researchByElementId.get(elementId)
     expect(record?.elementName).toBe(
       elements.find((element) => element.id === elementId)?.name,
@@ -81,7 +82,7 @@ describe('historical research database', () => {
     expect(record?.gameplaySimplifications.length).toBeGreaterThan(0)
   })
 
-  it('includes the additive batch while keeping four ages and fictional Origins', () => {
+  it('includes the additive batch while keeping four ages and undated gameplay Origins', () => {
     expect(elements).toHaveLength(147)
     expect(recipes).toHaveLength(183)
     expect(eras).toHaveLength(4)
@@ -92,6 +93,45 @@ describe('historical research database', () => {
       regions: [],
       sourceIds: [],
     })
+  })
+
+  it.each(classicalIds)('distinguishes documented Greek philosophy from %s gameplay and modern chemistry', (id) => {
+    const record = researchByElementId.get(id)!
+    expect(record.historicalOverview.text).toContain('Empedocles of Acragas')
+    expect(record.historicalOverview.text).toContain('fifth century BCE')
+    expect(record.historicalOverview.text).toContain('Aristotle')
+    expect(record.historicalOverview.text).toContain('fourth century BCE')
+    expect(record.historicalOverview.text).toMatch(/superseded/)
+    expect(record.agePlacement).toMatchObject({ status: 'fictional-prologue' })
+    expect(record.agePlacement.text).toContain('undated, symbolic gameplay prologue')
+    expect(record.historicalSignificance.text).toContain('Chinese wuxing')
+    expect(record.approximateDates.map((date) => [date.dateRange, date.dateType, date.precision]))
+      .toEqual([
+        ['Fifth century BCE', 'regional-development', 'approximate'],
+        ['Fourth century BCE', 'regional-development', 'approximate'],
+      ])
+    expect(record.archaeologicalEvidence.every((evidence) => evidence.evidenceType === 'textual-evidence')).toBe(true)
+    expect(record.independentDevelopments).toEqual([])
+    expect(record.gameplaySimplifications.join(' ')).toContain('symbolic')
+    expect(record.relatedDiscoveries.every((link) => classicalIds.includes(link.elementId))).toBe(true)
+  })
+
+  it('records original scholarly authors, primary translation and modern textbook access honestly', () => {
+    expect(historicalResearch.sources.find((source) => source.id === 'sep-empedocles'))
+      .toMatchObject({ authors: ['K. Scarlett Kingsley', 'Richard Parry'], publicationDate: '2019-09-26' })
+    expect(historicalResearch.sources.find((source) => source.id === 'mit-aristotle-elements'))
+      .toMatchObject({ sourceType: 'library-collection', publicationDate: null })
+    for (const id of ['openstax-matter', 'openstax-combustion']) {
+      expect(historicalResearch.sources.find((source) => source.id === id))
+        .toMatchObject({
+          sourceType: 'reference-textbook', publicationDate: '2019-02-14',
+          verification: { status: 'verified', accessLevel: 'selected-passages' },
+        })
+    }
+    expect(researchByElementId.get('tide')?.historicalOverview.text).toContain('compound H2O')
+    expect(researchByElementId.get('gale')?.historicalOverview.text).toContain('mixture of gases')
+    expect(researchByElementId.get('ember')?.historicalOverview.text).toContain('combustion as a chemical reaction')
+    expect(researchByElementId.get('stone')?.historicalOverview.text).toContain('not a single modern chemical element')
   })
 
   it('keeps regional chronology, proposed pivots and abstract-only access explicit', () => {

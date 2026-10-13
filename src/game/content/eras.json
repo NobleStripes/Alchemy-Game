@@ -2,7 +2,7 @@
   {
     "id": "first-light",
     "name": "Origins",
-    "subtitle": "A fictional, undated prologue: imagine a world from four essences.",
+    "subtitle": "An undated, symbolic gameplay prologue inspired by Greek four-element philosophy.",
     "unlockRequires": [],
     "grants": [],
     "landmarkIds": ["life", "land", "tree", "rock", "animal"],

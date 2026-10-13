@@ -15,10 +15,10 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
-  it.each(['rotary-quern', 'lathe', 'alphabet'])('round-trips the new %s discovery and explicit reading without a version bump', (id) => {
+  it.each([...starterElementIds, 'rotary-quern', 'lathe', 'alphabet'])('round-trips %s discovery and explicit reading without a version bump', (id) => {
     const progress = parseProgress(JSON.stringify({
       ...fresh(),
-      discoveredIds: [...starterElementIds, id],
+      discoveredIds: [...new Set([...starterElementIds, id])],
       readHistoricalElementIds: [id],
     }))!
     expect(progress.version).toBe(7)
@@ -34,10 +34,10 @@ describe('progress persistence', () => {
     expect(parseProgress(JSON.stringify(older))?.readHistoricalElementIds).toEqual([])
     const normalized = parseProgress(JSON.stringify({
       ...progress,
-      discoveredIds: [...starterElementIds, 'metal'],
-      readHistoricalElementIds: ['metal', 'metal', 'writing', 'ember', 'missing'],
+      discoveredIds: [...starterElementIds, 'metal', 'heat'],
+      readHistoricalElementIds: ['metal', 'metal', 'writing', 'ember', 'heat', 'missing'],
     }))!
-    expect(normalized.readHistoricalElementIds).toEqual(['metal'])
+    expect(normalized.readHistoricalElementIds).toEqual(['metal', 'ember'])
     expect(parseProgress(exportProgress(normalized))).toEqual(normalized)
     expect(parseProgress(JSON.stringify({ ...progress, readHistoricalElementIds: 'metal' }))).toBeNull()
   })

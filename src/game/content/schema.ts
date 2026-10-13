@@ -83,6 +83,7 @@ export const historicalSourceSchema = z.strictObject({
     'archaeology-institution',
     'peer-reviewed-study',
     'reference-encyclopedia',
+    'reference-textbook',
   ]),
   url: historicalWebUrl,
   publicationDate: z.iso.date().nullable(),
