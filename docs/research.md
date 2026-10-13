@@ -45,3 +45,20 @@ Run the focused authoring checks with `npm test -- src\game\content\research.tes
 See [Gameplay and Atlas](gameplay.md#historical-encyclopedia) for the player-facing encyclopedia and [recipe review](recipe-review.md) for recipe-specific metadata.
 
 The [educational QA report](educational-qa.md) records the passage-level review, remaining evidence and representation gaps, and a human-playtest protocol. Automated checks do not establish learning outcomes.
+
+## Phase 8: optional future expansion
+
+These are **lower-priority possibilities for later releases**, not requirements for the next update, scheduled work, or accepted historical claims. The current four-age scope remains unchanged.
+
+| Direction | Possible scope |
+| --- | --- |
+| Additional Iron Age technologies | Expand the existing chapter with researched technologies, distinguishing earlier appearances from regional adoption. |
+| Classical Antiquity | Consider a later chapter with an explicitly regional chronology rather than treating it as a universal successor to the Iron Age. |
+| Regional technological histories | Explore different local sequences and independent developments, including gaps identified by educational QA. |
+| Archaeological discoveries | Add optional research entries about particular finds, their contexts, dating methods and contested interpretations. |
+| Historical trade networks | Explore documented exchange networks without assuming that imported objects prove formal markets or a single trade route. |
+| Spread of technologies | Examine evidence for transmission, adaptation and independent development without presenting resemblance alone as proof of diffusion. |
+| Knowledge-related discoveries | Consider more discoveries involving knowledge and practices alongside material technologies, with explicit gameplay abstractions. |
+| Regional collections and challenges | Consider source-backed regional collections or research challenges that reward experimentation, not memorization of historical facts. |
+
+Any selected expansion should use the existing source-verification standards and distinguish evidence from hypotheses. Historical reading must remain optional and free, undiscovered recipes must stay hidden, and changes to progression must be checked for reachability and save compatibility. The open QA findings and pending human playtests remain separate from these future possibilities.

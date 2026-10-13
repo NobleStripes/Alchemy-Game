@@ -4,7 +4,7 @@ An original combination-discovery game with **144 elements and 178 recipes acros
 
 Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a three-tab navigator. Pointer, touch, and keyboard controls are supported.
 
-Origins is a fictional, undated prologue. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Classical Antiquity is reserved for a later update.
+Origins is a fictional, undated prologue. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Classical Antiquity is a possible future chapter, not a requirement for the next update.
 
 Historical explanations are free; **Insight reveals recipe leads, never factual information**. Optional collections, learning labs, and explicit Atlas reading markers complement the discovery game.
 
@@ -21,7 +21,7 @@ npm run dev
 | --- | --- |
 | [Gameplay and Atlas](docs/gameplay.md) | Four ages, progression, Insights, collections, Rainmaker, historical entries, and learning labs. |
 | [Chronology and historical interpretation](docs/historical-interpretation.md) | Regional dates, fictional gates, element corrections, and historical references. |
-| [Historical research](docs/research.md) | Research coverage, record fields, source verification, and authoring standards. |
+| [Historical research](docs/research.md) | Research coverage, record fields, source verification, authoring standards, and optional future directions. |
 | [Recipe review](docs/recipe-review.md) | Recipe classifications, historical-context disclosures, and citation limits. |
 | [Educational QA](docs/educational-qa.md) | Source-review findings, coverage gaps, and the pending human-playtest protocol. |
 | [Saves and settings](docs/saves.md) | Local storage, reading markers, migration, cross-tab synchronization, failures, and reset. |
