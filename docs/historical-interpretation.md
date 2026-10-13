@@ -19,6 +19,20 @@ The four-element theory is **documented historical natural philosophy**, not a f
 
 **Aristotle** developed an account in the **fourth century BCE** linking elemental bodies to qualities: fire hot/dry, air hot/moist, water cold/moist, and earth cold/dry. His account distinguishes elementary bodies from ordinary examples; it should not be conflated with Empedocles' roots and forces or modern chemical composition. The air root discussed in Empedocles' scholarship is *aither*, upper atmospheric air, not simply modern breathing air.
 
+Empedocles' **roots** are enduring constituents: mixing and separation under Love and Strife explain change without creating or destroying the roots. Aristotle's four qualities form the opposed pairs hot/cold and wet (translated as **moist**)/dry. Fire is hot/dry, water cold/wet, earth cold/dry and air hot/wet. These are attributed historical classifications, **not modern scientific measurements** of temperature or humidity.
+
+Aristotelian matter theory influenced later natural philosophy, and later alchemists used the four-element framework to reason about material transformation. Subsequent chemical accounts revised these categories; historical influence is neither proof of successful transmutation into gold nor evidence that all alchemical traditions were identical. The reviewed passages in [Philosophy of Chemistry](https://plato.stanford.edu/entries/chemistry/) (Michael Weisberg, Paul Needham and Robin Hendry; first published 14 March 2011, revised 11 March 2026) support conceptual reception and revision. Mark Cartwright's [Alchemy](https://www.worldhistory.org/Alchemy/) (24 August 2023) supplies supplementary context, not a replacement for Aristotle's text or verification of every claim in that article.
+
+The four starter records are classified as **historical-model**, with mandatory verified citations. Their existing usage field accommodates explanatory concepts, and their evidence field accommodates philosophical texts. Atlas headings distinguish **Concept and use** and **Intellectual-history evidence** from manufacture and excavated material. Metal remains a symbolic Origins entry. Content schema version 2 and save version 7 are unchanged.
+
+### Passages, translation and chronology limits
+
+- Kingsley and Parry's SEP *Empedocles*, **Life and Writings** and **Roots and Forces**, discusses uncertain biographical dates and transmitted fragments **B6** (the four roots) and **B17** (mixing, separation and enduring constituents). This is modern scholarship interpreting fragmentary ancient texts; divine-name correspondences remain debated.
+- Shields' SEP *Aristotle*, the **opening biography** and **discussion of surviving writings**, supplies fourth-century intellectual context, not an exact date for composing the elemental theory. Surviving works may be unfinished, reworked or editorially arranged; terminology and detailed interpretations require care.
+- Aristotle's *On Generation and Corruption*, **Book II, Part 2**, distinguishes hot/cold and moist/dry and explains the latter through shape and boundaries; **Part 3** explicitly pairs fire hot/dry, air hot/moist, water cold/moist and earth cold/dry. This is a primary philosophical work accessed through **H. H. Joachim's English translation**, not direct inspection of an ancient Greek manuscript. Our accessible word **wet** corresponds to that translation's **moist**, not a modern humidity measurement.
+
+Origins has no historical date range. Its exact subtitle is: "An undated prologue inspired by the four classical elements of ancient Greek natural philosophy." Its position before Stone Age does not mean Greek philosophy preceded prehistoric humanity. Century labels in the four entries date philosophical contexts, never the origin of individual physical elements.
+
 | Aspect | Classification |
 | --- | --- |
 | Four-element theory | Documented Greek natural philosophy, superseded as chemistry |
@@ -73,6 +87,7 @@ Stable element and recipe IDs, existing ingredient pairs, saved discoveries, for
 ## Historical references
 
 - [Kingsley and Parry: Empedocles, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/empedocles/), especially Life and Writings and Roots and Forces (first published 2019; revised 2024).
+- [Christopher Shields: Aristotle, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/aristotle/), opening biography and surviving-writings discussion (first published 25 September 2008; revised 25 August 2020). Modern scholarly context, distinct from Aristotle's primary text below.
 - [Aristotle: On Generation and Corruption, Book II, Parts 2-3, translated by H. H. Joachim](https://classics.mit.edu/Aristotle/gener_corr.2.ii.html), MIT's Internet Classics Archive. Its "350 BCE" heading is not an exact composition date or a modern publication date.
 - [Franklin Perkins: Metaphysics in Chinese Philosophy, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/chinese-metaphysics/), discussion of cyclical change and five phases (first published 2015; revised 2023).
 - [Flowers, Theopold, Langley and Robinson: Chemistry 2e, OpenStax (2019), classification of matter](https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter) and [combustion as a redox reaction](https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions). These support modern scientific distinctions, not ancient chronology.

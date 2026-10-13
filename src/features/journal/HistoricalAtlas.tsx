@@ -24,6 +24,7 @@ const placementLabels = {
   'earlier-precedents': 'Predates its gameplay age: earlier precedents',
   'regional-gameplay-placement': 'Regional gameplay placement',
   'fictional-prologue': 'Undated, symbolic gameplay prologue',
+  'historical-model': 'Historical model: documented natural philosophy',
 }
 
 function entrySources(record: HistoricalResearchRecord, discoveredIds: readonly string[]) {
@@ -78,6 +79,7 @@ function ResearchEntry({
     (link) => discoveredIds.includes(link.elementId),
   )
   const sources = entrySources(record, discoveredIds)
+  const isHistoricalModel = record.agePlacement.status === 'historical-model'
 
   function citations(sourceIds: string[]) {
     return sourceIds.map((id) => {
@@ -96,6 +98,9 @@ function ResearchEntry({
 
   return (
     <>
+      {isHistoricalModel && (
+        <p><span className="history-indicator">{placementLabels[record.agePlacement.status]}</span></p>
+      )}
       <h4>Historical overview</h4>
       {passage(record.historicalOverview)}
       <h4>Historical dates and geography</h4>
@@ -118,11 +123,14 @@ function ResearchEntry({
           </ul>
         </>
       ) : <p>No sourced dates are recorded for this entry.</p>}
-      <h4>Manufacture and use</h4>
+      <h4>{isHistoricalModel ? 'Concept and use' : 'Manufacture and use'}</h4>
       {passage(record.manufactureOrUse)}
       <h4>Why it mattered</h4>
       {passage(record.historicalSignificance)}
-      <h4>Archaeological context</h4>
+      <h4>{isHistoricalModel ? 'Intellectual-history evidence' : 'Archaeological context'}</h4>
+      {isHistoricalModel && (
+        <p>Philosophical texts attest the historical theory, not its scientific validity. Textual evidence is distinct from excavated artifacts.</p>
+      )}
       {record.archaeologicalEvidence.length === 0
         ? <p>No material evidence is established in this research record.</p>
         : (
@@ -153,7 +161,7 @@ function ResearchEntry({
       <h4>Gameplay interpretation</h4>
       <span className="history-indicator">Symbolic combinations: gameplay abstractions</span>
       <p>These notes are not recipe hints or historical manufacturing instructions.</p>
-      <span className="history-indicator">{placementLabels[record.agePlacement.status]}</span>
+      {!isHistoricalModel && <span className="history-indicator">{placementLabels[record.agePlacement.status]}</span>}
       <p>{record.agePlacement.text}{citations(record.agePlacement.sourceIds)}</p>
       <ul>{record.gameplaySimplifications.map((text) => <li key={text}>{text}</li>)}</ul>
       <h4>Historical uncertainty</h4>
@@ -243,6 +251,10 @@ export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
         Undiscovered entries stay hidden; not every discovery has researched notes yet.
       </p>
       <p className="detail-desc">Historical explanations are always free. Insight reveals recipe leads, not facts.</p>
+      <p className="detail-desc">
+        The four classical elements are a documented model of ancient Greek natural philosophy,
+        not inventions of the game. Origins combinations are symbolic gameplay, not literal natural history.
+      </p>
       <p className="atlas-discovery-count">
         {discovered.length} discovered encyclopedia {discovered.length === 1 ? 'entry' : 'entries'}.
       </p>
@@ -298,8 +310,8 @@ export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
               {eras.find((era) => era.id === selected.era)?.name} · {selected.category}
             </p>
             <p>
-              Origins is an undated, symbolic gameplay prologue, not a date for Greek elemental
-              philosophy. The Three-Age System reflects particular
+              Origins is an undated prologue inspired by ancient Greek elemental philosophy,
+              not a claim that this philosophy preceded prehistoric humanity. The Three-Age System reflects particular
               archaeological traditions, not one worldwide sequence. Boundaries vary geographically;
               first appearance and widespread adoption are different.
             </p>

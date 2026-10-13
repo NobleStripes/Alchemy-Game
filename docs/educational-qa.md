@@ -37,7 +37,7 @@ The Phase 7 counts and software observations below are retained as a baseline, n
 
 The displayed age labels are unchanged:
 
-- **Origins:** fictional and undated.
+- **Origins:** undated gameplay prologue, with fictional combinations inspired by documented Greek elemental philosophy. This wording clarifies the historical theory/gameplay distinction reviewed below.
 - **Stone Age:** approximately 3.3 million years ago to approximately 3300 BCE. The opening uses Kenyan Lomekwi evidence; the closing is a conventional Near Eastern frame. This is deliberately not one continuous local chronology.
 - **Bronze Age:** approximately 3300-1200 BCE, a regional Near Eastern frame rather than a worldwide invention/adoption schedule.
 - **Iron Age:** from approximately 1200 BCE, with regional end dates varying. Britain's approximately 800 BCE-43 CE example is not the global boundary.
@@ -209,3 +209,32 @@ This subsequent content correction distinguishes documented Greek natural philos
 - `npm run typecheck`, `npm run lint`, `npm test` and `npm run build` passed; **546 tests across 13 files** include starter identity, sourced rendering, topical search, recipe secrecy, reachability, free reading and legacy-save coverage. The existing nonfatal production bundle-size warning remains.
 
 The starter-history live browser smoke check remains pending: the available shared page could not be isolated safely, and no player progress was deliberately changed. Automated rendering, search, focus and persistence checks passed. Human learning and screen-reader observations remain pending; these checks do not certify every claim or establish learning outcomes.
+
+## Historical-model schema and reception review
+
+This subsequent review retains the earlier snapshots above.
+
+- Fire, Water, Earth and Air now use `historical-model`, with structurally nonempty citations and catalog-aware rejection of unknown or pending supporting sources. The other placement classifications remain supported; Metal retains its symbolic Origins classification.
+- Rechecked Empedocles' enduring roots and Aristotle's hot/cold and wet (moist)/dry pairs against the reviewed philosophical passages. Each starter explains all four correct pairings and distinguishes historical categories from modern scientific measurements.
+- Added passage-specific reception receipts for Weisberg, Needham and Hendry's *Philosophy of Chemistry*, and Cartwright's supplementary *Alchemy*. Original author/publication metadata was inspected. Reception and revision are distinguished from unchanged scientific survival, successful gold transmutation and universal adoption.
+- The Atlas presents conceptual use and intellectual-history evidence without renaming the existing stored fields, inventing artifacts or changing progression. All four histories remain immediately available with zero Insight, no automatic reading, no rewards and no navigation save.
+- Coverage remains **17 of 147 elements**, now with **33 verified sources and one pending source**. Philosophical dates still describe theories, not natural phenomena. Content schema version 2 and save version 7 remain unchanged.
+- TypeScript, ESLint, all **556 tests across 13 files**, and the production build passed. Focused coverage includes model citation requirements, legacy classifications, fresh-campaign access, qualities, textual headings and reception links. Existing compatibility, discovery secrecy, reading/reset and reachability regressions remain passing.
+- Recipe, persistence and game-store implementation hashes match the pre-request baseline. This update changes no recipe or save-data schema and introduces no migration.
+
+Live browser verification remains pending: the shared preview changed back to Play between Atlas navigation and article selection, so the read-only smoke check could not complete reliably. No combinations, reading markers, saves or player progression were deliberately changed. Automated UI checks passed; human learning and screen-reader checks remain pending.
+
+## Origins subtitle, Atlas disclosure and classical-source regression review
+
+This follow-up completes the wording and source checks; earlier results above remain historical snapshots.
+
+- Origins now uses the exact subtitle **An undated prologue inspired by the four classical elements of ancient Greek natural philosophy.** Its name, `first-light` ID, absence of a date range, landmarks, discovery goal, unlock requirements and grants are preserved. The Stone Age transition and all subsequent progression gates are unchanged.
+- The historical-model label now precedes the article overview. The general Atlas disclaimer distinguishes the documented Greek model from symbolic combinations, and the chronology note explicitly denies that Greek philosophy preceded prehistoric humanity. Search, citations, discovery restrictions and explicit free reading markers remain intact.
+- Reconsulted SEP *Empedocles* (Life and Writings; Roots and Forces, including fragments B6/B17), SEP *Aristotle* (biographical and surviving-writings context), and Aristotle's Book II, Parts 2-3 in Joachim's translation. The primary pairing passage assigns fire hot/dry, water cold/moist, earth cold/dry and air hot/moist; the modern scholarly sources are not presented as primary texts.
+- Added Christopher Shields' SEP *Aristotle* with a selected-passages receipt, verified credited author and publication/revision metadata. Its fourth-century context supports the four entries' philosophical chronology, not dates for physical phenomena. The archive translation and fragmentary/editorial interpretation limitations remain explicit; wet/moist wording is not a modern measurement.
+- Reviewed documentation and Origins recipe cautions for obsolete fiction claims about the theory. Clarified the older blanket QA wording while retaining legitimate fictional life-making, symbolic Metal and simplified-recipe warnings. Recipe flavors and review classifications did not require changes.
+- Coverage remains **17 researched entries and 147 elements**, with **183 unchanged recipes**, **34 verified sources and one pending source**. Element, recipe, persistence and game-store implementation hashes match the pre-request baseline. Content schema version 2 and save version 7 are unchanged; no migration is introduced.
+- `npm run typecheck`, `npm run lint`, all **560 tests across 13 files**, and `npm run build` passed. Tests pin the exact subtitle and Origins configuration, the same four Rainmaker starters, unchanged original combinations and gates, source validation, four-entry topic/source search, fresh-game access, discovery secrecy, free reading and legacy/v7 saves. The existing nonfatal bundle-size warning remains.
+- A live preview smoke check confirmed the exact subtitle and visible model labels and SEP Aristotle links for **Fire, Water, Earth and Air**. It restored the prior top-level section and search query and did not toggle reading markers or perform combinations. This was a functional check, not a complete mobile, screen-reader or console audit.
+
+Historical verification remains passage-specific, not certification of every source or every description. Human playtesting, learning outcomes and comprehensive screen-reader checks remain pending.

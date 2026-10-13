@@ -38,6 +38,32 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
+  it.each(['Fire', 'Water', 'Earth', 'Air'])('opens %s as a free historical model in a fresh campaign', async (name) => {
+    useGameStore.setState({ insightCredits: 0 })
+    const before = snapshotProgress(useGameStore.getState())
+    const disk = localStorage.getItem(SAVE_KEY)
+    const user = await openAtlas()
+    const entry = await selectEntry(user, name)
+    const classification = within(entry).getByText('Historical model: documented natural philosophy')
+    expect(classification).toBeVisible()
+    expect(classification.compareDocumentPosition(within(entry).getByRole('heading', { name: 'Historical overview' }))
+      & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    expect(within(entry).getByText(/not a claim that this philosophy preceded prehistoric humanity/)).toBeVisible()
+    expect(screen.getByText(/Origins combinations are symbolic gameplay, not literal natural history/)).toBeVisible()
+    expect(within(entry).getByRole('heading', { name: 'Concept and use' })).toBeVisible()
+    expect(within(entry).getByRole('heading', { name: 'Intellectual-history evidence' })).toBeVisible()
+    expect(within(entry).queryByRole('heading', { name: 'Archaeological context' })).not.toBeInTheDocument()
+    expect(within(entry).getByText(/fire is hot\/dry, water cold\/wet, earth cold\/dry and air hot\/wet/)).toBeVisible()
+    expect(within(entry).getByText(/Philosophical texts attest the historical theory, not its scientific validity/)).toBeVisible()
+    expect(within(entry).getByRole('link', { name: 'Philosophy of Chemistry' })).toBeVisible()
+    expect(within(entry).getByRole('link', { name: 'Alchemy' })).toBeVisible()
+    expect(within(entry).getByRole('link', { name: 'Aristotle' }))
+      .toHaveAttribute('href', 'https://plato.stanford.edu/entries/aristotle/')
+    expect(within(entry).getByRole('button', { name: `Mark ${name} as read` })).toBeVisible()
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(disk)
+  })
+
   it.each(historicalResearch.records)('renders sourced dates without recipe instructions for $elementName', async (record) => {
     discover(record.elementId)
     useGameStore.setState({ insightCredits: 0 })
@@ -79,6 +105,10 @@ describe('Historical Encyclopedia', () => {
     ['Aristotle hot moist', 'Air'],
     ['compound H2O', 'Water'],
     ['solid terrestrial', 'Earth'],
+    ['Christopher Shields', 'Fire'],
+    ['Christopher Shields', 'Water'],
+    ['Christopher Shields', 'Earth'],
+    ['Christopher Shields', 'Air'],
   ])('finds %s in discovered research, not just element names', async (query, name) => {
     discover('writing', 'lens')
     const before = snapshotProgress(useGameStore.getState())
@@ -399,7 +429,8 @@ describe('Historical Encyclopedia', () => {
     const user = await openAtlas()
     const entry = await selectEntry(user, record.elementName)
     expect(within(entry).getByText('Historical overview')).toBeVisible()
-    expect(within(entry).getByText('Manufacture and use')).toBeVisible()
+    expect(within(entry).getByText(record.agePlacement.status === 'historical-model'
+      ? 'Concept and use' : 'Manufacture and use')).toBeVisible()
     expect(within(entry).getByText('Historical uncertainty')).toBeVisible()
     expect(within(entry).getByText('Symbolic combinations: gameplay abstractions')).toBeVisible()
     expect(within(entry).getAllByRole('link').length).toBeGreaterThan(0)

@@ -554,7 +554,7 @@ describe('alchemy worktable', () => {
       ageSwitcher.getByRole('button', { name: 'Origins' }),
     ).not.toHaveTextContent(/BCE|CE/)
     expect(ageSwitcher.getByRole('button', { name: 'Origins' })).toHaveAttribute(
-      'title', 'An undated, symbolic gameplay prologue inspired by Greek four-element philosophy.',
+      'title', 'An undated prologue inspired by the four classical elements of ancient Greek natural philosophy.',
     )
   })
 

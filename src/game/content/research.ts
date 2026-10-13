@@ -82,7 +82,8 @@ export function createResearchDatabaseSchema(
             message: 'Only Origins discoveries belong to the fictional prologue.',
           })
         }
-      } else if (record.agePlacement.sourceIds.length === 0) {
+      } else if (record.agePlacement.status !== 'historical-model'
+        && record.agePlacement.sourceIds.length === 0) {
         ctx.addIssue({
           code: 'custom',
           path: [...path, 'agePlacement', 'sourceIds'],

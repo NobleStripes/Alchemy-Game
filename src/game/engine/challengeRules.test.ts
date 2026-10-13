@@ -20,6 +20,7 @@ function win() {
 describe('Rainmaker reducer', () => {
   it('starts with only the four starters and excludes empty attempts', () => {
     const state = createChallengeState()
+    expect(rainmakerChallenge.starterIds).toEqual(['ember', 'tide', 'stone', 'gale'])
     expect(state.discoveredIds).toEqual(rainmakerChallenge.starterIds)
     expect(challengeReducer(state, { type: 'combine' })).toBe(state)
     const half = challengeReducer(state, { type: 'select', elementId: 'tide' })

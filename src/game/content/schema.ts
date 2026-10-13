@@ -158,11 +158,18 @@ export const historicalEntrySchema = z.strictObject({
   elementName: historicalText,
   historicalOverview: historicalCitedText,
   manufactureOrUse: historicalCitedText,
-  agePlacement: z.strictObject({
-    status: z.enum(['earlier-precedents', 'regional-gameplay-placement', 'fictional-prologue']),
-    text: historicalText,
-    sourceIds: historicalSourceIds,
-  }),
+  agePlacement: z.discriminatedUnion('status', [
+    z.strictObject({
+      status: z.literal('historical-model'),
+      text: historicalText,
+      sourceIds: historicalSourceIds.nonempty(),
+    }),
+    z.strictObject({
+      status: z.enum(['earlier-precedents', 'regional-gameplay-placement', 'fictional-prologue']),
+      text: historicalText,
+      sourceIds: historicalSourceIds,
+    }),
+  ]),
   relatedDiscoveries: z.array(z.strictObject({
     elementId: historicalId,
     relationship: z.enum(['documented', 'gameplay-abstraction']),

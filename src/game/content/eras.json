@@ -2,7 +2,7 @@
   {
     "id": "first-light",
     "name": "Origins",
-    "subtitle": "An undated, symbolic gameplay prologue inspired by Greek four-element philosophy.",
+    "subtitle": "An undated prologue inspired by the four classical elements of ancient Greek natural philosophy.",
     "unlockRequires": [],
     "grants": [],
     "landmarkIds": ["life", "land", "tree", "rock", "animal"],

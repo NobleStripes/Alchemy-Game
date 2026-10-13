@@ -26,6 +26,8 @@ The header also remains available during isolated challenges. Visiting Atlas doe
 
 Origins is an undated, symbolic gameplay prologue, not an archaeological period or a scientific account of creation. Its four starting essences draw on documented Greek natural philosophy, not modern chemical elements or a universal ancient belief; their free Atlas histories explain the distinction. The historical pages draw on several traditions; their approximate dates are explained in the [chronology guide](historical-interpretation.md), not a single worldwide timeline.
 
+Origins uses this documented philosophical framework through fictionalized gameplay. Its position before Stone Age is a gameplay structure, not evidence that Empedocles or Aristotle preceded prehistoric humanity. The starter histories label the ancient ideas as **historical models**, distinguish philosophical texts from modern scholarly interpretation and scientific explanation, and remain searchable without spending Insight. Read/unread markers are personal records, not discovery requirements.
+
 **Origins** is the symbolic natural-world prologue, with fictional life-making and simplified transformations. Discovering Life, Land, Tree, Rock, and Animal unlocks **Stone Age** (c. 3.3 million years ago–c. 3300 BCE), grants Human as that page's starting element, and keeps all earlier matter available. Stone Age landmarks are Stone Tool, Hearth, Art, and Village; optional discoveries remain open after its challenge is complete.
 
 Origins has 41 elements, with optional waterways, aquatic life, and marine minerals: River, Lake, Algae, Fish, Salt, and Limestone deepen the natural world.

@@ -595,8 +595,15 @@ describe('four-age expansion', () => {
 describe('historical interpretation', () => {
   it('identifies Origins as an undated symbolic prologue, with regionally qualified historical dates', () => {
     expect(eras[0].dateRange).toBeUndefined()
-    expect(eras[0].subtitle).toContain('undated, symbolic gameplay prologue')
-    expect(eras[0].subtitle).toContain('Greek four-element philosophy')
+    expect(eras[0]).toEqual({
+      id: 'first-light',
+      name: 'Origins',
+      subtitle: 'An undated prologue inspired by the four classical elements of ancient Greek natural philosophy.',
+      unlockRequires: [],
+      grants: [],
+      landmarkIds: ['life', 'land', 'tree', 'rock', 'animal'],
+      discoveryGoal: 18,
+    })
     expect(eras[1].dateRange).toBe('c. 3.3 million years ago–c. 3300 BCE')
     expect(eras[2].dateRange).toBe('c. 3300 BCE–c. 1200 BCE')
     expect(eras[3].dateRange).toBe('From c. 1200 BCE; regional end dates vary')
