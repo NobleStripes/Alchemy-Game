@@ -6,7 +6,9 @@ Research lives in [`src/game/content/research.json`](../src/game/content/researc
 
 This separation keeps factual entries and bibliographic references out of gameplay definitions and save-game progression. Research entries refer to stable element IDs; they do not define recipe dependencies, unlock conditions, or rewards. Version 7 saves remain compatible and store only explicit reading IDs, never copies of research text or sources. No age assignments or recipe routes change with this schema update.
 
-The initial batch covers **10 of 144 elements**: Wayfinding (legacy Compass), Lens, Polity (legacy Nation), Metal, Writing Reed (legacy Quill), Writing, Road, Market, Ard (legacy Plow), and Glass. The registry now contains **22 consulted sources and one pending source**, including the recipe-review background. These are focused research records, not exhaustive histories or certification of every claim in an existing description. The remaining 134 elements have no research record yet.
+Research covers **13 of 147 elements**: the original ten entries for Wayfinding (legacy Compass), Lens, Polity (legacy Nation), Metal, Writing Reed (legacy Quill), Writing, Road, Market, Ard (legacy Plow), and Glass, plus Rotary Quern, Lathe, and Alphabet. The registry contains **26 consulted sources and one pending source**, including recipe-review background. These are focused research records, not exhaustive histories or certification of every claim in an existing description. The remaining 134 elements have no research record yet.
+
+The optional Iron Age batch uses Northampton Museums' regional quern account, the V&A's contextual turning essay, Yigal Sitry's original 2022 journal abstract, and inspected sections of Penn Museum's alphabet essay. The lathe pivots are a proposed identification, not confirmed worldwide first-use evidence; the full study remains unread. Alphabetic precedents predate their gameplay page, and a displayed cast is distinguished from its ancient original. No source establishes uniform adoption across all societies. **Lock remains deferred** because an appropriate original archaeological account was not verified; reconstructions, medieval key guides and search summaries were not accepted as ancient evidence.
 
 ## Record format
 
@@ -52,7 +54,7 @@ These are **lower-priority possibilities for later releases**, not requirements 
 
 | Direction | Possible scope |
 | --- | --- |
-| Additional Iron Age technologies | Expand the existing chapter with researched technologies, distinguishing earlier appearances from regional adoption. |
+| Additional Iron Age technologies | Initial optional batch implemented: Rotary Quern, Lathe, and Alphabet, distinguishing earlier precedents from regional evidence. Further additions remain optional; Lock is deferred pending suitable original evidence. |
 | Classical Antiquity | Consider a later chapter with an explicitly regional chronology rather than treating it as a universal successor to the Iron Age. |
 | Regional technological histories | Explore different local sequences and independent developments, including gaps identified by educational QA. |
 | Archaeological discoveries | Add optional research entries about particular finds, their contexts, dating methods and contested interpretations. |

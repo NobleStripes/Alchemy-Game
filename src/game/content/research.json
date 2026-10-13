@@ -222,6 +222,46 @@
       "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://www.worldhistory.org/article/2114/trade-in-ancient-mesopotamia/", "accessLevel": "selected-passages", "locator": "Original article citation metadata, opening regional chronology, and discussion of silver/grain exchange before minted coins. These passages concern exchange, not excavated formal marketplaces." }
     },
     {
+      "id": "northampton-quern",
+      "title": "Iron Age Rotary Quern",
+      "authors": [],
+      "institution": "Northampton Museums and Art Gallery",
+      "sourceType": "museum-collection",
+      "url": "https://timeline.northamptonmuseums.com/timeline/iron-age-rotary-quern",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://timeline.northamptonmuseums.com/timeline/iron-age-rotary-quern", "accessLevel": "selected-passages", "locator": "Original Hunsbury object description: more than 100 recovered stones, regional introduction around 200 BCE, earlier British saddle querns from 4000 BCE, cereal grinding between rotating upper and stationary lower stones, and distant stone sources. Proposed dowry interpretation and industrial-revolution rhetoric are not accepted claims. Exhibition year is not treated as a publication date." }
+    },
+    {
+      "id": "va-woodturning",
+      "title": "Chair Leg",
+      "authors": [],
+      "institution": "Victoria and Albert Museum",
+      "sourceType": "museum-collection",
+      "url": "https://collections.vam.ac.uk/item/O321535/chair-leg-unknown/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://collections.vam.ac.uk/item/O321535/chair-leg-unknown/", "accessLevel": "selected-passages", "locator": "Original contextual essay: debated earlier turning, Petosiris relief assigned to 323-305 BCE, supports/pivots, rope-driven rotation and a second worker's cutting tool. Later Roman examples and the essay's first-proven wording are not adopted as a global chronology; compare the newer Sitry abstract." }
+    },
+    {
+      "id": "sitry-lathe-pivots",
+      "title": "Two Pivots of the 7th Century BCE from Thebes, Egypt, and the Beginning of Woodturning",
+      "authors": ["Yigal Sitry"],
+      "institution": "Journal of Ancient Egyptian Interconnections",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://egyptianexpedition.org/articles/two-pivots-of-the-7th-century-bce/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://egyptianexpedition.org/articles/two-pivots-of-the-7th-century-bce/", "accessLevel": "abstract-only", "locator": "Original publisher HTML abstract, author and Vol. 34, June 2022 issue metadata, extracted because markdown omitted the body. Petrie's first-half seventh-century BCE attribution; proposed lathe-pivot identification based on shape/use-wear and proposed earlier woodturning chronology. Full text not reviewed; web posting day not assumed to be the article's exact publication day." }
+    },
+    {
+      "id": "penn-alphabet",
+      "title": "The Alphabet",
+      "authors": ["Virginia R. Herrmann"],
+      "institution": "Penn Museum",
+      "sourceType": "museum-essay",
+      "url": "https://www.penn.museum/sites/expedition/the-alphabet/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-13", "accessedUrl": "https://www.penn.museum/sites/expedition/the-alphabet/", "accessLevel": "selected-passages", "locator": "Introduction and Herrmann's Early to Rise, Late to Bloom and ABCD or HLHM? sections: literacy without alphabets, consonant-based sign values, Wadi el-Hol context around 1900-1800 BCE, Greek inscriptions in the 700s BCE, contested beginnings and uneven later use. Beth Shemesh display is explicitly a plaster cast, not the original ancient tablet. Third-millennium alphabet proposals and a single causal explanation of diffusion are not adopted; image-upload dates are not publication dates." }
+    },
+    {
       "id": "bm-scribal-palette",
       "title": "scribal palette; pen",
       "authors": [],
@@ -486,6 +526,81 @@
       "historicalUncertainty": ["These specimens do not settle the earliest glassmaking, independent invention or transmission between Mesopotamia and Egypt.", "The Met API's textual date label and numeric bounds differ; this record preserves the label without inventing precision.", "The Roman bowl has later restorations, and the conservators describe alternative ways its base ring could have been formed.", "Earliest glass recipes, beads and the emergence and spread of glassblowing require further original-source research."],
       "gameplaySimplifications": ["Bronze Age Glass groups a broad material history, not modern clear window glass or all later optical technologies.", "Symbolic combinations are not a real furnace recipe and do not imply that glassblowing was part of every Bronze Age glass tradition."],
       "furtherResearch": [{ "question": "Add archaeometric studies of early glass compositions, beads, manufacturing centers and the later introduction versus adoption of glassblowing.", "sourceIds": [] }]
+    },
+    {
+      "elementId": "rotary-quern",
+      "elementName": "Rotary Quern",
+      "historicalOverview": { "text": "The Hunsbury Hill finds illustrate rotary grinding in Iron Age Britain. Northampton Museums describes more than 100 recovered stones and compares the rotary mechanism with earlier saddle querns. This regional history is not the beginning of food processing worldwide.", "sourceIds": ["northampton-quern"] },
+      "manufactureOrUse": { "text": "Cereal grains were fed into an upper stone and ground between its rotating surface and a stationary lower stone. The museum describes stone brought from distant sources because local ironstone was unsuitable for this grinding task. A vehicle wheel is not part of the described mechanism.", "sourceIds": ["northampton-quern"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Iron Age placement highlights a regional rotary-grinding example. The museum describes earlier saddle querns in Britain; neither the older method nor the rotary mechanism depends on ironworking.", "sourceIds": ["northampton-quern"] },
+      "relatedDiscoveries": [
+        { "elementId": "flour", "relationship": "documented", "explanation": "The museum describes cereal grinding to produce flour, not every possible way of processing plant foods.", "sourceIds": ["northampton-quern"] },
+        { "elementId": "wheel", "relationship": "gameplay-abstraction", "explanation": "Wheel is an Atlas symbol for rotation, not a vehicle part required by the museum's hand-quern mechanism.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Around 200 BCE in Britain", "dateType": "regional-development", "precision": "approximate", "regions": ["Britain"], "sourceIds": ["northampton-quern"], "note": "The museum's approximate British introduction, not a global invention date or proof of uniform adoption." },
+        { "dateRange": "From around 4000 BCE in Britain", "dateType": "regional-development", "precision": "approximate", "regions": ["Britain"], "sourceIds": ["northampton-quern"], "note": "Earlier saddle-quern use as described by the museum; not the first grinding or bread-making worldwide." }
+      ],
+      "associatedRegions": ["Britain", "Hunsbury Hill, Northamptonshire, England"],
+      "archaeologicalEvidence": [
+        { "text": "The museum reports more than 100 quern stones recovered during nineteenth-century quarrying at Hunsbury Hill and additional examples at regional Middle to Late Iron Age settlements.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["northampton-quern"] }
+      ],
+      "historicalSignificance": { "text": "The museum presents rotary grinding as a less laborious way to prepare cereal flour than saddle grinding. Its account of distant stone sources also shows that household equipment could draw on wider material networks.", "sourceIds": ["northampton-quern"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["This regional museum account does not establish the earliest rotary quern worldwide or all local adoption dates.", "Recovery during quarrying is not a complete modern excavation record.", "Suggested dowry use is an interpretation, not established here; the museum's industrial-revolution language is not used as an archaeological category."],
+      "gameplaySimplifications": ["Iron Age placement groups a regional example rather than dating all grinding technology.", "The rotating tool is abbreviated; preparation of its working surfaces and supporting equipment are omitted.", "Crop represents cereal grain in this grinding branch, not every cultivated plant."],
+      "furtherResearch": [{ "question": "Compare dated excavations and stone-provenance studies across regions before making claims about invention, transmission or widespread adoption.", "sourceIds": [] }]
+    },
+    {
+      "elementId": "lathe",
+      "elementName": "Lathe",
+      "historicalOverview": { "text": "Ancient woodturning has several kinds of evidence. A museum account describes a later Egyptian relief depicting a lathe, while Yigal Sitry's 2022 abstract proposes that two earlier metal objects were lathe pivots. The proposed identification is not proof of a single global invention date.", "sourceIds": ["va-woodturning", "sitry-lathe-pivots"] },
+      "manufactureOrUse": { "text": "In the museum's description of the Petosiris relief, wood is held between supports and rotated with rope while another worker uses a cutting tool to shape it. This is a documented depiction interpreted by the museum, not a complete construction recipe for every ancient lathe.", "sourceIds": ["va-woodturning"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Iron Age workshop includes turning as an optional theme. Proposed earlier Egyptian evidence and a later Ptolemaic depiction have different contexts; the later example overlaps a period often called Classical Antiquity and does not create a new chapter or a universal Iron Age boundary.", "sourceIds": ["sitry-lathe-pivots", "va-woodturning"] },
+      "relatedDiscoveries": [
+        { "elementId": "timber", "relationship": "documented", "explanation": "The museum's lathe account concerns shaping wood; it does not require the Atlas's steel-saw route to prepared timber.", "sourceIds": ["va-woodturning"] },
+        { "elementId": "wheel", "relationship": "gameplay-abstraction", "explanation": "Wheel stands for controlled rotation; the museum's depicted lathe uses rope, not a required cart wheel.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "First half of the seventh century BCE (attributed)", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Thebes, Egypt"], "sourceIds": ["sitry-lathe-pivots"], "note": "Petrie's dating of the metal objects as reported in the abstract. Their identification as lathe parts is proposed, not independently confirmed here." },
+        { "dateRange": "c. 323-305 BCE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Tuna el-Gebel, Egypt"], "sourceIds": ["va-woodturning"], "note": "The museum's date for the Petosiris relief depicting turning, not the invention of the lathe or the date of every turned object." }
+      ],
+      "associatedRegions": ["Thebes, Egypt", "Tuna el-Gebel, Egypt"],
+      "archaeologicalEvidence": [
+        { "text": "The publisher's abstract reports metal objects excavated by Petrie at Thebes. Their proposed identification as pivots uses shape and wear traces; the complete analysis has not been reviewed.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["sitry-lathe-pivots"] },
+        { "text": "The museum describes a relief showing workers rotating and shaping a wooden leg. Its account of debated earlier turning must be read alongside the newer pivot study rather than taken as a settled first-use date.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["va-woodturning", "sitry-lathe-pivots"] }
+      ],
+      "historicalSignificance": { "text": "The museum connects turning with shaped furniture components. Comparing a depiction with proposed tool remains demonstrates how different evidence can change a regional account of a craft.", "sourceIds": ["va-woodturning", "sitry-lathe-pivots"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Sitry's original abstract was reviewed, not the full paper or its dating and wear analysis.", "Symmetry or a pivot hole alone does not settle the maker's equipment or a worldwide first lathe.", "The museum's later depicted example does not establish uniform adoption, and its first-proven phrasing is not adopted as a global conclusion."],
+      "gameplaySimplifications": ["This page assignment groups woodworking, not the first invention of rotation or machine tools.", "Wheel is a symbolic association, not a mandatory part of a rope-driven lathe.", "Prepared timber, supports, tools, skilled workers and controlled motion are condensed into the puzzle."],
+      "furtherResearch": [{ "question": "Review the full pivot study and compare securely dated turned objects and tool remains from other regions.", "sourceIds": ["sitry-lathe-pivots"] }]
+    },
+    {
+      "elementId": "alphabet",
+      "elementName": "Alphabet",
+      "historicalOverview": { "text": "Alphabetic writing has earlier precedents and varied regional histories. The Penn Museum essay discusses early Egyptian and Levantine evidence, later Greek inscriptions and contested beginnings. Alphabetic dominance was not inevitable, and literacy can use nonalphabetic writing.", "sourceIds": ["penn-alphabet"] },
+      "manufactureOrUse": { "text": "The essay explains early sound signs through the initial consonants of words for pictured objects. It discusses marks carved on stone and written on pottery, and a cuneiform alphabet made with wedges on clay. These examples do not require one surface or one modern alphabet.", "sourceIds": ["penn-alphabet"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Iron Age placement highlights later regional use and adaptation, not an invention caused by ironworking. The earlier Wadi el-Hol and other second-millennium examples discussed by the museum predate the Atlas's Near Eastern Iron Age starting frame.", "sourceIds": ["penn-alphabet"] },
+      "relatedDiscoveries": [
+        { "elementId": "writing", "relationship": "documented", "explanation": "Alphabetic systems are part of writing's varied history, not a necessary successor to every earlier script.", "sourceIds": ["penn-alphabet"] },
+        { "elementId": "scribe", "relationship": "documented", "explanation": "The museum discusses scribes adapting alphabetic signs to cuneiform; this does not prove that all alphabets were invented by professional scribes.", "sourceIds": ["penn-alphabet"] },
+        { "elementId": "manuscript", "relationship": "gameplay-abstraction", "explanation": "An alphabetic handwritten text is one Atlas branch, not a requirement for all manuscripts.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "c. 1900-1800 BCE (contextual dating)", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Wadi el-Hol, Egypt"], "sourceIds": ["penn-alphabet"], "note": "The museum discusses nearby dated Egyptian inscriptions as context for early alphabetic marks. This is not an exact invention date or a settled birthplace." },
+        { "dateRange": "Eighth century BCE", "dateType": "earliest-known-evidence", "precision": "approximate", "regions": ["Greek world"], "sourceIds": ["penn-alphabet"], "note": "The museum essay's earliest-known Greek inscription examples, not the first alphabet worldwide or proof of universal adoption." }
+      ],
+      "associatedRegions": ["Wadi el-Hol, Egypt", "Sinai and the Levant", "Greek world"],
+      "archaeologicalEvidence": [
+        { "text": "The essay discusses surviving inscriptions. Its displayed Beth Shemesh example is explicitly a modern plaster cast of the ancient tablet, not the original object.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["penn-alphabet"] },
+        { "text": "The museum describes competing interpretations of the beginnings of alphabetic writing. The identification and contextual dating of early signs do not establish an undisputed invention date or birthplace.", "evidenceType": "interpretation", "interpretation": "disputed", "sourceIds": ["penn-alphabet"] }
+      ],
+      "historicalSignificance": { "text": "The museum examines regional adaptation, preservation and social conditions rather than treating fewer signs as an automatic path to widespread literacy. Different writing systems remained useful, and the alphabet's later prominence was not inevitable.", "sourceIds": ["penn-alphabet"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["This museum synthesis is not a full review of the original excavation and decipherment literature.", "The early marks, associated dating contexts and proposed places of origin have competing interpretations.", "Contested third-millennium alphabet identifications and a single explanation for diffusion are not accepted here.", "Surviving inscriptions do not directly measure literacy or the extent of adoption in a whole society."],
+      "gameplaySimplifications": ["Alphabet groups different alphabetic traditions, including early consonant-based signs; it does not represent only modern Latin letters.", "Iron Age placement does not date its beginning or make metalworking a historical prerequisite.", "The puzzle's scribal association is symbolic, not an inevitable development from every writing system.", "Papyrus is only one possible writing surface, and a blank sheet plus a script does not itself make meaningful writing."],
+      "furtherResearch": [{ "question": "Add original excavation and decipherment studies, review newer interpretations, and document particular regional adaptations without assuming one diffusion path.", "sourceIds": [] }]
     }
   ]
 }

@@ -89,6 +89,27 @@ describe('Historical Encyclopedia', () => {
     expect(localStorage.getItem(SAVE_KEY)).toBe(disk)
   })
 
+  it.each([
+    ['rotary-quern', 'Rotary Quern', 'Hunsbury'],
+    ['lathe', 'Lathe', 'pivots'],
+    ['alphabet', 'Alphabet', 'consonant'],
+  ])('hides %s topics until discovery and makes them searchable without Insight', async (id, name, query) => {
+    discover('metal')
+    useGameStore.setState({ insightCredits: 0 })
+    const user = await openAtlas()
+    const search = screen.getByRole('searchbox', { name: 'Search discovered historical entries' })
+    await user.type(search, query)
+    expect(screen.queryByRole('button', { name: `Open historical entry for ${name}` })).not.toBeInTheDocument()
+    act(() => { discover('metal', id) })
+    const before = snapshotProgress(useGameStore.getState())
+    const disk = localStorage.getItem(SAVE_KEY)
+    expect(screen.getByRole('button', { name: `Open historical entry for ${name}` })).toBeVisible()
+    const article = await selectEntry(user, name)
+    expect(within(article).getByText('Historical overview')).toBeVisible()
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(disk)
+  })
+
   it('searches visible related context and citations only after discovering that related entry', async () => {
     discover('metal')
     const originalGet = researchByElementId.get.bind(researchByElementId)

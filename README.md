@@ -1,6 +1,6 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with **144 elements and 178 recipes across four ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
+An original combination-discovery game with **147 elements and 183 recipes across four ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
 
 Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a three-tab navigator. Pointer, touch, and keyboard controls are supported.
 

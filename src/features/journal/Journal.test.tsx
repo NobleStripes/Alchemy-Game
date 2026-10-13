@@ -85,6 +85,23 @@ describe('Guide preparation', () => {
   })
 
   describe('performed formula historical context', () => {
+    it('keeps the new alphabetic manuscript caution hidden until that alternate route is performed', async () => {
+      useGameStore.setState({
+        discoveredIds: elements.map((element) => element.id),
+        unlockedEraIds: eras.map((era) => era.id),
+        activeEraId: 'iron-age',
+        discoveredRecipeIds: ['copied-manuscript'],
+      })
+      const view = render(<Journal {...props} eraId="iron-age" />)
+      const caution = reviewsByRecipeId.get('alphabetic-manuscript')!.caution
+      expect(screen.queryByText(caution)).not.toBeInTheDocument()
+      view.unmount()
+      useGameStore.getState().transmuteWith('alphabet', 'papyrus')
+      render(<Journal {...props} eraId="iron-age" />)
+      await userEvent.setup().click(screen.getByText('Recorded Formulas (2)'))
+      expect(screen.getByText(caution)).toBeInTheDocument()
+    })
+
     it('keeps notes out of unperformed leads and locked or unsuccessful experiments', () => {
       useGameStore.setState({
         discoveredIds: elements.map((element) => element.id),

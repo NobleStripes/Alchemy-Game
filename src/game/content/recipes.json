@@ -176,5 +176,10 @@
   { "id": "reinforced-wagon", "inputs": ["nail", "cart"], "result": "wagon", "flavor": "Fasteners evoke vehicle craft, not a universal cart-to-wagon sequence or a need for iron joins." },
   { "id": "remembered-direction", "inputs": ["human", "wind"], "result": "compass", "flavor": "A traveler reads the landscape and weather alongside remembered routes." },
   { "id": "shaped-writing-reed", "inputs": ["reed", "scribe"], "result": "quill", "flavor": "A scribe prepares a plant-based implement for marking a writing surface." },
-  { "id": "impressed-clay", "inputs": ["clay", "reed"], "result": "writing", "flavor": "Marks made with a reed on clay recall early Mesopotamian writing, independent of papyrus and ink." }
+  { "id": "impressed-clay", "inputs": ["clay", "reed"], "result": "writing", "flavor": "Marks made with a reed on clay recall early Mesopotamian writing, independent of papyrus and ink." },
+  { "id": "rotating-grindstone", "inputs": ["rock", "wheel"], "result": "rotary-quern", "flavor": "Stone meets the idea of rotation; a vehicle wheel is not a necessary part of a hand quern." },
+  { "id": "turning-workshop", "inputs": ["timber", "wheel"], "result": "lathe", "flavor": "Rotation meets woodworking; supports, a cutting tool and controlled motion are abbreviated, not invented by the pair." },
+  { "id": "alphabetic-signs", "inputs": ["writing", "scribe"], "result": "alphabet", "flavor": "A symbolic branch explores signs for sounds; trained writing does not inevitably become an alphabet." },
+  { "id": "rotary-flour", "inputs": ["rotary-quern", "crop"], "result": "flour", "flavor": "Prepared cereal grains pass between turning stones; not every crop is grain, and earlier grinding routes remain valid." },
+  { "id": "alphabetic-manuscript", "inputs": ["alphabet", "papyrus"], "result": "manuscript", "flavor": "Alphabetic signs evoke one handwritten text; people, language and writing are omitted, and other scripts and surfaces remain possible." }
 ]

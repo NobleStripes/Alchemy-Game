@@ -15,6 +15,18 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it.each(['rotary-quern', 'lathe', 'alphabet'])('round-trips the new %s discovery and explicit reading without a version bump', (id) => {
+    const progress = parseProgress(JSON.stringify({
+      ...fresh(),
+      discoveredIds: [...starterElementIds, id],
+      readHistoricalElementIds: [id],
+    }))!
+    expect(progress.version).toBe(7)
+    expect(progress.discoveredIds).toContain(id)
+    expect(progress.readHistoricalElementIds).toEqual([id])
+    expect(parseProgress(exportProgress(progress))).toEqual(progress)
+  })
+
   it('defaults older v7 saves to unread and only retains discovered researched reading markers', () => {
     const progress = fresh()
     const { readHistoricalElementIds, ...older } = progress

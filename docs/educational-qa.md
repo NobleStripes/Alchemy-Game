@@ -6,7 +6,7 @@ Review date: **2026-10-13**.
 
 ## Status and scope
 
-Phase 7 reviews the current four-age catalog: **144 elements, 178 recipes, ten historical entries, and 22 consulted sources plus one pending source**. Original supporting passages were revisited, including official collection APIs and legitimate article archives where the main page was inaccessible. Titles, credited authors/institutions, URLs and access limits remain in the [research registry](../src/game/content/research.json).
+Phase 7 reviewed the pre-expansion four-age baseline: **144 elements, 178 recipes, ten historical entries, and 22 consulted sources plus one pending source**. Original supporting passages were revisited, including official collection APIs and legitimate article archives where the main page was inaccessible. Titles, credited authors/institutions, URLs and access limits remain in the [research registry](../src/game/content/research.json).
 
 The ten entries contain **94 citation-bearing blocks** and **23 chronology entries**, including three undated entries. Blocks can contain several statements; this is not a count of individually proven claims. The review checked those statements against the accessed passages and examined descriptions for contradictory implications.
 
@@ -15,6 +15,8 @@ The ten entries contain **94 citation-bearing blocks** and **23 chronology entri
 **No human participants have been observed. Learning and misconception results are pending**, by agreement. Scripted tests are not player teach-back evidence.
 
 ## Historical findings and corrections
+
+The Phase 7 counts and software observations below are retained as a baseline, not retroactively attributed to the subsequent Iron Age batch. Its separate review appears under [Iron Age expansion review](#iron-age-expansion-review).
 
 | Area | Evidence checked and resulting treatment |
 | --- | --- |
@@ -86,6 +88,29 @@ Validation completed on the review date:
 - The browser checks made no persistent save changes. The viewport was restored to **1440px**, where the page/article also fit. No shared campaign was reset, seeded or used for test combinations.
 
 These are software/source-review observations, not human-playtest results or a comprehensive screen-reader audit.
+
+## Iron Age expansion review
+
+This subsequent batch adds **Rotary Quern, Lathe, and Alphabet**, five optional routes, and three complete historical entries. Current totals are **147 elements, 183 recipes, 13 historical entries, 29 chronology entries, and 26 consulted sources plus one pending source**. All 178 earlier recipe IDs, input pairs, results and ordering remain pinned by their original prefix hash. Gates, grants, landmarks, challenge goals, collections, labs, rewards and save version 7 are unchanged; catalog completion percentages include the new optional discoveries.
+
+| Addition | Original evidence and limits |
+| --- | --- |
+| Rotary Quern | Northampton Museums' Hunsbury account supports British regional context, older saddle grinding, cereal processing and distant stone sources. Around 200 BCE is not a global invention or uniform adoption date. A proposed dowry interpretation and industrial-revolution rhetoric are not accepted as archaeological conclusions. |
+| Lathe | The V&A's contextual essay supports a later depicted rope-driven turning example. Sitry's original 2022 journal abstract proposes earlier pivot identifications from shape and wear; the full study was not reviewed. The proposed parts remain hypothetical, and the museum's first-proven phrasing is not adopted as a worldwide conclusion. |
+| Alphabet | Inspected Penn Museum sections support earlier precedents, later regional examples and literacy without alphabets. Early dating/origin interpretations remain contested. The displayed Beth Shemesh cast is not described as the original tablet; disputed third-millennium claims and one universal diffusion explanation are not accepted. |
+| Lock | Deferred by explicit user choice: no appropriate original ancient archaeological account was verified. A reconstruction, a medieval key guide and unverified search claims were insufficient. No element, recipe, accepted source or historical entry was added. |
+
+The five new recipe cautions carry background references, giving **77 referenced and 106 unreferenced cautions**. All three additions have historical records, so **134 discoveries still lack researched histories**. Regional representation gaps and earlier Phase 7 open questions remain; this batch is not an exhaustive literature review.
+
+Expansion validation:
+
+- **486 tests passed across 13 files**, including both-order resolution for all five pairs, gated reachability, source/uncertainty validation, free discovered-only Atlas rendering and topic search, and performed-only alternate-route disclosure.
+- Original version 7 discoveries, historical experiments and earned rewards survive loading without auto-discovering the additions. Existing normalization removes newly valid pairs from the active failure ledger without changing stored bytes on load or awarding Insight; an old no-reaction experiment remains a historical record. New discoveries and explicit reading markers round-trip.
+- Production build/TypeScript checking, focused ESLint and editor diagnostics passed. Vite reports a bundle-size advisory, not a failed build.
+- All **40 local documentation links/anchors** resolved; scoped whitespace checks passed.
+- Existing keyboard/citation and isolated Rainmaker/lab regressions passed. No shared browser campaign was reset, seeded or used for combinations. The previously shared browser page was unavailable for an additional live layout check; new entries were verified in isolated rendered tests, not claimed as a new device or screen-reader audit.
+
+Human comprehension and misconception results remain **pending**. Relevant future probes include whether a rotary quern needs a vehicle wheel, whether proposed pivots are proven earliest evidence, and whether alphabets are necessary for literacy. These are facilitator topics, not simulated participant observations.
 
 ## Human playtest protocol
 

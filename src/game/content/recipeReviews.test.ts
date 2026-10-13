@@ -9,16 +9,16 @@ const fixture = () => structuredClone(recipeReviews)
 describe('historical recipe review', () => {
   it('covers every recipe exactly once, including alternate routes', () => {
     expect(schema.parse(recipeReviews)).toEqual(recipeReviews)
-    expect(recipeReviews.reviews).toHaveLength(178)
+    expect(recipeReviews.reviews).toHaveLength(183)
     expect(new Set(recipeReviews.reviews.map((review) => review.recipeId)))
       .toEqual(new Set(recipes.map((recipe) => recipe.id)))
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(13)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(90)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(75)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(14)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(91)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(78)
   })
 
   it('preserves the pre-audit IDs, input pairs, results and order', async () => {
-    const graph = recipes.map((recipe) => [recipe.id, ...recipe.inputs, recipe.result])
+    const graph = recipes.slice(0, 178).map((recipe) => [recipe.id, ...recipe.inputs, recipe.result])
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(graph)))
     expect(Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join(''))
       .toBe('2b61adfef961ea0ef755f72bdfe192766d3082184dd5cd59b0480badef2674a9')
@@ -65,6 +65,11 @@ describe('historical recipe review', () => {
     ['smelted-iron', 'simplified-process', 'slag', 'nps-bloomery'],
     ['opened-road', 'simplified-process', 'without iron', 'sweet-track'],
     ['roadside-market', 'symbolic', 'predate', 'whe-trade'],
+    ['rotating-grindstone', 'symbolic', 'not a vehicle component', 'northampton-quern'],
+    ['turning-workshop', 'symbolic', 'proposed identification', 'sitry-lathe-pivots'],
+    ['alphabetic-signs', 'symbolic', 'not an inevitable progression', 'penn-alphabet'],
+    ['rotary-flour', 'material-process', 'not every cultivated plant', 'northampton-quern'],
+    ['alphabetic-manuscript', 'simplified-process', 'not universal prerequisites', 'um-papyrus'],
   ])('qualifies the priority chain %s without inventing chronology', (recipeId, classification, caution, sourceId) => {
     const review = reviewsByRecipeId.get(recipeId)!
     expect(review.classification).toBe(classification)

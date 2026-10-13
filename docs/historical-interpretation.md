@@ -28,7 +28,7 @@ Landmarks, grants, discovery goals (18 / 16 / 23 / 6), and rewards are unchanged
 
 ## Element review
 
-All **144 current element descriptions** were reviewed, including the 24 additions beyond the earlier 120-element catalog; the requested 115-element count is no longer current. Generic natural phenomena and plausible nonexclusive craft descriptions are retained rather than assigned unsupported invention dates. The material corrections are:
+The earlier review covered **144 element descriptions**, including the 24 additions beyond the 120-element catalog. Three sourced Iron Age additions now bring the catalog to **147**; the requested 115-element count is no longer current. Generic natural phenomena and plausible nonexclusive craft descriptions are retained rather than assigned unsupported invention dates. The material corrections are:
 
 | Element or group | Treatment |
 | --- | --- |
@@ -45,6 +45,7 @@ All **144 current element descriptions** were reviewed, including the 24 additio
 | Boat, Anchor, Bellows, Iron, Bloomery, Sickle, Steel | Earlier watercraft, stone anchors, bellows, and non-iron sickles are acknowledged. Rare and meteoritic iron precedes wider ironworking. Bloomery reduction produces a solid bloom, not cast liquid iron; steel properties depend on composition and heat treatment. |
 | Empire, Manuscript, Irrigation, Granary, Loom, Textile | Earlier empires, handwritten records, water management, storage, and textiles are acknowledged. Their later page placement does not claim a first invention or inevitable centralized organization. |
 | Saw, Timber, Bridge, Wagon | These depict later steel or iron-reinforced workshop branches, not the first woodwork, crossing, or wheeled carrier. Copper/bronze saws, wood prepared with axes and wedges, timber crossings, and fourth-millennium BCE wagons existed earlier. |
+| Rotary Quern, Lathe, Alphabet | Optional page assignments, not universal invention dates. British rotary-grinding evidence is distinguished from older grinding; proposed Egyptian lathe pivots remain hypothetical and abstract-only; alphabetic precedents predate the Iron Age frame, and literacy need not use an alphabet. See the sourced records and access limits in the [research guide](research.md). |
 
 Stable element and recipe IDs, existing ingredient pairs, saved discoveries, formulas, experiment history, favorites, and earned reward markers are retained. Legacy IDs such as `compass`, `nation`, `quill`, and `plow` now identify the corrected concepts. Existing save reconciliation unlocks Bronze for a previously discovered Polity or Iron for a previously discovered Lens and supplies the normal ore grants without retroactive Insight. New games still use the original gates. Page and category completion percentages can change after reclassification.
 

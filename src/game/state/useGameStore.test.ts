@@ -288,6 +288,9 @@ describe('campaign state', () => {
     ['stone-age', 'prepared-leather', 'hide', 'ash', 'leather'],
     ['bronze-age', 'threaded-frame', 'fibre', 'tree', 'loom'],
     ['iron-age', 'iron-specialist', 'iron-tool', 'human', 'blacksmith'],
+    ['iron-age', 'rotating-grindstone', 'rock', 'wheel', 'rotary-quern'],
+    ['iron-age', 'turning-workshop', 'timber', 'wheel', 'lathe'],
+    ['iron-age', 'alphabetic-signs', 'writing', 'scribe', 'alphabet'],
   ])('keeps new %s discoveries locked until their age is available', (eraId, recipeId, firstId, secondId, resultId) => {
     const eraIndex = eras.findIndex((era) => era.id === eraId)
     useGameStore.setState({
@@ -310,6 +313,11 @@ describe('campaign state', () => {
     ['stone-age', 'prepared-leather', 'hide', 'ash', 'leather'],
     ['bronze-age', 'threaded-frame', 'fibre', 'tree', 'loom'],
     ['iron-age', 'iron-specialist', 'iron-tool', 'human', 'blacksmith'],
+    ['iron-age', 'rotating-grindstone', 'rock', 'wheel', 'rotary-quern'],
+    ['iron-age', 'turning-workshop', 'timber', 'wheel', 'lathe'],
+    ['iron-age', 'alphabetic-signs', 'writing', 'scribe', 'alphabet'],
+    ['iron-age', 'rotary-flour', 'rotary-quern', 'crop', 'flour'],
+    ['iron-age', 'alphabetic-manuscript', 'alphabet', 'papyrus', 'manuscript'],
   ])('persists a new %s discovery and its formula across reload', (eraId, recipeId, firstId, secondId, resultId) => {
     const unlockedEras = eras.slice(0, eras.findIndex((era) => era.id === eraId) + 1)
     useGameStore.setState({
@@ -329,6 +337,42 @@ describe('campaign state', () => {
     expect(snapshotProgress(reloaded)).toEqual(campaign())
     expect(reloaded.persistenceError).toBeNull()
     expect(reloaded.activeEraId).toBe(eraId)
+  })
+
+  it('preserves a pre-batch v7 save and its formerly unknown pair until a new experiment', () => {
+    const progress: SavedProgress = {
+      ...fresh(),
+      discoveredIds: elements.slice(0, 144).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 178).map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      activeEraId: 'iron-age',
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      challengeRecords: learningChallenges.map((challenge) => ({
+        challengeId: challenge.id, completed: true, bestAttemptCount: challenge.minimumAttempts,
+      })),
+      insightCredits: 1,
+      insightFailureProgress: 3,
+      failedPairKeys: [pairKey('rock', 'wheel')],
+      experimentHistory: [{ id: 1, inputs: ['rock', 'wheel'], outcome: 'no-reaction' }],
+      readHistoricalElementIds: ['metal'],
+    }
+    const serialized = exportProgress(progress)
+    localStorage.setItem(saveKey, serialized)
+    const store = createGameStore()
+    expect(snapshotProgress(store.getState())).toEqual(snapshotProgress({ ...progress, failedPairKeys: [] }))
+    expect(disk()).toBe(serialized)
+    expect(store.getState().discoveredIds).toHaveLength(144)
+    store.getState().transmuteWith('wheel', 'rock')
+    expect(store.getState().lastAttempt).toMatchObject({ kind: 'discovery', resultId: 'rotary-quern' })
+    expect(store.getState().experimentHistory[0]).toEqual(progress.experimentHistory[0])
+    expect(store.getState().failedPairKeys).toEqual([])
+    expect(store.getState().insightCredits).toBe(1)
+    expect(store.getState().rewardedChallengeEraIds).toEqual(progress.rewardedChallengeEraIds)
+    expect(store.getState().rewardedCollectionIds).toEqual(progress.rewardedCollectionIds)
+    expect(store.getState().challengeRecords).toEqual(progress.challengeRecords)
+    store.getState().toggleHistoricalRead('rotary-quern')
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual(['metal', 'rotary-quern'])
   })
 
   it('loads a pre-expansion complete catalog without granting new discoveries or repeating rewards', () => {

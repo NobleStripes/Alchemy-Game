@@ -13,6 +13,7 @@ const priorityIds = [
   'compass', 'lens', 'nation', 'metal', 'quill',
   'writing', 'road', 'market', 'plow', 'glass',
 ]
+const expansionIds = ['rotary-quern', 'lathe', 'alphabet']
 
 describe('historical research database', () => {
   it('exposes historical structural schemas from the shared content schema module', () => {
@@ -22,7 +23,6 @@ describe('historical research database', () => {
     expect(historicalEntrySchema.parse(historicalResearch.records[0])).toEqual(historicalResearch.records[0])
     expect(historicalDatabaseSchema.parse(historicalResearch)).toEqual(historicalResearch)
   })
-
   it('allows missing chronology and geography without inventing dates or regions', () => {
     const data = fixture()
     const { approximateDates, associatedRegions, ...entry } = data.records[0]
@@ -56,19 +56,19 @@ describe('historical research database', () => {
     }
   })
 
-  it('validates the initial ten records and source registry', () => {
+  it('validates the original ten records, three additions and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual(priorityIds)
+      .toEqual([...priorityIds, ...expansionIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(22)
+    )).toHaveLength(26)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
   })
 
-  it.each(priorityIds)('links %s research to its current name and stable ID', (elementId) => {
+  it.each([...priorityIds, ...expansionIds])('links %s research to its current name and stable ID', (elementId) => {
     const record = researchByElementId.get(elementId)
     expect(record?.elementName).toBe(
       elements.find((element) => element.id === elementId)?.name,
@@ -81,9 +81,9 @@ describe('historical research database', () => {
     expect(record?.gameplaySimplifications.length).toBeGreaterThan(0)
   })
 
-  it('keeps gameplay totals, the four ages and fictional Origins unchanged', () => {
-    expect(elements).toHaveLength(144)
-    expect(recipes).toHaveLength(178)
+  it('includes the additive batch while keeping four ages and fictional Origins', () => {
+    expect(elements).toHaveLength(147)
+    expect(recipes).toHaveLength(183)
     expect(eras).toHaveLength(4)
     expect(eras[0].dateRange).toBeUndefined()
     expect(researchByElementId.get('metal')?.approximateDates[0]).toMatchObject({
@@ -92,6 +92,25 @@ describe('historical research database', () => {
       regions: [],
       sourceIds: [],
     })
+  })
+
+  it('keeps regional chronology, proposed pivots and abstract-only access explicit', () => {
+    for (const id of expansionIds) {
+      const record = researchByElementId.get(id)!
+      expect(record.archaeologicalEvidence.length).toBeGreaterThan(0)
+      expect(record.manufactureOrUse.sourceIds.length).toBeGreaterThan(0)
+      expect(record.approximateDates.every((date) => date.precision === 'approximate')).toBe(true)
+      expect(record.approximateDates.some((date) => date.dateType === 'widespread-adoption')).toBe(false)
+    }
+    expect(researchByElementId.get('rotary-quern')?.agePlacement.status).toBe('earlier-precedents')
+    expect(researchByElementId.get('alphabet')?.agePlacement.status).toBe('earlier-precedents')
+    expect(researchByElementId.get('lathe')?.archaeologicalEvidence[0].interpretation).toBe('hypothesis')
+    expect(historicalResearch.sources.find((source) => source.id === 'sitry-lathe-pivots')?.verification)
+      .toMatchObject({ status: 'verified', accessLevel: 'abstract-only' })
+    expect(researchByElementId.get('alphabet')?.archaeologicalEvidence[0].text).toContain('plaster cast')
+    expect(researchByElementId.get('alphabet')?.archaeologicalEvidence[1].interpretation).toBe('disputed')
+    expect(elements.some((element) => element.id === 'lock')).toBe(false)
+    expect(researchByElementId.has('lock')).toBe(false)
   })
 
   it('records independent writing traditions without inventing a Mesoamerican date', () => {
