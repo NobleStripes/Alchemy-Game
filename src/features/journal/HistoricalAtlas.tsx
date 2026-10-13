@@ -26,6 +26,47 @@ const placementLabels = {
   'fictional-prologue': 'Fictional, undated prologue',
 }
 
+function entrySources(record: HistoricalResearchRecord, discoveredIds: readonly string[]) {
+  const citedIds = new Set([
+    ...record.historicalOverview.sourceIds,
+    ...record.manufactureOrUse.sourceIds,
+    ...record.agePlacement.sourceIds,
+    ...record.historicalSignificance.sourceIds,
+    ...record.approximateDates.flatMap((entry) => entry.sourceIds),
+    ...record.archaeologicalEvidence.flatMap((entry) => entry.sourceIds),
+    ...record.independentDevelopments.flatMap((entry) => entry.sourceIds),
+    ...record.relatedDiscoveries
+      .filter((link) => discoveredIds.includes(link.elementId))
+      .flatMap((link) => link.sourceIds),
+  ])
+  return historicalResearch.sources.filter((source) => citedIds.has(source.id))
+}
+
+function historicalSearchText(record: HistoricalResearchRecord, discoveredIds: readonly string[]) {
+  return [
+    record.historicalOverview.text,
+    record.manufactureOrUse.text,
+    record.historicalSignificance.text,
+    record.agePlacement.text,
+    ...record.associatedRegions,
+    ...record.approximateDates.flatMap((entry) => [
+      entry.dateRange, dateLabels[entry.dateType], ...entry.regions, entry.note,
+    ]),
+    ...record.archaeologicalEvidence.flatMap((entry) => [
+      entry.text, evidenceLabels[entry.interpretation], entry.evidenceType,
+    ]),
+    ...record.independentDevelopments.flatMap((entry) => [...entry.regions, entry.text]),
+    ...record.historicalUncertainty,
+    ...record.gameplaySimplifications,
+    ...record.relatedDiscoveries
+      .filter((link) => discoveredIds.includes(link.elementId))
+      .flatMap((link) => [elementsById.get(link.elementId)!.name, link.explanation]),
+    ...entrySources(record, discoveredIds).flatMap((source) => [
+      source.title, source.institution, ...source.authors,
+    ]),
+  ].join(' ')
+}
+
 function ResearchEntry({
   record, discoveredIds, onSelect,
 }: {
@@ -36,17 +77,7 @@ function ResearchEntry({
   const related = record.relatedDiscoveries.filter(
     (link) => discoveredIds.includes(link.elementId),
   )
-  const citedIds = new Set([
-    ...record.historicalOverview.sourceIds,
-    ...record.manufactureOrUse.sourceIds,
-    ...record.agePlacement.sourceIds,
-    ...record.historicalSignificance.sourceIds,
-    ...record.approximateDates.flatMap((entry) => entry.sourceIds),
-    ...record.archaeologicalEvidence.flatMap((entry) => entry.sourceIds),
-    ...record.independentDevelopments.flatMap((entry) => entry.sourceIds),
-    ...related.flatMap((link) => link.sourceIds),
-  ])
-  const sources = historicalResearch.sources.filter((source) => citedIds.has(source.id))
+  const sources = entrySources(record, discoveredIds)
 
   function citations(sourceIds: string[]) {
     return sourceIds.map((id) => {
@@ -68,18 +99,24 @@ function ResearchEntry({
       <h4>Historical overview</h4>
       {passage(record.historicalOverview)}
       <h4>Historical dates and geography</h4>
-      <p>Regions: {record.associatedRegions.join('; ')}.</p>
-      <p>Dates describe particular evidence or regional histories, not universal invention dates.</p>
-      <ul>
-        {record.approximateDates.map((entry, index) => (
-          <li key={index}>
-            <strong>{entry.dateRange}</strong>
-            <span className="history-indicator">{dateLabels[entry.dateType]}</span>
-            {entry.regions.length > 0 && <p>{entry.regions.join('; ')}</p>}
-            <p>{entry.note}{citations(entry.sourceIds)}</p>
-          </li>
-        ))}
-      </ul>
+      {record.associatedRegions.length > 0
+        ? <p>Regions: {record.associatedRegions.join('; ')}.</p>
+        : <p>No geographical associations are recorded for this entry.</p>}
+      {record.approximateDates.length > 0 ? (
+        <>
+          <p>Dates describe particular evidence or regional histories, not universal invention dates.</p>
+          <ul>
+            {record.approximateDates.map((entry, index) => (
+              <li key={index}>
+                <strong>{entry.dateRange}</strong>
+                <span className="history-indicator">{dateLabels[entry.dateType]}</span>
+                {entry.regions.length > 0 && <p>{entry.regions.join('; ')}</p>}
+                <p>{entry.note}{citations(entry.sourceIds)}</p>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : <p>No sourced dates are recorded for this entry.</p>}
       <h4>Manufacture and use</h4>
       {passage(record.manufactureOrUse)}
       <h4>Why it mattered</h4>
@@ -147,7 +184,7 @@ function ResearchEntry({
       <h4>Sources and references</h4>
       <ol className="history-sources">
         {sources.map((source) => (
-          <li id={`history-source-${source.id}`} key={source.id}>
+          <li id={`history-source-${source.id}`} key={source.id} tabIndex={-1}>
             <SourceReference source={source} />
           </li>
         ))}
@@ -169,8 +206,17 @@ export function HistoricalAtlas() {
   const record = selected ? researchByElementId.get(selected.id) : undefined
   const readable = discovered.filter((element) => researchByElementId.has(element.id))
   const readCount = readable.filter((element) => readHistoricalElementIds.includes(element.id)).length
+  const searchTerms = query.trim().toLowerCase().split(/\s+/).filter(Boolean)
   const matches = discovered
-    .filter((element) => element.name.toLowerCase().includes(query.trim().toLowerCase()))
+    .filter((element) => {
+      if (searchTerms.length === 0) return true
+      const research = researchByElementId.get(element.id)
+      const text = [
+        element.name,
+        research ? historicalSearchText(research, discoveredIds) : '',
+      ].join(' ').toLowerCase()
+      return searchTerms.every((term) => text.includes(term))
+    })
     .sort((a, b) => a.name.localeCompare(b.name))
 
   useEffect(() => {
@@ -192,8 +238,20 @@ export function HistoricalAtlas() {
       {persistenceError && <p className="save-error" role="alert">{persistenceError}</p>}
       <label className="history-search">
         Search discovered historical entries
-        <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} />
+        <input
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          aria-describedby="history-search-help"
+        />
       </label>
+      <p id="history-search-help" className="detail-desc">
+        Search names, historical topics, regions, dates, or cited sources. Every search word must match.
+        Only discovered entries and their visible research are searched.
+      </p>
+      <p className="detail-desc" role="status" aria-live="polite" aria-atomic="true">
+        {matches.length} discovered {matches.length === 1 ? 'entry' : 'entries'} found.
+      </p>
       <nav className="history-index" aria-label="Discovered historical entries">
         {matches.map((element) => (
           <button

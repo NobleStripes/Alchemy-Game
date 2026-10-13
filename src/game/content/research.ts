@@ -1,157 +1,17 @@
-import { z } from 'zod'
 import rawResearch from './research.json'
 import { elements } from './index'
+import { historicalDatabaseSchema, type HistoricalResearchSource } from './schema'
 
-const text = z.string().trim().min(1)
-const id = text.regex(/^[a-z][a-z0-9-]*$/)
-const webUrl = z.url({ protocol: /^https?$/ })
-const uniqueIds = z.array(id).refine(
-  (ids) => new Set(ids).size === ids.length,
-  'Source references must be unique.',
-)
-const sourceIds = uniqueIds.nonempty()
-const regions = z.array(text).nonempty().refine(
-  (values) => new Set(values).size === values.length,
-  'Regions must be unique.',
-)
-const citedText = z.strictObject({ text, sourceIds })
-
-const sourceSchema = z.strictObject({
-  id,
-  title: text,
-  authors: z.array(text),
-  institution: text,
-  sourceType: z.enum([
-    'museum-collection',
-    'museum-essay',
-    'library-collection',
-    'archaeology-institution',
-    'peer-reviewed-study',
-    'reference-encyclopedia',
-  ]),
-  url: webUrl,
-  publicationDate: z.iso.date().nullable(),
-  verification: z.discriminatedUnion('status', [
-    z.strictObject({
-      status: z.literal('verified'),
-      checkedOn: z.iso.date(),
-      accessedUrl: webUrl,
-      accessLevel: z.enum([
-        'collection-record',
-        'selected-passages',
-        'abstract-only',
-      ]),
-      locator: text,
-    }),
-    z.strictObject({
-      status: z.literal('pending'),
-      attemptedOn: z.iso.date(),
-      reason: text,
-    }),
-  ]),
-})
-
-const chronologySchema = z.strictObject({
-  dateRange: text,
-  dateType: z.enum([
-    'dated-evidence',
-    'earliest-known-evidence',
-    'regional-development',
-    'widespread-adoption',
-    'undated',
-  ]),
-  precision: z.enum(['approximate', 'year-resolved', 'undated']),
-  regions: z.array(text),
-  sourceIds: uniqueIds,
-  note: text,
-}).superRefine((entry, ctx) => {
-  if (entry.dateType === 'undated') {
-    if (entry.precision !== 'undated') {
-      ctx.addIssue({
-        code: 'custom',
-        path: ['precision'],
-        message: 'Undated entries cannot claim a date precision.',
-      })
-    }
-  } else {
-    if (entry.sourceIds.length === 0 || entry.regions.length === 0) {
-      ctx.addIssue({
-        code: 'custom',
-        message: 'Historical dates require a region and verified sources.',
-      })
-    }
-    if (entry.precision === 'undated') {
-      ctx.addIssue({
-        code: 'custom',
-        path: ['precision'],
-        message: 'Dated entries must specify their precision.',
-      })
-    }
-  }
-  if (entry.precision === 'year-resolved' && entry.dateType !== 'dated-evidence') {
-    ctx.addIssue({
-      code: 'custom',
-      path: ['dateType'],
-      message: 'Year-resolved dates describe a specific dated object or event, not an invention or adoption.',
-    })
-  }
-})
-
-const recordSchema = z.strictObject({
-  elementId: id,
-  elementName: text,
-  historicalOverview: citedText,
-  manufactureOrUse: citedText,
-  agePlacement: z.strictObject({
-    status: z.enum(['earlier-precedents', 'regional-gameplay-placement', 'fictional-prologue']),
-    text,
-    sourceIds: uniqueIds,
-  }),
-  relatedDiscoveries: z.array(z.strictObject({
-    elementId: id,
-    relationship: z.enum(['documented', 'gameplay-abstraction']),
-    explanation: text,
-    sourceIds: uniqueIds,
-  })).refine(
-    (links) => new Set(links.map((link) => link.elementId)).size === links.length,
-    'Related discoveries must be unique.',
-  ),
-  approximateDates: z.array(chronologySchema).nonempty(),
-  associatedRegions: regions,
-  archaeologicalEvidence: z.array(z.strictObject({
-    text,
-    evidenceType: z.enum(['artifact', 'excavated-context', 'textual-evidence', 'interpretation']),
-    interpretation: z.enum(['attested', 'hypothesis', 'disputed']),
-    sourceIds,
-  })),
-  historicalSignificance: citedText,
-  independentDevelopments: z.array(z.strictObject({
-    regions,
-    text,
-    sourceIds,
-  })),
-  historicalUncertainty: z.array(text).nonempty(),
-  gameplaySimplifications: z.array(text).nonempty(),
-  furtherResearch: z.array(z.strictObject({
-    question: text,
-    sourceIds: uniqueIds,
-  })),
-})
-
-const databaseSchema = z.strictObject({
-  schemaVersion: z.literal(2),
-  sources: z.array(sourceSchema).nonempty(),
-  records: z.array(recordSchema).nonempty(),
-})
-
-export type HistoricalResearchSource = z.infer<typeof sourceSchema>
-export type HistoricalResearchRecord = z.infer<typeof recordSchema>
-export type HistoricalResearchDatabase = z.infer<typeof databaseSchema>
+export type {
+  HistoricalResearchSource,
+  HistoricalResearchRecord,
+  HistoricalResearchDatabase,
+} from './schema'
 
 export function createResearchDatabaseSchema(
   catalog: readonly { id: string; name: string; era: string }[],
 ) {
-  return databaseSchema.superRefine((database, ctx) => {
+  return historicalDatabaseSchema.superRefine((database, ctx) => {
     const catalogById = new Map(catalog.map((element) => [element.id, element]))
     const sourcesById = new Map<string, HistoricalResearchSource>()
     database.sources.forEach((source, index) => {

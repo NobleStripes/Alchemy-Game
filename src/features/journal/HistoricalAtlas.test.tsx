@@ -4,9 +4,10 @@ import '../../game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
 import { act, cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { elements, starterElementIds } from '../../game/content'
-import { historicalResearch } from '../../game/content/research'
+import { historicalResearch, researchByElementId } from '../../game/content/research'
+import { historicalEntrySchema } from '../../game/content/schema'
 import { SAVE_KEY } from '../../game/state/persistence'
 import { createGameStore, snapshotProgress, useGameStore } from '../../game/state/useGameStore'
 import { HistoricalAtlas } from './HistoricalAtlas'
@@ -15,7 +16,10 @@ beforeEach(() => {
   localStorage.clear()
   useGameStore.getState().resetProgress()
 })
-afterEach(cleanup)
+afterEach(() => {
+  cleanup()
+  vi.restoreAllMocks()
+})
 
 function discover(...ids: string[]) {
   useGameStore.setState({ discoveredIds: [...starterElementIds, ...ids] })
@@ -34,6 +38,99 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
+  it.each([
+    ['Mesopotamia', 'Writing'],
+    ['cuneiform', 'Writing'],
+    ['3200 BCE', 'Writing'],
+    ['Ottaviano', 'Writing'],
+    ['Metaphors Invention', 'Writing'],
+    ['cRyStAl', 'Lens'],
+  ])('finds %s in discovered research, not just element names', async (query, name) => {
+    discover('writing', 'lens')
+    const before = snapshotProgress(useGameStore.getState())
+    const disk = localStorage.getItem(SAVE_KEY)
+    const user = await openAtlas()
+    const search = screen.getByRole('searchbox', { name: 'Search discovered historical entries' })
+    expect(search).toHaveAccessibleDescription(/Only discovered entries and their visible research/)
+    await user.type(search, query)
+    const index = screen.getByRole('navigation', { name: 'Discovered historical entries' })
+    expect(within(index).getByRole('button', { name: `Open historical entry for ${name}` })).toBeVisible()
+    expect(within(index).queryByRole('button', { name: /Writing Reed/ })).not.toBeInTheDocument()
+    expect(screen.getByRole('status')).toHaveTextContent(/discovered entr(y|ies) found/)
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(disk)
+  })
+
+  it('searches visible related context and citations only after discovering that related entry', async () => {
+    discover('metal')
+    const originalGet = researchByElementId.get.bind(researchByElementId)
+    const record = originalGet('metal')!
+    const source = historicalResearch.sources.find((entry) => entry.id === 'met-barley-account')!
+    vi.spyOn(researchByElementId, 'get').mockImplementation((id) => id === 'metal' ? {
+      ...record,
+      relatedDiscoveries: [{
+        elementId: 'writing', relationship: 'documented',
+        explanation: 'Hiddenregionalcontext', sourceIds: [source.id],
+      }],
+    } : originalGet(id))
+    const user = await openAtlas()
+    const search = screen.getByRole('searchbox')
+    for (const query of ['Hiddenregionalcontext', source.title]) {
+      await user.clear(search)
+      await user.type(search, query)
+      expect(screen.getByText('No matching discovered entries.')).toBeVisible()
+      expect(screen.getByRole('status')).toHaveTextContent('0 discovered entries found.')
+    }
+    act(() => { discover('metal', 'writing') })
+    await user.clear(search)
+    await user.type(search, 'Hiddenregionalcontext')
+    expect(screen.getByRole('button', { name: 'Open historical entry for Metal' })).toBeVisible()
+  })
+
+  it('shows absent optional chronology and geography without a fabricated date or empty region label', async () => {
+    discover('metal')
+    const originalGet = researchByElementId.get.bind(researchByElementId)
+    const entry = historicalEntrySchema.parse({
+      ...originalGet('metal'), approximateDates: undefined, associatedRegions: undefined,
+      independentDevelopments: [],
+    })
+    vi.spyOn(researchByElementId, 'get').mockImplementation((id) => id === 'metal' ? entry : originalGet(id))
+    const user = await openAtlas()
+    const article = await selectEntry(user, 'Metal')
+    expect(within(article).getByText('No sourced dates are recorded for this entry.')).toBeVisible()
+    expect(within(article).getByText('No geographical associations are recorded for this entry.')).toBeVisible()
+    expect(within(article).queryByText(/^Regions:/)).not.toBeInTheDocument()
+    expect(within(article).getByText('Historical overview')).toBeVisible()
+    expect(within(article).getAllByRole('link').length).toBeGreaterThan(0)
+  })
+
+  it('supports keyboard expansion, searching, selecting, reading controls and citation navigation', async () => {
+    discover('writing')
+    render(<HistoricalAtlas />)
+    const user = userEvent.setup()
+    await user.tab()
+    expect(screen.getByText('Historical Encyclopedia')).toHaveFocus()
+    await user.keyboard('[Enter]')
+    await user.tab()
+    expect(screen.getByRole('searchbox')).toHaveFocus()
+    await user.keyboard('mesopotamia')
+    await user.tab()
+    expect(screen.getByRole('button', { name: 'Open historical entry for Writing' })).toHaveFocus()
+    await user.keyboard('[Enter]')
+    expect(screen.getByRole('heading', { name: 'Writing', level: 3 })).toHaveFocus()
+    await user.tab()
+    expect(screen.getByRole('button', { name: 'Mark Writing as read' })).toHaveFocus()
+    await user.tab()
+    const citation = screen.getAllByRole('link', { name: /^Reference / })[0]
+    expect(citation).toHaveFocus()
+    expect(citation).toHaveAccessibleName(/^Reference /)
+    const target = document.getElementById(citation.getAttribute('href')!.slice(1))!
+    expect(target).toHaveAttribute('tabindex', '-1')
+    expect(within(target).getByRole('link', { name: 'Metaphors and the Invention of Writing' }))
+      .toHaveAttribute('target', '_blank')
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+  })
+
   it('marks reading only on explicit request, for free, without changing rewards or worktable progress', async () => {
     useGameStore.getState().transmuteWith('stone', 'ember')
     useGameStore.setState({ insightCredits: 0 })

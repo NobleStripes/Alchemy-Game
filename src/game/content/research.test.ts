@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { elements, eras, recipes } from './index'
+import { historicalChronologySchema, historicalDatabaseSchema, historicalEntrySchema, historicalSourceSchema } from './schema'
 import {
   createResearchDatabaseSchema,
   historicalResearch,
@@ -14,6 +15,47 @@ const priorityIds = [
 ]
 
 describe('historical research database', () => {
+  it('exposes historical structural schemas from the shared content schema module', () => {
+    expect(historicalSourceSchema.parse(historicalResearch.sources[0])).toEqual(historicalResearch.sources[0])
+    expect(historicalChronologySchema.parse(historicalResearch.records[0].approximateDates[0]))
+      .toEqual(historicalResearch.records[0].approximateDates[0])
+    expect(historicalEntrySchema.parse(historicalResearch.records[0])).toEqual(historicalResearch.records[0])
+    expect(historicalDatabaseSchema.parse(historicalResearch)).toEqual(historicalResearch)
+  })
+
+  it('allows missing chronology and geography without inventing dates or regions', () => {
+    const data = fixture()
+    const { approximateDates, associatedRegions, ...entry } = data.records[0]
+    expect(approximateDates.length).toBeGreaterThan(0)
+    expect(associatedRegions.length).toBeGreaterThan(0)
+    const result = schema.parse({ ...data, records: [{ ...entry, independentDevelopments: [] }] })
+    expect(result.records[0]).toEqual({
+      ...entry, independentDevelopments: [], approximateDates: [], associatedRegions: [],
+    })
+    const missingSource = { ...entry, historicalOverview: { ...entry.historicalOverview, sourceIds: ['missing-source'] } }
+    expect(schema.safeParse({ ...data, records: [{ ...missingSource, independentDevelopments: [] }] }).success).toBe(false)
+  })
+
+  it.each(['approximateDates', 'associatedRegions'] as const)('rejects invalid optional %s metadata', (field) => {
+    const data = fixture()
+    expect(schema.safeParse({ ...data, records: [{ ...data.records[0], [field]: null }] }).success).toBe(false)
+    expect(schema.safeParse({ ...data, records: [{ ...data.records[0], [field]: [''] }] }).success).toBe(false)
+  })
+
+  it('rejects duplicate chronological regions even when all regions are associated', () => {
+    const data = fixture()
+    const date = data.records[0].approximateDates[1]
+    date.regions = [date.regions[0], date.regions[0]]
+    const result = schema.safeParse(data)
+    expect(result.success).toBe(false)
+    if (!result.success) {
+      expect(result.error.issues).toContainEqual(expect.objectContaining({
+        path: ['records', 0, 'approximateDates', 1, 'regions'],
+        message: 'Regions must be unique.',
+      }))
+    }
+  })
+
   it('validates the initial ten records and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))

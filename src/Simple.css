@@ -637,7 +637,9 @@
 .collection-foundation { display: block; color: var(--teal-dark); font-size: 10px; }
 .learning-challenges .journal-element-btn { margin: 8px 5px 0 0; min-height: 44px; font-size: 12px; }
 .history-search input { width: 100%; min-width: 0; padding: 8px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 4px; font: inherit; }
-.history-index { max-height: 180px; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 5px; }
+.history-index { max-height: 180px; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 5px; padding: 3px; }
+.history-index .journal-element-btn { min-height: 44px; }
+.historical-atlas summary:focus-visible, .historical-atlas input:focus-visible, .historical-atlas button:focus-visible, .history-entry a:focus-visible, .history-entry [tabindex="-1"]:focus { outline: 2px solid var(--teal-dark); outline-offset: 2px; }
 .history-entry { color: var(--ink-soft); font-size: 12px; line-height: 1.55; overflow-wrap: anywhere; }
 .history-entry h3 { margin: 0; color: var(--ink); font: 900 17px/1.3 var(--display); }
 .history-entry h4 { font-size: 11px; }
@@ -645,7 +647,7 @@
 .history-entry ul, .history-entry ol { margin: 6px 0; padding-left: 20px; }
 .history-entry li { margin-bottom: 9px; }
 .history-entry a { color: var(--teal-dark); text-decoration: underline; }
-.history-entry .journal-element-btn { min-height: 36px; font-size: 12px; }
+.history-entry .journal-element-btn { min-height: 44px; font-size: 12px; }
 .history-indicator { margin: 4px 0; padding: 3px 6px; display: block; width: fit-content; max-width: 100%; color: var(--teal-dark); background: #e3f5f1; border: 1px solid #badad4; border-radius: 4px; font-size: 10px; font-weight: 700; }
 .history-indicator[data-interpretation='disputed'], .history-indicator[data-interpretation='hypothesis'] { color: #805a12; background: #fff1c6; border-color: #d8bd78; }
 .history-sources summary { cursor: pointer; font-size: 11px; }

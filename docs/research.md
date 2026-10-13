@@ -2,7 +2,9 @@
 
 [Back to the project overview](../README.md)
 
-Research lives in [`src/game/content/research.json`](../src/game/content/research.json), validated by [`research.ts`](../src/game/content/research.ts) and [`research.test.ts`](../src/game/content/research.test.ts). This is version-controlled JSON, not a hosted database. Schema version 2 adds educational Atlas fields. The Guide now loads this metadata, but it remains separate from gameplay content exports and changes no save fields, age gates or recipe routes.
+Research lives in [`src/game/content/research.json`](../src/game/content/research.json), not inside element definitions or a hosted database. Schema version 2 adds educational Atlas fields. Historical source, chronology, entry, and database schemas are exported from [`schema.ts`](../src/game/content/schema.ts); [`research.ts`](../src/game/content/research.ts) adds catalog-aware validation and loads the database. [`research.test.ts`](../src/game/content/research.test.ts) tests both layers.
+
+This separation keeps factual entries and bibliographic references out of gameplay definitions and save-game progression. Research entries refer to stable element IDs; they do not define recipe dependencies, unlock conditions, or rewards. Version 7 saves remain compatible and store only explicit reading IDs, never copies of research text or sources. No age assignments or recipe routes change with this schema update.
 
 The initial batch covers **10 of 144 elements**: Wayfinding (legacy Compass), Lens, Polity (legacy Nation), Metal, Writing Reed (legacy Quill), Writing, Road, Market, Ard (legacy Plow), and Glass. The registry now contains **22 consulted sources and one pending source**, including the recipe-review background. These are focused research records, not exhaustive histories or certification of every claim in an existing description. The remaining 134 elements have no research record yet.
 
@@ -15,8 +17,8 @@ The initial batch covers **10 of 144 elements**: Wayfinding (legacy Compass), Le
 | `manufactureOrUse` | Sourced material, production or usage context; gaps in reconstruction remain explicit. |
 | `agePlacement` | Cited earlier precedents or regional gameplay placement, or an explicitly fictional prologue. This does not infer chronology from date strings. |
 | `relatedDiscoveries` | Curated topic links, not inferred recipe edges. Documented relationships require verified citations; gameplay associations are labeled separately. Unknown targets, self-links and duplicates fail validation. |
-| `approximateDates` | Regional dates labeled as dated evidence, earliest known evidence, regional development, widespread adoption, or undated; each has a precision and explanatory note. |
-| `associatedRegions` | Relevant findspots or regions, not necessarily invention locations. |
+| `approximateDates` | Optional regional dates labeled as dated evidence, earliest known evidence, regional development, widespread adoption, or undated; each has a precision and explanatory note. An omitted field becomes an empty list, not an inferred invention date. |
+| `associatedRegions` | Optional relevant findspots or regions, not necessarily invention locations. An omitted field becomes an empty list, not an inferred origin. |
 | `archaeologicalEvidence` | Artifact, excavated-context, textual-evidence or interpretation entries, distinguished as attested, hypothetical or disputed. This can be empty when no material evidence is established. |
 | `historicalSignificance` | A sourced explanation of why the evidence matters. |
 | `independentDevelopments` | Separately referenced regional developments when supported. Writing records Mesopotamian, Egyptian, Chinese and Mesoamerican primary inventions; missing dates are not invented. An empty list means none is established by this source set, not that no independent development occurred. |
@@ -35,6 +37,8 @@ Prioritize excavation publications, peer-reviewed archaeology/archaeometry, muse
 ## Authoring and validation
 
 For new records, add sources and their receipts first, then reference verified source IDs from overviews, dates, evidence, significance and independent developments. Pending sources may appear only in `furtherResearch`. Validation rejects duplicate records/source IDs, dangling references, missing required fields, invalid web URLs/dates and historical dates without sources or geography. Year-resolved dates are reserved for specific dated evidence, such as the Sweet Track's construction, not exact invention/adoption claims. Unknown beginnings and fictional Origins remain undated; first surviving evidence is not widespread adoption.
+
+Chronology and geographical metadata may be omitted when unsupported. This never relaxes required claims, citations, uncertainty, or gameplay caveats. If dated evidence or independent regional developments are supplied, their regions must appear in `associatedRegions`; duplicate regions and unsupported references fail validation. The Guide explicitly identifies absent date or geographical metadata rather than displaying empty labels or inventing facts.
 
 Run the focused authoring checks with `npm test -- src\game\content\research.test.ts` from the repository root, then the [normal validation commands](../README.md#validate). These checks enforce the research structure and citation relationships, **not historical truth or live URL availability**; original-source review remains necessary.
 
