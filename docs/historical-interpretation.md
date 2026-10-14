@@ -2,6 +2,14 @@
 
 [Back to the project overview](../README.md)
 
+## Commerce, money and fiscal institutions
+
+Merchant Network and Customs Duty are optional Age V discoveries, not mandatory stages of economic development. Existing Coinage, Mint and Maritime Trade histories now compare early western Anatolian electrum (a gold-silver alloy), Indian punch-marked silver pieces and Chinese cast copper-alloy forms. Weight standards, denominations and issuing marks connect coinage to metalworking and standardized exchange; they did not guarantee universal acceptance or remove regional monetary differences. Trade preceded coins and did not universally require them.
+
+The Merchant Network label describes relationships reconstructed from texts, agents, cargo and artifact distributions, not one ancient organization. Networks predate Roman infrastructure and include inland and sea connections. Amphora evidence illuminates Mediterranean transport without identifying every producer, intermediary or direct route.
+
+Customs could apply at inland stations and fiscal boundaries rather than modern national borders. Merola's scholarly review of the Ephesian customs law distinguishes its final publication in 62 CE from disputed earlier layers. Healey's institutional abstract describes Palmyra's 137 CE municipal tariff as local taxes rather than caravan trade. The Atlas preserves that distinction and discloses that the underlying critical edition and complete handbook chapter were not accessed. Neither inscription dates the invention of taxation, establishes a universal rate or requires coin payment. Claim-specific citations and access receipts are in the [research registry](../src/game/content/research.json).
+
 The **Three-Age System** originated in the classification of Scandinavian archaeological collections by Christian Jurgensen Thomsen, published in 1836. It remains useful in particular European, Near Eastern, and other archaeological traditions, but is not a universal ladder of human development. Some regions have different sequences or no distinct Bronze Age. Stone, wood, bone, copper, bronze, and iron technologies also overlap rather than replace one another instantaneously.
 
 | Page | Date label and scope |

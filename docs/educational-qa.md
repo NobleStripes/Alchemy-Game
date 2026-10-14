@@ -6,6 +6,16 @@ Review date: **2026-10-14**.
 
 ## Status and scope
 
+### Completed optional commerce expansion
+
+The catalog now contains **186 elements and 224 recipes**, with **32 Age V discoveries** and **65 full Atlas records**, containing 105 chronology entries. The registry holds **98 verified sources and one pending lead**. Coinage, Mint, Maritime Trade and Amphora retain their earlier recipes and ages. Merchant + Road Network adds Merchant Network; Maritime Trade + Law adds Customs Duty. Both are optional symbolic associations, with individual cited cautions. The complete pre-expansion element and recipe definitions are protected by regression fingerprints.
+
+Expanded histories distinguish gold-silver electrum and late seventh-century BCE Ephesian evidence from universal first-money claims. Indian punch-marked and Chinese cast traditions are compared without assuming simultaneous invention or a single diffusion route. Issuer valuation and motives remain interpretations. The Ephesian customs law includes inland stations; its final 62 CE publication is not taxation's invention. Palmyra's 137 CE municipal tariff is explicitly described as local taxation rather than caravan customs. Original inscriptions and complete scholarly editions were not consulted: the customs sources are a scholarly review and an institutional abstract, with access limits disclosed in the registry.
+
+`npm run typecheck`, `npm run lint`, `npm test` and `npm run build` passed. The full suite passed **910 tests across 17 files**, including both input orders, gated reachability without Coin/Coinage/Mint, schema and citation checks, discovered-only Atlas rendering, Age V category/starred/Recently Used filters, recorded commerce formulas and version 7 persistence. Existing age gates, landmarks, collections, challenge rewards and Rainmaker remain covered. Road Network and Maritime Trade gain outgoing graph edges rather than manually changing terminal metadata.
+
+Build validation reports **141 crafting ingredients, 45 terminal elements and zero unused nodes**. Production JavaScript chunks are 229.16 kB application, 307.14 kB research and 303.96 kB vendor, below the unchanged 500 kB warning threshold. This automated verification does not establish learning outcomes or replace pending human accessibility and historical review.
+
 ### Completed four-discovery QA snapshot (before the fifth age)
 
 At that review, the catalog contained **151 elements and 187 recipes across four pages**. Fossil, Bird, Amphora and Quicklime had sourced research entries and optional recipes; none changed the existing age unlocks, grants, landmarks, discovery goals, save version 7, or Rainmaker. Their historical notes distinguished evidence from interpretation: fossils predate later human encounters with them; birds are the surviving avian dinosaur lineage after non-avian dinosaur extinction around 66 million years ago; a Cypriot Bronze Age amphora predates Classical Antiquity without establishing a universal origin; and Natufian lime-plaster evidence supports reconstructed calcination around 12,000 years ago without proving a global first quicklime artifact or kiln design. The disputed Protoceratops–griffin hypothesis was not presented as fact.

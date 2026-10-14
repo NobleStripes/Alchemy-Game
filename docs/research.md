@@ -32,7 +32,15 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-Research covers **63 of 184 elements**, including all **30 Age V discoveries**. The 57 records through the intellectual expansion remain, joined by Slaked Lime, Lime Mortar, Volcanic Ash, Concrete, Road Network and Public Bath. The registry contains **92 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions.
+Research covers **65 of 186 elements**, including all **32 Age V discoveries**. The 63 records through the engineering expansion remain, joined by Merchant Network and Customs Duty. The registry contains **98 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions.
+
+### Commerce expansion
+
+Coinage, Mint and Maritime Trade retain their existing full records and recipes, with expanded discussion of metalworking, weight standards, exchange and regional traditions. Two new records explain Merchant Network as a modern analytical label and Customs Duty as a fiscal practice, not a universally maritime or national-border institution. The catalog now contains 105 chronology entries; dated inscriptions are evidence, not invention dates.
+
+Six new source receipts record claim-specific access: John H. Kroll's Sardis expedition essay for electrum and late seventh-century BCE Ephesian contexts; the RBI Monetary Museum for Indian punch-marked coins; Shanghai Museum for Chinese cast copper-alloy forms; World History Encyclopedia for Roman agents and transport evidence; Giovanna Daniela Merola's scholarly review in Bryn Mawr Classical Review for the Ephesian customs law; and John Healey's Manchester institutional abstract for the Palmyrene tariff. The latter is abstract-only. The original Ephesian inscription, full critical edition and Palmyra handbook chapter were not read; their access limits remain visible.
+
+Early issuer motives and electrum valuation are interpretations, not archaeological certainty. Comparative monetary traditions do not prove simultaneous invention, total independence or a single diffusion route. Amphora distribution and marks do not establish one direct end-to-end voyage. The Ephesian law's final publication in 62 CE does not settle the chronology of its earlier layers. Palmyra's 137 CE bilingual municipal tariff concerns local taxes rather than caravan trade and is explicitly distinguished from the customs example. Coins remain unnecessary for the optional trade routes.
 
 ### Engineering materials and infrastructure audit
 

@@ -44,7 +44,7 @@ describe('graph-derived element status', () => {
   })
 
   it('reports the current graph and distinguishes unused non-produced nodes', () => {
-    expect(getGraphMetrics(elements, recipes)).toEqual({ total: 184, ingredients: 139, terminal: 45, unused: 0 })
+    expect(getGraphMetrics(elements, recipes)).toEqual({ total: 186, ingredients: 141, terminal: 45, unused: 0 })
     expect(getGraphMetrics([...elements, { ...elements[0], id: 'unused' }], recipes).unused).toBe(1)
     expect(getExhaustedElements(recipes, new Set(elements.map((e) => e.id)))).toContain('lathe')
   })

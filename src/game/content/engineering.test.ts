@@ -37,16 +37,16 @@ describe('optional engineering discoveries', () => {
   })
 
   it('keeps every age and collection reachable without the optional engineering branch', () => {
-    const originalElements = elements.filter((element) => !additions.includes(element.id))
-    const originalRecipes = recipes.filter((recipe) => !additions.includes(recipe.result))
+    const originalElements = elements.slice(0, 178)
+    const originalRecipes = recipes.slice(0, 216)
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
     expect(validateContent(originalElements, originalRecipes, eras, collections)).toEqual([])
     for (const era of eras) {
       expect([...era.unlockRequires, ...era.grants, ...era.landmarkIds].some((id) => additions.includes(id))).toBe(false)
     }
     expect(collections.flatMap((collection) => collection.elementIds).some((id) => additions.includes(id))).toBe(false)
-    expect(recipes.slice(216)).toHaveLength(6)
-    expect(elements.slice(178).map((element) => element.id)).toEqual(additions)
+    expect(recipes.slice(216, 222)).toHaveLength(6)
+    expect(elements.slice(178, 184).map((element) => element.id)).toEqual(additions)
   })
 
   it.each([
@@ -61,7 +61,7 @@ describe('optional engineering discoveries', () => {
     const discovered = new Set(['quicklime'])
     expect(getExhaustedElements(recipes.slice(0, 216), discovered)).toContain('quicklime')
     expect(getExhaustedElements(recipes, discovered)).not.toContain('quicklime')
-    expect(getExhaustedElements(recipes, new Set(additions))).toEqual(new Set(['concrete', 'road-network', 'public-bath']))
+    expect(getExhaustedElements(recipes.slice(0, 222), new Set(additions))).toEqual(new Set(['concrete', 'road-network', 'public-bath']))
   })
 
   it('separates material transformations, missing ingredients and modern cement', () => {

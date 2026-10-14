@@ -90,8 +90,8 @@ describe('Guide preparation', () => {
     })
     const { rerender } = render(<Journal {...props} eraId={age.id} challengeName={age.name}
       discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
-    expect(screen.getByText('30', { selector: '.progress-summary strong' })).toBeVisible()
-    expect(ageElements).toHaveLength(30)
+    expect(screen.getByText('32', { selector: '.progress-summary strong' })).toBeVisible()
+    expect(ageElements).toHaveLength(32)
     for (const category of new Set(ageElements.map((element) => element.category))) {
       const count = ageElements.filter((element) => element.category === category).length
       const label = category[0].toUpperCase() + category.slice(1)
@@ -107,7 +107,7 @@ describe('Guide preparation', () => {
       discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
     expect(within(archive).getByText('Recorded Formulas (2)')).toBeVisible()
     expect(within(archive).getByText(formula(agoraRoutes[1].inputs))).toBeVisible()
-    expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(30)
+    expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(32)
   })
 
   it('archives a formula after its attempt is evicted and reloaded, without saving on preparation', async () => {

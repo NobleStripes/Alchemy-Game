@@ -16,8 +16,26 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('preserves reused and new commerce formulas, favorites and reading together in version 7', () => {
+    const recipeIds = ['authorized-coins', 'coin-workshop', 'amphora-voyage', 'connected-merchants', 'regulated-cargo']
+    const recorded = recipeIds.map((id) => recipes.find((recipe) => recipe.id === id)!)
+    const ids = recorded.map((recipe) => recipe.result)
+    const restored = parseProgress(JSON.stringify({
+      ...fresh(),
+      discoveredIds: [...new Set([...starterElementIds, ...recorded.flatMap((recipe) => [...recipe.inputs, recipe.result])])],
+      discoveredRecipeIds: recipeIds,
+      favoriteIds: ids, readHistoricalElementIds: ids,
+      hideFinalElements: true, collapsedShelves: ['classical-antiquity'],
+    }))!
+    expect(restored).toMatchObject({
+      version: 7, discoveredRecipeIds: recipeIds, favoriteIds: ids, readHistoricalElementIds: ids,
+      hideFinalElements: true, collapsedShelves: ['classical-antiquity'],
+    })
+    expect(parseProgress(exportProgress(restored))).toEqual(restored)
+  })
+
   it('round-trips engineering discoveries, formulas, stars, reading and existing shelf preferences in v7', () => {
-    const routes = recipes.slice(216)
+    const routes = recipes.slice(216, 222)
     const old = fresh()
     const progress = parseProgress(JSON.stringify({
       ...old,
