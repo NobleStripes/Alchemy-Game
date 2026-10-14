@@ -604,7 +604,7 @@ describe('alchemy worktable', () => {
     expect(fifthAge).toHaveAttribute('aria-current', 'page')
     expect(selector.getByRole('button', { name: 'Origins' })).not.toHaveAttribute('aria-current')
     expect(useGameStore.getState().activeEraId).toBe(age.id)
-    expect(screen.getByLabelText('5% discovered')).toHaveTextContent('10 / 189')
+    expect(screen.getByLabelText('5% discovered')).toHaveTextContent('10 / 194')
     const challenge = within(screen.getByRole('region', { name: 'Classical Antiquity challenge' }))
     const introduction = screen.getByText('About Classical Antiquity')
     await user.click(introduction)
@@ -614,8 +614,9 @@ describe('alchemy worktable', () => {
     expect(challenge.getByText(/This page's landmarks are recorded/)).toBeVisible()
     expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(6)
     const goals = within(screen.getByRole('list', { name: 'Collection goals' }))
+    const landmarks = within(screen.getByRole('list', { name: 'Optional landmark goals' }))
     for (const collection of collections.filter((entry) => entry.era === age.id)) {
-      expect(goals.getByText(collection.name)).toBeVisible()
+      expect((collection.landmarkId ? landmarks : goals).getByText(collection.name)).toBeVisible()
     }
     expect(useGameStore.getState().discoveredIds).not.toContain('library')
     expect(useGameStore.getState().discoveredIds).not.toContain('aqueduct')

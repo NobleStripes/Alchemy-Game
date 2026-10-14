@@ -282,6 +282,11 @@ describe('element shelf', () => {
     ['historical-writing', 'Historical Writing', /^Knowledge/],
     ['cartography', 'Cartography', /^Knowledge/],
     ['commentary', 'Commentary', /^Knowledge/],
+    ['imperial-bureaucracy', 'Imperial Bureaucracy', /^Society/],
+    ['provincial-government', 'Provincial Government', /^Society/],
+    ['diplomatic-mission', 'Diplomatic Mission', /^Society/],
+    ['caravan-route', 'Caravan Route', /^Transport/],
+    ['cultural-exchange', 'Cultural Exchange', /^Knowledge/],
   ] as const)('filters starred Age V %s while retaining its Recently Used shortcut', async (id, name, category) => {
     const user = userEvent.setup()
     useGameStore.setState({

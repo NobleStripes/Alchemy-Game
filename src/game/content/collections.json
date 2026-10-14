@@ -66,5 +66,37 @@
     "era": "classical-antiquity",
     "education": "Library is an optional scholarly target, not a new required landmark. Earlier text formats and diverse mathematical and philosophical traditions do not form one worldwide timeline. Birds and ancient inquiry are distinct from modern evolutionary explanations.",
     "elementIds": ["scroll", "archive", "knowledge", "library", "geometry", "natural-inquiry", "bird", "bird-inquiry"]
+  },
+  {
+    "id": "agora-landmark",
+    "name": "Agora: Civic Landmark",
+    "era": "classical-antiquity",
+    "landmarkId": "agora",
+    "education": "Record Trade, City and Agora to complete this optional track objective. Either existing Agora formula is valid; this does not add a new core age requirement. The Greek agora was civic, legal, religious and commercial, not merely a market.",
+    "elementIds": ["trade", "city", "agora"]
+  },
+  {
+    "id": "library-landmark",
+    "name": "Library: Knowledge Landmark",
+    "era": "classical-antiquity",
+    "landmarkId": "library",
+    "education": "Record Archive, City and Library. Existing routes to Archive all count; neither a particular writing material nor a performed origin formula is required for completion. Ancient libraries had varied access and preservation practices, not universal public lending.",
+    "elementIds": ["archive", "city", "library"]
+  },
+  {
+    "id": "aqueduct-landmark",
+    "name": "Aqueduct: Engineering Landmark",
+    "era": "classical-antiquity",
+    "landmarkId": "aqueduct",
+    "education": "Record Masonry, Aqueduct and Arch as supporting engineering discoveries. Aqueduct retains its Iron Age placement; Arch connects the optional objective to Age V. This is not a claim that all aqueducts required arches: tunnels, pipes and channels have earlier histories.",
+    "elementIds": ["masonry", "aqueduct", "arch"]
+  },
+  {
+    "id": "mint-landmark",
+    "name": "Mint: Optional Economic Landmark",
+    "era": "classical-antiquity",
+    "landmarkId": "mint",
+    "education": "Record Coin, Forge and Mint. This optional economic branch does not gate civic, knowledge, engineering or age completion. Coined money was not necessary for all trade, and a forge and coin omit dies, prepared blanks, standards and issuing authority.",
+    "elementIds": ["coin", "forge", "mint"]
   }
 ]

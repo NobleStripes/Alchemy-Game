@@ -31,6 +31,7 @@ const intellectualIds = ['mathematical-astronomy', 'clinical-observation', 'logi
 const engineeringIds = ['slaked-lime', 'lime-mortar', 'volcanic-ash', 'concrete', 'road-network', 'public-bath']
 const commerceIds = ['merchant-network', 'customs-duty']
 const scholarshipIds = ['historical-writing', 'cartography', 'commentary']
+const regionalIds = ['imperial-bureaucracy', 'provincial-government', 'diplomatic-mission', 'caravan-route', 'cultural-exchange']
 
 describe('historical research database', () => {
   it('distinguishes regional ancient intellectual practices from modern scientific methods', () => {
@@ -101,16 +102,16 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds, ...regionalIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(101)
+    )).toHaveLength(110)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
   })
 
-  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds, ...engineeringIds, ...commerceIds, ...scholarshipIds])('links %s research to its current name and stable ID', (elementId) => {
+  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds, ...engineeringIds, ...commerceIds, ...scholarshipIds, ...regionalIds])('links %s research to its current name and stable ID', (elementId) => {
     const record = researchByElementId.get(elementId)
     expect(record?.elementName).toBe(
       elements.find((element) => element.id === elementId)?.name,
@@ -177,8 +178,8 @@ describe('historical research database', () => {
   })
 
   it('includes the Classical Antiquity chapter while preserving the four existing ages', () => {
-    expect(elements).toHaveLength(189)
-    expect(recipes).toHaveLength(227)
+    expect(elements).toHaveLength(194)
+    expect(recipes).toHaveLength(232)
     expect(eras.map((era) => era.id)).toEqual([
       'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
     ])

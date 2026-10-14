@@ -2,7 +2,7 @@
 
 [Back to the project overview](../README.md)
 
-The current catalog contains **227 recipes**, including five optional Iron Age expansion routes, four earlier optional discoveries, and 37 Classical Antiquity routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
+The current catalog contains **232 recipes**, including five optional Iron Age expansion routes, four earlier optional discoveries, and 42 Classical Antiquity routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
 
 ## Classifications
 
@@ -10,7 +10,7 @@ The current catalog contains **227 recipes**, including five optional Iron Age e
 | --- | ---: | --- |
 | Material process | 15 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
 | Simplified process | 94 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
-| Symbolic association | 118 | A conceptual, social or fictional link; it must not be read as historical causation. |
+| Symbolic association | 123 | A conceptual, social or fictional link; it must not be read as historical causation. |
 
 ## Player-facing context
 
@@ -26,7 +26,9 @@ Reviewed the Origins recipe flavor and review cautions for this distinction. `ve
 
 ## Reference limits
 
-References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **122 recipe notes have background references; 105 have no attached source.** Educational QA removed the bread paper from the harvesting-blade note because it does not establish that implement's history. The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
+References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **127 recipe notes have background references; 105 have no attached source.** Educational QA removed the bread paper from the harvesting-blade note because it does not establish that implement's history. The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
+
+The five regional routes are symbolic: Empire + Scribe, Imperial Bureaucracy + City, Polity + Rhetoric, Merchant + Land, and Diplomatic Mission + Knowledge. Their cautions distinguish regional offices, royal prescription from demonstrated compliance, and Qin/Han officials from later examination systems. Caravan Route requires neither paved roads nor coined money; Cultural Exchange's authored mission dependency is not a historical requirement for all exchange. Earlier Merchant + Map remains Voyage.
 
 The Iron Age expansion cautions separate symbolic rotation and scribal associations from cereal grinding and an abbreviated manuscript-writing process. The four additional routes are classified as follows:
 

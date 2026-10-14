@@ -27,6 +27,30 @@ afterEach(() => {
 })
 
 describe('Guide preparation', () => {
+  it('separates optional landmark status, supporting discoveries and rewards from core page completion', () => {
+    const age = eras[4]
+    useGameStore.setState({
+      discoveredIds: [...age.landmarkIds, 'observation'],
+      unlockedEraIds: eras.map((era) => era.id),
+    })
+    const view = render(<Journal eraId={age.id} challengeName={age.name}
+      discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
+    expect(screen.getByText(/This page's landmarks are recorded/)).toBeVisible()
+    const goals = screen.getByLabelText('Optional landmark goals')
+    expect(within(goals).getAllByRole('listitem').filter((item) => item.className === 'collection-goal')).toHaveLength(4)
+    expect(within(goals).getByText('Landmark discovered; supporting discoveries remain')).toBeVisible()
+    expect(within(goals).getAllByText('Landmark not yet discovered')).toHaveLength(3)
+    expect(within(goals).queryByText('Landmark objective complete')).not.toBeInTheDocument()
+    act(() => useGameStore.setState({ discoveredIds: [...age.landmarkIds, 'observation', 'trade', 'city'] }))
+    expect(within(goals).getByText('Landmark objective complete')).toBeVisible()
+    expect(within(goals).getByText('+1 Insight on next successful campaign combination')).toBeVisible()
+    act(() => useGameStore.setState({ rewardedCollectionIds: ['agora-landmark'] }))
+    expect(within(goals).getByText('+1 Insight reward earned')).toBeVisible()
+    expect(screen.queryByText('Trade + City → Agora')).not.toBeInTheDocument()
+    view.rerender(<Journal {...props} />)
+    expect(screen.queryByLabelText('Optional landmark goals')).not.toBeInTheDocument()
+  })
+
   it('keeps a hidden terminal discovery inspectable with its history and recorded origin', async () => {
     const user = userEvent.setup()
     const viewHistory = vi.fn()
@@ -90,8 +114,8 @@ describe('Guide preparation', () => {
     })
     const { rerender } = render(<Journal {...props} eraId={age.id} challengeName={age.name}
       discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
-    expect(screen.getByText('35', { selector: '.progress-summary strong' })).toBeVisible()
-    expect(ageElements).toHaveLength(35)
+    expect(screen.getByText('40', { selector: '.progress-summary strong' })).toBeVisible()
+    expect(ageElements).toHaveLength(40)
     for (const category of new Set(ageElements.map((element) => element.category))) {
       const count = ageElements.filter((element) => element.category === category).length
       const label = category[0].toUpperCase() + category.slice(1)
@@ -107,7 +131,7 @@ describe('Guide preparation', () => {
       discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
     expect(within(archive).getByText('Recorded Formulas (2)')).toBeVisible()
     expect(within(archive).getByText(formula(agoraRoutes[1].inputs))).toBeVisible()
-    expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(35)
+    expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(40)
   })
 
   it('archives a formula after its attempt is evicted and reloaded, without saving on preparation', async () => {

@@ -49,6 +49,13 @@ export function validateContent(
     if (collection.elementIds.length === 0) {
       errors.push(`Collection ${collection.id} must have at least one member.`)
     }
+    if (collection.landmarkId && !collection.elementIds.includes(collection.landmarkId)) {
+      errors.push(`Collection ${collection.id} must include its landmark ${collection.landmarkId}.`)
+    }
+    if (collection.landmarkId && !collection.elementIds.some((id) =>
+      elements.some((element) => element.id === id && element.era === collection.era))) {
+      errors.push(`Landmark collection ${collection.id} must include a discovery from its own era.`)
+    }
     const members = new Set<string>()
     for (const elementId of collection.elementIds) {
       if (members.has(elementId)) {

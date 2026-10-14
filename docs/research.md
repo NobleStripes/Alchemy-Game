@@ -32,7 +32,17 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-Research covers **68 of 189 elements**, including all **35 Age V discoveries**. The 65 records through the commerce expansion remain, joined by Historical Writing, Cartography and Commentary. The registry contains **101 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are 111 chronology entries; dates identify evidence or regional contexts, not universal inventions.
+Research covers **73 of 194 elements**, including all **40 Age V discoveries**. The 68 records through the scholarship expansion remain, joined by five regional-administration and exchange histories. The registry contains **110 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are 123 chronology entries; dates identify evidence or regional contexts, not universal inventions.
+
+### Regional administration and connections
+
+Empire, Scribe, City, Polity, Rhetoric, Merchant, Land and Knowledge are reused unchanged. Five optional Age V histories cover Imperial Bureaucracy, Provincial Government, Diplomatic Mission, Caravan Route and Cultural Exchange. Merchant + Map still produces Voyage; the new Caravan Route uses Merchant + Land. No new gate, collection membership, challenge requirement or save version is introduced.
+
+Nine new source receipts distinguish access and scope. The [ISAC Persepolis publication summary](https://isac.uchicago.edu/publications/persepolis-fortification-tablets) describes sealed travel authorizations and ration accounts, explicitly warning against empire-wide generalization. [Dhammika's English rendering of Ashoka's edicts](https://www.cs.colostate.edu/~malaiya/ashoka.html) is hosted in university faculty web space, not a university critical edition; selected rock and pillar passages were read, not the original inscriptions. [UNESCO's Lumbini entry](https://whc.unesco.org/en/list/666/) supplies a surviving pillar and its 249 BCE attribution, not a resolution of disputed Buddha chronology.
+
+Selected World History Encyclopedia passages cover Persian governors, Qin centralization, Sima Qian's Han court scholarship, Roman proconsuls/foreign relations and Silk Road intermediaries. Their uncaptured bylines and publication dates are left unspecified. Sweeping efficiency claims, a single Silk Road opening and problematic unrelated chronologies are not adopted. [Columbia's examination overview](https://afe.easia.columbia.edu/cosmos/irc/classics.htm) places the later system in Sui times, preventing its projection onto Qin/Han officials.
+
+Satraps, Mauryan Rajjukas and Roman proconsuls remain distinct. Ashoka's prescriptions and claims about Hellenistic rulers are evidence of a royal message, not independently confirmed compliance or foreign conversion. Cultural Exchange explicitly includes non-diplomatic channels and unequal or coercive encounters. Human historical review remains pending.
 
 ### Scholarship audit and expansion
 

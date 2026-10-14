@@ -2,6 +2,51 @@
   "schemaVersion": 2,
   "sources": [
     {
+      "id": "isac-fortification", "title": "Persepolis Fortification Tablets", "authors": ["D. M. Lewis"], "institution": "University of Chicago, Institute for the Study of Ancient Cultures", "sourceType": "archaeology-institution",
+      "url": "https://isac.uchicago.edu/publications/persepolis-fortification-tablets", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://isac.uchicago.edu/publications/persepolis-fortification-tablets", "accessLevel": "selected-passages", "locator": "Online publication summary quoting Lewis (1990), pp. 2-6: food accounting around Persepolis in the fifteen years down to 493 BCE, sealed travel authorizations, ration receipts, and explicit limits to generalizing across the empire. Summary read, not Hallock's entire corpus or original tablets." }
+    },
+    {
+      "id": "csu-asoka-edicts", "title": "The Edicts of King Asoka", "authors": ["S. Dhammika"], "institution": "Colorado State University personal faculty web space (hosted translation)", "sourceType": "reference-textbook",
+      "url": "https://www.cs.colostate.edu/~malaiya/ashoka.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.cs.colostate.edu/~malaiya/ashoka.html", "accessLevel": "selected-passages", "locator": "Translator's preface, Rock Edicts III, XII-XIV, Kalinga I opening, Pillar Edicts IV and VII. English rendering based on earlier translations, not a university critical edition or direct reading of inscriptions. Preface explicitly notes disputed meanings; introductory praise is not adopted as proof of effective government." }
+    },
+    {
+      "id": "unesco-lumbini", "title": "Lumbini, the Birthplace of the Lord Buddha", "authors": [], "institution": "UNESCO World Heritage Centre", "sourceType": "archaeology-institution",
+      "url": "https://whc.unesco.org/en/list/666/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://whc.unesco.org/en/list/666/", "accessLevel": "selected-passages", "locator": "Brief synthesis and authenticity: surviving sandstone Ashoka pillar, Brahmi inscription and 249 BCE erection attribution; archaeological conservation context. The page's Buddha birth date is not used to settle disputed chronology. No original inscription decipherment performed." }
+    },
+    {
+      "id": "whe-persian-governor", "title": "Ancient Persian Governors", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Persian_Governor/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Persian_Governor/", "accessLevel": "selected-passages", "locator": "Opening definition of satrap/satrapy and Achaemenid regional rule, taxes and military obligations. Do not adopt blanket efficiency/tolerance claims, fixed counts of provinces, speculative Median origins or claims that Rome and modern states simply copied Persia. Byline/publication date not captured in accessed passages." }
+    },
+    {
+      "id": "whe-qin", "title": "Qin Dynasty", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Qin_Dynasty/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Qin_Dynasty/", "accessLevel": "selected-passages", "locator": "Opening 221-206 BCE range; Rise of Qin and Policy & Tyranny on unification and centralizing rule. No adoption of sweeping book-burning certainty, modernized science labels or the article's evaluative characterization as comprehensive evidence. Byline/publication date not captured." }
+    },
+    {
+      "id": "whe-sima-qian", "title": "Sima Qian", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Sima_Qian/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Sima_Qian/", "accessLevel": "selected-passages", "locator": "Opening and Early Life: Han court scribe, astrologer and historian under Wu (141-87 BCE); Records completed around 94 BCE, birth year uncertain, later transmission. Does not establish all Han officials' education or guarantee narrative objectivity. Byline/publication date not captured." }
+    },
+    {
+      "id": "columbia-examinations", "title": "The Confucian Classics & the Civil Service Examinations", "authors": [], "institution": "Columbia University, Asia for Educators", "sourceType": "reference-textbook",
+      "url": "https://afe.easia.columbia.edu/cosmos/irc/classics.htm", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://afe.easia.columbia.edu/cosmos/irc/classics.htm", "accessLevel": "selected-passages", "locator": "Opening section locates examination-system beginnings in Sui (581-618 CE), beyond Age V. Used only to prevent projecting later examination institutions onto Qin/Han, not to date Han recruitment or claim universal meritocratic access." }
+    },
+    {
+      "id": "whe-roman-government", "title": "Roman Government", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Roman_Government/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Roman_Government/", "accessLevel": "selected-passages", "locator": "The Consuls: extension of consular authority as provincial proconsul; The Senate: supervision of foreign relations. Opening modern-democracy analogy and detailed membership figures are not adopted. Neither section proves direct institutional identity with Persian or Mauryan administration. Byline/publication date not captured." }
+    },
+    {
+      "id": "whe-silk-road", "title": "Silk Road", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Silk_Road/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Silk_Road/", "accessLevel": "selected-passages", "locator": "China & the West: Zhang Qian dispatched in 138 BCE seeking Yuezhi alliance; Goods Traded: network and intermediaries, goods and cultural contacts. Do not adopt its single 130 BCE opening, erroneous Alexander chronology, direct end-to-end trade implications or later paper/gunpowder transmission as Age V evidence. Byline/publication date not captured." }
+    },
+    {
       "id": "smithsonian-stone-tools",
       "title": "Stone Tools",
       "authors": [],
@@ -2239,6 +2284,136 @@
       "historicalUncertainty": ["Surviving versions and commentary layers do not disclose every earlier stage of composition.", "Calling Egyptian explanations footnote-like is a modern analogy, not an ancient genre label.", "A commentator's argument may be insightful without being correct in every conclusion."],
       "gameplaySimplifications": ["Scroll + Logic is symbolic; neither papyrus rolls nor Greek formal logic were universal prerequisites.", "The recipe omits transmission, copying, language and teaching contexts.", "Commentary is optional and does not require replacing the existing Library, Rhetoric or Geometry discoveries."],
       "furtherResearch": [{ "question": "How can an explanation preserve an inherited text while also criticizing or extending its argument?", "sourceIds": ["mactutor-nine-chapters", "nlm-smith-papyrus"] }]
+    },
+    {
+      "elementId": "imperial-bureaucracy", "elementName": "Imperial Bureaucracy",
+      "historicalOverview": { "text": "Imperial administration joined officials, records and delegated power, but not through one timeless institution. Achaemenid food accounts around Persepolis, Mauryan royal instructions and Qin centralizing policies reveal different arrangements. Han court scholarship is represented by Sima Qian, a scribe, astrologer and historian under Emperor Wu, not by projecting a later examination state backward.", "sourceIds": ["isac-fortification", "csu-asoka-edicts", "whe-qin", "whe-sima-qian", "columbia-examinations"] },
+      "manufactureOrUse": { "text": "Persepolis travelers carried sealed authorizations for rations; transaction tablets returned for accounting. Ashoka's Pillar Edict IV assigns petitions and justice to Rajjukas, while VII describes Dhamma Mahamatras and proclamations. These are royal prescriptions, not proof that every official complied. Qin unification in 221 BCE emphasizes centralizing authority; Sima Qian's Han historical work illustrates the court's scholarly as well as administrative activities. Records could support distribution and communication, but also extraction and control.", "sourceIds": ["isac-fortification", "csu-asoka-edicts", "whe-qin", "whe-sima-qian"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Age V groups selected Persian, Mauryan and Chinese examples; it does not date the invention of administration. Earlier Bronze Age Scribe, Writing and Polity remain foundations, and the Iron Age Empire is reused unchanged. The later Sui examination system lies outside this age, not inside Qin/Han government.", "sourceIds": ["isac-fortification", "columbia-examinations"] },
+      "relatedDiscoveries": [
+        { "elementId": "empire", "relationship": "gameplay-abstraction", "explanation": "Imperial reach evokes a need to coordinate authority, not one shared political identity.", "sourceIds": [] },
+        { "elementId": "scribe", "relationship": "gameplay-abstraction", "explanation": "Record-making is one administrative practice, not a complete bureaucracy.", "sourceIds": [] },
+        { "elementId": "historical-writing", "relationship": "documented", "explanation": "Sima Qian's Han court work connects record-making and historical scholarship without making every official a historian.", "sourceIds": ["whe-sima-qian"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Late sixth to early fifth century BCE: Persepolis accounts", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Persepolis region, Achaemenid Empire"], "sourceIds": ["isac-fortification"], "note": "The summary describes fifteen years down to 493 BCE; this regional archive is not the beginning of bureaucracy worldwide." },
+        { "dateRange": "221-206 BCE: Qin dynasty", "dateType": "regional-development", "precision": "approximate", "regions": ["Qin China"], "sourceIds": ["whe-qin"], "note": "Dynastic frame for centralizing rule, not the origin of all Chinese administration." },
+        { "dateRange": "Around 94 BCE: Sima Qian's Records", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Han China"], "sourceIds": ["whe-sima-qian"], "note": "Approximate completion of a particular historical work, not a date for civil-service examinations." }
+      ],
+      "associatedRegions": ["Persepolis region, Achaemenid Empire", "Mauryan South Asia", "Qin China", "Han China"],
+      "archaeologicalEvidence": [
+        { "text": "The published tablet summary describes food accounts and seals, including travelers' entitlements. This is administrative evidence concentrated around Persepolis, not an empire-wide census.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["isac-fortification"] },
+        { "text": "Ashoka's translated pillar edicts name officials and their intended duties. The text attests a royal message, not uniform enforcement.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["csu-asoka-edicts"] },
+        { "text": "Sima Qian's transmitted historical writing provides a Han scholarly example; the modern reference summary was read, not every surviving textual recension.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["whe-sima-qian"] }
+      ],
+      "historicalSignificance": { "text": "Keeping records made distant obligations and allocations more manageable, while preservation exposes only part of the work. Comparing accounts with royal instructions helps distinguish transactions from ideals of rule.", "sourceIds": ["isac-fortification", "csu-asoka-edicts"] },
+      "independentDevelopments": [{ "regions": ["Persepolis region, Achaemenid Empire", "Mauryan South Asia", "Qin China", "Han China"], "text": "Food accounting, instructions about justice, centralizing policies and court scholarship belong to different institutional settings. Comparison does not establish identical institutions or prove completely independent origins.", "sourceIds": ["isac-fortification", "csu-asoka-edicts", "whe-qin", "whe-sima-qian"] }],
+      "historicalUncertainty": ["The Persepolis archive is geographically selective; its practices cannot simply be generalized across the empire.", "Edicts advertise desired conduct and royal legitimacy; effectiveness and local reception remain separate questions.", "Sima Qian's birth year and parts of textual transmission are uncertain; his work is not a neutral transcript of every event."],
+      "gameplaySimplifications": ["Empire + Scribe is symbolic, not the manufacture or first invention of government.", "The recipe omits personnel, languages, taxation, labor and competing local interests.", "Qin/Han officials are not graduates of the later Sui civil-service examination system."],
+      "furtherResearch": [{ "question": "What can a ration receipt establish that a royal proclamation cannot?", "sourceIds": ["isac-fortification", "csu-asoka-edicts"] }]
+    },
+    {
+      "elementId": "provincial-government", "elementName": "Provincial Government",
+      "historicalOverview": { "text": "Delegating regional authority took different forms. Achaemenid satraps governed satrapies with fiscal and military obligations. Ashoka's Mauryan instructions name officials concerned with justice and inspection. Roman proconsular authority developed in a different setting of magistracies and provincial commands, not as an identical Persian or Mauryan office.", "sourceIds": ["whe-persian-governor", "csu-asoka-edicts", "whe-roman-government"] },
+      "manufactureOrUse": { "text": "Regional rule connected rulers, officials and communities through obligations, petitions and communications. Ashoka's Pillar Edict IV delegates justice to Rajjukas; the Kalinga instructions address judicial officers at Tosali. At Lumbini, a surviving inscribed sandstone pillar records a specific royal presence. It is material evidence for an inscription, not a map of uniform Mauryan provincial institutions. Roman extensions of consular authority as proconsul offer a distinct comparison.", "sourceIds": ["csu-asoka-edicts", "unesco-lumbini", "whe-roman-government"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Age V compares selected regional administrations without declaring a worldwide starting date. Provincial Government is an analytical gameplay label, not a translation that makes every local office equivalent to a Roman province.", "sourceIds": ["whe-persian-governor", "csu-asoka-edicts", "whe-roman-government"] },
+      "relatedDiscoveries": [
+        { "elementId": "imperial-bureaucracy", "relationship": "gameplay-abstraction", "explanation": "Regional government is one setting for delegated officials, not a single imperial template.", "sourceIds": [] },
+        { "elementId": "city", "relationship": "gameplay-abstraction", "explanation": "A local center evokes administration without making cities the sole territorial units.", "sourceIds": [] },
+        { "elementId": "republic", "relationship": "documented", "explanation": "Roman proconsular commands connect provincial authority to Roman magistracies, distinct from satrapies.", "sourceIds": ["whe-roman-government"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Sixth to fourth centuries BCE: Achaemenid satrapies", "dateType": "regional-development", "precision": "approximate", "regions": ["Achaemenid Empire"], "sourceIds": ["whe-persian-governor"], "note": "Regional imperial frame; provincial counts and boundaries changed." },
+        { "dateRange": "Third century BCE: Ashoka's administrative edicts", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Mauryan South Asia"], "sourceIds": ["csu-asoka-edicts"], "note": "Pillar IV dates itself by regnal year, not by a universally agreed conversion for every inscription." },
+        { "dateRange": "249 BCE: Ashoka pillar at Lumbini", "dateType": "dated-evidence", "precision": "year-resolved", "regions": ["Lumbini, present-day Nepal"], "sourceIds": ["unesco-lumbini"], "note": "UNESCO's attribution for this pillar, not the origin of provincial rule or a resolution of the Buddha's disputed birth chronology." }
+      ],
+      "associatedRegions": ["Achaemenid Empire", "Mauryan South Asia", "Lumbini, present-day Nepal", "Roman Mediterranean"],
+      "archaeologicalEvidence": [
+        { "text": "Lumbini's sandstone Ashoka pillar bears a Brahmi inscription; UNESCO describes its surviving archaeological context.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["unesco-lumbini"] },
+        { "text": "Pillar IV and the Kalinga instructions prescribe official conduct; the accessed English rendering is not a fresh decipherment of the originals.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["csu-asoka-edicts"] },
+        { "text": "Calling these offices provincial government is a comparative interpretation, not proof that their jurisdictions and powers were identical.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["whe-persian-governor", "csu-asoka-edicts", "whe-roman-government"] }
+      ],
+      "historicalSignificance": { "text": "Delegation made local decisions possible while raising questions about loyalty, justice and oversight. Similar problems of distance did not produce identical answers in Persia, South Asia and Rome.", "sourceIds": ["whe-persian-governor", "csu-asoka-edicts", "whe-roman-government"] },
+      "independentDevelopments": [{ "regions": ["Achaemenid Empire", "Mauryan South Asia", "Roman Mediterranean"], "text": "Satraps, Rajjukas and proconsuls are compared by selected functions, not equated in title, legal authority or social setting; no simple chain of copying is claimed.", "sourceIds": ["whe-persian-governor", "csu-asoka-edicts", "whe-roman-government"] }],
+      "historicalUncertainty": ["The number, boundaries and practical autonomy of satrapies varied.", "Royal prescriptions alone cannot establish how justice worked in every Mauryan locality.", "A surviving pillar documents one place and message, not all regional administrations."],
+      "gameplaySimplifications": ["Imperial Bureaucracy + City is symbolic, not a complete administrative procedure.", "City does not imply that every province had one urban capital or the same territorial scale.", "Roman, Persian and Mauryan institutions retain their separate historical identities."],
+      "furtherResearch": [{ "question": "How do local inscriptions complicate claims about uniform imperial rule?", "sourceIds": ["unesco-lumbini", "csu-asoka-edicts", "isac-fortification"] }]
+    },
+    {
+      "elementId": "diplomatic-mission", "elementName": "Diplomatic Mission",
+      "historicalOverview": { "text": "Envoys conveyed authorized messages and sought agreements across political boundaries. Han Zhang Qian's journey to seek a Yuezhi alliance is one example. Ashoka's Rock Edict XIII names Hellenistic rulers in a claim about the reach of Dhamma. Roman senatorial supervision of foreign relations provides another political setting; none implies a modern permanent embassy.", "sourceIds": ["whe-silk-road", "csu-asoka-edicts", "whe-roman-government"] },
+      "manufactureOrUse": { "text": "A mission required authorization, travel and communication, not merely eloquence. The reference dates Zhang Qian's dispatch to 138 BCE and identifies an alliance against the Xiongnu as its aim. Ashoka's translated edict names Antiochos and other Hellenistic kings and mentions envoys, but its assertion of distant moral influence is not independent proof that those rulers or populations accepted his teachings. Greek-associated Rhetoric is a gameplay cue, not the origin of Asian diplomatic practice.", "sourceIds": ["whe-silk-road", "csu-asoka-edicts"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Age V selects Mauryan, Hellenistic, Han and Roman examples, not the invention of diplomacy. Bronze Age Polity remains a broad political community, not a modern nation-state.", "sourceIds": ["csu-asoka-edicts", "whe-silk-road", "whe-roman-government"] },
+      "relatedDiscoveries": [
+        { "elementId": "nation", "relationship": "gameplay-abstraction", "explanation": "Polity supplies authorization without imposing modern state borders.", "sourceIds": [] },
+        { "elementId": "rhetoric", "relationship": "gameplay-abstraction", "explanation": "Persuasion evokes negotiation, not a requirement to learn Greek rhetoric.", "sourceIds": [] },
+        { "elementId": "senate", "relationship": "documented", "explanation": "The Roman Senate supervised relations with foreign powers in its own institutional setting.", "sourceIds": ["whe-roman-government"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Third century BCE: Ashoka's Rock Edict XIII", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Mauryan South Asia and named Hellenistic kingdoms"], "sourceIds": ["csu-asoka-edicts"], "note": "Date of a royal statement, not independent confirmation of all claimed foreign effects." },
+        { "dateRange": "138 BCE: Zhang Qian dispatched west", "dateType": "dated-evidence", "precision": "year-resolved", "regions": ["Han China and Central Asia"], "sourceIds": ["whe-silk-road"], "note": "The consulted reference's date for this mission, not the opening of all Silk Roads or the beginning of diplomacy." }
+      ],
+      "associatedRegions": ["Mauryan South Asia and named Hellenistic kingdoms", "Han China and Central Asia", "Roman Mediterranean"],
+      "archaeologicalEvidence": [
+        { "text": "The translated Rock Edict XIII preserves Ashoka's names and claims about envoys and distant influence; this is royal self-presentation.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["csu-asoka-edicts"] },
+        { "text": "The modern reference summarizes Zhang Qian's mission; the complete Chinese historical account and its manuscript transmission were not inspected.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["whe-silk-road"] }
+      ],
+      "historicalSignificance": { "text": "Political missions could gather knowledge as well as seek alliances. Their aims and reported results must be distinguished: a journey could expand contacts without achieving its original political purpose.", "sourceIds": ["whe-silk-road", "csu-asoka-edicts"] },
+      "independentDevelopments": [{ "regions": ["Han China and Central Asia", "Mauryan South Asia and named Hellenistic kingdoms", "Roman Mediterranean"], "text": "A Han alliance mission, Mauryan royal messages and Roman foreign-policy deliberation illustrate different authorities and aims, not a single shared diplomatic service.", "sourceIds": ["whe-silk-road", "csu-asoka-edicts", "whe-roman-government"] }],
+      "historicalUncertainty": ["Ashoka's claimed influence beyond his realm cannot be treated as demonstrated conversion.", "A later narrative or modern summary may preserve the viewpoint of the sponsoring court.", "Ancient missions varied in status, duration and success."],
+      "gameplaySimplifications": ["Polity + Rhetoric symbolizes authorization and persuasion, not a literal production process.", "Greek rhetoric is not a historical prerequisite for Mauryan or Han diplomacy.", "Diplomatic missions did not guarantee peace, equality or permanent embassies."],
+      "furtherResearch": [{ "question": "How can a source distinguish a mission's instructions from its achieved results?", "sourceIds": ["csu-asoka-edicts", "whe-silk-road"] }]
+    },
+    {
+      "elementId": "caravan-route", "elementName": "Caravan Route",
+      "historicalOverview": { "text": "Overland exchange connected local routes and many intermediaries rather than one uninterrupted road. The Silk Roads label groups changing connections across Central Asia and neighboring regions. Achaemenid travel accounts supply a different, earlier window onto provisioning journeys; official ration systems are not themselves proof that every traveler was a merchant.", "sourceIds": ["whe-silk-road", "isac-fortification"] },
+      "manufactureOrUse": { "text": "Travelers moved goods and information in stages, relying on local knowledge and provisions. At Persepolis, sealed authorizations and receipts made some journeys administratively visible. The Silk Road reference describes intermediaries and a network, not evidence that one merchant crossed from China to Rome. Caravan Route does not require a paved road, map, coined money or one particular pack animal in every region.", "sourceIds": ["isac-fortification", "whe-silk-road"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Age V highlights Achaemenid and Han-era connections without dating all overland trade to this period. There is no single worldwide opening date for the Silk Roads; the source's 130 BCE opening shorthand is not adopted.", "sourceIds": ["isac-fortification", "whe-silk-road"] },
+      "relatedDiscoveries": [
+        { "elementId": "merchant", "relationship": "gameplay-abstraction", "explanation": "Merchants evoke exchange but were not the only travelers using overland corridors.", "sourceIds": [] },
+        { "elementId": "land", "relationship": "gameplay-abstraction", "explanation": "Land distinguishes this route from maritime travel without manufacturing terrain.", "sourceIds": [] },
+        { "elementId": "road-network", "relationship": "gameplay-abstraction", "explanation": "Some corridors intersected maintained roads, but imperial road networks were not universal prerequisites.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Late sixth to early fifth century BCE: Persepolis travel provisions", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Persepolis region, Achaemenid Empire"], "sourceIds": ["isac-fortification"], "note": "Accounts document particular journeys and entitlements, not the earliest caravan or all commercial traffic." },
+        { "dateRange": "Later second century BCE onward: Han-era Central Asian contacts", "dateType": "regional-development", "precision": "approximate", "regions": ["Han China and Central Asia"], "sourceIds": ["whe-silk-road"], "note": "Selected expanding contacts, not a single founding event for an entire transcontinental network." }
+      ],
+      "associatedRegions": ["Persepolis region, Achaemenid Empire", "Han China and Central Asia", "South Asia", "Mediterranean"],
+      "archaeologicalEvidence": [
+        { "text": "Persepolis accounts describe sealed travel documents and commodity allocations; preserved records select administratively visible activity.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["isac-fortification"] },
+        { "text": "Reconstructing linked Silk Roads from contacts and exchanges is a historical synthesis; it does not make every segment contemporary or every transfer direct.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["whe-silk-road"] }
+      ],
+      "historicalSignificance": { "text": "Intermediaries connected communities without every participant knowing a network's distant endpoints. Administrative records and trade narratives illuminate different kinds of mobility, with important gaps between them.", "sourceIds": ["isac-fortification", "whe-silk-road"] },
+      "independentDevelopments": [{ "regions": ["Persepolis region, Achaemenid Empire", "Han China and Central Asia", "Mediterranean"], "text": "Provisioned imperial journeys and merchant exchanges overlapped in some corridors but were not one centrally administered road system or one unchanging institution.", "sourceIds": ["isac-fortification", "whe-silk-road"] }],
+      "historicalUncertainty": ["Preserved ration records do not enumerate every traveler or prove a commercial purpose.", "Links, traffic volumes and route security changed over time.", "The consulted synthesis is used selectively; its single opening date and later technological transfers are not Age V chronology."],
+      "gameplaySimplifications": ["Merchant + Land is symbolic, not instant road construction.", "Neither a camel nor coins, maps or imperial authorization are universal prerequisites.", "The recipe does not replace Voyage, Merchant Network or Maritime Trade."],
+      "furtherResearch": [{ "question": "How can evidence for one journey support, or fail to support, a reconstructed trade network?", "sourceIds": ["isac-fortification", "whe-silk-road"] }]
+    },
+    {
+      "elementId": "cultural-exchange", "elementName": "Cultural Exchange",
+      "historicalOverview": { "text": "Communities encountered and adapted goods, ideas and practices through many kinds of movement. Han and Central Asian contacts and Mediterranean demand for traded goods provide regional examples. Ashoka's messages to a world including Hellenistic rulers reveal an ambition to communicate values; they do not independently demonstrate how every audience received them.", "sourceIds": ["whe-silk-road", "csu-asoka-edicts"] },
+      "manufactureOrUse": { "text": "Exchange involved people interpreting what they encountered, not knowledge passing unchanged between sealed civilizations. Merchants, migrants and religious travelers could contribute alongside envoys. Ashoka's Rock Edict XII encourages listening across religious communities, while XIII asserts distant influence. These are prescriptive royal texts, not proof of universal harmony. Conquest, coercion and unequal power could also shape encounters.", "sourceIds": ["csu-asoka-edicts", "whe-silk-road"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Age V selects ancient Eurasian examples, not the origin of human cultural contact. Exchange could occur without diplomacy, cities or empire and did not begin simultaneously across regions.", "sourceIds": ["whe-silk-road", "csu-asoka-edicts"] },
+      "relatedDiscoveries": [
+        { "elementId": "diplomatic-mission", "relationship": "gameplay-abstraction", "explanation": "Envoys are one route of contact, not a universal prerequisite.", "sourceIds": [] },
+        { "elementId": "knowledge", "relationship": "gameplay-abstraction", "explanation": "Knowledge evokes learning and reinterpretation rather than automatic acceptance.", "sourceIds": [] },
+        { "elementId": "caravan-route", "relationship": "gameplay-abstraction", "explanation": "Overland travelers can connect practices and communities without carrying an entire culture intact.", "sourceIds": [] },
+        { "elementId": "maritime-trade", "relationship": "gameplay-abstraction", "explanation": "Sea travel offers another channel; this optional recipe does not make diplomacy necessary for maritime exchange.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Third century BCE: Ashoka's Rock Edicts XII-XIII", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Mauryan South Asia and named Hellenistic kingdoms"], "sourceIds": ["csu-asoka-edicts"], "note": "Dates a royal appeal and claim, not the first interreligious contact or proof of foreign reception." },
+        { "dateRange": "Later second century BCE through early Roman imperial centuries: selected Eurasian contacts", "dateType": "regional-development", "precision": "approximate", "regions": ["Han China", "Central Asia", "Mediterranean"], "sourceIds": ["whe-silk-road"], "note": "A broad frame for selected exchanges, not continuous direct travel or later gunpowder transmission placed in antiquity." }
+      ],
+      "associatedRegions": ["Mauryan South Asia and named Hellenistic kingdoms", "Han China", "Central Asia", "Mediterranean"],
+      "archaeologicalEvidence": [
+        { "text": "Ashoka's translated edicts preserve explicit appeals about relations among religious communities and royal claims about distant influence.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["csu-asoka-edicts"] },
+        { "text": "Interpreting commercial contact as a setting for cultural adaptation requires attention to intermediaries; a traded object alone does not establish shared beliefs.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["whe-silk-road", "csu-asoka-edicts"] }
+      ],
+      "historicalSignificance": { "text": "Contact could enlarge possibilities for learning while leaving disagreement and unequal power intact. Claims of universal diffusion or peaceful blending conceal the choices of translators, intermediaries and local audiences.", "sourceIds": ["csu-asoka-edicts", "whe-silk-road"] },
+      "independentDevelopments": [{ "regions": ["Mauryan South Asia and named Hellenistic kingdoms", "Han China", "Central Asia"], "text": "Mauryan religious exhortation and Han-era political and commercial contacts illustrate different agents and purposes; they are not one uniform exchange institution or evidence that every similarity comes from borrowing.", "sourceIds": ["csu-asoka-edicts", "whe-silk-road"] }],
+      "historicalUncertainty": ["A royal claim of influence does not establish the audience's response.", "Contact does not by itself prove the direction or scale of transmission.", "Later technologies and later religious networks should not be backdated into every ancient encounter."],
+      "gameplaySimplifications": ["Diplomatic Mission + Knowledge symbolizes one possible encounter; diplomacy is not universally required.", "Trade, migration, religious travel and conquest can also connect communities.", "Exchange is neither automatically peaceful nor an inevitable improvement for everyone involved."],
+      "furtherResearch": [{ "question": "What evidence would distinguish a proclaimed message from its reception and local adaptation?", "sourceIds": ["csu-asoka-edicts", "whe-silk-road"] }]
     }
   ]
 }

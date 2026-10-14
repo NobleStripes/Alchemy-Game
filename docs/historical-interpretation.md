@@ -2,6 +2,16 @@
 
 [Back to the project overview](../README.md)
 
+## Regional administration, diplomacy and exchange
+
+Imperial Bureaucracy and Provincial Government are comparative gameplay labels, not identical institutions across empires. Achaemenid satrapies had regional fiscal and military obligations; Persepolis tablets document particular food transactions and travel entitlements. Their survival does not establish uniform practice across Persia. Mauryan Rajjukas and Dhamma Mahamatras appear in Ashoka's prescriptions; Roman proconsuls arose in a different magistracy and provincial-command context. No simple line of Persian-to-Roman institutional copying is asserted.
+
+Ashoka's Pillar Edicts IV and VII describe justice, officers and royal communications. UNESCO documents the surviving Lumbini pillar, attributed to 249 BCE; this does not settle the Buddha's birth chronology or reconstruct all Mauryan provinces. The hosted English edict rendering has translation uncertainties and is not an inspected original or complete critical edition. Prescriptive inscriptions attest royal intentions and claims, not automatic local compliance.
+
+Qin centralization (221-206 BCE) and Sima Qian's Han court work under Emperor Wu illustrate distinct administrative and scholarly contexts. His Records were completed around 94 BCE, not at the beginning of historical writing worldwide. The later Sui examination system must not be projected onto Qin/Han government. Greek-associated Rhetoric symbolizes persuasion, not a necessary origin of Asian diplomacy; Roman senatorial foreign relations retain their own setting.
+
+Zhang Qian's Han mission sought an alliance; Ashoka's Rock Edict XIII names Hellenistic kings within a claim of moral influence, not independently proven foreign conversion. Envoys were not necessarily modern permanent embassies. Caravan routes involved local stages and intermediaries, not a single transcontinental road opened on one date. Cultural Exchange requires neither diplomacy nor peaceful or equal encounters in real history. These five optional recipes select associations, not universal causal dependencies. Claim-specific citations and passage-access limits are in the [research registry](../src/game/content/research.json).
+
 ## Scholarship, textual memory and geographic representations
 
 Library and Rhetoric are reused, not newly invented by the expansion. Historical Writing, Cartography and Commentary are optional Age V labels tied to earlier writing, scribal and representational practices. Bronze Age Writing, Scroll, Scribe, Archive and Map and Iron Age Alphabet and Manuscript keep their gameplay chronology; Age V is not the beginning of record-making or knowledge.
@@ -156,7 +166,7 @@ The expanded evidence distinguishes:
 - **Diverse inquiry and mathematics:** Stanford's Indian and Chinese philosophy articles warn against flattening different categories and periods. MacTutor's Sulbasutras, Nine Chapters and Euclid accounts describe distinct mathematical traditions; later commentary is not the first invention of its mathematics. No worldwide simultaneous Classical transition is claimed.
 - **Scholarship and natural history:** Nineveh's tablet collection and earlier libraries predate Alexandria; Alexandria's founding and fate remain uncertain. Aristotle's bird descriptions include reported claims, not modern confirmation of every belief or ancient knowledge of avian dinosaur ancestry. Fossil Inquiry retains its distinction between ancient explanations and modern paleontology, including the disputed griffin hypothesis.
 
-Agora remains a core fifth-age civic landmark. Library, Aqueduct, Arch and Stoa were evaluated as additional landmarks but instead serve optional objectives, preserving earned chapter completion and acknowledging earlier precedents. The [objective tables](gameplay.md#optional-age-v-objectives) document membership and prerequisites; reading historical notes is separate from both challenge instructions and rewards.
+Agora remains a core fifth-age civic landmark. A separate optional track reuses Agora as a civic landmark, Library as a knowledge landmark, Aqueduct as an engineering landmark and Mint as an optional economic landmark. They are additive collection objectives, not new core completion requirements. Arch supports the Aqueduct objective; Stoa remains in the earlier civic collection. Aqueduct retains its Iron Age gameplay assignment, not a universal first-invention date. Supporting discoveries are gameplay membership rules, not causal claims that all conduits needed arches, libraries needed papyrus or commerce needed coins. The four additional named labs use supplied puzzle foundations and existing recipes; cited historical context stays separate from puzzle flavor. The [objective tables](gameplay.md#optional-age-v-objectives) document membership and routes; reading historical notes is separate from both challenge instructions and rewards.
 
 ## Historical references
 

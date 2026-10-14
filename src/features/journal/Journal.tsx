@@ -2,6 +2,8 @@ import { BookOpen, FlaskConical, Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { collections, elements, elementsById, eras, recipes } from '../../game/content'
 import { learningChallenges, type ChallengeDefinition } from '../../game/content/challenges'
+import type { CollectionDefinition } from '../../game/domain/types'
+import { isCollectionComplete } from '../../game/engine/collectionRules'
 import { areGlobalHintsUnlocked } from '../../game/engine/hintRules'
 import {
   FAILURES_PER_INSIGHT,
@@ -171,6 +173,52 @@ export function Journal({
     insightCredits >= MAX_INSIGHT_CREDITS &&
     insightFailureProgress === FAILURES_PER_INSIGHT - 1
 
+  const optionalLandmarks = collections.filter((collection) => collection.era === eraId && collection.landmarkId)
+
+  function collectionGoal(collection: CollectionDefinition) {
+    const foundCount = collection.elementIds.filter((id) => discoveredIds.includes(id)).length
+    const rewarded = rewardedCollectionIds.includes(collection.id)
+    const complete = isCollectionComplete(collection, discoveredIds)
+    return (
+      <li key={collection.id} className="collection-goal">
+        <strong>{collection.name}</strong>
+        <span className="collection-count">{foundCount}/{collection.elementIds.length}</span>
+        {collection.landmarkId && (
+          <span className="history-indicator">
+            {complete ? 'Landmark objective complete' : discoveredIds.includes(collection.landmarkId)
+              ? 'Landmark discovered; supporting discoveries remain' : 'Landmark not yet discovered'}
+          </span>
+        )}
+        <span className="collection-reward">
+          {rewarded ? '+1 Insight reward earned' : complete ? '+1 Insight on next successful campaign combination' : '+1 Insight on completion'}
+        </span>
+        {collection.education && (
+          <>
+            <span className="history-indicator">Optional historical discovery objective</span>
+            <p className="detail-desc">{collection.education}</p>
+            <p className="detail-desc">Earlier gameplay pages connect these discoveries; they are not universal historical prerequisites. Reading is free and does not affect this reward.</p>
+          </>
+        )}
+        <ul className="collection-members">
+          {collection.elementIds.map((id) => (
+            <li key={id} data-found={discoveredIds.includes(id)}>
+              {discoveredIds.includes(id) ? (
+                <>
+                  {elementsById.get(id)?.name}
+                  {collection.education && elementsById.get(id)?.era !== eraId && (
+                    <small className="collection-foundation">
+                      Earlier gameplay page: {eras.find((candidate) => candidate.id === elementsById.get(id)?.era)?.name}
+                    </small>
+                  )}
+                </>
+              ) : 'Unknown element'}
+            </li>
+          ))}
+        </ul>
+      </li>
+    )
+  }
+
   return (
     <aside className="journal" aria-labelledby="journal-title">
       <div className="section-heading">
@@ -275,45 +323,25 @@ export function Journal({
         )}
       </section>
 
+      {optionalLandmarks.length > 0 && (
+        <details className="guide-section" open>
+          <summary>Optional landmark track</summary>
+          <p className="detail-desc">
+            {optionalLandmarks.filter((collection) => isCollectionComplete(collection, discoveredIds)).length}/{optionalLandmarks.length} objectives complete.
+            Record each landmark and its supporting discoveries, using any existing recipe route.
+            These objectives do not change page completion, earlier achievements or other challenges.
+            Each earns the standard one-time collection reward; Mint remains an independent optional branch.
+          </p>
+          <ul className="collection-goals" aria-label="Optional landmark goals">
+            {optionalLandmarks.map(collectionGoal)}
+          </ul>
+        </details>
+      )}
+
       <details className="guide-section" open>
         <summary>Collections</summary>
         <ul className="collection-goals" aria-label="Collection goals">
-          {collections.filter((collection) => collection.era === eraId).map((collection) => {
-            const foundCount = collection.elementIds.filter((id) => discoveredIds.includes(id)).length
-            const rewarded = rewardedCollectionIds.includes(collection.id)
-            return (
-              <li key={collection.id} className="collection-goal">
-                <strong>{collection.name}</strong>
-                <span className="collection-count">{foundCount}/{collection.elementIds.length}</span>
-                <span className="collection-reward">
-                  {rewarded ? '+1 Insight reward earned' : '+1 Insight on completion'}
-                </span>
-                {collection.education && (
-                  <>
-                    <span className="history-indicator">Optional historical discovery objective</span>
-                    <p className="detail-desc">{collection.education}</p>
-                    <p className="detail-desc">Earlier gameplay pages connect these discoveries; they are not universal historical prerequisites. Reading is free and does not affect this reward.</p>
-                  </>
-                )}
-                <ul className="collection-members">
-                  {collection.elementIds.map((id) => (
-                    <li key={id} data-found={discoveredIds.includes(id)}>
-                      {discoveredIds.includes(id) ? (
-                        <>
-                          {elementsById.get(id)?.name}
-                          {collection.education && elementsById.get(id)?.era !== eraId && (
-                            <small className="collection-foundation">
-                              Earlier gameplay page: {eras.find((candidate) => candidate.id === elementsById.get(id)?.era)?.name}
-                            </small>
-                          )}
-                        </>
-                      ) : 'Unknown element'}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            )
-          })}
+          {collections.filter((collection) => collection.era === eraId && !collection.landmarkId).map(collectionGoal)}
         </ul>
         <div className="category-progress" aria-label="Category progress">
           {categoryProgress.map(({ category, label, discovered, total }) => (

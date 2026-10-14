@@ -44,4 +44,5 @@ export interface CollectionDefinition {
   era: string
   elementIds: string[]
   education?: string
+  landmarkId?: string
 }

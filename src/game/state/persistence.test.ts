@@ -16,6 +16,43 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('round-trips old and additive landmark/challenge receipts together without changing v7 or preferences', () => {
+    const challengeRecords = [
+      { challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 },
+      ...learningChallenges.map((challenge) => ({
+        challengeId: challenge.id, completed: true, bestAttemptCount: challenge.minimumAttempts,
+      })),
+    ]
+    const progress = {
+      ...fresh(), discoveredIds: elements.map((element) => element.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      discoveredRecipeIds: recipes.map((recipe) => recipe.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      challengeRecords, favoriteIds: ['agora', 'aqueduct'], readHistoricalElementIds: ['library'],
+      hideFinalElements: true, collapsedShelves: ['stone-age', 'classical-antiquity'],
+    }
+    expect(parseProgress(exportProgress(progress))).toMatchObject(progress)
+    expect(parseProgress(exportProgress(progress))?.version).toBe(7)
+  })
+
+  it('round-trips regional discoveries with earlier formulas, favorites and reading without a v7 change', () => {
+    const recipeIds = ['public-persuasion', 'recorded-rule', 'delegated-rule', 'authorized-envoys', 'overland-caravans', 'encountered-ideas']
+    const recorded = recipeIds.map((id) => recipes.find((recipe) => recipe.id === id)!)
+    const ids = recorded.map((recipe) => recipe.result)
+    const restored = parseProgress(JSON.stringify({
+      ...fresh(),
+      discoveredIds: [...new Set([...starterElementIds, ...recorded.flatMap((recipe) => [...recipe.inputs, recipe.result])])],
+      discoveredRecipeIds: recipeIds, favoriteIds: ids, readHistoricalElementIds: ids,
+      hideFinalElements: true, collapsedShelves: ['bronze-age', 'classical-antiquity'],
+    }))!
+    expect(restored).toMatchObject({
+      version: 7, discoveredRecipeIds: recipeIds, favoriteIds: ids, readHistoricalElementIds: ids,
+      hideFinalElements: true, collapsedShelves: ['bronze-age', 'classical-antiquity'],
+    })
+    expect(parseProgress(exportProgress(restored))).toEqual(restored)
+  })
+
   it('retains earlier scholarship and new discoveries, recorded formulas, favorites and reading in v7', () => {
     const recipeIds = ['written-marks', 'bound-scroll', 'city-of-texts', 'public-persuasion', 'remembered-past', 'reasoned-maps', 'interpreted-text']
     const recorded = recipeIds.map((id) => recipes.find((recipe) => recipe.id === id)!)
@@ -318,8 +355,8 @@ describe('progress persistence', () => {
       readHistoricalElementIds: ['library', 'geometry', 'aqueduct', 'bird-inquiry'],
     }))!
     expect(completed.version).toBe(7)
-    expect(completed.rewardedCollectionIds).toHaveLength(10)
-    expect(completed.challengeRecords).toHaveLength(7)
+    expect(completed.rewardedCollectionIds).toHaveLength(collections.length)
+    expect(completed.challengeRecords).toHaveLength(learningChallenges.length)
     expect(completed.readHistoricalElementIds).toEqual(['library', 'geometry', 'aqueduct', 'bird-inquiry'])
     expect(parseProgress(exportProgress(completed))).toEqual(completed)
   })

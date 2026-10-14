@@ -741,28 +741,75 @@ describe('campaign state', () => {
   it.each(collections)('rewards $name in the discovery transaction exactly once without reading', (collection) => {
     const resultId = collection.elementIds[collection.elementIds.length - 1]
     const recipe = recipes.find((entry) => entry.result === resultId)!
+    const priorRewards = collections.filter((entry) => entry.id !== collection.id).map((entry) => entry.id)
     useGameStore.setState({
       discoveredIds: [...new Set([...starterElementIds, ...collection.elementIds.filter((id) => id !== recipe.result), ...recipe.inputs])],
       insightCredits: 0, favoriteIds: ['ember'], soundEnabled: false,
       challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 5 }],
       unlockedEraIds: eras.map((era) => era.id),
       rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: priorRewards,
     })
     state().transmuteWith(...recipe.inputs)
-    expect(state().rewardedCollectionIds).toEqual([collection.id])
+    expect(state().rewardedCollectionIds).toEqual([...priorRewards, collection.id])
     expect(state().insightCredits).toBe(1)
     expect(state().lastAttempt?.insightEarned).toBe(1)
     expect(state().readHistoricalElementIds).toEqual([])
     expect(loadProgress()).toEqual({ version: 7, ...campaign() })
     state().transmuteWith(...recipe.inputs)
     expect(state().insightCredits).toBe(1)
-    expect(state().rewardedCollectionIds).toEqual([collection.id])
+    expect(state().rewardedCollectionIds).toEqual([...priorRewards, collection.id])
     expect(state().lastAttempt?.insightEarned).toBe(0)
     const progress = loadProgress()!
     useGameStore.setState(snapshotProgress(progress))
     expect(state().insightCredits).toBe(1)
     state().transmuteWith(...recipe.inputs)
     expect(state().insightCredits).toBe(1)
+  })
+
+  it('preserves all old completions on upgrade and awards only new landmark receipts on a successful combination', async () => {
+    const oldCollections = collections.filter((collection) => !collection.landmarkId).map((collection) => collection.id)
+    const oldChallenges = [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 },
+      ...learningChallenges.slice(0, 7).map((challenge) => ({
+        challengeId: challenge.id, completed: true, bestAttemptCount: challenge.minimumAttempts,
+      }))]
+    const progress = {
+      ...fresh(), discoveredIds: elements.map((element) => element.id),
+      unlockedEraIds: eras.map((era) => era.id), rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: oldCollections, challengeRecords: oldChallenges, insightCredits: 0,
+    }
+    localStorage.setItem(saveKey, exportProgress(progress))
+    const upgraded = createGameStore()
+    expect({ version: 7, ...snapshotProgress(upgraded.getState()) }).toEqual(progress)
+    upgraded.getState().transmuteWith('gale', 'tide')
+    expect(upgraded.getState().rewardedCollectionIds).toEqual(oldCollections)
+    upgraded.getState().transmuteWith('ember', 'tide')
+    expect(upgraded.getState().rewardedCollectionIds).toEqual(collections.map((collection) => collection.id))
+    expect(upgraded.getState().insightCredits).toBe(3)
+    expect(upgraded.getState().challengeRecords).toEqual(oldChallenges)
+    expect(upgraded.getState().rewardedChallengeEraIds).toEqual(progress.rewardedChallengeEraIds)
+    expect(await upgraded.getState().recordChallengeCompletion('civic-foundations', 2))
+      .toMatchObject({ saved: true, firstCompletion: true, insightEarned: 0 })
+    const reloaded = createGameStore()
+    expect(reloaded.getState().rewardedCollectionIds).toEqual(collections.map((collection) => collection.id))
+    expect(reloaded.getState().challengeRecords).toEqual([
+      ...oldChallenges, { challengeId: 'civic-foundations', completed: true, bestAttemptCount: 2 },
+    ])
+    expect(await reloaded.getState().recordChallengeCompletion('civic-foundations', 3))
+      .toMatchObject({ saved: true, firstCompletion: false, insightEarned: 0 })
+  })
+
+  it('awards an existing engineering collection and its supporting landmark independently', () => {
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, 'masonry', 'aqueduct', 'arch', 'city'],
+      unlockedEraIds: eras.map((era) => era.id),
+      rewardedChallengeEraIds: eras.map((era) => era.id), insightCredits: 0,
+    })
+    state().transmuteWith('arch', 'city')
+    expect(state().rewardedCollectionIds).toEqual(['classical-engineering', 'aqueduct-landmark'])
+    expect(state().insightCredits).toBe(2)
+    state().transmuteWith('arch', 'city')
+    expect(state().insightCredits).toBe(2)
   })
 
   it('marks all completed collections once even at the wallet cap, without banking overflow', () => {

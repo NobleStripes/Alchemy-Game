@@ -48,11 +48,15 @@ export const collectionSchema = z.object({
   name: z.string().min(1),
   era: z.string().min(1),
   education: z.string().trim().min(1).optional(),
+  landmarkId: z.string().regex(/^[a-z][a-z0-9-]*$/).optional(),
   elementIds: z.array(z.string().min(1)).nonempty().refine(
     (ids) => new Set(ids).size === ids.length,
     'Collection members must be unique.',
   ),
-})
+}).refine(
+  (collection) => !collection.landmarkId || collection.elementIds.includes(collection.landmarkId),
+  'Collection members must include the landmark.',
+)
 
 export const collectionsSchema = z.array(collectionSchema)
 

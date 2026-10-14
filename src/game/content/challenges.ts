@@ -105,6 +105,54 @@ export const learningChallenges: ChallengeDefinition[] = [
       sourceIds: ['mit-aristotle-animals', 'nhm-bird-evolution', 'sep-naturalism-india', 'sep-chinese-metaphysics', 'herodotus-egypt-shells'],
     },
   },
+  {
+    id: 'civic-foundations',
+    name: 'Civic Foundations',
+    starterIds: ['masonry', 'village', 'trade'],
+    targetId: 'agora',
+    allowedResultEraIds: ['bronze-age', 'classical-antiquity'],
+    minimumAttempts: 2,
+    education: {
+      overview: 'Connect supplied building and community discoveries to an agora through symbolic combinations. An agora could support civic, legal, religious and commercial activities, not only trade. These ingredients are puzzle aids, not sufficient causes of Greek urban institutions or a universal chronology.',
+      sourceIds: ['ascsa-agora'],
+    },
+  },
+  {
+    id: 'organization-of-knowledge',
+    name: 'Organization of Knowledge',
+    starterIds: ['papyrus', 'cordage', 'city'],
+    targetId: 'library',
+    allowedResultEraIds: ['bronze-age', 'classical-antiquity'],
+    minimumAttempts: 3,
+    education: {
+      overview: 'Explore a roll-and-archive puzzle route to Library. Papyrus is supplied for this route, not required for every ancient library: clay tablets and other formats preserve distinct traditions. Collection, copying and selective survival shaped the evidence; archives and libraries were not identical or universally open to everyone.',
+      sourceIds: ['um-papyrus', 'whe-library-ashurbanipal', 'whe-library-alexandria'],
+    },
+  },
+  {
+    id: 'engineering-the-city',
+    name: 'Engineering the City',
+    starterIds: ['masonry', 'village', 'stone'],
+    targetId: 'aqueduct',
+    allowedResultEraIds: ['bronze-age', 'iron-age', 'classical-antiquity'],
+    minimumAttempts: 2,
+    education: {
+      overview: 'Explore a symbolic city-waterway route using supplied masonry and Earth. Aqueduct retains its Iron Age campaign assignment; the lab does not redate it or deny earlier waterworks. Actual systems needed surveyed gradients, maintenance and distribution arrangements, and many used channels, tunnels or pipes rather than arches. Two inputs are not construction instructions.',
+      sourceIds: ['whe-aqueduct', 'unesco-persian-qanat'],
+    },
+  },
+  {
+    id: 'economic-networks',
+    name: 'Economic Networks',
+    starterIds: ['bronze', 'road', 'town', 'forge'],
+    targetId: 'mint',
+    allowedResultEraIds: ['iron-age', 'classical-antiquity'],
+    minimumAttempts: 3,
+    education: {
+      overview: 'Connect a supplied route and town to a market, then explore one coin-and-workshop path to Mint. Roads and coined money were not universal prerequisites for exchange; maritime and other networks also mattered. Bronze is one puzzle material among different monetary metals, and minting required more than a forge. This optional economic lab does not gate any other objective.',
+      sourceIds: ['whe-trade', 'whe-greek-coinage', 'whe-roman-coinage'],
+    },
+  },
 ]
 
 export const challenges = [rainmakerChallenge, ...learningChallenges]

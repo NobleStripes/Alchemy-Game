@@ -37,7 +37,7 @@ describe('optional scholarship discoveries', () => {
   it('validates gated reachability with and without the optional branch', () => {
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
     expect(validateContent(elements.slice(0, 186), recipes.slice(0, 224), eras, collections)).toEqual([])
-    expect(elements.slice(186).map((element) => element.id)).toEqual(additions)
+    expect(elements.slice(186, 189).map((element) => element.id)).toEqual(additions)
     const requirements = JSON.stringify({ eras, collections, learningChallenges })
     for (const id of additions) expect(requirements).not.toContain(`"${id}"`)
     for (const id of ['writing', 'scroll', 'map', 'scribe', 'archive']) {
