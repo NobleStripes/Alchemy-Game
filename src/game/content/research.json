@@ -630,6 +630,36 @@
       "id": "mit-aristotle-animals", "title": "The History of Animals, Book IX", "authors": ["Aristotle", "D'Arcy Wentworth Thompson (translator)"], "institution": "The Internet Classics Archive, Massachusetts Institute of Technology", "sourceType": "library-collection",
       "url": "https://classics.mit.edu/Aristotle/history_anim.9.ix.html", "publicationDate": null,
       "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://classics.mit.edu/Aristotle/history_anim.9.ix.html", "accessLevel": "selected-passages", "locator": "Book IX, Part 1: bird feeding, nesting and relationships, including expressly reported claims ('it is said'). Ancient testimony is not verification of every animal claim; site date 350 BCE not treated as precise composition evidence." }
+    },
+    {
+      "id": "usgs-clays", "title": "Environmental Characteristics of Clays and Clay Mineral Deposits", "authors": ["Nora K. Foley"], "institution": "U.S. Geological Survey", "sourceType": "reference-textbook",
+      "url": "https://pubs.usgs.gov/info/clays/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://pubs.usgs.gov/info/clays/", "accessLevel": "selected-passages", "locator": "Clay Minerals, Physical and Chemical Properties, and How and Where Clays and Clay Deposits Form: size versus mineral meanings, water affinity, alteration, weathering, transport and deposition. Nora K. Foley byline; September 1999 handout, exact publication day not supplied. Modern mineralogy is not attributed to ancient potters." }
+    },
+    {
+      "id": "bc-rock-cycle", "title": "Physical Geology: 3.1 The Rock Cycle", "authors": [], "institution": "BCcampus Open Education", "sourceType": "reference-textbook",
+      "url": "https://opentextbc.ca/geology/chapter/3-1-the-rock-cycle/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://opentextbc.ca/geology/chapter/3-1-the-rock-cycle/", "accessLevel": "selected-passages", "locator": "Rock-cycle account of cooling, weathering, erosion, transport, deposition, burial, cementation and metamorphism. The exercise's illustrative durations are not a universal clock or archaeological dates." }
+    },
+    {
+      "id": "bc-clastic-sediment", "title": "Physical Geology: 6.1 Clastic Sedimentary Rocks", "authors": [], "institution": "BCcampus Open Education", "sourceType": "reference-textbook",
+      "url": "https://opentextbc.ca/geology/chapter/6-1-clastic-sedimentary-rocks/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://opentextbc.ca/geology/chapter/6-1-clastic-sedimentary-rocks/", "accessLevel": "selected-passages", "locator": "Sediment transport and sorting by streams, waves and wind; deposition, compaction and cementation; quartz, feldspar and lithic sandstone varieties. No single composition, formation duration or ancient glass feedstock provenance is inferred." }
+    },
+    {
+      "id": "bc-carbonate-rocks", "title": "Physical Geology: 6.2 Chemical Sedimentary Rocks", "authors": [], "institution": "BCcampus Open Education", "sourceType": "reference-textbook",
+      "url": "https://opentextbc.ca/geology/chapter/6-2-chemical-sedimentary-rocks/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://opentextbc.ca/geology/chapter/6-2-chemical-sedimentary-rocks/", "accessLevel": "selected-passages", "locator": "Carbonate shell and reef fragments, ooids, tufa/travertine and cave precipitates; chert beds and nodules, including flint in southeastern English chalk. These are modern geological explanations, not ancient testimony or a universal marine origin for limestone." }
+    },
+    {
+      "id": "bc-metal-deposits", "title": "Physical Geology: 20.1 Metal Deposits", "authors": [], "institution": "BCcampus Open Education", "sourceType": "reference-textbook",
+      "url": "https://opentextbc.ca/geology/chapter/20-1-metal-deposits/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://opentextbc.ca/geology/chapter/20-1-metal-deposits/", "accessLevel": "selected-passages", "locator": "Introduction on First Nations obsidian extraction and trade in British Columbia; concentration and economic viability; hydrothermal copper sulfides; banded iron formations and iron oxidation. Modern grade examples are not ancient viability thresholds, and deposit examples do not identify ancient metal provenance." }
+    },
+    {
+      "id": "bc-magma-crystallization", "title": "Physical Geology: 3.3 Crystallization of Magma", "authors": [], "institution": "BCcampus Open Education", "sourceType": "reference-textbook",
+      "url": "https://opentextbc.ca/geology/chapter/3-3-crystallization-of-magma/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://opentextbc.ca/geology/chapter/3-3-crystallization-of-magma/", "accessLevel": "selected-passages", "locator": "Cooling and crystallization of magma, including rapid quenching into glass. Used for natural glass formation, not an ancient glassmaking recipe or archaeological date." }
     }
   ],
   "records": [
@@ -1628,6 +1658,120 @@
       "historicalUncertainty": ["Priority and adoption differ by region, and these examples do not establish a universal origin.", "Circulation could continue after minting; deposition is not necessarily contemporary with production."],
       "gameplaySimplifications": ["Bronze and a market symbolize exchange; real coins needed controlled weights, prepared blanks and issuing conventions and were not all bronze."],
       "furtherResearch": [{ "question": "How can minting date, wear and hoard context distinguish production from later circulation?", "sourceIds": ["whe-greek-coinage", "whe-roman-coinage"] }]
+    },
+    {
+      "elementId": "clay", "elementName": "Clay",
+      "historicalOverview": { "text": "Clay describes both very fine particles and a family of minerals; a clay-rich sediment can also contain other minerals. Clay minerals form through alteration of earlier minerals, including weathering and hydrothermal or burial processes. Erosion and redeposition can concentrate existing clay without making new clay minerals. These are natural processes, not the invention of pottery.", "sourceIds": ["usgs-clays"] },
+      "manufactureOrUse": { "text": "Water makes suitable clay mixtures workable, allowing shaping and drying; making durable pottery also involves firing, not simply adding water. The Xianrendong pottery study reports ceramics made by mobile foragers around 20,000 years ago, before agriculture. Much later, a Mesopotamian barley account records another use of clay as a writing surface. These are different regional practices, not one inevitable sequence.", "sourceIds": ["usgs-clays", "xianrendong-pottery", "met-barley-account"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins makes a naturally occurring material available as a puzzle resource. It dates neither geological clay formation nor the first human use of clay.", "sourceIds": ["usgs-clays"] },
+      "relatedDiscoveries": [
+        { "elementId": "pottery", "relationship": "documented", "explanation": "Pottery is a human-made ceramic product, distinct from its naturally occurring clay-rich raw material.", "sourceIds": ["usgs-clays", "xianrendong-pottery"] },
+        { "elementId": "writing", "relationship": "documented", "explanation": "The barley account demonstrates clay's use for recording information, not a prerequisite for every writing tradition.", "sourceIds": ["met-barley-account"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Natural formation: no single date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["usgs-clays"], "note": "A material class has many deposits and formation histories; archaeological use dates do not date the minerals." },
+        { "dateRange": "Around 20,000 years ago: Xianrendong pottery", "dateType": "dated-evidence", "precision": "approximate", "regions": ["China"], "sourceIds": ["xianrendong-pottery"], "note": "A reported archaeological context, not a global first use of clay; the accessed abstract proposes cooking use without proving it." }
+      ],
+      "associatedRegions": ["China", "Mesopotamia"],
+      "archaeologicalEvidence": [{ "text": "Excavated pottery at Xianrendong supports ceramic production by foragers. A cataloged Mesopotamian clay barley account independently documents a later recording practice; neither object establishes when clay itself formed.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["xianrendong-pottery", "met-barley-account"] }],
+      "historicalSignificance": { "text": "Clay illustrates the difference between a natural resource and learned ways of transforming or using it: ceramic vessels and written accounts preserve evidence of distinct human activities.", "sourceIds": ["usgs-clays", "xianrendong-pottery", "met-barley-account"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Clay composition and workability vary; not every fine sediment is equally suitable for pottery.", "The pottery study was reviewed at abstract level; its proposed cooking use is not established here.", "The examples do not prove independent invention or a universal first clay use."],
+      "gameplaySimplifications": ["The Earth-and-water clue symbolizes a workable mixture. Water does not instantly turn arbitrary earth into clay minerals, and wet clay is not fired pottery."],
+      "furtherResearch": [{ "question": "How can mineral analysis distinguish clay formation, transport and a potter's selection of raw material?", "sourceIds": ["usgs-clays"] }]
+    },
+    {
+      "elementId": "rock", "elementName": "Rock",
+      "historicalOverview": { "text": "Rock is not a single substance. Igneous rocks form through cooling of molten material; sedimentary rocks through processes including deposition and cementation; metamorphic rocks through alteration by heat and pressure without complete melting. Weathering and erosion can free pieces of older rock. Geological histories generally long predate the people who collected them.", "sourceIds": ["bc-rock-cycle"] },
+      "manufactureOrUse": { "text": "Toolmakers selected and struck suitable stone to produce flakes from cores; hammerstones, cores and flakes preserve evidence of those actions. Flint is a form of siliceous chert, including nodules in chalk, rather than a synonym for every rock. Obsidian is natural volcanic glass: rapid quenching can inhibit crystal growth. The textbook describes First Nations extraction and exchange of obsidian in British Columbia, without assigning one first-use date. Collecting and working these materials is distinct from their natural formation.", "sourceIds": ["smithsonian-stone-tools", "bc-carbonate-rocks", "bc-magma-crystallization", "bc-metal-deposits"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins represents access to loose stone, not a geological epoch or the invention of rocks. Rock is distinct from the starter named Earth, whose stable gameplay ID is stone.", "sourceIds": ["bc-rock-cycle"] },
+      "relatedDiscoveries": [
+        { "elementId": "sand", "relationship": "documented", "explanation": "Weathering, erosion and transport can produce and sort rock-derived grains, but not all sand has the same mineral composition.", "sourceIds": ["bc-rock-cycle", "bc-clastic-sediment"] },
+        { "elementId": "limestone", "relationship": "documented", "explanation": "Limestone is one carbonate-rich sedimentary rock, not the result of putting any rock in seawater.", "sourceIds": ["bc-carbonate-rocks"] }
+      ],
+      "approximateDates": [{ "dateRange": "Multiple geological histories and human uses: no single origin date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-rock-cycle", "smithsonian-stone-tools"], "note": "Rock formation, exposure, collection and toolmaking are separate events. No universal duration is inferred from the rock-cycle exercise." }],
+      "associatedRegions": ["British Columbia", "Southeastern England"],
+      "archaeologicalEvidence": [{ "text": "Hammerstones, cores and detached flakes are material evidence of stoneworking. Identifying an artifact does not by itself identify its maker's hominin species, and not every broken stone was deliberately worked.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["smithsonian-stone-tools"] }],
+      "historicalSignificance": { "text": "Stone artifacts connect selection of natural materials to learned production practices. The contrast between naturally formed glass and human-made glass also shows why similar appearance does not mean the same origin.", "sourceIds": ["smithsonian-stone-tools", "bc-magma-crystallization", "met-glass-vase"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Rock formation and artifact manufacture require different evidence and dating methods.", "The cited obsidian comparison does not assign an invention date or establish every trade route.", "Flint and obsidian are contextual examples, not separate discoveries in the current catalog."],
+      "gameplaySimplifications": ["The land-and-Earth clue represents finding accessible rock; it does not compress all igneous, sedimentary and metamorphic processes into a literal mixture."],
+      "furtherResearch": [{ "question": "What distinguishes a naturally fractured stone from a core or deliberately detached flake?", "sourceIds": ["smithsonian-stone-tools"] }]
+    },
+    {
+      "elementId": "sand", "elementName": "Sand",
+      "historicalOverview": { "text": "Sand is a grain-size class, not a single mineral. Grains can include quartz, feldspar and rock fragments, while carbonate sands can contain shell and reef fragments. Weathering supplies sediment, and streams, waves and wind transport and sort it. Deposition is not the same as the later compaction and cementation that can produce sandstone.", "sourceIds": ["bc-clastic-sediment", "bc-carbonate-rocks"] },
+      "manufactureOrUse": { "text": "The Atlas connects sand with glass, a manufactured material represented by the cataloged New Kingdom Egyptian glass vessel from Malqata. That object demonstrates ancient glass use, not the precise sand source or batch composition of every vessel. Natural sediment formation and deliberate glass production must not be conflated: loose sand is not already a finished glass vessel.", "sourceIds": ["met-glass-vase", "bc-clastic-sediment"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins gives access to an existing sediment. It does not date sand formation or place ancient glassmaking before prehistoric societies.", "sourceIds": ["bc-clastic-sediment", "met-glass-vase"] },
+      "relatedDiscoveries": [
+        { "elementId": "rock", "relationship": "documented", "explanation": "Rock weathering supplies many sand grains, while some carbonate grains have biological origins.", "sourceIds": ["bc-clastic-sediment", "bc-carbonate-rocks"] },
+        { "elementId": "glass", "relationship": "gameplay-abstraction", "explanation": "The clue connects a natural material with a manufactured artifact; the cited vessel does not verify the game's exact ingredient pair or a complete production method.", "sourceIds": ["met-glass-vase"] }
+      ],
+      "approximateDates": [{ "dateRange": "Sediment formation and redeposition: no single date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-clastic-sediment"], "note": "A grain's parent rock, its release by weathering and its deposition need not have the same age." }],
+      "associatedRegions": ["Malqata, Egypt"],
+      "archaeologicalEvidence": [{ "text": "The cataloged Egyptian glass vessel is evidence of a manufactured object. Its existence alone cannot identify an ancient sand quarry, establish raw-material proportions or demonstrate that a particular beach supplied its makers.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["met-glass-vase"] }],
+      "historicalSignificance": { "text": "Comparing sediment with an ancient glass artifact encourages separate questions about natural material origins, craft production and the evidence required to connect the two.", "sourceIds": ["bc-clastic-sediment", "met-glass-vase"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Sand composition varies; not all sand is quartz or suitable for the same manufacturing use.", "The cited artifact record does not establish feedstock provenance or a universal first glassmaking date."],
+      "gameplaySimplifications": ["The dust-and-sea clue symbolizes a shore deposit. Fine dust does not automatically become sand on contact with seawater; transport, sorting and grain origins matter.", "The glass route omits material selection, batch chemistry and controlled production; it is not a practical manufacturing procedure."],
+      "furtherResearch": [{ "question": "What compositional evidence would be needed to connect an ancient glass object to a particular raw-material source?", "sourceIds": ["met-glass-vase", "bc-clastic-sediment"] }]
+    },
+    {
+      "elementId": "limestone", "elementName": "Limestone",
+      "historicalOverview": { "text": "Limestone is a sedimentary rock composed mainly of calcium carbonate. Much forms from accumulated marine shells and skeletal fragments, but not all limestone is marine remains: carbonate can also precipitate as ooids, spring deposits or cave deposits. Accumulation, cementation and later geological change are not instantaneous reactions between seawater and a loose rock.", "sourceIds": ["bc-carbonate-rocks"] },
+      "manufactureOrUse": { "text": "Limestone can be transformed by calcination: sustained high-temperature heating decomposes calcium carbonate into calcium oxide and carbon dioxide. This is a chemical change, unlike simply collecting building stone. A study of lime plaster at Natufian Nahal Ein Gev II reconstructs pyrotechnological production around 12,000 years ago. The reviewed abstract supports a plaster-production interpretation, not a surviving isolated sample of the original quicklime or a universal first kiln.", "sourceIds": ["epa-lime-manufacturing", "friesem-lime-plaster"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins supplies a pre-existing natural rock. Limestone's availability is separate from the Stone Age placement of the game's human-made Quicklime discovery.", "sourceIds": ["bc-carbonate-rocks", "friesem-lime-plaster"] },
+      "relatedDiscoveries": [
+        { "elementId": "quicklime", "relationship": "documented", "explanation": "Calcination transforms carbonate rock into a different substance; the natural rock and the manufactured oxide must be distinguished.", "sourceIds": ["epa-lime-manufacturing"] },
+        { "elementId": "fossil", "relationship": "documented", "explanation": "Shell and skeletal material can contribute to carbonate sediment; not every limestone consists of recognizable fossils, and fossils occur in other rocks too.", "sourceIds": ["bc-carbonate-rocks", "nhm-fossil-formation"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Natural carbonate formation: many geological periods", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-carbonate-rocks"], "note": "No single formation date or duration applies to all limestone." },
+        { "dateRange": "Around 12,000 years ago: Nahal Ein Gev II lime plaster", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Southern Levant"], "sourceIds": ["friesem-lime-plaster"], "note": "Dates the studied human use, not the geological formation of its carbonate raw material. Production is reconstructed from plaster evidence." }
+      ],
+      "associatedRegions": ["Southern Levant"],
+      "archaeologicalEvidence": [{ "text": "The plaster study uses analytical evidence to reconstruct lime production at Nahal Ein Gev II. This is a modern interpretation of an excavated material, not proof that ancient makers knew the modern chemical equation.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["friesem-lime-plaster"] }],
+      "historicalSignificance": { "text": "The comparison separates geological carbonate accumulation from human pyrotechnology. A material may be naturally ancient while evidence for its deliberate transformation belongs to a much later archaeological context.", "sourceIds": ["bc-carbonate-rocks", "friesem-lime-plaster"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Carbonate origins, impurities and later alteration differ between deposits.", "The plaster paper was accessed at abstract level; modern industrial chemistry does not reconstruct every ancient furnace design."],
+      "gameplaySimplifications": ["The sea-and-rock clue evokes marine carbonate settings, but neither describes every limestone origin nor makes rock instantly become limestone.", "The heat clue for Quicklime omits sustained kiln conditions and production stages; these notes are explanatory, not operating instructions."],
+      "furtherResearch": [{ "question": "How can microscopic and chemical analysis distinguish natural carbonate from deliberately produced lime plaster?", "sourceIds": ["friesem-lime-plaster", "bc-carbonate-rocks"] }]
+    },
+    {
+      "elementId": "copper-ore", "elementName": "Copper Ore",
+      "historicalOverview": { "text": "Copper ore is naturally occurring material from which copper can be recovered under particular technological and economic conditions, not a pure metal or one mineral species. Geological concentration can involve hydrothermal fluids; sulfide examples include chalcopyrite and bornite. Deposits form before mining, and modern economic grade examples must not be imposed on ancient extraction choices.", "sourceIds": ["bc-metal-deposits"] },
+      "manufactureOrUse": { "text": "Ancient metal production involved finding and extracting suitable material, preparing it and using appropriate smelting processes. Smelting chemically reduces ore; it is not merely melting an already metallic object. Archaeologists study mines, production debris, slag and furnace components to reconstruct practice. A mineral's presence in a deposit does not establish that a specific community mined or successfully processed it.", "sourceIds": ["penn-metallurgy", "bc-metal-deposits"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Bronze Age page grants access to Copper Ore as a discovery resource. It does not create a deposit, date the beginning of mining or imply copper use began everywhere with bronze.", "sourceIds": ["penn-metallurgy"] },
+      "relatedDiscoveries": [
+        { "elementId": "copper", "relationship": "documented", "explanation": "Extracting copper from ore differs from remelting or shaping metal; ore and metallic copper are not interchangeable.", "sourceIds": ["penn-metallurgy"] },
+        { "elementId": "bronze", "relationship": "documented", "explanation": "Extracting a metal and making a copper-based alloy are distinct operations, even when some production routes combine stages.", "sourceIds": ["penn-metallurgy", "penn-tin"] }
+      ],
+      "approximateDates": [{ "dateRange": "Deposit formation and ancient extraction: no single date assigned", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-metal-deposits", "penn-metallurgy"], "note": "These geological and technical accounts do not establish a universal first copper mine or smelt." }],
+      "associatedRegions": ["British Columbia"],
+      "archaeologicalEvidence": [{ "text": "Mining landscapes, extraction tools, slag and production contexts are evidence used in archaeological metallurgy. Chemical and mineral analysis can test reconstructions; a finished metal object alone does not locate its ore source.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["penn-metallurgy"] }],
+      "historicalSignificance": { "text": "Ore links geological resources to skilled extraction and transformation. Distinguishing ore, metal and alloy prevents a raw-material discovery from standing in for the whole history of metallurgy.", "sourceIds": ["bc-metal-deposits", "penn-metallurgy", "penn-tin"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Not all copper ores are green; the game icon and green-stained description are recognition cues, not a diagnostic test.", "The geological examples do not identify the ore supply of any particular ancient furnace.", "A recoverable ore depends on available technology and circumstances, not a timeless grade cutoff."],
+      "gameplaySimplifications": ["Copper Ore is an age-unlock grant, not the result of a formation recipe. Access represents finding an existing resource.", "The downstream extraction clue omits ore-specific preparation, chemical conditions and waste products; heat alone is not a complete smelting method."],
+      "furtherResearch": [{ "question": "What combination of mine evidence, slag analysis and artifact composition can test a proposed ancient copper supply?", "sourceIds": ["penn-metallurgy", "bc-metal-deposits"] }]
+    },
+    {
+      "elementId": "iron-ore", "elementName": "Iron Ore",
+      "historicalOverview": { "text": "Iron ores contain iron-bearing minerals rather than ready-made iron objects. One important geological example is banded iron formation, where dissolved iron was oxidized and deposited in ancient waters, producing iron-rich layers associated with silica-rich layers. This is one deposit history, not the origin of every iron ore, nor evidence that every ancient smelter used banded iron formation.", "sourceIds": ["bc-metal-deposits"] },
+      "manufactureOrUse": { "text": "Recovering iron requires chemical reduction of iron-bearing minerals. In the direct bloomery process, iron forms a bloom with impurities that need further working; it is not simply a pool of melted ore poured into a tool. The National Park Service contrasts this with later indirect cast-iron production. Its later equipment examples should not be projected onto all ancient furnaces.", "sourceIds": ["penn-metallurgy", "nps-bloomery"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Iron Age page grants access to an existing resource. The grant neither forms iron minerals nor dates the first ironworking or widespread adoption in every region.", "sourceIds": ["bc-metal-deposits", "nps-bloomery"] },
+      "relatedDiscoveries": [
+        { "elementId": "iron", "relationship": "documented", "explanation": "Iron ore and metallic iron are chemically different; reduction and further working connect them, not melting alone.", "sourceIds": ["penn-metallurgy", "nps-bloomery"] },
+        { "elementId": "copper-ore", "relationship": "documented", "explanation": "Both discoveries concern geological resources and extraction, but their minerals and appropriate processing routes are not identical.", "sourceIds": ["bc-metal-deposits", "penn-metallurgy"] }
+      ],
+      "approximateDates": [{ "dateRange": "Multiple deposit and ironworking histories: no universal date assigned", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-metal-deposits", "nps-bloomery"], "note": "Geological deposition, discovery, smelting and widespread adoption are different events; the technical comparison is not a global chronology." }],
+      "associatedRegions": ["Saugus, Massachusetts"],
+      "archaeologicalEvidence": [{ "text": "Slag and furnace or hearth components help reconstruct extraction conditions. The direct-versus-indirect ironmaking account is a technical comparison, not evidence that all ancient societies used the later Saugus equipment.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["penn-metallurgy", "nps-bloomery"] }],
+      "historicalSignificance": { "text": "Iron production connects naturally concentrated minerals with learned control of chemical reduction and metalworking. Separating those stages explains why possession of ore alone is not possession of an iron technology.", "sourceIds": ["bc-metal-deposits", "penn-metallurgy", "nps-bloomery"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Banded iron formation is an example, not a universal ancient ore source.", "The reviewed technical accounts do not establish a first smelt or one worldwide Iron Age boundary.", "Modern geological explanations are not claims about ancient knowledge of oxidation chemistry."],
+      "gameplaySimplifications": ["Iron Ore is an age-unlock grant representing access to a pre-existing deposit, not its formation.", "The downstream forge clue compresses ore preparation, reduction and working; a forge or heat alone is not a complete ore-to-tool process."],
+      "furtherResearch": [{ "question": "Which mineral and slag evidence would distinguish ore selection, reduction and later working at a particular ironmaking site?", "sourceIds": ["penn-metallurgy", "nps-bloomery"] }]
     }
   ]
 }

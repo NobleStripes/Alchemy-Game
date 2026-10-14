@@ -135,4 +135,16 @@ Agora remains a core fifth-age civic landmark. Library, Aqueduct, Arch and Stoa 
 - Witton and Hing, [“Did the horned dinosaur Protoceratops inspire the griffin?”](https://doi.org/10.1177/03080188241255543), *Interdisciplinary Science Reviews* (2024). The official [University of Portsmouth research record](https://researchportal.port.ac.uk/en/publications/did-the-horned-dinosaur-protoceratops-inspire-the-griffin/) provides the abstract, which finds the modern hypothesis uncompelling. The full journal text was not accessible; no ancient Greek encounter or causal link is asserted.
 - World History Encyclopedia's [Greek Archaic Period](https://www.worldhistory.org/Archaic_Period/) and [Hellenistic Period](https://www.worldhistory.org/Hellenistic_Period/) summaries are supplementary periodization references. Their Greek and regionally variable labels do not define a single Mediterranean-wide Classical Antiquity chronology.
 
+## Natural materials: formation is not invention
+
+Phase 9G adds geological histories for Clay, Rock, Sand, Limestone, Copper Ore and Iron Ore while retaining their recipes and ages. USGS clay mineralogy and BCcampus geology explain natural formation; existing archaeological and museum sources support particular human-use contexts. Flint and obsidian appear as examples within Rock, not new catalog elements. Earth remains the historical philosophical starter, distinct from Rock.
+
+- Clay can mean fine particles or particular minerals; wetting arbitrary earth does not instantly form clay minerals or fire pottery.
+- Sand is a size class with varied compositions. The dust-and-sea clue evokes sediment transport and sorting, not an automatic chemical transformation.
+- Limestone commonly includes marine carbonate remains, but spring, cave and other carbonate deposits prevent a universal marine-origin claim. Natural carbonate rock differs from manufactured quicklime.
+- Ore deposits predate their discovery. Bronze/Iron Age resource grants symbolize access, not geological formation or a worldwide first mine. Ore, extracted metal and alloy are distinct; reduction is not simply melting.
+- Natural formation dates, archaeological use dates and widespread adoption are separate questions. Modern scientific explanations do not demonstrate that ancient craftspeople held those theories.
+
+The sand/glass comparison does not identify a particular ancient feedstock; abstract-only pottery and plaster evidence remains explicitly limited. The [coverage audit](research.md#phase-9g-natural-history-audit) lists unresearched natural groups rather than implying that this geological batch covers all organisms and phenomena.
+
 These reference links do not automatically count as verified research sources. See the [research standards](research.md) for claim-specific verification, and [recipe review](recipe-review.md) for the interpretation of combinations.

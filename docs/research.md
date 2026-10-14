@@ -32,7 +32,26 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-Research covers **46 of 173 elements**, including all **22 Age V discoveries**. The 28 earlier records remain, joined by Knowledge, Natural Inquiry, Forum, Senate, Republic, Rhetoric, Arch, Stoa, Amphitheater, Coinage, Mint, Maritime Trade, Library, Geometry, and Bird Inquiry, plus supplemental Aqueduct, Scroll, and Coin records. The registry contains **71 verified sources and one pending source**, including recipe-review background. The remaining **127 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions.
+Research covers **52 of 173 elements**, including all **22 Age V discoveries**. The 46 earlier records remain, joined by Clay, Rock, Sand, Limestone, Copper Ore, and Iron Ore. The registry contains **77 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions.
+
+### Phase 9G natural-history audit
+
+The catalog was checked by stable ID against the research registry. This batch prioritizes existing geological materials, not new recipes. The starter named **Earth** has ID `stone` and an existing philosophical-model history; **Rock** has ID `rock` and now has a distinct geological history. **Flint and Obsidian are absent from the catalog**: chert/flint and natural volcanic glass are contextual examples in Rock, not invented discoveries.
+
+| Category | Coverage and remaining priorities |
+| --- | --- |
+| Geological materials | New records: Clay, Rock, Sand, Limestone, Copper Ore, Iron Ore. Still without records: Dust, Soil, Mud, Salt, Lodestone. Fossil already has a preservation/discovery history. |
+| Organisms and life concepts | Bird is researched. Bloom, Life, Plant, Reed, Forest, Seed, Tree, Animal, Human, Algae and Fish still lack records. Life and Primordial Soup need special care: the game's life-making clues are not established origin-of-life mechanisms. |
+| Natural phenomena and environments | Heat, Sea, Land, Wind, Steam, Spark, Storm, Mist, Cloud, Rain, Wildfire, Lightning, River, Lake and Swamp lack records. Starter Fire, Water, Earth and Air have histories of philosophical categories, not complete natural-science accounts. |
+| Biogenic resources and processed materials | Bone, Hide, Fibre, Meat, Ash and Timber lack records; processed Charcoal, Leather, Papyrus, Pigment and metals need separate manufacture histories. A game category alone does not establish natural origin. |
+
+These are thematic audit groups, not new gameplay categories or an exhaustive listing of civic and manufactured gaps among the 121 remaining records. Organism/phenomenon entries and broader regional use histories remain future priorities; no biological coverage beyond the existing Bird entry is claimed for this geological batch.
+
+Six new passage-specific receipts cover USGS clay mineralogy and BCcampus rock cycles, clastic sediments, carbonate rocks, magma crystallization and metal deposits. Existing pottery, clay-account, stone-tool, glass-object, plaster and metallurgy sources provide human-use comparisons. Formation accounts are modern scientific explanations, not ancient testimony. Dates for pottery or plaster date archaeological use, not the minerals; other geological origins remain explicitly undated. Modern ore-grade examples and later furnace machinery are not projected onto ancient practice.
+
+Clay minerals versus fine sediment, sand size versus composition, nonmarine carbonate formation, and ore versus extracted metal receive explicit cautions. The sand entry uses an Egyptian glass object as a comparative artifact, not proof of its sand source or batch chemistry. The Xianrendong and Natufian studies retain their abstract-only limits. No failed fetch, search summary or unreviewed PDF was promoted to verified evidence.
+
+All six entries use existing schema version 2 and discovered-only Atlas rendering. Ore unlock grants signify access to existing resources, not instant formation or the beginning of mining. This batch changes no catalog elements, ages, formulas, recipe-review classifications, progression requirements, rewards or version 7 save fields.
 
 The expansion uses passage-specific Stanford Encyclopedia discussions, ASCSA's excavation overview, UNESCO's Persian Qanat description, MacTutor's mathematical histories, translated Aristotle, the AHA's amphora teaching resource, and attributed World History Encyclopedia syntheses. Failed or disambiguation-only URLs were not accepted as sources. A generic coinage article with problematic origin claims was not used; regional Greek and Roman accounts support the narrower claims instead. Bibliographic dates are null when not established, and institutional authorship is retained where an individual credit was not confirmed.
 

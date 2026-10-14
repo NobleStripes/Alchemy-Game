@@ -293,3 +293,17 @@ Reviewed on **14 October 2026** after the research/objective snapshot above.
 - Final validation passed: `npm run typecheck`, `npm run lint`, `npm test` (**758 tests across 14 files**) and `npm run build`. No editor diagnostics were reported for the changed tests or stylesheet.
 
 This is targeted keyboard, semantic-control and responsive-layout verification, not a comprehensive accessibility audit, screen-reader session or human learning study. Those reviews remain pending.
+
+## Phase 9G: priority natural-history coverage
+
+Reviewed on **14 October 2026**. Earlier counts above remain historical snapshots.
+
+- Audited existing natural resources against the research registry and documented geological, organism/life, phenomenon/environment and biogenic/processed groups in the [research guide](research.md#phase-9g-natural-history-audit). Added full entries for **Clay, Rock, Sand, Limestone, Copper Ore and Iron Ore**. Flint and Obsidian are not catalog elements and appear only as geological context; Earth remains the separate philosophical starter.
+- Coverage is now **52 of 173 elements**, with **85 chronology entries**, **77 verified sources and one pending lead**. **121 elements** still lack full records. The batch adds six passage-specific USGS/BCcampus receipts and reuses existing archaeological, museum and technical evidence. It does not claim new biological research or full natural-history coverage.
+- Reviewed clay particles versus clay minerals, natural rock cycles versus stoneworking, grain size versus sand composition, biogenic and nonmarine carbonate formation, and naturally concentrated ores versus extracted metals. Geological formation remains explicitly undated; pottery and plaster dates describe human use, not mineral formation. Smelting is chemical reduction, not melting alone.
+- Retained abstract-only limits for Xianrendong pottery and Natufian plaster. The sand/glass artifact comparison does not identify ancient feedstock provenance or certify a raw-sand production method. Modern ore-grade thresholds, textbook geological examples and later Saugus machinery are not assigned to all ancient communities. Failed source requests and search summaries were not accepted as verified passages.
+- Reviewed the existing symbolic formation clues and simplified downstream processing routes. Added record-level cautions without changing recipe classifications, ingredients, results or age assignments. Ore grants remain access abstractions, not geological formation or universal first-mining dates.
+- Generic Atlas regressions render each new entry only after discovery, retain free reading and distinguish researched Clay from still-unresearched Papyrus when following related links. New content regressions pin coverage, undated geological chronology, material distinctions and unchanged ore grants. Full graph, duplicate-pair, progression, Rainmaker, filters, Recently Used and legacy/version 7 save tests pass.
+- All four requested checks passed: `npm run typecheck`, `npm run lint`, `npm test` (**779 tests across 14 files**) and `npm run build`. The element, recipe and era definitions have no substantive differences from the committed baseline. Save and research schemas remain versions 7 and 2 respectively; no migration or completion requirement was added.
+
+This verifies content structure and software behavior, not human learning outcomes. Broader organism/phenomenon coverage, detailed sand-feedstock archaeology, regional resource-use histories and human/screen-reader reviews remain future work.

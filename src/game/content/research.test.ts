@@ -26,6 +26,7 @@ const classicalExpansionIds = [
   'library', 'geometry', 'bird-inquiry',
 ]
 const reusedTechnologyIds = ['aqueduct', 'scroll', 'coin']
+const naturalMaterialIds = ['clay', 'rock', 'sand', 'limestone', 'copper-ore', 'iron-ore']
 
 describe('historical research database', () => {
   it('exposes historical structural schemas from the shared content schema module', () => {
@@ -71,16 +72,16 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(71)
+    )).toHaveLength(77)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
   })
 
-  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds])('links %s research to its current name and stable ID', (elementId) => {
+  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds])('links %s research to its current name and stable ID', (elementId) => {
     const record = researchByElementId.get(elementId)
     expect(record?.elementName).toBe(
       elements.find((element) => element.id === elementId)?.name,
@@ -91,6 +92,42 @@ describe('historical research database', () => {
     expect(record?.historicalSignificance.text).toBeTruthy()
     expect(record?.historicalUncertainty.length).toBeGreaterThan(0)
     expect(record?.gameplaySimplifications.length).toBeGreaterThan(0)
+  })
+
+  it('distinguishes natural material formation from manufacture without inventing geological dates', () => {
+    for (const id of naturalMaterialIds) {
+      const record = researchByElementId.get(id)!
+      expect(record.approximateDates[0]).toMatchObject({
+        dateType: 'undated', precision: 'undated', regions: [],
+      })
+      expect(record.archaeologicalEvidence.length).toBeGreaterThan(0)
+      expect(record.manufactureOrUse.sourceIds.length).toBeGreaterThan(0)
+    }
+    expect(researchByElementId.get('clay')!.historicalOverview.text).toContain('both very fine particles and a family of minerals')
+    expect(researchByElementId.get('clay')!.gameplaySimplifications.join(' ')).toContain('wet clay is not fired pottery')
+    expect(researchByElementId.get('sand')!.historicalOverview.text).toContain('grain-size class, not a single mineral')
+    expect(researchByElementId.get('sand')!.gameplaySimplifications.join(' ')).toContain('Fine dust does not automatically become sand')
+    expect(researchByElementId.get('limestone')!.historicalOverview.text).toContain('not all limestone is marine remains')
+    expect(researchByElementId.get('limestone')!.manufactureOrUse.text).toContain('calcium oxide and carbon dioxide')
+    expect(researchByElementId.get('rock')!.manufactureOrUse.text).toContain('natural volcanic glass')
+    expect(elements.some((element) => ['flint', 'obsidian'].includes(element.id))).toBe(false)
+    expect(researchByElementId.get('rock')!.agePlacement.status).toBe('fictional-prologue')
+    expect(researchByElementId.get('stone')!.agePlacement.status).toBe('historical-model')
+    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(121)
+  })
+
+  it('keeps ore access grants separate from geological formation and reduction separate from melting', () => {
+    for (const [id, eraId] of [['copper-ore', 'bronze-age'], ['iron-ore', 'iron-age']]) {
+      expect(eras.find((era) => era.id === eraId)!.grants).toContain(id)
+      expect(elements.find((element) => element.id === id)!.era).toBe(eraId)
+      expect(recipes.some((recipe) => recipe.result === id)).toBe(false)
+      const record = researchByElementId.get(id)!
+      expect(record.agePlacement.status).toBe('regional-gameplay-placement')
+      expect(record.gameplaySimplifications.join(' ')).toContain('age-unlock grant')
+      expect(record.manufactureOrUse.text).toMatch(/chemical(?:ly)? reduc/)
+    }
+    expect(researchByElementId.get('copper-ore')!.historicalUncertainty.join(' ')).toContain('Not all copper ores are green')
+    expect(researchByElementId.get('iron-ore')!.historicalUncertainty.join(' ')).toContain('not a universal ancient ore source')
   })
 
   it('researches every Age V discovery and separates regional developments from global firsts', () => {

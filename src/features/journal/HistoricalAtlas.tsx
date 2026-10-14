@@ -309,12 +309,18 @@ export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
             <p className="detail-cat-badge">
               {eras.find((era) => era.id === selected.era)?.name} · {selected.category}
             </p>
-            <p>
-              Origins is an undated prologue inspired by ancient Greek elemental philosophy,
-              not a claim that this philosophy preceded prehistoric humanity. The Three-Age System reflects particular
-              archaeological traditions, not one worldwide sequence. Boundaries vary geographically;
-              first appearance and widespread adoption are different.
-            </p>
+            <details className="guide-section" key={selected.id}>
+              <summary>About gameplay ages</summary>
+              <p>
+                Origins is an undated prologue inspired by ancient Greek elemental philosophy,
+                not a claim that this philosophy preceded prehistoric humanity.
+              </p>
+              <p>
+                The Three-Age System reflects particular archaeological traditions, not one worldwide sequence.
+                Boundaries vary geographically; first appearance and widespread adoption are different.
+                Classical Antiquity is an overlapping Mediterranean chapter, not a universal next stage.
+              </p>
+            </details>
             {record ? (
               <>
                 <button
