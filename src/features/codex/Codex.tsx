@@ -234,7 +234,7 @@ export function Codex({ onElementSelected }: CodexProps) {
           </button>
         </div>
 
-        <div className="category-tabs" role="tablist" aria-label="Element categories">
+        <div className="category-tabs" role="tablist" aria-label="Element categories" tabIndex={0}>
           {categories.map((cat) => {
             const count =
               cat.id === 'all'

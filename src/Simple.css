@@ -127,8 +127,7 @@
   overflow-x: auto;
 }
 
-.era-switcher::-webkit-scrollbar,
-.category-tabs::-webkit-scrollbar { display: none; }
+.era-switcher::-webkit-scrollbar { display: none; }
 
 .era-switcher button {
   flex-shrink: 0;
@@ -342,8 +341,15 @@
   padding: 2px 2px 6px;
   display: flex;
   gap: 5px;
-  overflow-x: auto;
+  overflow-x: scroll;
+  scrollbar-color: var(--ink-soft) #f2efe7;
 }
+
+.category-tabs::-webkit-scrollbar { height: 12px; }
+.category-tabs::-webkit-scrollbar-track { background: #f2efe7; border-radius: 6px; }
+.category-tabs::-webkit-scrollbar-thumb { background: var(--ink-soft); border: 2px solid #f2efe7; border-radius: 6px; }
+.category-tabs:focus-visible { outline: 2px solid var(--teal-dark); outline-offset: 2px; }
+.category-tabs .category-tab { flex-shrink: 0; }
 
 .category-tab {
   min-height: 30px;

@@ -28,6 +28,8 @@ The Element shelf defaults to **All Ages**, because earlier ingredients remain u
 
 Search and filter controls remain visible while the results scroll separately. **Compact layout** replaces illustrated tiles with denser rows; selection, favorites, occupied-slot markers, and dragging still work. Focus an ingredient and press Enter to select it; the existing Space-based keyboard dragging remains available.
 
+Category filters stay in a single horizontal row with a visible scrollbar rather than shrinking or hiding overflow. The row is keyboard-focusable for native scrolling; Tab moves into its filter buttons. Scrollbar visibility can still follow the operating system's overlay-scrollbar preferences.
+
 **Recently used** offers the last eight distinct ingredients selected in this campaign session, newest first. Selecting again moves an ingredient to the front. Drops, repeated inputs, prepared formulas, and immediate combinations also update this list. Its shortcuts span all shelf filters and return mobile players to Combine as usual. This differs from **Recent** sorting, which still orders elements by discovery. Clearing slots or visiting Atlas does not clear the shortcuts; reload or campaign reset does. Neither selections nor shelf controls spend Insight or trigger a save.
 
 ## Five gameplay pages

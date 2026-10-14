@@ -243,6 +243,24 @@ describe('element shelf', () => {
     expect(region).not.toContainElement(screen.getByRole('button', { name: 'Compact layout' }))
   })
 
+  it('makes the horizontal category filter scroller keyboard-focusable without changing progress', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({ discoveredIds: elements.map((element) => element.id) })
+    renderShelf()
+    const filters = screen.getByRole('tablist', { name: 'Element categories' })
+    expect(filters).toHaveAttribute('tabindex', '0')
+    expect(within(filters).getAllByRole('tab')).toHaveLength(9)
+    const before = snapshotProgress(useGameStore.getState())
+    act(() => filters.focus())
+    expect(filters).toHaveFocus()
+    await user.tab()
+    expect(within(filters).getByRole('tab', { name: /^All/ })).toHaveFocus()
+    act(() => within(filters).getByRole('tab', { name: /^Transport/ }).focus())
+    await user.keyboard('{Enter}')
+    expect(within(filters).getByRole('tab', { name: /^Transport/ })).toHaveAttribute('aria-selected', 'true')
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+  })
+
   it('preserves Space keyboard dragging and does not select an ingredient when completing or cancelling a drag', async () => {
     const user = userEvent.setup()
     const onSelected = vi.fn()
