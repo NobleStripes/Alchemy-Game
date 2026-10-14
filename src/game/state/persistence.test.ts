@@ -158,6 +158,31 @@ describe('progress persistence', () => {
     expect(parseProgress(exportProgress(progress))).toEqual(progress)
   })
 
+  it('preserves a completed four-age Phase 8 v7 campaign when exposing Age V', () => {
+    const earlierElements = elements.filter((element) => element.era !== 'classical-antiquity')
+    const earlierIds = new Set(earlierElements.map((element) => element.id))
+    const earlierEraIds = eras.slice(0, 4).map((era) => era.id)
+    const older = {
+      ...fresh(),
+      discoveredIds: earlierElements.map((element) => element.id),
+      discoveredRecipeIds: recipes.filter((recipe) => earlierIds.has(recipe.result)).map((recipe) => recipe.id),
+      unlockedEraIds: earlierEraIds,
+      rewardedChallengeEraIds: earlierEraIds,
+      activeEraId: 'iron-age',
+      favoriteIds: ['bird', 'fossil'],
+      readHistoricalElementIds: ['bird', 'fossil'],
+      rewardedCollectionIds: ['stormwatch', 'harvest-table', 'ironworkers'],
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+    }
+    const progress = parseProgress(JSON.stringify(older))!
+    expect(progress).toEqual({
+      ...older, unlockedEraIds: eras.map((era) => era.id),
+    })
+    expect(progress.discoveredIds.some((id) => !earlierIds.has(id))).toBe(false)
+    expect(progress.rewardedChallengeEraIds).not.toContain('classical-antiquity')
+    expect(parseProgress(exportProgress(progress))).toEqual(progress)
+  })
+
   it('round-trips expansion formulas and favorites while retaining earlier routes in v7 saves', () => {
     const recordedRecipes = recipes.slice(194)
     const progress = parseProgress(JSON.stringify({

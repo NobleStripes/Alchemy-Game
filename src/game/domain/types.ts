@@ -31,6 +31,7 @@ export interface EraDefinition {
   name: string
   dateRange?: string
   subtitle: string
+  education?: string
   unlockRequires: string[]
   grants: string[]
   landmarkIds: string[]

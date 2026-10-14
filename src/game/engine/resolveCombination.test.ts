@@ -678,6 +678,9 @@ describe('historical interpretation', () => {
     expect(eras[1].dateRange).toBe('c. 3.3 million years ago–c. 3300 BCE')
     expect(eras[2].dateRange).toBe('c. 3300 BCE–c. 1200 BCE')
     expect(eras[3].dateRange).toBe('From c. 1200 BCE; regional end dates vary')
+    expect(eras[4].dateRange).toBe('c. 800 BCE–c. 500 CE')
+    expect(eras[4].education).toContain('not the narrower Greek Classical period or a worldwide timeline')
+    expect(eras[4].education).toContain('Earlier precedents')
   })
 
   it.each([

@@ -41,7 +41,9 @@
   {
     "id": "classical-antiquity",
     "name": "Classical Antiquity",
+    "dateRange": "c. 800 BCE–c. 500 CE",
     "subtitle": "A Mediterranean chapter of overlapping regional histories, not a universal successor to the Iron Age.",
+    "education": "Explore civic life, engineering, commerce, scholarship and inquiry in Greek and Roman Mediterranean settings. The approximate 800 BCE–500 CE gameplay frame includes Archaic, Classical, Hellenistic and Roman contexts; it is not the narrower Greek Classical period or a worldwide timeline. Regional boundaries and adoption vary, and Iron Age histories overlap this chapter. Earlier precedents, including the Mycenae fossil find, remain dated separately. Persian, Indian and Chinese comparisons do not imply simultaneous Classical ages. Discovery clues are symbolic associations, not historical prerequisites.",
     "unlockRequires": ["iron", "iron-tool", "road", "market"],
     "grants": [],
     "landmarkIds": ["agora", "academy", "lyceum", "natural-philosophy", "fossil-inquiry"],

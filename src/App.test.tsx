@@ -563,6 +563,7 @@ describe('alchemy worktable', () => {
     const ageButtons = ageSwitcher.getAllByRole('button')
     expect(ageButtons).toHaveLength(5)
     expect(ageButtons[4]).toHaveTextContent('Classical Antiquity')
+    expect(ageButtons[4]).toHaveTextContent('c. 800 BCE–c. 500 CE')
     expect(ageButtons[4]).toBeDisabled()
     expect(ageButtons[4]).toHaveAttribute(
       'title', 'A Mediterranean chapter of overlapping regional histories, not a universal successor to the Iron Age.',
@@ -578,7 +579,7 @@ describe('alchemy worktable', () => {
     })
     render(<App />)
     const selector = within(screen.getByRole('navigation', { name: 'Play ages' }))
-    const fifthAge = selector.getByRole('button', { name: 'Classical Antiquity' })
+    const fifthAge = selector.getByRole('button', { name: /Classical Antiquity/ })
     fifthAge.focus()
     await user.keyboard('{Enter}')
     expect(fifthAge).toHaveFocus()
@@ -587,6 +588,10 @@ describe('alchemy worktable', () => {
     expect(useGameStore.getState().activeEraId).toBe(age.id)
     expect(screen.getByLabelText('6% discovered')).toHaveTextContent('10 / 173')
     const challenge = within(screen.getByRole('region', { name: 'Classical Antiquity challenge' }))
+    const introduction = screen.getByText('About Classical Antiquity')
+    await user.click(introduction)
+    expect(screen.getByText(age.education!)).toBeVisible()
+    expect(screen.getByText(age.education!)).toHaveTextContent('Persian, Indian and Chinese comparisons')
     expect(challenge.getByText(/Catalogue 6\/6.*Landmarks 5\/5/)).toBeVisible()
     expect(challenge.getByText(/This page's landmarks are recorded/)).toBeVisible()
     expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(6)

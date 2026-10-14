@@ -48,6 +48,7 @@ export function Journal({
   const prepareCombination = useGameStore((state) => state.prepareCombination)
   const experimentHistory = useGameStore((state) => state.experimentHistory)
   const rewardedCollectionIds = useGameStore((state) => state.rewardedCollectionIds)
+  const era = eras.find((candidate) => candidate.id === eraId)
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null)
   const [formulaSearch, setFormulaSearch] = useState('')
 
@@ -235,6 +236,13 @@ export function Journal({
         <span><strong>{discoveredElements.length}</strong> discovered</span>
         <span><strong>{eraFormulaCount}</strong> formulas recorded</span>
       </div>
+      {era?.education && (
+        <details className="guide-section" key={era.id}>
+          <summary>About {era.name}</summary>
+          <p>{era.dateRange}</p>
+          <p>{era.education}</p>
+        </details>
+      )}
       <section className="challenge-status" aria-label={`${challengeName} challenge`}>
         <strong>{challengeName} challenge</strong>
         <p>

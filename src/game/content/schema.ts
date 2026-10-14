@@ -32,6 +32,7 @@ export const eraSchema = z.object({
   name: z.string().min(1),
   dateRange: z.string().min(1).optional(),
   subtitle: z.string().min(1),
+  education: z.string().trim().min(1).optional(),
   unlockRequires: z.array(z.string().min(1)),
   grants: z.array(z.string().min(1)),
   landmarkIds: z.array(z.string().min(1)),

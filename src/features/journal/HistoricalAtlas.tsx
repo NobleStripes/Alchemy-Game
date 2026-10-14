@@ -319,6 +319,7 @@ export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
                 The Three-Age System reflects particular archaeological traditions, not one worldwide sequence.
                 Boundaries vary geographically; first appearance and widespread adoption are different.
                 Classical Antiquity is an overlapping Mediterranean chapter, not a universal next stage.
+                Its approximate gameplay frame is 800 BCE–500 CE, not a date for every discovery or region.
               </p>
             </details>
             {record ? (
