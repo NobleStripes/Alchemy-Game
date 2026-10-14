@@ -214,5 +214,11 @@
   { "id": "measured-heavens", "inputs": ["geometry", "observation"], "result": "mathematical-astronomy", "flavor": "Spatial reasoning and observation evoke modelling the heavens; arithmetic traditions and long records also mattered." },
   { "id": "attentive-care", "inputs": ["human", "observation"], "result": "clinical-observation", "flavor": "Attention to a person evokes examining a condition, not a diagnosis, effective treatment or a clinical trial." },
   { "id": "examined-argument", "inputs": ["rhetoric", "knowledge"], "result": "logic", "flavor": "Persuasion becomes a subject for examining inference; eloquence does not ensure truth, and rhetoric is not a universal prerequisite for logic." },
-  { "id": "compared-birds", "inputs": ["bird", "observation"], "result": "natural-classification", "flavor": "Birds invite comparison of features; ancient groupings did not establish modern taxonomy or dinosaur ancestry." }
+  { "id": "compared-birds", "inputs": ["bird", "observation"], "result": "natural-classification", "flavor": "Birds invite comparison of features; ancient groupings did not establish modern taxonomy or dinosaur ancestry." },
+  { "id": "slaked-quicklime", "inputs": ["quicklime", "tide"], "result": "slaked-lime", "flavor": "Quicklime reacts with water to form calcium hydroxide and release heat; this is a hazardous chemical change, not a home experiment." },
+  { "id": "lime-and-sand", "inputs": ["slaked-lime", "sand"], "result": "lime-mortar", "flavor": "Lime binder and sand suggest mortar; mixing water, workmanship and time for hardening remain outside the two-slot recipe." },
+  { "id": "eruptive-fragments", "inputs": ["rock", "heat"], "result": "volcanic-ash", "flavor": "Rock and heat symbolize a volcanic setting, not ash made by heating a stone; explosive eruptions fragment rock and magma." },
+  { "id": "pozzolanic-building", "inputs": ["lime-mortar", "volcanic-ash"], "result": "concrete", "flavor": "Lime and reactive volcanic material evoke Roman concrete; coarse aggregate, water, placement and curing are also required." },
+  { "id": "connected-routes", "inputs": ["road", "map"], "result": "road-network", "flavor": "Routes and their representation evoke a connected network, not construction without surveying, labor or maintenance." },
+  { "id": "supplied-bathing", "inputs": ["aqueduct", "heat"], "result": "public-bath", "flavor": "Water supply and warmth evoke a bath complex; not every bath needed an aqueduct or the same heating system." }
 ]

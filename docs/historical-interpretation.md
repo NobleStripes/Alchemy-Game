@@ -16,6 +16,22 @@ The **Three-Age System** originated in the classification of Scandinavian archae
 
 The fifth selector button shows the approximate c. 800 BCE–c. 500 CE gameplay frame. Its regional-scope tooltip, the Guide's About Classical Antiquity introduction and individually dated Atlas records carry the historical qualification; its position after Iron Age and its progress counters express game organization, not a synchronized worldwide transition. Completing all five required landmarks and six discoveries does not certify historical knowledge or require every optional civic, engineering, commercial or inquiry branch.
 
+## Engineering materials, precedents and operation
+
+The optional engineering branch reuses existing Arch, Aqueduct and Amphitheater, rather than presenting them as newly Roman inventions. Earlier waterworks include Bronze Age conduits, Assyrian works and Greek tunnels; Persian qanats are groundwater galleries, not identical to every aqueduct. The Arch history retains pre-Roman and Etruscan precedents. Amphitheaters are distinct from Greek theaters; Roman monumental construction does not erase earlier wooden or earth-supported forms, violence or hierarchy.
+
+Limestone calcination transforms calcium carbonate into calcium oxide and carbon dioxide under sustained high heat. Hydration of quicklime forms slaked lime, calcium hydroxide, and releases heat. Ordinary air-lime mortar hardens through carbonation; lime-pozzolan reactions instead form cementitious hydrates. These distinct reactions are not interchangeable, and not all lime mortar sets under water. The Atlas includes caustic-material cautions, not practical handling instructions.
+
+Stone Age placement of Slaked Lime and Lime Mortar is a regional gameplay choice informed by prehistoric lime-plaster traditions. It does not establish a first pure hydroxide find, the first masonry-joint mortar, or universal adoption. Volcanic Ash is natural eruptive rock, mineral and glass debris; Rock + Heat symbolizes a geological encounter, not an actual manufacturing process or burning plant matter.
+
+Concrete represents Roman lime-pozzolan binder with coarse aggregate, not modern Portland-cement concrete made using ground clinker. Its two-input recipe omits coarse aggregate, additional water, placement and curing. Archaeological and experimental hot-mixing research suggests alternatives involving quicklime, so the playable pre-slaked chain is not universal. Site-specific lime clasts and laboratory crack-sealing results do not imply all ancient concrete self-heals or outlasts all modern concrete.
+
+Aqueducts generally conveyed water by gravity with surveyed downward gradients; arch supports did not pump water, and there was no single universal slope. Conduits, tunnels and pipelines, settling tanks, fountains and distribution infrastructure matter as well as spectacular arcades. Debris removal, leak repair and maintaining supply during repairs were continuing work. Fountains, latrines, baths and some wealthy households did not imply equal private supply for every resident.
+
+Road Network evokes connected routes, drainage, repair, trade and imperial control, not a Roman invention of roads or an inevitable need for drawn maps. Public Bath distinguishes Greek precedents and varied local water supplies from Roman monumental examples. Hypocausts moved hot air beneath raised floors and through wall spaces; they were not modern radiators. Terracotta heating components are not the game's unfired Mud Brick. Neither aqueduct supply nor equal access was universal.
+
+Passage-specific references and access limits are listed in the [engineering research audit](research.md#engineering-materials-and-infrastructure-audit). Existing age gates, landmarks, collections and challenges are gameplay contracts, not historical claims about necessary technological sequences.
+
 ## Civic membership and institutional distinctions
 
 The optional Citizenship discovery compares political membership without imposing modern universal suffrage on antiquity. Aristotle's definition concerns deliberative or judicial participation, not everyone living in a city; the Atlas distinguishes his normative theory from a survey of all Greek practice. Greek assembly, council and jury participation is not interchangeable with Roman magistracies, the elite Senate and citizen assemblies. Legal or social membership and effective political power must also be distinguished. Exclusion by gender, enslavement, foreign status and other local eligibility rules is described, not endorsed.

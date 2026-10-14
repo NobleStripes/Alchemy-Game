@@ -32,7 +32,20 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-Research covers **57 of 178 elements**, including all **27 Age V discoveries**. The 53 records through Citizenship remain, joined by Mathematical Astronomy, Clinical Observation, Logic and Natural Classification. The registry contains **85 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions.
+Research covers **63 of 184 elements**, including all **30 Age V discoveries**. The 57 records through the intellectual expansion remain, joined by Slaked Lime, Lime Mortar, Volcanic Ash, Concrete, Road Network and Public Bath. The registry contains **92 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions.
+
+### Engineering materials and infrastructure audit
+
+Stone is the internal ID of starting Earth; Rock is the geological material. Water retains its `tide` ID. Existing Limestone, Quicklime, Pottery, Road, Arch, Aqueduct and Amphitheater keep their recipes and ages. Mud Brick remains unfired, not a substitute for Roman structural or hypocaust tiles. The six additions are optional; research and save schemas stay at versions 2 and 7 respectively.
+
+Seven selected-passage source receipts support the new histories and Aqueduct's expanded operation section:
+
+- University of Waikato's Science Learning Hub, [Carbonate chemistry](https://www.sciencelearn.org.nz/resources/carbonate-chemistry) and [Lime - a time-tested chemical](https://www.sciencelearn.org.nz/resources/lime-a-time-tested-chemical): calcination, hydration, mortar and carbonation. These passages are not an endorsement of every chronological claim elsewhere on the pages.
+- USGS, [Volcanic Ash](https://volcanoes.usgs.gov/volcanic_ash/ash.html): explosive fragmentation, rock/mineral/glass particles, abrasiveness and dispersal, distinct from combustion ash.
+- Seymour and colleagues, [Hot mixing: Mechanistic insights into the durability of ancient Roman concrete](https://doi.org/10.1126/sciadv.add1602), Science Advances (6 January 2023), read through the [legitimate PMC full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC9821858/): abstract, introduction and opening results. Ancient Privernum samples and modern experiments support a site-specific mechanism, not universal Roman self-healing. The publisher endpoint returned 403; the archive, not a search summary, was read.
+- World History Encyclopedia's [Roman Engineering](https://www.worldhistory.org/Roman_Engineering/), [Roman Roads](https://www.worldhistory.org/article/758/roman-roads/) and [Roman Baths](https://www.worldhistory.org/Roman_Baths/): selected sections on gradients, supply, repairs, route maintenance, Greek bathing precedents and heating systems. Broad Roman-first, equal-access and durability claims were not adopted.
+
+Receipts record access checked on 14 October 2026, authors, publication metadata where established and passage limits. Existing Natufian plaster, Persian qanat and aqueduct references remain in use. Plaster evidence does not date the first masonry-joint mortar; Via Appia's conventional 312 BCE start does not date the first road network. Modern chemical explanations are distinguished from archaeological finds and ancient testimony. Research validation and discovered-only rendering cover all six new records.
 
 ### Intellectual practices audit
 

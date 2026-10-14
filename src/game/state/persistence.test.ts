@@ -16,6 +16,25 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('round-trips engineering discoveries, formulas, stars, reading and existing shelf preferences in v7', () => {
+    const routes = recipes.slice(216)
+    const old = fresh()
+    const progress = parseProgress(JSON.stringify({
+      ...old,
+      discoveredIds: [...new Set([...old.discoveredIds, ...routes.flatMap((recipe) => [...recipe.inputs, recipe.result])])],
+      discoveredRecipeIds: routes.map((recipe) => recipe.id),
+      favoriteIds: routes.map((recipe) => recipe.result),
+      readHistoricalElementIds: routes.map((recipe) => recipe.result),
+      hideFinalElements: true, collapsedShelves: ['stone-age'],
+    }))!
+    expect(progress.version).toBe(7)
+    expect(progress.discoveredRecipeIds).toEqual(routes.map((recipe) => recipe.id))
+    expect(progress.favoriteIds).toEqual(routes.map((recipe) => recipe.result))
+    expect(progress.readHistoricalElementIds).toEqual(routes.map((recipe) => recipe.result))
+    expect(progress).toMatchObject({ hideFinalElements: true, collapsedShelves: ['stone-age'] })
+    expect(parseProgress(exportProgress(progress))).toEqual(progress)
+  })
+
   it.each([1, 2, 3, 4, 5, 6, 7])('defaults missing shelf preferences in version %s without losing progress', (version) => {
     const { hideFinalElements, collapsedShelves, ...legacy } = fresh()
     expect(hideFinalElements).toBe(false)

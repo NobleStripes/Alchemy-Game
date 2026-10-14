@@ -697,6 +697,41 @@
       "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.nlm.nih.gov/pubs/techbull/ma10/ma10_hmd_reprint_papyrus.html", "accessLevel": "selected-passages", "locator": "Reprint of NLM announcement dated 18 March 2010: Edwin Smith Papyrus, approximately seventeenth century BCE, 48 trauma cases with description, diagnosis, prognosis, treatment and explanations; James P. Allen translation and NYAM scans. Summary accessed, not each scan or full translation. Earlier underlying material remains probable, not a precisely dated original; 'scientific' language is not equated with modern trials." }
     },
     {
+      "id": "waikato-carbonate-chemistry", "title": "Carbonate chemistry", "authors": [], "institution": "Science Learning Hub, University of Waikato", "sourceType": "reference-textbook",
+      "url": "https://www.sciencelearn.org.nz/resources/carbonate-chemistry", "publicationDate": "2012-10-10",
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.sciencelearn.org.nz/resources/carbonate-chemistry", "accessLevel": "selected-passages", "locator": "Thermal decomposition: calcium carbonate to calcium oxide and carbon dioxide; slaking to calcium hydroxide; mortar of lime, sand and water; carbonation binding sand grains. Page gives publication 10 October 2012 and update 21 August 2025. Modern chemistry, not evidence for a first ancient invention." }
+    },
+    {
+      "id": "waikato-lime-chemical", "title": "Lime - a time-tested chemical", "authors": [], "institution": "Science Learning Hub, University of Waikato", "sourceType": "reference-textbook",
+      "url": "https://www.sciencelearn.org.nz/resources/lime-a-time-tested-chemical", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.sciencelearn.org.nz/resources/lime-a-time-tested-chemical", "accessLevel": "selected-passages", "locator": "Lime's chemical properties and Lime mortar: calcium oxide reacts with water, releasing considerable heat; calcium hydroxide and atmospheric carbonation. Only these chemistry passages are used, not the page's generalized kiln-development chronology." }
+    },
+    {
+      "id": "usgs-volcanic-ash", "title": "Volcanic Ash", "authors": [], "institution": "U.S. Geological Survey, Volcanic Ash Impacts and Mitigation", "sourceType": "reference-textbook",
+      "url": "https://volcanoes.usgs.gov/volcanic_ash/ash.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://volcanoes.usgs.gov/volcanic_ash/ash.html", "accessLevel": "selected-passages", "locator": "Opening two paragraphs: ash is rock, mineral and volcanic-glass fragments, not combustion residue; explosive gas expansion or steam fragments magma and rock; wind dispersal. Modern geological explanation, not an ancient account or proof that every ash is a useful pozzolan." }
+    },
+    {
+      "id": "roman-hot-mixing", "title": "Hot mixing: Mechanistic insights into the durability of ancient Roman concrete", "authors": ["Linda M. Seymour", "Janille Maragh", "Paolo Sabatini", "Michel Di Tommaso", "James C. Weaver", "Admir Masic"], "institution": "Science Advances", "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1126/sciadv.add1602", "publicationDate": "2023-01-06",
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9821858/", "accessLevel": "selected-passages", "locator": "Abstract, Introduction and opening Results: coarse aggregate with lime-pozzolan mortar, carbonation versus hydraulic hydrates, calcination/slaking/hot mixing, volcanic ash and ceramic fragments; Privernum samples and proposed lime-clast healing mechanism tested in modern formulations. Introduction contrasts Portland clinker production. Publisher DOI returned 403; legitimate PMC full-text archive supplied passages and author/publication metadata. Findings are not a universal recipe or a guarantee for every ancient concrete." }
+    },
+    {
+      "id": "whe-roman-engineering", "title": "Roman Engineering", "authors": ["Victor Labate"], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Roman_Engineering/", "publicationDate": "2016-03-01",
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Roman_Engineering/", "accessLevel": "selected-passages", "locator": "Aqueducts: gravity and downward inclination, conduits/tunnels/pipelines, fountains/latrines/baths/wealthy houses, settling tanks, debris and leaks, cross-links during repairs. Only these operation and maintenance passages are used; sweeping claims of Roman technological primacy are not adopted. HTML citation metadata confirms author and publication date." }
+    },
+    {
+      "id": "whe-roman-roads", "title": "Roman Roads", "authors": ["Mark Cartwright"], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/article/758/roman-roads/", "publicationDate": "2014-09-17",
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/article/758/roman-roads/", "accessLevel": "selected-passages", "locator": "Opening, The Roman Road Network and Road Design & Materials: older routes, Via Appia beginning 312 BCE, surveying, maintenance, military deployment, trade, authority, gravel/paved surfaces and drainage. Does not establish a first worldwide network or uniform construction specification. HTML citation metadata checked." }
+    },
+    {
+      "id": "whe-roman-baths", "title": "Roman Baths", "authors": ["Mark Cartwright"], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Roman_Baths/", "publicationDate": "2013-05-02",
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Roman_Baths/", "accessLevel": "selected-passages", "locator": "A Mainstay of Roman Culture, Typical Elements, Heating Systems and Outstanding Examples: Greek public-bath and heating precedents, differing rooms, springs/braziers/furnaces, hypocaust air, terracotta tiles, aqueducts and reservoirs; Lepcis Magna c. 127 CE and Diocletian c. 305 CE. Do not adopt its sweeping all-access claim or problematic fee denomination. HTML author/publication metadata checked." }
+    },
+    {
       "id": "mit-aristotle-animals-one", "title": "The History of Animals, Book I", "authors": ["Aristotle", "D'Arcy Wentworth Thompson (translator)"], "institution": "The Internet Classics Archive, Massachusetts Institute of Technology", "sourceType": "library-collection",
       "url": "https://classics.mit.edu/Aristotle/history_anim.1.i.html", "publicationDate": null,
       "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://classics.mit.edu/Aristotle/history_anim.1.i.html", "accessLevel": "selected-passages", "locator": "Book I opening: comparison of animal parts, similarities/differences, bird/fish groupings, feathers/bills, habits and analogy. English translation, not an ancient manuscript; translated genus/species terminology is not modern Linnaean rank or phylogeny. Page's 350 BCE label is not adopted as a precise composition date." }
@@ -1649,7 +1684,7 @@
     {
       "elementId": "aqueduct", "elementName": "Aqueduct",
       "historicalOverview": { "text": "Aqueducts convey water through channels, pipes, tunnels or bridges. Romans built celebrated systems but did not originate all water-conveyance technology: Bronze Age Aegean and Mesopotamian examples, Assyrian works and Greek tunnels preceded them. Persian qanats are a distinct groundwater-management tradition, not simply Roman-style arched bridges.", "sourceIds": ["whe-aqueduct", "unesco-persian-qanat"] },
-      "manufactureOrUse": { "text": "Controlling gradient, supply, drainage and maintenance was essential. Persian qanats use underground gravity-fed galleries and vertical shafts to draw on aquifers, supported by communal management. Many Roman conduits ran near ground level; monumental arches were only one solution.", "sourceIds": ["whe-aqueduct", "unesco-persian-qanat"] },
+      "manufactureOrUse": { "text": "Controlling gradient, supply, drainage and maintenance was essential. Gravity drove open-channel flow along a surveyed downward gradient; an arch supports a conduit rather than pumping its water. Terrain, route and flow conditions required local design, not one universal slope. Channels, tunnels and pipelines carried water; settling tanks removed sediment, and distribution supplied fountains, latrines, baths and some wealthy households rather than equal private connections for everyone. Debris removal, leak repairs and cross-links during repairs required continuing labor. Persian qanats use underground gravity-fed galleries and vertical shafts to draw on aquifers, supported by communal management. Many Roman conduits ran near ground level; monumental arches were only one solution.", "sourceIds": ["whe-aqueduct", "unesco-persian-qanat", "whe-roman-engineering"] },
       "agePlacement": { "status": "earlier-precedents", "text": "The existing Iron Age placement remains a gameplay choice. Age V revisits this earlier discovery as an optional engineering objective, not a newly invented Roman technology.", "sourceIds": ["whe-aqueduct", "unesco-persian-qanat"] },
       "relatedDiscoveries": [{ "elementId": "arch", "relationship": "documented", "explanation": "Some monumental aqueduct bridges used arches, but pipes and tunnels did not require them.", "sourceIds": ["whe-aqueduct"] }],
       "approximateDates": [
@@ -1900,6 +1935,119 @@
       "historicalUncertainty": ["Aristotle's notion of deduction does not exactly match every modern definition of validity.", "Later Mohist texts are terse and unevenly organized; interpretations of their concepts remain debated.", "These examples are not exhaustive histories of Indian, Chinese or Greek reasoning."],
       "gameplaySimplifications": ["Rhetoric and knowledge symbolize examining arguments; neither this pair nor a separate Reason element is a universal historical prerequisite.", "A discovered Logic element does not validate every claim, prove its premises or create modern scientific testing."],
       "furtherResearch": [{ "question": "How do necessary consequence and argument from relevant similarity differ when assessing a claim?", "sourceIds": ["sep-aristotle-logic", "sep-mohist-canons"] }]
+    },
+    {
+      "elementId": "slaked-lime", "elementName": "Slaked Lime",
+      "historicalOverview": { "text": "Slaked lime is calcium hydroxide, distinct from limestone (mainly calcium carbonate) and quicklime (calcium oxide). It belongs to the long history of lime binders, which predates Roman engineering. Ancient lime-plaster evidence supports technological reconstruction, not proof that makers described the reactions with modern chemical formulas.", "sourceIds": ["waikato-carbonate-chemistry", "friesem-lime-plaster"] },
+      "manufactureOrUse": { "text": "Slaking hydrates quicklime: CaO + H2O -> Ca(OH)2, releasing considerable heat. Calcium hydroxide can provide a binder for mortars and plasters. Caustic lime and hot splashes are hazardous; this account is not a handling procedure. Calcination, slaking and carbonation are different transformations, not interchangeable names for drying stone.", "sourceIds": ["waikato-lime-chemical", "waikato-carbonate-chemistry"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Stone Age placement accompanies existing Quicklime and prehistoric lime-plaster evidence. It is not an independently established first date for isolated calcium hydroxide or a claim that every plaster followed the same preparation sequence.", "sourceIds": ["friesem-lime-plaster"] },
+      "relatedDiscoveries": [
+        { "elementId": "quicklime", "relationship": "documented", "explanation": "Water hydrates calcium oxide to calcium hydroxide, rather than turning it back into limestone immediately.", "sourceIds": ["waikato-carbonate-chemistry"] },
+        { "elementId": "lime-mortar", "relationship": "documented", "explanation": "Hydrated lime can bind sand in mortar; water and subsequent hardening also matter.", "sourceIds": ["waikato-carbonate-chemistry"] }
+      ],
+      "approximateDates": [{ "dateRange": "Prehistoric lime-binder tradition; no separate slaking invention date assigned", "dateType": "undated", "precision": "undated", "regions": ["Southern Levant"], "sourceIds": ["friesem-lime-plaster"], "note": "The cited prehistoric plaster study informs a reconstruction of lime technology, not a dated sample of pure slaked lime or a universal production sequence." }],
+      "associatedRegions": ["Southern Levant", "Roman Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "The Natufian lime-plaster study reconstructs processing from archaeological material. Modern chemical knowledge explains plausible transformations; it does not establish every operational step or the makers' theoretical understanding.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["friesem-lime-plaster", "waikato-carbonate-chemistry"] }],
+      "historicalSignificance": { "text": "Distinguishing calcium oxide from calcium hydroxide reveals a controlled material transformation behind lime construction, rather than treating all lime products as the same white powder.", "sourceIds": ["waikato-lime-chemical", "roman-hot-mixing"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Archaeological lime binders do not always preserve the original intermediate hydroxide.", "Roman hot mixing could use quicklime directly, with or instead of previously slaked lime; this game chain is not universal."],
+      "gameplaySimplifications": ["Quicklime + Water represents hydration without quantities, equipment or handling instructions.", "Immediate discovery omits heat management, preparation and time; the material is not safe merely because its tile is selectable."],
+      "furtherResearch": [{ "question": "Which traces distinguish prior slaking from hot mixing in a particular archaeological binder?", "sourceIds": ["roman-hot-mixing", "friesem-lime-plaster"] }]
+    },
+    {
+      "elementId": "lime-mortar", "elementName": "Lime Mortar",
+      "historicalOverview": { "text": "Mortar joins masonry units with a workable binder-and-aggregate mixture. Lime mortar is one specific family, not a name for every earth, gypsum or cement mortar. Prehistoric lime plaster predates Roman building, but plaster coatings and masonry-joint mortars should not be identified simply because both contain lime.", "sourceIds": ["waikato-lime-chemical", "friesem-lime-plaster"] },
+      "manufactureOrUse": { "text": "Lime, sand and water form mortar. Ordinary air-lime mortar hardens through carbonation: Ca(OH)2 + CO2 -> CaCO3 + H2O. It is not just drying, and not every lime mortar sets under water. Suitable pozzolanic additions react with lime and water to form hydraulic binding products; composition, mixing, placement and curing affect performance.", "sourceIds": ["waikato-carbonate-chemistry", "roman-hot-mixing"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Stone Age shelf connects an optional binder to existing Quicklime and Masonry. Earlier lime-plaster evidence supports the broad technological context, not a dated first lime masonry mortar or a mandatory progression from plaster to mortar.", "sourceIds": ["friesem-lime-plaster"] },
+      "relatedDiscoveries": [
+        { "elementId": "slaked-lime", "relationship": "documented", "explanation": "Calcium hydroxide supplies the air-lime binder; sand and water remain necessary constituents.", "sourceIds": ["waikato-carbonate-chemistry"] },
+        { "elementId": "masonry", "relationship": "documented", "explanation": "Lime mortar can join building units.", "sourceIds": ["waikato-lime-chemical"] },
+        { "elementId": "concrete", "relationship": "documented", "explanation": "Roman concrete combined lime-pozzolan mortar with coarse aggregate; mortar alone is not concrete.", "sourceIds": ["roman-hot-mixing"] }
+      ],
+      "approximateDates": [{ "dateRange": "No first masonry-mortar date assigned", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": [], "note": "The accessed sources explain chemistry and selected contexts, not the earliest lime mortar worldwide." }],
+      "associatedRegions": ["Southern Levant", "Roman Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "Analyses of ancient Roman mortars identify lime, pozzolanic constituents and lime clasts. Their interpretation combines surviving material with modern experimental chemistry, rather than preserving an unchanged fresh mixture.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["roman-hot-mixing"] }],
+      "historicalSignificance": { "text": "Binder technology links geological resources to constructed surfaces and masonry. Separating air-lime carbonation from hydraulic reactions avoids crediting every lime-and-sand mixture with Roman marine-concrete performance.", "sourceIds": ["roman-hot-mixing", "waikato-carbonate-chemistry"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Recipes varied by materials, place and use; surviving successful work is not a representative test of every ancient mortar.", "Prehistoric plaster evidence does not independently date the first masonry-joint mortar."],
+      "gameplaySimplifications": ["Slaked Lime + Sand omits mixing water and time for hardening.", "One Lime Mortar discovery replaces a redundant generic Mortar tile; it does not subsume every binder or claim all lime mortar is waterproof."],
+      "furtherResearch": [{ "question": "How can analysis distinguish air-lime mortar from hydraulic or pozzolanic mixtures at a specific site?", "sourceIds": ["roman-hot-mixing"] }]
+    },
+    {
+      "elementId": "volcanic-ash", "elementName": "Volcanic Ash",
+      "historicalOverview": { "text": "Volcanic ash consists of fine rock, mineral and volcanic-glass fragments produced by explosive eruptions. It is not wood-combustion ash. Volcanic deposits existed before human use; suitable reactive deposits later supplied pozzolanic material for lime-based Roman construction.", "sourceIds": ["usgs-volcanic-ash", "roman-hot-mixing"] },
+      "manufactureOrUse": { "text": "Expanding gases or rapidly generated steam fragment magma and rock; wind can disperse the resulting particles. Builders collected and selected deposits rather than manufacturing volcanic ash by heating loose stones. Suitable silicate- and aluminosilicate-bearing pozzolans react with lime and water; not every ash deposit has the same reactivity. The particles are abrasive.", "sourceIds": ["usgs-volcanic-ash", "roman-hot-mixing"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins is an undated symbolic shelf for natural resources. Its placement dates neither an eruption nor first human use, and it does not place ancient Greek philosophy before geology.", "sourceIds": ["usgs-volcanic-ash"] },
+      "relatedDiscoveries": [
+        { "elementId": "ash", "relationship": "gameplay-abstraction", "explanation": "The names resemble each other, but wood-derived Ash and volcanic mineral fragments are not interchangeable ingredients.", "sourceIds": ["usgs-volcanic-ash"] },
+        { "elementId": "concrete", "relationship": "documented", "explanation": "Suitable volcanic material can supply a pozzolan in lime-based concrete; coarse aggregate and water are also required.", "sourceIds": ["roman-hot-mixing"] }
+      ],
+      "approximateDates": [{ "dateRange": "Natural formation; no single eruption or first use dated", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": [], "note": "A class of geological materials, not a human invention at one date." }],
+      "associatedRegions": ["Roman Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "Roman concrete studies identify volcanic components in surviving mortar and aggregate. Modern mineral analysis supports their role as pozzolanic constituents, not a claim that all construction used one deposit.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["roman-hot-mixing"] }],
+      "historicalSignificance": { "text": "Selected geological resources changed binder behavior: reactive volcanic material could support hydraulic setting, a different process from air-lime carbonation alone.", "sourceIds": ["roman-hot-mixing"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Volcanic deposits differ in composition and reactivity.", "This selected Roman use does not establish the first human encounter with volcanic ash or its complete worldwide history."],
+      "gameplaySimplifications": ["Rock + Heat is a symbolic volcanic-setting clue: heating an ordinary rock does not produce volcanic ash.", "Discovery represents encountering existing deposits, not causing an eruption; wood Ash cannot substitute in the authored Concrete recipe."],
+      "furtherResearch": [{ "question": "Which mineral and glass properties made a particular ash deposit suitable as a pozzolan?", "sourceIds": ["roman-hot-mixing", "usgs-volcanic-ash"] }]
+    },
+    {
+      "elementId": "concrete", "elementName": "Concrete",
+      "historicalOverview": { "text": "Concrete here represents Roman lime-pozzolan construction: a binding mortar containing lime and reactive additions joins coarse aggregate. It is not modern Portland-cement concrete. Roman formulations differed by site and purpose, and their history should not be reduced to one lost secret or a universal recipe.", "sourceIds": ["roman-hot-mixing"] },
+      "manufactureOrUse": { "text": "Suitable volcanic ash, lime and water form cementitious hydrates; coarse stone or other aggregate makes the composite concrete. Air-lime carbonation can occur alongside these hydraulic reactions. Roman production could hydrate lime beforehand or use quicklime in hot mixing. Modern ordinary Portland cement instead uses ground clinker formed from limestone and clay, principally calcium silicates. Neither modern concrete nor ancient concrete is a single unchanging formulation.", "sourceIds": ["roman-hot-mixing"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Age V groups the Roman construction example without dating the worldwide invention of concrete. Prehistoric lime binders predate this chapter but are not automatically evidence for Roman-style pozzolanic concrete.", "sourceIds": ["roman-hot-mixing", "friesem-lime-plaster"] },
+      "relatedDiscoveries": [
+        { "elementId": "lime-mortar", "relationship": "documented", "explanation": "Lime-pozzolan mortar binds coarse aggregate; ordinary air-lime mortar alone is not the full composite.", "sourceIds": ["roman-hot-mixing"] },
+        { "elementId": "volcanic-ash", "relationship": "documented", "explanation": "Suitable ash supplies reactive pozzolanic constituents, not merely inert filler.", "sourceIds": ["roman-hot-mixing"] },
+        { "elementId": "pottery", "relationship": "documented", "explanation": "Ceramic fragments occur among Roman pozzolanic additions, but an arbitrary intact pot is not equivalent to a tested reactive aggregate.", "sourceIds": ["roman-hot-mixing"] }
+      ],
+      "approximateDates": [{ "dateRange": "Roman construction tradition; no worldwide invention date assigned", "dateType": "undated", "precision": "undated", "regions": ["Roman Mediterranean"], "sourceIds": ["roman-hot-mixing"], "note": "Regional material examples and a modern analytical study do not determine a first concrete." }],
+      "associatedRegions": ["Roman Mediterranean", "Privernum, Italy"],
+      "archaeologicalEvidence": [{ "text": "The 2023 study analyzes relict lime clasts in Roman mortar from Privernum and tests modern mixtures. Chemical and microstructural evidence supports hot mixing in the studied material; laboratory crack filling supports a proposed mechanism, not guaranteed self-repair in every surviving Roman building.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["roman-hot-mixing"] }],
+      "historicalSignificance": { "text": "Lime-pozzolan binders supported varied Roman structural and water-related construction. Their study informs modern materials research without proving that all ancient concrete outperforms every modern formulation.", "sourceIds": ["roman-hot-mixing"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Composition, exposure and survival differ; durable remains are a selected sample.", "Hot-mixing and self-healing interpretations must stay tied to the analyzed material and experimental conditions."],
+      "gameplaySimplifications": ["Lime Mortar + Volcanic Ash omits coarse aggregate, additional water, placement and curing; it is not a complete production method.", "The slaked-lime route is one teaching sequence, not a universal Roman practice. Concrete is optional and does not replace the existing Arch, Aqueduct or Amphitheater recipes."],
+      "furtherResearch": [{ "question": "How do terrestrial, maritime and hot-mixed Roman concretes differ in mineral reactions and durability?", "sourceIds": ["roman-hot-mixing"] }]
+    },
+    {
+      "elementId": "road-network", "elementName": "Road Network",
+      "historicalOverview": { "text": "A road network connects routes and settlements, not just a single paved surface. Roman builders extended and incorporated older routes; roads and regional connections predated Rome. Networks moved goods and people while also supporting armies, administration and imperial control.", "sourceIds": ["whe-roman-roads"] },
+      "manufactureOrUse": { "text": "Surveying, earthworks, bridges and drainage adapted routes to terrain. Surfaces ranged from gravel to paving, rather than one universal layered specification. Maintenance sustained connections over time. A map can represent a network, but representation is not the same as building or governing it.", "sourceIds": ["whe-roman-roads"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Age V highlights Roman coordination while preserving Road in the Iron Age and its discussion of prehistoric and Bronze Age precedents. This placement does not make iron tools or a map historical prerequisites for all roads.", "sourceIds": ["whe-roman-roads", "sweet-track"] },
+      "relatedDiscoveries": [
+        { "elementId": "road", "relationship": "documented", "explanation": "Connected roads and branches form a network; older routes were reused and extended.", "sourceIds": ["whe-roman-roads"] },
+        { "elementId": "map", "relationship": "gameplay-abstraction", "explanation": "A map evokes coordinated connections without claiming a particular map founded the Roman network.", "sourceIds": ["whe-roman-roads"] }
+      ],
+      "approximateDates": [{ "dateRange": "Via Appia construction began in 312 BCE", "dateType": "dated-evidence", "precision": "year-resolved", "regions": ["Italy"], "sourceIds": ["whe-roman-roads"], "note": "The beginning of one Roman project, not the invention of roads, networks or a completed imperial system." }],
+      "associatedRegions": ["Italy", "Roman Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "Surviving road surfaces, bridges and routes give material evidence for construction and connections. Monumental paved examples do not represent every branch or surface in the network.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["whe-roman-roads"] }],
+      "historicalSignificance": { "text": "Connectivity supported movement and exchange, but roads also made military deployment and imperial authority more effective; engineering benefits should not erase the politics of expansion.", "sourceIds": ["whe-roman-roads"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Rebuilding and reuse complicate dating individual segments.", "The selected Roman example does not establish the first network worldwide or a single construction standard."],
+      "gameplaySimplifications": ["Road + Map symbolizes connected routes, not automatic road construction.", "The recipe omits labor, drainage, maintenance, land rights and funding; no existing road or age gate now requires this optional discovery."],
+      "furtherResearch": [{ "question": "How did branch roads and local surfaces differ from famous monumental routes?", "sourceIds": ["whe-roman-roads"] }]
+    },
+    {
+      "elementId": "public-bath", "elementName": "Public Bath",
+      "historicalOverview": { "text": "Communal bathing predates Roman monumental bath complexes: Greek public baths and heating practices are important precedents. Roman baths varied in size, rooms and water supply, combining bathing with exercise and social activities. Public should not be read as proof of equal access for every person at every time.", "sourceIds": ["whe-roman-baths"] },
+      "manufactureOrUse": { "text": "Some baths used natural hot springs or braziers; furnace-fed hypocausts circulated hot air under raised floors, not hot water through modern radiators. Heating tiles, boilers, fuel, drainage and continuing labor mattered. Aqueducts and reservoirs supplied large complexes, but an aqueduct was not a universal prerequisite for communal bathing. Fired terracotta structural and heating units are not the game's unfired Mud Brick or an intact pottery vessel.", "sourceIds": ["whe-roman-baths"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Age V represents selected Roman complexes while acknowledging earlier Greek bathing and heating. It is not a claim that communal bathing began throughout the world in this period.", "sourceIds": ["whe-roman-baths"] },
+      "relatedDiscoveries": [
+        { "elementId": "aqueduct", "relationship": "documented", "explanation": "Some large bath complexes drew on aqueduct supplies and reservoirs; other water arrangements existed.", "sourceIds": ["whe-roman-baths", "whe-aqueduct"] },
+        { "elementId": "heat", "relationship": "gameplay-abstraction", "explanation": "Warmth stands for varied heating systems, not an engineering plan or proof that every bath room was heated.", "sourceIds": ["whe-roman-baths"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Baths at Lepcis Magna completed around 127 CE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Lepcis Magna, North Africa"], "sourceIds": ["whe-roman-baths"], "note": "A selected regional monument, not the first public bath." },
+        { "dateRange": "Baths of Diocletian completed around 305 CE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Rome, Italy"], "sourceIds": ["whe-roman-baths"], "note": "A later monumental example, not a universal bath design." }
+      ],
+      "associatedRegions": ["Greek Mediterranean", "Lepcis Magna, North Africa", "Rome, Italy"],
+      "archaeologicalEvidence": [{ "text": "Surviving baths preserve pools, room arrangements and underfloor supports. These remains inform reconstruction of heating and circulation but do not establish identical experiences or access rules at every site.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["whe-roman-baths"] }],
+      "historicalSignificance": { "text": "Baths link water infrastructure, fuel, building craft and social practice. Their operation depended on maintenance and labor as well as impressive architecture.", "sourceIds": ["whe-roman-baths", "whe-roman-engineering"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Facilities, charges and access arrangements varied; a general account cannot establish universal inclusion.", "Surviving monumental baths overrepresent well-preserved and heavily funded examples."],
+      "gameplaySimplifications": ["Aqueduct + Heat evokes a supplied bathing complex, not a literal building method or a universal dependency.", "The recipe omits structures, fuel, staffing, drains and water management. Discovery does not certify modern hygienic safety."],
+      "furtherResearch": [{ "question": "How did fuel supply, water availability and access rules differ between bath complexes?", "sourceIds": ["whe-roman-baths"] }]
     },
     {
       "elementId": "natural-classification", "elementName": "Natural Classification",

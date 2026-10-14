@@ -33,7 +33,7 @@ describe('element shelf', () => {
     const user = userEvent.setup()
     useGameStore.setState({ discoveredIds: [...starterElementIds, 'bread'], unlockedEraIds: eras.slice(0, 2).map((era) => era.id) })
     const view = renderShelf()
-    const origins = screen.getByRole('button', { name: /Origins 4\/42 discovered/ })
+    const origins = screen.getByRole('button', { name: /Origins 4\/43 discovered/ })
     expect(origins).toHaveAttribute('aria-expanded', 'true')
     await user.click(origins)
     expect(origins).toHaveAttribute('aria-expanded', 'false')
@@ -42,7 +42,7 @@ describe('element shelf', () => {
     expect(results().getByRole('button', { name: 'Bread' })).toBeVisible()
     view.unmount()
     renderShelf()
-    expect(screen.getByRole('button', { name: /Origins 4\/42 discovered/ })).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.getByRole('button', { name: /Origins 4\/43 discovered/ })).toHaveAttribute('aria-expanded', 'false')
     expect(useGameStore.getState().collapsedShelves).toEqual(['first-light'])
   })
 
@@ -97,7 +97,7 @@ describe('element shelf', () => {
     renderShelf()
     results().getByRole('button', { name: 'Favorite Fire' }).focus()
     act(() => useGameStore.setState({ collapsedShelves: ['first-light'] }))
-    expect(screen.getByRole('button', { name: /Origins 4\/42 discovered/ })).toHaveFocus()
+    expect(screen.getByRole('button', { name: /Origins 4\/43 discovered/ })).toHaveFocus()
   })
 
   it('returns focus to the shelf heading when a whole focused drawer disappears', () => {
@@ -274,6 +274,9 @@ describe('element shelf', () => {
     ['clinical-observation', 'Clinical Observation', /^Knowledge/],
     ['logic', 'Logic', /^Knowledge/],
     ['natural-classification', 'Natural Classification', /^Knowledge/],
+    ['concrete', 'Concrete', /^Craft/],
+    ['road-network', 'Road Network', /^Transport/],
+    ['public-bath', 'Public Bath', /^Society/],
   ] as const)('filters starred Age V %s while retaining its Recently Used shortcut', async (id, name, category) => {
     const user = userEvent.setup()
     useGameStore.setState({
@@ -306,7 +309,7 @@ describe('element shelf', () => {
 
   it('shows optional Age V branches without moving earlier Scroll and Aqueduct discoveries', async () => {
     const user = userEvent.setup()
-    const expansion = elements.slice(158)
+    const expansion = elements.slice(158).filter((element) => element.era === 'classical-antiquity')
     useGameStore.setState({
       discoveredIds: [...starterElementIds, 'scroll', 'aqueduct', ...expansion.map((element) => element.id)],
       favoriteIds: ['mint', 'bird-inquiry'],
@@ -331,6 +334,30 @@ describe('element shelf', () => {
       .getByRole('button', { name: 'Use recent ingredient Mint' }))
     expect(useGameStore.getState()).toMatchObject({
       firstSlotId: 'mint', secondSlotId: 'mint', recentIngredientIds: ['mint'],
+    })
+  })
+
+  it.each([
+    ['slaked-lime', 'Slaked Lime', 'stone-age', /^Matter/],
+    ['lime-mortar', 'Lime Mortar', 'stone-age', /^Craft/],
+    ['volcanic-ash', 'Volcanic Ash', 'first-light', /^Matter/],
+  ] as const)('keeps %s in its earlier-age filters and Recently Used shortcuts', async (id, name, era, category) => {
+    const user = userEvent.setup()
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, id],
+      favoriteIds: [id], firstSlotId: null, secondSlotId: null, recentIngredientIds: [],
+    })
+    renderShelf()
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), era)
+    await user.click(screen.getByRole('button', { name: 'Starred' }))
+    await user.click(screen.getByRole('tab', { name: category }))
+    await user.click(results().getByRole('button', { name }))
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'classical-antiquity')
+    expect(results().queryByRole('button', { name })).not.toBeInTheDocument()
+    await user.click(within(screen.getByRole('region', { name: /Recently used/ }))
+      .getByRole('button', { name: `Use recent ingredient ${name}` }))
+    expect(useGameStore.getState()).toMatchObject({
+      firstSlotId: id, secondSlotId: id, recentIngredientIds: [id],
     })
   })
 

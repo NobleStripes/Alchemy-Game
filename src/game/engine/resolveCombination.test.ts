@@ -602,10 +602,10 @@ describe('expanded ages', () => {
     expect(eras.map((era) => era.id)).toEqual([
       'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
     ])
-    expect(elements).toHaveLength(178)
-    expect(recipes).toHaveLength(216)
+    expect(elements).toHaveLength(184)
+    expect(recipes).toHaveLength(222)
     expect(eras.map((era) => elements.filter((element) => element.era === era.id).length))
-      .toEqual([42, 44, 42, 23, 27])
+      .toEqual([43, 46, 42, 23, 30])
     expect(elements.filter((element) => element.starter).map((element) => element.id)).toEqual(['ember', 'tide', 'stone', 'gale'])
     expect(eras[4].unlockRequires).toEqual(['iron', 'iron-tool', 'road', 'market'])
     expect(eras[4].grants).toEqual([])

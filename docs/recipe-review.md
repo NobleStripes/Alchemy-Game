@@ -2,21 +2,21 @@
 
 [Back to the project overview](../README.md)
 
-The current catalog contains **216 recipes**, including five optional Iron Age expansion routes, four earlier optional discoveries, and 29 Classical Antiquity routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
+The current catalog contains **222 recipes**, including five optional Iron Age expansion routes, four earlier optional discoveries, and 32 Classical Antiquity routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
 
 ## Classifications
 
 | Classification | Count | Meaning |
 | --- | ---: | --- |
-| Material process | 14 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
-| Simplified process | 92 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
-| Symbolic association | 110 | A conceptual, social or fictional link; it must not be read as historical causation. |
+| Material process | 15 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
+| Simplified process | 94 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
+| Symbolic association | 113 | A conceptual, social or fictional link; it must not be read as historical causation. |
 
 ## Player-facing context
 
 Performed formulas have an optional **Historical context** disclosure in both Recorded Formulas and selected-element research. Each formula unlocks its own note; discovering a result does not reveal unperformed alternate routes. Notes do not appear in Open Leads or locked/unsuccessful experiments, and stay separate from the element encyclopedia. Reading changes no worktable slots, Insight, progress or storage.
 
-The audit separates maintaining fire from making it; stone tool evidence from identifying its makers; food processing and early pottery from agricultural prerequisites; drying mud brick from firing ceramics; ore reduction from ordinary heating; alloy composition, casting and working from universal strength claims; papyrus sheets and joined rolls from writing's independent traditions; and maritime knowledge from magnetic navigation. It distinguishes bloomery iron from liquid cast iron and carburization from tempering, and flags earlier precedents for harvesting implements, roads, exchange and worked timber. The Classical Antiquity recipes are symbolic associations for civic spaces, learning, observation, fossil collection and inquiry; none is a literal founding, institutional, or scientific process.
+The audit separates maintaining fire from making it; stone tool evidence from identifying its makers; food processing and early pottery from agricultural prerequisites; drying mud brick from firing ceramics; ore reduction from ordinary heating; alloy composition, casting and working from universal strength claims; papyrus sheets and joined rolls from writing's independent traditions; and maritime knowledge from magnetic navigation. It distinguishes bloomery iron from liquid cast iron and carburization from tempering, and flags earlier precedents for harvesting implements, roads, exchange and worked timber. The earlier Classical Antiquity recipes are symbolic associations for civic spaces, learning, observation, fossil collection and inquiry; the new Concrete route is a simplified material process, not an institutional association.
 
 ### Classical theory versus Origins combinations
 
@@ -26,7 +26,7 @@ Reviewed the Origins recipe flavor and review cautions for this distinction. `ve
 
 ## Reference limits
 
-References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **111 recipe notes have background references; 105 have no attached source.** Educational QA removed the bread paper from the harvesting-blade note because it does not establish that implement's history. The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
+References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **117 recipe notes have background references; 105 have no attached source.** Educational QA removed the bread paper from the harvesting-blade note because it does not establish that implement's history. The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
 
 The Iron Age expansion cautions separate symbolic rotation and scribal associations from cereal grinding and an abbreviated manuscript-writing process. The four additional routes are classified as follows:
 
@@ -46,7 +46,20 @@ The Iron Age expansion cautions separate symbolic rotation and scribal associati
 
 The 22 Age V expansion routes are all symbolic. They distinguish Greek agoras from Roman forums, elite councils from universal representation, a stoa from a philosophical school, aqueducts from necessarily arched structures, and individual coins from monetary systems. Human + Law adds optional Citizenship: membership is not automatically granted by residence or written rules, and civic status does not imply equal political participation. Natural Inquiry and Bird Inquiry do not grant ancient thinkers modern dinosaur knowledge. Existing Scroll, Coin, and Aqueduct recipes are reused, not replaced or reclassified.
 
-The recipe reviews total **14 material-process, 92 simplified-process, and 110 symbolic** classifications. All 22 expansion routes now have verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **111 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the expansion formulas.
+The recipe reviews total **15 material-process, 94 simplified-process, and 113 symbolic** classifications. All 22 earlier expansion routes have verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **117 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the earlier expansion formulas.
+
+### Engineering route classifications
+
+| Recipe | Classification | Caution |
+| --- | --- | --- |
+| Quicklime + Water → Slaked Lime | Material process | Exothermic hydration, distinct from calcination and carbonation; caustic materials, not handling instructions. |
+| Slaked Lime + Sand → Lime Mortar | Simplified process | Omits mixing water, proportions and curing; not every lime binder is hydraulic. |
+| Rock + Heat → Volcanic Ash | Symbolic association | Geological fragmentation, not heating loose rock or burning wood; only suitable ash is pozzolanic. |
+| Lime Mortar + Volcanic Ash → Concrete | Simplified process | Omits coarse aggregate, additional water and placement; Roman hot mixing is an alternative, not a universal self-healing guarantee. |
+| Road + Map → Road Network | Symbolic association | Connected and maintained routes, not an invention date or universal map requirement. |
+| Aqueduct + Heat → Public Bath | Symbolic association | Varied water supplies and heating systems, Greek precedents, unequal access; Mud Brick is not fired heating tile. |
+
+All six new reviews cite verified background passages. None changes an existing formula or its classification. See [engineering gameplay](gameplay.md#optional-engineering-materials-and-infrastructure) and [research access limits](research.md#engineering-materials-and-infrastructure-audit).
 
 The intellectual additions distinguish numerical and geometrical astronomy from modern astrophysics, medical case records from trials or treatment advice, valid inference from true premises or persuasion, and ancient animal grouping from modern taxonomy and evolutionary ancestry. Geometry and Rhetoric are symbolic ingredients, not universal historical prerequisites. Egyptian medical evidence predates Age V; the astronomy and logic examples keep their regional dates and transmission limits.
 

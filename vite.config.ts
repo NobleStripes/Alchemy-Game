@@ -22,6 +22,7 @@ export default defineConfig({
         codeSplitting: {
           groups: [
             { name: 'vendor', test: /[\\/]node_modules[\\/]/ },
+            { name: 'research-content', test: /[\\/]content[\\/]research\.json$/ },
           ],
         },
       },

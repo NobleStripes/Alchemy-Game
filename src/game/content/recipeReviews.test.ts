@@ -9,12 +9,12 @@ const fixture = () => structuredClone(recipeReviews)
 describe('historical recipe review', () => {
   it('covers every recipe exactly once, including alternate routes', () => {
     expect(schema.parse(recipeReviews)).toEqual(recipeReviews)
-    expect(recipeReviews.reviews).toHaveLength(216)
+    expect(recipeReviews.reviews).toHaveLength(222)
     expect(new Set(recipeReviews.reviews.map((review) => review.recipeId)))
       .toEqual(new Set(recipes.map((recipe) => recipe.id)))
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(14)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(92)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(110)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(15)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(94)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(113)
   })
 
   it('preserves the pre-audit IDs, input pairs, results and order', async () => {
@@ -39,7 +39,7 @@ describe('historical recipe review', () => {
   })
 
   it('reviews every expansion route as symbolic with verified historical background', () => {
-    const expansion = recipes.slice(194)
+    const expansion = recipes.slice(194, 216)
     expect(expansion).toHaveLength(22)
     for (const recipe of expansion) {
       const review = reviewsByRecipeId.get(recipe.id)!
