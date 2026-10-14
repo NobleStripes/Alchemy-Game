@@ -16,6 +16,28 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('adds natural-resource reading to an existing v7 save without replacing formulas, stars or preferences', () => {
+    const resourceIds = ['salt', 'bone', 'tree', 'timber', 'soil', 'mud', 'sea', 'steam', 'mist', 'cloud', 'rain', 'lightning']
+    const routes = recipes.filter((recipe) => resourceIds.includes(recipe.result))
+    const previous = {
+      ...fresh(),
+      discoveredIds: elements.map((element) => element.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      discoveredRecipeIds: routes.map((recipe) => recipe.id),
+      favoriteIds: ['salt', 'bone', 'timber'],
+      readHistoricalElementIds: ['tide'],
+      hideFinalElements: true, collapsedShelves: ['first-light', 'stone-age'],
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+    }
+    const loaded = parseProgress(exportProgress(previous))!
+    expect(loaded).toMatchObject(previous)
+    const read = parseProgress(exportProgress({
+      ...loaded, readHistoricalElementIds: ['tide', ...resourceIds],
+    }))!
+    expect(read).toEqual({ ...loaded, readHistoricalElementIds: ['tide', ...resourceIds] })
+    expect(read.version).toBe(7)
+  })
+
   it('round-trips old and additive landmark/challenge receipts together without changing v7 or preferences', () => {
     const challengeRecords = [
       { challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 },

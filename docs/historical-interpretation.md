@@ -210,6 +210,16 @@ Phase 9G adds geological histories for Clay, Rock, Sand, Limestone, Copper Ore a
 - Ore deposits predate their discovery. Bronze/Iron Age resource grants symbolize access, not geological formation or a worldwide first mine. Ore, extracted metal and alloy are distinct; reduction is not simply melting.
 - Natural formation dates, archaeological use dates and widespread adoption are separate questions. Modern scientific explanations do not demonstrate that ancient craftspeople held those theories.
 
-The sand/glass comparison does not identify a particular ancient feedstock; abstract-only pottery and plaster evidence remains explicitly limited. The [coverage audit](research.md#phase-9g-natural-history-audit) lists unresearched natural groups rather than implying that this geological batch covers all organisms and phenomena.
+The sand/glass comparison does not identify a particular ancient feedstock; abstract-only pottery and plaster evidence remains explicitly limited. The [current coverage audit](research.md#phase-9i-natural-resources-and-phenomena) lists unresearched natural groups rather than implying exhaustive coverage.
+
+### Biological resources and weather
+
+Phase 9I adds twelve histories without changing a discovery, formula or age. Tree explains biological wood formation; Timber explains preparation, including stone-axe and wedge techniques far earlier than its Iron Age saw clue. Bone is living mineralized collagen tissue before it becomes a raw material or archaeological remain. The ca. 12,900 BP La Prele needles are evidence of toolmaking, not the origin of bone or a first worldwide needle. Suggested connections with garments remain interpretation. Salt's Hallstatt mining example is distinct from brine evaporation and from a deposit's geological formation.
+
+Soil development includes mineral alteration, organic material and local conditions; wet dust alone is neither mature soil nor guaranteed fertility. Mud may contain clay but is not identical to clay minerals or a ceramic product. Clay's links to Pottery and Amphora therefore represent human processing, while Limestone's Quicklime, Lime Mortar and Concrete links separate calcination, hydration, carbonation and aggregate-bound construction. Roman pozzolanic concrete is not modern Portland cement.
+
+Water retains its documented Greek philosophical history while adding a separately labeled modern water cycle. Sea does not result literally from joining fresh water. Steam as gaseous water is invisible; visible plumes, mist and clouds contain droplets or ice. Clouds do not invariably rain, and adding flame to a storm does not create lightning: lightning is an electrical discharge. These notes are explanations, not hazardous production instructions or weather control. Undated natural processes remain undated, and empty archaeology/region fields are preferable to invented ancient testimony.
+
+Fossil and Bird now link directly to optional historical inquiry. The links do not make ancient animal groupings evolutionary taxonomy or ancient shell interpretations modern paleontology. The Protoceratops-griffin proposal remains disputed, not an established explanation of mythology. Geological evidence, ancient transmitted claims and modern interpretations retain distinct labels.
 
 These reference links do not automatically count as verified research sources. See the [research standards](research.md) for claim-specific verification, and [recipe review](recipe-review.md) for the interpretation of combinations.

@@ -6,6 +6,35 @@ Review date: **2026-10-14**.
 
 ## Status and scope
 
+### Phase 9I-9K final integration
+
+The final pass is **research only**: **194 elements, 232 recipes, 40 Age V discoveries, 85 Atlas histories, 138 chronology entries, 120 verified sources and one pending lead**. Twelve full histories cover Salt, Bone, Tree, Timber, Soil, Mud, Sea, Steam, Mist, Cloud, Rain and Lightning. Water adds modern hydrology without erasing the Greek philosophical account. Clay/Amphora, Limestone/lime/concrete and Fossil/Bird/inquiry topic links remain discovered-only. No Flint, Obsidian, Wood or generic Mortar node was added.
+
+The natural-resource audit separates geological/biological origins, archaeological use and modern interpretation. Hallstatt's mining traces do not establish the first salt industry; Sweet Track's dated construction does not invent timber; La Prele's needle materials do not directly preserve complete clothing. Steam/vapor, visible droplets, precipitation and electrical lightning receive explicit scientific cautions. Weather entries invent neither ancient archaeological evidence nor regional first observations. Remaining gaps are listed in the [current research audit](research.md#phase-9i-natural-resources-and-phenomena); 109 catalog elements still lack full histories.
+
+#### Six-branch evidence and interpretation review
+
+| Branch | Reviewed distinctions and limits |
+| --- | --- |
+| Civic | Agora and Forum remain distinct Greek/Roman settings; Senate, Republic and Citizenship do not imply universal democracy or equal participation. Institutional examples are regional, not global firsts. |
+| Intellectual and natural inquiry | Ancient observation, textual reports and inference are distinguished from modern experimental science, evolutionary taxonomy and paleontology. Mesopotamian/Egyptian mathematics and Indian/Chinese traditions are not simply Greek derivatives. Herodotus's reported bones are not identified fossils; the griffin proposal remains disputed with abstract-only access disclosed. |
+| Engineering | Pre-Roman waterworks and lime precedents remain explicit. Calcination, slaking and carbonation are different reactions; air-lime and hydraulic binders differ. Roman concrete is not Portland cement. Aqueduct gradients, maintenance, gravity and unequal distribution are covered; an arch supports rather than pumps water. |
+| Commerce | Early electrum examples are not universal first-money claims. Indian and Chinese monetary traditions remain distinct; trade does not require coins. Customs evidence separates the Ephesian law from Palmyra's local tariff; amphora traditions predate Classical Antiquity. |
+| Scholarship | Earlier writing, archives and scrolls underpin later library examples without making one medium universal. Copying, colophons and selective preservation differ from a single library-destruction story. Historiography distinguishes a surviving royal inscription from its truth; ancient maps are not modern surveys; Chinese commentary is not dependent on Greek formal logic. |
+| Regional administration and exchange | Achaemenid satraps, Mauryan officers, Qin/Han offices and Roman proconsuls are not identical institutions. Ashoka's prescriptions and claims do not prove compliance or foreign reception; later examinations are not projected onto Qin/Han rule. Silk Roads have no single opening, and diplomacy is not necessary for all exchange. |
+
+This is an editorial consistency and cited-passage review, **not independent historical peer review, original inscription inspection or a complete comparison of every regional tradition**. Publication dates are separated from archaeological dates, and uncertain purposes, dating and diffusion remain qualified. Selected-passages and abstract-only receipts remain limited to what was read. All new source content was directly consulted; an automated probe of all 121 public URLs returned **98 HTTP 200, 19 access/rate-limit blocks and four transport/time-out failures, with no 404/410**. A blocked response is not recertified access or proof of an invalid citation; no failed search result was promoted to evidence.
+
+The snapshots below record earlier stages and their then-current counts, not the final coverage above. Human learning, misconception, assistive-technology and independent scholarly-review observations remain pending; automated coverage must not be described as those outcomes.
+
+#### Final software verification
+
+All required commands passed: `npm run typecheck`, `npm run lint`, `npm test` (**1,052 tests across 20 files**) and `npm run build`. Targeted research, Atlas, persistence and catalog-fingerprint regressions also passed. Coverage includes every researched entry's discovered-only rendering, missing-history states, safe related links, chronology/source schemas, optional Age V completion, reachability/duplicate validation, versions 1-7 migration, complete v7 campaigns, recorded recipes, stars, Recently Used, shelf filters, landmark/challenge receipts and Rainmaker. New regressions cover the twelve records' scientific distinctions, honest empty weather evidence, construction/inquiry links and v7 reading without loss of formulas or preferences.
+
+Browser checks opened all twelve new histories at **375px and 1280px**, searched by name and found no horizontal document overflow. Preview discoveries were injected into the live in-memory store only; the stored campaign snapshot was checked unchanged and the page reloaded afterward. These checks validate rendered behavior, not human comprehension or screen-reader certification.
+
+The production graph is still **145 crafting ingredients, 49 terminal elements and zero unused nodes**. Chunks are **242.12 kB application, 401.57 kB research, 303.96 kB vendor and 36.20 kB CSS**, below the unchanged 500 kB chunk warning threshold. TypeScript, lint, edited-file diagnostics and whitespace checks are clean. Research growth changes neither catalog completion denominators nor the save schema. Unrelated pre-existing line-ending changes are excluded from the release commit.
+
 ### Completed optional landmark track and named challenges
 
 The catalog remains **194 elements and 232 recipes**, with **73 Atlas histories** and unchanged age assignments. The Guide now separates four optional landmark objectives from core page completion: Agora (Trade, City, Agora), Library (Archive, City, Library), Aqueduct (Masonry, Aqueduct, Arch), and Mint (Coin, Forge, Mint). The Aqueduct audit confirmed its existing **Iron Age** assignment; it was not moved to Bronze Age or Age V. Arch supplies the Age V connection, not a universal structural prerequisite for real conduits.

@@ -2,6 +2,56 @@
   "schemaVersion": 2,
   "sources": [
     {
+      "id": "usgs-water-cycle", "title": "The Water Cycle", "authors": [], "institution": "U.S. Geological Survey, Water Science School", "sourceType": "reference-textbook",
+      "url": "https://www.usgs.gov/water-science-school/water-cycle", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.usgs.gov/water-science-school/water-cycle", "accessLevel": "selected-passages", "locator": "What is the water cycle?, pools, fluxes, and solar energy/gravity. Modern explanation of saline oceans, fresh and saline inland stores, groundwater and atmospheric water; not a history of ancient hydrological theory. Original special-topics URL redirects to this canonical page." }
+    },
+    {
+      "id": "usgs-evaporation", "title": "Evaporation and the Water Cycle", "authors": [], "institution": "U.S. Geological Survey, Water Science School", "sourceType": "reference-textbook",
+      "url": "https://www.usgs.gov/water-science-school/science/evaporation-and-water-cycle", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.usgs.gov/water-science-school/science/evaporation-and-water-cycle", "accessLevel": "selected-passages", "locator": "What is evaporation?, evaporation drives the water cycle, and opening of People make use of evaporation on salt ponds. Used for phase changes and concentrating dissolved salts; boiling is not required for evaporation. The page's molecular-bond shorthand is not adopted as breaking water into hydrogen and oxygen." }
+    },
+    {
+      "id": "usgs-condensation", "title": "Condensation and the Water Cycle", "authors": [], "institution": "U.S. Geological Survey, Water Science School", "sourceType": "reference-textbook",
+      "url": "https://www.usgs.gov/water-science-school/science/condensation-and-water-cycle", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.usgs.gov/water-science-school/science/condensation-and-water-cycle", "accessLevel": "selected-passages", "locator": "Condensation, common examples including ground-level fog, and condensation in rising/cooling air on dust, salt and smoke particles. Invisible vapor is distinguished from visible droplets. Not evidence for dates of ancient cloud interpretation." }
+    },
+    {
+      "id": "usgs-precipitation", "title": "Precipitation and the Water Cycle", "authors": [], "institution": "U.S. Geological Survey, Water Science School", "sourceType": "reference-textbook",
+      "url": "https://www.usgs.gov/water-science-school/science/precipitation-and-water-cycle", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.usgs.gov/water-science-school/science/precipitation-and-water-cycle", "accessLevel": "selected-passages", "locator": "Opening on cloud droplets, updrafts, collision/growth and ice-crystal pathways to precipitation. Modern microphysics; neither an ancient account nor a claim that every cloud rains." }
+    },
+    {
+      "id": "bc-soil-formation", "title": "Physical Geology: 5.4 Weathering and the Formation of Soil", "authors": [], "institution": "BCcampus Open Education", "sourceType": "reference-textbook",
+      "url": "https://opentextbc.ca/geology/chapter/5-4-weathering-and-the-formation-of-soil/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://opentextbc.ca/geology/chapter/5-4-weathering-and-the-formation-of-soil/", "accessLevel": "selected-passages", "locator": "Opening on mineral/organic mixture and pore space; climate, parent material, slope and time. Textural sand/silt/clay proportions are not mineral species; approximate example percentages are not a fixed recipe for all soils." }
+    },
+    {
+      "id": "openstax-woody-stems", "title": "Biology 2e: 30.2 Stems", "authors": [], "institution": "OpenStax, Rice University", "sourceType": "reference-textbook",
+      "url": "https://openstax.org/books/biology-2e/pages/30-2-stems", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://openstax.org/books/biology-2e/pages/30-2-stems", "accessLevel": "selected-passages", "locator": "Opening on support and transport; stem tissues, secondary growth and annual rings. Secondary xylem and lignified walls in woody plants. Does not establish one evolutionary origin of all tree growth forms or an ancient woodworking chronology." }
+    },
+    {
+      "id": "openstax-bone-structure", "title": "Anatomy and Physiology 2e: 6.3 Bone Structure", "authors": [], "institution": "OpenStax, Rice University", "sourceType": "reference-textbook",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure", "accessLevel": "selected-passages", "locator": "Gross anatomy and Bone Cells and Tissue: collagen/mineral matrix and active remodeling by osteoblasts and osteoclasts. Human anatomy is used for basic tissue composition, not every animal's anatomy; the page's simplified mineral-formation wording is not a literal chemical recipe." }
+    },
+    {
+      "id": "nhm-hallstatt-picks", "title": "Hallstatt Salt Mine: Bronze Age", "authors": [], "institution": "Natural History Museum Vienna", "sourceType": "archaeology-institution",
+      "url": "https://www.nhm.at/hallstatt/en/salt_mine/bronze_age", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.nhm.at/hallstatt/en/salt_mine/bronze_age", "accessLevel": "selected-passages", "locator": "Pick: bronze ends, bent oak/beech haftings, discarded broken handles and grooves preserved in the Grunerwerk for more than 3,500 years. Supports rock-salt extraction and shaped wooden handles, not a worldwide first salt use, a precise start date or complete mine history." }
+    },
+    {
+      "id": "plos-la-prele-needles", "title": "Early Paleoindian use of canids, felids, and hares for bone needle production at the La Prele site, Wyoming, USA", "authors": ["S. R. Pelton", "M. Litynski", "S. A. Allaun", "M. Buckley", "J. Govaerts", "T. Schoborg", "and colleagues"], "institution": "PLOS ONE", "sourceType": "peer-reviewed-study",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0313610", "publicationDate": "2024-11-27",
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0313610", "accessLevel": "selected-passages", "locator": "Abstract, citation, publication metadata and introduction. ZooMS/Micro-CT identification of ca. 12,900 BP needle materials at La Prele; garment/pelt and trapping explanations are proposals, not directly surviving complete garments. Full analytical dataset and every supplementary file were not reviewed. Author list here follows the first six names in the citation plus colleagues." }
+    },
+    {
+      "id": "nws-lightning-overview", "title": "Understanding Lightning: Overview", "authors": [], "institution": "NOAA National Weather Service", "sourceType": "reference-textbook",
+      "url": "https://www.weather.gov/safety/lightning-science-overview", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.weather.gov/safety/lightning-science-overview", "accessLevel": "selected-passages", "locator": "How Thunderstorms Develop, How Lightning Forms, and Thunder: particle collisions/charge separation, insulating air breaking down, intracloud and cloud-to-ground discharge, rapid heating and sound. Modern explanation, not an ancient experiment or evidence for the invention of fire." }
+    },
+    {
       "id": "isac-fortification", "title": "Persepolis Fortification Tablets", "authors": ["D. M. Lewis"], "institution": "University of Chicago, Institute for the Study of Ancient Cultures", "sourceType": "archaeology-institution",
       "url": "https://isac.uchicago.edu/publications/persepolis-fortification-tablets", "publicationDate": null,
       "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://isac.uchicago.edu/publications/persepolis-fortification-tablets", "accessLevel": "selected-passages", "locator": "Online publication summary quoting Lewis (1990), pp. 2-6: food accounting around Persepolis in the fifteen years down to 493 BCE, sealed travel authorizations, ration receipts, and explicit limits to generalizing across the empire. Summary read, not Hallock's entire corpus or original tablets." }
@@ -694,7 +744,7 @@
     {
       "id": "bc-carbonate-rocks", "title": "Physical Geology: 6.2 Chemical Sedimentary Rocks", "authors": [], "institution": "BCcampus Open Education", "sourceType": "reference-textbook",
       "url": "https://opentextbc.ca/geology/chapter/6-2-chemical-sedimentary-rocks/", "publicationDate": null,
-      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://opentextbc.ca/geology/chapter/6-2-chemical-sedimentary-rocks/", "accessLevel": "selected-passages", "locator": "Carbonate shell and reef fragments, ooids, tufa/travertine and cave precipitates; chert beds and nodules, including flint in southeastern English chalk. These are modern geological explanations, not ancient testimony or a universal marine origin for limestone." }
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://opentextbc.ca/geology/chapter/6-2-chemical-sedimentary-rocks/", "accessLevel": "selected-passages", "locator": "Carbonate shell and reef fragments, ooids, tufa/travertine and cave precipitates; chert beds and nodules, including flint in southeastern English chalk; evaporite section on halite and gypsum crystallization from concentrated saline water. These are modern geological explanations, not ancient testimony, universal concentration thresholds or a universal marine origin for limestone." }
     },
     {
       "id": "bc-metal-deposits", "title": "Physical Geology: 20.1 Metal Deposits", "authors": [], "institution": "BCcampus Open Education", "sourceType": "reference-textbook",
@@ -1187,12 +1237,14 @@
       "elementId": "tide",
       "elementName": "Water",
       "historicalOverview": { "text": "Water was a fundamental constituent of nature in Greek four-element philosophy. Empedocles of Acragas was a major early formulator of the four-root theory in the fifth century BCE, alongside fire, earth and air. He called them roots: enduring constituents whose mixing and separation explained change, rather than modern chemical elements. Aristotle developed his account in the fourth century BCE, associating elemental water with cold and wet (moist) qualities. The historical theory is documented but superseded as chemistry: pure water is the compound H2O, with two hydrogen atoms and one oxygen atom per molecule, not a chemical element.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements", "openstax-matter"] },
-      "manufactureOrUse": { "text": "Elemental water served as a category in an explanation of nature, not a claim about hydrogen and oxygen known to these philosophers. Aristotle's four qualities were hot, cold, wet (moist) and dry, arranged in opposed pairs. In Aristotelian philosophy, fire is hot/dry, water cold/wet, earth cold/dry and air hot/wet. These are historical classifications, not modern scientific measurements of temperature or humidity. Modern chemistry distinguishes a compound with definite composition from a mixture; water molecules contain hydrogen and oxygen, while a drink or other solution can contain additional substances.", "sourceIds": ["mit-aristotle-elements", "openstax-matter"] },
+      "manufactureOrUse": { "text": "Elemental water served as a category in an explanation of nature, not a claim about hydrogen and oxygen known to these philosophers. Aristotle's four qualities were hot, cold, wet (moist) and dry, arranged in opposed pairs. In Aristotelian philosophy, fire is hot/dry, water cold/wet, earth cold/dry and air hot/wet. These are historical classifications, not modern scientific measurements of temperature or humidity. Modern chemistry distinguishes a compound with definite composition from a mixture; water molecules contain hydrogen and oxygen, while a drink or other solution can contain additional substances. In modern hydrology, water circulates among oceans, inland waters, soil, groundwater, ice and the atmosphere through processes including evaporation, condensation and precipitation. Solar energy and gravity drive this circulation. Saline and fresh water are different resources; this natural cycle is not human manufacture and is not the theory attributed to ancient philosophers.", "sourceIds": ["mit-aristotle-elements", "openstax-matter", "usgs-water-cycle"] },
       "agePlacement": { "status": "historical-model", "text": "This entry describes a documented historical model of nature. Origins is an undated, symbolic gameplay prologue, not a date for the Greek theory or the appearance of water. The documented philosophy and the game's imagined transformations have different classifications.", "sourceIds": ["sep-empedocles", "mit-aristotle-elements"] },
       "relatedDiscoveries": [
         { "elementId": "ember", "relationship": "documented", "explanation": "Fire and water are fellow roots in Empedocles' account, not a statement of a modern chemical formula.", "sourceIds": ["sep-empedocles"] },
         { "elementId": "stone", "relationship": "documented", "explanation": "Aristotle describes water as cold/moist and earth as cold/dry; these are philosophical qualities, not a recipe.", "sourceIds": ["mit-aristotle-elements"] },
-        { "elementId": "gale", "relationship": "documented", "explanation": "Water and air belong to the same Greek four-root theory without implying identical modern composition.", "sourceIds": ["sep-empedocles"] }
+        { "elementId": "gale", "relationship": "documented", "explanation": "Water and air belong to the same Greek four-root theory without implying identical modern composition.", "sourceIds": ["sep-empedocles"] },
+        { "elementId": "rain", "relationship": "documented", "explanation": "Precipitation returns atmospheric water to surface stores in the modern water-cycle account, not the Greek four-root theory.", "sourceIds": ["usgs-water-cycle"] },
+        { "elementId": "sea", "relationship": "documented", "explanation": "Seas store saline water. Joining fresh water does not by itself create dissolved salts or an ocean basin.", "sourceIds": ["usgs-water-cycle"] }
       ],
       "approximateDates": [
         { "dateRange": "Fifth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Acragas, Greek Sicily"], "sourceIds": ["sep-empedocles"], "note": "Context for Empedocles' formulation, not the origin of water or a worldwide belief." },
@@ -1266,7 +1318,8 @@
       "agePlacement": { "status": "earlier-precedents", "text": "Stone Age placement frames human encounters with pre-existing fossils, not when the organisms lived or when their remains fossilized. Many fossil records reach far earlier than humans.", "sourceIds": ["nhm-fossils"] },
       "relatedDiscoveries": [
         { "elementId": "bone", "relationship": "gameplay-abstraction", "explanation": "Bone evokes one possible fossilized hard part, but many fossils are traces or remains other than bone.", "sourceIds": ["nhm-fossils"] },
-        { "elementId": "rock", "relationship": "documented", "explanation": "Fossils are commonly preserved in sedimentary rock; rock represents their geological context, not an ingredient that creates them.", "sourceIds": ["nhm-fossils"] }
+        { "elementId": "rock", "relationship": "documented", "explanation": "Fossils are commonly preserved in sedimentary rock; rock represents their geological context, not an ingredient that creates them.", "sourceIds": ["nhm-fossils"] },
+        { "elementId": "fossil-inquiry", "relationship": "gameplay-abstraction", "explanation": "The optional historical inquiry entry separates ancient encounters and interpretations from modern paleontology, including the disputed griffin proposal.", "sourceIds": [] }
       ],
       "approximateDates": [
         { "dateRange": "Varies: thousands to millions of years for fossilization", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["nhm-fossil-formation"], "note": "The Natural History Museum describes a range of fossilization timescales. This is not the age of every fossil or an exact date for one organism." }
@@ -1287,7 +1340,9 @@
       "agePlacement": { "status": "fictional-prologue", "text": "Origins is an undated, symbolic gameplay prologue. Bird's placement there does not date the evolution or appearance of actual birds.", "sourceIds": [] },
       "relatedDiscoveries": [
         { "elementId": "animal", "relationship": "documented", "explanation": "Birds are animals and a surviving branch of the dinosaur lineage.", "sourceIds": ["nhm-bird-evolution", "nhm-dinosaur-extinction"] },
-        { "elementId": "gale", "relationship": "gameplay-abstraction", "explanation": "Air is a symbolic clue, not a material ingredient; not all birds fly.", "sourceIds": [] }
+        { "elementId": "gale", "relationship": "gameplay-abstraction", "explanation": "Air is a symbolic clue, not a material ingredient; not all birds fly.", "sourceIds": [] },
+        { "elementId": "bird-inquiry", "relationship": "gameplay-abstraction", "explanation": "The optional inquiry history compares ancient animal reports with modern evolutionary evidence without equating the two.", "sourceIds": [] },
+        { "elementId": "natural-classification", "relationship": "gameplay-abstraction", "explanation": "Optional classification history discusses ancient grouping practices, not modern evolutionary taxonomy or the origin of birds.", "sourceIds": [] }
       ],
       "approximateDates": [
         { "dateRange": "Beginning around 160 million years ago", "dateType": "regional-development", "precision": "approximate", "regions": ["Global"], "sourceIds": ["nhm-bird-evolution"], "note": "The museum describes gradual evolutionary change in the bird lineage, not a precise first bird or a single origin event." },
@@ -1834,7 +1889,8 @@
       "agePlacement": { "status": "fictional-prologue", "text": "Origins makes a naturally occurring material available as a puzzle resource. It dates neither geological clay formation nor the first human use of clay.", "sourceIds": ["usgs-clays"] },
       "relatedDiscoveries": [
         { "elementId": "pottery", "relationship": "documented", "explanation": "Pottery is a human-made ceramic product, distinct from its naturally occurring clay-rich raw material.", "sourceIds": ["usgs-clays", "xianrendong-pottery"] },
-        { "elementId": "writing", "relationship": "documented", "explanation": "The barley account demonstrates clay's use for recording information, not a prerequisite for every writing tradition.", "sourceIds": ["met-barley-account"] }
+        { "elementId": "writing", "relationship": "documented", "explanation": "The barley account demonstrates clay's use for recording information, not a prerequisite for every writing tradition.", "sourceIds": ["met-barley-account"] },
+        { "elementId": "amphora", "relationship": "documented", "explanation": "Amphorae are shaped and fired ceramic vessels; Bronze Age examples show that these vessel traditions predate Classical Antiquity.", "sourceIds": ["met-amphora-bronze", "met-transport-amphora"] }
       ],
       "approximateDates": [
         { "dateRange": "Natural formation: no single date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["usgs-clays"], "note": "A material class has many deposits and formation histories; archaeological use dates do not date the minerals." },
@@ -1891,7 +1947,9 @@
       "agePlacement": { "status": "fictional-prologue", "text": "Origins supplies a pre-existing natural rock. Limestone's availability is separate from the Stone Age placement of the game's human-made Quicklime discovery.", "sourceIds": ["bc-carbonate-rocks", "friesem-lime-plaster"] },
       "relatedDiscoveries": [
         { "elementId": "quicklime", "relationship": "documented", "explanation": "Calcination transforms carbonate rock into a different substance; the natural rock and the manufactured oxide must be distinguished.", "sourceIds": ["epa-lime-manufacturing"] },
-        { "elementId": "fossil", "relationship": "documented", "explanation": "Shell and skeletal material can contribute to carbonate sediment; not every limestone consists of recognizable fossils, and fossils occur in other rocks too.", "sourceIds": ["bc-carbonate-rocks", "nhm-fossil-formation"] }
+        { "elementId": "fossil", "relationship": "documented", "explanation": "Shell and skeletal material can contribute to carbonate sediment; not every limestone consists of recognizable fossils, and fossils occur in other rocks too.", "sourceIds": ["bc-carbonate-rocks", "nhm-fossil-formation"] },
+        { "elementId": "lime-mortar", "relationship": "documented", "explanation": "Calcination and slaking prepare lime that can bind sand in mortar. Carbonation is a later chemical stage, not immediate geological limestone formation.", "sourceIds": ["waikato-carbonate-chemistry"] },
+        { "elementId": "concrete", "relationship": "documented", "explanation": "Lime-based binders can contribute to concrete with aggregates and reactive volcanic materials. This is not modern Portland cement and does not make all limestone a ready-made binder.", "sourceIds": ["roman-hot-mixing", "waikato-carbonate-chemistry"] }
       ],
       "approximateDates": [
         { "dateRange": "Natural carbonate formation: many geological periods", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-carbonate-rocks"], "note": "No single formation date or duration applies to all limestone." },
@@ -2414,6 +2472,238 @@
       "historicalUncertainty": ["A royal claim of influence does not establish the audience's response.", "Contact does not by itself prove the direction or scale of transmission.", "Later technologies and later religious networks should not be backdated into every ancient encounter."],
       "gameplaySimplifications": ["Diplomatic Mission + Knowledge symbolizes one possible encounter; diplomacy is not universally required.", "Trade, migration, religious travel and conquest can also connect communities.", "Exchange is neither automatically peaceful nor an inevitable improvement for everyone involved."],
       "furtherResearch": [{ "question": "What evidence would distinguish a proclaimed message from its reception and local adaptation?", "sourceIds": ["csu-asoka-edicts", "whe-silk-road"] }]
+    },
+    {
+      "elementId": "salt", "elementName": "Salt",
+      "historicalOverview": { "text": "Common salt is sodium chloride; its mineral form is halite. Dissolved ions can become concentrated as water evaporates, eventually allowing salts to crystallize. Rock-salt deposits preserve older evaporite histories, whereas salt ponds concentrate brine on human timescales. Saline lakes as well as marine waters can supply salts; not every evaporite mineral is edible sodium chloride.", "sourceIds": ["bc-carbonate-rocks", "usgs-evaporation"] },
+      "manufactureOrUse": { "text": "People can recover salt by evaporating saline water or extracting existing rock salt. The Natural History Museum Vienna describes Bronze Age Hallstatt picks with bronze ends and shaped oak or beech handles, discarded haftings and grooves in the mine. This is evidence of mining an existing deposit, not making the mineral by striking rock, and not the beginning of salt use everywhere.", "sourceIds": ["nhm-hallstatt-picks", "usgs-evaporation"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins represents access to a natural resource, not a dated first salt industry or a universal history of extraction.", "sourceIds": ["bc-carbonate-rocks", "nhm-hallstatt-picks"] },
+      "relatedDiscoveries": [
+        { "elementId": "sea", "relationship": "documented", "explanation": "Evaporation can concentrate salts already dissolved in seawater; wind alone does not create sodium chloride.", "sourceIds": ["usgs-evaporation"] },
+        { "elementId": "timber", "relationship": "documented", "explanation": "Hallstatt's wooden pick handles show shaped wood in mining; they do not require the game's later saw-based route.", "sourceIds": ["nhm-hallstatt-picks"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Natural salt formation: multiple deposits and timescales", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-carbonate-rocks"], "note": "Crystallization of a deposit and human extraction have separate histories." },
+        { "dateRange": "Bronze Age Hallstatt: mining traces more than 3,500 years old", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Hallstatt, Austria"], "sourceIds": ["nhm-hallstatt-picks"], "note": "The museum's approximate age for preserved grooves, not a universal earliest salt date or an exact start year." }
+      ],
+      "associatedRegions": ["Hallstatt, Austria", "Saline lakes and coastal basins"],
+      "archaeologicalEvidence": [{ "text": "Broken wooden haftings and pick-cut grooves described by the museum attest extraction work at Hallstatt. The precise organization of every ancient salt industry cannot be inferred from this one regional example.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["nhm-hallstatt-picks"] }],
+      "historicalSignificance": { "text": "Salt connects naturally concentrated minerals to distinct human extraction practices. Comparing brine evaporation with underground mining avoids presenting one coastal technique as the universal source of salt.", "sourceIds": ["bc-carbonate-rocks", "usgs-evaporation", "nhm-hallstatt-picks"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The examples do not establish a first worldwide salt use, diffusion route or adoption date.", "A natural deposit's impurities and composition require analysis; this entry is not food-production advice."],
+      "gameplaySimplifications": ["The sea-and-wind clue evokes evaporation of shallow saline water, not instant drying of an ocean or a reaction that manufactures dissolved ions."],
+      "furtherResearch": [{ "question": "How does evidence for salt mining differ from evidence for brine evaporation?", "sourceIds": ["nhm-hallstatt-picks", "usgs-evaporation"] }]
+    },
+    {
+      "elementId": "bone", "elementName": "Bone",
+      "historicalOverview": { "text": "Bone is biological tissue with a collagen-rich matrix and mineral components, chiefly calcium-phosphate apatite. In a living body it is maintained and remodeled by cells, not manufactured when meat touches stone. An animal's skeletal remains, deliberately worked bone and fossilized remains require different explanations.", "sourceIds": ["openstax-bone-structure", "nhm-fossil-formation"] },
+      "manufactureOrUse": { "text": "People selected and shaped bone into tools. A study of needles from La Prele, Wyoming, dated to about 12,900 BP, identifies canid, felid and hare bones using ZooMS and Micro-CT. The authors propose connections with pelts and tailored garments; the needles do not directly preserve a complete outfit or prove every acquisition method.", "sourceIds": ["plos-la-prele-needles"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age placement organizes the use of a pre-existing animal resource. The cited needle assemblage is one regional archaeological example, not the first appearance of bone or the earliest bone tool.", "sourceIds": ["plos-la-prele-needles", "openstax-bone-structure"] },
+      "relatedDiscoveries": [
+        { "elementId": "needle", "relationship": "documented", "explanation": "Worked bone needles are archaeological artifacts; selection, shaping and perforation are omitted from the simplified clue.", "sourceIds": ["plos-la-prele-needles"] },
+        { "elementId": "fossil", "relationship": "documented", "explanation": "Some bones can become fossils under particular preservation conditions. Most do not; fossil discovery occurs much later than an organism's life.", "sourceIds": ["nhm-fossil-formation"] },
+        { "elementId": "animal", "relationship": "documented", "explanation": "The La Prele study identifies particular animal groups as needle raw materials rather than treating all bones as interchangeable.", "sourceIds": ["plos-la-prele-needles"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Biological bone formation: not a human invention", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["openstax-bone-structure"], "note": "Individual growth, death, tool manufacture and fossilization are separate events." },
+        { "dateRange": "About 12,900 BP: La Prele needle assemblage", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Wyoming, North America"], "sourceIds": ["plos-la-prele-needles"], "note": "Uses the study's BP convention, not a date measured backward from today. Dates an assemblage, not the invention of needles." }
+      ],
+      "associatedRegions": ["Wyoming, North America"],
+      "archaeologicalEvidence": [
+        { "text": "Needle fragments and scientific identification of their raw material support worked-bone technology at La Prele.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["plos-la-prele-needles"] },
+        { "text": "The proposed relationship between needle materials, available pelts and garment-making is an interpretation, not a directly recovered complete garment.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["plos-la-prele-needles"] }
+      ],
+      "historicalSignificance": { "text": "Bone artifacts show deliberate choices among biological raw materials. Modern tissue science and archaeological material identification explain different questions and should not be attributed to ancient makers.", "sourceIds": ["openstax-bone-structure", "plos-la-prele-needles"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The paper was checked in its abstract and introduction, not every analytical dataset or supplement.", "A later surviving assemblage cannot establish the earliest use of a perishable technology."],
+      "gameplaySimplifications": ["The meat-and-rock clue evokes cleaning or accessing existing skeletal material, not its biological creation.", "The fossil clue symbolizes encountering preserved remains, not instantaneous mineralization."],
+      "furtherResearch": [{ "question": "How do worked surfaces and biomolecular identification distinguish a tool from an unmodified bone?", "sourceIds": ["plos-la-prele-needles"] }]
+    },
+    {
+      "elementId": "tree", "elementName": "Tree",
+      "historicalOverview": { "text": "Trees are living woody plants, not objects made simply by combining a seed and soil. Many woody stems thicken through vascular-cambium activity producing secondary xylem, with lignified walls supporting the plant and tissues transporting water and sugars. The familiar ring-forming pattern is not a claim that all plants with a tree growth form have identical anatomy.", "sourceIds": ["openstax-woody-stems"] },
+      "manufactureOrUse": { "text": "Wood can become construction material only through human selection and working. The Sweet Track in Somerset used planks, poles and pegs worked with stone axes and wooden wedges. Hallstatt mining tools used selected oak or beech handles. These regional uses do not date the evolution of trees or imply a single first woodworking tradition.", "sourceIds": ["sweet-track", "nhm-hallstatt-picks"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins introduces a living resource, not a dated botanical invention or a statement that Greek philosophy preceded forests.", "sourceIds": ["openstax-woody-stems"] },
+      "relatedDiscoveries": [
+        { "elementId": "timber", "relationship": "documented", "explanation": "Worked wood is a product of harvesting and shaping, distinct from growth of a living tree.", "sourceIds": ["sweet-track", "openstax-woody-stems"] },
+        { "elementId": "soil", "relationship": "documented", "explanation": "Soils can support plant growth, while organic accumulation contributes to soil development; neither process is an instantaneous two-item transformation.", "sourceIds": ["bc-soil-formation"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Tree growth and wood formation: no single origin date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["openstax-woody-stems"], "note": "The lifespan of a tree, evolution of woody plants and human use of wood are distinct questions." },
+        { "dateRange": "3806 BCE: Sweet Track construction", "dateType": "dated-evidence", "precision": "year-resolved", "regions": ["Somerset, Britain"], "sourceIds": ["sweet-track"], "note": "Tree-ring dating concerns this construction, not the first tree or worldwide first woodworking." }
+      ],
+      "associatedRegions": ["Somerset, Britain", "Hallstatt, Austria"],
+      "archaeologicalEvidence": [{ "text": "Waterlogged wooden trackway components preserve deliberate working. Tree-ring dating helps relate preserved wood to a construction event; unusual preservation is not representative of all ancient wooden objects.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["sweet-track"] }],
+      "historicalSignificance": { "text": "Living growth, worked timber and archaeological survival belong to different histories. Preserved wood provides evidence for techniques and local resource choices that stone artifacts alone cannot supply.", "sourceIds": ["openstax-woody-stems", "sweet-track", "nhm-hallstatt-picks"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Wood often decays; surviving finds underrepresent ancient use.", "The chosen examples do not establish independent invention or the full geographical distribution of woodworking."],
+      "gameplaySimplifications": ["The seed-and-soil clue compresses germination and years of growth, omitting water, light, environmental conditions and variation between species."],
+      "furtherResearch": [{ "question": "What can preserved growth rings establish, and what do they not tell us about first use of wood?", "sourceIds": ["sweet-track", "openstax-woody-stems"] }]
+    },
+    {
+      "elementId": "timber", "elementName": "Timber",
+      "historicalOverview": { "text": "Timber is wood selected and prepared for use, not a new naturally formed mineral. Its raw material grows in woody plants; cutting, splitting and shaping are separate human operations. A later saw-based recipe must not make earlier communities appear unable to build with wood.", "sourceIds": ["openstax-woody-stems", "sweet-track"] },
+      "manufactureOrUse": { "text": "The Sweet Track used sharpened poles, planks and pegs made with stone axes and wooden wedges long before steel saws. Hallstatt's Bronze Age pick handles show another purpose and selection of oak or beech. Neither example implies that all wood was sawn, that all timbers served the same function, or that every ancient structure survives.", "sourceIds": ["sweet-track", "nhm-hallstatt-picks"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Iron Age is the existing puzzle placement for sawn Timber, not the first human use of construction wood. The Neolithic trackway provides a much earlier precedent without moving the recipe.", "sourceIds": ["sweet-track"] },
+      "relatedDiscoveries": [
+        { "elementId": "tree", "relationship": "documented", "explanation": "Wood's biological origin differs from harvesting and manufacture of a timber component.", "sourceIds": ["openstax-woody-stems", "sweet-track"] },
+        { "elementId": "road", "relationship": "documented", "explanation": "The Sweet Track demonstrates a wooden route across wetland, not a claim that all roads were wooden.", "sourceIds": ["sweet-track"] }
+      ],
+      "approximateDates": [{ "dateRange": "3806 BCE: Sweet Track construction", "dateType": "dated-evidence", "precision": "year-resolved", "regions": ["Somerset, Britain"], "sourceIds": ["sweet-track"], "note": "A dated structure made from worked wood, not the invention or widespread adoption of timber." }],
+      "associatedRegions": ["Somerset, Britain", "Hallstatt, Austria"],
+      "archaeologicalEvidence": [{ "text": "The trackway's planks, poles and stabilizing pegs preserve a construction technique. The museum's Hallstatt account separately describes broken wooden pick handles and their forms.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["sweet-track", "nhm-hallstatt-picks"] }],
+      "historicalSignificance": { "text": "Timber illustrates adaptation of a living resource to structures and tools, with evidence often dependent on exceptional preservation. Stone Age woodworking is not a primitive absence of skill awaiting iron equipment.", "sourceIds": ["sweet-track", "nhm-hallstatt-picks"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["One dated structure does not establish first use or simultaneous adoption elsewhere.", "Survival and excavation affect the apparent distribution of wood technology."],
+      "gameplaySimplifications": ["The saw-and-tree route represents one way of preparing wood. Axes, wedges and other tools offered earlier routes; the recipe is not a universal prerequisite."],
+      "furtherResearch": [{ "question": "How can tool marks distinguish splitting, chopping and sawing?", "sourceIds": ["sweet-track", "nhm-hallstatt-picks"] }]
+    },
+    {
+      "elementId": "soil", "elementName": "Soil",
+      "historicalOverview": { "text": "Soil is a developing mixture of mineral particles, organic material and pores containing air and water. Weathering, organic accumulation, climate, parent material, slope and time affect it. Wet dust is not automatically a mature or fertile soil, and no fixed mixture describes all soils.", "sourceIds": ["bc-soil-formation"] },
+      "manufactureOrUse": { "text": "Cultivation works existing ground rather than manufacturing soil from water. The Sion study documents ancient ploughing traces in Switzerland; these provide evidence of a local land-working practice, not a worldwide start of agriculture or a date for the formation of the soil itself.", "sourceIds": ["sion-ploughing", "bc-soil-formation"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins offers a resource for later cultivation puzzles, not an archaeological or geological date for soil.", "sourceIds": ["bc-soil-formation"] },
+      "relatedDiscoveries": [
+        { "elementId": "clay", "relationship": "documented", "explanation": "Clay-sized particles and clay minerals can contribute to soil, but soil is neither pure clay nor a uniform mineral.", "sourceIds": ["bc-soil-formation"] },
+        { "elementId": "plow", "relationship": "documented", "explanation": "Ploughing traces record human working of ground rather than natural soil formation.", "sourceIds": ["sion-ploughing"] },
+        { "elementId": "tree", "relationship": "documented", "explanation": "Soil properties affect plant growth; organic material also participates in soil development.", "sourceIds": ["bc-soil-formation"] }
+      ],
+      "approximateDates": [{ "dateRange": "Soil development and human cultivation: different local histories", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-soil-formation", "sion-ploughing"], "note": "No single soil age or worldwide invention of fertility is assigned." }],
+      "associatedRegions": ["Sion, Switzerland", "British Columbia"],
+      "archaeologicalEvidence": [{ "text": "The Sion paper's ploughing evidence concerns worked surfaces in an archaeological setting, not the first formation of soil or proof that every field used a plough.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["sion-ploughing"] }],
+      "historicalSignificance": { "text": "Distinguishing soil development from cultivation prevents the appearance of a tool or watering practice from being mistaken for the origin of a natural resource.", "sourceIds": ["bc-soil-formation", "sion-ploughing"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Soil development and fertility vary with local conditions.", "Archaeological land-working evidence does not establish every crop, farming system or adoption date."],
+      "gameplaySimplifications": ["Both water-based soil clues compress complex processes. Adding water can wet material but does not instantly supply organic matter, structure or fertility."],
+      "furtherResearch": [{ "question": "How are soil development and archaeological cultivation traces distinguished?", "sourceIds": ["bc-soil-formation", "sion-ploughing"] }]
+    },
+    {
+      "elementId": "mud", "elementName": "Mud",
+      "historicalOverview": { "text": "Mud is water-rich fine sediment, not a single mineral species. Sediment can include clay-sized and silt-sized particles of different compositions. Wetting, transport, settling and later consolidation differ from chemical formation of clay minerals.", "sourceIds": ["bc-clastic-sediment", "usgs-clays"] },
+      "manufactureOrUse": { "text": "People selected workable fine-grained mixtures for vessels and recording surfaces, but not every mud makes suitable clay for either task. Xianrendong ceramics and a later Mesopotamian clay account attest distinct uses of prepared clay-rich material. They do not establish the composition of every muddy deposit or turn wet sediment into fired pottery without processing.", "sourceIds": ["usgs-clays", "xianrendong-pottery", "met-barley-account"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins symbolizes encountering wet sediment, not inventing sedimentation or dating all mud to one event.", "sourceIds": ["bc-clastic-sediment"] },
+      "relatedDiscoveries": [
+        { "elementId": "clay", "relationship": "documented", "explanation": "Mud may contain clay minerals, but wetness alone neither identifies nor creates them.", "sourceIds": ["usgs-clays", "bc-clastic-sediment"] },
+        { "elementId": "tide", "relationship": "documented", "explanation": "Water transports sediment and wets existing particles; this is distinct from their geological formation.", "sourceIds": ["bc-clastic-sediment", "usgs-water-cycle"] }
+      ],
+      "approximateDates": [{ "dateRange": "Wet sediment: recurrent natural processes, no single date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["bc-clastic-sediment"], "note": "The ages of mineral particles, deposition and human use need not coincide." }],
+      "associatedRegions": ["China", "Mesopotamia"],
+      "archaeologicalEvidence": [{ "text": "Ceramics and a clay administrative account attest selected, worked materials rather than an unmodified sample of all natural mud.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["xianrendong-pottery", "met-barley-account"] }],
+      "historicalSignificance": { "text": "Mud highlights why availability of wet material and skilled preparation of a ceramic or writing medium are not the same discovery.", "sourceIds": ["usgs-clays", "xianrendong-pottery", "met-barley-account"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Composition and workability require local evidence.", "The ceramic study's accessed abstract does not prove every proposed cooking use."],
+      "gameplaySimplifications": ["The dust-and-steam clue evokes condensation wetting existing particles. It omits cooling and sufficient liquid water, and does not manufacture clay minerals."],
+      "furtherResearch": [{ "question": "Which analyses distinguish a fine sediment from a selected ceramic raw material?", "sourceIds": ["usgs-clays", "bc-clastic-sediment"] }]
+    },
+    {
+      "elementId": "sea", "elementName": "Sea",
+      "historicalOverview": { "text": "Seas and oceans store saline water within a water cycle driven by solar energy and gravity. Their dissolved substances, basins and circulation have histories that cannot be reproduced by joining two portions of fresh water. Marine and inland fresh waters are not interchangeable resources.", "sourceIds": ["usgs-water-cycle", "bc-carbonate-rocks"] },
+      "manufactureOrUse": { "text": "Mediterranean amphorae provide material evidence for transporting goods by sea and land. They are vessels used within particular commercial networks, not evidence that sea travel required coins or that maritime trade began only in Classical Antiquity. Modern hydrology explains the resource; artifacts document human activities around it.", "sourceIds": ["aha-amphora-trade", "met-transport-amphora", "met-amphora-bronze"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins introduces an existing environment, not a geological sea-formation date or a worldwide maritime chronology.", "sourceIds": ["usgs-water-cycle"] },
+      "relatedDiscoveries": [
+        { "elementId": "salt", "relationship": "documented", "explanation": "Saline water can supply salt when concentrated; it is not the only source.", "sourceIds": ["usgs-evaporation", "bc-carbonate-rocks"] },
+        { "elementId": "amphora", "relationship": "documented", "explanation": "Ceramic transport vessels connect marine environments to human movement of goods, not to natural vessel formation.", "sourceIds": ["aha-amphora-trade", "met-transport-amphora"] },
+        { "elementId": "maritime-trade", "relationship": "documented", "explanation": "Maritime commerce has regional practices and earlier precedents rather than one universal Classical starting point.", "sourceIds": ["aha-amphora-trade", "met-amphora-bronze"] }
+      ],
+      "approximateDates": [{ "dateRange": "Sea basins, water circulation and navigation: separate histories", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["usgs-water-cycle", "aha-amphora-trade"], "note": "No single sea origin or first voyage is inferred from the recipe." }],
+      "associatedRegions": ["Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "Cataloged transport amphorae attest containers used for goods; a vessel alone does not identify every voyage, cargo or exchange arrangement.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["met-transport-amphora", "aha-amphora-trade"] }],
+      "historicalSignificance": { "text": "The contrast between a natural water store and archaeological transport evidence keeps environmental conditions separate from particular human maritime institutions.", "sourceIds": ["usgs-water-cycle", "aha-amphora-trade"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The selected Mediterranean objects do not establish a global origin of seafaring.", "Modern water-cycle accounts are not ancient knowledge attributed to sailors."],
+      "gameplaySimplifications": ["Combining water with itself symbolizes scale and gathering, not the creation of salinity, an ocean basin or its geological history."],
+      "furtherResearch": [{ "question": "What additional evidence would identify a transport vessel's contents and route?", "sourceIds": ["aha-amphora-trade"] }]
+    },
+    {
+      "elementId": "steam", "elementName": "Steam",
+      "historicalOverview": { "text": "Gaseous water is water vapor, often called steam when produced by heating. The white plume commonly called steam is visible condensed droplets; water vapor itself is invisible. Evaporation can occur below boiling temperature, and a phase change does not split H2O into hydrogen and oxygen.", "sourceIds": ["usgs-evaporation", "usgs-condensation", "openstax-matter"] },
+      "manufactureOrUse": { "text": "Heating water and recognizing its changing state are distinct from possessing a modern molecular theory or a steam-powered machine. Ancient elemental classifications treated water and fire within different conceptual frameworks; they should not be read as modern thermodynamics. The game introduces a phase-change theme, not a dated invention of steam technology.", "sourceIds": ["mit-aristotle-elements", "usgs-evaporation"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins is an undated symbolic prologue, not a claim that a steam engine or a molecular account preceded prehistoric humanity.", "sourceIds": ["usgs-evaporation", "mit-aristotle-elements"] },
+      "relatedDiscoveries": [
+        { "elementId": "tide", "relationship": "documented", "explanation": "Liquid water and water vapor are phases of the same compound, not different chemical elements.", "sourceIds": ["usgs-evaporation", "openstax-matter"] },
+        { "elementId": "mist", "relationship": "documented", "explanation": "Visible mist droplets differ from invisible vapor; evaporation and condensation can change their state.", "sourceIds": ["usgs-condensation"] }
+      ],
+      "approximateDates": [{ "dateRange": "Water phase changes: recurring processes, not an invention date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["usgs-evaporation"], "note": "No date for first observation, first boiling or steam engineering is established." }],
+      "associatedRegions": [],
+      "archaeologicalEvidence": [],
+      "historicalSignificance": { "text": "Separating a natural phase change from its explanations avoids mistaking ancient elemental language or puzzle flavor for molecular chemistry.", "sourceIds": ["mit-aristotle-elements", "openstax-matter", "usgs-evaporation"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No archaeological first observation of vapor is established here.", "The modern agency accounts explain physical processes, not ancient manufacturing methods."],
+      "gameplaySimplifications": ["Heating clues omit energy transfer, pressure and conditions; they are not operating instructions.", "Warming visible mist can evaporate droplets; it does not create a different chemical substance."],
+      "furtherResearch": [{ "question": "Why is a visible white plume not the same thing as gaseous water?", "sourceIds": ["usgs-condensation", "usgs-evaporation"] }]
+    },
+    {
+      "elementId": "mist", "elementName": "Mist",
+      "historicalOverview": { "text": "Mist consists of tiny suspended water droplets near the ground, not simply invisible water vapor. Cooling moist air can cause condensation; ground-level fog is one related example. Such conditions can occur inland as well as over seas, so the game selects one setting rather than a universal origin.", "sourceIds": ["usgs-condensation"] },
+      "manufactureOrUse": { "text": "Low suspended droplets are a natural phenomenon, not a manufactured material. The modern water-cycle explanation distinguishes water in air from visible condensation. Ancient elemental water and air were philosophical categories, not measurements of droplet size, saturation or visibility.", "sourceIds": ["usgs-condensation", "mit-aristotle-elements"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins depicts a recurrent condition without dating a first human observation or claiming ancient knowledge of modern atmospheric physics.", "sourceIds": ["usgs-condensation"] },
+      "relatedDiscoveries": [
+        { "elementId": "steam", "relationship": "documented", "explanation": "Water vapor can condense into visible droplets; vapor itself is invisible.", "sourceIds": ["usgs-condensation"] },
+        { "elementId": "cloud", "relationship": "documented", "explanation": "Both themes involve suspended water, but adding air to low mist is not a complete account of cloud formation.", "sourceIds": ["usgs-condensation"] }
+      ],
+      "approximateDates": [{ "dateRange": "Mist and condensation: recurring natural conditions", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["usgs-condensation"], "note": "Not an archaeological date or a universal first description." }],
+      "associatedRegions": [],
+      "archaeologicalEvidence": [],
+      "historicalSignificance": { "text": "Distinguishing visible droplets from invisible vapor makes the symbolic progression readable without endorsing it as literal atmospheric science.", "sourceIds": ["usgs-condensation"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No dated first interpretation of mist is claimed.", "The cited account does not supply a comparative history of all cultural weather traditions."],
+      "gameplaySimplifications": ["The sea-and-air clue evokes coastal moisture while omitting cooling and saturation conditions. Sea water is not necessary for all mist."],
+      "furtherResearch": [{ "question": "How does condensation turn invisible moisture into visible droplets?", "sourceIds": ["usgs-condensation"] }]
+    },
+    {
+      "elementId": "cloud", "elementName": "Cloud",
+      "historicalOverview": { "text": "Visible clouds contain suspended liquid droplets or ice particles, not just invisible vapor. Moist air that rises and cools can form droplets on small particles. A cloud is not a container that fills by adding surface water, and not every cloud produces precipitation at the ground.", "sourceIds": ["usgs-condensation", "usgs-precipitation", "nws-lightning-overview"] },
+      "manufactureOrUse": { "text": "Modern microphysics explains condensation, particle growth and air movement. It does not date a first human observation or establish that ancient weather interpretations used those mechanisms. Ancient Greek elemental discussions of air and water belong to a distinct intellectual history, not a modern laboratory account.", "sourceIds": ["usgs-condensation", "usgs-precipitation", "mit-aristotle-elements"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins organizes natural themes; its place before the historical pages is not a date for clouds or Greek natural philosophy.", "sourceIds": ["usgs-condensation", "mit-aristotle-elements"] },
+      "relatedDiscoveries": [
+        { "elementId": "rain", "relationship": "documented", "explanation": "Cloud particles must grow and fall under suitable conditions; the presence of a cloud alone does not guarantee rain.", "sourceIds": ["usgs-precipitation"] },
+        { "elementId": "lightning", "relationship": "documented", "explanation": "Thunderstorm clouds can develop charge separation through particle interactions; most clouds are not thunderstorms.", "sourceIds": ["nws-lightning-overview"] }
+      ],
+      "approximateDates": [{ "dateRange": "Cloud formation: recurrent atmospheric processes", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["usgs-condensation"], "note": "No first observation, invention or universal ancient account is dated." }],
+      "associatedRegions": [],
+      "archaeologicalEvidence": [],
+      "historicalSignificance": { "text": "The difference between a modern physical explanation and a historical conceptual framework is as important as the distinction between droplets and vapor.", "sourceIds": ["usgs-condensation", "mit-aristotle-elements"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No comparative chronology of ancient cloud explanations is established.", "Actual cloud processes depend on atmospheric conditions not modeled by the puzzle."],
+      "gameplaySimplifications": ["The mist-and-air clue is an association, not a literal lifting recipe or a simulation of cooling, saturation and particle growth."],
+      "furtherResearch": [{ "question": "Why can visible clouds persist without producing rain at the surface?", "sourceIds": ["usgs-precipitation"] }]
+    },
+    {
+      "elementId": "rain", "elementName": "Rain",
+      "historicalOverview": { "text": "Rain is liquid precipitation. Cloud droplets or ice particles grow through processes including collisions and ice-crystal growth; sufficiently large falling particles may reach the ground as rain, with ice sometimes melting on the way. A cloud does not rain simply because more surface water is added to it.", "sourceIds": ["usgs-precipitation"] },
+      "manufactureOrUse": { "text": "Precipitation supplies water to surface and underground stores, while soil moisture and other local conditions affect plant growth. This modern explanation does not imply that cultivation everywhere depended on the same rainfall regime or that ancient communities possessed modern cloud microphysics.", "sourceIds": ["usgs-water-cycle", "bc-soil-formation", "usgs-precipitation"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins gives a natural cycle a puzzle form, not an invention date for rain or a first agricultural practice.", "sourceIds": ["usgs-water-cycle"] },
+      "relatedDiscoveries": [
+        { "elementId": "cloud", "relationship": "documented", "explanation": "Rain can develop from growing cloud particles under suitable atmospheric conditions.", "sourceIds": ["usgs-precipitation"] },
+        { "elementId": "soil", "relationship": "documented", "explanation": "Precipitation affects soil development, but water alone does not make mature fertile soil.", "sourceIds": ["bc-soil-formation"] },
+        { "elementId": "tide", "relationship": "documented", "explanation": "Precipitation is part of water's circulation rather than creation of a new chemical substance.", "sourceIds": ["usgs-water-cycle"] }
+      ],
+      "approximateDates": [{ "dateRange": "Rainfall: recurring conditions with regional variation", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["usgs-water-cycle", "usgs-precipitation"], "note": "A natural process has no human invention or universal first-use date." }],
+      "associatedRegions": [],
+      "archaeologicalEvidence": [],
+      "historicalSignificance": { "text": "The natural cycle and its local consequences should be separated from the later evidence for particular farming or water-management practices.", "sourceIds": ["usgs-water-cycle", "bc-soil-formation"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The entry does not reconstruct rainfall at an archaeological site from a modern diagram.", "No first ancient explanation or deliberate production of rain is established."],
+      "gameplaySimplifications": ["The cloud-and-water clue is symbolic and does not teach weather control. Rainmaker remains a puzzle challenge, not evidence that combining materials can cause rainfall."],
+      "furtherResearch": [{ "question": "How do cloud particles become precipitation rather than remaining suspended?", "sourceIds": ["usgs-precipitation"] }]
+    },
+    {
+      "elementId": "lightning", "elementName": "Lightning",
+      "historicalOverview": { "text": "Lightning is a rapid electrical discharge within the atmosphere or between cloud and ground. In thunderstorms, collisions and air movements can separate electric charge; a strong electric field can overcome air's insulating behavior. Thunder results from rapid heating and expansion of air, not a separate substance being manufactured.", "sourceIds": ["nws-lightning-overview"] },
+      "manufactureOrUse": { "text": "The modern physical explanation differs from historical elemental accounts of fire and air. A luminous discharge is not ordinary combustion, and explaining it now does not show that ancient observers possessed electrical theory. The cited safety account treats lightning as dangerous, not as a controllable way of acquiring fire.", "sourceIds": ["nws-lightning-overview", "mit-aristotle-elements", "openstax-combustion"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins represents observing a pre-existing phenomenon. It dates neither lightning nor the invention of electrical technology.", "sourceIds": ["nws-lightning-overview"] },
+      "relatedDiscoveries": [
+        { "elementId": "cloud", "relationship": "documented", "explanation": "Charge separation in thunderstorm clouds is a modern physical explanation, not a property of every cloud.", "sourceIds": ["nws-lightning-overview"] },
+        { "elementId": "ember", "relationship": "gameplay-abstraction", "explanation": "The fire association evokes brightness; the clue is not combustion producing a bolt or instructions for a safe experiment.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "Electrical storms: recurrent phenomena, no human invention date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["nws-lightning-overview"], "note": "No first observation or first electrical theory is dated by this entry." }],
+      "associatedRegions": [],
+      "archaeologicalEvidence": [],
+      "historicalSignificance": { "text": "Lightning helps distinguish a natural event, an ancient philosophical classification and a modern physical explanation. Similar visual language does not make them the same theory.", "sourceIds": ["nws-lightning-overview", "mit-aristotle-elements"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No comprehensive account of ancient lightning beliefs or first fire acquisition is claimed.", "Modern explanatory diagrams do not establish what particular ancient people believed."],
+      "gameplaySimplifications": ["The storm-and-fire clue is symbolic: adding flame does not create a lightning discharge.", "The puzzle is not a physical experiment; lightning remains hazardous."],
+      "furtherResearch": [{ "question": "Why is thunder a consequence of a discharge rather than a second ingredient?", "sourceIds": ["nws-lightning-overview"] }]
     }
   ]
 }

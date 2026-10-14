@@ -32,7 +32,27 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-Research covers **73 of 194 elements**, including all **40 Age V discoveries**. The 68 records through the scholarship expansion remain, joined by five regional-administration and exchange histories. The registry contains **110 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are 123 chronology entries; dates identify evidence or regional contexts, not universal inventions.
+Research covers **85 of 194 elements**, including all **40 Age V discoveries**. All 73 records through the regional expansion remain, joined by twelve natural-resource and weather histories. The registry contains **120 verified sources and one pending source**, including recipe-review background. The remaining **109 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **138 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
+
+### Phase 9I natural resources and phenomena
+
+This is a research-only expansion. The 194 elements, 232 recipes, five ages, resource grants, goals and v7 format are unchanged. There is no standalone Wood, Flint, Obsidian or generic Mortar discovery: Tree and Timber distinguish biological wood from worked wood; Rock covers flint/chert and obsidian; Lime Mortar covers the existing binder.
+
+| Audited group | Full histories and remaining gaps after this pass |
+| --- | --- |
+| Geological materials and deposits | Clay, Rock, Sand, Limestone, Copper Ore, Iron Ore and Salt are researched. Dust and Lodestone remain gaps. Volcanic Ash already distinguishes geological origin from the symbolic heat clue. |
+| Soils and wet sediment | Soil and Mud now have full records. Mature soil is not instantly made by wetting dust; mud is not one mineral or fired ceramic. Land, River, Lake and Swamp remain gaps. |
+| Organisms and life concepts | Tree joins Bird. Bloom, Primordial Soup, Life, Plant, Reed, Forest, Seed, Crop, Animal, Human, Algae and Fish remain gaps. Life-making formulas are not established origin-of-life mechanisms. |
+| Biological resources and processed matter | Bone and Timber are now researched. Hide, Fibre, Meat and Ash remain gaps, as do processed Charcoal, Leather, Papyrus, Pigment, Copper, Tin, Bronze, Iron and Steel. Metal already has a general record; that does not replace distinct material histories. Ink, foods and other manufactured mixtures need their own treatment, not an automatic natural-material label. |
+| Water and weather | Sea, Steam, Mist, Cloud, Rain and Lightning now have records. Water's existing philosophical record adds modern hydrology. Heat, Spark, Wind, Storm and Wildfire remain gaps. Fire, Earth and Air remain primarily philosophical histories, not complete scientific accounts. |
+
+These are thematic audit groups across catalog categories, not new filters or a claim that all 109 remaining gaps are natural substances. No missing evidence is replaced by an invented archaeological first observation. Weather entries leave archaeology and regional associations empty when no such evidence has been established. The existing schema and Atlas handle this honestly.
+
+Ten new receipts identify directly read passages from USGS water-cycle teaching pages, BCcampus soil formation, OpenStax woody stems and bone tissue, NOAA/NWS lightning science, the Vienna museum's Hallstatt picks and the La Prele needle study. Existing BCcampus evaporite passages and Sweet Track evidence are reused. Modern biology and physics explain natural origins; they are not attributed to ancient observers. The paper's 2024 publication date is distinct from the ca. 12,900 BP assemblage. Its proposed garment/pelt relationship remains a hypothesis; Hallstatt's approximate mining evidence and Sweet Track's 3806 BCE construction do not date first global use.
+
+The water entries distinguish invisible vapor from visible droplets, evaporation below boiling from combustion, and precipitation from simply adding water to a cloud. Lightning is electrical discharge, not flame; Rainmaker is not weather control. Clay now links to Amphora, Limestone to Lime Mortar and Concrete, and Fossil/Bird to optional inquiry records. Those discovered-only topic links reveal no unperformed formula. Existing flint/obsidian, nonmarine carbonate, ore reduction, pre-Roman engineering, lime hydration/carbonation and Roman-versus-Portland-cement cautions were retained.
+
+On 14 October 2026 an automated GET probe checked all 121 source URLs: **98 returned HTTP 200; 19 returned 403/429; four had transport/time-out failures; none returned 404/410**. Nine of the ten added sources returned 200; the previously read BCcampus soil page blocked the automated client. This is an access check, not proof of relevance, full-text review or global link availability. Museum rate limits, publisher blocks and the already-pending British Museum lead are not recertified by the probe. Earlier passage-specific receipts retain their actual access scope. Human historical peer review and comparative research for the remaining gaps are still pending.
 
 ### Regional administration and connections
 
@@ -96,6 +116,8 @@ City, Trade and Law already provide ingredients. Polity supplies the existing br
 The only new discovery is optional Citizenship. Its record compares Aristotle's definition of political participation with changing Roman republican institutions, separates membership from residence and effective power, and explains exclusions without endorsing them. Fred Miller's *Aristotle's Political Theory* in the Stanford Encyclopedia of Philosophy was checked for the relevant passages and author/publication metadata. It is modern interpretation of an ancient normative text, not an archaeological census or proof of universal Greek practice. Existing Roman Republic and Senate references supply bounded Roman context. No universal first citizenship or simple Greek-to-Roman origin path is claimed. The symbolic recipe grants no real rights and does not require historical citizenship to depend on written law. Existing collections, rewards and age requirements are unchanged.
 
 ### Phase 9G natural-history audit
+
+This earlier snapshot records the six-entry geological batch. For current coverage and the subsequent biological/weather additions, see [Phase 9I](#phase-9i-natural-resources-and-phenomena).
 
 The catalog was checked by stable ID against the research registry. This batch prioritizes existing geological materials, not new recipes. The starter named **Earth** has ID `stone` and an existing philosophical-model history; **Rock** has ID `rock` and now has a distinct geological history. **Flint and Obsidian are absent from the catalog**: chert/flint and natural volcanic glass are contextual examples in Rock, not invented discoveries.
 

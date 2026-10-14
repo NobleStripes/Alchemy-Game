@@ -32,6 +32,7 @@ const engineeringIds = ['slaked-lime', 'lime-mortar', 'volcanic-ash', 'concrete'
 const commerceIds = ['merchant-network', 'customs-duty']
 const scholarshipIds = ['historical-writing', 'cartography', 'commentary']
 const regionalIds = ['imperial-bureaucracy', 'provincial-government', 'diplomatic-mission', 'caravan-route', 'cultural-exchange']
+const naturalResourceIds = ['salt', 'bone', 'tree', 'timber', 'soil', 'mud', 'sea', 'steam', 'mist', 'cloud', 'rain', 'lightning']
 
 describe('historical research database', () => {
   it('distinguishes regional ancient intellectual practices from modern scientific methods', () => {
@@ -102,10 +103,10 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds, ...regionalIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds, ...regionalIds, ...naturalResourceIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(110)
+    )).toHaveLength(120)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
@@ -143,7 +144,83 @@ describe('historical research database', () => {
     expect(elements.some((element) => ['flint', 'obsidian'].includes(element.id))).toBe(false)
     expect(researchByElementId.get('rock')!.agePlacement.status).toBe('fictional-prologue')
     expect(researchByElementId.get('stone')!.agePlacement.status).toBe('historical-model')
-    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(121)
+    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(109)
+  })
+
+  it.each(naturalResourceIds)('fully researches existing %s without inventing archaeological evidence or a natural origin date', (id) => {
+    const record = researchByElementId.get(id)!
+    expect(record.elementName).toBe(elements.find((element) => element.id === id)?.name)
+    expect(record.historicalOverview.sourceIds.length).toBeGreaterThan(0)
+    expect(record.manufactureOrUse.sourceIds.length).toBeGreaterThan(0)
+    expect(record.historicalSignificance.sourceIds.length).toBeGreaterThan(0)
+    expect(record.historicalUncertainty.length).toBeGreaterThan(0)
+    expect(record.gameplaySimplifications.length).toBeGreaterThan(0)
+    expect(record.furtherResearch.length).toBeGreaterThan(0)
+    if (id !== 'timber') {
+      expect(record.approximateDates[0]).toMatchObject({
+        dateType: 'undated', precision: 'undated', regions: [],
+      })
+    }
+    expect(record.agePlacement.status).toBe(
+      id === 'timber' ? 'earlier-precedents' : id === 'bone' ? 'regional-gameplay-placement' : 'fictional-prologue',
+    )
+  })
+
+  it('separates biological resources and worked materials from their much later archaeological survival', () => {
+    const bone = researchByElementId.get('bone')!
+    expect(bone.historicalOverview.text).toContain('collagen-rich matrix')
+    expect(bone.approximateDates[1]).toMatchObject({
+      dateType: 'dated-evidence', regions: ['Wyoming, North America'],
+    })
+    expect(bone.archaeologicalEvidence[1].interpretation).toBe('hypothesis')
+    expect(bone.relatedDiscoveries.some((link) => link.elementId === 'fossil')).toBe(true)
+    expect(bone.gameplaySimplifications.join(' ')).toContain('not instantaneous mineralization')
+    const timber = researchByElementId.get('timber')!
+    expect(timber.agePlacement.text).toContain('not the first human use')
+    expect(timber.approximateDates[0]).toMatchObject({
+      dateRange: '3806 BCE: Sweet Track construction', dateType: 'dated-evidence', precision: 'year-resolved',
+    })
+    expect(timber.gameplaySimplifications[0]).toContain('not a universal prerequisite')
+    expect(researchByElementId.get('salt')!.historicalOverview.text).toContain('not every evaporite mineral')
+    expect(researchByElementId.get('salt')!.manufactureOrUse.text).toContain('mining an existing deposit')
+    expect(researchByElementId.get('soil')!.historicalOverview.text).toContain('not automatically a mature or fertile soil')
+    expect(researchByElementId.get('mud')!.gameplaySimplifications[0]).toContain('omits cooling and sufficient liquid water')
+  })
+
+  it('explains the water cycle and atmospheric electricity without turning Rainmaker into literal science', () => {
+    expect(researchByElementId.get('tide')!.manufactureOrUse.text).toContain('Solar energy and gravity')
+    expect(researchByElementId.get('sea')!.gameplaySimplifications[0]).toContain('not the creation of salinity')
+    expect(researchByElementId.get('steam')!.historicalOverview.text).toContain('water vapor itself is invisible')
+    expect(researchByElementId.get('steam')!.historicalOverview.text).toContain('does not split H2O')
+    expect(researchByElementId.get('mist')!.historicalOverview.text).toContain('inland as well as over seas')
+    expect(researchByElementId.get('cloud')!.historicalOverview.text).toContain('not every cloud produces precipitation')
+    expect(researchByElementId.get('rain')!.gameplaySimplifications[0]).toContain('Rainmaker remains a puzzle challenge')
+    expect(researchByElementId.get('lightning')!.historicalOverview.text).toContain('electrical discharge')
+    expect(researchByElementId.get('lightning')!.gameplaySimplifications[0]).toContain('adding flame does not create')
+    for (const id of ['steam', 'mist', 'cloud', 'rain', 'lightning']) {
+      const record = researchByElementId.get(id)!
+      expect(record.approximateDates.every((date) => date.dateType === 'undated')).toBe(true)
+      expect(record.archaeologicalEvidence).toEqual([])
+      expect(record.associatedRegions).toEqual([])
+    }
+  })
+
+  it('connects natural materials to optional manufactured and inquiry histories without adding catalog nodes', () => {
+    for (const [id, related] of [
+      ['clay', ['pottery', 'amphora']],
+      ['limestone', ['quicklime', 'lime-mortar', 'concrete', 'fossil']],
+      ['fossil', ['fossil-inquiry']],
+      ['bird', ['natural-classification']],
+    ] as const) {
+      const links = researchByElementId.get(id)!.relatedDiscoveries.map((link) => link.elementId)
+      expect(links).toEqual(expect.arrayContaining([...related]))
+    }
+    expect(elements.some((element) => ['wood', 'flint', 'obsidian', 'mortar'].includes(element.id))).toBe(false)
+    expect(historicalResearch.records).toHaveLength(85)
+    expect(historicalResearch.records.reduce((count, record) => count + record.approximateDates.length, 0)).toBe(138)
+    const study = historicalResearch.sources.find((source) => source.id === 'plos-la-prele-needles')!
+    expect(study.publicationDate).toBe('2024-11-27')
+    expect(study.verification).toMatchObject({ status: 'verified', accessLevel: 'selected-passages' })
   })
 
   it('keeps ore access grants separate from geological formation and reduction separate from melting', () => {
@@ -280,7 +357,10 @@ describe('historical research database', () => {
     expect(record.approximateDates[1].sourceIds).toEqual(['mit-aristotle-elements', 'sep-aristotle'])
     expect(record.independentDevelopments).toEqual([])
     expect(record.gameplaySimplifications.join(' ')).toContain('symbolic')
-    expect(record.relatedDiscoveries.every((link) => classicalIds.includes(link.elementId))).toBe(true)
+    expect(record.relatedDiscoveries.filter((link) => classicalIds.includes(link.elementId)))
+      .toHaveLength(3)
+    expect(record.relatedDiscoveries.filter((link) => !classicalIds.includes(link.elementId)).map((link) => link.elementId))
+      .toEqual(id === 'tide' ? ['rain', 'sea'] : [])
     expect(record.historicalOverview.text).toContain('He called them roots: enduring constituents')
     expect(record.manufactureOrUse.text).toContain("Aristotle's four qualities were hot, cold, wet (moist) and dry")
     expect(record.manufactureOrUse.text).toContain('fire is hot/dry, water cold/wet, earth cold/dry and air hot/wet')
