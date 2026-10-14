@@ -279,6 +279,9 @@ describe('element shelf', () => {
     ['public-bath', 'Public Bath', /^Society/],
     ['merchant-network', 'Merchant Network', /^Society/],
     ['customs-duty', 'Customs Duty', /^Society/],
+    ['historical-writing', 'Historical Writing', /^Knowledge/],
+    ['cartography', 'Cartography', /^Knowledge/],
+    ['commentary', 'Commentary', /^Knowledge/],
   ] as const)('filters starred Age V %s while retaining its Recently Used shortcut', async (id, name, category) => {
     const user = userEvent.setup()
     useGameStore.setState({

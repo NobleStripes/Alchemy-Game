@@ -33,19 +33,19 @@ describe('Guide preparation', () => {
     useGameStore.setState({
       discoveredIds: elements.map((element) => element.id),
       unlockedEraIds: eras.map((era) => era.id),
-      discoveredRecipeIds: ['examined-argument'],
+      discoveredRecipeIds: ['interpreted-text'],
       hideFinalElements: true,
       collapsedShelves: ['classical-antiquity'],
     })
     render(<Journal {...props} eraId="classical-antiquity" onViewHistory={viewHistory} />)
-    await user.click(screen.getByRole('button', { name: 'Inspect Logic' }))
+    await user.click(screen.getByRole('button', { name: 'Inspect Commentary' }))
     expect(screen.getByText(/Terminal: no authored recipe/)).toBeVisible()
-    const history = screen.getByRole('button', { name: 'View history of Logic' })
+    const history = screen.getByRole('button', { name: 'View history of Commentary' })
     await user.click(history)
-    expect(viewHistory).toHaveBeenCalledWith('logic', history)
-    const prepare = screen.getAllByRole('button', { name: 'Prepare Rhetoric + Knowledge' })[0]
+    expect(viewHistory).toHaveBeenCalledWith('commentary', history)
+    const prepare = screen.getAllByRole('button', { name: 'Prepare Scroll + Logic' })[0]
     await user.click(prepare)
-    expect(useGameStore.getState()).toMatchObject({ firstSlotId: 'rhetoric', secondSlotId: 'knowledge' })
+    expect(useGameStore.getState()).toMatchObject({ firstSlotId: 'scroll', secondSlotId: 'logic' })
   })
 
   it('offers history only for an inspected discovery and passes its originating control without changing gameplay', async () => {
@@ -90,8 +90,8 @@ describe('Guide preparation', () => {
     })
     const { rerender } = render(<Journal {...props} eraId={age.id} challengeName={age.name}
       discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
-    expect(screen.getByText('32', { selector: '.progress-summary strong' })).toBeVisible()
-    expect(ageElements).toHaveLength(32)
+    expect(screen.getByText('35', { selector: '.progress-summary strong' })).toBeVisible()
+    expect(ageElements).toHaveLength(35)
     for (const category of new Set(ageElements.map((element) => element.category))) {
       const count = ageElements.filter((element) => element.category === category).length
       const label = category[0].toUpperCase() + category.slice(1)
@@ -107,7 +107,7 @@ describe('Guide preparation', () => {
       discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
     expect(within(archive).getByText('Recorded Formulas (2)')).toBeVisible()
     expect(within(archive).getByText(formula(agoraRoutes[1].inputs))).toBeVisible()
-    expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(32)
+    expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(35)
   })
 
   it('archives a formula after its attempt is evicted and reloaded, without saving on preparation', async () => {

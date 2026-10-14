@@ -2,7 +2,7 @@
 
 [Back to the project overview](../README.md)
 
-The current catalog contains **224 recipes**, including five optional Iron Age expansion routes, four earlier optional discoveries, and 34 Classical Antiquity routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
+The current catalog contains **227 recipes**, including five optional Iron Age expansion routes, four earlier optional discoveries, and 37 Classical Antiquity routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
 
 ## Classifications
 
@@ -10,7 +10,7 @@ The current catalog contains **224 recipes**, including five optional Iron Age e
 | --- | ---: | --- |
 | Material process | 15 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
 | Simplified process | 94 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
-| Symbolic association | 115 | A conceptual, social or fictional link; it must not be read as historical causation. |
+| Symbolic association | 118 | A conceptual, social or fictional link; it must not be read as historical causation. |
 
 ## Player-facing context
 
@@ -26,7 +26,7 @@ Reviewed the Origins recipe flavor and review cautions for this distinction. `ve
 
 ## Reference limits
 
-References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **119 recipe notes have background references; 105 have no attached source.** Educational QA removed the bread paper from the harvesting-blade note because it does not establish that implement's history. The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
+References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **122 recipe notes have background references; 105 have no attached source.** Educational QA removed the bread paper from the harvesting-blade note because it does not establish that implement's history. The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
 
 The Iron Age expansion cautions separate symbolic rotation and scribal associations from cereal grinding and an abbreviated manuscript-writing process. The four additional routes are classified as follows:
 
@@ -46,7 +46,17 @@ The Iron Age expansion cautions separate symbolic rotation and scribal associati
 
 The 22 Age V expansion routes are all symbolic. They distinguish Greek agoras from Roman forums, elite councils from universal representation, a stoa from a philosophical school, aqueducts from necessarily arched structures, and individual coins from monetary systems. Human + Law adds optional Citizenship: membership is not automatically granted by residence or written rules, and civic status does not imply equal political participation. Natural Inquiry and Bird Inquiry do not grant ancient thinkers modern dinosaur knowledge. Existing Scroll, Coin, and Aqueduct recipes are reused, not replaced or reclassified.
 
-The current recipe reviews total **15 material-process, 94 simplified-process, and 115 symbolic** classifications. All 22 earlier expansion routes have verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **119 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the earlier expansion formulas.
+The current recipe reviews total **15 material-process, 94 simplified-process, and 118 symbolic** classifications. All 22 earlier expansion routes have verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **122 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the earlier expansion formulas.
+
+### Scholarship route classifications
+
+| Recipe | Classification | Caution |
+| --- | --- | --- |
+| Scribe + Knowledge → Historical Writing | Symbolic association | Earlier records and oral memory predate Greek historical inquiry; narratives and royal inscriptions are not automatically accurate. |
+| Map + Geometry → Cartography | Symbolic association | Mathematical geography is one mapping tradition; ancient schematic maps and coordinates are not modern precision surveys. |
+| Scroll + Logic → Commentary | Symbolic association | Neither papyrus nor Greek formal logic was universally required; explanation can criticize and extend an inherited text. |
+
+Library and Rhetoric retain their existing recipes and classifications. These routes connect to older writing traditions without dating the invention of historical memory, mapping or commentary to Age V.
 
 ### Commerce route classifications
 

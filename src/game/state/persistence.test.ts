@@ -16,6 +16,23 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('retains earlier scholarship and new discoveries, recorded formulas, favorites and reading in v7', () => {
+    const recipeIds = ['written-marks', 'bound-scroll', 'city-of-texts', 'public-persuasion', 'remembered-past', 'reasoned-maps', 'interpreted-text']
+    const recorded = recipeIds.map((id) => recipes.find((recipe) => recipe.id === id)!)
+    const ids = recorded.map((recipe) => recipe.result)
+    const restored = parseProgress(JSON.stringify({
+      ...fresh(),
+      discoveredIds: [...new Set([...starterElementIds, ...recorded.flatMap((recipe) => [...recipe.inputs, recipe.result])])],
+      discoveredRecipeIds: recipeIds, favoriteIds: ids, readHistoricalElementIds: ids,
+      hideFinalElements: true, collapsedShelves: ['bronze-age', 'classical-antiquity'],
+    }))!
+    expect(restored).toMatchObject({
+      version: 7, discoveredRecipeIds: recipeIds, favoriteIds: ids, readHistoricalElementIds: ids,
+      hideFinalElements: true, collapsedShelves: ['bronze-age', 'classical-antiquity'],
+    })
+    expect(parseProgress(exportProgress(restored))).toEqual(restored)
+  })
+
   it('preserves reused and new commerce formulas, favorites and reading together in version 7', () => {
     const recipeIds = ['authorized-coins', 'coin-workshop', 'amphora-voyage', 'connected-merchants', 'regulated-cargo']
     const recorded = recipeIds.map((id) => recipes.find((recipe) => recipe.id === id)!)

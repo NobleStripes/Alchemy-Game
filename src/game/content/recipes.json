@@ -222,5 +222,8 @@
   { "id": "connected-routes", "inputs": ["road", "map"], "result": "road-network", "flavor": "Routes and their representation evoke a connected network, not construction without surveying, labor or maintenance." },
   { "id": "supplied-bathing", "inputs": ["aqueduct", "heat"], "result": "public-bath", "flavor": "Water supply and warmth evoke a bath complex; not every bath needed an aqueduct or the same heating system." },
   { "id": "connected-merchants", "inputs": ["merchant", "road-network"], "result": "merchant-network", "flavor": "Traders and connected routes evoke relationships across land and sea, not commerce created by roads or dependent on coins." },
-  { "id": "regulated-cargo", "inputs": ["maritime-trade", "law"], "result": "customs-duty", "flavor": "Moving cargo and fiscal rules evoke customs dues; ancient collection stations also stood at inland crossings." }
+  { "id": "regulated-cargo", "inputs": ["maritime-trade", "law"], "result": "customs-duty", "flavor": "Moving cargo and fiscal rules evoke customs dues; ancient collection stations also stood at inland crossings." },
+  { "id": "remembered-past", "inputs": ["scribe", "knowledge"], "result": "historical-writing", "flavor": "Record-making and shared learning evoke accounts of the past, not a guarantee that every narrative is accurate." },
+  { "id": "reasoned-maps", "inputs": ["map", "geometry"], "result": "cartography", "flavor": "Spatial representation and geometry evoke one mapping tradition, not a universal origin or a modern precision survey." },
+  { "id": "interpreted-text", "inputs": ["scroll", "logic"], "result": "commentary", "flavor": "An inherited text and critical argument evoke commentary, not a requirement that every tradition use scrolls or Greek logic." }
 ]

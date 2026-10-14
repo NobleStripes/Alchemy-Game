@@ -36,7 +36,7 @@ describe('optional commerce branch', () => {
   it('keeps new routes optional for all age gates, landmarks, goals and collections', () => {
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
     expect(validateContent(elements.slice(0, 184), recipes.slice(0, 222), eras, collections)).toEqual([])
-    expect(elements.slice(184).map((element) => element.id)).toEqual(additions)
+    expect(elements.slice(184, 186).map((element) => element.id)).toEqual(additions)
     for (const age of eras) {
       expect([...age.unlockRequires, ...age.grants, ...age.landmarkIds].some((id) => additions.includes(id))).toBe(false)
     }

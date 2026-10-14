@@ -2,6 +2,18 @@
 
 [Back to the project overview](../README.md)
 
+## Scholarship, textual memory and geographic representations
+
+Library and Rhetoric are reused, not newly invented by the expansion. Historical Writing, Cartography and Commentary are optional Age V labels tied to earlier writing, scribal and representational practices. Bronze Age Writing, Scroll, Scribe, Archive and Map and Iron Age Alphabet and Manuscript keep their gameplay chronology; Age V is not the beginning of record-making or knowledge.
+
+Ancient libraries involved collection, copying, arrangement and consultation. Tablet colophons and excavated material support discussion of preservation intentions, while material survival and later copying select what remains. Libraries were not universally public lending institutions. The existing Library entry preserves earlier Mesopotamian precedents and uncertainty about Alexandria.
+
+Herodotus's narrative aims are textual evidence, not a guarantee that every report is eyewitness or correct. Darius's surviving Behistun relief and trilingual inscription attest royal self-presentation; the accession narrative remains contested. These different witnesses are not interchangeable with modern critical historical writing.
+
+A Babylonian world-map tablet combines inscriptions, named places and a schematic diagram; its cosmological purpose is an interpretation and its likely findspot is qualified. Ptolemy's mathematical geography used coordinates but uneven data, not modern survey accuracy. No later illustrated copy is identified as his original ancient drawing. The museum description was accessed through a credited republication because the original catalog was blocked.
+
+Commentary could justify, question and extend inherited work. Liu Hui's 263 CE commentary and the earlier explanatory passages described in the Edwin Smith Papyrus are distinct examples, not a single genre or a proven transmission sequence. Neither papyrus scrolls nor Greek formal logic were universal prerequisites; the recipe is a gameplay association. Source-specific citations and access limits are recorded in the [research registry](../src/game/content/research.json).
+
 ## Commerce, money and fiscal institutions
 
 Merchant Network and Customs Duty are optional Age V discoveries, not mandatory stages of economic development. Existing Coinage, Mint and Maritime Trade histories now compare early western Anatolian electrum (a gold-silver alloy), Indian punch-marked silver pieces and Chinese cast copper-alloy forms. Weight standards, denominations and issuing marks connect coinage to metalworking and standardized exchange; they did not guarantee universal acceptance or remove regional monetary differences. Trade preceded coins and did not universally require them.

@@ -6,6 +6,18 @@ Review date: **2026-10-14**.
 
 ## Status and scope
 
+### Completed optional scholarship expansion
+
+The current catalog has **189 elements and 227 recipes**, including **35 Age V discoveries**. There are **68 Atlas records**, 111 chronology entries, **101 verified sources and one pending lead**. Library and Rhetoric were already implemented and are reused. Geometry and Map cover the audited mathematical/geographic foundations without duplicate Mathematics or Geography elements. The three approved additions are Historical Writing (Scribe + Knowledge), Cartography (Map + Geometry), and Commentary (Scroll + Logic), each with a full sourced history and symbolic recipe caution.
+
+Earlier Bronze and Iron Age writing definitions, recipes, gates, landmarks, collections and learning challenges remain unchanged. Library's expanded use section covers copying, clay and papyrus formats, tablet colophons and selective preservation. The new histories distinguish Herodotus's textual narrative from Darius's surviving royal inscription and contested claims; ancient geographic representations from modern precision surveys; and Liu Hui's commentary from earlier Egyptian explanatory passages without implying dependence on Greek formal logic.
+
+Source access was checked on 14 October 2026. Three new receipts cover the Herodotus and Behistun reference articles and a credited republication of the British Museum world-map caption. The museum's direct catalog was blocked; its republication is explicitly identified, no image was copied and the inferred purpose remains interpretive. Existing Ptolemy, Nine Chapters, NLM papyrus and library receipts are reused; Ptolemy's receipt now includes the verified Geography passage. This is selected-passage research, not firsthand inscription inspection or consultation of complete critical editions.
+
+All four checks passed: `npm run typecheck`, `npm run lint`, `npm test`, and `npm run build`. The suite passed **935 tests across 18 files**, including unordered recipe resolution, gated reachability and optional-branch removal, complete pre-expansion catalog fingerprints, schema and citation integrity, discovered-only Atlas rendering, starred/category/Recently Used filters and version 7 formula/favorite/reading persistence. Logic gains an outgoing use; a terminal-discovery Guide regression now exercises Commentary's history and recorded-origin preparation rather than incorrectly treating Logic as terminal.
+
+The build reports **142 crafting ingredients, 47 terminal elements and zero unused nodes**. JavaScript chunks are 232.19 kB application, 325.45 kB research and 303.96 kB vendor, below the unchanged 500 kB warning threshold. Human learning, historical peer review and assistive-technology observations remain pending; automated tests do not replace them.
+
 ### Completed optional commerce expansion
 
 The catalog now contains **186 elements and 224 recipes**, with **32 Age V discoveries** and **65 full Atlas records**, containing 105 chronology entries. The registry holds **98 verified sources and one pending lead**. Coinage, Mint, Maritime Trade and Amphora retain their earlier recipes and ages. Merchant + Road Network adds Merchant Network; Maritime Trade + Law adds Customs Duty. Both are optional symbolic associations, with individual cited cautions. The complete pre-expansion element and recipe definitions are protected by regression fingerprints.

@@ -602,10 +602,10 @@ describe('expanded ages', () => {
     expect(eras.map((era) => era.id)).toEqual([
       'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
     ])
-    expect(elements).toHaveLength(186)
-    expect(recipes).toHaveLength(224)
+    expect(elements).toHaveLength(189)
+    expect(recipes).toHaveLength(227)
     expect(eras.map((era) => elements.filter((element) => element.era === era.id).length))
-      .toEqual([43, 46, 42, 23, 32])
+      .toEqual([43, 46, 42, 23, 35])
     expect(elements.filter((element) => element.starter).map((element) => element.id)).toEqual(['ember', 'tide', 'stone', 'gale'])
     expect(eras[4].unlockRequires).toEqual(['iron', 'iron-tool', 'road', 'market'])
     expect(eras[4].grants).toEqual([])
@@ -661,8 +661,8 @@ describe('expanded ages', () => {
   it('keeps all four intellectual discoveries optional for existing ages and collections', () => {
     const ids = new Set(['mathematical-astronomy', 'clinical-observation', 'logic', 'natural-classification'])
     expect(validateContent(
-      elements.filter((element) => !ids.has(element.id)),
-      recipes.filter((recipe) => !ids.has(recipe.result)),
+      elements.slice(0, 186).filter((element) => !ids.has(element.id)),
+      recipes.slice(0, 224).filter((recipe) => !ids.has(recipe.result)),
       eras, collections,
     )).toEqual([])
     expect(collections.every((collection) => collection.elementIds.every((id) => !ids.has(id)))).toBe(true)
