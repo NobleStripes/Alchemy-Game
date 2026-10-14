@@ -2,7 +2,7 @@
 
 [Back to the project overview](../README.md)
 
-The game has 158 elements and 194 recipes across five gameplay ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
+The game has 173 elements and 211 recipes across five gameplay ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
 
 Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed three-tab navigator; choosing an element returns directly to Combine, while the Elements list marks occupied slots. Search matches names and categories, and the Guide separates collections from optional element research with native disclosure controls.
 
@@ -32,6 +32,8 @@ Search and filter controls remain visible while the results scroll separately. *
 
 ## Five gameplay pages
 
+The Play age selector always lists all five pages; locked pages are disabled. Keyboard users can focus an unlocked age and press Enter or Space. The selected page is marked as current, and the age row scrolls horizontally when needed without clipping its first button. Selecting a page changes the Guide's discoveries, performed formulas, category totals, landmarks and collections, but the header counter still measures discoveries across all 173 elements. Alternate recipes count as separate recorded formulas only after each is performed; they never count as extra discovered elements.
+
 Origins is an undated, symbolic gameplay prologue, not an archaeological period or a scientific account of creation. Its four starting essences draw on documented Greek natural philosophy, not modern chemical elements or a universal ancient belief; their free Atlas histories explain the distinction. The historical pages draw on several traditions; their approximate dates are explained in the [chronology guide](historical-interpretation.md), not a single worldwide timeline.
 
 Origins uses this documented philosophical framework through fictionalized gameplay. Its position before Stone Age is a gameplay structure, not evidence that Empedocles or Aristotle preceded prehistoric humanity. The starter histories label the ancient ideas as **historical models**, distinguish philosophical texts from modern scholarly interpretation and scientific explanation, and remain searchable without spending Insight. Read/unread markers are personal records, not discovery requirements.
@@ -50,9 +52,26 @@ Bronze Age has 42 elements. Irrigation, Canal, Granary, Loom, Textile, and Balan
 
 **Iron Age** (from c. 1200 BCE, with regional end dates) spans twenty-three elements and twenty-three recipes with Iron Age results, including Lens as an optional later discovery rather than a Stone Age glass technology. Discovering Bronze, Forge, Law, and City unlocks it and grants Iron Ore. Ironworking, roads, markets, Steel, Coin, Aqueduct, Empire, and Manuscript are joined by Blacksmith, Nail, Saw, Timber, Bridge, and Wagon for specialized workshops and heavier construction. Optional Rotary Quern, Lathe, and Alphabet branches add researched grinding, woodworking, and writing themes; their notes distinguish earlier precedents from regional evidence rather than dating all three inventions to this page. The age challenge still requires Iron, Iron Tool, Road, and Market plus six Iron Age discoveries, including the granted ore. All earlier matter remains available.
 
-**Classical Antiquity** is an optional regional chapter with seven elements and seven recipes. It unlocks after the four Iron Age landmarks—Iron, Iron Tool, Road, and Market—without granting an element. Its five landmarks are Agora, Academy, Lyceum, Natural Philosophy, and Fossil Inquiry; the challenge asks for those five plus one other Classical Antiquity discovery. It includes optional Observation and a Mycenae Fossil Collection example. These entries compare Athenian institutions, varied Greek inquiry, a thirteenth-century BCE archaeological context, and fifth-century BCE Egyptian textual accounts. There is no single Classical Antiquity date range: Greek period labels have flexible boundaries, and Mediterranean regional histories overlap rather than forming a universal successor to the Iron Age. The Protoceratops–griffin proposal is a disputed modern hypothesis, not established ancient history.
+**Classical Antiquity (Age V)** is an optional regional chapter with 22 elements and 24 recipes. It unlocks after the four Iron Age landmarks—Iron, Iron Tool, Road, and Market—without granting an element. Its five landmarks remain Agora, Academy, Lyceum, Natural Philosophy, and Fossil Inquiry; the challenge asks for those five plus one other Classical Antiquity discovery. Observation still supplies that sixth discovery without requiring any expansion branch. The chapter compares Greek and Roman civic spaces, institutions, architecture, commerce, scholarship, and natural history. There is no single Classical Antiquity date range: regional histories overlap rather than forming a universal successor to the Iron Age. The Mycenae fossil example predates the later Greek institutions; the Protoceratops–griffin proposal remains a disputed modern hypothesis.
 
-The earlier four page gates, landmarks, discovery goals, grants, and Rainmaker rules are unchanged. All seven new recipes validate as reachable through their chapter branches; duplicate ingredient pairs are rejected by content validation. Existing version 7 saves retain discoveries, recorded formulas, starred elements, and progress. The six collections include the optional Mediterranean Inquiry set; its reward does not require reading the Atlas. Page assignments organize gameplay rather than claim exact invention dates.
+The earlier four page gates, landmarks, discovery goals, grants, and Rainmaker rules are unchanged. The initial seven Age V routes remain available; the expansion adds 15 elements and 17 symbolic recipes, including alternate Agora and Natural Philosophy routes. All branches are reachable, with no duplicate ingredient pairs. Existing version 7 saves unlock Age V once its Iron landmarks are present and retain discoveries, recorded formulas, starred elements, reading markers, and rewards. The six collections include the unchanged optional Mediterranean Inquiry set; its reward does not require reading the Atlas. Page assignments organize gameplay rather than claim exact invention dates.
+
+### Optional Age V branches
+
+<details>
+<summary>Optional Age V branches (recipe spoilers)</summary>
+
+| Theme | Recipes |
+| --- | --- |
+| Inquiry | Archive + Human → Knowledge; Observation + Knowledge → Natural Inquiry; Natural Inquiry + Human → Natural Philosophy; Bird + Natural Inquiry → Bird Inquiry. Fossil + Observation → Fossil Inquiry remains available. |
+| Civic life | Trade + City → Agora (alternate); Agora + Law → Forum; Forum + Law → Senate; Senate + City → Republic; Human + Agora → Rhetoric. These are analogies, not automatic institutional transformations or universal democracy. |
+| Architecture | Masonry + Aqueduct → Arch; Agora + Masonry → Stoa; Arch + City → Amphitheater. Aqueduct keeps its Iron Age recipe; not all aqueducts use arches, and a stoa is not automatically a philosophical school. |
+| Commerce | Coin + Law → Coinage; Coin + Forge → Mint; Amphora + Voyage → Maritime Trade. Earlier Coin and Trade routes remain intact. |
+| Scholarship | Archive + City → Library; Map + Observation → Geometry. Scroll remains in Bronze Age with its existing recipe; these discoveries do not date the origins of texts or mathematics. |
+
+Every expansion route is optional for age unlocks, core landmarks, age completion, and the six existing collections. Four additional optional collections use expansion discoveries without changing earlier collection memberships or rewards. Every Age V discovery now has a sourced Atlas record; the earlier Aqueduct, Scroll, and Coin have supplemental records too.
+
+</details>
 
 ## Gameplay Guide features
 
@@ -66,7 +85,7 @@ Recorded formulas, eligible Open Leads, and Recent Experiments have prepare-only
 
 The searchable **Recorded Formulas** archive lists every performed formula whose result belongs to the active age, including alternate routes. Formula records remain available after their attempts leave Recent Experiments. Older saves with performed recipe IDs populate the archive without inventing experiment history; element-only saves do not imply that a formula was performed.
 
-Six themed collections appear separately from category completion: **Stormwatch** (Mist, Cloud, Rain, Storm, Lightning), **Harvest Table** (Field, Crop, Flour, Dough, Bread), **Ironworkers** (Iron Ore, Bellows, Bloomery, Iron, Iron Tool), **Bronze Workshop**, **Marks and Materials**, and **Mediterranean Inquiry** (Observation, Natural Philosophy, Fossil, Fossil Collection, Fossil Inquiry). Each first completion awards +1 Insight, capped at three. Completing a collection with a full wallet still consumes its one-time reward; overflow is not banked. Loading a save does not award collection rewards. Educational objectives are described below.
+Ten themed collections appear separately from category completion. The original six remain unchanged: **Stormwatch** (Mist, Cloud, Rain, Storm, Lightning), **Harvest Table** (Field, Crop, Flour, Dough, Bread), **Ironworkers** (Iron Ore, Bellows, Bloomery, Iron, Iron Tool), **Bronze Workshop**, **Marks and Materials**, and **Mediterranean Inquiry** (Observation, Natural Philosophy, Fossil, Fossil Collection, Fossil Inquiry). Four optional Age V collections are listed below. Each first completion awards +1 Insight, capped at three. Completing a collection with a full wallet still consumes its one-time reward; overflow is not banked. Loading a save does not award collection rewards.
 
 <details>
 <summary>Food-processing recipe example (spoilers)</summary>
@@ -93,15 +112,44 @@ The total discovered encyclopedia count is independent of search results and the
 
 Search covers names, historical topics, regions, dates, and cited source titles, institutions, and authors. Matching is case-insensitive and every search word must match. Only discovered entries and their visible research are indexed: undiscovered related context, references used only by those hidden links, and pending further-research leads are excluded. Search and reading do not perform formulas or alter progression. Keyboard users can switch sections, search, select entries, and follow references; selection focuses the entry heading, search results are announced politely, and citation targets support focus. The layout wraps long research text and source titles on mobile.
 
-The twenty-one researched entries show regional dates and their meaning, geographical associations, manufacture/use, significance, evidence, independent developments, historical uncertainty and numbered references. Citations link each supported passage to source titles, authors/institutions, publication dates when known, and original URLs. Verification disclosures distinguish catalog metadata, selected passages and abstract-only access; pending sources do not support displayed references. Historical vocabulary and source titles can mention materials, but no unperformed formula pairs or preparation controls appear in this section.
+The 46 researched entries show regional dates and their meaning, geographical associations, manufacture/use, significance, evidence, comparative developments, historical uncertainty and numbered references. Citations link each supported passage to source titles, authors/institutions, publication dates when known, and original URLs. Verification disclosures distinguish catalog metadata, selected passages and abstract-only access; pending sources do not support displayed references. Historical vocabulary and source titles can mention materials, but no unperformed formula pairs or preparation controls appear in this section.
 
 Indicators distinguish documented evidence, hypotheses, contested interpretations, documented topic relationships and gameplay associations. Symbolic combinations are explicitly gameplay abstractions; age-placement notes identify earlier precedents or regional simplifications rather than imposing a worldwide timeline. Origins remains an undated symbolic gameplay prologue; the starter histories date Greek philosophy, not the prologue or the appearance of natural phenomena.
 
-The remaining 130 discoveries show an honest **historical notes not yet researched** state, not invented dates or citations. Their existing description is labeled as gameplay text, not verified history. Reading costs no Insight and changes no discoveries or rewards. Opening a note never automatically records reading; the optional explicit marker described below is saved separately. Discovered notes remain available after reloading existing saves; resetting discoveries hides the corresponding entries immediately. Rainmaker remains separate from the campaign Guide.
+The remaining 127 discoveries show an honest **historical notes not yet researched** state, not invented dates or citations. Their existing description is labeled as gameplay text, not verified history. Reading costs no Insight and changes no discoveries or rewards. Opening a note never automatically records reading; the optional explicit marker described below is saved separately. Discovered notes remain available after reloading existing saves; resetting discoveries hides the corresponding entries immediately. Rainmaker remains separate from the campaign Guide.
 
 ## Educational gameplay
 
-The Guide's **Learning Challenges** offers three optional, isolated labs from any age: **Harvest Lab**, **Bronze Lab**, and **Records Lab**. They reuse existing combinations and supplied discoveries to explore food processing, metallurgy, and record keeping without quizzes or memorized historical facts. Alternate routes remain valid, including a shorter records route and a longer writing-focused route. Supplied materials and earlier gameplay pages are puzzle foundations, not universal historical prerequisites.
+The Guide's **Learning Challenges** offers seven optional, isolated labs from any age: **Harvest Lab**, **Bronze Lab**, **Records Lab**, **Civic Lab**, **Engineering Lab**, **Commerce Lab**, and **Inquiry Lab**. They reuse existing combinations and supplied discoveries without quizzes or memorized historical facts. Alternate routes remain valid, including a shorter records route and a longer writing-focused route. Supplied materials and earlier gameplay pages are puzzle foundations, not universal historical prerequisites.
+
+### Optional Age V objectives
+
+The unchanged chapter target is **six Age V discoveries including Agora, Academy, Lyceum, Natural Philosophy, and Fossil Inquiry**. Agora remains the civic landmark because it anchors the existing Greek civic and inquiry context; it is multifunctional, not merely a market. Library was evaluated as a scholarly landmark, Aqueduct as an engineering landmark, and Arch and Stoa as architectural candidates. They are **optional collection targets**, not additions to `landmarkIds`: this preserves earlier completions and avoids treating libraries or water engineering as new Classical inventions. No additional landmark recipe is needed.
+
+| Optional collection | Discover every member |
+| --- | --- |
+| Classical Civic Life | Agora, Forum, Senate, Republic, Rhetoric, Stoa |
+| Classical Engineering | Masonry, Aqueduct, Arch, Amphitheater |
+| Classical Commerce | Amphora, Coin, Coinage, Mint, Maritime Trade |
+| Classical Scholarship | Scroll, Archive, Knowledge, Library, Geometry, Natural Inquiry, Bird, Bird Inquiry |
+
+<details>
+<summary>Objective prerequisites and challenge routes (spoilers)</summary>
+
+Existing routes remain: City + Market or Trade + City creates Agora; Archive + City creates Library; Earth + City creates Aqueduct. Masonry + Aqueduct creates Arch, and Agora + Masonry creates Stoa. These clues are symbolic, not historical prerequisites. Campaign discoveries still require their normal age unlock; isolated labs supply their own starters.
+
+| Lab | Supplied starters | Target and shortest route | Minimum attempts |
+| --- | --- | --- | ---: |
+| Civic | Trade, City, Law | Agora, then Forum, Senate, Republic | 4 |
+| Engineering | Masonry, Aqueduct, City | Arch, then Amphitheater | 2 |
+| Commerce | Bronze, Market, Forge | Coin, then Mint | 2 |
+| Inquiry | Archive, Human, Observation, Bird | Knowledge, then Natural Inquiry, Bird Inquiry | 3 |
+
+The Civic, Engineering, and Inquiry labs permit only Age V results; Commerce also permits Iron Age results for Coin. Every shortest route is checked against all permitted alternate recipes, not merely counted from this table.
+
+</details>
+
+The original six collections, three labs, Rainmaker, and earned age rewards retain their IDs and requirements. Earlier saves gain access to the additional objectives without losing completed records or receiving load-time rewards. New objectives need their own first confirmed completion.
 
 Each lab has optional, free theme notes with existing verified references and their access limits. A successful combination unlocks that route's historical-context disclosure within the run. These notes distinguish documented background from simplified or symbolic combinations; they are not manufacturing instructions. Lab discoveries, attempts, and formulas never enter the campaign or unlock its encyclopedia entries. Rainmaker remains the same gameplay-only challenge and four-attempt route.
 

@@ -685,6 +685,30 @@ describe('campaign state', () => {
     expect(soundEngine.setEnabled).toHaveBeenLastCalledWith(false)
   })
 
+  it('loads earlier Age V completions without rewarding or inventing optional objective progress', () => {
+    const progress: SavedProgress = {
+      ...fresh(),
+      discoveredIds: elements.slice(0, 158).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 194).map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      activeEraId: 'classical-antiquity',
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.slice(0, 6).map((collection) => collection.id),
+      challengeRecords: learningChallenges.slice(0, 3).map((challenge) => ({
+        challengeId: challenge.id, completed: true, bestAttemptCount: challenge.minimumAttempts,
+      })),
+      insightCredits: 2,
+      favoriteIds: ['agora', 'bird'],
+    }
+    const serialized = exportProgress(progress)
+    localStorage.setItem(saveKey, serialized)
+    const reloaded = createGameStore()
+    expect(snapshotProgress(reloaded.getState())).toEqual(snapshotProgress(progress))
+    expect(disk()).toBe(serialized)
+    expect(reloaded.getState().rewardedCollectionIds).toHaveLength(6)
+    expect(reloaded.getState().challengeRecords).toHaveLength(3)
+  })
+
   it.each(collections)('rewards $name in the discovery transaction exactly once without reading', (collection) => {
     const resultId = collection.elementIds[collection.elementIds.length - 1]
     const recipe = recipes.find((entry) => entry.result === resultId)!

@@ -23,6 +23,7 @@ describe('collection completion', () => {
     expect(getNewlyCompletedCollectionIds(collections, discovered, ['stormwatch'])).toEqual([
       'harvest-table', 'ironworkers', 'bronze-workshop', 'marks-and-materials',
       'mediterranean-inquiry',
+      'classical-civic-life', 'classical-engineering', 'classical-commerce', 'classical-scholarship',
     ])
     expect(getNewlyCompletedCollectionIds(collections, discovered, collections.map((collection) => collection.id))).toEqual([])
   })
@@ -42,7 +43,7 @@ describe('collection completion', () => {
     const newlyCompleted = getNewlyCompletedCollectionIds(collections, discovered, [])
     const wallet = newlyCompleted.reduce((state) => awardInsight(state), { credits: 2, failureProgress: 0 })
     expect(wallet.credits).toBe(3)
-    expect(newlyCompleted).toHaveLength(6)
+    expect(newlyCompleted).toHaveLength(10)
     expect(getNewlyCompletedCollectionIds(collections, discovered, newlyCompleted)).toEqual([])
   })
 })
@@ -52,6 +53,7 @@ describe('collection contracts', () => {
     const educational = collections.filter((collection) => collection.education)
     expect(educational.map((collection) => collection.id)).toEqual([
       'harvest-table', 'bronze-workshop', 'marks-and-materials', 'mediterranean-inquiry',
+      'classical-civic-life', 'classical-engineering', 'classical-commerce', 'classical-scholarship',
     ])
     for (const collection of educational.filter((candidate) => candidate.era === 'bronze-age')) {
       expect(collection.elementIds.some((id) => elements.find((element) => element.id === id)?.era !== collection.era)).toBe(true)

@@ -14,6 +14,8 @@ The **Three-Age System** originated in the classification of Scandinavian archae
 
 **Earliest evidence is not widespread adoption.** A rare artifact, experimental process, or first surviving written reference does not establish when a technology became common. Nor does absence of surviving evidence prove absence of a practice. Page placement may represent an intensified craft tradition or an optional later refinement, not invention. Dates and political labels are geographically dependent; Classical Antiquity can overlap iron-using societies rather than follow a worldwide Iron Age boundary.
 
+The fifth selector button deliberately shows no chapter-wide date range. Its regional-scope tooltip and the individually dated Atlas records carry the historical qualification; its position after Iron Age and its progress counters express game organization, not a synchronized worldwide transition. Completing all five required landmarks and six discoveries does not certify historical knowledge or require every optional civic, engineering, commercial or inquiry branch.
+
 ## Classical elements: historical theory, symbolic gameplay
 
 The four-element theory is **documented historical natural philosophy**, not a fictional invention of the game. **Empedocles of Acragas**, in Greek Sicily, was a major early formulator of the four-root theory in the **fifth century BCE**: fire, water, earth and air were fundamental constituents of nature. The surviving poetic fragments and later accounts are textual evidence for the theory, not scientific proof of its validity. Precise biographical dates and some fragment interpretations remain uncertain.
@@ -65,7 +67,7 @@ The existing four pages retain their landmarks, grants, discovery goals (18 / 16
 
 ## Element review
 
-The earlier review covered **144 element descriptions**, including the 24 additions beyond the 120-element catalog. Three sourced Iron Age discoveries and four additional discoveries brought the catalog to 151 elements and 187 recipes; the seven optional Classical Antiquity discoveries bring it to **158 elements and 194 recipes across five gameplay ages**. Generic natural phenomena and plausible nonexclusive craft descriptions are retained rather than assigned unsupported invention dates. The material corrections are:
+The earlier review covered **144 element descriptions**, including the 24 additions beyond the 120-element catalog. Three sourced Iron Age discoveries and four additional discoveries brought the catalog to 151 elements and 187 recipes; the initial Classical Antiquity chapter brought it to 158 elements and 194 recipes. Its optional civic, architectural, commercial, scholarship, and natural-history expansion brings the current catalog to **173 elements and 211 recipes across five gameplay ages**. Generic natural phenomena and plausible nonexclusive craft descriptions are retained rather than assigned unsupported invention dates. The material corrections are:
 
 | Element or group | Treatment |
 | --- | --- |
@@ -91,6 +93,26 @@ The earlier review covered **144 element descriptions**, including the 24 additi
 The bird record does **not** present the disputed Protoceratops–griffin hypothesis as established fact. The Fossil Inquiry entry distinguishes Herodotus' claimed observation of shells from his report of what people said about bones, and identifies the modern dinosaur–griffin connection as an uncompelling hypothesis reviewed through its abstract only. The Classical Antiquity entries keep the Mycenae excavated context, ancient texts, and modern interpretations separate. Historical sources and access limits are listed in the [research registry](../src/game/content/research.json); no recipe is a historical prerequisite.
 
 Stable element and recipe IDs, existing ingredient pairs, saved discoveries, formulas, experiment history, favorites, and earned reward markers are retained. Legacy IDs such as `compass`, `nation`, `quill`, and `plow` now identify the corrected concepts. Existing save reconciliation unlocks Bronze for a previously discovered Polity or Iron for a previously discovered Lens and supplies the normal ore grants without retroactive Insight. New games still use the original gates. Page and category completion percentages can change after reclassification.
+
+## Optional Age V branches
+
+The expansion uses the existing chapter gate and completion targets, not a new universal chronology. Knowledge, observation, maritime exchange, libraries, geometry, and arches all have earlier precedents; their Age V placement organizes regional examples rather than inventing them in Classical Antiquity.
+
+- **Civic life:** Agora and Forum are analogical gameplay branches, not interchangeable Greek and Roman institutions. Senate and Republic refer to Roman examples with changing powers and unequal civic rights; the recipe chain does not guarantee democracy or equal participation. Rhetoric concerns persuasion, not necessarily truth.
+- **Architecture:** Arch, Stoa, and Amphitheater are different building forms. Existing Aqueduct remains an Iron Age discovery and provides an optional architectural clue, not a requirement that aqueducts use arches. Stoa does not automatically mean Stoicism, and an amphitheater is not a semicircular theater.
+- **Commerce and scholarship:** Coinage distinguishes a monetary system from an individual Coin; Mint omits actual production requirements. Maritime Trade uses existing Amphora and Voyage without dating sea exchange to this chapter. Library and Geometry retain earlier-precedent cautions; existing Scroll is neither duplicated nor moved out of Bronze Age.
+- **Natural history:** Observation + Knowledge evokes Natural Inquiry, with an alternate Natural Philosophy route and optional Bird Inquiry. The original Fossil Inquiry remains independent of that branch. Ancient questions about birds and fossils are not modern evolutionary classification or proof that fossils inspired mythology.
+
+Every Age V discovery now has a sourced Atlas record, with supplemental histories for existing Aqueduct, Scroll, and Coin. The [research registry](../src/game/content/research.json) records checked passages, credited authors, original URLs and access limits. All 17 expansion formula cautions have relevant background references; sources establish historical context, never the exact two-input recipes.
+
+The expanded evidence distinguishes:
+
+- **Greek and Roman civic contexts:** ASCSA describes the agora's political, legal, commercial and intellectual uses. The Roman Forum, Senate and Republic records distinguish excavated phases, retrospective foundation stories, changing institutions and unequal participation.
+- **Earlier engineering:** Etruscan arched gates precede Roman adaptations. Aegean and Mesopotamian conduits, Assyrian works and Greek tunnels predate Roman aqueduct monuments. UNESCO's Persian qanats draw groundwater through underground galleries and shafts; they are not arched Roman bridges, and the accessed description does not establish a precise invention date.
+- **Diverse inquiry and mathematics:** Stanford's Indian and Chinese philosophy articles warn against flattening different categories and periods. MacTutor's Sulbasutras, Nine Chapters and Euclid accounts describe distinct mathematical traditions; later commentary is not the first invention of its mathematics. No worldwide simultaneous Classical transition is claimed.
+- **Scholarship and natural history:** Nineveh's tablet collection and earlier libraries predate Alexandria; Alexandria's founding and fate remain uncertain. Aristotle's bird descriptions include reported claims, not modern confirmation of every belief or ancient knowledge of avian dinosaur ancestry. Fossil Inquiry retains its distinction between ancient explanations and modern paleontology, including the disputed griffin hypothesis.
+
+Agora remains a core fifth-age civic landmark. Library, Aqueduct, Arch and Stoa were evaluated as additional landmarks but instead serve optional objectives, preserving earned chapter completion and acknowledging earlier precedents. The [objective tables](gameplay.md#optional-age-v-objectives) document membership and prerequisites; reading historical notes is separate from both challenge instructions and rewards.
 
 ## Historical references
 

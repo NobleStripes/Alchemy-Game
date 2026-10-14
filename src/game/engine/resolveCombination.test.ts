@@ -564,6 +564,23 @@ describe('expanded ages', () => {
     ['classical-antiquity', 'nature-and-record', 'observation', 'scribe', 'natural-philosophy'],
     ['classical-antiquity', 'archived-fossil', 'archive', 'fossil', 'fossil-collection'],
     ['classical-antiquity', 'examined-remains', 'fossil', 'observation', 'fossil-inquiry'],
+    ['classical-antiquity', 'trading-agora', 'trade', 'city', 'agora'],
+    ['classical-antiquity', 'shared-learning', 'archive', 'human', 'knowledge'],
+    ['classical-antiquity', 'questions-of-nature', 'observation', 'knowledge', 'natural-inquiry'],
+    ['classical-antiquity', 'reasoning-about-nature', 'natural-inquiry', 'human', 'natural-philosophy'],
+    ['classical-antiquity', 'roman-civic-space', 'agora', 'law', 'forum'],
+    ['classical-antiquity', 'council-and-law', 'forum', 'law', 'senate'],
+    ['classical-antiquity', 'republican-institutions', 'senate', 'city', 'republic'],
+    ['classical-antiquity', 'public-persuasion', 'human', 'agora', 'rhetoric'],
+    ['classical-antiquity', 'spanning-masonry', 'masonry', 'aqueduct', 'arch'],
+    ['classical-antiquity', 'sheltered-colonnade', 'agora', 'masonry', 'stoa'],
+    ['classical-antiquity', 'arena-and-arches', 'arch', 'city', 'amphitheater'],
+    ['classical-antiquity', 'authorized-coins', 'coin', 'law', 'coinage'],
+    ['classical-antiquity', 'coin-workshop', 'coin', 'forge', 'mint'],
+    ['classical-antiquity', 'amphora-voyage', 'amphora', 'voyage', 'maritime-trade'],
+    ['classical-antiquity', 'city-of-texts', 'archive', 'city', 'library'],
+    ['classical-antiquity', 'observed-space', 'map', 'observation', 'geometry'],
+    ['classical-antiquity', 'studied-birds', 'bird', 'natural-inquiry', 'bird-inquiry'],
   ])('resolves %s recipe %s in both orders using same-or-earlier inputs', (eraId, id, first, second, result) => {
     expect(resolveCombination(first, second, recipeIndex)).toMatchObject({ id, result })
     expect(resolveCombination(second, first, recipeIndex)).toMatchObject({ id, result })
@@ -580,10 +597,10 @@ describe('expanded ages', () => {
     expect(eras.map((era) => era.id)).toEqual([
       'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
     ])
-    expect(elements).toHaveLength(158)
-    expect(recipes).toHaveLength(194)
+    expect(elements).toHaveLength(173)
+    expect(recipes).toHaveLength(211)
     expect(eras.map((era) => elements.filter((element) => element.era === era.id).length))
-      .toEqual([42, 44, 42, 23, 7])
+      .toEqual([42, 44, 42, 23, 22])
     expect(elements.filter((element) => element.starter).map((element) => element.id)).toEqual(['ember', 'tide', 'stone', 'gale'])
     expect(eras[4].unlockRequires).toEqual(['iron', 'iron-tool', 'road', 'market'])
     expect(eras[4].grants).toEqual([])
@@ -625,6 +642,24 @@ describe('expanded ages', () => {
         [['village', 'pottery', 'metal', 'quarry'], ['copper-ore'], ['bronze', 'wheel', 'writing', 'city', 'forge', 'law', 'voyage'], 23],
         [['bronze', 'forge', 'law', 'city'], ['iron-ore'], ['iron', 'iron-tool', 'road', 'market'], 6],
       ])
+  })
+
+  it('completes every age and the inquiry collection without any expansion discovery', () => {
+    const originalElements = elements.slice(0, 158)
+    const originalRecipes = recipes.slice(0, 194)
+    const originalCollections = collections.slice(0, 6)
+    expect(validateContent(originalElements, originalRecipes, eras, originalCollections)).toEqual([])
+    const expandedIds = new Set(elements.slice(158).map((element) => element.id))
+    for (const era of eras) {
+      expect([...era.unlockRequires, ...era.grants, ...era.landmarkIds]
+        .some((id) => expandedIds.has(id))).toBe(false)
+    }
+    expect(originalCollections.some((collection) => collection.elementIds.some((id) => expandedIds.has(id)))).toBe(false)
+    expect(elementsById.get('scroll')?.era).toBe('bronze-age')
+    expect(elementsById.get('aqueduct')?.era).toBe('iron-age')
+    expect(elementsById.get('coin')?.era).toBe('iron-age')
+    expect(elements.filter((element) => element.name === 'Scroll')).toHaveLength(1)
+    expect(elements.filter((element) => element.name === 'Aqueduct')).toHaveLength(1)
   })
 })
 

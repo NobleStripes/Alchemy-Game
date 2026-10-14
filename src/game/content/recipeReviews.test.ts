@@ -9,12 +9,12 @@ const fixture = () => structuredClone(recipeReviews)
 describe('historical recipe review', () => {
   it('covers every recipe exactly once, including alternate routes', () => {
     expect(schema.parse(recipeReviews)).toEqual(recipeReviews)
-    expect(recipeReviews.reviews).toHaveLength(194)
+    expect(recipeReviews.reviews).toHaveLength(211)
     expect(new Set(recipeReviews.reviews.map((review) => review.recipeId)))
       .toEqual(new Set(recipes.map((recipe) => recipe.id)))
     expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(14)
     expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(92)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(88)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(105)
   })
 
   it('preserves the pre-audit IDs, input pairs, results and order', async () => {
@@ -22,6 +22,26 @@ describe('historical recipe review', () => {
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(graph)))
     expect(Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join(''))
       .toBe('2b61adfef961ea0ef755f72bdfe192766d3082184dd5cd59b0480badef2674a9')
+  })
+
+  it('preserves every recipe from the initial Classical Antiquity chapter', async () => {
+    const graph = recipes.slice(0, 194).map((recipe) => [recipe.id, ...recipe.inputs, recipe.result])
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(graph)))
+    expect(Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join(''))
+      .toBe('ca18166cc2bd9e1877998d8a861cb1acb998003abe0af1cf3e27100396ef4ec4')
+  })
+
+  it('reviews every expansion route as symbolic with verified historical background', () => {
+    const expansion = recipes.slice(194)
+    expect(expansion).toHaveLength(17)
+    for (const recipe of expansion) {
+      const review = reviewsByRecipeId.get(recipe.id)!
+      expect(review.classification).toBe('symbolic')
+      expect(review.sourceIds.length).toBeGreaterThan(0)
+    }
+    expect(reviewsByRecipeId.get('studied-birds')?.caution).toContain('modern scientific findings')
+    expect(reviewsByRecipeId.get('spanning-masonry')?.caution).toContain('Not every aqueduct uses arches')
+    expect(reviewsByRecipeId.get('republican-institutions')?.caution).toContain('unequal civic rights')
   })
 
   it.each(['missing', 'duplicate', 'unknown'] as const)('rejects %s recipe reviews', (kind) => {

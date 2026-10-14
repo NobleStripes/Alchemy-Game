@@ -192,5 +192,22 @@
   { "id": "attentive-cloud", "inputs": ["human", "cloud"], "result": "observation", "flavor": "A person watching clouds symbolizes observation, not a single origin of scientific methods." },
   { "id": "nature-and-record", "inputs": ["observation", "scribe"], "result": "natural-philosophy", "flavor": "Observation and record-making evoke ancient inquiry into nature, not a universal or inevitable method." },
   { "id": "archived-fossil", "inputs": ["archive", "fossil"], "result": "fossil-collection", "flavor": "A preserved record evokes the collected fossil at Mycenae; it does not reproduce its recovery or establish its purpose." },
-  { "id": "examined-remains", "inputs": ["fossil", "observation"], "result": "fossil-inquiry", "flavor": "A fossil and careful attention evoke ancient interpretation; they do not prove a particular myth or explanation." }
+  { "id": "examined-remains", "inputs": ["fossil", "observation"], "result": "fossil-inquiry", "flavor": "A fossil and careful attention evoke ancient interpretation; they do not prove a particular myth or explanation." },
+  { "id": "trading-agora", "inputs": ["trade", "city"], "result": "agora", "flavor": "Urban exchange evokes one role of an agora without reducing its civic life to commerce." },
+  { "id": "shared-learning", "inputs": ["archive", "human"], "result": "knowledge", "flavor": "A person and preserved records symbolize shared learning, not the origin of knowledge." },
+  { "id": "questions-of-nature", "inputs": ["observation", "knowledge"], "result": "natural-inquiry", "flavor": "Attention and existing learning suggest questions about nature, not a complete scientific method." },
+  { "id": "reasoning-about-nature", "inputs": ["natural-inquiry", "human"], "result": "natural-philosophy", "flavor": "A thinker considering nature evokes varied philosophical traditions, not an inevitable advance toward modern science." },
+  { "id": "roman-civic-space", "inputs": ["agora", "law"], "result": "forum", "flavor": "A civic-space analogy evokes the Roman forum; Greek agoras did not transform into Roman institutions through written law." },
+  { "id": "council-and-law", "inputs": ["forum", "law"], "result": "senate", "flavor": "Public affairs evoke Rome's elite council, not a meeting of every resident or a literal founding recipe." },
+  { "id": "republican-institutions", "inputs": ["senate", "city"], "result": "republic", "flavor": "A council and a city evoke Roman republican institutions without guaranteeing equal citizenship or a universal political path." },
+  { "id": "public-persuasion", "inputs": ["human", "agora"], "result": "rhetoric", "flavor": "A speaker in civic space evokes persuasive argument, not proof of its truth or universal access to debate." },
+  { "id": "spanning-masonry", "inputs": ["masonry", "aqueduct"], "result": "arch", "flavor": "Masonry and a waterway evoke one use of arches; many aqueducts use tunnels or channels without arches." },
+  { "id": "sheltered-colonnade", "inputs": ["agora", "masonry"], "result": "stoa", "flavor": "A civic space and building craft suggest a sheltered colonnade, not a complete plan or a philosophical school." },
+  { "id": "arena-and-arches", "inputs": ["arch", "city"], "result": "amphitheater", "flavor": "Urban architecture evokes an arena surrounded by seating; arches alone do not build it." },
+  { "id": "authorized-coins", "inputs": ["coin", "law"], "result": "coinage", "flavor": "Coins and authority evoke monetary systems, alongside other forms of payment and exchange." },
+  { "id": "coin-workshop", "inputs": ["coin", "forge"], "result": "mint", "flavor": "A coin and metal workshop evoke minting; dies, blanks, weights, and authority are omitted." },
+  { "id": "amphora-voyage", "inputs": ["amphora", "voyage"], "result": "maritime-trade", "flavor": "A transport vessel and a sea journey evoke exchange networks that already existed before this chapter." },
+  { "id": "city-of-texts", "inputs": ["archive", "city"], "result": "library", "flavor": "Preserved texts and an urban setting evoke a library without making archives and libraries interchangeable." },
+  { "id": "observed-space", "inputs": ["map", "observation"], "result": "geometry", "flavor": "Spatial representation and attention evoke geometric questions, not a proof or the origin of mathematics." },
+  { "id": "studied-birds", "inputs": ["bird", "natural-inquiry"], "result": "bird-inquiry", "flavor": "A living bird becomes a subject of inquiry; ancient observers did not know its modern dinosaur classification." }
 ]

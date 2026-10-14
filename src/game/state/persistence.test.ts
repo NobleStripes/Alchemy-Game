@@ -56,6 +56,34 @@ describe('progress persistence', () => {
     expect(parseProgress(exportProgress(progress))).toEqual(progress)
   })
 
+  it.each([1, 2, 3, 4, 5, 6, 7])('reconciles the Age V gate for fresh and completed v%s saves without inventing new discoveries', (version) => {
+    const landmarks = eras[4].unlockRequires
+    const base = { ...fresh(), version, hintCredits: 2, insightCredits: 2 }
+    const empty = parseProgress(JSON.stringify(base))!
+    expect(empty.discoveredIds).toEqual(starterElementIds)
+    expect(empty.unlockedEraIds).toEqual(['first-light'])
+    expect(empty.activeEraId).toBe('first-light')
+    for (const missing of landmarks) {
+      const partial = parseProgress(JSON.stringify({
+        ...base, discoveredIds: landmarks.filter((id) => id !== missing),
+      }))!
+      expect(partial.unlockedEraIds).not.toContain('classical-antiquity')
+    }
+    const completed = parseProgress(JSON.stringify({
+      ...base, discoveredIds: landmarks, activeEraId: 'iron-age',
+    }))!
+    expect(completed.version).toBe(7)
+    expect(completed.unlockedEraIds).toContain('classical-antiquity')
+    expect(completed.discoveredIds).toEqual(expect.arrayContaining(landmarks))
+    expect(completed.discoveredIds.some((id) =>
+      elements.find((element) => element.id === id)?.era === 'classical-antiquity',
+    )).toBe(false)
+    expect(completed.discoveredRecipeIds).toEqual([])
+    expect(completed.experimentHistory).toEqual([])
+    expect(completed.rewardedChallengeEraIds).not.toContain('classical-antiquity')
+    expect(parseProgress(exportProgress(completed))).toEqual(completed)
+  })
+
   it('unlocks Classical Antiquity only after every Iron landmark in v7 saves and preserves new formulas', () => {
     const ironLandmarks = ['iron', 'iron-tool', 'road', 'market']
     const partial = parseProgress(JSON.stringify({
@@ -104,6 +132,90 @@ describe('progress persistence', () => {
     ])
     expect(progress.experimentHistory.map((entry) => entry.recipeId)).toEqual(recipeIds)
     expect(parseProgress(exportProgress(progress))).toEqual(progress)
+  })
+
+  it('opens Age V from a pre-expansion v7 save without losing formulas, favorites, or rewards', () => {
+    const older = {
+      ...fresh(),
+      discoveredIds: elements.slice(0, 158).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 194).map((recipe) => recipe.id),
+      unlockedEraIds: eras.slice(0, 4).map((era) => era.id),
+      activeEraId: 'iron-age',
+      favoriteIds: ['bird', 'fossil', 'scroll', 'aqueduct'],
+      rewardedCollectionIds: collections.slice(0, 6).map((collection) => collection.id),
+      readHistoricalElementIds: ['bird', 'fossil'],
+    }
+    const progress = parseProgress(JSON.stringify(older))!
+    expect(progress.version).toBe(7)
+    expect(progress.unlockedEraIds).toEqual(eras.map((era) => era.id))
+    expect(progress.activeEraId).toBe('iron-age')
+    expect(progress.discoveredIds).toEqual(older.discoveredIds)
+    expect(progress.discoveredRecipeIds).toEqual(older.discoveredRecipeIds)
+    expect(progress.favoriteIds).toEqual(older.favoriteIds)
+    expect(progress.rewardedCollectionIds).toEqual(older.rewardedCollectionIds)
+    expect(progress.readHistoricalElementIds).toEqual(older.readHistoricalElementIds)
+    expect(progress.insightCredits).toBe(older.insightCredits)
+    expect(parseProgress(exportProgress(progress))).toEqual(progress)
+  })
+
+  it('round-trips expansion formulas and favorites while retaining earlier routes in v7 saves', () => {
+    const recordedRecipes = recipes.slice(194)
+    const progress = parseProgress(JSON.stringify({
+      ...fresh(),
+      activeEraId: 'classical-antiquity',
+      discoveredIds: elements.map((element) => element.id),
+      discoveredRecipeIds: ['athenian-agora', 'nature-and-record', ...recordedRecipes.map((recipe) => recipe.id)],
+      favoriteIds: elements.slice(158).map((element) => element.id),
+      experimentHistory: recordedRecipes.map((recipe, index) => ({
+        id: index + 1,
+        inputs: recipe.inputs,
+        outcome: 'discovery',
+        resultId: recipe.result,
+        recipeId: recipe.id,
+      })),
+    }))!
+    expect(progress.version).toBe(7)
+    expect(progress.activeEraId).toBe('classical-antiquity')
+    expect(progress.discoveredRecipeIds).toEqual([
+      'athenian-agora', 'nature-and-record', ...recordedRecipes.map((recipe) => recipe.id),
+    ])
+    expect(progress.favoriteIds).toEqual(elements.slice(158).map((element) => element.id))
+    expect(progress.experimentHistory.map((entry) => entry.recipeId)).toEqual(recordedRecipes.map((recipe) => recipe.id))
+    expect(parseProgress(exportProgress(progress))).toEqual(progress)
+  })
+
+  it('retains earlier completion contracts and round-trips new optional objectives without a migration', () => {
+    const earlier = {
+      ...fresh(),
+      discoveredIds: elements.slice(0, 158).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 194).map((recipe) => recipe.id),
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.slice(0, 6).map((collection) => collection.id),
+      challengeRecords: learningChallenges.slice(0, 3).map((challenge) => ({
+        challengeId: challenge.id, completed: true, bestAttemptCount: challenge.minimumAttempts,
+      })),
+      insightCredits: 2,
+      activeEraId: 'classical-antiquity',
+    }
+    const loaded = parseProgress(JSON.stringify(earlier))!
+    expect(loaded.rewardedChallengeEraIds).toEqual(earlier.rewardedChallengeEraIds)
+    expect(loaded.rewardedCollectionIds).toEqual(earlier.rewardedCollectionIds)
+    expect(loaded.challengeRecords).toEqual(earlier.challengeRecords)
+    expect(loaded.insightCredits).toBe(2)
+    const completed = parseProgress(JSON.stringify({
+      ...loaded,
+      discoveredIds: elements.map((element) => element.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      challengeRecords: learningChallenges.map((challenge) => ({
+        challengeId: challenge.id, completed: true, bestAttemptCount: challenge.minimumAttempts,
+      })),
+      readHistoricalElementIds: ['library', 'geometry', 'aqueduct', 'bird-inquiry'],
+    }))!
+    expect(completed.version).toBe(7)
+    expect(completed.rewardedCollectionIds).toHaveLength(10)
+    expect(completed.challengeRecords).toHaveLength(7)
+    expect(completed.readHistoricalElementIds).toEqual(['library', 'geometry', 'aqueduct', 'bird-inquiry'])
+    expect(parseProgress(exportProgress(completed))).toEqual(completed)
   })
 
   it('defaults older v7 saves to unread and only retains discovered researched reading markers', () => {

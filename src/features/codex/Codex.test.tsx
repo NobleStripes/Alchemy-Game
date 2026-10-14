@@ -183,6 +183,36 @@ describe('element shelf', () => {
     })
   })
 
+  it('shows optional Age V branches without moving earlier Scroll and Aqueduct discoveries', async () => {
+    const user = userEvent.setup()
+    const expansion = elements.slice(158)
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, 'scroll', 'aqueduct', ...expansion.map((element) => element.id)],
+      favoriteIds: ['mint', 'bird-inquiry'],
+      firstSlotId: null,
+      secondSlotId: null,
+      recentIngredientIds: [],
+    })
+    renderShelf()
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'classical-antiquity')
+    for (const element of expansion) {
+      expect(results().getByRole('button', { name: element.name })).toBeVisible()
+    }
+    expect(results().queryByRole('button', { name: 'Scroll' })).not.toBeInTheDocument()
+    expect(results().queryByRole('button', { name: 'Aqueduct' })).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Starred' }))
+    await user.click(screen.getByRole('tab', { name: /^Craft/ }))
+    expect(results().getByRole('button', { name: 'Mint' })).toBeVisible()
+    expect(results().queryByRole('button', { name: 'Bird Inquiry' })).not.toBeInTheDocument()
+    await user.click(results().getByRole('button', { name: 'Mint' }))
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'iron-age')
+    await user.click(within(screen.getByRole('region', { name: /Recently used/ }))
+      .getByRole('button', { name: 'Use recent ingredient Mint' }))
+    expect(useGameStore.getState()).toMatchObject({
+      firstSlotId: 'mint', secondSlotId: 'mint', recentIngredientIds: ['mint'],
+    })
+  })
+
   it('keeps keyboard selection and favorites working in compact rows without selecting on favorite activation', async () => {
     const user = userEvent.setup()
     const onSelected = vi.fn()

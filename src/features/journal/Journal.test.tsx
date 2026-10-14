@@ -2,7 +2,7 @@
 
 import '../../game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
-import { cleanup, render, screen, within } from '@testing-library/react'
+import { act, cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { collections, elements, elementsById, eras, recipes } from '../../game/content'
@@ -53,6 +53,40 @@ describe('Guide preparation', () => {
     expect(within(objectives).getAllByText('Unknown element')).toHaveLength(8)
     expect(within(objectives).queryByText('Writing Reed')).not.toBeInTheDocument()
     expect(within(objectives).queryByText('Bronze Tool')).not.toBeInTheDocument()
+  })
+
+  it('counts every Age V discovery and only performed formulas, including alternate Agora routes', async () => {
+    const user = userEvent.setup()
+    const age = eras[4]
+    const ageElements = elements.filter((element) => element.era === age.id)
+    const agoraRoutes = recipes.filter((recipe) => recipe.result === 'agora')
+    expect(agoraRoutes).toHaveLength(2)
+    useGameStore.setState({
+      discoveredIds: elements.map((element) => element.id),
+      unlockedEraIds: eras.map((entry) => entry.id),
+      activeEraId: age.id,
+      discoveredRecipeIds: [agoraRoutes[0].id],
+    })
+    const { rerender } = render(<Journal {...props} eraId={age.id} challengeName={age.name}
+      discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
+    expect(screen.getByText('22', { selector: '.progress-summary strong' })).toBeVisible()
+    expect(ageElements).toHaveLength(22)
+    for (const category of new Set(ageElements.map((element) => element.category))) {
+      const count = ageElements.filter((element) => element.category === category).length
+      const label = category[0].toUpperCase() + category.slice(1)
+      expect(screen.getByLabelText(`${label}: ${count} of ${count}`)).toBeVisible()
+    }
+    const archive = screen.getByText('Recorded Formulas (1)').parentElement!
+    await user.click(within(archive).getByText('Recorded Formulas (1)'))
+    const formula = (inputs: string[]) => `${inputs.map((id) => elementsById.get(id)!.name).join(' + ')} → Agora`
+    expect(within(archive).getByText(formula(agoraRoutes[0].inputs))).toBeVisible()
+    expect(within(archive).queryByText(formula(agoraRoutes[1].inputs))).not.toBeInTheDocument()
+    act(() => useGameStore.setState({ discoveredRecipeIds: agoraRoutes.map((recipe) => recipe.id) }))
+    rerender(<Journal {...props} eraId={age.id} challengeName={age.name}
+      discoveryGoal={age.discoveryGoal} landmarkIds={age.landmarkIds} />)
+    expect(within(archive).getByText('Recorded Formulas (2)')).toBeVisible()
+    expect(within(archive).getByText(formula(agoraRoutes[1].inputs))).toBeVisible()
+    expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(22)
   })
 
   it('archives a formula after its attempt is evicted and reloaded, without saving on preparation', async () => {

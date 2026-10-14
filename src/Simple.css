@@ -122,7 +122,7 @@
   grid-row: 1;
   min-width: 0;
   display: flex;
-  justify-content: center;
+  justify-content: safe center;
   gap: 6px;
   overflow-x: auto;
 }
@@ -131,6 +131,7 @@
 .category-tabs::-webkit-scrollbar { display: none; }
 
 .era-switcher button {
+  flex-shrink: 0;
   min-height: 36px;
   padding: 4px 13px;
   display: flex;

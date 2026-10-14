@@ -2,7 +2,7 @@
 
 [Back to the project overview](../README.md)
 
-The current catalog contains **194 recipes**, including five optional Iron Age expansion routes, four earlier optional discoveries, and seven optional Classical Antiquity discoveries. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews add no recipe IDs, pairs, results, age gates, rewards or save fields, and preserve alternate discovery routes.
+The current catalog contains **211 recipes**, including five optional Iron Age expansion routes, four earlier optional discoveries, and 24 Classical Antiquity routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
 
 ## Classifications
 
@@ -10,7 +10,7 @@ The current catalog contains **194 recipes**, including five optional Iron Age e
 | --- | ---: | --- |
 | Material process | 14 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
 | Simplified process | 92 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
-| Symbolic association | 88 | A conceptual, social or fictional link; it must not be read as historical causation. |
+| Symbolic association | 105 | A conceptual, social or fictional link; it must not be read as historical causation. |
 
 ## Player-facing context
 
@@ -26,7 +26,7 @@ Reviewed the Origins recipe flavor and review cautions for this distinction. `ve
 
 ## Reference limits
 
-References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **88 recipe notes have background references; 106 have no attached source.** Educational QA removed the bread paper from the harvesting-blade note because it does not establish that implement's history. The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
+References reuse the central source registry and show the original URL, credited authors/institutions and passage-access limits. **106 recipe notes have background references; 105 have no attached source.** Educational QA removed the bread paper from the harvesting-blade note because it does not establish that implement's history. The Xianrendong paper was reviewed only through its abstract; proposed cooking use is not established. The Viking ship page is a later comparison, not evidence for a Bronze Age construction method. Sources support the specific background discussed, **not proof of an exact two-input recipe**. Uncited technical or interpretive cautions explicitly say they are not sourced historical reconstructions. Auditing all routes does not mean all element histories have been researched.
 
 The Iron Age expansion cautions separate symbolic rotation and scribal associations from cereal grinding and an abbreviated manuscript-writing process. The four additional routes are classified as follows:
 
@@ -44,8 +44,10 @@ The Iron Age expansion cautions separate symbolic rotation and scribal associati
 | Archive + Fossil → Fossil Collection | Symbolic association | Evokes the collected fossil at Mycenae; it does not reproduce recovery or establish the specimen's purpose. |
 | Fossil + Observation → Fossil Inquiry | Symbolic association | Evokes comparing evidence and interpretations; it does not prove an ancient mythic explanation or the disputed Protoceratops–griffin proposal. |
 
-The recipe reviews total **14 material-process, 92 simplified-process, and 88 symbolic** classifications. There are **88 cautions with background references and 106 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and earlier Flour and Manuscript routes remain available.
+The 17 Age V expansion routes are all symbolic. They distinguish Greek agoras from Roman forums, elite councils from universal representation, a stoa from a philosophical school, aqueducts from necessarily arched structures, and individual coins from monetary systems. Natural Inquiry and Bird Inquiry do not grant ancient thinkers modern dinosaur knowledge. Existing Scroll, Coin, and Aqueduct recipes are reused, not replaced or reclassified.
 
-Validation rejects missing, duplicate or unknown recipe reviews, empty cautions, invalid classifications and dangling, duplicate or pending source references. [`recipeReviews.test.ts`](../src/game/content/recipeReviews.test.ts) pins the unchanged first 178 recipes and checks original and new chain cautions. Original-source checking remains necessary; schema validation cannot establish historical truth.
+The recipe reviews total **14 material-process, 92 simplified-process, and 105 symbolic** classifications. All 17 expansion routes now have verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **106 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the expansion formulas.
+
+Validation rejects missing, duplicate or unknown recipe reviews, empty cautions, invalid classifications and dangling, duplicate or pending source references. [`recipeReviews.test.ts`](../src/game/content/recipeReviews.test.ts) pins the unchanged first 178 and first 194 recipes and checks original and new chain cautions. Original-source checking remains necessary; schema validation cannot establish historical truth.
 
 See [historical research](research.md) for evidence standards and [educational gameplay](gameplay.md#educational-gameplay) for optional learning labs.

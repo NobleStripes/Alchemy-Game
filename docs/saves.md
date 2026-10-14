@@ -22,6 +22,8 @@ Safe autosaving requires Web Locks support (and a secure context, including loca
 
 ## Migration and reset
 
+Classical Antiquity uses the existing version 7 format. Fresh campaigns still start in Origins; loading saves from versions 1 through 7 reconciles the fifth-age unlock when Iron, Iron Tool, Road and Market are all discovered. A partial gate stays locked unless the save already has fifth-age discoveries or an explicit unlock under existing legacy reconciliation rules. Unlocking the page does not invent fifth-age discoveries or performed formulas, and browsing its collections does not award Insight. Older version 7 formulas, favorites, reading markers and earned completions remain intact.
+
 Earlier saves migrate to v7, preserving old hint credits as Insights within the three-credit cap. Favorites, experiment history, and challenge records default to empty, and sound defaults to enabled. Already-completed collections in v1-v6 saves are marked rewarded without retroactive Insight; existing age challenge reward migration is retained. Migration removes failed pairs that are valid in the current graph, and successful formulas defensively clear stale failures. Correct guesses from locked pages remain free Open Leads. Historical discoveries reconcile matching age unlocks and grants without retroactive unlock rewards.
 
 Reset returns the campaign to Origins with four starting elements and three Insights. It clears discoveries beyond the starters, formulas, leads, failure progress, favorites, experiment history, reward markers, historical reading markers, and challenge completion/best-score records, while preserving the sound preference.

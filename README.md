@@ -1,14 +1,14 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with **158 elements and 194 recipes across five gameplay ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
+An original combination-discovery game with **173 elements and 211 recipes across five gameplay ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
 
 The persistent header switches between **Play** (the default) and **Atlas** (Historical Encyclopedia). Play keeps Elements, Combine, and Guide together on desktop and in three mobile tabs; Atlas is not a fourth gameplay tab. Both sections share discoveries and saved progress, and returning to Play preserves the previous gameplay context. Pointer, touch, and keyboard controls are supported.
 
-Origins is an undated, symbolic gameplay prologue. Its four starting essences draw on documented Greek elemental philosophy, not modern chemistry; the combination mechanics are symbolic. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Classical Antiquity is a fifth, regional chapter that unlocks after all four Iron Age landmarks; it has no universal date range and is not a necessary stage in every society's history. Its seven optional discoveries explore the Athenian Agora, philosophical schools, observation, natural philosophy, and distinct evidence about fossils.
+Origins is an undated, symbolic gameplay prologue. Its four starting essences draw on documented Greek elemental philosophy, not modern chemistry; the combination mechanics are symbolic. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Classical Antiquity is Age V, a regional chapter that unlocks after all four Iron Age landmarks; it has no universal date range and is not a necessary stage in every society's history. Its 22 discoveries explore Greek and Roman civic spaces, philosophical schools, architecture, commerce, scholarship, and natural-history inquiry. The 15 expansion discoveries are optional even for the unchanged Age V completion target. Existing Scroll, Coin, and Aqueduct discoveries keep their earlier ages and recipes.
 
 Empedocles' fifth-century BCE roots and Aristotle's fourth-century BCE elemental qualities provide the [historical foundation](docs/historical-interpretation.md#classical-elements-historical-theory-symbolic-gameplay). This inspiration does not place Greek philosophy before prehistoric humanity. All four starting elements have immediately accessible, sourced Atlas histories.
 
-Historical explanations are free; **Insight reveals recipe leads, never factual information**. Optional collections, learning labs, and explicit Atlas reading markers complement the discovery game.
+Historical explanations are free; **Insight reveals recipe leads, never factual information**. The Atlas has **46 researched entries**, including every Age V discovery and earlier Aqueduct, Scroll, and Coin contexts, supported by **71 verified sources** (plus one pending research lead). Four optional Age V collections and four new isolated labs cover civic life, engineering, commerce, and inquiry. Existing completion targets, earned rewards, and version 7 saves remain unchanged.
 
 Inspect a discovered element in the Guide and choose **View History** to open its Atlas entry directly; returning to Play restores focus to that shortcut. Ordinary section switches focus the Atlas heading or remembered gameplay panel. Navigation does not rewrite saves or change their version 7 format.
 
@@ -40,6 +40,8 @@ npm run build
 ```
 
 The test suite covers combination rules, gated reachability, rendered controls, experimentation, collection and challenge rewards, reading markers, persistence, and save migration/reset.
+
+Phase 9 also verifies the fifth-age selector, keyboard activation, per-age discovery/category/formula counters, optional collection views, and Age V gate reconciliation for saves from versions 1 through 7. The age row scrolls without clipping its first button when all five ages exceed the available width.
 
 Production builds separate third-party dependencies into a shared vendor chunk using Vite's Rolldown configuration. This keeps application code and dependencies independently cacheable while retaining the default 500 kB chunk-size warning.
 

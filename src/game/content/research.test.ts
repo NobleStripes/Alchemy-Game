@@ -20,6 +20,12 @@ const antiquityIds = [
   'agora', 'academy', 'lyceum', 'observation',
   'natural-philosophy', 'fossil-collection', 'fossil-inquiry',
 ]
+const classicalExpansionIds = [
+  'knowledge', 'natural-inquiry', 'forum', 'senate', 'republic', 'rhetoric',
+  'arch', 'stoa', 'amphitheater', 'coinage', 'mint', 'maritime-trade',
+  'library', 'geometry', 'bird-inquiry',
+]
+const reusedTechnologyIds = ['aqueduct', 'scroll', 'coin']
 
 describe('historical research database', () => {
   it('exposes historical structural schemas from the shared content schema module', () => {
@@ -65,16 +71,16 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(53)
+    )).toHaveLength(71)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
   })
 
-  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds])('links %s research to its current name and stable ID', (elementId) => {
+  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds])('links %s research to its current name and stable ID', (elementId) => {
     const record = researchByElementId.get(elementId)
     expect(record?.elementName).toBe(
       elements.find((element) => element.id === elementId)?.name,
@@ -87,9 +93,26 @@ describe('historical research database', () => {
     expect(record?.gameplaySimplifications.length).toBeGreaterThan(0)
   })
 
+  it('researches every Age V discovery and separates regional developments from global firsts', () => {
+    expect(elements.filter((element) => element.era === 'classical-antiquity')
+      .every((element) => researchByElementId.has(element.id))).toBe(true)
+    const aqueduct = researchByElementId.get('aqueduct')!
+    expect(aqueduct.historicalOverview.text).toContain('Assyrian')
+    expect(aqueduct.historicalOverview.text).toContain('Persian qanats')
+    expect(aqueduct.agePlacement.status).toBe('earlier-precedents')
+    expect(researchByElementId.get('arch')!.historicalOverview.text).toContain('Etruscan')
+    const geometry = researchByElementId.get('geometry')!
+    expect(geometry.associatedRegions).toEqual(expect.arrayContaining(['South Asia', 'China', 'Alexandria, Egypt']))
+    expect(geometry.approximateDates.find((date) => date.precision === 'year-resolved')?.note).toContain('commentary')
+    expect(researchByElementId.get('library')!.historicalUncertainty.join(' ')).toContain('single catastrophic fire')
+    expect(researchByElementId.get('natural-inquiry')!.agePlacement.text).toContain('fifteenth century CE')
+    expect(researchByElementId.get('bird-inquiry')!.historicalOverview.text).toContain('not modern evolutionary biology')
+    expect(researchByElementId.get('republic')!.manufactureOrUse.text).toContain('not a modern universal democracy')
+  })
+
   it('includes the Classical Antiquity chapter while preserving the four existing ages', () => {
-    expect(elements).toHaveLength(158)
-    expect(recipes).toHaveLength(194)
+    expect(elements).toHaveLength(173)
+    expect(recipes).toHaveLength(211)
     expect(eras.map((era) => era.id)).toEqual([
       'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
     ])

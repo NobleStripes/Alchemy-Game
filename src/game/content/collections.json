@@ -38,5 +38,33 @@
     "era": "classical-antiquity",
     "education": "Compare physical finds, ancient reports, and modern interpretations. The regional examples are not one timeline, and reading historical notes is never required for the reward.",
     "elementIds": ["observation", "natural-philosophy", "fossil", "fossil-collection", "fossil-inquiry"]
+  },
+  {
+    "id": "classical-civic-life",
+    "name": "Classical Civic Life",
+    "era": "classical-antiquity",
+    "education": "Optional civic discoveries, not a transition from Greek government to Rome or a universal model of democracy. Agora remains a core landmark; these additions do not change age completion. Reading is free and never required for the reward.",
+    "elementIds": ["agora", "forum", "senate", "republic", "rhetoric", "stoa"]
+  },
+  {
+    "id": "classical-engineering",
+    "name": "Classical Engineering",
+    "era": "classical-antiquity",
+    "education": "An optional engineering objective connecting earlier masonry and water management to structural discoveries. Aqueduct and Arch have pre-Roman precedents; their recipes are associations, not construction instructions. Earlier discoveries retain their original ages.",
+    "elementIds": ["masonry", "aqueduct", "arch", "amphitheater"]
+  },
+  {
+    "id": "classical-commerce",
+    "name": "Classical Commerce",
+    "era": "classical-antiquity",
+    "education": "An optional collection about containers, payment and transport. Coinage and maritime exchange have distinct regional histories and do not begin universally in this chapter.",
+    "elementIds": ["amphora", "coin", "coinage", "mint", "maritime-trade"]
+  },
+  {
+    "id": "classical-scholarship",
+    "name": "Classical Scholarship",
+    "era": "classical-antiquity",
+    "education": "Library is an optional scholarly target, not a new required landmark. Earlier text formats and diverse mathematical and philosophical traditions do not form one worldwide timeline. Birds and ancient inquiry are distinct from modern evolutionary explanations.",
+    "elementIds": ["scroll", "archive", "knowledge", "library", "geometry", "natural-inquiry", "bird", "bird-inquiry"]
   }
 ]

@@ -57,6 +57,54 @@ export const learningChallenges: ChallengeDefinition[] = [
       sourceIds: ['met-barley-account', 'um-papyrus', 'writing-origins'],
     },
   },
+  {
+    id: 'civic-lab',
+    name: 'Civic Lab',
+    starterIds: ['trade', 'city', 'law'],
+    targetId: 'republic',
+    allowedResultEraIds: ['classical-antiquity'],
+    minimumAttempts: 4,
+    education: {
+      overview: 'Explore civic connections through symbolic recipes. The Greek agora combined civic, legal and commercial functions; it did not become a Roman forum when law was added. Rome developed its own institutions over centuries. The Senate was an elite council within a system of magistrates and assemblies, not universal representation. The puzzle route is neither a chronology nor a prescription for government.',
+      sourceIds: ['ascsa-agora', 'whe-roman-forum', 'whe-roman-senate', 'whe-roman-republic'],
+    },
+  },
+  {
+    id: 'engineering-lab',
+    name: 'Engineering Lab',
+    starterIds: ['masonry', 'aqueduct', 'city'],
+    targetId: 'amphitheater',
+    allowedResultEraIds: ['classical-antiquity'],
+    minimumAttempts: 2,
+    education: {
+      overview: 'Explore structural connections, not a construction procedure. Etruscan arched gates and pre-Roman water conduits precede Roman monumental works. Aqueducts could use pipes or tunnels rather than arches; Persian qanats are a distinct groundwater-management tradition. Some Roman arenas used vaulted seating, while earlier structures used earth and wood. Their spectacles involved violence and social hierarchy, not only civic celebration.',
+      sourceIds: ['whe-etruscan-architecture', 'whe-aqueduct', 'unesco-persian-qanat', 'whe-amphitheatre'],
+    },
+  },
+  {
+    id: 'commerce-lab',
+    name: 'Commerce Lab',
+    starterIds: ['bronze', 'market', 'forge'],
+    targetId: 'mint',
+    allowedResultEraIds: ['iron-age', 'classical-antiquity'],
+    minimumAttempts: 2,
+    education: {
+      overview: 'Explore a monetary workshop using supplied puzzle materials. Coins were made from different metals, not only bronze. Greek minting could involve prepared blanks, engraved dies and hammer striking; a forge alone does not supply those operations or an issuing standard. Coinage coexisted with other payments and developed at different times in different regions. The supplied ingredients are not a universal history of money.',
+      sourceIds: ['whe-greek-coinage', 'whe-roman-coinage'],
+    },
+  },
+  {
+    id: 'inquiry-lab',
+    name: 'Inquiry Lab',
+    starterIds: ['archive', 'human', 'observation', 'bird'],
+    targetId: 'bird-inquiry',
+    allowedResultEraIds: ['classical-antiquity'],
+    minimumAttempts: 3,
+    education: {
+      overview: 'Explore shared learning and animal inquiry without a history quiz. Aristotle discussed birds using descriptions and reported claims, not modern evolutionary biology. Birds as living avian dinosaurs is a modern evidence-based explanation. Indian and Chinese philosophical traditions had different questions and chronologies; they did not all enter a Greek Classical age together. Ancient fossil interpretations likewise differ from modern paleontology.',
+      sourceIds: ['mit-aristotle-animals', 'nhm-bird-evolution', 'sep-naturalism-india', 'sep-chinese-metaphysics', 'herodotus-egypt-shells'],
+    },
+  },
 ]
 
 export const challenges = [rainmakerChallenge, ...learningChallenges]

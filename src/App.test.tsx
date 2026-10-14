@@ -560,6 +560,42 @@ describe('alchemy worktable', () => {
     expect(ageSwitcher.getByRole('button', { name: 'Origins' })).toHaveAttribute(
       'title', 'An undated prologue inspired by the four classical elements of ancient Greek natural philosophy.',
     )
+    const ageButtons = ageSwitcher.getAllByRole('button')
+    expect(ageButtons).toHaveLength(5)
+    expect(ageButtons[4]).toHaveTextContent('Classical Antiquity')
+    expect(ageButtons[4]).toBeDisabled()
+    expect(ageButtons[4]).toHaveAttribute(
+      'title', 'A Mediterranean chapter of overlapping regional histories, not a universal successor to the Iron Age.',
+    )
+  })
+
+  it('selects Age V by keyboard and updates its Guide and global counters without requiring optional branches', async () => {
+    const user = userEvent.setup()
+    const age = eras[4]
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, ...age.landmarkIds, 'observation'],
+      unlockedEraIds: eras.map((entry) => entry.id),
+    })
+    render(<App />)
+    const selector = within(screen.getByRole('navigation', { name: 'Play ages' }))
+    const fifthAge = selector.getByRole('button', { name: 'Classical Antiquity' })
+    fifthAge.focus()
+    await user.keyboard('{Enter}')
+    expect(fifthAge).toHaveFocus()
+    expect(fifthAge).toHaveAttribute('aria-current', 'page')
+    expect(selector.getByRole('button', { name: 'Origins' })).not.toHaveAttribute('aria-current')
+    expect(useGameStore.getState().activeEraId).toBe(age.id)
+    expect(screen.getByLabelText('6% discovered')).toHaveTextContent('10 / 173')
+    const challenge = within(screen.getByRole('region', { name: 'Classical Antiquity challenge' }))
+    expect(challenge.getByText(/Catalogue 6\/6.*Landmarks 5\/5/)).toBeVisible()
+    expect(challenge.getByText(/This page's landmarks are recorded/)).toBeVisible()
+    expect(within(screen.getByLabelText('Discovery record')).getAllByRole('button')).toHaveLength(6)
+    const goals = within(screen.getByRole('list', { name: 'Collection goals' }))
+    for (const collection of collections.filter((entry) => entry.era === age.id)) {
+      expect(goals.getByText(collection.name)).toBeVisible()
+    }
+    expect(useGameStore.getState().discoveredIds).not.toContain('library')
+    expect(useGameStore.getState().discoveredIds).not.toContain('aqueduct')
   })
 
   it('discovers and persists an element through tap controls', async () => {

@@ -40,6 +40,10 @@ describe('ChallengeRun', () => {
     ['harvest-lab', [['Field', 'Seed'], ['Crop', 'Metal Tool'], ['Flour', 'Water'], ['Dough', 'Heat']]],
     ['bronze-lab', [['Copper Ore', 'Fire'], ['Copper', 'Tin'], ['Bronze', 'Stone Tool']]],
     ['records-lab', [['Papyrus', 'Cordage'], ['Scroll', 'Scroll']]],
+    ['civic-lab', [['Trade', 'City'], ['Agora', 'Law'], ['Forum', 'Law'], ['Senate', 'City']]],
+    ['engineering-lab', [['Masonry', 'Aqueduct'], ['Arch', 'City']]],
+    ['commerce-lab', [['Bronze', 'Market'], ['Coin', 'Forge']]],
+    ['inquiry-lab', [['Archive', 'Human'], ['Observation', 'Knowledge'], ['Bird', 'Natural Inquiry']]],
   ] as const)('completes %s through experimentation with free optional context and isolated progress', async (id, route) => {
     const challenge = learningChallenges.find((candidate) => candidate.id === id)!
     useGameStore.setState({ insightCredits: 0 })
