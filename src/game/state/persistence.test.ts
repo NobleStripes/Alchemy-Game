@@ -56,6 +56,56 @@ describe('progress persistence', () => {
     expect(parseProgress(exportProgress(progress))).toEqual(progress)
   })
 
+  it('unlocks Classical Antiquity only after every Iron landmark in v7 saves and preserves new formulas', () => {
+    const ironLandmarks = ['iron', 'iron-tool', 'road', 'market']
+    const partial = parseProgress(JSON.stringify({
+      ...fresh(),
+      discoveredIds: ironLandmarks.slice(0, -1),
+    }))!
+    expect(partial.version).toBe(7)
+    expect(partial.unlockedEraIds).not.toContain('classical-antiquity')
+
+    const gateComplete = parseProgress(JSON.stringify({
+      ...fresh(),
+      discoveredIds: ironLandmarks,
+      activeEraId: 'iron-age',
+    }))!
+    expect(gateComplete.unlockedEraIds).toContain('classical-antiquity')
+    expect(gateComplete.version).toBe(7)
+
+    const recipeIds = [
+      'athenian-agora', 'recorded-academy', 'lyceum-studies', 'attentive-cloud',
+      'nature-and-record', 'archived-fossil', 'examined-remains',
+    ]
+    const recordedRecipes = recipeIds.map((id) => recipes.find((recipe) => recipe.id === id)!)
+    const progress = parseProgress(JSON.stringify({
+      ...fresh(),
+      discoveredIds: [...new Set([
+        ...ironLandmarks,
+        ...recordedRecipes.flatMap((recipe) => [...recipe.inputs, recipe.result]),
+      ])],
+      discoveredRecipeIds: recipeIds,
+      favoriteIds: ['agora', 'academy', 'lyceum', 'observation', 'natural-philosophy', 'fossil-collection', 'fossil-inquiry'],
+      experimentHistory: recordedRecipes.map((recipe, index) => ({
+        id: index + 1,
+        inputs: recipe.inputs,
+        outcome: 'discovery',
+        resultId: recipe.result,
+        recipeId: recipe.id,
+      })),
+    }))!
+
+    expect(progress.version).toBe(7)
+    expect(progress.unlockedEraIds).toContain('classical-antiquity')
+    expect(progress.discoveredRecipeIds).toEqual(recipeIds)
+    expect(progress.favoriteIds).toEqual([
+      'agora', 'academy', 'lyceum', 'observation',
+      'natural-philosophy', 'fossil-collection', 'fossil-inquiry',
+    ])
+    expect(progress.experimentHistory.map((entry) => entry.recipeId)).toEqual(recipeIds)
+    expect(parseProgress(exportProgress(progress))).toEqual(progress)
+  })
+
   it('defaults older v7 saves to unread and only retains discovered researched reading markers', () => {
     const progress = fresh()
     const { readHistoricalElementIds, ...older } = progress

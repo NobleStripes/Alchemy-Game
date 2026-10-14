@@ -31,5 +31,12 @@
     "era": "bronze-age",
     "education": "Explore earlier plant and clay materials alongside writing and records. Writing has independent traditions; this collection does not require one historical sequence or any reading to earn its discovery reward.",
     "elementIds": ["clay", "reed", "papyrus", "quill", "writing", "archive"]
+  },
+  {
+    "id": "mediterranean-inquiry",
+    "name": "Mediterranean Inquiry",
+    "era": "classical-antiquity",
+    "education": "Compare physical finds, ancient reports, and modern interpretations. The regional examples are not one timeline, and reading historical notes is never required for the reward.",
+    "elementIds": ["observation", "natural-philosophy", "fossil", "fossil-collection", "fossil-inquiry"]
   }
 ]

@@ -185,5 +185,12 @@
   { "id": "fossilized-remains", "inputs": ["bone", "rock"], "result": "fossil", "flavor": "Buried remains take geological time to fossilize; this pair evokes discovering a fossil, not making one." },
   { "id": "avian-lineage", "inputs": ["animal", "gale"], "result": "bird", "flavor": "Animal life meets air in a symbolic clue to birds, living avian dinosaurs; not every bird flies." },
   { "id": "transport-amphora", "inputs": ["pottery", "trade"], "result": "amphora", "flavor": "Fired clay and exchange evoke handled transport jars used across the ancient Mediterranean." },
-  { "id": "calcined-lime", "inputs": ["heat", "limestone"], "result": "quicklime", "flavor": "Sustained kiln heat calcines limestone into quicklime and carbon dioxide; fuel and firing conditions are omitted." }
+  { "id": "calcined-lime", "inputs": ["heat", "limestone"], "result": "quicklime", "flavor": "Sustained kiln heat calcines limestone into quicklime and carbon dioxide; fuel and firing conditions are omitted." },
+  { "id": "athenian-agora", "inputs": ["city", "market"], "result": "agora", "flavor": "An urban center and exchange evoke the Athenian Agora; this is not a universal city plan or a construction recipe." },
+  { "id": "recorded-academy", "inputs": ["archive", "scribe"], "result": "academy", "flavor": "A keeper of records evokes Plato's Athenian circle of learning; the pair does not found a school." },
+  { "id": "lyceum-studies", "inputs": ["academy", "animal"], "result": "lyceum", "flavor": "The Academy and living subjects evoke Aristotle's broad studies; combining them is not how the Lyceum was founded." },
+  { "id": "attentive-cloud", "inputs": ["human", "cloud"], "result": "observation", "flavor": "A person watching clouds symbolizes observation, not a single origin of scientific methods." },
+  { "id": "nature-and-record", "inputs": ["observation", "scribe"], "result": "natural-philosophy", "flavor": "Observation and record-making evoke ancient inquiry into nature, not a universal or inevitable method." },
+  { "id": "archived-fossil", "inputs": ["archive", "fossil"], "result": "fossil-collection", "flavor": "A preserved record evokes the collected fossil at Mycenae; it does not reproduce its recovery or establish its purpose." },
+  { "id": "examined-remains", "inputs": ["fossil", "observation"], "result": "fossil-inquiry", "flavor": "A fossil and careful attention evoke ancient interpretation; they do not prove a particular myth or explanation." }
 ]

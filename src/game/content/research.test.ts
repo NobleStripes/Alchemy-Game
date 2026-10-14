@@ -16,6 +16,10 @@ const priorityIds = [
 const expansionIds = ['rotary-quern', 'lathe', 'alphabet']
 const newDiscoveryIds = ['fossil', 'bird', 'amphora', 'quicklime']
 const classicalIds = ['ember', 'tide', 'stone', 'gale']
+const antiquityIds = [
+  'agora', 'academy', 'lyceum', 'observation',
+  'natural-philosophy', 'fossil-collection', 'fossil-inquiry',
+]
 
 describe('historical research database', () => {
   it('exposes historical structural schemas from the shared content schema module', () => {
@@ -61,16 +65,16 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(45)
+    )).toHaveLength(53)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
   })
 
-  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds])('links %s research to its current name and stable ID', (elementId) => {
+  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds])('links %s research to its current name and stable ID', (elementId) => {
     const record = researchByElementId.get(elementId)
     expect(record?.elementName).toBe(
       elements.find((element) => element.id === elementId)?.name,
@@ -83,10 +87,19 @@ describe('historical research database', () => {
     expect(record?.gameplaySimplifications.length).toBeGreaterThan(0)
   })
 
-  it('includes the additive batch while keeping four ages and undated gameplay Origins', () => {
-    expect(elements).toHaveLength(151)
-    expect(recipes).toHaveLength(187)
-    expect(eras).toHaveLength(4)
+  it('includes the Classical Antiquity chapter while preserving the four existing ages', () => {
+    expect(elements).toHaveLength(158)
+    expect(recipes).toHaveLength(194)
+    expect(eras.map((era) => era.id)).toEqual([
+      'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
+    ])
+    expect(eras[4]).toMatchObject({
+      id: 'classical-antiquity',
+      unlockRequires: ['iron', 'iron-tool', 'road', 'market'],
+      grants: [],
+      landmarkIds: ['agora', 'academy', 'lyceum', 'natural-philosophy', 'fossil-inquiry'],
+      discoveryGoal: 6,
+    })
     expect(eras[0].dateRange).toBeUndefined()
     expect(researchByElementId.get('metal')?.approximateDates[0]).toMatchObject({
       dateType: 'undated',
@@ -130,6 +143,10 @@ describe('historical research database', () => {
       'nhm-bird-evolution', 'nhm-first-birds', 'nhm-dinosaur-extinction', 'smithsonian-ostrich',
       'aha-amphora-trade', 'met-amphora-bronze', 'met-transport-amphora',
       'friesem-lime-plaster', 'epa-lime-manufacturing',
+      'ascsa-agora', 'sep-presocratics', 'sep-aristotle',
+      'herodotus-egypt-shells', 'herodotus-winged-serpents',
+      'mycenae-fossil-study', 'witton-hing-griffin',
+      'whe-greek-archaic', 'whe-hellenistic-period',
     ]
     for (const id of sourceIds) {
       expect(historicalResearch.sources.find((source) => source.id === id)?.verification.status)
@@ -256,6 +273,40 @@ describe('historical research database', () => {
     expect(researchByElementId.get('alphabet')?.archaeologicalEvidence[1].interpretation).toBe('disputed')
     expect(elements.some((element) => element.id === 'lock')).toBe(false)
     expect(researchByElementId.has('lock')).toBe(false)
+  })
+
+  it('keeps Classical Antiquity regional, evidence-led and cautious about fossil interpretation', () => {
+    for (const id of antiquityIds) {
+      const entry = researchByElementId.get(id)!
+      expect(entry.agePlacement.status).toBe(
+        id === 'fossil-collection' ? 'earlier-precedents' : 'regional-gameplay-placement',
+      )
+      expect(entry.historicalUncertainty.length).toBeGreaterThan(0)
+      expect(entry.gameplaySimplifications.join(' ')).toMatch(/symbolic|symbolically/)
+      expect(entry.approximateDates.every((date) => date.dateRange.length > 0)).toBe(true)
+    }
+
+    const agora = researchByElementId.get('agora')!
+    expect(agora.historicalOverview.text).toContain('Athens')
+    expect(agora.historicalOverview.text).toContain('not a template for every Mediterranean settlement')
+    expect(agora.approximateDates[0].dateType).toBe('undated')
+
+    const fossilCollection = researchByElementId.get('fossil-collection')!
+    expect(fossilCollection.approximateDates[0]).toMatchObject({
+      dateRange: 'About 1230–1200 BCE',
+      dateType: 'dated-evidence',
+      precision: 'approximate',
+    })
+    expect(fossilCollection.historicalUncertainty.join(' ')).toContain('why')
+
+    const inquiry = researchByElementId.get('fossil-inquiry')!
+    expect(inquiry.historicalOverview.text).toContain('reported belief, not fossil identification')
+    expect(inquiry.historicalOverview.text).toContain('not established history')
+    expect(inquiry.archaeologicalEvidence.some((evidence) =>
+      evidence.sourceIds.includes('witton-hing-griffin') && evidence.interpretation === 'hypothesis',
+    )).toBe(true)
+    expect(historicalResearch.sources.find((source) => source.id === 'witton-hing-griffin')?.verification)
+      .toMatchObject({ status: 'verified', accessLevel: 'abstract-only' })
   })
 
   it('records independent writing traditions without inventing a Mesoamerican date', () => {

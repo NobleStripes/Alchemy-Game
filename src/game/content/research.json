@@ -460,6 +460,86 @@
       "url": "https://gaftp.epa.gov/ap42/ch11/s17/final/c11s17_1995.pdf",
       "publicationDate": null,
       "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://gaftp.epa.gov/ap42/ch11/s17/final/c11s17_1995.pdf", "accessLevel": "selected-passages", "locator": "AP-42 process description for lime manufacturing: limestone or other calcium carbonate feed is calcined in a kiln at high temperature to form quicklime (calcium oxide) and carbon dioxide. Used for the chemistry and modern production requirements, not as evidence for the design of prehistoric kilns." }
+    },
+    {
+      "id": "ascsa-agora",
+      "title": "The Athenian Agora Excavations",
+      "authors": [],
+      "institution": "American School of Classical Studies at Athens",
+      "sourceType": "archaeology-institution",
+      "url": "https://www.ascsa.edu.gr/excavations/athenian-agora",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.ascsa.edu.gr/excavations/athenian-agora", "accessLevel": "selected-passages", "locator": "Excavation overview describes the ancient Agora as Athens' business, political and legal center and names citizens, foreigners, litigants, jurors, merchants and philosophers. The page is an institutional overview, not a detailed excavation report or evidence for every Greek city." }
+    },
+    {
+      "id": "sep-presocratics",
+      "title": "Presocratic Philosophy",
+      "authors": ["Patricia Curd"],
+      "institution": "Stanford Encyclopedia of Philosophy",
+      "sourceType": "reference-encyclopedia",
+      "url": "https://plato.stanford.edu/entries/presocratics/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://plato.stanford.edu/entries/presocratics/", "accessLevel": "selected-passages", "locator": "Opening discussion describes the varied scope of early Greek inquiry and stresses fragmentary evidence transmitted through later writers. It explains that 'Presocratic' is a modern category and not a strictly chronological label or known self-designation." }
+    },
+    {
+      "id": "herodotus-egypt-shells",
+      "title": "Herodotus, Histories, Book 2, Chapter 12",
+      "authors": ["Herodotus"],
+      "institution": "Perseus Digital Library, Tufts University",
+      "sourceType": "reference-textbook",
+      "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D2%3Achapter%3D12",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D2%3Achapter%3D12", "accessLevel": "selected-passages", "locator": "English translation by A. D. Godley, Loeb Classical Library. Herodotus says he saw shells exposed on Egyptian hills and describes his inference about the land; this is an ancient observation and argument, not modern geology." }
+    },
+    {
+      "id": "herodotus-winged-serpents",
+      "title": "Herodotus, Histories, Book 2, Chapter 75",
+      "authors": ["Herodotus"],
+      "institution": "Perseus Digital Library, Tufts University",
+      "sourceType": "reference-textbook",
+      "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D2%3Achapter%3D75",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D2%3Achapter%3D75", "accessLevel": "selected-passages", "locator": "English translation by A. D. Godley, Loeb Classical Library. Herodotus reports seeing heaps of bones near Buto and explicitly attributes the account of winged serpents and ibis to what people said; he does not identify them as fossils or dinosaurs." }
+    },
+    {
+      "id": "mycenae-fossil-study",
+      "title": "The earliest evidence of large animal fossil collecting in mainland Greece at Bronze Age Mycenae",
+      "authors": ["Jacqueline S. Meier", "Vassiliki Pliatsika", "Kim Shelton"],
+      "institution": "Scientific Reports",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1038/s41598-024-68778-w",
+      "publicationDate": "2024-08-19",
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11333489/", "accessLevel": "selected-passages", "locator": "Full open-access article, abstract, context and methods: authors identify a fossilized rhinoceros astragalus in a secure LH IIIB2 deposit dated about 1230–1200 BCE at Mycenae. They infer it was collected and brought there, possibly from afar; the object's specific use remains uncertain." }
+    },
+    {
+      "id": "witton-hing-griffin",
+      "title": "Did the horned dinosaur Protoceratops inspire the griffin?",
+      "authors": ["Mark P. Witton", "Richard Alan Hing"],
+      "institution": "Interdisciplinary Science Reviews, University of Portsmouth Research Portal",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1177/03080188241255543",
+      "publicationDate": "2024-06-20",
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://researchportal.port.ac.uk/en/publications/did-the-horned-dinosaur-protoceratops-inspire-the-griffin/", "accessLevel": "abstract-only", "locator": "Official institutional record and full abstract: the authors evaluate a modern Protoceratops–griffin proposal and call the connection uncompelling, citing the history of griffin art, weak anatomical/literary matches and the distance from gold deposits. Publisher full text was not accessible; conclusions here are limited to the abstract." }
+    },
+    {
+      "id": "whe-greek-archaic",
+      "title": "Greek Archaic Period",
+      "authors": ["Mark Cartwright"],
+      "institution": "World History Encyclopedia",
+      "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Archaic_Period/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Archaic_Period/", "accessLevel": "selected-passages", "locator": "Opening periodization gives c. 800–479 BCE for the Greek Archaic period and c. 510–323 BCE for the Classical period, while emphasizing flexible boundaries and gradual cultural change. These are Greek period labels, not a Mediterranean-wide chronology." }
+    },
+    {
+      "id": "whe-hellenistic-period",
+      "title": "Hellenistic Period",
+      "authors": ["Mark Cartwright"],
+      "institution": "World History Encyclopedia",
+      "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Hellenistic_Period/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Hellenistic_Period/", "accessLevel": "selected-passages", "locator": "Opening passage describes a period used across European and Near Asian contexts, commonly dated 323–31 BCE, with possible extension in the Indo-Greek region. Its scope and endpoints must not be imposed on every Mediterranean society." }
     }
   ],
   "records": [
@@ -985,6 +1065,170 @@
       "historicalUncertainty": ["The peer-reviewed source was reviewed through its abstract; it describes a reconstruction of lime plaster production, not a standalone quicklime specimen.", "This evidence does not establish the earliest production worldwide, continuous adoption, or the construction of a particular kiln.", "Modern industrial temperature ranges do not by themselves establish the exact firing conditions at Nahal Ein Gev II."],
       "gameplaySimplifications": ["Limestone plus Heat compresses fuel, preparation, sustained kiln firing and process control into two symbols.", "The product is quicklime (calcium oxide), not finished lime plaster; adding water in the subsequent slaking step is omitted.", "Calcination releases carbon dioxide, and the game's combination is not a complete production method."],
       "furtherResearch": [{ "question": "Review the full study and compare excavated lime kilns, residues and lime-plaster evidence across regions to refine prehistoric production chronology.", "sourceIds": ["friesem-lime-plaster"] }]
+    },
+    {
+      "elementId": "agora",
+      "elementName": "Agora",
+      "historicalOverview": { "text": "The American School of Classical Studies at Athens describes the Athenian Agora as the city's business, political and legal center, bringing together citizens and foreigners, litigants and jurors, merchants and philosophers. This is evidence about Athens, not a template for every Mediterranean settlement.", "sourceIds": ["ascsa-agora"] },
+      "manufactureOrUse": { "text": "The Agora was an urban public space used for civic, commercial, legal and social activity. Excavations have uncovered buildings and artifacts that inform interpretations of Athenian life; an agora was not simply a market or a single building.", "sourceIds": ["ascsa-agora"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "This page uses one well-documented Athenian setting within a Mediterranean chapter. Its placement neither makes the Agora universal nor establishes it as a necessary stage after every Iron Age society.", "sourceIds": ["ascsa-agora", "whe-greek-archaic"] },
+      "relatedDiscoveries": [
+        { "elementId": "market", "relationship": "gameplay-abstraction", "explanation": "Commercial activity is one aspect of the Athenian Agora; a market alone does not account for its political, legal and social roles.", "sourceIds": ["ascsa-agora"] },
+        { "elementId": "city", "relationship": "documented", "explanation": "The source identifies the Agora as a center of ancient Athens, while other settlements had distinct public spaces and institutions.", "sourceIds": ["ascsa-agora"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "No single beginning date asserted for the Athenian Agora as a civic space", "dateType": "undated", "precision": "undated", "regions": ["Athens, Greece"], "sourceIds": ["ascsa-agora"], "note": "The excavation overview describes the ancient Agora's functions but does not date their origin to one event or century." }
+      ],
+      "associatedRegions": ["Athens, Greece"],
+      "archaeologicalEvidence": [
+        { "text": "The excavation project reports that it has brought to light public buildings, artifacts and records used to study Athenian civic life and democracy.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["ascsa-agora"] }
+      ],
+      "historicalSignificance": { "text": "The Agora offers a material and spatial setting for studying how civic, legal, commercial and social life met in one ancient Athenian place; it should not stand for every public institution around the Mediterranean.", "sourceIds": ["ascsa-agora"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The institutional overview summarizes the excavations and does not provide a full architectural sequence or a date for the Agora's first use.", "Athenian evidence cannot establish that all Greek or Mediterranean communities organized public life in the same way."],
+      "gameplaySimplifications": ["City plus Market is a symbolic association, not a construction method, a claim that trade created the Agora, or a universal sequence of urban development."],
+      "furtherResearch": [{ "question": "Compare excavation publications and regional studies of public spaces before extending the Athenian example to other Mediterranean communities.", "sourceIds": ["ascsa-agora"] }]
+    },
+    {
+      "elementId": "academy",
+      "elementName": "Academy",
+      "historicalOverview": { "text": "The Stanford Encyclopedia of Philosophy describes Aristotle as studying in Plato's Academy at Athens, then a pre-eminent place of learning in the Greek world. The surviving account supports an important philosophical community, not a modern university model or a complete institutional history.", "sourceIds": ["sep-aristotle"] },
+      "manufactureOrUse": { "text": "Plato's Academy was a setting for philosophical study and teaching. Aristotle's association with it is documented in later biographical scholarship; the word Academy later acquired meanings that should not be projected unchanged onto the ancient community.", "sourceIds": ["sep-aristotle"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Academy is presented as one Athenian intellectual setting, not an inevitable next step in a universal history of education or a date for every philosophical school.", "sourceIds": ["sep-aristotle", "whe-greek-archaic"] },
+      "relatedDiscoveries": [
+        { "elementId": "lyceum", "relationship": "documented", "explanation": "Aristotle studied in Plato's Academy before later establishing his own school at the Lyceum.", "sourceIds": ["sep-aristotle"] },
+        { "elementId": "natural-philosophy", "relationship": "gameplay-abstraction", "explanation": "Ancient philosophical communities investigated varied questions; this relationship does not imply a single curriculum or modern scientific institution.", "sourceIds": ["sep-aristotle", "sep-presocratics"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Aristotle studied at the Academy during the fourth century BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Athens, Greece"], "sourceIds": ["sep-aristotle"], "note": "This dates Aristotle's association, not the founding of Plato's Academy." }
+      ],
+      "associatedRegions": ["Athens, Greece"],
+      "archaeologicalEvidence": [
+        { "text": "The cited source is a modern scholarly biography reporting Aristotle's study at the Academy; this entry does not claim that the source establishes an excavated campus plan.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["sep-aristotle"] }
+      ],
+      "historicalSignificance": { "text": "The Academy is a prominent example of sustained philosophical teaching and association in Athens, while the evidence cautions against equating ancient intellectual communities with modern universities.", "sourceIds": ["sep-aristotle"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The entry uses a modern scholarly account of Aristotle's association and does not reconstruct the Academy's full teaching practices or earliest date.", "Ancient schools and later institutions called academies were not interchangeable."],
+      "gameplaySimplifications": ["Archive plus Scribe is a symbolic clue to organized learning, not evidence that records or scribes founded Plato's Academy."],
+      "furtherResearch": [{ "question": "Consult excavation publications and ancient testimonia for the Academy's physical setting and changing institutional history.", "sourceIds": ["sep-aristotle"] }]
+    },
+    {
+      "elementId": "lyceum",
+      "elementName": "Lyceum",
+      "historicalOverview": { "text": "The Stanford Encyclopedia of Philosophy reports that Aristotle established a school at the Lyceum, a public exercise area in Athens, around 335 BCE. Its associates studied a wide range of subjects, including plants, animals, astronomy, medicine and politics.", "sourceIds": ["sep-aristotle"] },
+      "manufactureOrUse": { "text": "The Lyceum was Aristotle's Athenian school and a setting for varied teaching and research. Later associates were called Peripatetics; neither that label nor the school's breadth makes it a modern research university.", "sourceIds": ["sep-aristotle"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Lyceum is a fourth-century BCE Athenian example placed in a regional chapter. Greek period boundaries are modern conventions, and other Mediterranean histories overlapped rather than following one shared sequence.", "sourceIds": ["sep-aristotle", "whe-greek-archaic", "whe-hellenistic-period"] },
+      "relatedDiscoveries": [
+        { "elementId": "academy", "relationship": "documented", "explanation": "The source places Aristotle's study in Plato's Academy before his later school at the Lyceum.", "sourceIds": ["sep-aristotle"] },
+        { "elementId": "natural-philosophy", "relationship": "documented", "explanation": "The Lyceum studied natural subjects among many other fields; the modern category does not capture its entire work.", "sourceIds": ["sep-aristotle"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Around 335 BCE", "dateType": "regional-development", "precision": "approximate", "regions": ["Athens, Greece"], "sourceIds": ["sep-aristotle"], "note": "Approximate date when Aristotle returned to Athens and established his school, not the start of all philosophical teaching there." }
+      ],
+      "associatedRegions": ["Athens, Greece"],
+      "archaeologicalEvidence": [
+        { "text": "The cited evidence is a modern scholarly account of Aristotle's school and its reported studies; no claim about a specific excavated building plan is made here.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["sep-aristotle"] }
+      ],
+      "historicalSignificance": { "text": "The Lyceum illustrates an Athenian community that organized teaching and investigation across many subjects, including the natural world, without making that path universal.", "sourceIds": ["sep-aristotle"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The school is known here through modern scholarship on ancient evidence; this summary does not resolve every question about its organization or the later Peripatetic tradition.", "The date is approximate and marks Aristotle's return and school, not a Mediterranean-wide educational transition."],
+      "gameplaySimplifications": ["Academy plus Animal is a symbolic association evoking one aspect of Aristotelian study; it neither describes the Lyceum's founding nor reduces its work to zoology."],
+      "furtherResearch": [{ "question": "Compare the literary evidence with archaeological publications on the excavated Lyceum site and the history of its later communities.", "sourceIds": ["sep-aristotle"] }]
+    },
+    {
+      "elementId": "observation",
+      "elementName": "Observation",
+      "historicalOverview": { "text": "Ancient texts preserve different kinds of observation and explanation. Herodotus says he saw shells exposed on Egyptian hills and used them in an argument about the land; this records an ancient inference, not modern geological knowledge.", "sourceIds": ["herodotus-egypt-shells", "sep-presocratics"] },
+      "manufactureOrUse": { "text": "Observation can contribute to inquiry, but the ancient record does not describe one standardized scientific method. Early Greek thinkers' writings are fragmentary and often known through later reports; individual arguments must be read in their specific contexts.", "sourceIds": ["sep-presocratics", "herodotus-egypt-shells"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Observation is a broad gameplay concept illustrated by specific Greek and Egyptian textual examples, not an invention assigned to one age or culture.", "sourceIds": ["sep-presocratics", "herodotus-egypt-shells"] },
+      "relatedDiscoveries": [
+        { "elementId": "natural-philosophy", "relationship": "documented", "explanation": "Observation appears in varied ancient attempts to understand nature, but it is not a complete explanation or a universal method.", "sourceIds": ["sep-presocratics"] },
+        { "elementId": "fossil-inquiry", "relationship": "documented", "explanation": "Herodotus' shell observation is one ancient example of interpreting physical evidence; his different report about bones has a different evidential status.", "sourceIds": ["herodotus-egypt-shells", "herodotus-winged-serpents"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Fifth century BCE textual example", "dateType": "regional-development", "precision": "approximate", "regions": ["Egypt, Nile Valley"], "sourceIds": ["herodotus-egypt-shells", "whe-greek-archaic"], "note": "Dates the Herodotean account broadly; it does not date the beginning of observation or establish modern geological theory." }
+      ],
+      "associatedRegions": ["Egypt, Nile Valley", "Greek world"],
+      "archaeologicalEvidence": [
+        { "text": "In Book 2, Chapter 12, Herodotus says he saw shells exposed on Egyptian hills and offers an inference about the land. The account is textual evidence for his observation and reasoning, not a modern scientific conclusion.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["herodotus-egypt-shells"] }
+      ],
+      "historicalSignificance": { "text": "The example shows why observed material, an author's inference and modern interpretation should be distinguished rather than treated as identical forms of evidence.", "sourceIds": ["herodotus-egypt-shells", "sep-presocratics"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Herodotus' ancient explanation is not equivalent to modern geology, and this passage alone cannot establish a general theory shared across Greek or Egyptian communities.", "The surviving record of early Greek thought is fragmentary and often indirect."],
+      "gameplaySimplifications": ["Human plus Star is a symbolic example of attention to the world, not a recipe, a complete scientific method or a claim that observation began with astronomy."],
+      "furtherResearch": [{ "question": "Compare additional ancient observations with their textual transmission and with the material evidence to which they refer.", "sourceIds": ["sep-presocratics", "herodotus-egypt-shells"] }]
+    },
+    {
+      "elementId": "natural-philosophy",
+      "elementName": "Natural Philosophy",
+      "historicalOverview": { "text": "The Stanford Encyclopedia describes early Greek thinkers as asking about the natural world alongside theology, ethics and other subjects. Their evidence is fragmentary and often transmitted by later authors. 'Presocratic' is a modern category, not a strict chronology or a known ancient self-description.", "sourceIds": ["sep-presocratics", "sep-aristotle"] },
+      "manufactureOrUse": { "text": "Natural philosophy is used here as a modern umbrella for varied ancient inquiries into nature and the cosmos. It should not be collapsed into modern science or treated as a single school with one method or shared doctrine.", "sourceIds": ["sep-presocratics", "sep-aristotle"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The entry focuses on ancient Greek intellectual histories within a Mediterranean chapter. Period names and boundaries are modern and regional; related inquiries elsewhere are not presented as derivatives or as the same tradition.", "sourceIds": ["sep-presocratics", "whe-greek-archaic", "whe-hellenistic-period"] },
+      "relatedDiscoveries": [
+        { "elementId": "observation", "relationship": "documented", "explanation": "Observations and arguments appear in ancient inquiry, though surviving texts do not support a universal or linear method.", "sourceIds": ["sep-presocratics"] },
+        { "elementId": "lyceum", "relationship": "documented", "explanation": "The Lyceum studied natural subjects among many fields; it was one institution, not the origin of all inquiry into nature.", "sourceIds": ["sep-aristotle"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Sixth–fourth centuries BCE, selected Greek examples", "dateType": "regional-development", "precision": "approximate", "regions": ["Greek world", "Asia Minor"], "sourceIds": ["sep-presocratics", "sep-aristotle"], "note": "This broad span groups selected thinkers and institutions for context; it is not a date for the invention of science or a unified school." }
+      ],
+      "associatedRegions": ["Greek world", "Asia Minor"],
+      "archaeologicalEvidence": [
+        { "text": "The evidence discussed here is chiefly fragmentary writing and later testimony, not a single archaeological object or complete corpus of original works.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["sep-presocratics"] }
+      ],
+      "historicalSignificance": { "text": "Treating these histories as varied inquiry makes room for argument and uncertainty without projecting modern scientific categories or a single line of progress onto ancient thinkers.", "sourceIds": ["sep-presocratics", "sep-aristotle"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Many early Greek texts survive only as fragments or later reports, so attributions and interpretations can be uncertain.", "The label 'Presocratic' is modern and can obscure thinkers who were contemporaries of Socrates or explored other questions.", "This Greek-centered entry does not survey every Mediterranean or ancient intellectual tradition."],
+      "gameplaySimplifications": ["Observation plus Scribe is a symbolic association; recording and observing do not by themselves create a philosophy, school or scientific discipline."],
+      "furtherResearch": [{ "question": "Add primary-text editions and region-specific scholarship before expanding this brief account to other ancient intellectual traditions.", "sourceIds": ["sep-presocratics"] }]
+    },
+    {
+      "elementId": "fossil-collection",
+      "elementName": "Fossil Collection",
+      "historicalOverview": { "text": "A peer-reviewed study identifies a fossilized rhinoceros ankle bone (astragalus) in an undisturbed deposit at Mycenae, associated with pottery dated about 1230–1200 BCE. The authors infer that it had been collected and brought to the site, possibly from afar; its particular purpose is unknown.", "sourceIds": ["mycenae-fossil-study"] },
+      "manufactureOrUse": { "text": "The fossil was first cataloged as an irregular stone object and later reexamined morphologically as a rhinoceros astragalus. This is evidence of an ancient fossil in an archaeological context; the study's interpretation of human collection is reasoned from context and does not reveal the object's exact use.", "sourceIds": ["mycenae-fossil-study"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The deposit is Late Bronze Age, before the Greek Archaic, Classical and Hellenistic periods used elsewhere in this chapter. It is included as an earlier regional precedent, not as a date for the beginning of fossil collecting worldwide.", "sourceIds": ["mycenae-fossil-study", "whe-greek-archaic"] },
+      "relatedDiscoveries": [
+        { "elementId": "fossil", "relationship": "documented", "explanation": "The Mycenae object is a fossilized rhinoceros astragalus, not a bone freshly transformed into a fossil at the site.", "sourceIds": ["mycenae-fossil-study"] },
+        { "elementId": "fossil-inquiry", "relationship": "gameplay-abstraction", "explanation": "A securely contextualized find and later written explanations are different evidence; neither proves a specific mythic interpretation.", "sourceIds": ["mycenae-fossil-study", "herodotus-winged-serpents"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "About 1230–1200 BCE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Mycenae, mainland Greece"], "sourceIds": ["mycenae-fossil-study"], "note": "The study dates the archaeological deposit through associated Late Helladic IIIB2 pottery; the fossil's collection may have occurred earlier." }
+      ],
+      "associatedRegions": ["Mycenae, mainland Greece"],
+      "archaeologicalEvidence": [
+        { "text": "Morphological analysis identifies a fossilized rhinoceros astragalus in a secure deposit at Mycenae. The authors infer that people collected it, but the object's intended use and route to the site remain unknown.", "evidenceType": "excavated-context", "interpretation": "hypothesis", "sourceIds": ["mycenae-fossil-study"] }
+      ],
+      "historicalSignificance": { "text": "The find provides unusually secure mainland Greek evidence for a large-animal fossil in a Late Bronze Age archaeological context, while its uncertain purpose demonstrates why objects should not be assigned a myth or ritual role without evidence.", "sourceIds": ["mycenae-fossil-study"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The study interprets the bone as collected and brought to Mycenae, possibly from afar; it cannot establish who collected it or why.", "The date belongs to the deposit, not necessarily to the animal's death or the fossil's formation and collection.", "One well-contextualized specimen does not establish the first fossil use in Greece or elsewhere."],
+      "gameplaySimplifications": ["Fossil plus Archive is a symbolic clue to a surviving record of a find; it does not reproduce fossilization, excavation or ancient collection."],
+      "furtherResearch": [{ "question": "Compare the Mycenae specimen with other securely provenienced fossil finds and publish excavation-context evidence before assigning a particular social or ritual function.", "sourceIds": ["mycenae-fossil-study"] }]
+    },
+    {
+      "elementId": "fossil-inquiry",
+      "elementName": "Fossil Inquiry",
+      "historicalOverview": { "text": "Ancient sources preserve different encounters with unusual remains. Herodotus describes seeing shells on Egyptian hills and making an inference about the land; elsewhere he reports heaps of bones and says people attributed them to winged serpents. The second passage is reported belief, not fossil identification. A modern Protoceratops–griffin proposal has been challenged by a peer-reviewed reassessment and is not established history.", "sourceIds": ["herodotus-egypt-shells", "herodotus-winged-serpents", "witton-hing-griffin"] },
+      "manufactureOrUse": { "text": "The examples distinguish a writer's claimed observation, an ancient inference, reported local explanations and modern hypotheses. Herodotus' shell passage is not modern geology, and his serpent account does not identify the bones as fossils. The 2024 Protoceratops–griffin article is available here as an abstract; its authors find that modern connection uncompelling.", "sourceIds": ["herodotus-egypt-shells", "herodotus-winged-serpents", "witton-hing-griffin"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "This entry compares evidence from Egypt, mainland Greece and later modern scholarship. These separate contexts do not define one Mediterranean chronology or imply a continuous tradition.", "sourceIds": ["herodotus-egypt-shells", "mycenae-fossil-study", "whe-greek-archaic"] },
+      "relatedDiscoveries": [
+        { "elementId": "fossil", "relationship": "documented", "explanation": "Fossils preserve evidence of past life through geological processes; ancient reports about unusual bones require separate evaluation and are not all fossil identifications.", "sourceIds": ["mycenae-fossil-study", "herodotus-winged-serpents"] },
+        { "elementId": "observation", "relationship": "documented", "explanation": "Herodotus distinguishes a claimed personal observation of shells from a story about serpent bones attributed to what people said.", "sourceIds": ["herodotus-egypt-shells", "herodotus-winged-serpents"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "About 1230–1200 BCE: Mycenae deposit", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Mycenae, mainland Greece"], "sourceIds": ["mycenae-fossil-study"], "note": "The age of the archaeological deposit, not fossil formation or the beginning of human interest in fossils." },
+        { "dateRange": "Fifth century BCE: Herodotus' accounts", "dateType": "regional-development", "precision": "approximate", "regions": ["Egypt, Nile Valley"], "sourceIds": ["herodotus-egypt-shells", "herodotus-winged-serpents", "whe-greek-archaic"], "note": "Dates the Greek author's texts broadly; the settings and reported beliefs are not evidence of a single shared practice." }
+      ],
+      "associatedRegions": ["Mycenae, mainland Greece", "Egypt, Nile Valley", "Central Asia, modern hypothesis context"],
+      "archaeologicalEvidence": [
+        { "text": "A peer-reviewed study documents a rhinoceros astragalus in a secure Mycenae deposit and cautiously infers collection. This physical context is distinct from literary interpretations of bones.", "evidenceType": "excavated-context", "interpretation": "hypothesis", "sourceIds": ["mycenae-fossil-study"] },
+        { "text": "Herodotus says he saw shells on Egyptian hills, but his account of serpent bones explicitly includes what people said about winged serpents and ibises; neither passage is a modern fossil taxonomy.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["herodotus-egypt-shells", "herodotus-winged-serpents"] },
+        { "text": "A 2024 peer-reviewed evaluation describes the Protoceratops–griffin link as an uncompelling modern geomyth hypothesis; it is not evidence that ancient Greeks encountered or interpreted those dinosaur fossils.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["witton-hing-griffin"] }
+      ],
+      "historicalSignificance": { "text": "Separating excavated finds, ancient textual reports and present-day interpretations keeps evidence visible without converting resemblance or folklore into proven historical causation.", "sourceIds": ["mycenae-fossil-study", "herodotus-egypt-shells", "herodotus-winged-serpents", "witton-hing-griffin"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Herodotus' serpent account is partly reported lore; it does not identify the bones as fossilized animals.", "The Mycenae study infers collection but cannot establish the fossil's exact purpose or its earlier route.", "The Protoceratops–griffin hypothesis is disputed; the 2024 paper's full text was not reviewed here, only its official abstract.", "These examples do not represent every ancient community's explanation of fossils or establish a single progression from myth to science."],
+      "gameplaySimplifications": ["Fossil plus Observation is a symbolic invitation to compare evidence, not a literal research method or a claim that a fossil caused a myth.", "Historical reading is optional; the recipe is not a test of factual knowledge."],
+      "furtherResearch": [{ "question": "Review the complete Witton and Hing article and additional primary sources before making more specific claims about ancient fossil-inspired myths.", "sourceIds": ["witton-hing-griffin", "herodotus-egypt-shells", "herodotus-winged-serpents"] }]
     }
   ]
 }

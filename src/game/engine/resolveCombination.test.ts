@@ -527,7 +527,7 @@ describe('Iron Age content', () => {
   })
 })
 
-describe('four-age expansion', () => {
+describe('expanded ages', () => {
   it.each([
     ['first-light', 'rain-cut-river', 'rain', 'rock', 'river'],
     ['first-light', 'inland-lake', 'river', 'land', 'lake'],
@@ -557,6 +557,13 @@ describe('four-age expansion', () => {
     ['first-light', 'avian-lineage', 'animal', 'gale', 'bird'],
     ['bronze-age', 'transport-amphora', 'pottery', 'trade', 'amphora'],
     ['stone-age', 'calcined-lime', 'limestone', 'heat', 'quicklime'],
+    ['classical-antiquity', 'athenian-agora', 'city', 'market', 'agora'],
+    ['classical-antiquity', 'recorded-academy', 'archive', 'scribe', 'academy'],
+    ['classical-antiquity', 'lyceum-studies', 'academy', 'animal', 'lyceum'],
+    ['classical-antiquity', 'attentive-cloud', 'human', 'cloud', 'observation'],
+    ['classical-antiquity', 'nature-and-record', 'observation', 'scribe', 'natural-philosophy'],
+    ['classical-antiquity', 'archived-fossil', 'archive', 'fossil', 'fossil-collection'],
+    ['classical-antiquity', 'examined-remains', 'fossil', 'observation', 'fossil-inquiry'],
   ])('resolves %s recipe %s in both orders using same-or-earlier inputs', (eraId, id, first, second, result) => {
     expect(resolveCombination(first, second, recipeIndex)).toMatchObject({ id, result })
     expect(resolveCombination(second, first, recipeIndex)).toMatchObject({ id, result })
@@ -569,12 +576,17 @@ describe('four-age expansion', () => {
     }
   })
 
-  it('expands exactly four ages with fully reachable, nonconflicting content', () => {
-    expect(eras.map((era) => era.id)).toEqual(['first-light', 'stone-age', 'bronze-age', 'iron-age'])
-    expect(elements).toHaveLength(151)
-    expect(recipes).toHaveLength(187)
-    expect(eras.map((era) => elements.filter((element) => element.era === era.id).length)).toEqual([42, 44, 42, 23])
+  it('adds a reachable fifth age without conflicting or changing the earlier catalog', () => {
+    expect(eras.map((era) => era.id)).toEqual([
+      'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
+    ])
+    expect(elements).toHaveLength(158)
+    expect(recipes).toHaveLength(194)
+    expect(eras.map((era) => elements.filter((element) => element.era === era.id).length))
+      .toEqual([42, 44, 42, 23, 7])
     expect(elements.filter((element) => element.starter).map((element) => element.id)).toEqual(['ember', 'tide', 'stone', 'gale'])
+    expect(eras[4].unlockRequires).toEqual(['iron', 'iron-tool', 'road', 'market'])
+    expect(eras[4].grants).toEqual([])
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
   })
 
@@ -593,6 +605,26 @@ describe('four-age expansion', () => {
     expect(isEraChallengeComplete(era, completed, elements)).toBe(true)
     expect(isEraChallengeComplete(era, completed.slice(0, -1), elements)).toBe(false)
     expect(isEraChallengeComplete(era, [...completed.slice(1), originalIds.at(-1)!], elements)).toBe(false)
+  })
+
+  it('keeps the new chapter optional and its challenge goal completable', () => {
+    const era = eras.find((entry) => entry.id === 'classical-antiquity')!
+    const ironGate = ['iron', 'iron-tool', 'road', 'market']
+    expect(era.unlockRequires).toEqual(ironGate)
+    expect(era.landmarkIds).toEqual([
+      'agora', 'academy', 'lyceum', 'natural-philosophy', 'fossil-inquiry',
+    ])
+    expect(era.discoveryGoal).toBe(6)
+    expect(isEraChallengeComplete(era, [...era.landmarkIds, 'observation'], elements)).toBe(true)
+    expect(isEraChallengeComplete(era, era.landmarkIds, elements)).toBe(false)
+    expect(isEraChallengeComplete(era, [...era.landmarkIds.slice(1), 'observation', 'fossil-collection'], elements)).toBe(false)
+    expect(eras.slice(0, 4).map((entry) => [entry.unlockRequires, entry.grants, entry.landmarkIds, entry.discoveryGoal]))
+      .toEqual([
+        [[], [], ['life', 'land', 'tree', 'rock', 'animal'], 18],
+        [['life', 'land', 'tree', 'rock', 'animal'], ['human'], ['stone-tool', 'hearth', 'art', 'village'], 16],
+        [['village', 'pottery', 'metal', 'quarry'], ['copper-ore'], ['bronze', 'wheel', 'writing', 'city', 'forge', 'law', 'voyage'], 23],
+        [['bronze', 'forge', 'law', 'city'], ['iron-ore'], ['iron', 'iron-tool', 'road', 'market'], 6],
+      ])
   })
 })
 

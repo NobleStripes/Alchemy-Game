@@ -39,7 +39,7 @@ describe('element shelf', () => {
     renderShelf()
     expect(screen.getByRole('combobox', { name: 'Age' })).toHaveValue('all')
     expect(within(screen.getByRole('combobox', { name: 'Age' })).getAllByRole('option').map((option) => option.textContent))
-      .toEqual(['All Ages', 'Origins', 'Stone Age', 'Bronze Age', 'Iron Age'])
+      .toEqual(['All Ages', 'Origins', 'Stone Age', 'Bronze Age', 'Iron Age', 'Classical Antiquity'])
     expect(results().getByRole('button', { name: 'Fire' })).toBeVisible()
     expect(results().getByRole('button', { name: craft.name })).toBeVisible()
     expect(results().queryByRole('button', { name: 'Metal' })).not.toBeInTheDocument()
@@ -155,6 +155,32 @@ describe('element shelf', () => {
     expect(results().getByRole('button', { name: 'Bird' })).toBeVisible()
     await user.click(screen.getByRole('button', { name: 'Starred' }))
     expect(results().getByRole('button', { name: 'Bird' })).toBeVisible()
+  })
+
+  it('filters Classical Antiquity discoveries while retaining their Recently Used shortcuts', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, 'agora', 'observation'],
+      firstSlotId: null,
+      secondSlotId: null,
+      recentIngredientIds: [],
+    })
+    renderShelf()
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'classical-antiquity')
+    expect(results().getByRole('button', { name: 'Agora' })).toBeVisible()
+    expect(results().getByRole('button', { name: 'Observation' })).toBeVisible()
+    await user.click(results().getByRole('button', { name: 'Agora' }))
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'first-light')
+    expect(results().queryByRole('button', { name: 'Agora' })).not.toBeInTheDocument()
+    const recentRegion = within(screen.getByRole('region', { name: /Recently used/ }))
+    const recentAgora = recentRegion.getByRole('button', { name: 'Use recent ingredient Agora' })
+    expect(recentAgora).toBeVisible()
+    await user.click(recentAgora)
+    expect(useGameStore.getState()).toMatchObject({
+      firstSlotId: 'agora',
+      secondSlotId: 'agora',
+      recentIngredientIds: ['agora'],
+    })
   })
 
   it('keeps keyboard selection and favorites working in compact rows without selecting on favorite activation', async () => {

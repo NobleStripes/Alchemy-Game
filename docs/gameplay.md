@@ -2,7 +2,7 @@
 
 [Back to the project overview](../README.md)
 
-The game has 151 elements and 187 recipes across four ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
+The game has 158 elements and 194 recipes across five gameplay ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
 
 Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed three-tab navigator; choosing an element returns directly to Combine, while the Elements list marks occupied slots. Search matches names and categories, and the Guide separates collections from optional element research with native disclosure controls.
 
@@ -24,13 +24,13 @@ The header also remains available during isolated challenges. Visiting Atlas doe
 
 ## Finding ingredients
 
-The Element shelf defaults to **All Ages**, because earlier ingredients remain useful for cross-age combinations. Choose Origins, Stone Age, Bronze Age, or Iron Age to filter the shelf without changing the playable age. Search, category tabs, and the independent **Starred** toggle combine; none exposes undiscovered ingredients. The counter shows matching discoveries out of the whole collection. **Clear filters** resets search, age, category, and Starred while retaining the selected sort and layout.
+The Element shelf defaults to **All Ages**, because earlier ingredients remain useful for cross-age combinations. Choose Origins, Stone Age, Bronze Age, Iron Age, or Classical Antiquity to filter the shelf without changing the playable age. Search, category tabs, and the independent **Starred** toggle combine; none exposes undiscovered ingredients. The counter shows matching discoveries out of the whole collection. **Clear filters** resets search, age, category, and Starred while retaining the selected sort and layout.
 
 Search and filter controls remain visible while the results scroll separately. **Compact layout** replaces illustrated tiles with denser rows; selection, favorites, occupied-slot markers, and dragging still work. Focus an ingredient and press Enter to select it; the existing Space-based keyboard dragging remains available.
 
 **Recently used** offers the last eight distinct ingredients selected in this campaign session, newest first. Selecting again moves an ingredient to the front. Drops, repeated inputs, prepared formulas, and immediate combinations also update this list. Its shortcuts span all shelf filters and return mobile players to Combine as usual. This differs from **Recent** sorting, which still orders elements by discovery. Clearing slots or visiting Atlas does not clear the shortcuts; reload or campaign reset does. Neither selections nor shelf controls spend Insight or trigger a save.
 
-## Four ages
+## Five gameplay pages
 
 Origins is an undated, symbolic gameplay prologue, not an archaeological period or a scientific account of creation. Its four starting essences draw on documented Greek natural philosophy, not modern chemical elements or a universal ancient belief; their free Atlas histories explain the distinction. The historical pages draw on several traditions; their approximate dates are explained in the [chronology guide](historical-interpretation.md), not a single worldwide timeline.
 
@@ -50,7 +50,9 @@ Bronze Age has 42 elements. Irrigation, Canal, Granary, Loom, Textile, and Balan
 
 **Iron Age** (from c. 1200 BCE, with regional end dates) spans twenty-three elements and twenty-three recipes with Iron Age results, including Lens as an optional later discovery rather than a Stone Age glass technology. Discovering Bronze, Forge, Law, and City unlocks it and grants Iron Ore. Ironworking, roads, markets, Steel, Coin, Aqueduct, Empire, and Manuscript are joined by Blacksmith, Nail, Saw, Timber, Bridge, and Wagon for specialized workshops and heavier construction. Optional Rotary Quern, Lathe, and Alphabet branches add researched grinding, woodworking, and writing themes; their notes distinguish earlier precedents from regional evidence rather than dating all three inventions to this page. The age challenge still requires Iron, Iron Tool, Road, and Market plus six Iron Age discoveries, including the granted ore. All earlier matter remains available.
 
-The expanded branches are optional: existing age unlocks, landmarks, discovery goals, and collection reward rules are unchanged. Existing saves retain their earned progress; catalog completion percentages now include the additional discoveries. Classical Antiquity is reserved for a later update, not a fifth playable age yet. Natural Inquiry, the Agora, ancient philosophical schools, early natural philosophy and scientific observation, and contested fossil-inspired mythology are also reserved; fifth-age progression is not implemented. Age assignments organize gameplay rather than claim exact invention dates.
+**Classical Antiquity** is an optional regional chapter with seven elements and seven recipes. It unlocks after the four Iron Age landmarks—Iron, Iron Tool, Road, and Market—without granting an element. Its five landmarks are Agora, Academy, Lyceum, Natural Philosophy, and Fossil Inquiry; the challenge asks for those five plus one other Classical Antiquity discovery. It includes optional Observation and a Mycenae Fossil Collection example. These entries compare Athenian institutions, varied Greek inquiry, a thirteenth-century BCE archaeological context, and fifth-century BCE Egyptian textual accounts. There is no single Classical Antiquity date range: Greek period labels have flexible boundaries, and Mediterranean regional histories overlap rather than forming a universal successor to the Iron Age. The Protoceratops–griffin proposal is a disputed modern hypothesis, not established ancient history.
+
+The earlier four page gates, landmarks, discovery goals, grants, and Rainmaker rules are unchanged. All seven new recipes validate as reachable through their chapter branches; duplicate ingredient pairs are rejected by content validation. Existing version 7 saves retain discoveries, recorded formulas, starred elements, and progress. The six collections include the optional Mediterranean Inquiry set; its reward does not require reading the Atlas. Page assignments organize gameplay rather than claim exact invention dates.
 
 ## Gameplay Guide features
 
@@ -64,7 +66,7 @@ Recorded formulas, eligible Open Leads, and Recent Experiments have prepare-only
 
 The searchable **Recorded Formulas** archive lists every performed formula whose result belongs to the active age, including alternate routes. Formula records remain available after their attempts leave Recent Experiments. Older saves with performed recipe IDs populate the archive without inventing experiment history; element-only saves do not imply that a formula was performed.
 
-Five themed collections appear separately from category completion: **Stormwatch** (Mist, Cloud, Rain, Storm, Lightning), **Harvest Table** (Field, Crop, Flour, Dough, Bread), **Ironworkers** (Iron Ore, Bellows, Bloomery, Iron, Iron Tool), **Bronze Workshop**, and **Marks and Materials**. Each first completion awards +1 Insight, capped at three. Completing a collection with a full wallet still consumes its one-time reward; overflow is not banked. Loading a save does not award collection rewards. Educational objectives are described below.
+Six themed collections appear separately from category completion: **Stormwatch** (Mist, Cloud, Rain, Storm, Lightning), **Harvest Table** (Field, Crop, Flour, Dough, Bread), **Ironworkers** (Iron Ore, Bellows, Bloomery, Iron, Iron Tool), **Bronze Workshop**, **Marks and Materials**, and **Mediterranean Inquiry** (Observation, Natural Philosophy, Fossil, Fossil Collection, Fossil Inquiry). Each first completion awards +1 Insight, capped at three. Completing a collection with a full wallet still consumes its one-time reward; overflow is not banked. Loading a save does not award collection rewards. Educational objectives are described below.
 
 <details>
 <summary>Food-processing recipe example (spoilers)</summary>

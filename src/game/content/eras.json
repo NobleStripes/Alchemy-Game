@@ -37,5 +37,14 @@
     "grants": ["iron-ore"],
     "landmarkIds": ["iron", "iron-tool", "road", "market"],
     "discoveryGoal": 6
+  },
+  {
+    "id": "classical-antiquity",
+    "name": "Classical Antiquity",
+    "subtitle": "A Mediterranean chapter of overlapping regional histories, not a universal successor to the Iron Age.",
+    "unlockRequires": ["iron", "iron-tool", "road", "market"],
+    "grants": [],
+    "landmarkIds": ["agora", "academy", "lyceum", "natural-philosophy", "fossil-inquiry"],
+    "discoveryGoal": 6
   }
 ]

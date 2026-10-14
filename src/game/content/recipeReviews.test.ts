@@ -9,12 +9,12 @@ const fixture = () => structuredClone(recipeReviews)
 describe('historical recipe review', () => {
   it('covers every recipe exactly once, including alternate routes', () => {
     expect(schema.parse(recipeReviews)).toEqual(recipeReviews)
-    expect(recipeReviews.reviews).toHaveLength(187)
+    expect(recipeReviews.reviews).toHaveLength(194)
     expect(new Set(recipeReviews.reviews.map((review) => review.recipeId)))
       .toEqual(new Set(recipes.map((recipe) => recipe.id)))
     expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(14)
     expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(92)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(81)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(88)
   })
 
   it('preserves the pre-audit IDs, input pairs, results and order', async () => {
@@ -74,6 +74,13 @@ describe('historical recipe review', () => {
     ['avian-lineage', 'symbolic', 'not all birds fly', 'nhm-bird-evolution'],
     ['transport-amphora', 'symbolic', 'predate Classical Antiquity', 'aha-amphora-trade'],
     ['calcined-lime', 'simplified-process', 'calcium oxide and carbon dioxide', 'epa-lime-manufacturing'],
+    ['athenian-agora', 'symbolic', 'describe every Mediterranean city', 'ascsa-agora'],
+    ['recorded-academy', 'symbolic', 'founded Plato', 'sep-aristotle'],
+    ['lyceum-studies', 'symbolic', 'neither founded the school', 'sep-aristotle'],
+    ['attentive-cloud', 'symbolic', 'single scientific method', 'sep-presocratics'],
+    ['nature-and-record', 'symbolic', 'should not flatten differences', 'sep-presocratics'],
+    ['archived-fossil', 'symbolic', 'does not recreate its collection', 'mycenae-fossil-study'],
+    ['examined-remains', 'symbolic', 'does not establish that fossils inspired', 'herodotus-winged-serpents'],
   ])('qualifies the priority chain %s without inventing chronology', (recipeId, classification, caution, sourceId) => {
     const review = reviewsByRecipeId.get(recipeId)!
     expect(review.classification).toBe(classification)
