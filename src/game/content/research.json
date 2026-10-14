@@ -350,6 +350,116 @@
       "url": "https://www.britishmuseum.org/collection/object/Y_EA5524",
       "publicationDate": null,
       "verification": { "status": "pending", "attemptedOn": "2026-10-13", "reason": "Original collection page returned HTTP 403. Search summaries are leads only; brush construction, dating and object details have not been admitted as supporting evidence." }
+    },
+    {
+      "id": "nhm-fossils",
+      "title": "What is a fossil?",
+      "authors": ["Emily Osterloff", "Lisa Hendry"],
+      "institution": "Natural History Museum, London",
+      "sourceType": "museum-essay",
+      "url": "https://www.nhm.ac.uk/discover/what-is-a-fossil.html",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.nhm.ac.uk/discover/what-is-a-fossil.html", "accessLevel": "selected-passages", "locator": "Definition and fossil-record sections: physical evidence of prehistoric life, distinctions between body and trace fossils, and the long history of people finding and sometimes misidentifying fossils. Formation mechanics and timescales are cited to the museum's separate formation article." }
+    },
+    {
+      "id": "nhm-fossil-formation",
+      "title": "How are dinosaur fossils formed?",
+      "authors": [],
+      "institution": "Natural History Museum, London",
+      "sourceType": "museum-essay",
+      "url": "https://www.nhm.ac.uk/discover/how-are-fossils-formed.html",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.nhm.ac.uk/discover/how-are-fossils-formed.html", "accessLevel": "selected-passages", "locator": "Original article sections on rapid burial, rarity of fossilization, mineral replacement, body and trace fossils, and the statement that petrification can take thousands or millions of years. The article distinguishes fossil formation from the later uplift, erosion and exposure that make some fossils discoverable." }
+    },
+    {
+      "id": "nhm-bird-evolution",
+      "title": "How dinosaurs evolved into birds",
+      "authors": [],
+      "institution": "Natural History Museum, London",
+      "sourceType": "museum-essay",
+      "url": "https://www.nhm.ac.uk/discover/how-dinosaurs-evolved-into-birds.html",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.nhm.ac.uk/discover/how-dinosaurs-evolved-into-birds.html", "accessLevel": "selected-passages", "locator": "Original article passages identify birds as living dinosaurs, link modern birds to theropods, and describe gradual evolutionary change beginning about 160 million years ago. The article notes that evolutionary understanding changes with new fossils." }
+    },
+    {
+      "id": "nhm-dinosaur-extinction",
+      "title": "What killed the dinosaurs?",
+      "authors": [],
+      "institution": "Natural History Museum, London",
+      "sourceType": "museum-essay",
+      "url": "https://www.nhm.ac.uk/discover/dinosaur-extinction.html",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.nhm.ac.uk/discover/dinosaur-extinction.html", "accessLevel": "selected-passages", "locator": "Opening account dates the dinosaur extinction to 66 million years ago and explicitly notes the exception of birds. Used to distinguish non-avian dinosaur extinction from the survival of avian dinosaurs, not to imply every dinosaur lineage survived." }
+    },
+    {
+      "id": "nhm-first-birds",
+      "title": "What were the first birds like?",
+      "authors": [],
+      "institution": "Natural History Museum, London",
+      "sourceType": "museum-essay",
+      "url": "https://www.nhm.ac.uk/discover/what-were-the-first-birds-like.html",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.nhm.ac.uk/discover/what-were-the-first-birds-like.html", "accessLevel": "selected-passages", "locator": "Original article on transitional bird-like fossils, theropod ancestry, gradual emergence of bird traits, ambiguity in defining the first bird, and the possibility that some early feathered dinosaurs could not fly. Archaeopteryx is not treated as an undisputed first bird." }
+    },
+    {
+      "id": "smithsonian-ostrich",
+      "title": "Ostrich",
+      "authors": [],
+      "institution": "Smithsonian's National Zoo and Conservation Biology Institute",
+      "sourceType": "museum-essay",
+      "url": "https://nationalzoo.si.edu/animals/ostrich",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://nationalzoo.si.edu/animals/ostrich", "accessLevel": "selected-passages", "locator": "Animal profile identifies the common ostrich as completely flightless and describes its wings' non-flight uses. Cited as a living counterexample to the assumption that all birds fly, not as evidence about bird origins." }
+    },
+    {
+      "id": "met-amphora-bronze",
+      "title": "Amphora",
+      "authors": [],
+      "institution": "The Metropolitan Museum of Art",
+      "sourceType": "museum-collection",
+      "url": "https://www.metmuseum.org/art/collection/search/240708",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://collectionapi.metmuseum.org/public/collection/v1/objects/240708", "accessLevel": "collection-record", "locator": "Official museum collection API, accession 74.51.1121: Cypriot terracotta amphora cataloged to the Early–Middle Bronze Age, object date ca. 3200–1600 BCE. One regional object date, not a universal invention date or proof of its contents." }
+    },
+    {
+      "id": "met-transport-amphora",
+      "title": "Terracotta transport amphora",
+      "authors": [],
+      "institution": "The Metropolitan Museum of Art",
+      "sourceType": "museum-collection",
+      "url": "https://www.metmuseum.org/art/collection/search/239942",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://collectionapi.metmuseum.org/public/collection/v1/objects/239942", "accessLevel": "collection-record", "locator": "Official museum collection API, accession 74.51.357: object title identifies a terracotta transport amphora, culture Greek/Rhodian, dated late third to mid-second century BCE. The record does not establish the origin of amphorae or universal use." }
+    },
+    {
+      "id": "aha-amphora-trade",
+      "title": "Objects of Trade and Transport in the Ancient Mediterranean",
+      "authors": [],
+      "institution": "American Historical Association, Teaching Things",
+      "sourceType": "reference-textbook",
+      "url": "https://www.historians.org/resource/objects-of-trade-and-transport-in-the-ancient-mediterranean/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.historians.org/resource/objects-of-trade-and-transport-in-the-ancient-mediterranean/", "accessLevel": "selected-passages", "locator": "Introduction and Ancient Food Packaging and Transportation: large ceramic transport amphorae packaged foodstuffs; examples were distributed around the Mediterranean and beyond and connected producers, merchants, consumers and markets. The lesson treats varied amphora forms and contents rather than one universal vessel type." }
+    },
+    {
+      "id": "friesem-lime-plaster",
+      "title": "Lime plaster cover of the dead 12,000 years ago - New evidence for the origins of lime plaster technology",
+      "authors": ["David E. Friesem", "Itay Abadi", "Dana Shaham", "Leore Grosman"],
+      "institution": "Evolutionary Human Sciences",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1017/ehs.2019.9",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://cris.haifa.ac.il/en/publications/lime-plaster-cover-of-the-dead-12000-years-ago-new-evidence-for-t/", "accessLevel": "abstract-only", "locator": "Publisher-linked bibliographic record and full abstract: Natufian lime plaster at Nahal Ein Gev II dated to 12,000 years ago; infrared spectroscopy and soil micromorphology; reconstruction of production and its technological significance at the end of the Palaeolithic. Abstract only, not full paper; evidence concerns plaster and does not establish a global first for isolated quicklime." }
+    },
+    {
+      "id": "epa-lime-manufacturing",
+      "title": "AP-42, Chapter 11.17: Lime Manufacturing",
+      "authors": [],
+      "institution": "U.S. Environmental Protection Agency",
+      "sourceType": "reference-textbook",
+      "url": "https://gaftp.epa.gov/ap42/ch11/s17/final/c11s17_1995.pdf",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://gaftp.epa.gov/ap42/ch11/s17/final/c11s17_1995.pdf", "accessLevel": "selected-passages", "locator": "AP-42 process description for lime manufacturing: limestone or other calcium carbonate feed is calcined in a kiln at high temperature to form quicklime (calcium oxide) and carbon dioxide. Used for the chemistry and modern production requirements, not as evidence for the design of prehistoric kilns." }
     }
   ],
   "records": [
@@ -782,6 +892,99 @@
       "historicalUncertainty": ["The term translated as air in Empedocles' roots should not be reduced to modern breathing-air composition.", "The cited texts and translations establish philosophical positions, not an exact first invention, adoption rate or every ancient society's beliefs.", "Interpretations of the fragmentary poems and divine-name identifications remain debated; this record does not reconstruct every aspect of Greek cosmology."],
       "gameplaySimplifications": ["The description's opening sentence is gameplay flavor; Historical context is supported by the cited notes here.", "The starting essence and two-input recipes are symbolic mechanics, not a model of gaseous composition or of the ancient theories.", "The undated gameplay prologue does not make Greek philosophy prehistoric, universally shared or valid modern chemistry."],
       "furtherResearch": []
+    },
+    {
+      "elementId": "fossil",
+      "elementName": "Fossil",
+      "historicalOverview": { "text": "Fossils preserve physical evidence of prehistoric life. Rapid burial can protect remains from complete decay, and minerals may preserve hard parts or traces over geological time. People encounter these records long after the organisms lived; fossils are not made in an instant by combining bone and rock.", "sourceIds": ["nhm-fossils", "nhm-fossil-formation"] },
+      "manufactureOrUse": { "text": "Fossilization is a rare natural process, not a craft recipe. Bones are one kind of body fossil; impressions and traces such as footprints can also preserve evidence of past life. Conditions and timescales vary from thousands to millions of years.", "sourceIds": ["nhm-fossils", "nhm-fossil-formation"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Stone Age placement frames human encounters with pre-existing fossils, not when the organisms lived or when their remains fossilized. Many fossil records reach far earlier than humans.", "sourceIds": ["nhm-fossils"] },
+      "relatedDiscoveries": [
+        { "elementId": "bone", "relationship": "gameplay-abstraction", "explanation": "Bone evokes one possible fossilized hard part, but many fossils are traces or remains other than bone.", "sourceIds": ["nhm-fossils"] },
+        { "elementId": "rock", "relationship": "documented", "explanation": "Fossils are commonly preserved in sedimentary rock; rock represents their geological context, not an ingredient that creates them.", "sourceIds": ["nhm-fossils"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Varies: thousands to millions of years for fossilization", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["nhm-fossil-formation"], "note": "The Natural History Museum describes a range of fossilization timescales. This is not the age of every fossil or an exact date for one organism." }
+      ],
+      "associatedRegions": ["Global"],
+      "archaeologicalEvidence": [],
+      "historicalSignificance": { "text": "Fossils provide a material record of ancient organisms and help reconstruct changes in life and environments. Their preservation is selective, so the fossil record is evidence rather than a complete inventory of past life.", "sourceIds": ["nhm-fossils"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Fossilization is uncommon and favors some materials and burial conditions over others.", "A general account of fossil formation does not date a particular fossil or identify the earliest human encounter with one."],
+      "gameplaySimplifications": ["Bone plus Rock is a symbolic discovery formula, not fossilization; preservation depends on conditions and geological time.", "The Stone Age placement dates neither the fossil nor the prehistoric organism it records."],
+      "furtherResearch": [{ "question": "Add regional evidence for ancient and modern fossil collecting and for the changing interpretation of fossils.", "sourceIds": [] }]
+    },
+    {
+      "elementId": "bird",
+      "elementName": "Bird",
+      "historicalOverview": { "text": "Modern birds are the surviving avian dinosaur lineage and evolved within theropod dinosaurs. The Natural History Museum describes gradual change beginning around 160 million years ago and notes that the boundary between early bird-like dinosaurs and birds is not always clear.", "sourceIds": ["nhm-bird-evolution", "nhm-first-birds", "nhm-dinosaur-extinction"] },
+      "manufactureOrUse": { "text": "Birds are a living animal lineage, not something produced by mixing animal and air. Feathers and other bird traits appeared at different stages; some early bird-like dinosaurs may not have flown, and living birds such as ostriches are flightless.", "sourceIds": ["nhm-first-birds", "smithsonian-ostrich"] },
+      "agePlacement": { "status": "fictional-prologue", "text": "Origins is an undated, symbolic gameplay prologue. Bird's placement there does not date the evolution or appearance of actual birds.", "sourceIds": [] },
+      "relatedDiscoveries": [
+        { "elementId": "animal", "relationship": "documented", "explanation": "Birds are animals and a surviving branch of the dinosaur lineage.", "sourceIds": ["nhm-bird-evolution", "nhm-dinosaur-extinction"] },
+        { "elementId": "gale", "relationship": "gameplay-abstraction", "explanation": "Air is a symbolic clue, not a material ingredient; not all birds fly.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Beginning around 160 million years ago", "dateType": "regional-development", "precision": "approximate", "regions": ["Global"], "sourceIds": ["nhm-bird-evolution"], "note": "The museum describes gradual evolutionary change in the bird lineage, not a precise first bird or a single origin event." },
+        { "dateRange": "66 million years ago", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Global"], "sourceIds": ["nhm-dinosaur-extinction"], "note": "Non-avian dinosaurs went extinct at the end-Cretaceous event; avian dinosaurs survived. This is not the extinction of every dinosaur lineage." }
+      ],
+      "associatedRegions": ["Global"],
+      "archaeologicalEvidence": [
+        { "text": "The museum describes transitional bird-like fossils and the approximately 150-million-year-old Archaeopteryx, while noting debate over whether it should be called a bird.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["nhm-first-birds"] }
+      ],
+      "historicalSignificance": { "text": "Birds show that dinosaurs did not disappear completely: one avian lineage survived the extinction that eliminated non-avian dinosaurs around 66 million years ago. Modern classification reflects evolutionary evidence, not the game's symbolic recipe.", "sourceIds": ["nhm-bird-evolution", "nhm-dinosaur-extinction"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The first bird depends partly on how scientists define birds; transitional forms blur the boundary with non-avian dinosaurs.", "The sources describe a broad evolutionary history, not a single origin point or the date when every bird trait appeared."],
+      "gameplaySimplifications": ["Animal plus Air is symbolic; birds evolved through biological processes over deep time.", "Origins is a fictional, undated game chapter, not the age of birds.", "Flight is not universal among living birds, as the ostrich example illustrates, and was not necessarily present in every early bird-like dinosaur."],
+      "furtherResearch": [{ "question": "Compare current phylogenetic studies and fossil discoveries when discussing the changing definitions of birds and avian dinosaurs.", "sourceIds": [] }]
+    },
+    {
+      "elementId": "amphora",
+      "elementName": "Amphora",
+      "historicalOverview": { "text": "Amphorae were large ceramic containers used to package and transport foodstuffs. The American Historical Association describes their distribution around the ancient Mediterranean and beyond, linking producers, merchants, consumers and markets. A Cypriot example in the Met's collection is dated to the Early–Middle Bronze Age, long before Classical Antiquity.", "sourceIds": ["aha-amphora-trade", "met-amphora-bronze"] },
+      "manufactureOrUse": { "text": "Transport amphorae were pottery vessels used for goods such as wine, olive oil and fish sauces. Their forms could identify contents and origin; ceramic production required potters to shape and fire the vessels in kilns. The varied forms and uses developed over time.", "sourceIds": ["aha-amphora-trade", "met-transport-amphora"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Bronze Age placement is supported by a Cypriot terracotta amphora the Met catalogs to the Early–Middle Bronze Age. It is a regional object date, not a single invention date for all amphora traditions.", "sourceIds": ["met-amphora-bronze"] },
+      "relatedDiscoveries": [
+        { "elementId": "pottery", "relationship": "documented", "explanation": "Transport amphorae are ceramic vessels made by potters and fired in kilns.", "sourceIds": ["aha-amphora-trade"] },
+        { "elementId": "trade", "relationship": "documented", "explanation": "Amphorae carried goods through ancient Mediterranean markets and wider distribution networks.", "sourceIds": ["aha-amphora-trade"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "ca. 3200–1600 BCE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Cyprus"], "sourceIds": ["met-amphora-bronze"], "note": "The museum's date for one Cypriot terracotta amphora, not the beginning of amphora production everywhere." },
+        { "dateRange": "Late third to mid-second century BCE", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Rhodes, Greek world"], "sourceIds": ["met-transport-amphora"], "note": "The Met's catalog date for one Rhodian transport amphora; it illustrates a later tradition, not the vessel's origin." }
+      ],
+      "associatedRegions": ["Cyprus", "Rhodes, Greek world", "Mediterranean basin"],
+      "archaeologicalEvidence": [
+        { "text": "The Met catalogs a Cypriot terracotta amphora to the Early–Middle Bronze Age and a later terracotta transport amphora as Greek, Rhodian.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["met-amphora-bronze", "met-transport-amphora"] },
+        { "text": "The American Historical Association describes transport amphorae distributed around the Mediterranean and beyond, with forms and markings identifying goods for merchants and consumers.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["aha-amphora-trade"] }
+      ],
+      "historicalSignificance": { "text": "Amphorae joined ceramic craft to the storage, packaging and circulation of goods. Their distribution helps make ancient trade networks visible, while one surviving form cannot represent every regional container or commerce system.", "sourceIds": ["aha-amphora-trade", "met-transport-amphora"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The museum's Bronze Age specimen does not establish where or when amphorae were first invented.", "Amphorae varied by region, period, contents and function; later Greek trade is not their beginning.", "The sources describe selected objects and teaching examples, not a complete survey of ancient Mediterranean exchange."],
+      "gameplaySimplifications": ["Pottery plus Trade symbolizes a transport-vessel tradition; trade does not physically make a pot.", "Bronze Age placement highlights an early Cypriot example and does not imply that amphorae began only in this age or region.", "One element compresses many vessel forms and centuries of Mediterranean commerce."],
+      "furtherResearch": [{ "question": "Compare Bronze Age container forms and regional evidence before proposing a single origin or transmission route for amphorae.", "sourceIds": [] }]
+    },
+    {
+      "elementId": "quicklime",
+      "elementName": "Quicklime",
+      "historicalOverview": { "text": "Quicklime is calcium oxide produced by calcining limestone or another suitable calcium carbonate rock, releasing carbon dioxide. A peer-reviewed study reconstructs lime calcination for high-quality Natufian lime plaster at Nahal Ein Gev II about 12,000 years ago, evidence that this technology existed before the Bronze Age.", "sourceIds": ["epa-lime-manufacturing", "friesem-lime-plaster"] },
+      "manufactureOrUse": { "text": "In calcination, calcium carbonate (CaCO₃) decomposes under sustained high heat to calcium oxide (CaO) and carbon dioxide (CO₂). Kilns provide controlled high temperatures; the ancient evidence supports sophisticated firing but does not establish one universal prehistoric kiln design.", "sourceIds": ["epa-lime-manufacturing", "friesem-lime-plaster"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Although first suggested for the Bronze Age, a study reconstructs limestone calcination for Natufian lime plaster around 12,000 years ago. This supports Stone Age placement as an earlier precedent, while not establishing the world's first production of quicklime in isolation.", "sourceIds": ["friesem-lime-plaster"] },
+      "relatedDiscoveries": [
+        { "elementId": "limestone", "relationship": "documented", "explanation": "Limestone supplies calcium carbonate for calcination into quicklime.", "sourceIds": ["epa-lime-manufacturing"] },
+        { "elementId": "heat", "relationship": "documented", "explanation": "Calcination requires sustained high-temperature firing; the Heat element abbreviates controlled kiln operation.", "sourceIds": ["epa-lime-manufacturing", "friesem-lime-plaster"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "About 12,000 years ago", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Nahal Ein Gev II, southern Levant"], "sourceIds": ["friesem-lime-plaster"], "note": "The study dates high-quality Natufian lime plaster and reconstructs its production through lime calcination. It is not an isolated quicklime object or a proven global first." }
+      ],
+      "associatedRegions": ["Nahal Ein Gev II, southern Levant"],
+      "archaeologicalEvidence": [
+        { "text": "Infrared spectroscopy and soil micromorphology were used to analyze Natufian lime plaster at Nahal Ein Gev II; the authors reconstruct production involving lime calcination.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["friesem-lime-plaster"] }
+      ],
+      "historicalSignificance": { "text": "The Natufian plaster study extends evidence for sophisticated pyrotechnology before farming societies' later large-scale lime plaster production. It cautions against dating the technology only to the Bronze Age.", "sourceIds": ["friesem-lime-plaster"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The peer-reviewed source was reviewed through its abstract; it describes a reconstruction of lime plaster production, not a standalone quicklime specimen.", "This evidence does not establish the earliest production worldwide, continuous adoption, or the construction of a particular kiln.", "Modern industrial temperature ranges do not by themselves establish the exact firing conditions at Nahal Ein Gev II."],
+      "gameplaySimplifications": ["Limestone plus Heat compresses fuel, preparation, sustained kiln firing and process control into two symbols.", "The product is quicklime (calcium oxide), not finished lime plaster; adding water in the subsequent slaking step is omitted.", "Calcination releases carbon dioxide, and the game's combination is not a complete production method."],
+      "furtherResearch": [{ "question": "Review the full study and compare excavated lime kilns, residues and lime-plaster evidence across regions to refine prehistoric production chronology.", "sourceIds": ["friesem-lime-plaster"] }]
     }
   ]
 }

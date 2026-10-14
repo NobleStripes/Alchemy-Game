@@ -181,5 +181,9 @@
   { "id": "turning-workshop", "inputs": ["timber", "wheel"], "result": "lathe", "flavor": "Rotation meets woodworking; supports, a cutting tool and controlled motion are abbreviated, not invented by the pair." },
   { "id": "alphabetic-signs", "inputs": ["writing", "scribe"], "result": "alphabet", "flavor": "A symbolic branch explores signs for sounds; trained writing does not inevitably become an alphabet." },
   { "id": "rotary-flour", "inputs": ["rotary-quern", "crop"], "result": "flour", "flavor": "Prepared cereal grains pass between turning stones; not every crop is grain, and earlier grinding routes remain valid." },
-  { "id": "alphabetic-manuscript", "inputs": ["alphabet", "papyrus"], "result": "manuscript", "flavor": "Alphabetic signs evoke one handwritten text; people, language and writing are omitted, and other scripts and surfaces remain possible." }
+  { "id": "alphabetic-manuscript", "inputs": ["alphabet", "papyrus"], "result": "manuscript", "flavor": "Alphabetic signs evoke one handwritten text; people, language and writing are omitted, and other scripts and surfaces remain possible." },
+  { "id": "fossilized-remains", "inputs": ["bone", "rock"], "result": "fossil", "flavor": "Buried remains take geological time to fossilize; this pair evokes discovering a fossil, not making one." },
+  { "id": "avian-lineage", "inputs": ["animal", "gale"], "result": "bird", "flavor": "Animal life meets air in a symbolic clue to birds, living avian dinosaurs; not every bird flies." },
+  { "id": "transport-amphora", "inputs": ["pottery", "trade"], "result": "amphora", "flavor": "Fired clay and exchange evoke handled transport jars used across the ancient Mediterranean." },
+  { "id": "calcined-lime", "inputs": ["heat", "limestone"], "result": "quicklime", "flavor": "Sustained kiln heat calcines limestone into quicklime and carbon dioxide; fuel and firing conditions are omitted." }
 ]

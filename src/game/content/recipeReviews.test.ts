@@ -9,12 +9,12 @@ const fixture = () => structuredClone(recipeReviews)
 describe('historical recipe review', () => {
   it('covers every recipe exactly once, including alternate routes', () => {
     expect(schema.parse(recipeReviews)).toEqual(recipeReviews)
-    expect(recipeReviews.reviews).toHaveLength(183)
+    expect(recipeReviews.reviews).toHaveLength(187)
     expect(new Set(recipeReviews.reviews.map((review) => review.recipeId)))
       .toEqual(new Set(recipes.map((recipe) => recipe.id)))
     expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(14)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(91)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(78)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(92)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(81)
   })
 
   it('preserves the pre-audit IDs, input pairs, results and order', async () => {
@@ -70,6 +70,10 @@ describe('historical recipe review', () => {
     ['alphabetic-signs', 'symbolic', 'not an inevitable progression', 'penn-alphabet'],
     ['rotary-flour', 'material-process', 'not every cultivated plant', 'northampton-quern'],
     ['alphabetic-manuscript', 'simplified-process', 'not universal prerequisites', 'um-papyrus'],
+    ['fossilized-remains', 'symbolic', 'geological time', 'nhm-fossils'],
+    ['avian-lineage', 'symbolic', 'not all birds fly', 'nhm-bird-evolution'],
+    ['transport-amphora', 'symbolic', 'predate Classical Antiquity', 'aha-amphora-trade'],
+    ['calcined-lime', 'simplified-process', 'calcium oxide and carbon dioxide', 'epa-lime-manufacturing'],
   ])('qualifies the priority chain %s without inventing chronology', (recipeId, classification, caution, sourceId) => {
     const review = reviewsByRecipeId.get(recipeId)!
     expect(review.classification).toBe(classification)

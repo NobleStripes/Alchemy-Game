@@ -27,6 +27,35 @@ describe('progress persistence', () => {
     expect(parseProgress(exportProgress(progress))).toEqual(progress)
   })
 
+  it('preserves the four new discoveries, recorded formulas and starred elements in version 7 saves', () => {
+    const recipeIds = ['fossilized-remains', 'avian-lineage', 'transport-amphora', 'calcined-lime']
+    const recordedRecipes = recipeIds.map((id) => recipes.find((recipe) => recipe.id === id)!)
+    const discoveredIds = [...new Set([
+      ...starterElementIds,
+      ...recordedRecipes.flatMap((recipe) => [...recipe.inputs, recipe.result]),
+    ])]
+    const progress = parseProgress(JSON.stringify({
+      ...fresh(),
+      discoveredIds,
+      discoveredRecipeIds: recipeIds,
+      favoriteIds: ['fossil', 'bird', 'amphora', 'quicklime'],
+      experimentHistory: recordedRecipes.map((recipe, index) => ({
+        id: index + 1,
+        inputs: recipe.inputs,
+        outcome: 'discovery',
+        resultId: recipe.result,
+        recipeId: recipe.id,
+      })),
+    }))!
+
+    expect(progress.version).toBe(7)
+    expect(progress.discoveredRecipeIds).toEqual(recipeIds)
+    expect(progress.favoriteIds).toEqual(['fossil', 'bird', 'amphora', 'quicklime'])
+    expect(progress.experimentHistory.map((entry) => [entry.inputs, entry.resultId]))
+      .toEqual(recordedRecipes.map((recipe) => [recipe.inputs, recipe.result]))
+    expect(parseProgress(exportProgress(progress))).toEqual(progress)
+  })
+
   it('defaults older v7 saves to unread and only retains discovered researched reading markers', () => {
     const progress = fresh()
     const { readHistoricalElementIds, ...older } = progress

@@ -414,7 +414,7 @@ describe('Bronze Age content', () => {
     )
     const bronzeEra = eras.find((era) => era.id === 'bronze-age')
 
-    expect(bronzeElements).toHaveLength(41)
+    expect(bronzeElements).toHaveLength(42)
     expect(bronzeEra?.discoveryGoal).toBe(23)
     expect(bronzeEra?.landmarkIds).toEqual([
       'bronze',
@@ -553,6 +553,10 @@ describe('four-age expansion', () => {
     ['iron-age', 'sawn-timber', 'saw', 'tree', 'timber'],
     ['iron-age', 'spanning-road', 'timber', 'road', 'bridge'],
     ['iron-age', 'reinforced-wagon', 'nail', 'cart', 'wagon'],
+    ['stone-age', 'fossilized-remains', 'bone', 'rock', 'fossil'],
+    ['first-light', 'avian-lineage', 'animal', 'gale', 'bird'],
+    ['bronze-age', 'transport-amphora', 'pottery', 'trade', 'amphora'],
+    ['stone-age', 'calcined-lime', 'limestone', 'heat', 'quicklime'],
   ])('resolves %s recipe %s in both orders using same-or-earlier inputs', (eraId, id, first, second, result) => {
     expect(resolveCombination(first, second, recipeIndex)).toMatchObject({ id, result })
     expect(resolveCombination(second, first, recipeIndex)).toMatchObject({ id, result })
@@ -567,9 +571,9 @@ describe('four-age expansion', () => {
 
   it('expands exactly four ages with fully reachable, nonconflicting content', () => {
     expect(eras.map((era) => era.id)).toEqual(['first-light', 'stone-age', 'bronze-age', 'iron-age'])
-    expect(elements).toHaveLength(147)
-    expect(recipes).toHaveLength(183)
-    expect(eras.map((era) => elements.filter((element) => element.era === era.id).length)).toEqual([41, 42, 41, 23])
+    expect(elements).toHaveLength(151)
+    expect(recipes).toHaveLength(187)
+    expect(eras.map((era) => elements.filter((element) => element.era === era.id).length)).toEqual([42, 44, 42, 23])
     expect(elements.filter((element) => element.starter).map((element) => element.id)).toEqual(['ember', 'tide', 'stone', 'gale'])
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
   })

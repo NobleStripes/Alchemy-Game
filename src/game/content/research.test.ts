@@ -14,6 +14,7 @@ const priorityIds = [
   'writing', 'road', 'market', 'plow', 'glass',
 ]
 const expansionIds = ['rotary-quern', 'lathe', 'alphabet']
+const newDiscoveryIds = ['fossil', 'bird', 'amphora', 'quicklime']
 const classicalIds = ['ember', 'tide', 'stone', 'gale']
 
 describe('historical research database', () => {
@@ -60,16 +61,16 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(34)
+    )).toHaveLength(45)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
   })
 
-  it.each([...priorityIds, ...expansionIds, ...classicalIds])('links %s research to its current name and stable ID', (elementId) => {
+  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds])('links %s research to its current name and stable ID', (elementId) => {
     const record = researchByElementId.get(elementId)
     expect(record?.elementName).toBe(
       elements.find((element) => element.id === elementId)?.name,
@@ -83,8 +84,8 @@ describe('historical research database', () => {
   })
 
   it('includes the additive batch while keeping four ages and undated gameplay Origins', () => {
-    expect(elements).toHaveLength(147)
-    expect(recipes).toHaveLength(183)
+    expect(elements).toHaveLength(151)
+    expect(recipes).toHaveLength(187)
     expect(eras).toHaveLength(4)
     expect(eras[0].dateRange).toBeUndefined()
     expect(researchByElementId.get('metal')?.approximateDates[0]).toMatchObject({
@@ -93,6 +94,47 @@ describe('historical research database', () => {
       regions: [],
       sourceIds: [],
     })
+  })
+
+  it('records the new discoveries without turning symbolic recipes into historical processes', () => {
+    const bird = researchByElementId.get('bird')!
+    expect(bird.agePlacement.status).toBe('fictional-prologue')
+    expect(bird.historicalOverview.text).toContain('theropod')
+    expect(bird.historicalOverview.text).toContain('surviving avian dinosaur lineage')
+    expect(bird.approximateDates.map((date) => date.dateRange))
+      .toEqual(['Beginning around 160 million years ago', '66 million years ago'])
+    expect(bird.gameplaySimplifications.join(' ')).toContain('not universal')
+    expect(JSON.stringify(bird)).not.toMatch(/Protoceratops|griffin/i)
+
+    const quicklime = researchByElementId.get('quicklime')!
+    expect(elements.find((element) => element.id === 'quicklime')?.era).toBe('stone-age')
+    expect(quicklime.agePlacement.status).toBe('earlier-precedents')
+    expect(quicklime.manufactureOrUse.text).toContain('CaCO₃')
+    expect(quicklime.manufactureOrUse.text).toContain('CO₂')
+    expect(quicklime.manufactureOrUse.text).toContain('sustained high heat')
+    expect(quicklime.gameplaySimplifications.join(' ')).toContain('kiln firing')
+
+    const fossil = researchByElementId.get('fossil')!
+    expect(fossil.historicalOverview.text).toContain('long after the organisms lived')
+    expect(fossil.approximateDates[0].sourceIds).toContain('nhm-fossil-formation')
+    expect(fossil.gameplaySimplifications.join(' ')).toContain('geological time')
+
+    const amphora = researchByElementId.get('amphora')!
+    expect(amphora.historicalOverview.text).toContain('long before Classical Antiquity')
+    expect(amphora.approximateDates[0].sourceIds).toContain('met-amphora-bronze')
+  })
+
+  it('backs each new research entry with verified primary institutional or peer-reviewed references', () => {
+    const sourceIds = [
+      'nhm-fossils', 'nhm-fossil-formation',
+      'nhm-bird-evolution', 'nhm-first-birds', 'nhm-dinosaur-extinction', 'smithsonian-ostrich',
+      'aha-amphora-trade', 'met-amphora-bronze', 'met-transport-amphora',
+      'friesem-lime-plaster', 'epa-lime-manufacturing',
+    ]
+    for (const id of sourceIds) {
+      expect(historicalResearch.sources.find((source) => source.id === id)?.verification.status)
+        .toBe('verified')
+    }
   })
 
   it.each(classicalIds)('distinguishes documented Greek philosophy from %s gameplay and modern chemistry', (id) => {

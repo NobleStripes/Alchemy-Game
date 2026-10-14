@@ -117,6 +117,46 @@ describe('element shelf', () => {
     expect(names()).toEqual(discoveryOrder)
   })
 
+  it('filters the four new discoveries and keeps their recent shortcuts available across filters', async () => {
+    const user = userEvent.setup()
+    const additions = elements.filter((element) =>
+      ['fossil', 'bird', 'amphora', 'quicklime'].includes(element.id),
+    )
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, ...additions.map((element) => element.id)],
+      favoriteIds: additions.map((element) => element.id),
+      firstSlotId: null,
+      secondSlotId: null,
+      recentIngredientIds: [],
+    })
+    renderShelf()
+
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'stone-age')
+    await user.click(screen.getByRole('tab', { name: /^Matter/ }))
+    expect(results().getByRole('button', { name: 'Fossil' })).toBeVisible()
+    const quicklime = results().getByRole('button', { name: 'Quicklime' })
+    expect(quicklime).toBeVisible()
+    await user.click(quicklime)
+
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'bronze-age')
+    await user.click(screen.getByRole('tab', { name: /^Transport/ }))
+    expect(results().getByRole('button', { name: 'Amphora' })).toBeVisible()
+    expect(results().queryByRole('button', { name: 'Quicklime' })).not.toBeInTheDocument()
+    const recentRegion = within(screen.getByRole('region', { name: /Recently used/ }))
+    await user.click(recentRegion.getByRole('button', { name: 'Use recent ingredient Quicklime' }))
+    expect(useGameStore.getState()).toMatchObject({
+      firstSlotId: 'quicklime',
+      secondSlotId: 'quicklime',
+      recentIngredientIds: ['quicklime'],
+    })
+
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'first-light')
+    await user.click(screen.getByRole('tab', { name: /^Life/ }))
+    expect(results().getByRole('button', { name: 'Bird' })).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Starred' }))
+    expect(results().getByRole('button', { name: 'Bird' })).toBeVisible()
+  })
+
   it('keeps keyboard selection and favorites working in compact rows without selecting on favorite activation', async () => {
     const user = userEvent.setup()
     const onSelected = vi.fn()

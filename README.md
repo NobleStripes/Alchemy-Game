@@ -1,14 +1,16 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with **147 elements and 183 recipes across four ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
+An original combination-discovery game with **151 elements and 187 recipes across four ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
 
 The persistent header switches between **Play** (the default) and **Atlas** (Historical Encyclopedia). Play keeps Elements, Combine, and Guide together on desktop and in three mobile tabs; Atlas is not a fourth gameplay tab. Both sections share discoveries and saved progress, and returning to Play preserves the previous gameplay context. Pointer, touch, and keyboard controls are supported.
 
-Origins is an undated, symbolic gameplay prologue. Its four starting essences draw on documented Greek elemental philosophy, not modern chemistry; the combination mechanics are symbolic. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Classical Antiquity is a possible future chapter, not a requirement for the next update.
+Origins is an undated, symbolic gameplay prologue. Its four starting essences draw on documented Greek elemental philosophy, not modern chemistry; the combination mechanics are symbolic. Stone, Bronze, and Iron Age pages organize gameplay, not a universal historical timeline. Four optional discoveries add Fossil, Bird, Amphora, and Quicklime without changing age gates, landmarks, or goals. Classical Antiquity is reserved for a later release, not part of this implementation.
 
 Empedocles' fifth-century BCE roots and Aristotle's fourth-century BCE elemental qualities provide the [historical foundation](docs/historical-interpretation.md#classical-elements-historical-theory-symbolic-gameplay). This inspiration does not place Greek philosophy before prehistoric humanity. All four starting elements have immediately accessible, sourced Atlas histories.
 
 Historical explanations are free; **Insight reveals recipe leads, never factual information**. Optional collections, learning labs, and explicit Atlas reading markers complement the discovery game.
+
+The Classical Antiquity reserve includes Natural Inquiry, an Agora, ancient philosophical schools, early natural philosophy and scientific observation, and historically contested explanations of fossil-inspired mythology. These ideas and fifth-age progression mechanics are intentionally deferred.
 
 Inspect a discovered element in the Guide and choose **View History** to open its Atlas entry directly; returning to Play restores focus to that shortcut. Ordinary section switches focus the Atlas heading or remembered gameplay panel. Navigation does not rewrite saves or change their version 7 format.
 

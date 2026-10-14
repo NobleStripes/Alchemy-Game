@@ -2,21 +2,29 @@
 
 [Back to the project overview](../README.md)
 
-Review date: **2026-10-13**.
+Review date: **2026-10-14**.
 
 ## Status and scope
+
+### Four-discovery documentation review
+
+The current catalog contains **151 elements and 187 recipes across the existing four ages**. Fossil, Bird, Amphora and Quicklime have sourced research entries and optional recipes; none changes age unlocks, grants, landmarks, discovery goals, save version 7, or Rainmaker. Their historical notes distinguish evidence from interpretation: fossils predate later human encounters with them; birds are the surviving avian dinosaur lineage after non-avian dinosaur extinction around 66 million years ago; a Cypriot Bronze Age amphora predates Classical Antiquity without establishing a universal origin; and Natufian lime-plaster evidence supports reconstructed calcination around 12,000 years ago without proving a global first quicklime artifact or kiln design. The disputed Protoceratops–griffin hypothesis is not presented as fact.
+
+The four recipe reviews classify Fossil, Bird and Amphora as **symbolic associations**, and Quicklime as a **simplified process**. They explain why the pairs are not literal fossilization, evolution, vessel manufacture, or a full calcination method. Across all recipes, the current review has **14 material-process, 92 simplified-process and 81 symbolic** classifications; **81 cautions cite background sources and 106 do not**. The registry contains **45 verified sources and one pending source**; source verification is claim- and passage-specific, not blanket endorsement.
+
+The four requested checks passed: `npm run typecheck`, `npm run lint`, `npm test`, and `npm run build`. The full suite passed **596 tests across 14 files**. Coverage includes the 151/187 catalog totals, duplicate-pair and gated-reachability checks, unchanged age and landmark requirements, Atlas research rendering, version 7 save preservation for discoveries/formulas/favorites, Rainmaker, filters, and Recently Used shortcuts. Source links/citations and the research schema were checked. No fifth age or Classical Antiquity content was added; human learning and screen-reader observations remain pending.
 
 Phase 7 reviewed the pre-expansion four-age baseline: **144 elements, 178 recipes, ten historical entries, and 22 consulted sources plus one pending source**. Original supporting passages were revisited, including official collection APIs and legitimate article archives where the main page was inaccessible. Titles, credited authors/institutions, URLs and access limits remain in the [research registry](../src/game/content/research.json).
 
 The ten entries contain **94 citation-bearing blocks** and **23 chronology entries**, including three undated entries. Blocks can contain several statements; this is not a count of individually proven claims. The review checked those statements against the accessed passages and examined descriptions for contradictory implications.
 
-**This is not certification of every historical claim in the game.** The other 134 elements lack research records. Of the 178 recipe cautions, 72 now carry background references and 106 carry none. A background reference need not establish every clause, material or causal implication. Structural validation cannot establish historical truth. Completing the source coverage and real-player review below remains necessary before claiming comprehensive historical or educational validation.
+**This is not certification of every historical claim in the game.** The current 21 research entries cover 21 of 151 elements; 130 elements still lack research records. A background reference need not establish every clause, material or causal implication. Structural validation cannot establish historical truth. Completing the source coverage and real-player review below remains necessary before claiming comprehensive historical or educational validation.
 
 **No human participants have been observed. Learning and misconception results are pending**, by agreement. Scripted tests are not player teach-back evidence.
 
 ## Historical findings and corrections
 
-The Phase 7 counts and software observations below are retained as a baseline, not retroactively attributed to the subsequent Iron Age batch. Its separate review appears under [Iron Age expansion review](#iron-age-expansion-review).
+The Phase 7 counts and software observations below are retained as a baseline, not retroactively attributed to later additions. Separate implementation snapshots appear in the relevant review sections.
 
 | Area | Evidence checked and resulting treatment |
 | --- | --- |
