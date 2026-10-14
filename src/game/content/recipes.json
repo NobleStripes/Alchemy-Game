@@ -209,5 +209,10 @@
   { "id": "amphora-voyage", "inputs": ["amphora", "voyage"], "result": "maritime-trade", "flavor": "A transport vessel and a sea journey evoke exchange networks that already existed before this chapter." },
   { "id": "city-of-texts", "inputs": ["archive", "city"], "result": "library", "flavor": "Preserved texts and an urban setting evoke a library without making archives and libraries interchangeable." },
   { "id": "observed-space", "inputs": ["map", "observation"], "result": "geometry", "flavor": "Spatial representation and attention evoke geometric questions, not a proof or the origin of mathematics." },
-  { "id": "studied-birds", "inputs": ["bird", "natural-inquiry"], "result": "bird-inquiry", "flavor": "A living bird becomes a subject of inquiry; ancient observers did not know its modern dinosaur classification." }
+  { "id": "studied-birds", "inputs": ["bird", "natural-inquiry"], "result": "bird-inquiry", "flavor": "A living bird becomes a subject of inquiry; ancient observers did not know its modern dinosaur classification." },
+  { "id": "civic-membership", "inputs": ["human", "law"], "result": "citizenship", "flavor": "A person and civic rules evoke membership, not automatic citizenship, equal rights, or a requirement that citizenship depend on written law." },
+  { "id": "measured-heavens", "inputs": ["geometry", "observation"], "result": "mathematical-astronomy", "flavor": "Spatial reasoning and observation evoke modelling the heavens; arithmetic traditions and long records also mattered." },
+  { "id": "attentive-care", "inputs": ["human", "observation"], "result": "clinical-observation", "flavor": "Attention to a person evokes examining a condition, not a diagnosis, effective treatment or a clinical trial." },
+  { "id": "examined-argument", "inputs": ["rhetoric", "knowledge"], "result": "logic", "flavor": "Persuasion becomes a subject for examining inference; eloquence does not ensure truth, and rhetoric is not a universal prerequisite for logic." },
+  { "id": "compared-birds", "inputs": ["bird", "observation"], "result": "natural-classification", "flavor": "Birds invite comparison of features; ancient groupings did not establish modern taxonomy or dinosaur ancestry." }
 ]

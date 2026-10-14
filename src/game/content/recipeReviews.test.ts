@@ -9,12 +9,12 @@ const fixture = () => structuredClone(recipeReviews)
 describe('historical recipe review', () => {
   it('covers every recipe exactly once, including alternate routes', () => {
     expect(schema.parse(recipeReviews)).toEqual(recipeReviews)
-    expect(recipeReviews.reviews).toHaveLength(211)
+    expect(recipeReviews.reviews).toHaveLength(216)
     expect(new Set(recipeReviews.reviews.map((review) => review.recipeId)))
       .toEqual(new Set(recipes.map((recipe) => recipe.id)))
     expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(14)
     expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(92)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(105)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(110)
   })
 
   it('preserves the pre-audit IDs, input pairs, results and order', async () => {
@@ -31,9 +31,16 @@ describe('historical recipe review', () => {
       .toBe('ca18166cc2bd9e1877998d8a861cb1acb998003abe0af1cf3e27100396ef4ec4')
   })
 
+  it('preserves all routes preceding the optional Citizenship addition', async () => {
+    const graph = recipes.slice(0, 211).map((recipe) => [recipe.id, ...recipe.inputs, recipe.result])
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(graph)))
+    expect(Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join(''))
+      .toBe('ed57607d760c4a44fd4b0cf63a114d3c20c836f9db47a259e4b6a38ba1899872')
+  })
+
   it('reviews every expansion route as symbolic with verified historical background', () => {
     const expansion = recipes.slice(194)
-    expect(expansion).toHaveLength(17)
+    expect(expansion).toHaveLength(22)
     for (const recipe of expansion) {
       const review = reviewsByRecipeId.get(recipe.id)!
       expect(review.classification).toBe('symbolic')
@@ -42,6 +49,13 @@ describe('historical recipe review', () => {
     expect(reviewsByRecipeId.get('studied-birds')?.caution).toContain('modern scientific findings')
     expect(reviewsByRecipeId.get('spanning-masonry')?.caution).toContain('Not every aqueduct uses arches')
     expect(reviewsByRecipeId.get('republican-institutions')?.caution).toContain('unequal civic rights')
+  })
+
+  it('preserves all routes through Citizenship before the intellectual expansion', async () => {
+    const graph = recipes.slice(0, 212).map((recipe) => [recipe.id, ...recipe.inputs, recipe.result])
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(graph)))
+    expect(Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join(''))
+      .toBe('39e35d79f129fc54bf82bdf8f76fc33f544da451582da30b54c317cb00c32e8e')
   })
 
   it.each(['missing', 'duplicate', 'unknown'] as const)('rejects %s recipe reviews', (kind) => {
@@ -101,6 +115,7 @@ describe('historical recipe review', () => {
     ['nature-and-record', 'symbolic', 'should not flatten differences', 'sep-presocratics'],
     ['archived-fossil', 'symbolic', 'does not recreate its collection', 'mycenae-fossil-study'],
     ['examined-remains', 'symbolic', 'does not establish that fossils inspired', 'herodotus-winged-serpents'],
+    ['civic-membership', 'symbolic', 'not a procedure for granting it', 'sep-aristotle-politics'],
   ])('qualifies the priority chain %s without inventing chronology', (recipeId, classification, caution, sourceId) => {
     const review = reviewsByRecipeId.get(recipeId)!
     expect(review.classification).toBe(classification)

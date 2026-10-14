@@ -32,7 +32,27 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-Research covers **52 of 173 elements**, including all **22 Age V discoveries**. The 46 earlier records remain, joined by Clay, Rock, Sand, Limestone, Copper Ore, and Iron Ore. The registry contains **77 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions.
+Research covers **57 of 178 elements**, including all **27 Age V discoveries**. The 53 records through Citizenship remain, joined by Mathematical Astronomy, Clinical Observation, Logic and Natural Classification. The registry contains **85 verified sources and one pending source**, including recipe-review background. The remaining **121 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions.
+
+### Intellectual practices audit
+
+Observation, Knowledge, Natural Inquiry, Natural Philosophy and Geometry already have recipes and histories. Rhetoric and the new Logic cover persuasion and inference without duplicating Reason, Argument or Philosophy. Existing Fossil Inquiry supplies ancient fossil interpretation; its distinction from modern paleontology and its caution about fossil-inspired mythology remain. Natural Classification adds comparison and grouping alongside, rather than replacing, Bird Inquiry.
+
+Seven new selected-passage receipts support four optional discoveries:
+
+- Topoi's institutional account of Late Babylonian tablets distinguishes computed tables and procedures from observations; the corpus's approximate 400-50 BCE span is not an astronomy origin date.
+- MacTutor's Ptolemy and Aryabhata accounts compare Alexandrian geometrical models with an Indian mathematical text dated 499 CE. Neither a successful prediction nor the text's date establishes a correct physical cosmology or a first Indian astronomy.
+- NLM's Edwin Smith Papyrus announcement describes 48 structured trauma cases in a document dated approximately to the seventeenth century BCE. This earlier Egyptian precedent is not a clinical trial, evidence of treatment efficacy or medical advice. The announcement, not every scan or the full translation, was inspected.
+- The Stanford Encyclopedia's Aristotle's Logic and Mohist Canons entries distinguish Greek deduction from Chinese models, distinctions and analogical argument. Author/publication metadata was checked; a precise date for each later Mohist passage is not assigned.
+- MIT's translated History of Animals, Book I, supports animal comparison, not modern Linnaean ranks or evolutionary phylogeny. The existing Natural History Museum bird source supplies modern theropod ancestry, not an ancient belief.
+
+These sources complement the existing Egyptian, Mesopotamian, Indian, Chinese and Mediterranean discussions. They are selected examples, not exhaustive regional histories or proof of total cultural isolation. No failed fetch or search summary was promoted to evidence. All new recipes are symbolic; their histories, evidence dates and access limits use schema version 2. Ages, collections, rewards and save version 7 are unchanged.
+
+### Civic catalog audit
+
+City, Trade and Law already provide ingredients. Polity supplies the existing broad political-community concept rather than adding a second Government element. Agora, Forum, Senate, Republic and Rhetoric already have separate recipes and sourced histories; Rhetoric supplies the civic-debate practice. Senate is specifically a Roman elite council, not a generic Council. Assemblies remain distinct institutions discussed in the histories, not interchangeable new elements.
+
+The only new discovery is optional Citizenship. Its record compares Aristotle's definition of political participation with changing Roman republican institutions, separates membership from residence and effective power, and explains exclusions without endorsing them. Fred Miller's *Aristotle's Political Theory* in the Stanford Encyclopedia of Philosophy was checked for the relevant passages and author/publication metadata. It is modern interpretation of an ancient normative text, not an archaeological census or proof of universal Greek practice. Existing Roman Republic and Senate references supply bounded Roman context. No universal first citizenship or simple Greek-to-Roman origin path is claimed. The symbolic recipe grants no real rights and does not require historical citizenship to depend on written law. Existing collections, rewards and age requirements are unchanged.
 
 ### Phase 9G natural-history audit
 

@@ -157,29 +157,40 @@ describe('element shelf', () => {
     expect(results().getByRole('button', { name: 'Bird' })).toBeVisible()
   })
 
-  it('filters Classical Antiquity discoveries while retaining their Recently Used shortcuts', async () => {
+  it.each([
+    ['agora', 'Agora', /^Society/],
+    ['citizenship', 'Citizenship', /^Society/],
+    ['mathematical-astronomy', 'Mathematical Astronomy', /^Knowledge/],
+    ['clinical-observation', 'Clinical Observation', /^Knowledge/],
+    ['logic', 'Logic', /^Knowledge/],
+    ['natural-classification', 'Natural Classification', /^Knowledge/],
+  ] as const)('filters starred Age V %s while retaining its Recently Used shortcut', async (id, name, category) => {
     const user = userEvent.setup()
     useGameStore.setState({
-      discoveredIds: [...starterElementIds, 'agora', 'observation'],
+      discoveredIds: [...starterElementIds, id, 'observation'],
+      favoriteIds: [id],
       firstSlotId: null,
       secondSlotId: null,
       recentIngredientIds: [],
     })
     renderShelf()
     await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'classical-antiquity')
-    expect(results().getByRole('button', { name: 'Agora' })).toBeVisible()
+    expect(results().getByRole('button', { name })).toBeVisible()
     expect(results().getByRole('button', { name: 'Observation' })).toBeVisible()
-    await user.click(results().getByRole('button', { name: 'Agora' }))
+    await user.click(screen.getByRole('button', { name: 'Starred' }))
+    await user.click(screen.getByRole('tab', { name: category }))
+    expect(results().queryByRole('button', { name: 'Observation' })).not.toBeInTheDocument()
+    await user.click(results().getByRole('button', { name }))
     await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'first-light')
-    expect(results().queryByRole('button', { name: 'Agora' })).not.toBeInTheDocument()
+    expect(results().queryByRole('button', { name })).not.toBeInTheDocument()
     const recentRegion = within(screen.getByRole('region', { name: /Recently used/ }))
-    const recentAgora = recentRegion.getByRole('button', { name: 'Use recent ingredient Agora' })
-    expect(recentAgora).toBeVisible()
-    await user.click(recentAgora)
+    const recent = recentRegion.getByRole('button', { name: `Use recent ingredient ${name}` })
+    expect(recent).toBeVisible()
+    await user.click(recent)
     expect(useGameStore.getState()).toMatchObject({
-      firstSlotId: 'agora',
-      secondSlotId: 'agora',
-      recentIngredientIds: ['agora'],
+      firstSlotId: id,
+      secondSlotId: id,
+      recentIngredientIds: [id],
     })
   })
 

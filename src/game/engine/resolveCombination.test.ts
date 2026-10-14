@@ -581,6 +581,11 @@ describe('expanded ages', () => {
     ['classical-antiquity', 'city-of-texts', 'archive', 'city', 'library'],
     ['classical-antiquity', 'observed-space', 'map', 'observation', 'geometry'],
     ['classical-antiquity', 'studied-birds', 'bird', 'natural-inquiry', 'bird-inquiry'],
+    ['classical-antiquity', 'civic-membership', 'human', 'law', 'citizenship'],
+    ['classical-antiquity', 'measured-heavens', 'geometry', 'observation', 'mathematical-astronomy'],
+    ['classical-antiquity', 'attentive-care', 'human', 'observation', 'clinical-observation'],
+    ['classical-antiquity', 'examined-argument', 'rhetoric', 'knowledge', 'logic'],
+    ['classical-antiquity', 'compared-birds', 'bird', 'observation', 'natural-classification'],
   ])('resolves %s recipe %s in both orders using same-or-earlier inputs', (eraId, id, first, second, result) => {
     expect(resolveCombination(first, second, recipeIndex)).toMatchObject({ id, result })
     expect(resolveCombination(second, first, recipeIndex)).toMatchObject({ id, result })
@@ -597,10 +602,10 @@ describe('expanded ages', () => {
     expect(eras.map((era) => era.id)).toEqual([
       'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
     ])
-    expect(elements).toHaveLength(173)
-    expect(recipes).toHaveLength(211)
+    expect(elements).toHaveLength(178)
+    expect(recipes).toHaveLength(216)
     expect(eras.map((era) => elements.filter((element) => element.era === era.id).length))
-      .toEqual([42, 44, 42, 23, 22])
+      .toEqual([42, 44, 42, 23, 27])
     expect(elements.filter((element) => element.starter).map((element) => element.id)).toEqual(['ember', 'tide', 'stone', 'gale'])
     expect(eras[4].unlockRequires).toEqual(['iron', 'iron-tool', 'road', 'market'])
     expect(eras[4].grants).toEqual([])
@@ -642,6 +647,25 @@ describe('expanded ages', () => {
         [['village', 'pottery', 'metal', 'quarry'], ['copper-ore'], ['bronze', 'wheel', 'writing', 'city', 'forge', 'law', 'voyage'], 23],
         [['bronze', 'forge', 'law', 'city'], ['iron-ore'], ['iron', 'iron-tool', 'road', 'market'], 6],
       ])
+  })
+
+  it('keeps Citizenship optional for every existing age and collection', () => {
+    expect(validateContent(
+      elements.filter((element) => element.id !== 'citizenship'),
+      recipes.filter((recipe) => recipe.result !== 'citizenship'),
+      eras, collections,
+    )).toEqual([])
+    expect(collections.every((collection) => !collection.elementIds.includes('citizenship'))).toBe(true)
+  })
+
+  it('keeps all four intellectual discoveries optional for existing ages and collections', () => {
+    const ids = new Set(['mathematical-astronomy', 'clinical-observation', 'logic', 'natural-classification'])
+    expect(validateContent(
+      elements.filter((element) => !ids.has(element.id)),
+      recipes.filter((recipe) => !ids.has(recipe.result)),
+      eras, collections,
+    )).toEqual([])
+    expect(collections.every((collection) => collection.elementIds.every((id) => !ids.has(id)))).toBe(true)
   })
 
   it('completes every age and the inquiry collection without any expansion discovery', () => {

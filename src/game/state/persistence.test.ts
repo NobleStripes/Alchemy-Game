@@ -15,7 +15,7 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
-  it.each([...starterElementIds, 'rotary-quern', 'lathe', 'alphabet'])('round-trips %s discovery and explicit reading without a version bump', (id) => {
+  it.each([...starterElementIds, 'rotary-quern', 'lathe', 'alphabet', 'citizenship', 'mathematical-astronomy', 'clinical-observation', 'logic', 'natural-classification'])('round-trips %s discovery and explicit reading without a version bump', (id) => {
     const progress = parseProgress(JSON.stringify({
       ...fresh(),
       discoveredIds: [...new Set([...starterElementIds, id])],
@@ -205,6 +205,8 @@ describe('progress persistence', () => {
       'athenian-agora', 'nature-and-record', ...recordedRecipes.map((recipe) => recipe.id),
     ])
     expect(progress.favoriteIds).toEqual(elements.slice(158).map((element) => element.id))
+    expect(progress.discoveredRecipeIds).toContain('civic-membership')
+    expect(progress.favoriteIds).toContain('citizenship')
     expect(progress.experimentHistory.map((entry) => entry.recipeId)).toEqual(recordedRecipes.map((recipe) => recipe.id))
     expect(parseProgress(exportProgress(progress))).toEqual(progress)
   })

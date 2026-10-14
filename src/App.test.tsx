@@ -586,7 +586,7 @@ describe('alchemy worktable', () => {
     expect(fifthAge).toHaveAttribute('aria-current', 'page')
     expect(selector.getByRole('button', { name: 'Origins' })).not.toHaveAttribute('aria-current')
     expect(useGameStore.getState().activeEraId).toBe(age.id)
-    expect(screen.getByLabelText('6% discovered')).toHaveTextContent('10 / 173')
+    expect(screen.getByLabelText('6% discovered')).toHaveTextContent('10 / 178')
     const challenge = within(screen.getByRole('region', { name: 'Classical Antiquity challenge' }))
     const introduction = screen.getByText('About Classical Antiquity')
     await user.click(introduction)

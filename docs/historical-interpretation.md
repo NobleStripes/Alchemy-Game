@@ -16,6 +16,14 @@ The **Three-Age System** originated in the classification of Scandinavian archae
 
 The fifth selector button shows the approximate c. 800 BCE–c. 500 CE gameplay frame. Its regional-scope tooltip, the Guide's About Classical Antiquity introduction and individually dated Atlas records carry the historical qualification; its position after Iron Age and its progress counters express game organization, not a synchronized worldwide transition. Completing all five required landmarks and six discoveries does not certify historical knowledge or require every optional civic, engineering, commercial or inquiry branch.
 
+## Civic membership and institutional distinctions
+
+The optional Citizenship discovery compares political membership without imposing modern universal suffrage on antiquity. Aristotle's definition concerns deliberative or judicial participation, not everyone living in a city; the Atlas distinguishes his normative theory from a survey of all Greek practice. Greek assembly, council and jury participation is not interchangeable with Roman magistracies, the elite Senate and citizen assemblies. Legal or social membership and effective political power must also be distinguished. Exclusion by gender, enslavement, foreign status and other local eligibility rules is described, not endorsed.
+
+Agora remains a multifunctional Greek civic space; Forum remains a distinct Roman civic, legal, religious and commercial space, not an Agora renamed by adding Law. Polity is reused for the broad political-community concept, Senate for a specifically Roman council and Rhetoric for civic persuasion. Assemblies are explained as institutions rather than collapsed into Senate or a universal Government element. The new person-and-law association is symbolic, not an automatic grant of citizenship or evidence that written law was universally required.
+
+The passage-specific reference is Fred Miller, [Aristotle's Political Theory](https://plato.stanford.edu/entries/aristotle-politics/), especially section 3, alongside the existing Roman institutional sources in the Atlas. Fourth-century Greek theory and the conventional Roman republican span date regional contexts, not the first citizenship. No worldwide origin or synchronized civic development is inferred.
+
 ## Classical elements: historical theory, symbolic gameplay
 
 The four-element theory is **documented historical natural philosophy**, not a fictional invention of the game. **Empedocles of Acragas**, in Greek Sicily, was a major early formulator of the four-root theory in the **fifth century BCE**: fire, water, earth and air were fundamental constituents of nature. The surviving poetic fragments and later accounts are textual evidence for the theory, not scientific proof of its validity. Precise biographical dates and some fragment interpretations remain uncertain.
@@ -67,7 +75,7 @@ The existing four pages retain their landmarks, grants, discovery goals (18 / 16
 
 ## Element review
 
-The earlier review covered **144 element descriptions**, including the 24 additions beyond the 120-element catalog. Three sourced Iron Age discoveries and four additional discoveries brought the catalog to 151 elements and 187 recipes; the initial Classical Antiquity chapter brought it to 158 elements and 194 recipes. Its optional civic, architectural, commercial, scholarship, and natural-history expansion brings the current catalog to **173 elements and 211 recipes across five gameplay ages**. Generic natural phenomena and plausible nonexclusive craft descriptions are retained rather than assigned unsupported invention dates. The material corrections are:
+The earlier review covered **144 element descriptions**, including the 24 additions beyond the 120-element catalog. Three sourced Iron Age discoveries and four additional discoveries brought the catalog to 151 elements and 187 recipes; the initial Classical Antiquity chapter brought it to 158 elements and 194 recipes. Its optional civic, architectural, commercial, scholarship, and natural-history expansion, including Citizenship and four intellectual practices, brings the current catalog to **178 elements and 216 recipes across five gameplay ages**. Generic natural phenomena and plausible nonexclusive craft descriptions are retained rather than assigned unsupported invention dates. The material corrections are:
 
 | Element or group | Treatment |
 | --- | --- |
@@ -134,6 +142,17 @@ Agora remains a core fifth-age civic landmark. Library, Aqueduct, Arch and Stoa 
 - Meier, Pliatsika and Shelton, [“The earliest evidence of large animal fossil collecting in mainland Greece at Bronze Age Mycenae”](https://doi.org/10.1038/s41598-024-68778-w), *Scientific Reports* (2024). The authors identify a rhinoceros astragalus in a deposit dated about 1230–1200 BCE and cautiously infer collection; its purpose remains uncertain.
 - Witton and Hing, [“Did the horned dinosaur Protoceratops inspire the griffin?”](https://doi.org/10.1177/03080188241255543), *Interdisciplinary Science Reviews* (2024). The official [University of Portsmouth research record](https://researchportal.port.ac.uk/en/publications/did-the-horned-dinosaur-protoceratops-inspire-the-griffin/) provides the abstract, which finds the modern hypothesis uncompelling. The full journal text was not accessible; no ancient Greek encounter or causal link is asserted.
 - World History Encyclopedia's [Greek Archaic Period](https://www.worldhistory.org/Archaic_Period/) and [Hellenistic Period](https://www.worldhistory.org/Hellenistic_Period/) summaries are supplementary periodization references. Their Greek and regionally variable labels do not define a single Mediterranean-wide Classical Antiquity chronology.
+
+## Ancient intellectual practices are not modern science
+
+Observation, Knowledge, Natural Inquiry, Natural Philosophy and Geometry retain their existing identities and earlier-foundation cautions. Rhetoric and Logic address persuasion and inference without new generic Reason, Argument or Philosophy discoveries. Existing Fossil Inquiry is the ancient fossil-interpretation branch, not modern paleontology; the disputed Protoceratops-griffin hypothesis remains unproven.
+
+- **Mathematical Astronomy:** Late Babylonian computed tables, Ptolemy's Alexandrian geometrical models and Aryabhata's Indian verse text show different techniques. The 499 CE text date does not begin Indian astronomy. Predictive success does not prove a model's physical cosmology; geometry is not every tradition's prerequisite.
+- **Clinical Observation:** Egyptian trauma-case evidence in the Edwin Smith Papyrus predates Age V. Structured descriptions and prognoses are not modern clinical trials or proof that a treatment worked. The entry provides no medical advice and does not divide ancient cultures into a simplistic rational-versus-magical ladder.
+- **Logic:** Aristotelian deduction and Chinese Mohist standards, distinctions and analogical argument are not identical systems. Valid inference does not guarantee true premises; persuasion does not guarantee valid inference. The comparison neither invents the first human reasoning nor proves cultural isolation.
+- **Natural Classification:** Aristotle's animal comparisons are not Linnaean ranks, biological species definitions or evolutionary trees. Translated genus/species terms need caution. Birds' theropod ancestry is modern scientific context, not knowledge assigned to ancient observers.
+
+These are selected Greek, Mesopotamian, Egyptian, Indian and Chinese examples, not simultaneous Classical ages or exhaustive regional histories. All four new discoveries are optional, with source-specific dates and passage-access limits. See the [source audit](research.md#intellectual-practices-audit).
 
 ## Natural materials: formation is not invention
 

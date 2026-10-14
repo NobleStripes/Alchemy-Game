@@ -27,8 +27,34 @@ const classicalExpansionIds = [
 ]
 const reusedTechnologyIds = ['aqueduct', 'scroll', 'coin']
 const naturalMaterialIds = ['clay', 'rock', 'sand', 'limestone', 'copper-ore', 'iron-ore']
+const intellectualIds = ['mathematical-astronomy', 'clinical-observation', 'logic', 'natural-classification']
 
 describe('historical research database', () => {
+  it('distinguishes regional ancient intellectual practices from modern scientific methods', () => {
+    const astronomy = researchByElementId.get('mathematical-astronomy')!
+    expect(astronomy.associatedRegions).toEqual([
+      'Babylon and Uruk, Mesopotamia', 'Alexandria, Egypt', 'South Asia',
+    ])
+    expect(astronomy.manufactureOrUse.text).toContain("predictive success does not establish")
+    expect(astronomy.approximateDates.find((date) => date.precision === 'year-resolved')?.note)
+      .toContain('not the beginning of Indian astronomy')
+    const clinical = researchByElementId.get('clinical-observation')!
+    expect(clinical.agePlacement.status).toBe('earlier-precedents')
+    expect(clinical.manufactureOrUse.text).toContain('not a controlled trial')
+    expect(clinical.manufactureOrUse.text).toContain('no medical advice')
+    const logic = researchByElementId.get('logic')!
+    expect(logic.associatedRegions).toContain('China')
+    expect(logic.manufactureOrUse.text).toContain('does not by itself guarantee true premises')
+    expect(logic.historicalOverview.text).toContain('different conceptual setting')
+    const classification = researchByElementId.get('natural-classification')!
+    expect(classification.historicalOverview.text).toContain('not be read as modern Linnaean ranks')
+    expect(classification.manufactureOrUse.text).toContain("not contained in Aristotle's animal groupings")
+    expect(classification.relatedDiscoveries.some((link) => link.elementId === 'bird')).toBe(true)
+    expect(recipes.find((recipe) => recipe.result === 'fossil-inquiry')?.inputs)
+      .toEqual(['fossil', 'observation'])
+    expect(elements.some((element) => ['reason', 'argument', 'philosophy', 'ancient-fossil-interpretation'].includes(element.id))).toBe(false)
+  })
+
   it('exposes historical structural schemas from the shared content schema module', () => {
     expect(historicalSourceSchema.parse(historicalResearch.sources[0])).toEqual(historicalResearch.sources[0])
     expect(historicalChronologySchema.parse(historicalResearch.records[0].approximateDates[0]))
@@ -72,16 +98,16 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(77)
+    )).toHaveLength(85)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
   })
 
-  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds])('links %s research to its current name and stable ID', (elementId) => {
+  it.each([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds])('links %s research to its current name and stable ID', (elementId) => {
     const record = researchByElementId.get(elementId)
     expect(record?.elementName).toBe(
       elements.find((element) => element.id === elementId)?.name,
@@ -148,8 +174,8 @@ describe('historical research database', () => {
   })
 
   it('includes the Classical Antiquity chapter while preserving the four existing ages', () => {
-    expect(elements).toHaveLength(173)
-    expect(recipes).toHaveLength(211)
+    expect(elements).toHaveLength(178)
+    expect(recipes).toHaveLength(216)
     expect(eras.map((era) => era.id)).toEqual([
       'first-light', 'stone-age', 'bronze-age', 'iron-age', 'classical-antiquity',
     ])
@@ -167,6 +193,23 @@ describe('historical research database', () => {
       regions: [],
       sourceIds: [],
     })
+  })
+
+  it('distinguishes civic membership, residence and political participation without a universal origin', () => {
+    const record = researchByElementId.get('citizenship')!
+    expect(record.historicalOverview.text).toContain('not interchangeable systems')
+    expect(record.manufactureOrUse.text).toContain('assemblies, councils and juries')
+    expect(record.manufactureOrUse.text).toContain('women, enslaved people and foreigners')
+    expect(record.manufactureOrUse.text).toContain('Membership, residence and equal political participation are distinct')
+    expect(record.archaeologicalEvidence[0]).toMatchObject({
+      evidenceType: 'textual-evidence', interpretation: 'attested',
+      sourceIds: ['sep-aristotle-politics'],
+    })
+    expect(record.historicalUncertainty.join(' ')).toContain('not a neutral survey')
+    expect(record.approximateDates.every((date) => date.dateType === 'regional-development')).toBe(true)
+    expect(record.gameplaySimplifications.join(' ')).toContain('require written law')
+    expect(historicalResearch.sources.find((source) => source.id === 'sep-aristotle-politics'))
+      .toMatchObject({ authors: ['Fred Miller'], verification: { status: 'verified', accessLevel: 'selected-passages' } })
   })
 
   it('records the new discoveries without turning symbolic recipes into historical processes', () => {
