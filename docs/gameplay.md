@@ -86,6 +86,20 @@ Observation, Knowledge, Natural Inquiry, Natural Philosophy and Geometry retain 
 
 ## Gameplay Guide features
 
+### Era drawers and ingredient status
+
+The element shelf groups discovered elements by gameplay age in chronological order. Each drawer has an expand/collapse button, era icon and discovered/total count. A complete count says **Collected**: it does not mean every formula has been performed or every history read. Counts ignore search, collapse and hiding. Sorting applies within drawers; compact layout and horizontal category scrolling remain available.
+
+- **Terminal:** the element is a recipe result but never an ingredient anywhere in the authored graph.
+- **Exhausted for now:** at least one outgoing formula belongs to an unlocked age and every such formula has actually been performed. Alternate routes count separately. Merely discovering a result or revealing an Insight lead does not count. An ingredient with only locked uses is not marked exhausted; unlocking another age can reactivate an exhausted ingredient.
+- **Unstudied** in the Guide retains its separate meaning: an ingredient with outgoing recipes, none of which has been performed. It is not the inverse of either status.
+
+**Hide Mastered** is off by default and hides Terminal and Exhausted for now elements. Their worktable selection, dragging, formula-origin preparation and Atlas histories remain available; the Guide's discovery record is not filtered by this toggle. Recently Used remains available across filters. These badges describe authored routes, not the usefulness of a real-world material, historical expertise or whether an article has been read.
+
+Typing a search temporarily bypasses age, category, Starred and Hide Mastered filters and opens matching drawers across all discovered elements. It does not reveal undiscovered names. Clearing search restores the prior filters and saved drawer state; search never rewrites those preferences. Header buttons expose expanded state to assistive technology, and focus moves to a surviving header or the shelf heading when a focused item is removed. An active drag source stays available until the drag finishes.
+
+Hide Mastered and collapsed drawers persist across Play/Atlas switches and reloads in version 7 saves. All drawers start expanded; completed ages do not collapse automatically. Search, ordinary filters, sorting, compact layout and Recently Used remain session-only.
+
 Society, Knowledge, and Transport join the original categories. Village and City are Society; Papyrus, Map, Writing, and Scribe are Knowledge; Wheel and Cart are Transport. Legacy saves containing reclassified Metal Tool, Glass, Papyrus, Map, or City unlock Bronze Age automatically.
 
 The Guide includes active-era category completion, **Unstudied** markers for elements with unresolved outgoing uses, and a three-credit **Insight** wallet. Insights unlock after Origins or three distinct failures. Five new unique failures earn one credit, new discoveries reset the visible `0/5` stall meter, repeats do nothing, and a full wallet pauses at `4/5`. Unlocking an age and completing an age challenge each award one credit up to the cap.

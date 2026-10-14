@@ -6,7 +6,7 @@ import { DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors } from
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { elements, eras, starterElementIds } from '../../game/content'
+import { elements, eras, recipes, starterElementIds } from '../../game/content'
 import { snapshotProgress, useGameStore } from '../../game/state/useGameStore'
 import { Codex } from './Codex'
 
@@ -29,6 +29,116 @@ function ShelfHarness({ onElementSelected }: { onElementSelected?: () => void })
 }
 
 describe('element shelf', () => {
+  it('groups eras chronologically, keeps completion counts stable and remembers collapsed drawers', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({ discoveredIds: [...starterElementIds, 'bread'], unlockedEraIds: eras.slice(0, 2).map((era) => era.id) })
+    const view = renderShelf()
+    const origins = screen.getByRole('button', { name: /Origins 4\/42 discovered/ })
+    expect(origins).toHaveAttribute('aria-expanded', 'true')
+    await user.click(origins)
+    expect(origins).toHaveAttribute('aria-expanded', 'false')
+    expect(results().queryByRole('button', { name: 'Fire' })).not.toBeInTheDocument()
+    expect(counter()).toHaveTextContent('5 of 5 discovered elements')
+    expect(results().getByRole('button', { name: 'Bread' })).toBeVisible()
+    view.unmount()
+    renderShelf()
+    expect(screen.getByRole('button', { name: /Origins 4\/42 discovered/ })).toHaveAttribute('aria-expanded', 'false')
+    expect(useGameStore.getState().collapsedShelves).toEqual(['first-light'])
+  })
+
+  it('temporarily reveals searched terminals across all filters without rewriting preferences', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, 'bread'],
+      hideFinalElements: true, collapsedShelves: ['stone-age'],
+    })
+    renderShelf()
+    await user.click(screen.getByRole('button', { name: 'Starred' }))
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'first-light')
+    await user.click(screen.getByRole('tab', { name: /^Essence/ }))
+    expect(results().queryByRole('button', { name: 'Bread' })).not.toBeInTheDocument()
+    await user.type(screen.getByRole('searchbox'), 'bread')
+    const bread = results().getByRole('button', { name: 'Bread' })
+    expect(bread).toHaveAccessibleDescription(/Terminal/)
+    expect(screen.getByRole('button', { name: /Stone Age/ })).toHaveAttribute('aria-expanded', 'true')
+    await user.click(bread)
+    expect(useGameStore.getState().firstSlotId).toBe('bread')
+    expect(useGameStore.getState()).toMatchObject({ hideFinalElements: true, collapsedShelves: ['stone-age'] })
+    await user.click(screen.getByRole('button', { name: 'Clear search' }))
+    expect(results().queryByRole('button', { name: 'Bread' })).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Starred' })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('combobox', { name: 'Age' })).toHaveValue('first-light')
+    await user.click(screen.getByRole('button', { name: 'Use recent ingredient Bread' }))
+    expect(useGameStore.getState().secondSlotId).toBe('bread')
+  })
+
+  it('updates exhaustion after the last performed formula, not a disclosed lead, then reactivates on unlock', async () => {
+    const user = userEvent.setup()
+    const earlyUses = recipes.filter((recipe) => recipe.inputs.includes('archive') &&
+      elements.find((element) => element.id === recipe.result)!.era !== 'classical-antiquity')
+    expect(earlyUses.length).toBeGreaterThan(0)
+    useGameStore.setState({
+      discoveredIds: [...starterElementIds, 'archive'],
+      unlockedEraIds: eras.slice(0, 4).map((era) => era.id),
+      discoveredRecipeIds: earlyUses.slice(0, -1).map((recipe) => recipe.id),
+      revealedHintRecipeIds: [earlyUses.at(-1)!.id],
+    })
+    renderShelf()
+    expect(results().getByRole('button', { name: 'Archive' })).not.toHaveAccessibleDescription(/Exhausted/)
+    act(() => useGameStore.setState({ discoveredRecipeIds: earlyUses.map((recipe) => recipe.id) }))
+    expect(results().getByRole('button', { name: 'Archive' })).toHaveAccessibleDescription(/Exhausted for now/)
+    await user.click(screen.getByRole('button', { name: 'Hide Mastered' }))
+    expect(results().queryByRole('button', { name: 'Archive' })).not.toBeInTheDocument()
+    act(() => useGameStore.setState({ unlockedEraIds: eras.map((era) => era.id) }))
+    expect(results().getByRole('button', { name: 'Archive' })).toBeVisible()
+  })
+
+  it('returns focused tile controls to a surviving header on external collapse', () => {
+    renderShelf()
+    results().getByRole('button', { name: 'Favorite Fire' }).focus()
+    act(() => useGameStore.setState({ collapsedShelves: ['first-light'] }))
+    expect(screen.getByRole('button', { name: /Origins 4\/42 discovered/ })).toHaveFocus()
+  })
+
+  it('returns focus to the shelf heading when a whole focused drawer disappears', () => {
+    useGameStore.setState({ discoveredIds: [...starterElementIds, 'bread'] })
+    renderShelf()
+    results().getByRole('button', { name: 'Bread' }).focus()
+    act(() => useGameStore.setState({ hideFinalElements: true }))
+    expect(screen.getByRole('heading', { name: 'Element shelf' })).toHaveFocus()
+  })
+
+  it('retains a terminal drag source through hiding and removes it after drag cancellation', async () => {
+    const user = userEvent.setup()
+    useGameStore.setState({ discoveredIds: [...starterElementIds, 'bread'] })
+    renderShelf()
+    const bread = results().getByRole('button', { name: 'Bread' })
+    bread.focus()
+    await user.keyboard('[Space]')
+    expect(bread).toHaveAttribute('data-dragging', 'true')
+    act(() => useGameStore.setState({ hideFinalElements: true }))
+    expect(results().getByRole('button', { name: 'Bread' })).toBeVisible()
+    await user.keyboard('[Escape]')
+    expect(results().queryByRole('button', { name: 'Bread' })).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Element shelf' })).toHaveFocus()
+  })
+
+  it('hides an ingredient immediately after actually performing its final outgoing formula', () => {
+    const outgoing = recipes.filter((recipe) => recipe.inputs.includes('archive'))
+    const last = outgoing.at(-1)!
+    useGameStore.setState({
+      discoveredIds: elements.map((element) => element.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      discoveredRecipeIds: outgoing.slice(0, -1).map((recipe) => recipe.id),
+      hideFinalElements: true,
+    })
+    renderShelf()
+    expect(results().getByRole('button', { name: 'Archive' })).toBeVisible()
+    act(() => useGameStore.getState().transmuteWith(...last.inputs))
+    expect(useGameStore.getState().discoveredRecipeIds).toContain(last.id)
+    expect(results().queryByRole('button', { name: 'Archive' })).not.toBeInTheDocument()
+  })
+
   it('starts on All Ages independently of the playable age and hides undiscovered elements', () => {
     const craft = craftForAge(1)
     useGameStore.setState({

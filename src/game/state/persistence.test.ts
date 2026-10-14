@@ -8,6 +8,7 @@ import { createProgressPersistence, CONFLICT_ERROR, exportProgress, loadProgress
 const defaults = {
   favoriteIds: [], soundEnabled: true, experimentHistory: [],
   rewardedCollectionIds: [], challengeRecords: [], readHistoricalElementIds: [],
+  hideFinalElements: false, collapsedShelves: [],
 }
 
 function fresh(): SavedProgress {
@@ -15,6 +16,30 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it.each([1, 2, 3, 4, 5, 6, 7])('defaults missing shelf preferences in version %s without losing progress', (version) => {
+    const { hideFinalElements, collapsedShelves, ...legacy } = fresh()
+    expect(hideFinalElements).toBe(false)
+    expect(collapsedShelves).toEqual([])
+    const restored = parseProgress(JSON.stringify({ ...legacy, version, hintCredits: 3 }))!
+    expect(restored).toMatchObject({ version: 7, hideFinalElements: false, collapsedShelves: [] })
+    expect(restored.discoveredIds).toEqual(starterElementIds)
+  })
+
+  it('normalizes and round-trips shelf preferences with canonical era IDs', () => {
+    const restored = parseProgress(JSON.stringify({
+      ...fresh(), hideFinalElements: true,
+      collapsedShelves: ['first-light', 'first-light', 'stone-age', 'origins', 'stone_age', 'missing'],
+    }))!
+    expect(restored.collapsedShelves).toEqual(['first-light', 'stone-age'])
+    expect(parseProgress(exportProgress(restored))).toEqual(restored)
+  })
+
+  it.each([
+    { hideFinalElements: 'yes' }, { hideFinalElements: null },
+    { collapsedShelves: null }, { collapsedShelves: [7] },
+  ])('rejects malformed preference values instead of silently discarding them: %j', (values) => {
+    expect(parseProgress(JSON.stringify({ ...fresh(), ...values }))).toBeNull()
+  })
   it.each([...starterElementIds, 'rotary-quern', 'lathe', 'alphabet', 'citizenship', 'mathematical-astronomy', 'clinical-observation', 'logic', 'natural-classification'])('round-trips %s discovery and explicit reading without a version bump', (id) => {
     const progress = parseProgress(JSON.stringify({
       ...fresh(),

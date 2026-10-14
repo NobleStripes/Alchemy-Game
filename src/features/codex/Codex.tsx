@@ -1,16 +1,33 @@
-import { useDraggable } from '@dnd-kit/core'
-import { ArrowUpDown, Search, Star, X } from 'lucide-react'
-import { useDeferredValue, useMemo, useState, type CSSProperties, type MouseEvent } from 'react'
-import { elements, elementsById, eras } from '../../game/content'
+import { useDndContext, useDraggable } from '@dnd-kit/core'
+import { ArrowUpDown, ChevronDown, EyeOff, Layers, Search, Star, X } from 'lucide-react'
+import { useDeferredValue, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from 'react'
+import { elements, elementsById, eras, recipes } from '../../game/content'
 import type { ElementCategory } from '../../game/domain/types'
+import { getExhaustedElements, getTemporarilyExhaustedElements } from '../../game/engine/elementStatus'
 import { useGameStore } from '../../game/state/useGameStore'
+
+const elementEras = new Map(elements.map((element) => [element.id, element.era]))
+
+function EraShelf({ eraId, children }: { eraId: string; children: ReactNode }) {
+  const ref = useRef<HTMLElement | null>(null)
+  useLayoutEffect(() => {
+    const node = ref.current
+    return () => {
+      if (node?.contains(document.activeElement) && !node.closest('[hidden]')) {
+        document.getElementById('codex-title')?.focus()
+      }
+    }
+  }, [])
+  return <section ref={ref} className="era-shelf" aria-labelledby={`shelf-header-${eraId}`}>{children}</section>
+}
 
 interface ElementTileProps {
   elementId: string
   onSelected?: () => void
+  status?: 'Terminal' | 'Exhausted for now'
 }
 
-function ElementTile({ elementId, onSelected }: ElementTileProps) {
+function ElementTile({ elementId, onSelected, status }: ElementTileProps) {
   const element = elementsById.get(elementId)
   const selectElement = useGameStore((state) => state.selectElement)
   const firstSlotId = useGameStore((state) => state.firstSlotId)
@@ -19,6 +36,16 @@ function ElementTile({ elementId, onSelected }: ElementTileProps) {
   const toggleFavorite = useGameStore((state) => state.toggleFavorite)
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({ id: `element/${elementId}` })
+  const tileRef = useRef<HTMLDivElement | null>(null)
+  useLayoutEffect(() => {
+    const node = tileRef.current
+    return () => {
+      if (!node?.contains(document.activeElement) || node.closest('[hidden]')) return
+      const header = document.getElementById(`shelf-header-${elementEras.get(elementId)}`)
+      if (header?.isConnected) header.focus()
+      else document.getElementById('codex-title')?.focus()
+    }
+  }, [elementId])
 
   if (!element) return null
   const isFavorite = favoriteIds.includes(element.id)
@@ -40,12 +67,13 @@ function ElementTile({ elementId, onSelected }: ElementTileProps) {
 
   return (
     <div
-      ref={setNodeRef}
+      ref={(node) => { tileRef.current = node; setNodeRef(node) }}
       className="element-tile"
       aria-label={element.name}
       data-selected={Boolean(slotLabel)}
       data-category={element.category}
       data-dragging={isDragging}
+      data-status={status}
       style={style}
       onClick={() => {
         selectElement(element.id)
@@ -53,6 +81,7 @@ function ElementTile({ elementId, onSelected }: ElementTileProps) {
       }}
       {...listeners}
       {...attributes}
+      aria-describedby={[attributes['aria-describedby'], status ? `element-status-${element.id}` : ''].filter(Boolean).join(' ')}
       aria-pressed={Boolean(slotLabel)}
       onKeyDown={(event) => {
         if (event.target !== event.currentTarget) return
@@ -71,6 +100,9 @@ function ElementTile({ elementId, onSelected }: ElementTileProps) {
       <span className="element-copy">
         <strong>{element.name}</strong>
         <small>{element.category}</small>
+        {status && <small id={`element-status-${element.id}`} className="element-status" title={status === 'Terminal'
+          ? 'No authored recipes use this element as an ingredient. You can still select it and read its history.'
+          : 'All outgoing formulas in unlocked ages have been performed. Another age may expose new uses.'}>{status}</small>}
       </span>
       {slotLabel && (
         <span className="slot-badge" aria-hidden="true">{slotLabel}</span>
@@ -107,6 +139,20 @@ export function Codex({ onElementSelected }: CodexProps) {
   const favoriteIds = useGameStore((state) => state.favoriteIds)
   const recentIngredientIds = useGameStore((state) => state.recentIngredientIds)
   const selectElement = useGameStore((state) => state.selectElement)
+  const discoveredRecipeIds = useGameStore((state) => state.discoveredRecipeIds)
+  const unlockedEraIds = useGameStore((state) => state.unlockedEraIds)
+  const hideFinalElements = useGameStore((state) => state.hideFinalElements)
+  const collapsedShelves = useGameStore((state) => state.collapsedShelves)
+  const toggleHideFinalElements = useGameStore((state) => state.toggleHideFinalElements)
+  const toggleShelf = useGameStore((state) => state.toggleShelf)
+  const { active } = useDndContext()
+  const draggedId = typeof active?.id === 'string' && active.id.startsWith('element/')
+    ? active.id.slice('element/'.length) : null
+  const terminalIds = useMemo(() => getExhaustedElements(recipes, new Set(discoveredIds)), [discoveredIds])
+  const exhaustedIds = useMemo(() => getTemporarilyExhaustedElements(
+    recipes, new Set(discoveredIds), new Set(discoveredRecipeIds), new Set(unlockedEraIds), elementEras,
+  ), [discoveredIds, discoveredRecipeIds, unlockedEraIds])
+  const searching = Boolean(query.trim())
 
   const categories: Array<{ id: ElementCategory | 'all'; label: string }> = [
     { id: 'all', label: 'All' },
@@ -123,22 +169,21 @@ export function Codex({ onElementSelected }: CodexProps) {
   const matchingElements = useMemo(() => {
     return elements.filter((element) => {
       if (!discoveredIds.includes(element.id)) return false
+      if (element.id === draggedId) return true
+      if (searching) {
+        return element.name.toLowerCase().includes(deferredQuery) || element.category.includes(deferredQuery)
+      }
       if (starredOnly && !favoriteIds.includes(element.id)) return false
       if (selectedAge !== 'all' && element.era !== selectedAge) return false
-
-      if (deferredQuery) {
-        const matchesName = element.name.toLowerCase().includes(deferredQuery)
-        const matchesCategory = element.category.includes(deferredQuery)
-        if (!matchesName && !matchesCategory) return false
-      }
+      if (hideFinalElements && (terminalIds.has(element.id) || exhaustedIds.has(element.id))) return false
 
       return true
     })
-  }, [discoveredIds, favoriteIds, starredOnly, selectedAge, deferredQuery])
+  }, [discoveredIds, favoriteIds, starredOnly, selectedAge, deferredQuery, searching, hideFinalElements, terminalIds, exhaustedIds, draggedId])
 
   const visibleElements = useMemo(() => {
     const result = matchingElements.filter(
-      (element) => selectedCategory === 'all' || element.category === selectedCategory,
+      (element) => searching || element.id === draggedId || selectedCategory === 'all' || element.category === selectedCategory,
     )
     if (sortOrder === 'alphabetical') {
       result.sort((a, b) => a.name.localeCompare(b.name))
@@ -149,19 +194,20 @@ export function Codex({ onElementSelected }: CodexProps) {
     }
 
     return result
-  }, [matchingElements, selectedCategory, sortOrder, discoveredIds])
+  }, [matchingElements, selectedCategory, sortOrder, discoveredIds, searching, draggedId])
 
   const recentElements = recentIngredientIds
     .filter((id) => discoveredIds.includes(id))
     .map((id) => elementsById.get(id))
     .filter((element) => element !== undefined)
-  const hasFilters = query !== '' || selectedAge !== 'all' || selectedCategory !== 'all' || starredOnly
+  const hasFilters = query !== '' || selectedAge !== 'all' || selectedCategory !== 'all' || starredOnly || hideFinalElements
 
   function clearFilters() {
     setQuery('')
     setSelectedAge('all')
     setSelectedCategory('all')
     setStarredOnly(false)
+    if (hideFinalElements) toggleHideFinalElements()
   }
 
   return (
@@ -261,6 +307,12 @@ export function Codex({ onElementSelected }: CodexProps) {
             )
           })}
         </div>
+        <button type="button" className="category-tab mastered-toggle" aria-pressed={hideFinalElements} data-active={hideFinalElements}
+          aria-describedby="mastered-help" onClick={toggleHideFinalElements}>
+          <EyeOff size={14} aria-hidden="true" /> Hide Mastered
+        </button>
+        <p id="mastered-help" className="shelf-help">Hides Terminal and Exhausted for now. Selection and history stay available.</p>
+        {searching && <p className="shelf-help" role="status">Searching all discovered elements; filters and drawer collapse are temporarily bypassed.</p>}
 
         <div className="codex-results-row">
           <p className="codex-results-count" role="status" aria-label="Element filter results" aria-live="polite" aria-atomic="true">
@@ -305,14 +357,31 @@ export function Codex({ onElementSelected }: CodexProps) {
       </div>
 
       <div className="codex-results" role="region" aria-label="Matching discovered elements" tabIndex={0}>
-        <div id="codex-elements" className="element-list" data-layout={compact ? 'compact' : 'tiles'}>
-          {visibleElements.map((element) => (
-            <ElementTile
-              key={element.id}
-              elementId={element.id}
-              onSelected={onElementSelected}
-            />
-          ))}
+        <div id="codex-elements" className="era-shelves">
+          {eras.map((era) => {
+            const members = visibleElements.filter((element) => element.era === era.id)
+            if (!members.length) return null
+            const count = elements.filter((element) => element.era === era.id && discoveredIds.includes(element.id)).length
+            const total = elements.filter((element) => element.era === era.id).length
+            const expanded = searching || members.some((element) => element.id === draggedId) || !collapsedShelves.includes(era.id)
+            return <EraShelf key={era.id} eraId={era.id}>
+              <h3 className="shelf-heading">
+                <button type="button" id={`shelf-header-${era.id}`} aria-expanded={expanded}
+                  aria-controls={`shelf-body-${era.id}`} disabled={searching || Boolean(draggedId)}
+                  onClick={() => toggleShelf(era.id)}>
+                  <Layers size={16} aria-hidden="true" />
+                  <span>{era.name}</span>{' '}
+                  <small>{count}/{total} discovered{count === total ? ' · Collected' : ''}</small>
+                  <ChevronDown size={16} aria-hidden="true" className={expanded ? '' : 'shelf-chevron-collapsed'} />
+                </button>
+              </h3>
+              <div id={`shelf-body-${era.id}`} hidden={!expanded} className="element-list" data-layout={compact ? 'compact' : 'tiles'}>
+                {expanded && members.map((element) => <ElementTile key={element.id} elementId={element.id}
+                  status={terminalIds.has(element.id) ? 'Terminal' : exhaustedIds.has(element.id) ? 'Exhausted for now' : undefined}
+                  onSelected={onElementSelected} />)}
+              </div>
+            </EraShelf>
+          })}
           {visibleElements.length === 0 && (
             <p className="empty-note">
               {query.trim()

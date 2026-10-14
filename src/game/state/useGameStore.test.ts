@@ -23,6 +23,35 @@ const fresh = (): SavedProgress => parseProgress(JSON.stringify({ version: 1, di
 const failWrites = () => vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
 
 describe('campaign state', () => {
+  it('persists shelf preferences without changing campaign discoveries and resets them', async () => {
+    const before = campaign()
+    state().toggleHideFinalElements()
+    state().toggleShelf('first-light')
+    state().toggleShelf('stone-age')
+    await useGameStore.flushProgress()
+    expect(campaign()).toEqual({ ...before, hideFinalElements: true, collapsedShelves: ['first-light', 'stone-age'] })
+    expect(createGameStore().getState()).toMatchObject({ hideFinalElements: true, collapsedShelves: ['first-light', 'stone-age'] })
+    state().toggleShelf('first-light')
+    expect(state().collapsedShelves).toEqual(['stone-age'])
+    state().toggleShelf('unknown')
+    expect(state().collapsedShelves).toEqual(['stone-age'])
+    state().resetProgress()
+    expect(state()).toMatchObject({ hideFinalElements: false, collapsedShelves: [] })
+  })
+
+  it('adopts external shelf preferences and reports preference write failures', async () => {
+    const external = createGameStore()
+    external.getState().toggleShelf('first-light')
+    external.getState().toggleHideFinalElements()
+    await external.flushProgress()
+    useGameStore.synchronizeProgress()
+    expect(state()).toMatchObject({ hideFinalElements: true, collapsedShelves: ['first-light'] })
+    failWrites()
+    state().toggleHideFinalElements()
+    await useGameStore.flushProgress()
+    expect(state().hideFinalElements).toBe(false)
+    expect(state().persistenceError).not.toBeNull()
+  })
   it('keeps eight distinct recent ingredients in selection order without saving or changing progression', () => {
     const ids = elements.slice(0, 10).map((element) => element.id)
     useGameStore.setState({ discoveredIds: ids })

@@ -3,8 +3,9 @@ import type {
   ElementDefinition,
   EraDefinition,
   RecipeDefinition,
-} from '../domain/types'
-import { pairKey } from './resolveCombination'
+} from '../domain/types.ts'
+import { pairKey } from './resolveCombination.ts'
+import { getExhaustedElements } from './elementStatus.ts'
 
 export function validateContent(
   elements: ElementDefinition[],
@@ -16,6 +17,15 @@ export function validateContent(
   const elementIds = new Set(elements.map((element) => element.id))
   const eraIds = new Set(eras.map((era) => era.id))
   const recipePairs = new Map<string, string>()
+  const terminalIds = getExhaustedElements(recipes, elementIds)
+  const ingredients = new Set(recipes.flatMap((recipe) => recipe.inputs))
+  const protectedTools = new Set(['tool', 'stone-tool', 'bronze-tool', 'iron-tool'])
+  for (const element of elements) {
+    if ((element.starter || protectedTools.has(element.id)) &&
+      (terminalIds.has(element.id) || !ingredients.has(element.id))) {
+      errors.push(`Protected ingredient ${element.id} must have an outgoing recipe.`)
+    }
+  }
 
   for (const [kind, definitions] of [
     ['Element', elements],

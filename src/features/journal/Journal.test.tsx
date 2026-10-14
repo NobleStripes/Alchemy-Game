@@ -27,6 +27,27 @@ afterEach(() => {
 })
 
 describe('Guide preparation', () => {
+  it('keeps a hidden terminal discovery inspectable with its history and recorded origin', async () => {
+    const user = userEvent.setup()
+    const viewHistory = vi.fn()
+    useGameStore.setState({
+      discoveredIds: elements.map((element) => element.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      discoveredRecipeIds: ['examined-argument'],
+      hideFinalElements: true,
+      collapsedShelves: ['classical-antiquity'],
+    })
+    render(<Journal {...props} eraId="classical-antiquity" onViewHistory={viewHistory} />)
+    await user.click(screen.getByRole('button', { name: 'Inspect Logic' }))
+    expect(screen.getByText(/Terminal: no authored recipe/)).toBeVisible()
+    const history = screen.getByRole('button', { name: 'View history of Logic' })
+    await user.click(history)
+    expect(viewHistory).toHaveBeenCalledWith('logic', history)
+    const prepare = screen.getAllByRole('button', { name: 'Prepare Rhetoric + Knowledge' })[0]
+    await user.click(prepare)
+    expect(useGameStore.getState()).toMatchObject({ firstSlotId: 'rhetoric', secondSlotId: 'knowledge' })
+  })
+
   it('offers history only for an inspected discovery and passes its originating control without changing gameplay', async () => {
     useGameStore.getState().transmuteWith('stone', 'ember')
     const callback = vi.fn()

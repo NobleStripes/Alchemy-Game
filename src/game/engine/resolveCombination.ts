@@ -1,4 +1,4 @@
-import type { RecipeDefinition } from '../domain/types'
+import type { RecipeDefinition } from '../domain/types.ts'
 
 export function pairKey(firstId: string, secondId: string) {
   return [firstId, secondId].sort().join('::')

@@ -12,6 +12,24 @@ import { exportProgress, SAVE_KEY, type SavedProgress } from './game/state/persi
 import { createGameStore, snapshotProgress, useGameStore } from './game/state/useGameStore'
 
 describe('alchemy worktable', () => {
+  it('retains saved drawer and Hide Mastered preferences across Atlas navigation and remounting', async () => {
+    const user = userEvent.setup()
+    const view = render(<App />)
+    await user.click(screen.getByRole('button', { name: /Origins.*discovered/ }))
+    await user.click(screen.getByRole('button', { name: 'Hide Mastered' }))
+    const saved = localStorage.getItem(SAVE_KEY)
+    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    expect(screen.getByRole('button', { name: /Origins.*discovered/ })).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.getByRole('button', { name: 'Hide Mastered' })).toHaveAttribute('aria-pressed', 'true')
+    expect(localStorage.getItem(SAVE_KEY)).toBe(saved)
+    view.unmount()
+    render(<App />)
+    expect(screen.getByRole('button', { name: /Origins.*discovered/ })).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.getByRole('button', { name: 'Hide Mastered' })).toHaveAttribute('aria-pressed', 'true')
+    expect(localStorage.getItem(SAVE_KEY)).toBe(saved)
+  })
+
   it('defaults to Play and separates two top-level sections from the three gameplay tabs', async () => {
     const user = userEvent.setup()
     render(<App />)
@@ -779,7 +797,7 @@ describe('alchemy worktable', () => {
     render(<App />)
 
     expect(screen.getByRole('button', { name: 'Human' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /Stone Age/ })).toBeEnabled()
+    expect(within(screen.getByRole('navigation', { name: 'Play ages' })).getByRole('button', { name: /Stone Age/ })).toBeEnabled()
     expect(screen.getByText(/Stone Age unlocked/)).toBeInTheDocument()
     expect(useGameStore.getState().insightCredits).toBe(2)
   })
@@ -869,7 +887,7 @@ describe('alchemy worktable', () => {
     render(<App />)
 
     expect(screen.getByRole('button', { name: 'Copper Ore' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /Bronze Age/ })).toBeEnabled()
+    expect(within(screen.getByRole('navigation', { name: 'Play ages' })).getByRole('button', { name: /Bronze Age/ })).toBeEnabled()
     expect(screen.getByText(/Bronze Age unlocked/)).toBeInTheDocument()
     expect(useGameStore.getState().insightCredits).toBe(2)
   })

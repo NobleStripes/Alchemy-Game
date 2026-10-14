@@ -103,6 +103,8 @@ const progressSchema = versionSixProgressSchema.extend({
     return !challenge || record.bestAttemptCount >= challenge.minimumAttempts
   }, 'Challenge attempt count cannot be below its shortest route.')),
   readHistoricalElementIds: z.array(z.string()).default([]),
+  hideFinalElements: z.boolean().default(false),
+  collapsedShelves: z.array(z.string()).default([]),
 })
 
 export interface SavedProgress {
@@ -122,10 +124,13 @@ export interface SavedProgress {
   rewardedCollectionIds: string[]
   challengeRecords: ChallengeRecord[]
   readHistoricalElementIds: string[]
+  hideFinalElements: boolean
+  collapsedShelves: string[]
 }
 
 function normalizeProgress(
-  progress: Omit<SavedProgress, 'readHistoricalElementIds'> & Partial<Pick<SavedProgress, 'readHistoricalElementIds'>>,
+  progress: Omit<SavedProgress, 'readHistoricalElementIds' | 'hideFinalElements' | 'collapsedShelves'> &
+    Partial<Pick<SavedProgress, 'readHistoricalElementIds' | 'hideFinalElements' | 'collapsedShelves'>>,
   legacy: boolean,
 ): SavedProgress {
   const knownIds = (ids: string[]) => [...new Set(ids)].filter((id) => elementsById.has(id))
@@ -177,6 +182,8 @@ function normalizeProgress(
   return {
     ...progress,
     ...eraProgress,
+    hideFinalElements: progress.hideFinalElements ?? false,
+    collapsedShelves: [...new Set(progress.collapsedShelves ?? [])].filter((id) => eraIds.has(id)),
     activeEraId: eraProgress.unlockedEraIds.includes(progress.activeEraId)
       ? progress.activeEraId : eraProgress.unlockedEraIds.at(-1) ?? eras[0].id,
     discoveredRecipeIds: recipeIds(progress.discoveredRecipeIds, true),
@@ -458,11 +465,13 @@ export function exportProgress(progress: Omit<SavedProgress, 'version'>): string
     rewardedCollectionIds: progress.rewardedCollectionIds ?? [],
     challengeRecords: progress.challengeRecords ?? [],
     readHistoricalElementIds: progress.readHistoricalElementIds ?? [],
+    hideFinalElements: progress.hideFinalElements ?? false,
+    collapsedShelves: progress.collapsedShelves ?? [],
   })
 }
 
-type LegacySaveInput = Omit<SavedProgress, 'version' | 'favoriteIds' | 'soundEnabled' | 'experimentHistory' | 'rewardedCollectionIds' | 'challengeRecords' | 'readHistoricalElementIds'> &
-  Partial<Pick<SavedProgress, 'favoriteIds' | 'soundEnabled' | 'experimentHistory' | 'rewardedCollectionIds' | 'challengeRecords' | 'readHistoricalElementIds'>>
+type LegacySaveInput = Omit<SavedProgress, 'version' | 'favoriteIds' | 'soundEnabled' | 'experimentHistory' | 'rewardedCollectionIds' | 'challengeRecords' | 'readHistoricalElementIds' | 'hideFinalElements' | 'collapsedShelves'> &
+  Partial<Pick<SavedProgress, 'favoriteIds' | 'soundEnabled' | 'experimentHistory' | 'rewardedCollectionIds' | 'challengeRecords' | 'readHistoricalElementIds' | 'hideFinalElements' | 'collapsedShelves'>>
 
 export function saveProgress(progress: LegacySaveInput): boolean {
   if (typeof window === 'undefined') return false
@@ -476,6 +485,8 @@ export function saveProgress(progress: LegacySaveInput): boolean {
       rewardedCollectionIds: progress.rewardedCollectionIds ?? [],
       challengeRecords: progress.challengeRecords ?? [],
       readHistoricalElementIds: progress.readHistoricalElementIds ?? [],
+      hideFinalElements: progress.hideFinalElements ?? false,
+      collapsedShelves: progress.collapsedShelves ?? [],
     })
     if (new TextEncoder().encode(serialized).byteLength > MAX_SAVE_BYTES) return false
     window.localStorage.setItem(SAVE_KEY, serialized)

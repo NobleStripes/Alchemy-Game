@@ -8,6 +8,7 @@ import {
   MAX_INSIGHT_CREDITS,
 } from '../../game/engine/insightRules'
 import { isElementUnstudied } from '../../game/engine/isElementUnstudied'
+import { getExhaustedElements, getTemporarilyExhaustedElements } from '../../game/engine/elementStatus'
 import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
 import { RecipeHistory } from './RecipeHistory'
@@ -82,6 +83,11 @@ export function Journal({
   const selectedElement =
     selectedCandidate?.era === eraId && discoveredIds.includes(selectedCandidate.id)
       ? selectedCandidate : null
+  const terminalIds = getExhaustedElements(recipes, new Set(discoveredIds))
+  const exhaustedIds = getTemporarilyExhaustedElements(
+    recipes, new Set(discoveredIds), new Set(discoveredRecipeIds), new Set(unlockedEraIds),
+    new Map(elements.map((element) => [element.id, element.era])),
+  )
   const relatedRecipes = selectedElement
     ? recipes.filter(
         (recipe) =>
@@ -446,6 +452,11 @@ export function Journal({
               </div>
             </div>
             <p className="detail-desc">{selectedElement.description}</p>
+            {terminalIds.has(selectedElement.id) ? (
+              <p className="element-status">Terminal: no authored recipe uses this element as an ingredient. You can still select it and read its history.</p>
+            ) : exhaustedIds.has(selectedElement.id) ? (
+              <p className="element-status">Exhausted for now: every outgoing formula in unlocked ages has been performed. Another age may expose new uses.</p>
+            ) : null}
             {onViewHistory && (
               <button
                 type="button"

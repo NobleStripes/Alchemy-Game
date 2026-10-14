@@ -44,6 +44,8 @@ interface GameState extends PersistedState {
   prepareCombination: (firstId: string, secondId: string) => boolean
   recordChallengeCompletion: (challengeId: string, attemptCount: number) => Promise<ChallengeSaveReceipt>
   toggleSound: () => void
+  toggleHideFinalElements: () => void
+  toggleShelf: (eraId: string) => void
   toggleFavorite: (elementId: string) => void
   toggleHistoricalRead: (elementId: string) => void
   selectElement: (elementId: string) => void
@@ -82,6 +84,8 @@ export function snapshotProgress(state: PersistedState): PersistedState {
     rewardedCollectionIds: state.rewardedCollectionIds,
     challengeRecords: state.challengeRecords,
     readHistoricalElementIds: state.readHistoricalElementIds,
+    hideFinalElements: state.hideFinalElements,
+    collapsedShelves: state.collapsedShelves,
   }
 }
 
@@ -157,6 +161,24 @@ export function createGameStore() {
     } finally {
       challengePending = false
     }
+  },
+
+  toggleHideFinalElements: () => {
+    if (challengePending) return
+    const state = get()
+    const hideFinalElements = !state.hideFinalElements
+    const persistenceError = writeProgress({ ...state, hideFinalElements })
+    set({ hideFinalElements, persistenceError })
+  },
+
+  toggleShelf: (eraId) => {
+    if (challengePending || !eras.some((era) => era.id === eraId)) return
+    const state = get()
+    const collapsedShelves = state.collapsedShelves.includes(eraId)
+      ? state.collapsedShelves.filter((id) => id !== eraId)
+      : [...state.collapsedShelves, eraId]
+    const persistenceError = writeProgress({ ...state, collapsedShelves })
+    set({ collapsedShelves, persistenceError })
   },
 
   toggleSound: () => {
@@ -499,6 +521,8 @@ export function createGameStore() {
       rewardedCollectionIds: [],
       challengeRecords: [],
       readHistoricalElementIds: [],
+      hideFinalElements: false,
+      collapsedShelves: [],
       discoveredIds: [...starterElementIds],
       discoveredRecipeIds: [],
       insightCredits: 3,

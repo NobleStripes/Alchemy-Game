@@ -372,6 +372,19 @@
 .tab-count { min-width: 15px; padding: 1px 4px; color: inherit; background: rgba(255, 255, 255, 0.2); border-radius: 3px; font-size: 8px; text-align: center; }
 
 .element-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.element-list[hidden] { display: none; }
+.era-shelves { display: flex; flex-direction: column; gap: 12px; }
+.era-shelf { min-width: 0; }
+.shelf-heading { margin: 0 0 6px; }
+.shelf-heading button { display: flex; width: 100%; align-items: center; gap: 6px; min-height: 44px; padding: 8px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); font: 800 12px/1.4 var(--ui); text-align: left; cursor: pointer; }
+.shelf-heading button small { margin-left: auto; font-size: 10px; font-weight: 600; }
+.shelf-heading button:disabled { cursor: default; }
+.shelf-heading button:focus-visible, .mastered-toggle:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.shelf-chevron-collapsed { transform: rotate(-90deg); }
+.shelf-help { margin: 0; color: var(--ink-soft); font-size: 10px; line-height: 1.5; }
+.mastered-toggle { min-height: 44px; align-self: flex-start; }
+.element-tile[data-status='Terminal'] { border-color: #927025; }
+.element-status, .element-copy small.element-status { display: block; color: var(--ink); font-size: 10px; line-height: 1.4; font-weight: 700; }
 .element-list[data-layout='compact'] { grid-template-columns: minmax(0, 1fr); gap: 5px; }
 .element-list[data-layout='compact'] .element-tile { min-height: 44px; padding: 6px 32px 6px 8px; grid-template-columns: 26px minmax(0, 1fr) auto; grid-template-rows: auto; gap: 8px; text-align: left; }
 .element-list[data-layout='compact'] .element-sigil { width: 26px; font-size: 19px; }
