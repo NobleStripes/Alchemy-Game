@@ -23,6 +23,7 @@ export default defineConfig({
           groups: [
             { name: 'vendor', test: /[\\/]node_modules[\\/]/ },
             { name: 'research-content', test: /[\\/]content[\\/]research\.json$/ },
+            { name: 'craft-research-content', test: /[\\/]content[\\/]craftResearch\.json$/ },
           ],
         },
       },

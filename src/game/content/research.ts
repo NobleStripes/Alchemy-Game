@@ -1,4 +1,5 @@
 import rawResearch from './research.json'
+import rawCraftResearch from './craftResearch.json'
 import { elements } from './index'
 import { historicalDatabaseSchema, type HistoricalResearchSource } from './schema'
 
@@ -134,7 +135,12 @@ export function createResearchDatabaseSchema(
 }
 
 // Historical metadata stays separate from recipes, progression and save data.
-export const historicalResearch = createResearchDatabaseSchema(elements).parse(rawResearch)
+const craftResearch = historicalDatabaseSchema.parse(rawCraftResearch)
+export const historicalResearch = createResearchDatabaseSchema(elements).parse({
+  ...rawResearch,
+  sources: [...craftResearch.sources, ...rawResearch.sources],
+  records: [...rawResearch.records, ...craftResearch.records],
+})
 export const researchByElementId = new Map(
   historicalResearch.records.map((record) => [record.elementId, record]),
 )

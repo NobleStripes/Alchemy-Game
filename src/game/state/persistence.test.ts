@@ -16,6 +16,29 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('preserves a complete 200-element v7 campaign and round-trips the craft expansion without new rewards', () => {
+    const previous: SavedProgress = {
+      ...fresh(), discoveredIds: elements.slice(0, 200).map((element) => element.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      discoveredRecipeIds: recipes.slice(0, 243).map((recipe) => recipe.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      favoriteIds: ['kiln', 'tin-ore'], readHistoricalElementIds: ['tin', 'brick'],
+      hideFinalElements: true, collapsedShelves: ['stone-age'],
+    }
+    expect(parseProgress(exportProgress(previous))).toEqual(previous)
+    const expanded: SavedProgress = {
+      ...previous, discoveredIds: elements.map((element) => element.id),
+      discoveredRecipeIds: recipes.map((recipe) => recipe.id),
+      favoriteIds: [...previous.favoriteIds, 'sealed-tablet', 'water-screw'],
+      readHistoricalElementIds: [...previous.readHistoricalElementIds, 'sealed-tablet', 'weight-standard', 'wax-tablet'],
+    }
+    expect(parseProgress(exportProgress(expanded))).toEqual(expanded)
+    expect(expanded.version).toBe(7)
+    expect(expanded.rewardedCollectionIds).toEqual(previous.rewardedCollectionIds)
+    expect(expanded.rewardedChallengeEraIds).toEqual(previous.rewardedChallengeEraIds)
+  })
+
   it('preserves a complete pre-foundations v7 campaign and round-trips new formulas and reading', () => {
     const previous = {
       ...fresh(), discoveredIds: elements.slice(0, 194).map((element) => element.id),
@@ -327,7 +350,9 @@ describe('progress persistence', () => {
     const older = {
       ...fresh(),
       discoveredIds: earlierElements.map((element) => element.id),
-      discoveredRecipeIds: recipes.filter((recipe) => earlierIds.has(recipe.result)).map((recipe) => recipe.id),
+      discoveredRecipeIds: recipes.filter((recipe) =>
+        earlierIds.has(recipe.result) && recipe.inputs.every((id) => earlierIds.has(id)),
+      ).map((recipe) => recipe.id),
       unlockedEraIds: earlierEraIds,
       rewardedChallengeEraIds: earlierEraIds,
       activeEraId: 'iron-age',
@@ -369,7 +394,8 @@ describe('progress persistence', () => {
     expect(progress.favoriteIds).toEqual(elements.slice(158).map((element) => element.id))
     expect(progress.discoveredRecipeIds).toContain('civic-membership')
     expect(progress.favoriteIds).toContain('citizenship')
-    expect(progress.experimentHistory.map((entry) => entry.recipeId)).toEqual(recordedRecipes.map((recipe) => recipe.id))
+    expect(progress.experimentHistory.map((entry) => entry.recipeId))
+      .toEqual(recordedRecipes.slice(-MAX_EXPERIMENT_HISTORY).map((recipe) => recipe.id))
     expect(parseProgress(exportProgress(progress))).toEqual(progress)
   })
 

@@ -6,7 +6,7 @@
 
 Retain the original **194 elements and 232 recipes**, including existing regional Age V discoveries. The target is **250 core elements within the same five gameplay ages**. Newly proposed regional modules are separate editorial backlogs, not a runtime module system or part of the additional 56.
 
-The first milestone is implemented: **200 elements, 243 recipes, 97 full histories, 149 chronology entries, 127 verified sources and one pending source**. Six new discoveries have histories; six previously unresearched elements now have histories too. **103 original elements** still lack full records.
+The current milestone is implemented: **215 elements, 270 recipes, 127 full histories, 160 chronology entries, 140 verified sources and one pending source**. The first batch added six discoveries and six backlog histories; the second adds fifteen discoveries and fifteen backlog histories. **88 original elements** still lack full records.
 
 Core means selected for the main catalog, not universal invention or adoption. Regional module means a separately bounded comparative proposal. Research-only means history or evidence without a new gameplay node. A **core candidate** below is not accepted content until it passes all gates.
 
@@ -23,7 +23,7 @@ For every candidate:
 
 The baseline inventory below includes every existing ID. Each candidate's nearest semantic overlap is recorded in the tables, not inferred only from spelling. The validator checks exact IDs, normalized duplicate names and pair conflicts; semantic distinctness remains an editorial decision.
 
-The **six implemented proposals** have passage-reviewed evidence, individually checked pairs and useful downstream routes. The **50 later core candidates** have an overlap/chain screen but are explicitly **blocked on chronology and regional source verification**. Their target ages are hypotheses, not historical assertions. No recipes for those 50 are authored or collision-certified. This is a research queue, not certification of 56 historical discoveries; replace rather than pad candidates that fail.
+The **21 implemented proposals** have passage-reviewed evidence, individually checked pairs and full histories. Of the original 50 later candidates, nine are now accepted and six slots are replaced by the bounded alternatives described below. The remaining **35 active candidates** are still blocked on chronology, regional evidence and recipe design. Their target ages are hypotheses, not historical assertions. This is a research queue, not certification of 56 historical discoveries; replace rather than pad candidates that fail.
 
 ## Milestone 200: accepted production foundations
 
@@ -58,11 +58,58 @@ All eleven pairs were absent from the baseline and are unique in the full graph.
 
 The chains now expose grinding -> Flour -> Dough -> Bread, fibre preparation -> Yarn -> Textile, firing structure -> Fired Brick -> Wall, and ore -> Tin -> Bronze. They do not require replacing legacy formulas or enforcing one historical sequence.
 
-The six backlog histories are **Flour, Fibre, Loom, Textile, Tin and Mud Brick**. Their coverage is bounded: Egyptian flax is not every fibre; woven linen is not every textile; Tin deliberately has no unsupported invention date or ancient provenance. The actual graph has **151 ingredients, 49 terminal elements and zero unused nodes**. Legitimate terminal discoveries elsewhere do not require artificial outgoing recipes.
+The six backlog histories are **Flour, Fibre, Loom, Textile, Tin and Mud Brick**. Their coverage is bounded: Egyptian flax is not every fibre; woven linen is not every textile; Tin deliberately has no unsupported invention date or ancient provenance. This preserved 200-element snapshot had **151 ingredients, 49 terminal elements and zero unused nodes**. Legitimate terminal discoveries elsewhere do not require artificial outgoing recipes.
 
-## Later core candidates: screened, not accepted
+## Milestone 215: craft, records and engineering
 
-Every row is **core candidate / evidence blocked**. The proposed age is a gameplay hypothesis requiring original regional passages before acceptance. The chain column is a design objective, **not an authored pair or verified historical dependency**. For each row, dates, regions, receipts, pair selection and collision status remain unverified; no claim of readiness is made.
+All fifteen discoveries are **core content**, optional for the unchanged age-completion targets. They were screened against the full 200-element catalog, including every original 194 definition and every existing pair, before acceptance.
+
+| Discovery / ID | Gameplay age | Overlap audit and decision | Bounded evidence |
+| --- | --- | --- | --- |
+| Smelting Furnace / `smelting-furnace` | Bronze Age | Kiln fires ceramics; Forge works metal; Bloomery retains its iron-specific role. Add ore-reduction equipment and alternate copper/tin routes, not a universal kiln-to-furnace sequence. | [Eretz Israel Museum](https://www.eretzmuseum.org.il/en/nehushtan-pavilion/) distinguishes original copper furnaces and reconstructions. Twelfth-century BCE original supports regional use; earlier precedents remain explicit. Copper evidence does not certify a named tin furnace. |
+| Clay Tablet / `clay-tablet` | Bronze Age | Clay, Writing, Writing Reed and Archive are material, practice, implement and recordkeeping. Add a support, not another writing invention. | [ORACC](https://oracc.museum.upenn.edu/nimrud/ancientkalhu/thewritings/cuneiformonclay/index.html) distinguishes moist-clay inscription, direct impressions and envelopes. The existing writing-origin receipt supplies the earlier Mesopotamian comparison. Most tablets were not fired. |
+| Sealed Tablet / `sealed-tablet` | Bronze Age | Seal is a tool, not its impression. Add a document state, not a second Seal or an automatic envelope. | [Louvre AO 9386](https://collections.louvre.fr/en/ark:/53355/cl010124308) is a tablet inside an impressed envelope, broadly catalogued 2000-1392 BCE. Raw descriptive fields were read; purchase provenance is not an excavated context. Later ORACC formats are comparisons, not Bronze Age dating evidence. |
+| Standardized Weights / `weight-standard` | Bronze Age | Balance is the instrument; Trade and Coinage are not the metrological convention. Retain the planned stable ID with a clearer display name. | [Harappa series](https://www.harappa.com/slide/weights-harappa) and [comparative summary](https://www.harappa.com/blog/uniqueness-ancient-indus-weight-system): regional units and variability, not one universal standard. The complete underlying PNAS paper was not reviewed. |
+| Axe / `axe` | Stone Age | Stone Tool is generic, Spear has a different role, and Saw is not the only woodworking method. Add a hafted stone woodworking form. | [Sweet Track](https://avalonmarshes.org/heritage/sweet-track/) construction in 3806 BCE used stone axes and wooden wedges; that dates the structure, not axe invention. |
+| Adze / `adze` | Stone Age | Distinguish Axe's parallel edge from transverse hafting; do not merge all stone woodworking tools. | [Hampshire adze](https://stonetoolsmuseum.com/artefact/europe/stone-adze-4/2870/) has an interpreted hafting arrangement and collection range 4500-6000 BP, not a newly calibrated BCE date. |
+| Wedge / `wedge` | Stone Age | Splitting differs from sawing and is not a new resource called Timber. Add an alternative worked-wood route. | Sweet Track explicitly names wooden wedges. Timber keeps its old Iron Age gameplay page without claiming worked wood began then. |
+| Fishhook / `fishhook` | Stone Age | Needle, Spear and Net do not represent hook-and-line fishing. Add a bone-hook branch without renaming those tools. | [Jortveit report](https://archaeology.org/issues/september-october-2020/artifacts/artifact-norway-neolithic-fishhook/), 3400-2200 BCE Norwegian Neolithic. Line material/attachment are proposed; tuna bones are not demonstrated consumption. |
+| Fishing Weir / `fishing-weir` | Stone Age | Net and Basket are not a stationary barrier. Reuse basketry knowledge while distinguishing barriers from traps. | [Syltholm study](https://doi.org/10.1017/ppr.2024.15) distinguishes wattle barriers and wicker traps; compatible dates around 3900-3600 calibrated BCE suggest associated use, not one exact construction year. |
+| Iron Chisel / `iron-chisel` | Iron Age | Narrow the generic Chisel proposal to an iron implement distinct from Iron Tool; do not claim all chisels began with iron. | [Twyn-y-Gaer object](https://museum.wales/collections/online/object/e1bfeffe-0e85-3b29-b81e-20bba013acb2/Iron-Age-iron-chisel/) is incomplete and its context is not yet known; no numerical date or precise task is invented. |
+| Gouge / `gouge` | Iron Age | Distinguish a curved hollowing edge from Chisel, Adze and generic Iron Tool. | [Museum Wales carpentry account](https://museum.wales/blog/729/Bryn-Eryr-Farm---How-to-become-an-Iron-Age-Carpenter/) names a Castell Henllys gouge and separates originals, reconstructed handles and modern trials. No exact date is supplied. |
+| Wax Tablet / `wax-tablet` | Iron Age | A reusable support is not Manuscript, Writing or Clay Tablet. Wax and stylus are explicit omitted inputs rather than unsupported extra resource nodes. | [ORACC other media](https://oracc.museum.upenn.edu/nimrud/ancientkalhu/thewritings/cuneiformonothermedia/index.html) distinguishes references, depictions and surviving boards; possible 612 BCE deposition is not manufacture. Earlier precedents are retained. |
+| Pulley / `pulley` | Classical Antiquity | Wheel and Cordage do not describe a complete lifting machine. Add a rope-guiding mechanism and building association. | [Vitruvius X.2](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html) is textual evidence for hoists, not an excavated first pulley. Fixed and compound systems differ. |
+| Water Screw / `water-screw` | Classical Antiquity | Irrigation, Canal and Aqueduct are not a helical water lift. Lathe is a rotary-craft clue, not a documented prerequisite. | Vitruvius X.6 describes the device; it does not establish sole inventorship, an Assyrian predecessor or an exact origin date. |
+| Vault / `vault` | Classical Antiquity | Arch is a form, Concrete a material, Public Bath a building use. Add an extended spanning form. | [Roman Architecture](https://www.worldhistory.org/Roman_Architecture/), materials section: first-century BCE regional concrete use in vaults, not the first vault worldwide or a requirement for every vault. |
+
+### Accepted chains and recipe limits
+
+The batch appends **27 unique unordered pairs**: **20 symbolic associations and seven simplified processes**, all individually reviewed and cited. Every one of the earlier 243 routes remains unchanged. New chains include:
+
+- Firing knowledge -> Smelting Furnace -> alternative Copper/Tin -> existing Bronze.
+- Clay + Writing Reed -> Clay Tablet -> Sealed Tablet, alongside existing Writing, Seal and Archive.
+- Balance -> Standardized Weights -> an optional Merchant association.
+- Hafted Axe -> Adze and Wedge -> Shelter or split Timber; the later Timber page is retained for compatibility.
+- Bone/line and basketry/water -> distinct hook and weir fishing -> existing Food.
+- Iron Tool -> Iron Chisel or Gouge -> optional masonry/boat associations; those uses are gameplay-only, not proven tasks of the cited objects.
+- Timber/writing -> Wax Tablet, with wax, preparation and stylus acknowledged as omitted.
+- Wheel/rope -> Pulley -> masonry logistics; rotary craft/water management -> Water Screw -> irrigation association; Arch/masonry -> Vault -> a bath-space association.
+
+The [optional-content guide](optional-content.md#craft-records-and-engineering) contains the complete recipe spoiler table. Two-input clues are not operating, manufacturing or structural instructions.
+
+Fifteen original gaps now receive histories: **Copper, Bronze, Forge, Seal, Scribe, Archive, Balance, Bronze Tool, Masonry, Irrigation, Bellows, Bloomery, Iron, Iron Tool and Blacksmith**. These are bounded entries, not claims of exhaustive research: several deliberately have no numerical chronology, and Irrigation's Roman technical comparison does not date earlier irrigation. Full coverage now reaches **127/215**, with **88 original gaps** remaining.
+
+The current graph is **168 ingredients, 47 terminal discoveries and zero unused nodes**. Lathe gains an outgoing use; saves recompute status rather than storing a permanent terminal flag. Regression coverage fingerprints the entire previous 200/243 catalog, validates both full and prior graphs, checks all 27 pairs in both orders, verifies same-age reachability and cited histories, and round-trips discoveries/formulas/reading in v7.
+
+### Replacements and rejected evidence
+
+Six original slots are replaced, not silently counted in addition to the 56-slot target: generic Chisel -> Iron Chisel; Drill -> Fishhook; Mallet -> Fishing Weir; Sailcloth -> Smelting Furnace; Loom Weight -> Sealed Tablet; Lost-Wax Casting -> Gouge. Displaced proposals remain documented below as deferred research/design candidates; none is certified or shipped.
+
+A Museum Wales [file record](https://museum.wales/collections/online/object/50a1c79a-a981-3a8e-bf76-5ba889a8e1d2/Iron-Age--Roman-iron-file/) has an ambiguous title but explicitly dates the object to **260-355 CE**. It was rejected as support for an Iron Age file. Blocked Met/British Museum pages and search snippets were not promoted to verified receipts; the Louvre's descriptive HTML and other directly read institutional sources supplied the accepted evidence.
+
+## Original later-candidate screen
+
+The tables below preserve the original queue. Nine IDs (`axe`, `adze`, `wedge`, `weight-standard`, `clay-tablet`, `wax-tablet`, `pulley`, `water-screw`, `vault`) are now accepted above; six slots are replaced as listed above. For all remaining rows, **core candidate / evidence blocked** still applies. Their ages are hypotheses and chain roles are design objectives, not authored pairs or verified historical dependencies.
 
 ### Toward 210: ten woodworking and binding candidates
 
@@ -129,7 +176,7 @@ Every row is **core candidate / evidence blocked**. The proposed age is a gamepl
 | `dome` / Dome | Classical Antiquity | Arch, Concrete, Public Bath: a different spanning form; do not make concrete universal or necessary. |
 | `wheelbarrow` / Wheelbarrow | Classical Antiquity | Wheel, Cart, Wagon: a distinct load-carrying arrangement; regional evidence decides main-catalog versus module scope. |
 
-This gives **56 named core slots including the six shipped discoveries**, not a promise that all 50 screened candidates will qualify. A failed node is replaced with an individually audited candidate, with its rejected row retained.
+The original screen gave **56 named core slots**. With the six explicit replacements above, 21 slots are shipped and 35 remain active but blocked. Retained displaced rows are not extra accepted slots or a promise that all candidates will qualify.
 
 ## Regional-module and research-only dispositions
 
@@ -171,8 +218,9 @@ Alias checks include Fire=`ember`, Water=`tide`, Earth=`stone` (not Rock), Air=`
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
 | 194 baseline | 0 | 0 | 0 | 85 / 194 | 109 | Baseline |
 | 200 | 6 | 6 | 6 | 97 / 200 | 103 | Implemented; verification recorded in educational QA |
-| 210 | 10 | 16 | 16 | 117 / 210 | 93 | Evidence/chain gate pending |
-| 225 | 15 | 31 | 31 | 147 / 225 | 78 | Evidence/chain gate pending |
+| 210 threshold | 10 planned | 16 | 16 | 117 / 210 | 93 | Surpassed by the 215 batch, not a separately shipped snapshot |
+| 215 | 15 after 200 | 21 | 21 | 127 / 215 | 88 | Implemented craft, records and engineering batch |
+| 225 | 10 after 215 | 31 | 31 | 147 / 225 | 78 | Evidence/chain gate pending |
 | 250 | 25 | 56 | 56 | 197 / 250 | 53 | Evidence/chain gate pending |
 
 Every batch requires 100% research coverage for additions, one previously missing full history per added element, unique IDs/pairs, no unused nodes, reviewed recipe semantics, legacy-only completion paths and save compatibility. Source counts and dated-entry counts are not quality quotas; appropriate undated records are preferable to false precision. Independent scholarly review and human learning outcomes remain separate.
@@ -181,6 +229,6 @@ Every batch requires 100% research coverage for additions, one previously missin
 
 [Graph validation](../src/game/engine/validateContent.ts) remains the build-time gate. New synthetic tests cover normalized name collisions, repeated era references, future grants/landmarks, self-pairs, reversed collisions, missing inputs/results/references, legal alternate routes, seeded versus unseeded cycles, grant-dependent deadlocks, starters and exact goal boundaries.
 
-[Foundation regressions](../src/game/content/foundations.test.ts) check the exact 200/243/97 milestone, each formula and source-backed review, spindle-free early Yarn, legacy-only completion, old route preservation, new outgoing-use reactivation and evidence limits. Existing 194-element/232-recipe fingerprints remain unchanged rather than being regenerated. Existing legitimate terminal nodes remain allowed.
+[Foundation regressions](../src/game/content/foundations.test.ts) retain the exact 200/243/97 snapshot. [Craft-expansion regressions](../src/game/content/craftExpansion.test.ts) check the current 215/270/127 milestone, all new routes, historical distinctions and the complete preceding catalog fingerprint. Existing 194-element/232-recipe fingerprints remain unchanged rather than being regenerated. Existing legitimate terminal nodes remain allowed.
 
 Run focused graph/content/research tests before large additions, then persistence/store, Atlas/Guide/application and challenge regressions. Each release requires typecheck, lint, the complete test suite and the production build. Check narrow/desktop rendering and chunk warnings. Automated checks cannot certify historical truth, live source accessibility, human comprehension or independent peer review.

@@ -414,7 +414,7 @@ describe('Bronze Age content', () => {
     )
     const bronzeEra = eras.find((era) => era.id === 'bronze-age')
 
-    expect(bronzeElements).toHaveLength(46)
+    expect(bronzeElements).toHaveLength(50)
     expect(bronzeEra?.discoveryGoal).toBe(23)
     expect(bronzeEra?.landmarkIds).toEqual([
       'bronze',
@@ -461,11 +461,11 @@ describe('Iron Age content', () => {
     expect(elementsById.get(result)?.era).toBe('iron-age')
   })
 
-  it('contains twenty-three nonstarter elements and preserves the approved gate', () => {
+  it('contains twenty-six nonstarter elements and preserves the approved gate', () => {
     const ironElements = elements.filter((element) => element.era === 'iron-age')
-    expect(ironElements).toHaveLength(23)
+    expect(ironElements).toHaveLength(26)
     expect(ironElements.every((element) => !element.starter)).toBe(true)
-    expect(recipes.filter((recipe) => elementsById.get(recipe.result)?.era === 'iron-age')).toHaveLength(23)
+    expect(recipes.filter((recipe) => elementsById.get(recipe.result)?.era === 'iron-age')).toHaveLength(27)
     expect(eras.find((era) => era.id === 'iron-age')).toMatchObject({
       unlockRequires: ['bronze', 'forge', 'law', 'city'],
       grants: ['iron-ore'],
@@ -769,18 +769,18 @@ describe('content contracts', () => {
     )
   })
 
-  it.each([0, -1, 1.5, 24])('rejects an impossible Iron discovery goal of %s', (discoveryGoal) => {
+  it.each([0, -1, 1.5, 27])('rejects an impossible Iron discovery goal of %s', (discoveryGoal) => {
     const invalidEras = eras.map((era) => era.id === 'iron-age' ? { ...era, discoveryGoal } : era)
     expect(validateContent(elements, recipes, invalidEras)).toContain(
-      `Era iron-age has impossible discovery goal ${discoveryGoal} with 23 reachable elements.`,
+      `Era iron-age has impossible discovery goal ${discoveryGoal} with 26 reachable elements.`,
     )
   })
 
   it('uses gated reachable discoveries, not nominal element count, to validate goals', () => {
     const disconnected = recipes.filter((recipe) => recipe.result !== 'market')
-    const invalidEras = eras.map((era) => era.id === 'iron-age' ? { ...era, discoveryGoal: 22 } : era)
+    const invalidEras = eras.map((era) => era.id === 'iron-age' ? { ...era, discoveryGoal: 25 } : era)
     expect(validateContent(elements, disconnected, invalidEras)).toContain(
-      'Era iron-age has impossible discovery goal 22 with 21 reachable elements.',
+      'Era iron-age has impossible discovery goal 25 with 24 reachable elements.',
     )
   })
 })

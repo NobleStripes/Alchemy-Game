@@ -8,6 +8,7 @@ This guide describes implemented content. The [catalog plan](catalog-plan.md) se
 
 - [Classical Antiquity and Iron Age branches](#classical-antiquity-and-iron-age-branches)
 - [Production foundations](#production-foundations)
+- [Craft, records and engineering](#craft-records-and-engineering)
 - [Landmark track and learning labs](#landmark-track-and-learning-labs)
 - [Engineering](#engineering)
 - [Commerce](#commerce)
@@ -16,9 +17,9 @@ This guide describes implemented content. The [catalog plan](catalog-plan.md) se
 
 ## Classical Antiquity and Iron Age branches
 
-Classical Antiquity is an optional regional chapter with 40 discoveries. It unlocks after Iron, Iron Tool, Road and Market. Its approximate 800 BCE-500 CE gameplay frame covers overlapping Mediterranean histories, not a universal period or a necessary stage in every society's history. Earlier precedents keep their own dates, and regional comparisons do not imply simultaneous Classical ages.
+Classical Antiquity is an optional regional chapter with 43 discoveries. It unlocks after Iron, Iron Tool, Road and Market. Its approximate 800 BCE-500 CE gameplay frame covers overlapping Mediterranean histories, not a universal period or a necessary stage in every society's history. Earlier precedents keep their own dates, and regional comparisons do not imply simultaneous Classical ages.
 
-All 33 discoveries added after the initial seven Age V discoveries are optional even for the unchanged Age V completion target. Existing Scroll, Coin and Aqueduct retain their earlier ages and recipes. The [Age V branch table](gameplay.md#optional-age-v-branches) includes inquiry, civic life, architecture, commerce, scholarship and intellectual practices, with recipe spoilers behind a disclosure.
+All 36 discoveries added after the initial seven Age V discoveries are optional even for the unchanged Age V completion target. Existing Scroll, Coin and Aqueduct retain their earlier ages and recipes. The [Age V branch table](gameplay.md#optional-age-v-branches) includes inquiry, civic life, architecture, commerce, scholarship and intellectual practices, with recipe spoilers behind a disclosure.
 
 Optional Iron Age Rotary Quern, Lathe and Alphabet branches provide additional grinding, woodworking and writing discoveries. Their histories distinguish earlier precedents from regional evidence rather than dating all three inventions to that gameplay page. See the [five gameplay pages](gameplay.md#five-gameplay-pages) for progression requirements.
 
@@ -29,6 +30,58 @@ The expansion toward 250 begins with six production foundations: **Grinding Ston
 These discoveries expose useful intermediate stages without replacing legacy formulas. Spindle-free Yarn remains available in Stone Age gameplay; firing a suitable clay unit differs from drying Mud Brick; and recognizing tin ore differs from reducing it to metal. The [foundation chain table](catalog-plan.md#implemented-recipes-and-intermediate-chains) contains recipe spoilers and the historical limits of every new route.
 
 The catalog plan classifies regional and research-only proposals separately and pairs later element milestones with research milestones. Unverified candidates remain blocked. Legacy routes, gates, rewards and v7 saves are retained. Source receipts disclose summary, preprint, selected-passage and abstract-only limits; automated checks are not historical peer review.
+
+## Craft, records and engineering
+
+The second batch adds **15 discoveries and 27 recipes**, bringing the catalog to **215 elements and 270 recipes**:
+
+- **Stone Age:** Axe, Adze, Wedge, Fishhook and Fishing Weir.
+- **Bronze Age:** Smelting Furnace, Clay Tablet, Sealed Tablet and Standardized Weights.
+- **Iron Age:** Iron Chisel, Gouge and Wax Tablet.
+- **Classical Antiquity:** Pulley, Water Screw and Vault.
+
+All additions have full histories and every route has a cited review. Fifteen original research gaps also receive entries, bringing Atlas coverage to **127 histories**, with **88 gaps** remaining. These discoveries change no age gates, grants, landmarks, goals, collections, challenge definitions, rewards or save fields.
+
+The [acceptance audit](catalog-plan.md#milestone-215-craft-records-and-engineering) records semantic distinctions, chronology and evidence limits. A seal is an implement, its impression is a mark, and an envelope is a separate covering: Sealed Tablet groups documented arrangements without automatically creating an envelope. Standardized Weights describes regional conventions, not one ancient worldwide unit. Wax boards have earlier precedents; the Iron Age page is not their invention date.
+
+Timber retains its old Iron Age assignment even though splitting and worked wood are much older. Specialized tools have symbolic downstream associations, not proven uses of the cited broken chisel or gouge. Vitruvius supplies textual evidence for machines, not excavated first examples or sole-inventor proof.
+
+<details>
+<summary>Craft, records and engineering recipes (spoilers)</summary>
+
+| Inputs | Result |
+| --- | --- |
+| Kiln + Charcoal | Smelting Furnace |
+| Smelting Furnace + Copper Ore | Copper |
+| Smelting Furnace + Tin Ore | Tin |
+| Clay + Writing Reed | Clay Tablet |
+| Clay Tablet + Seal | Sealed Tablet |
+| Balance + Rock | Standardized Weights |
+| Stone Tool + Cordage | Axe |
+| Axe + Stone Tool | Adze |
+| Axe + Tree | Wedge |
+| Bone + Cordage | Fishhook |
+| Basket + River | Fishing Weir |
+| Fishhook + Fish | Food |
+| Fishing Weir + Fish | Food |
+| Adze + Tree | Shelter |
+| Wedge + Tree | Timber |
+| Iron Tool + Rock | Iron Chisel |
+| Iron Tool + Adze | Gouge |
+| Timber + Writing | Wax Tablet |
+| Iron Chisel + Rock | Masonry |
+| Gouge + Timber | Boat |
+| Standardized Weights + Trade | Merchant |
+| Wheel + Cordage | Pulley |
+| Irrigation + Lathe | Water Screw |
+| Arch + Masonry | Vault |
+| Pulley + Quarry | Masonry |
+| Water Screw + River | Irrigation |
+| Vault + Concrete | Public Bath |
+
+</details>
+
+These abbreviated and symbolic routes are not instructions for toolmaking, furnace operation, lifting or structural construction. Furnace recipes omit fuel and controlled conditions; wax-board inputs omit wax and preparation; Lathe is a rotary-craft clue, not a documented requirement for water screws. All earlier routes remain available.
 
 ## Landmark track and learning labs
 

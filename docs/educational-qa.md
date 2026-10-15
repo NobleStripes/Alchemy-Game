@@ -6,7 +6,23 @@ Review date: **2026-10-15**.
 
 ## Status and scope
 
-### Production foundations: first milestone toward 250
+### Craft, records and engineering: current 215-element milestone
+
+The [acceptance audit](catalog-plan.md#milestone-215-craft-records-and-engineering) adds **15 discoveries and 27 formulas**, preserving all previous 200 definitions and 243 routes. Totals are **215 elements, 270 recipes, 127 histories, 160 chronology entries, 140 verified sources and one pending source**. Every new discovery has a full history, and fifteen original gaps receive histories too; **88 original gaps** remain. The five ages contain **43 / 53 / 50 / 26 / 43** discoveries. Current graph metrics are **168 ingredients, 47 terminal discoveries and zero unused nodes**.
+
+The batch covers smelting equipment and alternate copper/tin routes; distinct clay supports and sealed documents; regional weighing conventions; stone woodworking and hook/weir fishing; specialized iron implements and wax boards; and Classical lifting, water supply and spanning forms. All **27 reviews** have cited cautions: twenty symbolic and seven simplified processes. All 243 earlier reviews remain unchanged.
+
+Thirteen new receipts distinguish original artifacts, inferred uses, modern replicas, summary-only comparisons and historical technical texts. Louvre AO 9386 attests a tablet inside an impressed envelope, not interchangeability between tablet, seal, impression and envelope. Later Assyrian document formats are not used to date Bronze Age practices. Harappan units are not universal standards. No numerical chronology is invented for the broken chisel, gouge or textual machine descriptions. The Jortveit report does not establish consumption of the reported tuna remains. Wax boards retain earlier precedents.
+
+The file candidate was rejected because its collection description dates it to 260-355 CE despite an ambiguous Iron Age/Roman title. Blocked museum pages and search summaries were not promoted to verified evidence. The recordkeeping comparison does not claim all writing descends from one medium; the limited Irrigation history does not date earlier irrigation from a later Roman text. Human historical review, broader regional evidence and learning-outcome evaluation remain outstanding.
+
+Regression coverage fingerprints the complete 200/243 baseline, validates full and prior graphs, checks every pair in both orders, verifies same-age reachability, optionality, source relationships, terminal reactivation, discovered-only free Atlas rendering and v7 save round trips. The experiment-history fixture now explicitly tests the unchanged 50-entry limit. Research is combined from a separately validated static appendix, preserving every complete article rather than raising the 500 kB warning threshold. This does not implement Phase 10 module manifests.
+
+Final software checks on 15 October 2026: standalone content validation, `npm run typecheck`, `npm run lint`, `npm test` and `npm run build` all pass. The full suite reports **1,246 tests across 23 files**, including all 127 Atlas histories. Production chunks are **269.91 kB application**, **303.96 kB vendor**, **443.35 kB original research**, **96.00 kB craft research**, and **36.20 kB CSS**; no chunk-size warning is emitted. **101 local documentation links and heading targets** and CRLF-aware whitespace checks pass. No new browser smoke test or human historical/learning evaluation was performed for this batch.
+
+### Production foundations: preserved first-milestone snapshot
+
+The following section records the earlier 200-element snapshot; its counts and candidate status describe that pass, not the current catalog.
 
 The [catalog plan](catalog-plan.md) retains the original 194 elements and 232 formulas and adds **six core discoveries and eleven optional formulas**: Grinding Stone, Spindle, Yarn, Kiln, Fired Brick and Tin Ore. Current totals are **200 elements, 243 recipes, 97 histories, 149 chronology entries, 127 verified sources and one pending source**. Six legacy gaps receive histories too: Flour, Fibre, Loom, Textile, Tin and Mud Brick. **103 original elements** still lack full records. Existing five-age definitions, gates, goals, grants, landmarks, collections, challenge definitions, rewards and save version remain unchanged.
 

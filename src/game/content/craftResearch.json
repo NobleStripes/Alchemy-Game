@@ -1,0 +1,598 @@
+{
+  "schemaVersion": 2,
+  "sources": [
+    {
+      "id": "eretz-copper-furnaces", "title": "Nehushtan Pavilion", "authors": [], "institution": "Eretz Israel Museum", "sourceType": "museum-essay",
+      "url": "https://www.eretzmuseum.org.il/en/nehushtan-pavilion/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.eretzmuseum.org.il/en/nehushtan-pavilion/", "accessLevel": "selected-passages", "locator": "Copper production section: mining, transportation, ore smelting and ingots; displayed fifth-fourth-millennium furnaces, original twelfth-century BCE furnace and tenth-century BCE furnace. Bellows are reconstructions based on Egyptian depictions. Distinguish originals, reconstructions and the wider regional industry; no first-smelting claim." }
+    },
+    {
+      "id": "oracc-cuneiform-clay", "title": "Writing cuneiform on clay", "authors": [], "institution": "Nimrud: Materialities of Assyrian Knowledge Production, ORACC", "sourceType": "archaeology-institution",
+      "url": "https://oracc.museum.upenn.edu/nimrud/ancientkalhu/thewritings/cuneiformonclay/index.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://oracc.museum.upenn.edu/nimrud/ancientkalhu/thewritings/cuneiformonclay/index.html", "accessLevel": "selected-passages", "locator": "Opening, tablet formats and Working with clay: moist clay impressed with a reed stylus; some tablets enclosed in envelopes; conveyance tablets carry seal bands while loan envelopes, not their inner tablets, are sealed. Most tablets were not fired; some intended for long survival were. Eighth-century BCE horse-purchase letter ND 2627 illustrates inclusions. This Assyrian comparison alone does not date Bronze Age sealing." }
+    },
+    {
+      "id": "oracc-writing-media", "title": "Writing cuneiform on other media", "authors": [], "institution": "Nimrud: Materialities of Assyrian Knowledge Production, ORACC", "sourceType": "archaeology-institution",
+      "url": "https://oracc.museum.upenn.edu/nimrud/ancientkalhu/thewritings/cuneiformonothermedia/index.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://oracc.museum.upenn.edu/nimrud/ancientkalhu/thewritings/cuneiformonothermedia/index.html", "accessLevel": "selected-passages", "locator": "Portable objects and Writing boards: Assyrian royal-mina weights with Akkadian/Aramaic labels; wooden/ivory wax-filled boards, references from late third millennium BCE, folding leaves, administrative and scholarly use, exceptional well preservation, possible deposition during destruction in 612 BCE. Depictions, textual references and surviving objects are distinct." }
+    },
+    {
+      "id": "louvre-tablet-envelope", "title": "Tablette ; enveloppe de tablette, AO 9386", "authors": [], "institution": "Musee du Louvre, Departement des Antiquites orientales", "sourceType": "museum-collection",
+      "url": "https://collections.louvre.fr/en/ark:/53355/cl010124308", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://collections.louvre.fr/en/ark:/53355/cl010124308", "accessLevel": "collection-record", "locator": "Raw HTML Description/Features, Materials, Places and dates: AO 9386, clay tablet inside envelope with impressions, cuneiform inscription, Cappadocia, Old Assyrian first half second millennium, catalogue bracket 2000-1392 BCE. Acquisition in 1924 by purchase; no excavated context inferred. Simplified page extraction displayed only bibliography, so descriptive fields were read from HTML." }
+    },
+    {
+      "id": "harappa-weight-series", "title": "Weights, Harappa", "authors": [], "institution": "Harappa Archaeological Research Project, via Harappa.com", "sourceType": "archaeology-institution",
+      "url": "https://www.harappa.com/slide/weights-harappa", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.harappa.com/slide/weights-harappa", "accessLevel": "selected-passages", "locator": "Caption on excavated cubical weights: binary series, smallest illustrated 0.856 g, common approximately 13.7 g, larger decimal increases. Trade control and taxation are proposed uses, not proven purposes of each object. No excavation date supplied in this caption." }
+    },
+    {
+      "id": "harappa-weight-comparison", "title": "Uniqueness of Ancient Indus Weight System", "authors": [], "institution": "Harappa.com, archaeological research resource", "sourceType": "archaeology-institution",
+      "url": "https://www.harappa.com/blog/uniqueness-ancient-indus-weight-system", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.harappa.com/blog/uniqueness-ancient-indus-weight-system", "accessLevel": "selected-passages", "locator": "Summary and selected quotation of PNAS comparison of 2,274 weights from 127 sites, 3000-1000 BCE: overlapping western Eurasian ranges versus distinct Indus unit, and simulation-based origin hypothesis. Underlying full paper not read; statistical compatibility does not prove identical standards, enforcement or universal interchangeability." }
+    },
+    {
+      "id": "stone-tools-adze", "title": "Stone Adze: Hampshire, England", "authors": [], "institution": "Museum of Stone Tools", "sourceType": "museum-collection",
+      "url": "https://stonetoolsmuseum.com/artefact/europe/stone-adze-4/2870/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://stonetoolsmuseum.com/artefact/europe/stone-adze-4/2870/", "accessLevel": "collection-record", "locator": "Opening object description: fine-grained igneous stone, British Neolithic c. 4500-6000 BP; edge orientation distinguishes axe/adze; off-centre edge suggests adze hafting, likely pecking obscured by grinding. Later population-history section is not used. BP range retained as supplied, not silently converted to calibrated BCE." }
+    },
+    {
+      "id": "aia-jortveit-hook", "title": "Artifacts: Neolithic Fishhook", "authors": [], "institution": "Archaeology magazine, Archaeological Institute of America", "sourceType": "archaeology-institution",
+      "url": "https://archaeology.org/issues/september-october-2020/artifacts/artifact-norway-neolithic-fishhook/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://archaeology.org/issues/september-october-2020/artifacts/artifact-norway-neolithic-fishhook/", "accessLevel": "selected-passages", "locator": "Artifact panel dates Jortveit bone hook 3400-2200 BCE; interview with Svein Nielsen distinguishes proposed line material/attachment from preserved hook. Tuna bones may represent escaped fish dying rather than consumption. Magazine summary, not the full excavation report." }
+    },
+    {
+      "id": "syltholm-fishing-structures", "title": "Fishing with Stationary Wooden Structures in Stone Age Denmark: New Evidence from Syltholm Fjord, Southern Lolland", "authors": [], "institution": "Proceedings of the Prehistoric Society, Cambridge University Press", "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1017/ppr.2024.15", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.cambridge.org/core/journals/proceedings-of-the-prehistoric-society/article/fishing-with-stationary-wooden-structures-in-stone-age-denmark-new-evidence-from-syltholm-fjord-southern-lolland/5A369D414D231A844450162B300CD53D", "accessLevel": "selected-passages", "locator": "Materials/methods, Remains of fish traps, Construction & contextualisation, and start of Wattle and stake weir structures: distinguish wicker traps, rods, wattle barriers and uncertain fragments; associated trap/stakes c. 3900-3600 cal BCE suggest tandem use. Supplementary datasets and full references not reviewed; byline/date not independently captured." }
+    },
+    {
+      "id": "wales-iron-chisel", "title": "Iron Age iron chisel: Twyn-y-Gaer, Cwmyoy", "authors": [], "institution": "Amgueddfa Cymru - Museum Wales", "sourceType": "museum-collection",
+      "url": "https://museum.wales/collections/online/object/e1bfeffe-0e85-3b29-b81e-20bba013acb2/Iron-Age-iron-chisel/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://museum.wales/collections/online/object/e1bfeffe-0e85-3b29-b81e-20bba013acb2/Iron-Age-iron-chisel/", "accessLevel": "collection-record", "locator": "Object description and Find Information: incomplete iron implement, expanded circular-section end and broken tapering edge; excavated at Twyn-y-Gaer, Cwmyoy; context not yet known. Iron Age catalogue attribution does not provide a numerical date or specific woodworking/stoneworking task." }
+    },
+    {
+      "id": "wales-iron-carpentry", "title": "Bryn Eryr Farm - How to become an Iron Age Carpenter", "authors": [], "institution": "Amgueddfa Cymru - Museum Wales", "sourceType": "museum-essay",
+      "url": "https://museum.wales/blog/729/Bryn-Eryr-Farm---How-to-become-an-Iron-Age-Carpenter/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://museum.wales/blog/729/Bryn-Eryr-Farm---How-to-become-an-Iron-Age-Carpenter/", "accessLevel": "selected-passages", "locator": "Toolkit selection from Welsh originals: axes, adze-hammers, gouges, chisels, files, drill bits, wedges; Castell Henllys gouge. Distinguishes reconstructed handles and tools from originals and notes wood decay. Brecon Gaer chisel is explicitly from a Roman fort, so not used as independently dated pre-Roman evidence." }
+    },
+    {
+      "id": "vitruvius-machines", "title": "De Architectura, Book X", "authors": ["Marcus Vitruvius Pollio"], "institution": "LacusCurtius, hosted by the University of Chicago", "sourceType": "library-collection",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html", "accessLevel": "selected-passages", "locator": "English translation X.2.1-8 describes building hoists with rope, pulley blocks and windlasses; X.6.1-4 describes a rotating water screw. Historical technical text, not excavated evidence, operating guidance or verification of sole inventorship. Translator/date metadata and other book chapters were not independently reviewed." }
+    },
+    {
+      "id": "whe-roman-architecture", "title": "Roman Architecture", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Roman_Architecture/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.worldhistory.org/Roman_Architecture/", "accessLevel": "selected-passages", "locator": "Architectural Orders and Materials & Techniques: arched and domed bath spaces, masonry and laid concrete, widespread concrete in foundations/walls/vaults by first century BCE. Broad priority rhetoric is not adopted; no claim that all vaults need concrete or began in Rome. Byline/date not independently captured." }
+    }
+  ],
+  "records": [
+    {
+      "elementId": "smelting-furnace", "elementName": "Smelting Furnace",
+      "historicalOverview": { "text": "A smelting furnace supports the extraction of metal from ore. Smelting is chemically different from melting a metal already extracted, and the installation is not interchangeable with a pottery kiln or a smith's forge. The Eretz Israel Museum's copper display presents furnaces from several periods alongside a regional production sequence.", "sourceIds": ["penn-metallurgy", "eretz-copper-furnaces"] },
+      "manufactureOrUse": { "text": "Metalworkers coordinated ore selection, fuel, heat, air delivery and waste separation. Slag and ceramic air pipes can reveal production choices even when the finished objects retain little evidence of their origins. This account describes archaeological interpretation, not instructions for operating a furnace.", "sourceIds": ["penn-metallurgy"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Bronze Age placement makes a production intermediate visible without dating the invention of smelting. The museum includes fifth-fourth-millennium BCE furnaces as well as a twelfth-century BCE original and an Iron Age example; the periods and evidence types must remain distinct.", "sourceIds": ["eretz-copper-furnaces"] },
+      "relatedDiscoveries": [
+        { "elementId": "copper", "relationship": "documented", "explanation": "The museum describes ore smelting followed by copper ingots transported for final processing.", "sourceIds": ["eretz-copper-furnaces"] },
+        { "elementId": "tin", "relationship": "gameplay-abstraction", "explanation": "A second ore-reduction route exposes equipment without claiming a particular ancient tin furnace.", "sourceIds": ["penn-tin"] },
+        { "elementId": "kiln", "relationship": "gameplay-abstraction", "explanation": "The recipe associates pyrotechnological knowledge, not a proven universal descent of smelting from ceramic kilns.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "12th century BCE: displayed original copper furnace", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Timna and the southern Arava"], "sourceIds": ["eretz-copper-furnaces"], "note": "A museum-described original within a regional display, not the earliest furnace or a date for tin extraction." }],
+      "associatedRegions": ["Timna and the southern Arava"],
+      "archaeologicalEvidence": [{ "text": "The pavilion distinguishes an original twelfth-century BCE furnace from reconstructed mining scenes and bellows based on Egyptian depictions.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["eretz-copper-furnaces"] }],
+      "historicalSignificance": { "text": "Separating extraction equipment from ore, metal and later shaping helps explain specialized labor and the production remains archaeologists study. The evidence supports diverse workshops, not a single universal technological ladder.", "sourceIds": ["penn-metallurgy", "eretz-copper-furnaces"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The displayed regional sequence is not proof of a worldwide invention date.", "Copper-furnace evidence does not locate Bronze Age tin mines or establish an identical tin-smelting installation."],
+      "gameplaySimplifications": ["Kiln and Charcoal are a symbolic workshop association, not a construction method.", "The alternative copper and tin routes omit fuel, preparation and controlled conditions while preserving every old route."],
+      "furtherResearch": [{ "question": "How do slag, furnace linings and air pipes distinguish extraction from later metalworking?", "sourceIds": ["penn-metallurgy"] }]
+    },
+    {
+      "elementId": "clay-tablet", "elementName": "Clay Tablet",
+      "historicalOverview": { "text": "Clay tablets are writing supports, not a separate script or a second invention of writing. Mesopotamian records include early accounting tablets and later cuneiform documents with varied shapes and purposes. A seal impression is a mark made on a surface; an envelope is a separate covering around a tablet.", "sourceIds": ["writing-origins", "oracc-cuneiform-clay"] },
+      "manufactureOrUse": { "text": "A scribe shaped moist clay and pressed a stylus into it, lifting the implement between impressions rather than drawing an ink line. Tablet size, quality and format could vary with the text. Neither sealing nor enclosure was a universal requirement, and a tablet should not automatically be interpreted as a fired ceramic.", "sourceIds": ["oracc-cuneiform-clay"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age gameplay draws on southern Mesopotamian proto-cuneiform accounting around 3300-2900 BCE. That broad regional phase is not a precise first-tablet date; later Assyrian examples illustrate working practices rather than proving all early tablets had the same format.", "sourceIds": ["writing-origins", "oracc-cuneiform-clay"] },
+      "relatedDiscoveries": [
+        { "elementId": "writing", "relationship": "documented", "explanation": "Clay was an important Mesopotamian writing medium, not the medium of all independently developed scripts.", "sourceIds": ["writing-origins"] },
+        { "elementId": "sealed-tablet", "relationship": "documented", "explanation": "Some clay documents or their envelopes received seal impressions; many others did not.", "sourceIds": ["oracc-cuneiform-clay"] }
+      ],
+      "approximateDates": [{ "dateRange": "c. 3300-2900 BCE: proto-cuneiform accounting", "dateType": "regional-development", "precision": "approximate", "regions": ["Southern Mesopotamia"], "sourceIds": ["writing-origins"], "note": "A regional writing phase, not a first year for tablets, full language representation or universal recordkeeping." }],
+      "associatedRegions": ["Southern Mesopotamia", "Kalhu (Nimrud), Assyria"],
+      "archaeologicalEvidence": [{ "text": "ORACC illustrates ND 2627, an eighth-century BCE horse-purchase letter whose clay contains visible inclusions. This later object demonstrates a material support, not the beginning of clay writing.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["oracc-cuneiform-clay"] }],
+      "historicalSignificance": { "text": "A physical writing support connects administrative work with the survival of records. Distinguishing clay, inscription, impression and envelope allows the same object to be studied for manufacture, text and administrative practice without confusing them.", "sourceIds": ["oracc-cuneiform-clay"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Early accounting and later language-writing are not interchangeable categories.", "The survival of clay documents is not a measure of all writing that originally existed."],
+      "gameplaySimplifications": ["Clay and Writing Reed omit preparation and learned scribal practice; ink is not required.", "Writing remains independently discoverable through its old recipe, and a kiln is not required for this tablet."],
+      "furtherResearch": [{ "question": "How do tablet shapes, inclusions and text layout help identify a document's purpose?", "sourceIds": ["oracc-cuneiform-clay"] }]
+    },
+    {
+      "elementId": "sealed-tablet", "elementName": "Sealed Tablet",
+      "historicalOverview": { "text": "Sealed Tablet groups clay documents associated with seal impressions, while retaining the distinction between the written tablet, the sealing tool, its impression and an enclosing envelope. Louvre AO 9386 is catalogued as a clay tablet inside an envelope with impressions. The envelope is not merely another name for the tablet.", "sourceIds": ["louvre-tablet-envelope", "oracc-cuneiform-clay"] },
+      "manufactureOrUse": { "text": "Administrative practices differed. ORACC describes Assyrian conveyance tablets bearing bands of impressions, but loan documents whose envelopes were sealed while the inner tablets were not. A seal could identify participants or authority in a documentary practice; an impression alone does not prove honesty, an intact enclosure or an accurate text.", "sourceIds": ["oracc-cuneiform-clay"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement is supported by the Louvre's Old Assyrian Cappadocian object, not by projecting later Nimrud formats backward. Its catalogue gives a broad 2000-1392 BCE bracket and a first-half-second-millennium attribution rather than an exact manufacturing year.", "sourceIds": ["louvre-tablet-envelope"] },
+      "relatedDiscoveries": [
+        { "elementId": "clay-tablet", "relationship": "documented", "explanation": "A document may survive within an impressed clay envelope, physically separate from it.", "sourceIds": ["louvre-tablet-envelope"] },
+        { "elementId": "seal", "relationship": "documented", "explanation": "The seal makes an impression on the tablet or envelope, but is not itself that mark.", "sourceIds": ["oracc-cuneiform-clay"] }
+      ],
+      "approximateDates": [{ "dateRange": "2000-1392 BCE: broad Old Assyrian catalogue bracket", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Cappadocia, Anatolia"], "sourceIds": ["louvre-tablet-envelope"], "note": "The Louvre also labels the object first half of the second millennium BCE; neither label supplies an exact year or proves the first sealed document." }],
+      "associatedRegions": ["Cappadocia, Anatolia", "Kalhu (Nimrud), Assyria"],
+      "archaeologicalEvidence": [{ "text": "Louvre AO 9386 preserves a tablet in its envelope with impressions and a cuneiform inscription. The museum records purchase in 1924; this receipt does not establish an excavated archaeological context.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["louvre-tablet-envelope"] }],
+      "historicalSignificance": { "text": "Text, seal marks and coverings could perform different documentary roles. Reading their relationship helps reconstruct transactions and participants without reducing every marked clay object to a sealed letter.", "sourceIds": ["oracc-cuneiform-clay", "louvre-tablet-envelope"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Later Assyrian document categories are comparative evidence, not a rule for all Bronze Age archives.", "A purchased museum artifact's recorded regional origin is not a newly verified excavation context."],
+      "gameplaySimplifications": ["Clay Tablet and Seal group direct sealing and envelope sealing under one optional discovery.", "The recipe does not automatically manufacture an envelope, prove authenticity or make seals a prerequisite for all writing."],
+      "furtherResearch": [{ "question": "Where is each impression located, and how does that affect interpretation of a tablet and its envelope?", "sourceIds": ["oracc-cuneiform-clay", "louvre-tablet-envelope"] }]
+    },
+    {
+      "elementId": "weight-standard", "elementName": "Standardized Weights",
+      "historicalOverview": { "text": "Standardized weights embody agreement about measured quantities within a system; they are distinct from the balance used to compare masses. Excavated Harappan cubical weights form graduated series. A comparison of Bronze Age weight systems highlights a distinct Indus unit alongside partially overlapping western Eurasian units, not one ancient worldwide standard.", "sourceIds": ["harappa-weight-series", "harappa-weight-comparison"] },
+      "manufactureOrUse": { "text": "Weights had to be made, compared and accepted against conventions. The Harappa caption describes smaller binary steps and larger decimal increases; it proposes control of trade and possibly taxation as uses. Assyrian lion weights labelled in royal minas provide a different regional convention, not a translation of every Indus weight into the same unit.", "sourceIds": ["harappa-weight-series", "oracc-writing-media"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement reflects the regional weight systems in the reviewed comparison's 3000-1000 BCE dataset. That is a range for a comparative sample, not a first-standard date or evidence of simultaneous adoption everywhere.", "sourceIds": ["harappa-weight-comparison"] },
+      "relatedDiscoveries": [
+        { "elementId": "balance", "relationship": "documented", "explanation": "The comparison studies balance weights; the measuring apparatus and the accepted units are separate concepts.", "sourceIds": ["harappa-weight-comparison"] },
+        { "elementId": "trade", "relationship": "documented", "explanation": "The Harappa caption proposes trade control as one use; it does not identify every actual transaction.", "sourceIds": ["harappa-weight-series"] }
+      ],
+      "approximateDates": [{ "dateRange": "c. 3000-1000 BCE: compared weight-system datasets", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Indus region", "Mesopotamia and western Eurasia"], "sourceIds": ["harappa-weight-comparison"], "note": "Scope of a summarized comparative study; it does not date all weights in the Harappa photograph." }],
+      "associatedRegions": ["Indus region", "Mesopotamia and western Eurasia", "Kalhu (Nimrud), Assyria"],
+      "archaeologicalEvidence": [{ "text": "Harappa's illustrated cubical weights come from excavations. Their graduated masses support a metrological series; taxation remains a proposed use in the caption.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["harappa-weight-series"] }],
+      "historicalSignificance": { "text": "Shared units could support exchange across communities, but regional differences and tolerated variation mattered. Standardization should not be confused with absolute uniformity, guaranteed fair dealing or proof of a single centralized state.", "sourceIds": ["harappa-weight-series", "harappa-weight-comparison"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The comparative source is a web summary and selected quotation, not a review of the complete PNAS paper.", "The summary's simulation-based independent-origin proposal is not adopted as a demonstrated historical event."],
+      "gameplaySimplifications": ["Balance and Rock symbolize calibration and convention, not automatic standardization.", "The optional merchant route neither creates trade nor requires money or universal conversion between systems."],
+      "furtherResearch": [{ "question": "How do measured variation and accepted error affect comparisons between regional units?", "sourceIds": ["harappa-weight-comparison"] }]
+    },
+    {
+      "elementId": "axe", "elementName": "Axe",
+      "historicalOverview": { "text": "This discovery introduces a hafted stone woodworking axe, not every use of a sharp stone. In the museum's comparison, an axe edge lies parallel to its handle while an adze edge lies across it. The Sweet Track account describes wood construction achieved with stone axes and wooden wedges rather than steel axes or saws.", "sourceIds": ["stone-tools-adze", "sweet-track"] },
+      "manufactureOrUse": { "text": "A cutting head, a fitted handle and skilled handling form a working implement. Archaeological tool forms and surviving worked wood can support different kinds of inference: a head may suggest hafting, while a trackway demonstrates substantial woodworking. These do not supply an identical manufacturing sequence for all axes.", "sourceIds": ["stone-tools-adze", "sweet-track"] },
+      "agePlacement": { "status": "historical-model", "text": "Stone Age placement uses Neolithic woodworking evidence from Britain. The Sweet Track's construction date is not the date of axe invention, and earlier generic Stone Tool discoveries remain distinct.", "sourceIds": ["sweet-track"] },
+      "relatedDiscoveries": [
+        { "elementId": "adze", "relationship": "documented", "explanation": "The museum distinguishes tool forms through cutting-edge orientation relative to the handle.", "sourceIds": ["stone-tools-adze"] },
+        { "elementId": "wedge", "relationship": "documented", "explanation": "The Sweet Track account places stone axes and wooden wedges in the same woodworking context.", "sourceIds": ["sweet-track"] }
+      ],
+      "approximateDates": [{ "dateRange": "3806 BCE: Sweet Track construction", "dateType": "dated-evidence", "precision": "year-resolved", "regions": ["Somerset Levels, Britain"], "sourceIds": ["sweet-track"], "note": "Dendrochronological date of the trackway, not a surviving axe's manufacturing date or first woodworking." }],
+      "associatedRegions": ["Somerset Levels, Britain"],
+      "archaeologicalEvidence": [{ "text": "Preserved trackway construction is interpreted through a woodworking toolkit including stone axes and wooden wedges; the dated structure and tool-use interpretation are not the same evidence.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["sweet-track"] }],
+      "historicalSignificance": { "text": "Worked timber architecture did not depend on metal tools. The trackway shows that skilled wood construction and landscape access already mattered in a Neolithic wetland setting.", "sourceIds": ["sweet-track"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["A regional construction example is not an origin story for all axes.", "Not every stone cutting head can be securely assigned an original handle or task."],
+      "gameplaySimplifications": ["Stone Tool and Cordage evoke hafting while omitting the handle and preparation.", "The node describes a woodworking tool, not practical weapon construction."],
+      "furtherResearch": [{ "question": "Which features distinguish preserved tool heads from inferred hafting arrangements?", "sourceIds": ["stone-tools-adze"] }]
+    },
+    {
+      "elementId": "adze", "elementName": "Adze",
+      "historicalOverview": { "text": "An adze is distinguished by a cutting edge transverse to its handle, useful in shaping wood. The Museum of Stone Tools describes a ground igneous-stone example from Hampshire. Its off-centre edge suggests adze hafting, so the identification is an interpretation grounded in form rather than a surviving complete handled tool.", "sourceIds": ["stone-tools-adze"] },
+      "manufactureOrUse": { "text": "The museum suggests initial pecking followed by grinding, which removed the earlier working traces. The smooth finish and symmetry indicate skilled working, while resharpening may have shortened the object. Its particular appearance should not become a universal recipe for every adze.", "sourceIds": ["stone-tools-adze"] },
+      "agePlacement": { "status": "historical-model", "text": "The British Neolithic artifact supports Stone Age placement. The collection supplies a broad 4500-6000 BP range, retained here as a museum age label rather than silently converted into calibrated BCE years.", "sourceIds": ["stone-tools-adze"] },
+      "relatedDiscoveries": [
+        { "elementId": "axe", "relationship": "documented", "explanation": "The collection compares parallel axe hafting with transverse adze hafting.", "sourceIds": ["stone-tools-adze"] },
+        { "elementId": "shelter", "relationship": "gameplay-abstraction", "explanation": "Wood shaping suggests a building use, not a documented shelter made with this object.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "c. 4500-6000 BP: collection's British Neolithic range", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Hampshire, Britain"], "sourceIds": ["stone-tools-adze"], "note": "BP means before present; the page's range is not a newly calibrated radiocarbon determination or first-adze date." }],
+      "associatedRegions": ["Hampshire, Britain"],
+      "archaeologicalEvidence": [{ "text": "A ground igneous-stone tool with an off-centre edge supports an interpreted adze orientation. Initial pecking and earlier length are proposed reconstructions.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["stone-tools-adze"] }],
+      "historicalSignificance": { "text": "Different cutting-edge orientations help distinguish specialized woodworking practices within the broad category Stone Tool. The object also illustrates how grinding and resharpening can obscure earlier manufacture.", "sourceIds": ["stone-tools-adze"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The interpreted hafting arrangement is not a preserved handle.", "The source's later population-history discussion is outside this entry's evidence scope."],
+      "gameplaySimplifications": ["Axe and Stone Tool compare forms rather than physically transforming one into the other.", "The optional shelter association does not make an adze necessary for construction."],
+      "furtherResearch": [{ "question": "How can tool morphology and wear test an inferred woodworking function?", "sourceIds": ["stone-tools-adze"] }]
+    },
+    {
+      "elementId": "wedge", "elementName": "Wedge",
+      "historicalOverview": { "text": "A wedge applies a splitting action rather than cutting a saw kerf. Wooden wedges and stone axes are explicitly part of the Sweet Track account, which explains substantial Neolithic timber construction without steel axes or saws. Iron Age Welsh toolkits also included wedges, showing continued use rather than replacement by a single new tool.", "sourceIds": ["sweet-track", "wales-iron-carpentry"] },
+      "manufactureOrUse": { "text": "The relevant material could differ by task and period: the Sweet Track comparison names wooden wedges, while Museum Wales discusses original iron implements and experimental replicas. A replica's performance helps ask questions but is not direct observation of ancient work.", "sourceIds": ["sweet-track", "wales-iron-carpentry"] },
+      "agePlacement": { "status": "historical-model", "text": "Stone Age placement is grounded in the Neolithic trackway, not the later iron examples. The construction date belongs to that structure, not the invention of wedges or the first split timber.", "sourceIds": ["sweet-track"] },
+      "relatedDiscoveries": [
+        { "elementId": "axe", "relationship": "documented", "explanation": "The Sweet Track account explicitly associates stone axes and wooden wedges with construction.", "sourceIds": ["sweet-track"] },
+        { "elementId": "timber", "relationship": "documented", "explanation": "The compared trackway and replica work illustrate splitting as an alternative to sawing.", "sourceIds": ["sweet-track", "wales-iron-carpentry"] }
+      ],
+      "approximateDates": [{ "dateRange": "3806 BCE: Sweet Track construction", "dateType": "dated-evidence", "precision": "year-resolved", "regions": ["Somerset Levels, Britain"], "sourceIds": ["sweet-track"], "note": "Date of a structure whose construction account names wooden wedges, not an exact date for wedge invention." }],
+      "associatedRegions": ["Somerset Levels, Britain", "Wales"],
+      "archaeologicalEvidence": [{ "text": "Preserved wetland trackway timbers underpin a reconstruction of woodworking with stone axes and wooden wedges.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["sweet-track"] }],
+      "historicalSignificance": { "text": "Adding splitting alongside sawing prevents the late gameplay location of Timber from implying that worked wood began with iron tools. Old and new woodworking methods could coexist.", "sourceIds": ["sweet-track", "wales-iron-carpentry"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["A woodworking reconstruction does not establish one universal wedge shape or material.", "Modern experimental splitting cannot reproduce all ancient working conditions."],
+      "gameplaySimplifications": ["Axe and Tree abbreviate selection and shaping rather than giving a toolmaking procedure.", "The alternative Timber route retains Timber's legacy Iron Age placement; it does not date worked wood."],
+      "furtherResearch": [{ "question": "What marks distinguish splitting from sawing in preserved construction wood?", "sourceIds": ["sweet-track", "wales-iron-carpentry"] }]
+    },
+    {
+      "elementId": "fishhook", "elementName": "Fishhook",
+      "historicalOverview": { "text": "The Jortveit bone hook is evidence for a specific Neolithic fishing tradition, not the beginning of fishing. Archaeology magazine dates it to 3400-2200 BCE and reports another hook and harpoons found at the site. Large fish remains help reconstruct a lagoon environment, but do not by themselves establish consumption.", "sourceIds": ["aia-jortveit-hook"] },
+      "manufactureOrUse": { "text": "The surviving object is shaped bone. Interviewed archaeologist Svein Nielsen proposes a line and possible attachment to a boat or a tree; line materials and complete tackle are not preserved facts in this account. Skills, habitat and fish behavior mattered as much as the implement.", "sourceIds": ["aia-jortveit-hook"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age placement follows the reported Norwegian Neolithic context. Its dates overlap periods called Bronze Age elsewhere, demonstrating why the game's age labels cannot be a universal world chronology.", "sourceIds": ["aia-jortveit-hook"] },
+      "relatedDiscoveries": [
+        { "elementId": "bone", "relationship": "documented", "explanation": "The reported surviving hook is bone.", "sourceIds": ["aia-jortveit-hook"] },
+        { "elementId": "cordage", "relationship": "gameplay-abstraction", "explanation": "The line is necessary to the gameplay association, while its exact ancient material and attachment remain hypotheses.", "sourceIds": ["aia-jortveit-hook"] }
+      ],
+      "approximateDates": [{ "dateRange": "3400-2200 BCE: reported Neolithic hook", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Jortveit, Norway"], "sourceIds": ["aia-jortveit-hook"], "note": "Date range supplied by the artifact report, not a first hook, directly dated meal or worldwide age boundary." }],
+      "associatedRegions": ["Jortveit, Norway"],
+      "archaeologicalEvidence": [{ "text": "A surviving bone hook is reported alongside earlier finds and lagoon fish remains. The report specifically cautions that tuna bones may represent escaped fish that died rather than eaten catches.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["aia-jortveit-hook"] }],
+      "historicalSignificance": { "text": "Fishing equipment connects craft with local ecological knowledge. Separating hook, reconstructed line and animal remains prevents a plausible fishing story from becoming an unsupported account of a particular meal.", "sourceIds": ["aia-jortveit-hook"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The source is a magazine report and interview, not the full excavation publication.", "Proposed line materials, attachment and target species are not a recovered complete fishing rig."],
+      "gameplaySimplifications": ["Bone and Cordage omit skilled shaping and other equipment.", "Fishhook and Fish produce the Food abstraction without guaranteeing a catch or documenting consumption."],
+      "furtherResearch": [{ "question": "How can hook form, fish remains and depositional context be tested separately?", "sourceIds": ["aia-jortveit-hook"] }]
+    },
+    {
+      "elementId": "fishing-weir", "elementName": "Fishing Weir",
+      "historicalOverview": { "text": "Stationary fishing structures include barriers guiding fish and basket-like traps that hold them. The Syltholm Fjord study distinguishes wattle-and-stake weirs, wickerwork traps and ambiguous fragments. They can be associated without being the same structure, and neither is simply a knotted net.", "sourceIds": ["syltholm-fishing-structures"] },
+      "manufactureOrUse": { "text": "Preserved wooden stakes and woven elements allow researchers to reconstruct barriers in a changing coastal setting. A trap fragment and a curved row of stakes with compatible dates suggest tandem use at Syltholm X. Incomplete remains do not reveal every original shape, opening or catching arrangement.", "sourceIds": ["syltholm-fishing-structures"] },
+      "agePlacement": { "status": "historical-model", "text": "The Danish Late Mesolithic and Neolithic evidence supports Stone Age gameplay. Fishing continued alongside farming; the source does not justify treating fishing as a stage that all societies abandoned at the start of agriculture.", "sourceIds": ["syltholm-fishing-structures"] },
+      "relatedDiscoveries": [
+        { "elementId": "basket", "relationship": "documented", "explanation": "The study discusses wickerwork traps and basketry techniques, distinct from the barriers with which traps could be associated.", "sourceIds": ["syltholm-fishing-structures"] },
+        { "elementId": "net", "relationship": "gameplay-abstraction", "explanation": "Both concern fishing, but a stationary wooden barrier is not evidence for a particular knotted net.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "c. 3900-3600 calibrated BCE: associated trap and stakes", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Syltholm Fjord, southern Lolland, Denmark"], "sourceIds": ["syltholm-fishing-structures"], "note": "Compatible radiocarbon ranges suggest tandem use; they are not an exact construction year or the first weir." }],
+      "associatedRegions": ["Syltholm Fjord, southern Lolland, Denmark"],
+      "archaeologicalEvidence": [{ "text": "Excavated wattle-and-stake barriers and a trap fragment associated with a curved stake row support reconstruction of stationary fishing installations.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["syltholm-fishing-structures"] }],
+      "historicalSignificance": { "text": "Wetland preservation reveals durable investments in fishing landscapes alongside portable tools. Keeping barriers and traps distinct makes the branch about different practices rather than successive generic upgrades.", "sourceIds": ["syltholm-fishing-structures"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Some wooden fragments remain functionally uncertain; not all permit complete trap reconstruction.", "Only selected passages were reviewed, not the supplementary datasets or every comparative site."],
+      "gameplaySimplifications": ["Basket and River symbolize craft knowledge and setting; actual wooden materials and local ecology are omitted.", "The studied coastal lagoon does not prove that the same installation works in every river."],
+      "furtherResearch": [{ "question": "How can radiocarbon dates and spatial association test whether a trap and a barrier were used together?", "sourceIds": ["syltholm-fishing-structures"] }]
+    },
+    {
+      "elementId": "iron-chisel", "elementName": "Iron Chisel",
+      "historicalOverview": { "text": "A chisel is a specialized cutting implement, not simply a synonym for any iron tool. Museum Wales catalogues an incomplete Iron Age iron chisel excavated at Twyn-y-Gaer, Cwmyoy. The record describes the surviving shape and explicitly says the context is not yet known.", "sourceIds": ["wales-iron-chisel"] },
+      "manufactureOrUse": { "text": "The surviving implement has an expanded circular-section end and tapers toward a broken edge. That description does not securely identify its exact task. Museum Wales' broader carpentry work distinguishes archaeological originals from replicas and reconstructed handles, showing both the possibilities and limits of toolkit reconstruction.", "sourceIds": ["wales-iron-chisel", "wales-iron-carpentry"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Iron Age gameplay follows the catalogue attribution and regional toolkit comparison. No numerical date is supplied for this particular broken object, and the entry does not make iron the first material ever used for chisels.", "sourceIds": ["wales-iron-chisel", "wales-iron-carpentry"] },
+      "relatedDiscoveries": [
+        { "elementId": "iron-tool", "relationship": "gameplay-abstraction", "explanation": "The generic tool node now branches toward a particular implement without asserting a historical tier sequence.", "sourceIds": [] },
+        { "elementId": "gouge", "relationship": "documented", "explanation": "The museum's reconstructed toolkit includes different chisel and gouge forms based on Welsh originals.", "sourceIds": ["wales-iron-carpentry"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Twyn-y-Gaer, Cwmyoy, Wales"],
+      "archaeologicalEvidence": [{ "text": "The catalogue records an excavated, incomplete iron implement but leaves its context unknown. Its precise work and numerical age are not inferred here.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["wales-iron-chisel"] }],
+      "historicalSignificance": { "text": "Specialized tools make everyday craft visible beside more conspicuous metal artifacts. An incomplete tool can be historically useful without pretending its missing edge, handle and exact purpose are fully known.", "sourceIds": ["wales-iron-chisel", "wales-iron-carpentry"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The collection explicitly says the context is not yet known.", "The object's broken form does not demonstrate a specific masonry or carpentry task."],
+      "gameplaySimplifications": ["Iron Tool and Rock are a symbolic specialization clue, not a manufacturing process.", "The masonry association is gameplay-only and does not claim that this artifact worked stone."],
+      "furtherResearch": [{ "question": "What additional context or wear analysis would constrain this tool's actual use?", "sourceIds": ["wales-iron-chisel"] }]
+    },
+    {
+      "elementId": "gouge", "elementName": "Gouge",
+      "historicalOverview": { "text": "A gouge has a curved cutting edge suited to hollowing or shaping wood, distinct from a straight chisel or transverse adze. Museum Wales identifies a gouge from Castell Henllys among the archaeological examples informing its Iron Age carpentry toolkit. The modern working replicas are not the excavated originals.", "sourceIds": ["wales-iron-carpentry"] },
+      "manufactureOrUse": { "text": "The museum used surviving tool surfaces and traces around sockets to inform replicas and reconstructed handles. Because wood usually decays, the original hafts are not all preserved. Experimental performance can explore possible craft capabilities without reproducing every ancient material, worker or technique.", "sourceIds": ["wales-iron-carpentry"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Iron Age placement follows the Welsh toolkit discussion and Castell Henllys example. The account does not give this gouge an exact date or establish the earliest gouge worldwide; no numerical chronology is invented.", "sourceIds": ["wales-iron-carpentry"] },
+      "relatedDiscoveries": [
+        { "elementId": "iron-chisel", "relationship": "documented", "explanation": "The museum distinguishes chisels and gouges within its reconstructed woodworking toolkit.", "sourceIds": ["wales-iron-carpentry"] },
+        { "elementId": "boat", "relationship": "gameplay-abstraction", "explanation": "Hollowing wood suggests one boatbuilding association, not evidence that the Castell Henllys object made boats.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Castell Henllys and other Welsh sites"],
+      "archaeologicalEvidence": [{ "text": "The museum names a Castell Henllys gouge as an original comparison for replica carpentry tools. Its reconstructed handle and modern trial performance are separate evidence.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["wales-iron-carpentry"] }],
+      "historicalSignificance": { "text": "Domestic ironwork can illuminate skilled woodworking even where wooden products rarely survive. Tool variety is evidence for specialized possibilities, not proof of every proposed finished object.", "sourceIds": ["wales-iron-carpentry"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The museum account is a reconstruction report, not a full excavation publication for the gouge.", "No preserved complete workshop or specific boatbuilding use is asserted."],
+      "gameplaySimplifications": ["Iron Tool and Adze associate metalworking with woodworking rather than converting one tool into another.", "The optional Boat result abbreviates a craft association and leaves other watercraft routes intact."],
+      "furtherResearch": [{ "question": "Which claims come from original tool surfaces, reconstructed handles or experimental use?", "sourceIds": ["wales-iron-carpentry"] }]
+    },
+    {
+      "elementId": "wax-tablet", "elementName": "Wax Tablet",
+      "historicalOverview": { "text": "Wax-filled wooden or ivory writing boards offered a support different from clay tablets, papyrus sheets or manuscripts as texts. ORACC describes cuneiform boards with two or more folding leaves and references from around the late third millennium BCE. Their use was not confined to a later Greek or Roman invention.", "sourceIds": ["oracc-writing-media"] },
+      "manufactureOrUse": { "text": "Prepared boards held an inscribable wax layer, and folding leaves protected the writing. Administrative and scholarly uses are both reported. Clay texts and Assyrian reliefs provide evidence beyond the few surviving boards; a depiction, a textual reference and a preserved object should not be counted as the same kind of evidence.", "sourceIds": ["oracc-writing-media"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Iron Age placement foregrounds the Assyrian recordkeeping comparison, not the invention of wax boards. ORACC reports earlier textual references and rare surviving boards thrown into a well, perhaps during Kalhu's destruction in 612 BCE.", "sourceIds": ["oracc-writing-media"] },
+      "relatedDiscoveries": [
+        { "elementId": "clay-tablet", "relationship": "documented", "explanation": "Writing boards and clay documents coexisted; clay texts themselves refer to boards.", "sourceIds": ["oracc-writing-media"] },
+        { "elementId": "timber", "relationship": "documented", "explanation": "Wood was one board material; ivory was another, so Timber is not a universal historical prerequisite.", "sourceIds": ["oracc-writing-media"] }
+      ],
+      "approximateDates": [{ "dateRange": "Possibly 612 BCE: deposition during Kalhu's destruction", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Kalhu (Nimrud), Assyria"], "sourceIds": ["oracc-writing-media"], "note": "A qualified depositional association, not the manufacture date or the origin of writing boards." }],
+      "associatedRegions": ["Kalhu (Nimrud), Assyria"],
+      "archaeologicalEvidence": [
+        { "text": "A few writing boards survived in a well; the account qualifies their connection to the destruction of Kalhu.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["oracc-writing-media"] },
+        { "text": "Clay texts and relief depictions indicate administrative and scholarly board use beyond the small surviving sample.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["oracc-writing-media"] }
+      ],
+      "historicalSignificance": { "text": "The rarity of organic supports can distort impressions of ancient literacy. Boards broaden the recordkeeping branch without declaring that one medium replaced all others.", "sourceIds": ["oracc-writing-media"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The possible 612 BCE deposition is not a certain date for all surviving boards.", "Textual references from earlier periods are not identical to surviving boards of that age."],
+      "gameplaySimplifications": ["Timber and Writing are symbolic: wax, preparation and the stylus are implicit rather than newly invented materials.", "The node is an optional support and is not required for Manuscript, Alphabet or Archive."],
+      "furtherResearch": [{ "question": "How does exceptional preservation change estimates of the importance of organic writing supports?", "sourceIds": ["oracc-writing-media"] }]
+    },
+    {
+      "elementId": "pulley", "elementName": "Pulley",
+      "historicalOverview": { "text": "A pulley guides a rope around a rotating wheel; its effect depends on how the whole system is arranged. Vitruvius Book X describes blocks, ropes and winding mechanisms used to lift building loads. This is historical technical writing, not an excavated machine or proof that the author invented it.", "sourceIds": ["vitruvius-machines"] },
+      "manufactureOrUse": { "text": "A fixed wheel can redirect a pull, while arrangements with several supporting rope runs can change the effort and travel required. Vitruvius discusses several lifting systems rather than one universal hoist. The Atlas summarizes their role, without treating an ancient description as safe operating guidance.", "sourceIds": ["vitruvius-machines"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Classical Antiquity placement follows the Roman technical account and its building context. The reviewed passages do not establish the earliest pulley, a numerical invention date or adoption by every ancient building tradition.", "sourceIds": ["vitruvius-machines"] },
+      "relatedDiscoveries": [
+        { "elementId": "cordage", "relationship": "documented", "explanation": "Ropes run through the described pulley blocks.", "sourceIds": ["vitruvius-machines"] },
+        { "elementId": "masonry", "relationship": "documented", "explanation": "The account relates lifting systems to public building and stone loads.", "sourceIds": ["vitruvius-machines"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Roman Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "De Architectura X.2 describes building hoists using rope, pulley blocks and winding mechanisms. A description attests knowledge in a text, not the excavation of each described machine.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["vitruvius-machines"] }],
+      "historicalSignificance": { "text": "Lifting machinery connects building materials with labor and logistics. It also makes clear why a wheel alone does not describe an entire machine or explain its mechanical advantage.", "sourceIds": ["vitruvius-machines"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The consulted translation is a textual witness, not a review of all surviving machinery.", "No earliest-known date or single inventor is established by these passages."],
+      "gameplaySimplifications": ["Wheel and Cordage omit the groove, axle, block, anchoring and complete arrangement.", "The Quarry association selects construction logistics rather than making pulleys necessary for all masonry."],
+      "furtherResearch": [{ "question": "Which claims about lifting machines can a technical text establish without an excavated example?", "sourceIds": ["vitruvius-machines"] }]
+    },
+    {
+      "elementId": "water-screw", "elementName": "Water Screw",
+      "historicalOverview": { "text": "A water screw lifts water through rotation, unlike a canal or aqueduct relying on an available gravity gradient. Vitruvius X.6 describes a helical wooden device with a casing and supports. The familiar name Archimedes' screw does not by itself prove sole inventorship or settle claims about earlier examples.", "sourceIds": ["vitruvius-machines"] },
+      "manufactureOrUse": { "text": "The described machine converts rotary effort into water movement along its helical channels. Its usefulness depends on the installation and required lift, not just the presence of a river. The entry explains a function without reproducing construction dimensions or operating instructions.", "sourceIds": ["vitruvius-machines"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Classical Antiquity placement reflects the Roman technical text. The selected passage supports a described device, not an exact first date, a sole inventor or a verified Assyrian predecessor; those origin questions remain open here.", "sourceIds": ["vitruvius-machines"] },
+      "relatedDiscoveries": [
+        { "elementId": "irrigation", "relationship": "gameplay-abstraction", "explanation": "Water lifting suggests an irrigation application without identifying a specific ancient site.", "sourceIds": ["vitruvius-machines"] },
+        { "elementId": "lathe", "relationship": "gameplay-abstraction", "explanation": "Rotary craft is a design clue; the text does not say that a lathe was required.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Roman Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "De Architectura X.6 describes a water-lifting screw. It is textual evidence, not a surviving screw excavated at a named irrigation installation.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["vitruvius-machines"] }],
+      "historicalSignificance": { "text": "Distinguishing lifting from gravity supply gives water management more than one engineering pathway. The device is not a replacement for channels, power or the local knowledge needed to deliver water.", "sourceIds": ["vitruvius-machines"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No sole-inventor claim or numerical origin date is established by the selected text.", "The text is not an archaeological survey of every water-lifting tradition."],
+      "gameplaySimplifications": ["Irrigation and Lathe associate function with rotary craft, not a documented manufacturing dependency.", "The River route omits power, siting, channels and maintenance rather than supplying an automatic water system."],
+      "furtherResearch": [{ "question": "What evidence could distinguish an attributed invention from a documented use of water-lifting screws?", "sourceIds": ["vitruvius-machines"] }]
+    },
+    {
+      "elementId": "vault", "elementName": "Vault",
+      "historicalOverview": { "text": "A vault extends an arched form over a space rather than naming a single arch, material or building type. Roman architecture used masonry and concrete to span interiors, including bath complexes. That regional evidence does not establish the first vault worldwide.", "sourceIds": ["whe-roman-architecture"] },
+      "manufactureOrUse": { "text": "Materials and building practice mattered: Roman concrete was laid as a thick mixture rather than simply poured like a modern material. The reviewed account describes widespread concrete in foundations, walls and vaults by the first century BCE. Not every vault was concrete, and a spanning form alone does not describe its support or construction.", "sourceIds": ["whe-roman-architecture"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Classical Antiquity placement foregrounds Roman architectural uses. The source's first-century BCE statement concerns regional concrete use, not the invention of the vault, all arched roofs or an identical global chronology.", "sourceIds": ["whe-roman-architecture"] },
+      "relatedDiscoveries": [
+        { "elementId": "arch", "relationship": "gameplay-abstraction", "explanation": "The clue compares related spanning forms, not a complete construction sequence.", "sourceIds": [] },
+        { "elementId": "concrete", "relationship": "documented", "explanation": "Concrete was one material used in Roman vaulted spaces.", "sourceIds": ["whe-roman-architecture"] },
+        { "elementId": "public-bath", "relationship": "documented", "explanation": "The account describes ambitious Roman bath interiors with arched and domed spans.", "sourceIds": ["whe-roman-architecture"] }
+      ],
+      "approximateDates": [{ "dateRange": "By the 1st century BCE: regional concrete use in vaults", "dateType": "regional-development", "precision": "approximate", "regions": ["Roman Italy"], "sourceIds": ["whe-roman-architecture"], "note": "A regional building-material comparison, not the first vault or universal adoption." }],
+      "associatedRegions": ["Roman Italy"],
+      "archaeologicalEvidence": [{ "text": "The architectural synthesis relates surviving Roman buildings to materials and spanning practices. This is a reference account rather than a newly examined excavation or structural survey.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["whe-roman-architecture"] }],
+      "historicalSignificance": { "text": "Vaulting highlights the relationship between a structural form and the materials and labor used to realize it. Keeping it distinct from Arch and Concrete avoids treating a building shape as a substance or a material as a complete design.", "sourceIds": ["whe-roman-architecture"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The encyclopedia synthesis does not establish earliest worldwide vaults or independently verify every named building.", "Broad priority claims in the source are not adopted as proof of Roman sole invention."],
+      "gameplaySimplifications": ["Arch and Masonry omit supports, centering, loads and construction skill.", "Vault and Concrete evoke one bath-building association, not a complete bath or safe construction plan."],
+      "furtherResearch": [{ "question": "How do archaeological studies distinguish masonry vaulting, concrete vaulting and later repairs?", "sourceIds": ["whe-roman-architecture"] }]
+    },
+    {
+      "elementId": "copper", "elementName": "Copper",
+      "historicalOverview": { "text": "Copper is a metal, distinct from copper-bearing ore and from copper-tin bronze. Penn Museum separates primary extraction from the later working of metal objects. The Timna display traces a regional production sequence ending in copper ingots transported for further processing.", "sourceIds": ["penn-metallurgy", "eretz-copper-furnaces"] },
+      "manufactureOrUse": { "text": "Ore reduction requires skilled coordination of materials and conditions; slag can retain evidence of those choices. Melting already metallic copper is not the same operation as smelting ore. The game's ore routes represent extraction, not every historical way people obtained or reused copper.", "sourceIds": ["penn-metallurgy"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Bronze Age placement is a gameplay context, not the first use of copper. The museum's earlier furnace displays and later original copper furnace show a regional history spanning the game's age boundaries.", "sourceIds": ["eretz-copper-furnaces"] },
+      "relatedDiscoveries": [
+        { "elementId": "copper-ore", "relationship": "documented", "explanation": "Ore is a resource for primary reduction, not already isolated copper metal.", "sourceIds": ["penn-metallurgy"] },
+        { "elementId": "bronze", "relationship": "documented", "explanation": "Copper is one component of the copper-tin alloy represented by Bronze.", "sourceIds": ["penn-tin"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Timna and the southern Arava"],
+      "archaeologicalEvidence": [{ "text": "The regional museum display distinguishes copper ores, furnaces and ingots from subsequent processing. Penn discusses slag as archaeological evidence for production.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["eretz-copper-furnaces", "penn-metallurgy"] }],
+      "historicalSignificance": { "text": "Following ore, extraction and object working reveals labor and transport that a finished metal artifact may conceal. It also avoids confusing a metal resource with the alloy that names a gameplay age.", "sourceIds": ["penn-metallurgy", "penn-tin"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No first copper use, geological formation date or individual ore provenance is established.", "A Timna copper sequence is not a model for every region or metal."],
+      "gameplaySimplifications": ["Both old and furnace-assisted routes abbreviate a complex extraction process.", "Adding equipment does not require replaying old recipes or erase already discovered Copper."],
+      "furtherResearch": [{ "question": "What can slag reveal that a transported copper ingot cannot?", "sourceIds": ["penn-metallurgy"] }]
+    },
+    {
+      "elementId": "bronze", "elementName": "Bronze",
+      "historicalOverview": { "text": "Bronze here represents copper alloyed with tin, rather than every copper alloy in archaeology. Penn's tin essay emphasizes that pure copper and other copper alloys also existed during the period called the Bronze Age. An age label is not a claim that every metal object had the same composition.", "sourceIds": ["penn-tin"] },
+      "manufactureOrUse": { "text": "Alloy composition and subsequent working affect an object's behavior. The reviewed discussion distinguishes alloying, casting, coldworking and annealing instead of treating bronze as automatically stronger for every purpose. Ore reduction is a different operation from making an alloy of extracted metals.", "sourceIds": ["penn-tin", "penn-metallurgy"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement reflects the material's role in the named chapter, not universal adoption or an exact first year. Older priority and ore-source assertions in the historical essay are not used as new chronology.", "sourceIds": ["penn-tin"] },
+      "relatedDiscoveries": [
+        { "elementId": "copper", "relationship": "documented", "explanation": "Copper forms the base of the represented alloy.", "sourceIds": ["penn-tin"] },
+        { "elementId": "tin", "relationship": "documented", "explanation": "Tin addition is distinct from extracting tin-bearing ore.", "sourceIds": ["penn-tin"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Ancient Near East and eastern Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "The museum essay discusses analyzed metal artifacts and production remains as evidence for composition and working. It is not a new laboratory analysis of this game's generic material.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["penn-tin"] }],
+      "historicalSignificance": { "text": "Alloying connects multiple resources, craft choices and transport networks. Composition makes those connections historically meaningful without imposing one global technological sequence.", "sourceIds": ["penn-tin"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The 1977 essay's early regional dates and unresolved provenance claims are not adopted.", "A broad material name cannot specify the composition and properties of every artifact."],
+      "gameplaySimplifications": ["Copper and Tin omit proportions, equipment and subsequent working.", "Bronze is not an automatic improvement over every other material for every task."],
+      "furtherResearch": [{ "question": "How do alloy composition and working history change interpretations of bronze artifacts?", "sourceIds": ["penn-tin"] }]
+    },
+    {
+      "elementId": "forge", "elementName": "Forge",
+      "historicalOverview": { "text": "Forge represents a workshop or heating context for working metal, not a second name for an ore-reduction furnace. Penn distinguishes primary smelting from the broader production and use of objects. Museum Wales' replica work demonstrates a later example of smithing informed by ancient tool surfaces.", "sourceIds": ["penn-metallurgy", "wales-iron-carpentry"] },
+      "manufactureOrUse": { "text": "Working extracted metal can involve heating, shaping and finishing rather than creating metal from ore. Original iron tool surfaces informed modern reproductions, but the replicas and their performance are not direct observations of an ancient forge. This account gives no workshop operating procedure.", "sourceIds": ["wales-iron-carpentry", "nps-bloomery"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Bronze Age page groups metalworking practices without certifying a first forge. Later Welsh examples illustrate the distinction between tool manufacture and extraction; they do not independently date the earlier gameplay node.", "sourceIds": ["penn-metallurgy", "wales-iron-carpentry"] },
+      "relatedDiscoveries": [
+        { "elementId": "smelting-furnace", "relationship": "gameplay-abstraction", "explanation": "The catalog separates working metal from reducing ore instead of merging both installations.", "sourceIds": ["penn-metallurgy"] },
+        { "elementId": "blacksmith", "relationship": "documented", "explanation": "A modern smith interpreted ancient surfaces to reproduce tools in the museum project.", "sourceIds": ["wales-iron-carpentry"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Southern Levant", "Wales"],
+      "archaeologicalEvidence": [{ "text": "Museum Wales describes conserved tool surfaces used to infer manufacture, separately from the modern smith's replicas.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["wales-iron-carpentry"] }],
+      "historicalSignificance": { "text": "Separating the forge from the smelting furnace makes different stages and skills visible. The distinction resists treating every heated metal operation as the same process.", "sourceIds": ["penn-metallurgy"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No earliest forge date or universally standardized workshop is established.", "Later reconstructions cannot independently certify the details of Bronze Age working."],
+      "gameplaySimplifications": ["The legacy discovery and routes stay unchanged.", "A single workshop node groups varied equipment and labor rather than documenting one complete installation."],
+      "furtherResearch": [{ "question": "What remains distinguish ore reduction from a workshop shaping previously extracted metal?", "sourceIds": ["penn-metallurgy"] }]
+    },
+    {
+      "elementId": "seal", "elementName": "Seal",
+      "historicalOverview": { "text": "A seal is an implement used to leave an identifying impression, not the impression itself. Clay documents could carry impressions directly or be enclosed within impressed envelopes. Louvre AO 9386 preserves the latter arrangement, while ORACC describes several distinct Assyrian document formats.", "sourceIds": ["louvre-tablet-envelope", "oracc-cuneiform-clay"] },
+      "manufactureOrUse": { "text": "A seal was applied to a receptive surface in a documentary practice. The location of a mark matters: a conveyance tablet, a loan envelope and an unsealed inner tablet are not interchangeable. An impression may attest participation or authority without proving the truth of the text.", "sourceIds": ["oracc-cuneiform-clay"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Bronze Age chapter is consistent with the Louvre's Old Assyrian tablet-and-envelope object. That artifact supports a regional sealing practice, not the first seal or the origin of every ancient administrative system.", "sourceIds": ["louvre-tablet-envelope"] },
+      "relatedDiscoveries": [
+        { "elementId": "sealed-tablet", "relationship": "documented", "explanation": "The document or its envelope can bear impressions made by a separate sealing tool.", "sourceIds": ["oracc-cuneiform-clay"] },
+        { "elementId": "law", "relationship": "gameplay-abstraction", "explanation": "Legal recordkeeping is one association, not a claim that a seal creates law.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Cappadocia, Anatolia", "Kalhu (Nimrud), Assyria"],
+      "archaeologicalEvidence": [{ "text": "The Louvre object preserves impressions on an envelope; that is evidence for marks and enclosure, not the survival of the sealing implement itself.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["louvre-tablet-envelope"] }],
+      "historicalSignificance": { "text": "Distinguishing tool and mark helps interpret how people associated documents with participants and authority. It also prevents every sealing from being treated as an intact envelope.", "sourceIds": ["oracc-cuneiform-clay"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["An impression does not automatically identify every participant or verify an honest transaction.", "The later Assyrian format comparison is not a universal rule."],
+      "gameplaySimplifications": ["The new tablet route retains the original Seal discovery.", "One result groups multiple sealing practices without inventing a separate envelope node."],
+      "furtherResearch": [{ "question": "What can the position of impressions tell us beyond the design of the seal?", "sourceIds": ["oracc-cuneiform-clay"] }]
+    },
+    {
+      "elementId": "scribe", "elementName": "Scribe",
+      "historicalOverview": { "text": "Scribe represents a person practicing learned documentary work, distinct from a script, a writing implement or a support. The Nimrud account describes choices of clay shapes for letters, loans, conveyances and scholarly texts. Other media included wax-filled boards as well as stone and metal.", "sourceIds": ["oracc-cuneiform-clay", "oracc-writing-media"] },
+      "manufactureOrUse": { "text": "Preparing a tablet and choosing a format required knowledge beyond owning clay and a stylus. Assyrian reliefs show paired recorders using cuneiform and Aramaic on different media. Such depictions illustrate a setting without proving that all scribes worked in pairs or used the same languages.", "sourceIds": ["oracc-cuneiform-clay", "oracc-writing-media"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age gameplay associates scribal work with early writing and the Old Assyrian documentary comparison. The later Nimrud examples illuminate practices without dating the first scribe or a universal profession.", "sourceIds": ["writing-origins", "louvre-tablet-envelope", "oracc-writing-media"] },
+      "relatedDiscoveries": [
+        { "elementId": "clay-tablet", "relationship": "documented", "explanation": "Scribes selected and prepared tablet formats for different text types.", "sourceIds": ["oracc-cuneiform-clay"] },
+        { "elementId": "wax-tablet", "relationship": "documented", "explanation": "Boards served administrative and scholarly purposes alongside clay.", "sourceIds": ["oracc-writing-media"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Cappadocia, Anatolia", "Kalhu (Nimrud), Assyria"],
+      "archaeologicalEvidence": [{ "text": "Relief depictions of paired scribes and surviving texts provide different evidence for documentary work and its media.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["oracc-writing-media"] }],
+      "historicalSignificance": { "text": "Recordkeeping depended on learned work and choices, not just a technological support. Distinguishing workers from media makes administrative and scholarly practices visible without assuming universal literacy.", "sourceIds": ["oracc-cuneiform-clay", "oracc-writing-media"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Depictions and surviving texts are selective rather than complete surveys of literacy.", "No first-scribe date or universal training system is asserted."],
+      "gameplaySimplifications": ["The existing Scribe recipe remains a social association, not a training program.", "Owning Writing or a tablet does not historically make someone a scribe."],
+      "furtherResearch": [{ "question": "How do media, language and document format reveal different scribal tasks?", "sourceIds": ["oracc-cuneiform-clay", "oracc-writing-media"] }]
+    },
+    {
+      "elementId": "archive", "elementName": "Archive",
+      "historicalOverview": { "text": "Archive represents keeping and using records, not the physical tablet on which one text is written. The Assyrian material includes administrative, legal, epistolary and scholarly documents on several supports. Surviving collections must be interpreted through both ancient use and later preservation.", "sourceIds": ["oracc-cuneiform-clay", "oracc-writing-media"] },
+      "manufactureOrUse": { "text": "Document shapes and media reflected different purposes. Some tablets were sealed or enclosed, while writing boards could fold to protect inscriptions. These practices concern records, but a surviving group of texts alone does not reconstruct its entire original filing arrangement or access rules.", "sourceIds": ["oracc-cuneiform-clay", "oracc-writing-media"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Bronze Age chapter groups recordkeeping with Writing and Scribe, using early writing and Old Assyrian documents as context. Later Nimrud examples are comparisons, not evidence for a single invention of archives.", "sourceIds": ["writing-origins", "louvre-tablet-envelope", "oracc-cuneiform-clay"] },
+      "relatedDiscoveries": [
+        { "elementId": "clay-tablet", "relationship": "gameplay-abstraction", "explanation": "A support may carry a record; it is not by itself an archive or its organizational system.", "sourceIds": ["oracc-cuneiform-clay"] },
+        { "elementId": "wax-tablet", "relationship": "documented", "explanation": "Organic boards carried records now disproportionately lost compared with clay.", "sourceIds": ["oracc-writing-media"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Cappadocia, Anatolia", "Kalhu (Nimrud), Assyria"],
+      "archaeologicalEvidence": [{ "text": "Rare boards preserved in a well illustrate how destruction and exceptional preservation affect the surviving written record; they do not reconstruct a complete functioning archive.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["oracc-writing-media"] }],
+      "historicalSignificance": { "text": "Keeping records can extend administrative and scholarly memory, but preservation is uneven. Distinguishing archival practices from modern museum collections prevents accidental survival from being mistaken for complete ancient organization.", "sourceIds": ["oracc-writing-media", "oracc-cuneiform-clay"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No complete ancient filing system or universal public access is inferred from these passages.", "Survival on clay can conceal the importance of organic supports."],
+      "gameplaySimplifications": ["The existing Archive path remains optional and unchanged.", "Collecting a support and a text in the game omits selection, arrangement, maintenance and institutional labor."],
+      "furtherResearch": [{ "question": "How can archaeological context distinguish an archive in use from discarded or redeposited records?", "sourceIds": ["oracc-writing-media"] }]
+    },
+    {
+      "elementId": "balance", "elementName": "Balance",
+      "historicalOverview": { "text": "A balance compares masses; a system of accepted weights supplies conventions for interpreting the comparison. The Harappan weight series and cross-regional comparison make those concepts distinct. A measuring instrument does not imply that all its users share the same units.", "sourceIds": ["harappa-weight-series", "harappa-weight-comparison"] },
+      "manufactureOrUse": { "text": "Using reference weights allows quantities to be compared under an accepted convention. Harappa's illustrated series includes smaller binary steps and larger decimal increases. The comparison's overlapping western Eurasian ranges and distinct Indus unit should not be simplified into identical accuracy or universal conversion.", "sourceIds": ["harappa-weight-series", "harappa-weight-comparison"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age gameplay reflects the weighing systems in the reviewed comparative dataset. That range contextualizes the instrument without giving the first balance an invention date.", "sourceIds": ["harappa-weight-comparison"] },
+      "relatedDiscoveries": [
+        { "elementId": "weight-standard", "relationship": "documented", "explanation": "The comparison concerns balance weights and distinct accepted units.", "sourceIds": ["harappa-weight-comparison"] },
+        { "elementId": "trade", "relationship": "documented", "explanation": "Trade control is a proposed use of the Harappan weight series, not evidence for every individual exchange.", "sourceIds": ["harappa-weight-series"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Indus region", "Mesopotamia and western Eurasia"],
+      "archaeologicalEvidence": [{ "text": "Excavated cubical weights support reconstruction of a weighing system; this receipt does not document an intact balance excavated beside them.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["harappa-weight-series"] }],
+      "historicalSignificance": { "text": "Separating instrument from standard helps explain how physical comparison and social agreement work together. Measurement supports exchange without automatically enforcing fair dealing.", "sourceIds": ["harappa-weight-series", "harappa-weight-comparison"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The underlying comparative study was accessed through a summary, not reviewed in full.", "The illustrated weights do not establish a specific balance's manufacture or accuracy."],
+      "gameplaySimplifications": ["The existing Bronze and Cordage recipe evokes a weighing apparatus, not its full construction.", "The new weights route omits calibration work and accepted error tolerances."],
+      "furtherResearch": [{ "question": "Which evidence concerns the balance itself, and which concerns its reference weights?", "sourceIds": ["harappa-weight-series"] }]
+    },
+    {
+      "elementId": "bronze-tool", "elementName": "Bronze Tool",
+      "historicalOverview": { "text": "Bronze Tool groups implements made from the copper-tin alloy represented in the game. It is distinct from the alloy as a material and from every tool used during the Bronze Age. The museum essay notes that copper and other copper alloys also remained in use.", "sourceIds": ["penn-tin"] },
+      "manufactureOrUse": { "text": "An object's composition and working history matter alongside its shape. The reviewed discussion distinguishes casting, coldworking and annealing, rather than treating every bronze implement as produced identically. A material's name alone does not establish its suitability for a task.", "sourceIds": ["penn-tin"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Bronze Age grouping is a gameplay context, not a claim that bronze universally displaced stone or that all regional tools had the same alloy. No numerical origin date is inferred from the older essay.", "sourceIds": ["penn-tin"] },
+      "relatedDiscoveries": [
+        { "elementId": "bronze", "relationship": "documented", "explanation": "The represented alloy supplies a material that must still be shaped and worked into an implement.", "sourceIds": ["penn-tin"] },
+        { "elementId": "stone-tool", "relationship": "gameplay-abstraction", "explanation": "The formula evokes an existing toolmaking idea, not a stone tool turned into bronze by contact.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Ancient Near East and eastern Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "The essay interprets metal objects and working practices through composition and production evidence; this generic node is not a single analyzed implement.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["penn-tin"] }],
+      "historicalSignificance": { "text": "Separating alloy from implement makes craft work visible and avoids a universal stronger-material story. Tool choices involve composition, manufacture and use rather than a simple age ranking.", "sourceIds": ["penn-tin"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["A generic node cannot identify the composition or working sequence of every ancient tool.", "The older source's priority and provenance assertions are not adopted."],
+      "gameplaySimplifications": ["Bronze and Stone Tool symbolize material and purpose, with shaping steps omitted.", "The legacy route and its rewards are unchanged."],
+      "furtherResearch": [{ "question": "What can microscopic structure add to an artifact's visible shape and alloy composition?", "sourceIds": ["penn-metallurgy", "penn-tin"] }]
+    },
+    {
+      "elementId": "masonry", "elementName": "Masonry",
+      "historicalOverview": { "text": "Masonry groups work with building units rather than naming a particular brick, stone or binder. The Indus accounts distinguish dried mud brick and fired brick used in overlapping building traditions. Roman architectural examples provide a later comparison of stone, brick, mortar and concrete rather than a universal sequence.", "sourceIds": ["harappa-brick-summary", "indus-brick-chronology", "whe-roman-architecture"] },
+      "manufactureOrUse": { "text": "Selecting and arranging units, joints and supports requires knowledge not captured by a material alone. The Indus overview relates baked brick to water-exposed surfaces, while Roman accounts describe varied combinations of materials. These choices are contextual, not a rule that all masonry needs fired brick, iron chisels or pulleys.", "sourceIds": ["harappa-brick-summary", "whe-roman-architecture"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The early gameplay page groups building crafts, with pre-Harappan mud-brick settlement as one historical comparison. Later Roman spans and lifting equipment add optional routes without dating the beginning of masonry to those technologies.", "sourceIds": ["indus-brick-chronology", "whe-roman-architecture", "vitruvius-machines"] },
+      "relatedDiscoveries": [
+        { "elementId": "brick", "relationship": "documented", "explanation": "The regional building accounts distinguish dried units from fired ones.", "sourceIds": ["harappa-brick-summary"] },
+        { "elementId": "vault", "relationship": "documented", "explanation": "Vaulted construction offers one later spanning application, not the definition of all masonry.", "sourceIds": ["whe-roman-architecture"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Indus region", "Roman Italy"],
+      "archaeologicalEvidence": [{ "text": "The reviewed Indus summaries discuss building remains and varied brick use. The chronology passage is a preprint synthesis, not direct inspection of every excavation.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["harappa-brick-summary", "indus-brick-chronology"] }],
+      "historicalSignificance": { "text": "A building practice connects materials with skilled organization rather than reducing architecture to one ingredient. Optional tool routes should expand that view without rewriting earlier construction as technologically impossible.", "sourceIds": ["harappa-brick-summary", "whe-roman-architecture"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Regional building comparisons do not establish the first masonry worldwide.", "The Indus chronology receipt is a selected preprint passage rather than certification of the whole paper."],
+      "gameplaySimplifications": ["The original Masonry route remains independent of all new implements.", "Chisel and pulley associations are symbolic, not construction instructions or universal requirements."],
+      "furtherResearch": [{ "question": "How do materials, water exposure and repair histories change interpretations of a wall?", "sourceIds": ["harappa-brick-summary", "whe-roman-architecture"] }]
+    },
+    {
+      "elementId": "irrigation", "elementName": "Irrigation",
+      "historicalOverview": { "text": "Irrigation is the managed supply of water to cultivated land, not a synonym for a canal, aqueduct or water-lifting machine. Vitruvius' discussion of water-raising equipment offers a later technical comparison of supplying water through mechanical work. A device is only one part of managing a water supply.", "sourceIds": ["vitruvius-machines"] },
+      "manufactureOrUse": { "text": "Lifting water and conveying it along a gradient are different operations. The described screw illustrates raising water, while the wider engineering setting requires attention to available water, labor and delivery. This account does not identify one device as necessary for all irrigated fields.", "sourceIds": ["vitruvius-machines"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Irrigation stays in the Bronze Age gameplay chapter. The later Roman technical text supplies a bounded water-lifting comparison, not a date for irrigation's invention or proof of every earlier system.", "sourceIds": ["vitruvius-machines"] },
+      "relatedDiscoveries": [
+        { "elementId": "water-screw", "relationship": "gameplay-abstraction", "explanation": "A water lift suggests one supply method without identifying a documented ancient irrigated site.", "sourceIds": ["vitruvius-machines"] },
+        { "elementId": "canal", "relationship": "gameplay-abstraction", "explanation": "A channel is one component or conveyance option, not the whole practice of irrigation.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Roman Mediterranean"],
+      "archaeologicalEvidence": [{ "text": "Vitruvius X.6 is textual evidence for described water-raising equipment; it is not an excavation report for a particular irrigated field.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["vitruvius-machines"] }],
+      "historicalSignificance": { "text": "Distinguishing the managed practice from its devices avoids crediting a whole water system to one machine or inventor. Water supply also depends on local conditions and continued work.", "sourceIds": ["vitruvius-machines"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The selected technical comparison does not date the earliest irrigation.", "No universal ancient water rights, crop response or social organization is inferred."],
+      "gameplaySimplifications": ["The old field-and-water association and progression remain unchanged.", "The new water-screw route supplies a conceptual alternative without changing the age or certifying a complete system."],
+      "furtherResearch": [{ "question": "What site evidence would connect a water-lifting device with actual fields and channels?", "sourceIds": ["vitruvius-machines"] }]
+    },
+    {
+      "elementId": "bellows", "elementName": "Bellows",
+      "historicalOverview": { "text": "Bellows supply moving air to a working fire; they are not ore, fuel or the furnace itself. The Eretz Israel Museum displays reconstructed bellows based on Egyptian tomb depictions opposite copper-production equipment. A reconstruction and a surviving furnace provide different kinds of evidence.", "sourceIds": ["eretz-copper-furnaces"] },
+      "manufactureOrUse": { "text": "Air delivery contributes to controlled heat and atmosphere. Penn identifies a tuyere as a ceramic pipe directing air into a furnace or hearth, distinguishing the air path from the device supplying the air. Neither artifact alone documents every component of an operating installation.", "sourceIds": ["penn-metallurgy", "eretz-copper-furnaces"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The legacy Iron Age placement supports the ironworking branch without dating the origin of forced air. The museum's Egyptian depictions and copper-industry comparison show why the gameplay page must not be read as the first bellows.", "sourceIds": ["eretz-copper-furnaces"] },
+      "relatedDiscoveries": [
+        { "elementId": "bloomery", "relationship": "gameplay-abstraction", "explanation": "The branch associates air supply with extraction equipment rather than establishing one universal furnace arrangement.", "sourceIds": ["nps-bloomery"] },
+        { "elementId": "smelting-furnace", "relationship": "documented", "explanation": "The copper-production display juxtaposes reconstructed bellows and furnaces.", "sourceIds": ["eretz-copper-furnaces"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Egyptian depictions and the southern Arava comparison"],
+      "archaeologicalEvidence": [{ "text": "Reconstructed bellows are based on tomb paintings; they are not preserved ancient leather bellows in this receipt.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["eretz-copper-furnaces"] }],
+      "historicalSignificance": { "text": "Air supply reveals equipment and skilled control hidden by a simple ore-plus-fuel formula. Preserving the distinction between depiction, reconstruction and original helps prevent exaggerated technological certainty.", "sourceIds": ["eretz-copper-furnaces", "penn-metallurgy"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No exact invention date or complete ancient bellows construction is established.", "Later water-powered air equipment discussed by NPS is not projected onto antiquity."],
+      "gameplaySimplifications": ["The existing bellows route abbreviates a craft association, not a construction plan.", "The new bronze-age furnace does not require this later gameplay node."],
+      "furtherResearch": [{ "question": "What evidence distinguishes an air-supply device from its surviving ceramic air pipe?", "sourceIds": ["penn-metallurgy", "eretz-copper-furnaces"] }]
+    },
+    {
+      "elementId": "bloomery", "elementName": "Bloomery",
+      "historicalOverview": { "text": "A bloomery represents direct iron extraction rather than a later blast furnace producing liquid cast iron. The National Park Service distinguishes the ancient direct process from a later indirect route in its ironmaking explanation. Its colonial setting does not date every process it compares.", "sourceIds": ["nps-bloomery"] },
+      "manufactureOrUse": { "text": "The direct process yields iron requiring work to remove impurities rather than a simple pour of finished tool metal. Hammering and subsequent shaping are distinct from ore reduction. Penn's discussion of slag explains why production waste can be informative even without a complete installation.", "sourceIds": ["nps-bloomery", "penn-metallurgy"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Iron Age placement serves the existing ironworking chain. The selected process explanation does not establish a first bloomery date or make one regional chronology apply to all iron traditions.", "sourceIds": ["nps-bloomery"] },
+      "relatedDiscoveries": [
+        { "elementId": "iron", "relationship": "documented", "explanation": "The direct process requires further consolidation rather than producing a finished implement.", "sourceIds": ["nps-bloomery"] },
+        { "elementId": "smelting-furnace", "relationship": "gameplay-abstraction", "explanation": "The generic extraction node does not replace the legacy iron-specific bloomery branch.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": [],
+      "archaeologicalEvidence": [{ "text": "The technical heritage account distinguishes direct bloomery iron from later indirect cast-iron production. It is a process comparison, not a newly inspected ancient excavation.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["nps-bloomery"] }],
+      "historicalSignificance": { "text": "Separating direct iron extraction from liquid casting prevents modern or later historical images from replacing the ancient process represented by the branch.", "sourceIds": ["nps-bloomery"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No first date or universal geographical origin is supplied.", "The source's later European and colonial developments are not silently assigned to ancient bloomery practice."],
+      "gameplaySimplifications": ["The legacy iron route omits consolidation and working after extraction.", "The generic Smelting Furnace neither replaces Bloomery nor changes its prerequisites."],
+      "furtherResearch": [{ "question": "Which production remains distinguish direct iron extraction from later indirect processes?", "sourceIds": ["nps-bloomery", "penn-metallurgy"] }]
+    },
+    {
+      "elementId": "iron", "elementName": "Iron",
+      "historicalOverview": { "text": "Iron is a metal, distinct from iron-bearing ore, steel and a finished implement. The direct bloomery process described by NPS differs from the later production of liquid cast iron. Calling an age Iron Age does not mean that all its metalworking used a single method.", "sourceIds": ["nps-bloomery"] },
+      "manufactureOrUse": { "text": "Direct extraction and subsequent work remove impurities and prepare usable iron. Penn explains how slag and metal microstructure can reveal choices invisible in a finished object's outline. That evidence should not be reduced to the claim that heating any iron ore simply melts out a tool.", "sourceIds": ["nps-bloomery", "penn-metallurgy"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Iron Age page organizes the represented production chain rather than declaring the first iron everywhere. No numerical first date or single global transition is established by the selected technical sources.", "sourceIds": ["nps-bloomery", "penn-metallurgy"] },
+      "relatedDiscoveries": [
+        { "elementId": "iron-ore", "relationship": "documented", "explanation": "Ore reduction is primary extraction, distinct from later shaping.", "sourceIds": ["penn-metallurgy"] },
+        { "elementId": "iron-tool", "relationship": "documented", "explanation": "Usable extracted metal still needs working to become an implement.", "sourceIds": ["nps-bloomery", "wales-iron-carpentry"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Southern Levant", "Wales"],
+      "archaeologicalEvidence": [{ "text": "Penn discusses metal samples and slag as evidence for production; Welsh tool originals illustrate worked objects rather than their complete extraction installations.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["penn-metallurgy", "wales-iron-carpentry"] }],
+      "historicalSignificance": { "text": "Following extraction and working separately helps explain why one material can support many craft traditions. It avoids treating Iron as a universal upgrade with fixed properties.", "sourceIds": ["penn-metallurgy", "wales-iron-carpentry"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No earliest iron object or ore provenance is newly certified.", "A heritage process summary does not establish all ancient regional methods."],
+      "gameplaySimplifications": ["The existing ore recipe compresses reduction, waste removal and consolidation.", "Iron remains separate from Steel and the new specialized tools."],
+      "furtherResearch": [{ "question": "How do slag and microstructure constrain interpretations of an iron object's production?", "sourceIds": ["penn-metallurgy"] }]
+    },
+    {
+      "elementId": "iron-tool", "elementName": "Iron Tool",
+      "historicalOverview": { "text": "Iron Tool is a broad gameplay category rather than one standardized ancient implement. Museum Wales' regional toolkit includes axes, adze-hammers, gouges, chisels, files, drill bits and wedges. Those forms make different tasks visible within the generic material category.", "sourceIds": ["wales-iron-carpentry"] },
+      "manufactureOrUse": { "text": "Conserved surfaces helped a modern smith reproduce tools, while handles were reconstructed from incomplete traces and comparisons. The original ironwork, inferred hafts and experimental replicas are distinct. Tools do not all retain an exact original task merely because their material survives.", "sourceIds": ["wales-iron-carpentry", "wales-iron-chisel"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Iron Age placement uses the Welsh toolkit discussion as one regional comparison, not a universal origin. The museum separately identifies a chisel from a Roman fort, so that example is not treated as securely pre-Roman evidence.", "sourceIds": ["wales-iron-carpentry"] },
+      "relatedDiscoveries": [
+        { "elementId": "iron-chisel", "relationship": "gameplay-abstraction", "explanation": "The broad tool category can branch toward a specific implement without physically transforming it by contact.", "sourceIds": [] },
+        { "elementId": "gouge", "relationship": "documented", "explanation": "The toolkit discussion includes a Castell Henllys gouge.", "sourceIds": ["wales-iron-carpentry"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Wales"],
+      "archaeologicalEvidence": [{ "text": "The museum's originals-based toolkit contains varied forms, while the Twyn-y-Gaer chisel record explicitly leaves its context unknown.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["wales-iron-carpentry", "wales-iron-chisel"] }],
+      "historicalSignificance": { "text": "Domestic ironwork can illuminate skilled production where wooden objects rarely survive. Specialized branches make that variety visible without assuming a single inevitable tool sequence.", "sourceIds": ["wales-iron-carpentry"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The regional toolkit is not a census of every Iron Age craft.", "Originals, replicas and later Roman examples must not be merged as equally dated evidence."],
+      "gameplaySimplifications": ["The generic node remains intact for legacy routes and saves.", "The new chisel and gouge formulas are associations, not detailed manufacturing procedures."],
+      "furtherResearch": [{ "question": "Which tool identifications remain secure when handles and cutting edges are missing?", "sourceIds": ["wales-iron-chisel", "wales-iron-carpentry"] }]
+    },
+    {
+      "elementId": "blacksmith", "elementName": "Blacksmith",
+      "historicalOverview": { "text": "Blacksmith represents skilled ironworking labor rather than the automatic effect of possessing an iron tool. Museum Wales describes a modern smith studying conserved ancient surfaces to reproduce a regional carpentry toolkit. That reconstruction demonstrates a method of investigation, not a surviving ancient worker's biography.", "sourceIds": ["wales-iron-carpentry"] },
+      "manufactureOrUse": { "text": "A worker interprets material behavior, shapes implements and maintains working edges. In the museum project, tool heads and handles required separate evidence and expertise. Modern trial results cannot recover every original technique or prove that all ancient workshops were organized alike.", "sourceIds": ["wales-iron-carpentry"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Iron Age gameplay relates the occupation to the represented toolkit. The selected museum account distinguishes ancient originals from modern work; it does not date the first blacksmith or a universal specialist profession.", "sourceIds": ["wales-iron-carpentry"] },
+      "relatedDiscoveries": [
+        { "elementId": "forge", "relationship": "gameplay-abstraction", "explanation": "The workshop and its skilled worker are complementary concepts, not interchangeable discoveries.", "sourceIds": [] },
+        { "elementId": "iron-tool", "relationship": "documented", "explanation": "The museum's smith used ancient tool surfaces to inform replica heads.", "sourceIds": ["wales-iron-carpentry"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Wales"],
+      "archaeologicalEvidence": [{ "text": "Surviving tool surfaces informed a modern reconstruction of manufacture. They provide indirect evidence of ancient skilled work rather than an excavated complete workshop in this receipt.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["wales-iron-carpentry"] }],
+      "historicalSignificance": { "text": "Naming skilled labor helps counter the idea that materials alone create tools. The museum project also shows why successful modern replicas remain experiments rather than complete historical proof.", "sourceIds": ["wales-iron-carpentry"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["A reconstruction report cannot establish every ancient occupational boundary or workshop arrangement.", "No numerical first date or single origin is supplied."],
+      "gameplaySimplifications": ["Human and Iron Tool remain an association, not a training or occupational certification process.", "Reading the history changes no rewards, costs or progression."],
+      "furtherResearch": [{ "question": "How can experiments test an interpretation without turning reconstruction into certainty?", "sourceIds": ["wales-iron-carpentry"] }]
+    }
+  ]
+}

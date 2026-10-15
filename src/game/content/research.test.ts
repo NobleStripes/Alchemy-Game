@@ -35,6 +35,15 @@ const regionalIds = ['imperial-bureaucracy', 'provincial-government', 'diplomati
 const naturalResourceIds = ['salt', 'bone', 'tree', 'timber', 'soil', 'mud', 'sea', 'steam', 'mist', 'cloud', 'rain', 'lightning']
 const foundationIds = ['grinding-stone', 'spindle', 'yarn', 'kiln', 'fired-brick', 'tin-ore']
 const foundationBacklogIds = ['flour', 'fibre', 'loom', 'textile', 'tin', 'brick']
+const craftExpansionIds = [
+  'smelting-furnace', 'clay-tablet', 'sealed-tablet', 'weight-standard',
+  'axe', 'adze', 'wedge', 'fishhook', 'fishing-weir',
+  'iron-chisel', 'gouge', 'wax-tablet', 'pulley', 'water-screw', 'vault',
+]
+const craftBacklogIds = [
+  'copper', 'bronze', 'forge', 'seal', 'scribe', 'archive', 'balance', 'bronze-tool',
+  'masonry', 'irrigation', 'bellows', 'bloomery', 'iron', 'iron-tool', 'blacksmith',
+]
 
 describe('historical research database', () => {
   it('distinguishes regional ancient intellectual practices from modern scientific methods', () => {
@@ -105,10 +114,10 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds, ...regionalIds, ...naturalResourceIds, ...foundationIds, ...foundationBacklogIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds, ...regionalIds, ...naturalResourceIds, ...foundationIds, ...foundationBacklogIds, ...craftExpansionIds, ...craftBacklogIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(127)
+    )).toHaveLength(140)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
@@ -146,7 +155,7 @@ describe('historical research database', () => {
     expect(elements.some((element) => ['flint', 'obsidian'].includes(element.id))).toBe(false)
     expect(researchByElementId.get('rock')!.agePlacement.status).toBe('fictional-prologue')
     expect(researchByElementId.get('stone')!.agePlacement.status).toBe('historical-model')
-    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(103)
+    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(88)
   })
 
   it.each(naturalResourceIds)('fully researches existing %s without inventing archaeological evidence or a natural origin date', (id) => {

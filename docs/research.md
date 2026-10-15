@@ -2,7 +2,9 @@
 
 [Back to the project overview](../README.md)
 
-Research lives in [`src/game/content/research.json`](../src/game/content/research.json), not inside element definitions or a hosted database. Schema version 2 adds educational Atlas fields. Historical source, chronology, entry, and database schemas are exported from [`schema.ts`](../src/game/content/schema.ts); [`research.ts`](../src/game/content/research.ts) adds catalog-aware validation and loads the database. [`research.test.ts`](../src/game/content/research.test.ts) tests both layers.
+Research lives in [`research.json`](../src/game/content/research.json) and the static [`craftResearch.json`](../src/game/content/craftResearch.json) appendix, not inside element definitions or a hosted database. Schema version 2 adds educational Atlas fields. Historical source, chronology, entry, and database schemas are exported from [`schema.ts`](../src/game/content/schema.ts); [`research.ts`](../src/game/content/research.ts) validates the appendix's structure and combines both files before catalog-aware validation. Duplicate IDs, collisions and cross-file references remain checked in the resolved database. [`research.test.ts`](../src/game/content/research.test.ts) and [craft regressions](../src/game/content/craftExpansion.test.ts) test the structure and aggregation.
+
+The appendix contains the latest thirty complete histories and thirteen source receipts. Separate static chunks keep both research payloads below the unchanged 500 kB build warning threshold without truncating articles. Research remains eagerly bundled; this is not a runtime module registry, optional pack loader or network-loaded research system.
 
 This separation keeps factual entries and bibliographic references out of gameplay definitions and save-game progression. Research entries refer to stable element IDs; they do not define recipe dependencies, unlock conditions, or rewards. Version 7 saves remain compatible and store only explicit reading IDs, never copies of research text or sources. The schema update does not itself define age assignments or recipe routes.
 
@@ -32,7 +34,9 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-Research covers **97 of 200 elements**, including all **40 Age V discoveries**. All 85 pre-foundation records remain. The registry contains **127 verified sources and one pending source**, including recipe-review background. The remaining **103 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **149 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
+Research covers **127 of 215 elements**, including all **43 Age V discoveries**. All 97 pre-expansion records remain. The registry contains **140 verified sources and one pending source**, including recipe-review background. The remaining **88 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **160 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
+
+The [215-element batch](catalog-plan.md#milestone-215-craft-records-and-engineering) adds fifteen histories for discoveries and fifteen for original gaps. Thirteen new receipts distinguish objects, reconstructions and technical texts. Tablet, sealing tool, impression and envelope are separate; the Louvre receipt records purchased provenance, not an excavation. Regional weight conventions are not universal units. The incomplete chisel, gouge and textual machine accounts receive no invented numerical dates. Wax-board precedents remain earlier than their Iron Age gameplay page. Summary-only comparisons and the Irrigation entry's limited later technical evidence remain explicitly bounded.
 
 ### Production foundations and paired milestones
 
@@ -42,7 +46,7 @@ Seven passage-specific receipts cover Paleolithic grinding, UCL's Egyptian texti
 
 The spindle-free Yarn route keeps early strand production independent of the Bronze Age Spindle example. Raw Fibre, prepared Yarn, Loom and finished Textile remain distinct; not every yarn was draft-spun or every loom weighted. Mud Brick remains dried earth despite its legacy recipe ID; Fired Brick represents firing suitable shaped clay, not every earth mixture. Tin Ore remains a pre-existing geological resource, distinct from reduction to metal and subsequent alloying. Tin deliberately has no unsupported dates or ancient provenance. All eleven formulas have individual cautions and retain the previous 232 routes.
 
-Milestones pair 200, 210, 225 and 250 elements with at least 97, 117, 147 and 197 full histories. Each batch must cover all new elements and reduce the original backlog by at least one full history per addition. Source and dated-entry counts are not quality quotas, and independent scholarly review remains pending.
+Milestones pair 200, 210, 225 and 250 elements with at least 97, 117, 147 and 197 full histories. The implemented 215/127 batch surpasses the planned 210/117 threshold; ten more additions require twenty more histories to meet 225/147. Each batch must cover all new elements and reduce the original backlog by at least one full history per addition. Source and dated-entry counts are not quality quotas, and independent scholarly review remains pending.
 
 ### Phase 9I natural resources and phenomena
 

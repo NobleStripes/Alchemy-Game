@@ -13,8 +13,8 @@ describe('historical recipe review', () => {
     expect(new Set(recipeReviews.reviews.map((review) => review.recipeId)))
       .toEqual(new Set(recipes.map((recipe) => recipe.id)))
     expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(16)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(100)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(127)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(107)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(147)
   })
 
   it('preserves the pre-audit IDs, input pairs, results and order', async () => {

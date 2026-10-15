@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { collections, elements, eras, recipes } from '.'
-import { historicalResearch, researchByElementId } from './research'
+import { collections, elements as currentElements, eras, recipes as currentRecipes } from '.'
+import { historicalResearch as currentResearch } from './research'
 import { reviewsByRecipeId } from './recipeReviews'
 import { historicalSourceSchema } from './schema'
 import { createRecipeIndex, resolveCombination } from '../engine/resolveCombination'
@@ -11,6 +11,10 @@ import { validateContent } from '../engine/validateContent'
 
 const additions = ['grinding-stone', 'spindle', 'yarn', 'kiln', 'fired-brick', 'tin-ore']
 const backlog = ['flour', 'fibre', 'loom', 'textile', 'tin', 'brick']
+const elements = currentElements.slice(0, 200)
+const recipes = currentRecipes.slice(0, 243)
+const historicalResearch = { ...currentResearch, records: currentResearch.records.slice(0, 97) }
+const researchByElementId = new Map(historicalResearch.records.map((record) => [record.elementId, record]))
 const routes = [
   ['rock', 'stone-tool', 'grinding-stone', 'prepared-grindstone', 'symbolic'],
   ['fibre', 'stone-tool', 'spindle', 'spinning-tool', 'symbolic'],
@@ -27,7 +31,7 @@ const routes = [
 const recipeIds = new Set(routes.map((route) => route[3]))
 const index = createRecipeIndex(recipes)
 
-describe('production foundations milestone', () => {
+describe('preserved production foundations milestone', () => {
   it('meets the 200-element and paired 97-history milestones without unused nodes', () => {
     expect(elements).toHaveLength(200)
     expect(recipes).toHaveLength(243)

@@ -2,17 +2,19 @@
 
 [Back to the project overview](../README.md)
 
-The current catalog contains **243 recipes**, retaining the previous 232 and adding eleven optional production-foundation routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
+The current catalog contains **270 recipes**, retaining the previous 243 and adding 27 optional craft, records and engineering routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
 
 ## Classifications
 
 | Classification | Count | Meaning |
 | --- | ---: | --- |
 | Material process | 16 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
-| Simplified process | 100 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
-| Symbolic association | 127 | A conceptual, social or fictional link; it must not be read as historical causation. |
+| Simplified process | 107 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
+| Symbolic association | 147 | A conceptual, social or fictional link; it must not be read as historical causation. |
 
-The [foundation chain table](catalog-plan.md#implemented-recipes-and-intermediate-chains) lists all eleven additions: four symbolic associations, six simplified processes and one material process. It makes grinding, spindle-free/spindle yarn preparation, weaving, firing and tin reduction more explicit without replacing any legacy route. All eleven reviews cite passage-verified background. There are now **138 recipe notes with background references and 105 without attached sources**. These citations do not prove an exact two-input recipe.
+The [foundation chain table](catalog-plan.md#implemented-recipes-and-intermediate-chains) preserves its eleven additions: four symbolic associations, six simplified processes and one material process. The [craft-expansion table](optional-content.md#craft-records-and-engineering) adds twenty symbolic associations and seven simplified processes. All 27 new reviews cite passage-verified background. There are now **165 recipe notes with background references and 105 without attached sources**. These citations do not prove an exact two-input recipe.
+
+New cautions distinguish ore reduction from melting/alloying, tablets from seal impressions and envelopes, regional weight conventions from a universal standard, and stationary wooden barriers from basket traps and nets. Specialized tool uses remain symbolic where artifact context does not establish a task. Wax, fuel, controlled conditions and other omitted inputs are explicit. Vitruvius' machine descriptions are textual evidence, not sole-inventor proof or practical guidance.
 
 ## Player-facing context
 
@@ -52,7 +54,7 @@ The Iron Age expansion cautions separate symbolic rotation and scribal associati
 
 The 22 Age V expansion routes are all symbolic. They distinguish Greek agoras from Roman forums, elite councils from universal representation, a stoa from a philosophical school, aqueducts from necessarily arched structures, and individual coins from monetary systems. Human + Law adds optional Citizenship: membership is not automatically granted by residence or written rules, and civic status does not imply equal political participation. Natural Inquiry and Bird Inquiry do not grant ancient thinkers modern dinosaur knowledge. Existing Scroll, Coin, and Aqueduct recipes are reused, not replaced or reclassified.
 
-The current recipe reviews total **16 material-process, 100 simplified-process, and 127 symbolic** classifications, including the production foundations. All 22 earlier expansion routes retain verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **138 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the earlier expansion formulas.
+The current recipe reviews total **16 material-process, 107 simplified-process, and 147 symbolic** classifications, including both catalog batches. All 22 earlier expansion routes retain verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **165 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the earlier expansion formulas.
 
 ### Scholarship route classifications
 
