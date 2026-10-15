@@ -9,12 +9,12 @@ const fixture = () => structuredClone(recipeReviews)
 describe('historical recipe review', () => {
   it('covers every recipe exactly once, including alternate routes', () => {
     expect(schema.parse(recipeReviews)).toEqual(recipeReviews)
-    expect(recipeReviews.reviews).toHaveLength(232)
+    expect(recipeReviews.reviews).toHaveLength(recipes.length)
     expect(new Set(recipeReviews.reviews.map((review) => review.recipeId)))
       .toEqual(new Set(recipes.map((recipe) => recipe.id)))
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(15)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(94)
-    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(123)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'material-process')).toHaveLength(16)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'simplified-process')).toHaveLength(100)
+    expect(recipeReviews.reviews.filter((review) => review.classification === 'symbolic')).toHaveLength(127)
   })
 
   it('preserves the pre-audit IDs, input pairs, results and order', async () => {

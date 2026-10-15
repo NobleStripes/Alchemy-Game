@@ -37,7 +37,7 @@ describe('optional regional administration and connections', () => {
   it('keeps the full gated graph reachable and the branch optional for all progression targets', () => {
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
     expect(validateContent(elements.slice(0, 189), recipes.slice(0, 227), eras, collections)).toEqual([])
-    expect(elements.slice(189).map((element) => element.id)).toEqual(additions)
+    expect(elements.slice(189, 194).map((element) => element.id)).toEqual(additions)
     const requirements = JSON.stringify({ eras, collections, learningChallenges })
     for (const id of additions) expect(requirements).not.toContain(`"${id}"`)
     expect(resolveCombination('merchant', 'map', index)?.result).toBe('voyage')

@@ -2,9 +2,35 @@
 
 [Back to the project overview](../README.md)
 
-Review date: **2026-10-14**.
+Review date: **2026-10-15**.
 
 ## Status and scope
+
+### Production foundations: first milestone toward 250
+
+The [catalog plan](catalog-plan.md) retains the original 194 elements and 232 formulas and adds **six core discoveries and eleven optional formulas**: Grinding Stone, Spindle, Yarn, Kiln, Fired Brick and Tin Ore. Current totals are **200 elements, 243 recipes, 97 histories, 149 chronology entries, 127 verified sources and one pending source**. Six legacy gaps receive histories too: Flour, Fibre, Loom, Textile, Tin and Mud Brick. **103 original elements** still lack full records. Existing five-age definitions, gates, goals, grants, landmarks, collections, challenge definitions, rewards and save version remain unchanged.
+
+All 194 baseline IDs are inventoried and all 56 core slots have semantic-overlap dispositions. Only the first six are accepted: the other 50 have target-age hypotheses and chain screens but remain blocked on original regional evidence and recipe design. Regional modules and research-only duplicates are tracked separately. Future milestones require at least 117 histories at 210 elements, 147 at 225 and 197 at 250, including complete histories for every addition and one old-gap history per new element.
+
+#### Evidence and educational limits
+
+Seven new passage-specific receipts cover Paleolithic grinding, Egyptian textile tools and kiln structure, two Harappa summaries, an explicitly classified chronology preprint and modern USGS tin resources. Summaries are not full chapter readings, and a preprint is not certified peer review. No failed museum fetch or irrelevant redirected page was accepted as evidence. Existing verified Penn and bread-study sources support only their reviewed material/process comparisons. Broad first-metal dates and old tin-provenance assertions are not adopted.
+
+Grinding wild plants predates farming; residues and tool wear do not directly preserve a flour meal. Spindle-free Yarn is available in Stone Age gameplay, while Spindle's reviewed Egyptian workshop context does not establish its invention. Raw fibre, prepared strands and woven linen are different stages; this focused flax/linen history is not a complete survey of all fibres and textiles. Kiln designs coexisted, pottery does not universally require enclosed kilns, and mud-brick drying differs from firing a suitable clay unit. Tin Ore is a pre-existing resource; washing, reduction, melting and alloying are not interchangeable. Tin's absent dates and provenance are disclosed rather than fabricated.
+
+This is a passage-level editorial and consistency review, **not independent historical peer review, a complete regional evidence survey, or measurement of human learning**. Later candidate rows explicitly preserve unresolved evidence and potential merge/defer decisions.
+
+#### Software verification
+
+Before additions, focused graph checks passed **202 tests across three files**. Synthetic cases expanded coverage of normalized duplicate names, repeated era references, future grants/landmarks, reusable self-pairs, reversed-pair conflicts, alternate routes, reachable/unseeded cycles, grant-dependent deadlocks, starter constraints and exact discovery-goal boundaries. Existing valid terminal nodes and earlier-age landmarks remain allowed.
+
+The complete regression suite passed **1,121 tests across 22 files**. Typecheck, lint and production build passed. Legacy 194-element/232-recipe fingerprints are unchanged, rather than regenerated for the growing totals. Foundation regressions cover all eleven formulas and reviews, six additions plus six backlog histories, optional legacy-only progression, exhausted-ingredient reactivation, and exact milestone counts. Persistence covers a complete pre-foundation v7 campaign plus new discoveries/formulas/reading; existing v1-v6, rewards, preferences, hints, challenge minima and free/discovered-only Atlas regressions also pass.
+
+The expanded suite exposed two stale test assumptions: an unbounded regional slice included later additions, and a date-rendering assertion assumed every researched history had chronology. Both now retain the intended legacy boundaries and explicitly test honest missing-date rendering for Tin.
+
+An isolated headless browser opened all twelve added histories at **375px and 1280px**: **24 rendered-entry checks**, no horizontal document overflow, no recipe preparation controls, correct absent-date handling for Tin, and the unchanged missing-history state for Heat. Preview discoveries were set in memory only; browsing left stored progress unchanged, checked again after reload. These are automated DOM/layout checks, not screenshot-based visual review, assistive-technology certification or human comprehension testing.
+
+The production graph is **151 crafting ingredients, 49 terminal elements and zero unused nodes**. The application and research chunks remain below the unchanged 500 kB warning threshold. Whitespace checks pass with CRLF-aware configuration, preserving the pre-existing working-tree line endings. The sections below are historical snapshots and retain their then-current counts.
 
 ### Phase 9I-9K final integration
 

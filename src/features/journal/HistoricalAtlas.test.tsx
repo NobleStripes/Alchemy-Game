@@ -73,7 +73,12 @@ describe('Historical Encyclopedia', () => {
     const disk = localStorage.getItem(SAVE_KEY)
     const user = await openAtlas()
     const article = await selectEntry(user, record.elementName)
-    expect(within(article).getByText(/BCE means Before the Common Era/)).toBeVisible()
+    if (record.approximateDates.length > 0) {
+      expect(within(article).getByText(/BCE means Before the Common Era/)).toBeVisible()
+    } else {
+      expect(within(article).getByText('No sourced dates are recorded for this entry.')).toBeVisible()
+      expect(within(article).queryByText(/BCE means Before the Common Era/)).not.toBeInTheDocument()
+    }
     for (const date of record.approximateDates) {
       expect(within(article).getByText(date.dateRange, { exact: true })).toBeVisible()
     }

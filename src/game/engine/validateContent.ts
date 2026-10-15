@@ -17,6 +17,8 @@ export function validateContent(
   const elementIds = new Set(elements.map((element) => element.id))
   const eraIds = new Set(eras.map((era) => era.id))
   const recipePairs = new Map<string, string>()
+  const elementNames = new Map<string, string>()
+  const eraIndexById = new Map(eras.map((era, index) => [era.id, index]))
   const terminalIds = getExhaustedElements(recipes, elementIds)
   const ingredients = new Set(recipes.flatMap((recipe) => recipe.inputs))
   const protectedTools = new Set(['tool', 'stone-tool', 'bronze-tool', 'iron-tool'])
@@ -69,8 +71,17 @@ export function validateContent(
   }
 
   for (const element of elements) {
+    const normalizedName = element.name.trim().replace(/\s+/g, ' ').toLowerCase()
+    const existingName = elementNames.get(normalizedName)
+    if (existingName && existingName !== element.id) {
+      errors.push(`Elements ${existingName} and ${element.id} share name ${normalizedName}.`)
+    }
+    elementNames.set(normalizedName, element.id)
     if (!eraIds.has(element.era)) {
       errors.push(`Element ${element.id} references missing era ${element.era}.`)
+    }
+    if (element.starter && element.era !== eras[0]?.id) {
+      errors.push(`Starter ${element.id} must belong to the first era.`)
     }
   }
 
@@ -94,6 +105,20 @@ export function validateContent(
   }
 
   for (const era of eras) {
+    for (const field of ['unlockRequires', 'grants', 'landmarkIds'] as const) {
+      const seen = new Set<string>()
+      for (const id of era[field]) {
+        if (seen.has(id)) {
+          errors.push(`Era ${era.id} repeats ${field} element ${id}.`)
+        }
+        seen.add(id)
+        const elementEra = elements.find((element) => element.id === id)?.era
+        if (field !== 'unlockRequires' && elementEra &&
+          (eraIndexById.get(elementEra) ?? -1) > (eraIndexById.get(era.id) ?? -1)) {
+          errors.push(`Era ${era.id} ${field} references later-era element ${id}.`)
+        }
+      }
+    }
     for (const elementId of [
       ...era.unlockRequires,
       ...era.grants,
@@ -112,6 +137,8 @@ export function validateContent(
     elements.filter((element) => element.starter).map((element) => element.id),
   )
   const unlockedEras = new Set([eras[0]?.id].filter(Boolean))
+  if (eras.length === 0) errors.push('Content must define at least one era.')
+  if (reachable.size === 0) errors.push('Content must define at least one starter element.')
   let changed = true
 
   while (changed) {

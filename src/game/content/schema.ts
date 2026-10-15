@@ -87,6 +87,7 @@ export const historicalSourceSchema = z.strictObject({
     'library-collection',
     'archaeology-institution',
     'peer-reviewed-study',
+    'research-preprint',
     'reference-encyclopedia',
     'reference-textbook',
   ]),

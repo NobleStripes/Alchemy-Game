@@ -16,6 +16,30 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('preserves a complete pre-foundations v7 campaign and round-trips new formulas and reading', () => {
+    const previous = {
+      ...fresh(), discoveredIds: elements.slice(0, 194).map((element) => element.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      discoveredRecipeIds: recipes.slice(0, 232).map((recipe) => recipe.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+      favoriteIds: ['fibre', 'brick'], readHistoricalElementIds: ['metal'],
+      hideFinalElements: true, collapsedShelves: ['stone-age', 'bronze-age'],
+    }
+    const loaded = parseProgress(exportProgress(previous))!
+    expect(loaded).toEqual(previous)
+    const expanded = {
+      ...loaded, discoveredIds: elements.map((element) => element.id),
+      discoveredRecipeIds: recipes.map((recipe) => recipe.id),
+      favoriteIds: [...loaded.favoriteIds, 'spindle', 'kiln'],
+      readHistoricalElementIds: [...loaded.readHistoricalElementIds, 'yarn', 'fibre', 'brick', 'tin-ore'],
+    }
+    expect(parseProgress(exportProgress(expanded))).toEqual(expanded)
+    expect(expanded.version).toBe(7)
+    expect(expanded.rewardedCollectionIds).toEqual(previous.rewardedCollectionIds)
+  })
+
   it('adds natural-resource reading to an existing v7 save without replacing formulas, stars or preferences', () => {
     const resourceIds = ['salt', 'bone', 'tree', 'timber', 'soil', 'mud', 'sea', 'steam', 'mist', 'cloud', 'rain', 'lightning']
     const routes = recipes.filter((recipe) => resourceIds.includes(recipe.result))

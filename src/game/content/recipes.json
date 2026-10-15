@@ -230,5 +230,16 @@
   { "id": "delegated-rule", "inputs": ["imperial-bureaucracy", "city"], "result": "provincial-government", "flavor": "Officials and a local center evoke delegated rule, not a province created by a single city." },
   { "id": "authorized-envoys", "inputs": ["nation", "rhetoric"], "result": "diplomatic-mission", "flavor": "Political authority and persuasion evoke an envoy's task, not a guarantee of agreement." },
   { "id": "overland-caravans", "inputs": ["merchant", "land"], "result": "caravan-route", "flavor": "Traders crossing land evoke connected journeys, not the construction of one transcontinental highway." },
-  { "id": "encountered-ideas", "inputs": ["diplomatic-mission", "knowledge"], "result": "cultural-exchange", "flavor": "A mission and learning evoke one path of exchange, not the only way communities encounter new ideas." }
+  { "id": "encountered-ideas", "inputs": ["diplomatic-mission", "knowledge"], "result": "cultural-exchange", "flavor": "A mission and learning evoke one path of exchange, not the only way communities encounter new ideas." },
+  { "id": "prepared-grindstone", "inputs": ["rock", "stone-tool"], "result": "grinding-stone", "flavor": "Stone and a worked edge evoke a grinding implement, not a complete toolmaking procedure." },
+  { "id": "spinning-tool", "inputs": ["fibre", "stone-tool"], "result": "spindle", "flavor": "Fibre work and a tool evoke a rotating shaft; its material and whorl are omitted." },
+  { "id": "twisted-yarn", "inputs": ["spindle", "fibre"], "result": "yarn", "flavor": "A rotating tool adds twist to prepared fibres; some yarn traditions used splicing or no spindle." },
+  { "id": "firing-workshop", "inputs": ["pottery", "hearth"], "result": "kiln", "flavor": "Fired vessels and a maintained fire evoke controlled firing, not a kiln built from finished pots." },
+  { "id": "fired-building-unit", "inputs": ["kiln", "brick"], "result": "fired-brick", "flavor": "A suitable shaped clay unit is fired rather than merely dried; fuel and firing conditions are omitted." },
+  { "id": "recognized-tin-ore", "inputs": ["quarry", "rock"], "result": "tin-ore", "flavor": "Extraction and stone evoke recognizing a tin-bearing resource, not creating cassiterite or locating a particular ancient mine." },
+  { "id": "hand-ground-flour", "inputs": ["grinding-stone", "crop"], "result": "flour", "flavor": "Suitable plant foods are ground; grinding wild plants predates cultivated crops." },
+  { "id": "woven-yarn", "inputs": ["loom", "yarn"], "result": "textile", "flavor": "Prepared strands are interlaced with a loom; setup and the weaver's work are omitted." },
+  { "id": "reduced-tin-ore", "inputs": ["tin-ore", "charcoal"], "result": "tin", "flavor": "Ore and a reducing fuel evoke extraction under controlled conditions, not metal produced by mixing cold ingredients." },
+  { "id": "fired-brick-wall", "inputs": ["fired-brick", "fired-brick"], "result": "wall", "flavor": "Repeated fired units evoke masonry; arrangement, joints and structural support are omitted." },
+  { "id": "hand-twisted-yarn", "inputs": ["fibre", "human"], "result": "yarn", "flavor": "Prepared fibres are joined and twisted by hand; a spindle is not required for every yarn tradition." }
 ]

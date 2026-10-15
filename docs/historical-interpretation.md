@@ -2,6 +2,14 @@
 
 [Back to the project overview](../README.md)
 
+## Production foundations
+
+The [catalog plan](catalog-plan.md) distinguishes the first six accepted additions from later evidence-blocked candidates. Grinding Stone has a Paleolithic European processing context, not an agricultural invention date. Yarn has a spindle-free hand-work route; the Bronze Age Spindle placement is supported by a reviewed Egyptian workshop example, not the invention of spinning. Fibre preparation, yarn production and weaving remain separate operations, and Loom/Textile explicitly acknowledge earlier precedents.
+
+Kiln uses a third-millennium Indus comparison without making enclosed kilns necessary for all pottery. Open and more enclosed firing structures coexisted. Fired Brick differs from dried Mud Brick; the approximate Mature Harappan 2600-1900 BCE frame dates a regional comparison, not the first baked unit worldwide. The chronology source is a selected preprint section; the two Harappa summaries are not full readings of their underlying studies.
+
+Tin Ore is a pre-existing resource, not something created by quarrying ordinary rock. Identification/concentration, reduction, melting and alloying are distinct. Neither the modern USGS resource map nor the older Penn essay resolves a particular ancient object's provenance. Unsupported first-metal and supply-origin claims are omitted. These optional routes retain every legacy formula, gameplay gate and completion threshold.
+
 ## Regional administration, diplomacy and exchange
 
 Imperial Bureaucracy and Provincial Government are comparative gameplay labels, not identical institutions across empires. Achaemenid satrapies had regional fiscal and military obligations; Persepolis tablets document particular food transactions and travel entitlements. Their survival does not establish uniform practice across Persia. Mauryan Rajjukas and Dhamma Mahamatras appear in Ashoka's prescriptions; Roman proconsuls arose in a different magistracy and provincial-command context. No simple line of Persian-to-Roman institutional copying is asserted.

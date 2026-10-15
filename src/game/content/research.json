@@ -2,6 +2,41 @@
   "schemaVersion": 2,
   "sources": [
     {
+      "id": "pnas-paleolithic-grinding", "title": "Thirty thousand-year-old evidence of plant food processing", "authors": [], "institution": "Proceedings of the National Academy of Sciences, archived by PubMed Central", "sourceType": "peer-reviewed-study",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2973873/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2973873/", "accessLevel": "selected-passages", "locator": "Abstract, The Sites, and Lithic Use-Wear Analysis: Bilancino II, Kostenki 16 and Pavlov VI; starch residues, grinding/pestle wear, approximately 30,000-year-old regional contexts. Possible flour production is an interpretation, not a universal first. Supplementary datasets and full references were not reviewed; bibliographic author/date fields were not independently captured." }
+    },
+    {
+      "id": "ucl-textile-tools", "title": "Textile production and clothing: Technology and tools in ancient Egypt", "authors": [], "institution": "University College London, Digital Egypt for Universities", "sourceType": "archaeology-institution",
+      "url": "https://www.ucl.ac.uk/museums-static/digitalegypt/textil/tools.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.ucl.ac.uk/museums-static/digitalegypt/textil/tools.html", "accessLevel": "selected-passages", "locator": "Spliced/twisted roves, spindle-free early yarn, Lahun fibres, top-whorl spindles, Badari dish about 3600 BC, Meketra workshop about 1950 BC, and LOOMS and weaving. Depictions and preserved equipment differ as evidence; speculative identifications remain qualified. Do not adopt the page's broad prehistoric period label as a chronology." }
+    },
+    {
+      "id": "ucl-pottery-kilns", "title": "Pottery kilns", "authors": [], "institution": "University College London, Digital Egypt for Universities", "sourceType": "archaeology-institution",
+      "url": "https://www.ucl.ac.uk/museums-static/digitalegypt/pottery/kilns.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.ucl.ac.uk/museums-static/digitalegypt/pottery/kilns.html", "accessLevel": "selected-passages", "locator": "Raw HTML Parts of a kiln list: fire hole, hearth, firing chamber and vent-hole; bibliographic pointer to excavated late Old Kingdom/First Intermediate Period kilns at Ayn-Asyl. Linked excavation monographs were not read. The Buhen link explicitly questions a copper-melting interpretation and is not adopted as secure pottery evidence." }
+    },
+    {
+      "id": "harappa-kiln-summary", "title": "Pottery Firing Structures (Kilns) of the Indus Civilization During the Third Millennium B.C.", "authors": [], "institution": "Harappa.com, archaeological research resource", "sourceType": "archaeology-institution",
+      "url": "https://www.harappa.com/content/pottery-firing-structures-kilns-indus-civilization-during-third-millennium-bc", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.harappa.com/content/pottery-firing-structures-kilns-indus-civilization-during-third-millennium-bc", "accessLevel": "selected-passages", "locator": "Web summary and quoted passages attributed to Heather M. L. Miller's 1997 chapter, pp. 41-72: third-millennium greater Indus evidence, airflow classification, coexisting open/single/double-chamber firing structures and unresolved origins. The linked chapter PDF was not read; the web summary has no separately captured byline/date." }
+    },
+    {
+      "id": "harappa-brick-summary", "title": "Bricks and urbanism in the Indus Valley rise and decline", "authors": [], "institution": "Harappa.com, archaeological research resource", "sourceType": "archaeology-institution",
+      "url": "https://www.harappa.com/content/bricks-and-urbanism-indus-valley-rise-and-decline", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.harappa.com/content/bricks-and-urbanism-indus-valley-rise-and-decline", "accessLevel": "selected-passages", "locator": "Web summary quotes Khan and Lemmen, pp. 1 and 4: predominantly mud-brick settlement, quantity use of baked bricks in the Mature phase, water-exposed walls/floors and flood protection. The suggested social explanation of urban change is not accepted as demonstrated causation. Linked Academia paper was not accessed." }
+    },
+    {
+      "id": "indus-brick-chronology", "title": "Bricks and urbanism in the Indus Civilization", "authors": ["Aurangzeb Khan", "Carsten Lemmen"], "institution": "arXiv, HTML rendering via ar5iv", "sourceType": "research-preprint",
+      "url": "https://arxiv.org/abs/1303.1426", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://ar5iv.labs.arxiv.org/html/1303.1426", "accessLevel": "selected-passages", "locator": "Section 2.1 Chronology and extent only: approximate Mature Harappan 2600-1900 BC and Early-phase baked-brick precedents; authors explicitly caution that site phases overlap and precise dating is incomplete. This is a preprint rendering, not verification of peer review or the whole paper. Author names cross-checked against the Harappa attribution." }
+    },
+    {
+      "id": "usgs-tin-resource", "title": "Tin Statistics and Information", "authors": [], "institution": "U.S. Geological Survey, National Minerals Information Center", "sourceType": "reference-textbook",
+      "url": "https://www.usgs.gov/centers/national-minerals-information-center/tin-statistics-and-information", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.usgs.gov/centers/national-minerals-information-center/tin-statistics-and-information", "accessLevel": "selected-passages", "locator": "Opening modern resource overview: cassiterite SnO2, placer deposits, minor recovery from complex sulfides and recycled tin. Modern distribution is not an ancient provenance map. Broad earliest-bronze/pure-tin dates on this page are not adopted." }
+    },
+    {
       "id": "usgs-water-cycle", "title": "The Water Cycle", "authors": [], "institution": "U.S. Geological Survey, Water Science School", "sourceType": "reference-textbook",
       "url": "https://www.usgs.gov/water-science-school/water-cycle", "publicationDate": null,
       "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.usgs.gov/water-science-school/water-cycle", "accessLevel": "selected-passages", "locator": "What is the water cycle?, pools, fluxes, and solar energy/gravity. Modern explanation of saline oceans, fresh and saline inland stores, groundwater and atmospheric water; not a history of ancient hydrological theory. Original special-topics URL redirects to this canonical page." }
@@ -2704,6 +2739,222 @@
       "historicalUncertainty": ["No comprehensive account of ancient lightning beliefs or first fire acquisition is claimed.", "Modern explanatory diagrams do not establish what particular ancient people believed."],
       "gameplaySimplifications": ["The storm-and-fire clue is symbolic: adding flame does not create a lightning discharge.", "The puzzle is not a physical experiment; lightning remains hazardous."],
       "furtherResearch": [{ "question": "Why is thunder a consequence of a discharge rather than a second ingredient?", "sourceIds": ["nws-lightning-overview"] }]
+    },
+    {
+      "elementId": "grinding-stone", "elementName": "Grinding Stone",
+      "historicalOverview": { "text": "Grinding stones include a worked surface and a moving hand-held stone, not only the rotating querns of later periods. A study of Bilancino II, Kostenki 16 and Pavlov VI combines starch residues and tool wear to investigate plant processing roughly 30,000 years ago. Its interpretation includes possible flour production from wild plants, not evidence that these people cultivated cereals.", "sourceIds": ["pnas-paleolithic-grinding"] },
+      "manufactureOrUse": { "text": "At Bilancino II the investigators distinguish a passive sandstone grindstone from an active grinder-pestle; wear patterns and starch provide complementary evidence. The Kostenki implement appears multifunctional. A stone's shape alone does not establish that it ground food, since grinding tools could also process pigments. Rotary motion and farming are not necessary features of this broader tool family.", "sourceIds": ["pnas-paleolithic-grinding"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay is supported by the reviewed European Paleolithic contexts. The placement is neither a worldwide first-grinding date nor an assertion that the later Rotary Quern belongs in the same technological context.", "sourceIds": ["pnas-paleolithic-grinding"] },
+      "relatedDiscoveries": [
+        { "elementId": "flour", "relationship": "documented", "explanation": "Starch and wear evidence support plant grinding and possible flour production before agriculture.", "sourceIds": ["pnas-paleolithic-grinding"] },
+        { "elementId": "rotary-quern", "relationship": "gameplay-abstraction", "explanation": "The catalog distinguishes a hand-grinding surface from its existing rotary device rather than replacing that discovery.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "About 30,000 years ago: studied Paleolithic grinding contexts", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Bilancino II, Italy", "Kostenki 16, Russia", "Pavlov VI, Czech Republic"], "sourceIds": ["pnas-paleolithic-grinding"], "note": "A broad summary of the studied contexts, not a single synchronous event or the first grinding worldwide." }],
+      "associatedRegions": ["Bilancino II, Italy", "Kostenki 16, Russia", "Pavlov VI, Czech Republic"],
+      "archaeologicalEvidence": [{ "text": "Tool-surface starch residues and use-wear are the evidence. Inferring particular foods and flour production requires interpretation rather than identifying a preserved meal.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["pnas-paleolithic-grinding"] }],
+      "historicalSignificance": { "text": "The study broadens accounts of hunter-gatherer food processing and demonstrates why tool form, wear and residues should be considered together.", "sourceIds": ["pnas-paleolithic-grinding"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The selected study is not a worldwide survey or proof of an invention center.", "Plant identifications and inferred processing remain bounded by preservation and analytical interpretation."],
+      "gameplaySimplifications": ["Rock and Stone Tool evoke a useful implement, not a documented manufacturing sequence.", "Crop is an agricultural gameplay input; wild plant processing predates cultivation."],
+      "furtherResearch": [{ "question": "How can grinding wear and residues distinguish food preparation from pigment processing?", "sourceIds": ["pnas-paleolithic-grinding"] }]
+    },
+    {
+      "elementId": "spindle", "elementName": "Spindle",
+      "historicalOverview": { "text": "A spindle is a rotating shaft used to add twist during yarn production. UCL's Egyptian account distinguishes spliced linen roves from draft spinning, and describes top-whorl spindles, preserved equipment and workshop depictions. It also explains that some early yarn was made without a spindle: yarn and spindle therefore deserve different histories.", "sourceIds": ["ucl-textile-tools"] },
+      "manufactureOrUse": { "text": "The whorl helps sustain rotation, while fibre preparation and control of twist remain skilled work. In the Egyptian spliced-and-twisted method the spindle added twist to an already prepared rove, rather than necessarily drawing loose fibres as in draft spinning. The Meketra workshop model depicts preparation, spinning and weaving as distinguishable activities.", "sourceIds": ["ucl-textile-tools"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age is a conservative gameplay placement supported by the reviewed Egyptian workshop example about 1950 BCE, not the invention of spindles. Earlier textile evidence should not automatically be treated as direct spindle evidence.", "sourceIds": ["ucl-textile-tools"] },
+      "relatedDiscoveries": [
+        { "elementId": "yarn", "relationship": "documented", "explanation": "Spindles can add twist during yarn preparation, but are not necessary for every yarn tradition.", "sourceIds": ["ucl-textile-tools"] },
+        { "elementId": "loom", "relationship": "documented", "explanation": "The workshop account distinguishes spinning equipment from weaving equipment.", "sourceIds": ["ucl-textile-tools"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 1950 BCE: Meketra workshop model", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Egypt"], "sourceIds": ["ucl-textile-tools"], "note": "A dated depiction discussed by UCL, not the first spindle or an exact date for every workshop practice." }],
+      "associatedRegions": ["Egypt"],
+      "archaeologicalEvidence": [{ "text": "UCL compares extant equipment with workshop representations, including the Meketra tomb model. A depiction is evidence for representation and requires interpretation of activities.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["ucl-textile-tools"] }],
+      "historicalSignificance": { "text": "Separating the rotating tool from fibre, prepared yarn and loom makes visible stages of textile labor that a finished cloth alone can conceal.", "sourceIds": ["ucl-textile-tools"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["This Egyptian comparison is not a survey of spindle origins or all regional spinning traditions.", "Similar-looking small perforated objects should not be identified as spinning tools without contextual evidence."],
+      "gameplaySimplifications": ["Fibre and Stone Tool evoke textile equipment; they do not supply the shaft and whorl materials.", "The route to Yarn is one technique, not a universal prerequisite for making a strand."],
+      "furtherResearch": [{ "question": "How do surviving tools and depicted activities constrain reconstructions of spinning?", "sourceIds": ["ucl-textile-tools"] }]
+    },
+    {
+      "elementId": "yarn", "elementName": "Yarn",
+      "historicalOverview": { "text": "Yarn is a prepared strand rather than raw fibre or a finished woven textile. The Egyptian examples discussed by UCL show that joining fibre strips and adding twist could be separate operations. Some early linen yarn was made by a spindle-free technique, so neither the spindle nor draft spinning defines the beginning of all yarn.", "sourceIds": ["ucl-textile-tools"] },
+      "manufactureOrUse": { "text": "The account describes flax strips joined into roves, surviving material from Lahun, and twist added with a spindle. It distinguishes the orientation of joins from plying, and compares these reconstructions with workshop depictions. Yarn can become the warp or weft of cloth; preparing a continuous strand is different from interlacing it on a loom.", "sourceIds": ["ucl-textile-tools"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay acknowledges earlier textile work. The Badari workshop depiction about 3600 BCE and UCL's discussion of early yarn support a pre-3300 BCE Egyptian comparison, not a universal Stone Age boundary or a direct date for spindle invention.", "sourceIds": ["ucl-textile-tools"] },
+      "relatedDiscoveries": [
+        { "elementId": "fibre", "relationship": "documented", "explanation": "The discussed yarn is made from prepared flax fibres, not from an already woven cloth.", "sourceIds": ["ucl-textile-tools"] },
+        { "elementId": "textile", "relationship": "documented", "explanation": "Prepared yarn supplies strands for weaving.", "sourceIds": ["ucl-textile-tools"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 3600 BCE: Badari textile-workshop depiction", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Egypt"], "sourceIds": ["ucl-textile-tools"], "note": "A regional representation of textile work, not a preserved sample dating all yarn or proof that the depicted technique was universal." }],
+      "associatedRegions": ["Egypt"],
+      "archaeologicalEvidence": [{ "text": "UCL compares the Badari dish, surviving roves and textiles, and later workshop models; these are different kinds of evidence rather than one continuous surviving production line.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["ucl-textile-tools"] }],
+      "historicalSignificance": { "text": "Recognizing prepared strands as a separate stage clarifies the labor between fibre acquisition and weaving, while retaining differences between splicing, twisting and draft spinning.", "sourceIds": ["ucl-textile-tools"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The reviewed evidence is focused on Egypt and does not establish first yarn worldwide.", "Textile preservation and interpretation of depictions limit reconstructed production sequences."],
+      "gameplaySimplifications": ["The spindle route omits fibre preparation; the hand-work alternative represents spindle-free production without specifying every step.", "Yarn and Cordage can overlap materially; this discovery denotes strands prepared for textile work, not a universal ancient terminology."],
+      "furtherResearch": [{ "question": "What surviving features distinguish spliced roves from draft-spun yarn?", "sourceIds": ["ucl-textile-tools"] }]
+    },
+    {
+      "elementId": "kiln", "elementName": "Kiln",
+      "historicalOverview": { "text": "A kiln is a firing structure, not simply a synonym for any hearth or furnace. The Harappa summary of Miller's study describes open-air, single-chamber and double-chamber updraft firing structures in the greater Indus region during the third millennium BCE. It emphasizes a continuum and coexistence of designs, rather than one inevitable ladder from simple to complex.", "sourceIds": ["harappa-kiln-summary"] },
+      "manufactureOrUse": { "text": "UCL's kiln diagram distinguishes the fire hole, hearth, firing chamber and vent-hole, relating structure to combustion and atmosphere. The Indus summary classifies structures by airflow and notes unresolved origins of double-chamber designs. Pottery can be fired without an enclosed kiln; a ceramic artifact alone does not identify its firing structure.", "sourceIds": ["ucl-pottery-kilns", "harappa-kiln-summary"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age gameplay uses reviewed third-millennium Indus evidence. It neither dates the first kiln nor makes bronze a historical requirement for firing pottery.", "sourceIds": ["harappa-kiln-summary"] },
+      "relatedDiscoveries": [
+        { "elementId": "pottery", "relationship": "documented", "explanation": "The firing-structure study concerns pottery and terracotta production, including open firing.", "sourceIds": ["harappa-kiln-summary"] },
+        { "elementId": "fired-brick", "relationship": "gameplay-abstraction", "explanation": "A kiln provides the puzzle's controlled-firing connection to a building unit; this is not a claim that a particular pottery kiln fired structural bricks.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "Third millennium BCE: studied Indus firing structures", "dateType": "regional-development", "precision": "approximate", "regions": ["Greater Indus region"], "sourceIds": ["harappa-kiln-summary"], "note": "The scope of the summarized study, not a worldwide origin or a single dated construction." }],
+      "associatedRegions": ["Greater Indus region", "Egypt"],
+      "archaeologicalEvidence": [{ "text": "The consulted web summary describes excavation data from Harappa, Mohenjo-daro and Kachi Plain sites. The underlying excavation reports and complete chapter were not inspected.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["harappa-kiln-summary"] }],
+      "historicalSignificance": { "text": "Firing structures reveal choices about airflow and production rather than a simple replacement of old technologies. Different structures continued in use alongside one another.", "sourceIds": ["harappa-kiln-summary", "ucl-pottery-kilns"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The Indus source was read as a web summary with selected quotations, not the full Miller chapter.", "No first-kiln location or demonstrated diffusion route is asserted."],
+      "gameplaySimplifications": ["Pottery and Hearth symbolize a firing workshop, not construction from finished pots.", "Kiln and Mud Brick omit material suitability, fuel, preparation and controlled firing; this is not operating guidance."],
+      "furtherResearch": [{ "question": "Why might different firing structures coexist in the same region?", "sourceIds": ["harappa-kiln-summary"] }]
+    },
+    {
+      "elementId": "fired-brick", "elementName": "Fired Brick",
+      "historicalOverview": { "text": "Fired brick is a clay building unit transformed by firing, distinct from the catalog's dried Mud Brick. The Harappa overview describes predominantly mud-brick settlements with quantity use of baked bricks during the Mature Harappan phase, especially on water-exposed walls and floors. The two materials coexisted; fired brick did not invent settlement or walls.", "sourceIds": ["harappa-brick-summary"] },
+      "manufactureOrUse": { "text": "Shaping and drying precede firing, which changes the material rather than simply removing surface moisture. The reviewed Indus account emphasizes baked bricks' resistance to long-term water exposure and their use in flood protection. These comparative observations do not establish a modern performance specification for every ancient brick or make every mud-brick mixture suitable for firing.", "sourceIds": ["harappa-brick-summary", "ucl-pottery-kilns"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age gameplay uses the Indus urban context. The chronology paper's approximate Mature phase, 2600-1900 BCE, is an analytical regional frame with earlier baked-brick precedents, not the first fired brick worldwide.", "sourceIds": ["indus-brick-chronology", "harappa-brick-summary"] },
+      "relatedDiscoveries": [
+        { "elementId": "brick", "relationship": "documented", "explanation": "Dried mud bricks and baked bricks are distinguished in the regional building evidence.", "sourceIds": ["harappa-brick-summary"] },
+        { "elementId": "wall", "relationship": "documented", "explanation": "Baked bricks served in water-exposed walls and other structures.", "sourceIds": ["harappa-brick-summary"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 2600-1900 BCE: Mature Harappan comparison", "dateType": "regional-development", "precision": "approximate", "regions": ["Indus region"], "sourceIds": ["indus-brick-chronology", "harappa-brick-summary"], "note": "Approximate regional period for quantity use; local phases overlap and earlier baked bricks are reported." }],
+      "associatedRegions": ["Indus region"],
+      "archaeologicalEvidence": [{ "text": "The overview discusses baked-brick walls, floors and flood-protection structures at Indus settlements. This is a synthesis of reported architecture, not a newly inspected excavation.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["harappa-brick-summary"] }],
+      "historicalSignificance": { "text": "The contrast with mud brick makes material choice and exposure visible in accounts of urban construction. Correlation between baked-brick use and urbanism does not establish one cause for urban growth or decline.", "sourceIds": ["harappa-brick-summary"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The brick overview quotes a paper; the separate chronology receipt covers only a selected preprint section, not peer review.", "Regional first use, standard sizes and causes of urban change require more evidence than this entry supplies."],
+      "gameplaySimplifications": ["The formula uses a suitable shaped clay unit; it does not promise that any existing Mud Brick can be fired successfully.", "The repeated-brick wall clue omits joints, foundations, labor and structural requirements."],
+      "furtherResearch": [{ "question": "How did water exposure influence choices between dried and fired bricks?", "sourceIds": ["harappa-brick-summary"] }]
+    },
+    {
+      "elementId": "tin-ore", "elementName": "Tin Ore",
+      "historicalOverview": { "text": "Tin ore is material selected as a source of tin, not the extracted metal. USGS identifies cassiterite, SnO2, as the principal commercial tin mineral and describes modern placer production. Modern resource geography does not identify the source of a particular ancient bronze object or date geological formation.", "sourceIds": ["usgs-tin-resource"] },
+      "manufactureOrUse": { "text": "Ore recognition, concentration, reduction and alloying are separate operations. Penn's historical discussion distinguishes cassiterite from metallic tin and considers more than one route to tin bronze. The older essay's broad regional origin claims and the melting point of metallic tin are not adopted as proof of ore provenance or a sufficient temperature for reduction.", "sourceIds": ["penn-tin", "penn-metallurgy"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age is the resource-access context for exploring tin-bronze production, not an age of ore formation. The catalog preserves its earlier Tin route rather than requiring all players to reconstruct one extraction sequence.", "sourceIds": ["penn-tin", "usgs-tin-resource"] },
+      "relatedDiscoveries": [
+        { "elementId": "tin", "relationship": "documented", "explanation": "Cassiterite can supply tin, but the oxide and the extracted metal are different materials.", "sourceIds": ["usgs-tin-resource", "penn-tin"] },
+        { "elementId": "bronze", "relationship": "documented", "explanation": "The studied tin-bronze tradition connects ore sourcing with alloy production without making every ancient copper alloy tin bronze.", "sourceIds": ["penn-tin"] }
+      ],
+      "approximateDates": [{ "dateRange": "Geological material: no human invention date", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": ["usgs-tin-resource"], "note": "Neither a formation date nor an ancient mining-origin date is established." }],
+      "associatedRegions": [],
+      "archaeologicalEvidence": [],
+      "historicalSignificance": { "text": "Distinguishing ore, metal and alloy helps explain why finding a finished object does not alone resolve its production history or supply network.", "sourceIds": ["penn-metallurgy", "penn-tin"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No ancient tin mine or specific object's provenance is identified here.", "The 1977 Penn essay is used for bounded material distinctions, not its outdated regional first-bronze chronologies."],
+      "gameplaySimplifications": ["Quarry and Rock represent recognizing a pre-existing resource, not geological manufacture.", "Charcoal and ore omit controlled equipment and heat; the pair is not a practical smelting procedure."],
+      "furtherResearch": [{ "question": "What evidence can connect an ancient metal object to an ore source?", "sourceIds": ["penn-metallurgy", "penn-tin"] }]
+    },
+    {
+      "elementId": "flour", "elementName": "Flour",
+      "historicalOverview": { "text": "Flour is finely processed plant food, not necessarily the product of cultivated grain or a rotary mill. Paleolithic grinding tools with starch residues support possible flour production from wild plants. The Shubayqa study separately documents much later bread-like remains made by hunter-gatherers before agriculture; these are different contexts and evidence types.", "sourceIds": ["pnas-paleolithic-grinding", "prehistoric-bread"] },
+      "manufactureOrUse": { "text": "Grinding reduces suitable plant tissues, while cleaning, selection and other preparation depend on the material. Tool residues can indicate processing without preserving a finished meal. The Shubayqa food study examines charred products rather than assuming every grindstone made bread; wild cereals and root foods need not imply farming.", "sourceIds": ["pnas-paleolithic-grinding", "prehistoric-bread"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay accommodates evidence for plant-food processing long before metal tools or agriculture. The existing Metal Tool and Crop recipe remains a simplified agricultural route, not a historical prerequisite.", "sourceIds": ["pnas-paleolithic-grinding", "prehistoric-bread"] },
+      "relatedDiscoveries": [
+        { "elementId": "grinding-stone", "relationship": "documented", "explanation": "Studied starch residues and wear support grinding plant food.", "sourceIds": ["pnas-paleolithic-grinding"] },
+        { "elementId": "bread", "relationship": "documented", "explanation": "The Shubayqa study discusses processed plant ingredients in bread-like products before farming.", "sourceIds": ["prehistoric-bread"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 30,000 years ago: investigated plant processing", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Bilancino II, Italy", "Kostenki 16, Russia", "Pavlov VI, Czech Republic"], "sourceIds": ["pnas-paleolithic-grinding"], "note": "Dates the investigated contexts, not a preserved bag of flour, first invention, or widespread adoption." }],
+      "associatedRegions": ["Bilancino II, Italy", "Kostenki 16, Russia", "Pavlov VI, Czech Republic", "Northeastern Jordan"],
+      "archaeologicalEvidence": [{ "text": "Starch and tool wear support plant processing; whether particular residues represent flour is an interpretation. Charred Shubayqa bread-like products provide a separate food-remains comparison.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["pnas-paleolithic-grinding", "prehistoric-bread"] }],
+      "historicalSignificance": { "text": "The evidence separates food-processing skill from agricultural subsistence and discourages treating grain cultivation as the beginning of all flour or bread.", "sourceIds": ["pnas-paleolithic-grinding", "prehistoric-bread"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Not all starchy plants or crops produce the same food, and residues do not establish every processing stage.", "These examples are not a global chronology of flour."],
+      "gameplaySimplifications": ["All authored flour formulas use Crop; this abstracts away documented wild-plant processing.", "The existing Metal Tool and Rotary Quern routes are retained alongside hand grinding."],
+      "furtherResearch": [{ "question": "How does evidence from a tool differ from evidence from a charred food product?", "sourceIds": ["pnas-paleolithic-grinding", "prehistoric-bread"] }]
+    },
+    {
+      "elementId": "fibre", "elementName": "Fibre",
+      "historicalOverview": { "text": "Fibre denotes a raw or prepared filamentary resource, not yarn or woven cloth. The focused Egyptian evidence concerns flax strips and linen production; it does not establish the origin or use of every plant and animal fibre represented by this broad gameplay label.", "sourceIds": ["ucl-textile-tools"] },
+      "manufactureOrUse": { "text": "UCL describes stripping flax stems, splitting fibre strips and joining them into roves. Surviving hanks and roves from Lahun are evidence for preparation stages before the addition of twist and weaving. Its reconstruction distinguishes early hand techniques, splicing and later draft spinning instead of treating all fibre work as identical.", "sourceIds": ["ucl-textile-tools"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age is a broad gameplay resource placement. UCL's discussion of early Egyptian textiles and the Badari workshop about 3600 BCE supports an earlier comparison than the catalog's Bronze Age Loom, not the first fibre use.", "sourceIds": ["ucl-textile-tools"] },
+      "relatedDiscoveries": [
+        { "elementId": "yarn", "relationship": "documented", "explanation": "The discussed flax resource undergoes preparation, joining and twisting before weaving.", "sourceIds": ["ucl-textile-tools"] },
+        { "elementId": "cordage", "relationship": "gameplay-abstraction", "explanation": "The catalog uses Fibre in a separate cord-making route; this link does not claim the Egyptian examples explain every rope tradition.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "About 3600 BCE: Badari workshop comparison", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Egypt"], "sourceIds": ["ucl-textile-tools"], "note": "A textile-work depiction, not the biological origin of fibres or first fibre extraction." }],
+      "associatedRegions": ["Egypt"],
+      "archaeologicalEvidence": [{ "text": "The account compares extant flax hanks and spliced roves with depictions. Such remains and images answer different questions about textile work.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["ucl-textile-tools"] }],
+      "historicalSignificance": { "text": "Distinguishing fibre preparation from spinning and weaving makes otherwise hidden labor visible and avoids presenting a finished textile as a direct natural resource.", "sourceIds": ["ucl-textile-tools"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["This is a focused flax-use history, not a complete natural history of fibres.", "No worldwide first extraction, domestication, or diffusion sequence is established."],
+      "gameplaySimplifications": ["The Plant and Stone Tool clue symbolizes access to plant fibres, not a claim that every plant provides textile flax.", "The earlier Fibre-to-Textile formula compresses yarn preparation; the new Yarn route makes one intermediate explicit."],
+      "furtherResearch": [{ "question": "How does preservation affect what we can infer about fibre preparation?", "sourceIds": ["ucl-textile-tools"] }]
+    },
+    {
+      "elementId": "loom", "elementName": "Loom",
+      "historicalOverview": { "text": "A loom organizes yarn for weaving and is distinct from a spindle used in strand preparation. UCL compares Egyptian ground looms in workshop depictions with later vertical arrangements, preserved loom components and surviving textiles. These do not imply one universal loom design.", "sourceIds": ["ucl-textile-tools"] },
+      "manufactureOrUse": { "text": "The account distinguishes warp threads set up on the loom from weft inserted across them, and describes shed sticks and heddle rods. Preserved Lahun components and later Gurob equipment constrain interpretation, while some identifications remain probable rather than certain. Setting up and operating a loom requires more than possessing a frame and fibre.", "sourceIds": ["ucl-textile-tools"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The existing Bronze Age gameplay placement is not the beginning of weaving. UCL compares the Badari dish about 3600 BCE with the later Meketra model and discusses continuity of basic principles without dating the first loom.", "sourceIds": ["ucl-textile-tools"] },
+      "relatedDiscoveries": [
+        { "elementId": "spindle", "relationship": "documented", "explanation": "The workshop account distinguishes yarn production from weaving.", "sourceIds": ["ucl-textile-tools"] },
+        { "elementId": "textile", "relationship": "documented", "explanation": "Warp and weft interlacing produces the woven cloth discussed in this entry.", "sourceIds": ["ucl-textile-tools"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 3600 BCE: Badari loom depiction", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Egypt"], "sourceIds": ["ucl-textile-tools"], "note": "An earlier regional comparison for a Bronze Age gameplay discovery, not a universal invention date." }],
+      "associatedRegions": ["Egypt"],
+      "archaeologicalEvidence": [{ "text": "UCL compares depicted looms, Lahun heddle equipment and Gurob wooden components; the presumed function of every fragment is not equally certain.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["ucl-textile-tools"] }],
+      "historicalSignificance": { "text": "The evidence connects tools and organized labor to textile structure, rather than reducing weaving to the appearance of a single finished object.", "sourceIds": ["ucl-textile-tools"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["These selected Egyptian comparisons do not establish first weaving or all regional loom traditions.", "Reconstructing incomplete equipment and interpreting images require qualified inference."],
+      "gameplaySimplifications": ["Existing and alternate formulas omit loom setup, yarn preparation and skilled interlacing.", "The catalog's age order is not a universal historical dependency between spindles and looms."],
+      "furtherResearch": [{ "question": "Which details of a surviving cloth can reveal how its loom was arranged?", "sourceIds": ["ucl-textile-tools"] }]
+    },
+    {
+      "elementId": "textile", "elementName": "Textile",
+      "historicalOverview": { "text": "This entry focuses on woven Egyptian linen, a prepared material whose strands and structure preserve traces of craft. UCL explains spliced yarns, warp and weft arrangements, workshop scenes and differences between ground and vertical looms. Textiles are broader than this one regional tradition.", "sourceIds": ["ucl-textile-tools"] },
+      "manufactureOrUse": { "text": "Preparing fibres, joining or spinning yarn, setting a warp and inserting weft are distinct tasks. The account notes short weft lengths in early cloth and alternative interpretations of winding activities in workshop depictions. A surviving textile can therefore provide evidence different from the tools or a picture of a workshop.", "sourceIds": ["ucl-textile-tools"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The existing Bronze Age recipe placement does not date first cloth. The Badari workshop comparison about 3600 BCE and the account's early yarn evidence precede that gameplay chapter's approximate Near Eastern start.", "sourceIds": ["ucl-textile-tools"] },
+      "relatedDiscoveries": [
+        { "elementId": "yarn", "relationship": "documented", "explanation": "Prepared strands become the warp and weft of the discussed woven textiles.", "sourceIds": ["ucl-textile-tools"] },
+        { "elementId": "loom", "relationship": "documented", "explanation": "The account relates cloth structure to different weaving arrangements.", "sourceIds": ["ucl-textile-tools"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 3600 BCE: Badari textile-work comparison", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Egypt"], "sourceIds": ["ucl-textile-tools"], "note": "Dates a representation, not all surviving fabrics or the invention of cloth." }],
+      "associatedRegions": ["Egypt"],
+      "archaeologicalEvidence": [{ "text": "Surviving textiles and prepared roves are compared with workshop depictions, including Badari and Meketra; interpretations of specific activities remain qualified.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["ucl-textile-tools"] }],
+      "historicalSignificance": { "text": "Cloth structure records choices and labor that may not be visible in the finished garment. Comparing material remains with depictions avoids assuming one standardized ancient industry.", "sourceIds": ["ucl-textile-tools"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["This focused record does not cover all woven, knitted, felted or other textile traditions.", "Preservation does not provide an unbiased sample of everyday production."],
+      "gameplaySimplifications": ["Loom and Fibre compress yarn preparation; Loom and Yarn make that intermediate explicit.", "A gameplay result is not evidence that every ancient cloth used the same fibre or weave."],
+      "furtherResearch": [{ "question": "Why can surviving cloth and workshop pictures lead to different reconstructions?", "sourceIds": ["ucl-textile-tools"] }]
+    },
+    {
+      "elementId": "tin", "elementName": "Tin",
+      "historicalOverview": { "text": "Tin metal differs from its principal ore mineral, cassiterite, and from tin bronze, an alloy with copper. Penn's essay discusses material composition and possible routes to alloy production. Its 1977 regional first-bronze dates and unresolved source hypotheses are not treated as a current consensus.", "sourceIds": ["penn-tin", "usgs-tin-resource"] },
+      "manufactureOrUse": { "text": "Reducing tin-bearing material to metal, melting a metal and alloying it with copper are distinct operations. Penn describes adding metallic tin and considering ore-based routes, while modern USGS material also identifies recycling as a source of tin supply. A finished bronze object's composition does not by itself identify an ancient mine.", "sourceIds": ["penn-tin", "penn-metallurgy", "usgs-tin-resource"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age is the catalog's tin-bronze production context, not the first tin metal or the formation date of its minerals. No new historical first is inferred from the gameplay placement.", "sourceIds": ["penn-tin"] },
+      "relatedDiscoveries": [
+        { "elementId": "tin-ore", "relationship": "documented", "explanation": "Cassiterite is an ore source rather than metallic tin.", "sourceIds": ["usgs-tin-resource", "penn-tin"] },
+        { "elementId": "bronze", "relationship": "documented", "explanation": "Tin can be an alloying component of bronze; not every ancient copper alloy is tin bronze.", "sourceIds": ["penn-tin"] }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [],
+      "archaeologicalEvidence": [],
+      "historicalSignificance": { "text": "Separating ore acquisition, extraction and alloying helps explain why archaeological production remains and artifact analysis answer different questions about technology and exchange.", "sourceIds": ["penn-metallurgy", "penn-tin"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["A first-extraction date and ancient supply map are deliberately not supplied by this focused material history.", "The older Penn discussion and USGS overview contain broad historical claims beyond the material distinctions adopted here."],
+      "gameplaySimplifications": ["The legacy Quarry and Water route omits reduction: washing can concentrate a mineral but does not by itself produce tin metal.", "The alternate ore-and-charcoal route still omits equipment and controlled conditions, and is not operating guidance."],
+      "furtherResearch": [{ "question": "How can production waste supplement the evidence from a finished alloy?", "sourceIds": ["penn-metallurgy"] }]
+    },
+    {
+      "elementId": "brick", "elementName": "Mud Brick",
+      "historicalOverview": { "text": "Mud Brick here means a shaped earth building unit hardened by drying, distinct from Fired Brick. The Indus building overview describes mud brick as the predominant settlement material and baked brick as a material used in quantity for particular urban contexts. A dried brick is not necessarily a failed or unfinished ceramic brick.", "sourceIds": ["harappa-brick-summary", "indus-brick-chronology"] },
+      "manufactureOrUse": { "text": "The distinction between drying and firing matters when interpreting walls and water exposure. The reviewed Indus chronology discusses mud-brick villages and cities before the quantity use of baked bricks, while the overview explains choices for water-exposed surfaces. Not every shaped-earth mixture is suitable for subsequent firing.", "sourceIds": ["harappa-brick-summary", "indus-brick-chronology"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay is consistent with the reviewed account's pre-Harappan mud-brick settlements before 3500 BCE. These regional comparisons do not establish the first brick worldwide or date all earth-building traditions.", "sourceIds": ["indus-brick-chronology"] },
+      "relatedDiscoveries": [
+        { "elementId": "fired-brick", "relationship": "documented", "explanation": "The regional account distinguishes dried mud brick from baked brick and their coexistence.", "sourceIds": ["harappa-brick-summary"] },
+        { "elementId": "wall", "relationship": "documented", "explanation": "Mud-brick construction predates the quantity use of baked brick in the compared settlements.", "sourceIds": ["indus-brick-chronology"] }
+      ],
+      "approximateDates": [{ "dateRange": "Before 3500 BCE: pre-Harappan mud-brick settlements", "dateType": "regional-development", "precision": "approximate", "regions": ["Indus region"], "sourceIds": ["indus-brick-chronology"], "note": "A selected regional comparison, not an earliest-known worldwide date; the source cautions that local chronologies overlap." }],
+      "associatedRegions": ["Indus region"],
+      "archaeologicalEvidence": [{ "text": "The chronology synthesis reports mud-brick buildings in early villages and pre-Harappan cities; this receipt is a selected text passage, not direct inspection of the excavations.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["indus-brick-chronology"] }],
+      "historicalSignificance": { "text": "Keeping dried and fired building units distinct prevents a legacy recipe's name from erasing differences in materials and regional construction choices.", "sourceIds": ["harappa-brick-summary"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The compared regional sequence does not represent all earth architecture.", "The chronology source is a selected preprint passage, not independent peer review of the entire account."],
+      "gameplaySimplifications": ["The legacy kiln-work recipe ID still produces dried Mud Brick, not Fired Brick.", "Fire in the existing clue represents drying heat; a kiln is not a requirement for mud brick."],
+      "furtherResearch": [{ "question": "What evidence distinguishes drying from firing in archaeological building units?", "sourceIds": ["harappa-brick-summary"] }]
     }
   ]
 }

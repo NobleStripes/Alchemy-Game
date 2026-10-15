@@ -32,11 +32,21 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-Research covers **85 of 194 elements**, including all **40 Age V discoveries**. All 73 records through the regional expansion remain, joined by twelve natural-resource and weather histories. The registry contains **120 verified sources and one pending source**, including recipe-review background. The remaining **109 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **138 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
+Research covers **97 of 200 elements**, including all **40 Age V discoveries**. All 85 pre-foundation records remain. The registry contains **127 verified sources and one pending source**, including recipe-review background. The remaining **103 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **149 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
+
+### Production foundations and paired milestones
+
+The [catalog plan](catalog-plan.md) audits the original 194 elements and begins the 250-element target with Grinding Stone, Spindle, Yarn, Kiln, Fired Brick and Tin Ore. Each addition has a full history and reviewed routes. Six existing gaps also receive histories: Flour, Fibre, Loom, Textile, Tin and Mud Brick. Later core candidates, regional modules and research-only dispositions are separately labeled; unverified dates and regions remain blockers.
+
+Seven passage-specific receipts cover Paleolithic grinding, UCL's Egyptian textile and kiln accounts, two Harappa research summaries, a selected Indus chronology preprint section, and USGS tin resources. Harappa summaries are not complete readings of their linked papers. The chronology receipt uses the explicit `research-preprint` source type and does not certify peer review. Broad first-bronze/pure-tin dates and outdated ancient supply claims are not adopted from the tin background sources.
+
+The spindle-free Yarn route keeps early strand production independent of the Bronze Age Spindle example. Raw Fibre, prepared Yarn, Loom and finished Textile remain distinct; not every yarn was draft-spun or every loom weighted. Mud Brick remains dried earth despite its legacy recipe ID; Fired Brick represents firing suitable shaped clay, not every earth mixture. Tin Ore remains a pre-existing geological resource, distinct from reduction to metal and subsequent alloying. Tin deliberately has no unsupported dates or ancient provenance. All eleven formulas have individual cautions and retain the previous 232 routes.
+
+Milestones pair 200, 210, 225 and 250 elements with at least 97, 117, 147 and 197 full histories. Each batch must cover all new elements and reduce the original backlog by at least one full history per addition. Source and dated-entry counts are not quality quotas, and independent scholarly review remains pending.
 
 ### Phase 9I natural resources and phenomena
 
-This is a research-only expansion. The 194 elements, 232 recipes, five ages, resource grants, goals and v7 format are unchanged. There is no standalone Wood, Flint, Obsidian or generic Mortar discovery: Tree and Timber distinguish biological wood from worked wood; Rock covers flint/chert and obsidian; Lime Mortar covers the existing binder.
+This section records the earlier research-only snapshot at 194 elements, 232 recipes and 85 histories; the gaps below describe that pass, not the current foundation milestone. Five ages, resource grants, goals and v7 format remain unchanged. There is no standalone Wood, Flint, Obsidian or generic Mortar discovery: Tree and Timber distinguish biological wood from worked wood; Rock covers flint/chert and obsidian; Lime Mortar covers the existing binder.
 
 | Audited group | Full histories and remaining gaps after this pass |
 | --- | --- |
