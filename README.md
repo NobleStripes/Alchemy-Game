@@ -66,3 +66,13 @@ Game definitions live in [`src/game/content`](src/game/content). Every recipe is
 [`validateContent`](src/game/engine/validateContent.ts) checks references, duplicate pairs, and era contracts, then simulates actual gated play: resolve recipes in unlocked eras, check landmarks, grant newly unlocked elements, and repeat. Circular gates and unreachable page content fail validation before build.
 
 Production builds also enforce outgoing-use safeguards for starters and foundational tools, and print graph-derived counts. The current catalog has **145 crafting ingredients and 49 terminal elements**; no manual `isFinal` metadata is needed. These are authored gameplay statuses, not claims about real-world usefulness or historical mastery.
+
+## A Note from the Developer
+
+The Unwritten Atlas is a personal, open-source side project by a solo developer who loves history, philosophy, and puzzle design.
+
+It is completely free, has no ads or tracking, requires no account, and is supported by a day job.
+
+Every recipe is personally curated, and historical entries are researched and checked against documented sources, with uncertainties acknowledged where appropriate.
+
+I hope you enjoy discovering it as much as I enjoyed researching it.
