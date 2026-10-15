@@ -14,6 +14,8 @@ Historical explanations are free; **Insight reveals recipe leads, never factual 
 
 The [catalog plan toward 250](docs/catalog-plan.md) pairs element milestones with research milestones and separates core, regional and research-only proposals. **103 catalog elements** still have no full history; unverified candidates remain blocked. Source receipts disclose access limits, and automated checks are not historical peer review.
 
+The [Phase 10 roadmap](docs/phase-10-roadmap.md) covers the planned content registry and regional modules, save preservation, an Achaemenid prototype, free-access requirements, concise Atlas summaries, contextual nudges and manual save transfer. PWA support depends on safe backup/restore; community packs and social sharing remain deferred. These are planned features, not current functionality.
+
 Optional production foundations, engineering, commerce, scholarship and regional branches, plus the landmark track and eleven learning labs, are covered in the [optional content guide](docs/optional-content.md). They extend exploration without increasing existing age-completion requirements; detailed recipes are kept out of this overview.
 
 Inspect a discovered element in the Guide and choose **View History** to open its Atlas entry directly; returning to Play restores focus to that shortcut. Ordinary section switches focus the Atlas heading or remembered gameplay panel. Navigation does not rewrite saves or change their version 7 format.
@@ -38,6 +40,7 @@ npm run dev
 | --- | --- |
 | [Gameplay and Atlas](docs/gameplay.md) | Five gameplay ages, progression, Insights, collections, Rainmaker, historical entries, and learning labs. |
 | [Optional content](docs/optional-content.md) | Implemented optional branches, production foundations, landmark objectives, learning labs, recipe spoilers, and historical limits. |
+| [Phase 10 roadmap](docs/phase-10-roadmap.md) | Planned expansion architecture, module-safe saves, Achaemenid prototype, free-access requirements, Atlas summaries, nudges, manual save transfer, and deferred features. |
 | [Chronology and historical interpretation](docs/historical-interpretation.md) | Regional dates, fictional gates, element corrections, and historical references. |
 | [Historical research](docs/research.md) | Research coverage, record fields, source verification, authoring standards, and optional future directions. |
 | [Recipe review](docs/recipe-review.md) | Recipe classifications, historical-context disclosures, and citation limits. |
