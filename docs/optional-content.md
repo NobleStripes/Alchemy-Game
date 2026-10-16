@@ -4,6 +4,8 @@
 
 Optional discoveries, collection objectives and isolated learning labs extend the main campaign without increasing existing age-completion requirements. They reuse the same discoveries, Atlas histories and version 7 saves; reading history is always free and never required for rewards.
 
+Open **Challenges** in the persistent main navigation for Rainmaker and all eleven Learning Labs, their completion status and best saved attempts. The isolated runner stays mounted when visiting Play or Atlas; return to Challenges to resume. Leaving a run restores focus to its originating card. The former Guide lab listing and separate Rainmaker header shortcut are removed; mobile Play still has only Elements, Combine and Guide tabs. Runs are transient across reloads, while existing v7 records and first-completion rewards are unchanged.
+
 This guide describes implemented content. The [catalog plan](catalog-plan.md) separately tracks proposed discoveries, regional modules and research-only work; evidence-blocked candidates are not playable additions.
 
 - [Classical Antiquity and Iron Age branches](#classical-antiquity-and-iron-age-branches)

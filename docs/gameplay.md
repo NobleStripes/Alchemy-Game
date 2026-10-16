@@ -10,21 +10,23 @@ Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed
 
 ## Main navigation
 
-The persistent **The Unwritten Atlas** header offers **Play** and **Atlas**. Play is the default on load. The keyboard-accessible buttons identify the active section and the section they control; inactive sections are hidden from display, keyboard navigation, and assistive technology.
+The persistent **The Unwritten Atlas** header offers **Play**, **Atlas**, and **Challenges**. Play is the default on load. The keyboard-accessible buttons identify the active section and the section they control; inactive sections are hidden from display, keyboard navigation, and assistive technology.
 
-**Play** contains the existing Elements, Combine, and Guide layout, including its age switcher and the three mobile gameplay tabs. **Atlas** opens the Historical Encyclopedia directly and can browse all discovered entries regardless of the selected gameplay age. It is not a fourth mobile tab, and it does not include recipe hints.
+**Play** contains the existing Elements, Combine, and Guide layout, including its age switcher and exactly three mobile gameplay tabs. **Atlas** opens the Historical Encyclopedia directly and can browse all discovered entries regardless of the selected gameplay age. **Challenges** contains Rainmaker and all eleven Learning Labs, available from any campaign age, and hosts the isolated challenge runner. Neither section adds a mobile gameplay tab. The separate Rainmaker header shortcut is removed to avoid duplicate navigation.
 
 Atlas has its own page heading and introduction. Desktop uses the full application-shell width, with a viewport-sized, independently scrollable discovery index beside an article capped at a readable 80-character measure. Mobile stacks browsing above reading and scrolls the full page without fixed gameplay tabs covering its bibliography. Long references wrap, and reduced-motion preferences suppress transitions and animations. Research explanations, citations, and explicit **Mark as Read / Mark as Unread** controls remain available without Insight.
 
 Each article keeps the general chronology caveat in a collapsed **About gameplay ages** disclosure. Expand it for the distinction between symbolic Origins, regional archaeological periods and overlapping Classical Antiquity; entry-specific evidence and cautions remain in the article.
 
-Ordinary section switches focus the Atlas heading or the remembered Play panel heading; returning to an active challenge focuses its **Return to Play** control. Initial load and mobile-tab selection do not steal focus. Choosing a historical entry focuses its heading, and citation anchors lead to focusable bibliography entries below the persistent header. The Guide's **View History** shortcut still returns focus to its originating control.
+Ordinary section switches focus the Atlas or Challenges heading or the remembered Play panel heading; returning to an active run in Challenges focuses its **Return to Challenges** control. Initial load and mobile-tab selection do not steal focus. Choosing a historical entry focuses its heading, and citation anchors lead to focusable bibliography entries below the persistent header. The Guide's **View History** shortcut still returns focus to its originating control when returning to Play, even after visiting Challenges.
 
-The Guide keeps the Insight wallet and hints, Open Leads, Recorded Formulas, Recent Experiments, recipe-related Element research, age challenges and landmarks, collections and rewards, and Learning Challenges. Gameplay research stays in the Guide; only the Historical Encyclopedia moves to Atlas.
+The Guide keeps the Insight wallet and hints, Open Leads, Recorded Formulas, Recent Experiments, recipe-related Element research, campaign age challenges and landmarks, collections and rewards. The isolated Learning Challenges listing has moved out of the Guide into Challenges. Historical reading remains in Atlas.
 
 Switching sections does not spend Insight, perform experiments, change the selected age, or write a save. The prepared slots, last result, element filters, Guide selection, mobile tab, and Atlas search/entry remain in memory while switching. Explicit reading markers still use shared saved progress. The chosen top-level section and reading selection are not saved; a reload begins on Play.
 
-The header also remains available during isolated challenges. Visiting Atlas does not abandon the run; returning to Play resumes it. **Return to Play** exits the challenge using its existing discard-confirmation rules and restores focus to its launch control. Campaign reset and starting another run are disabled while a challenge is active.
+The header remains available during isolated challenges. Visiting Play or Atlas hides rather than abandons the run; Play remains usable with its remembered mobile tab and slots. Returning to Challenges resumes the same run, including discoveries, attempts, occupied slots, result and save state. **Return to Challenges** explicitly exits using the existing discard-confirmation rules and restores focus to the originating card's Play button. The hub is hidden during a run, so another challenge cannot replace it accidentally. Campaign reset remains disabled until the run is left. Unfinished runs and unsaved results are not persisted across reloads.
+
+Challenge cards show **Not completed** or **Completed** and the best saved attempt count from existing challenge records. Completing a run alone does not update a card or award Insight; explicit **Save result** retains the existing confirmed-write behavior and one-time reward, capped at three credits. Replaying may improve the saved best without granting another reward. No new save fields or migrations are required.
 
 ## Finding ingredients
 
@@ -209,7 +211,7 @@ The remaining 78 discoveries show an honest **historical notes not yet researche
 
 ## Educational gameplay
 
-The Guide's **Learning Challenges** offers eleven optional, isolated labs from any age: the existing **Harvest Lab**, **Bronze Lab**, **Records Lab**, **Civic Lab**, **Engineering Lab**, **Commerce Lab**, and **Inquiry Lab**, plus **Civic Foundations**, **Organization of Knowledge**, **Engineering the City**, and **Economic Networks**. They reuse existing combinations and supplied discoveries without quizzes or memorized historical facts. Alternate routes remain valid, including a shorter records route and a longer writing-focused route. Supplied materials and earlier gameplay pages are puzzle foundations, not universal historical prerequisites.
+The top-level **Challenges** hub offers eleven optional, isolated Learning Labs from any age: **Harvest Lab**, **Bronze Lab**, **Records Lab**, **Civic Lab**, **Engineering Lab**, **Commerce Lab**, **Inquiry Lab**, **Civic Foundations**, **Organization of Knowledge**, **Engineering the City**, and **Economic Networks**, alongside Rainmaker. They reuse existing combinations and supplied discoveries without quizzes or memorized historical facts. Alternate routes remain valid, including a shorter records route and a longer writing-focused route. Supplied materials and earlier gameplay pages are puzzle foundations, not universal historical prerequisites.
 
 ### Optional Age V objectives
 

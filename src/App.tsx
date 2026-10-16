@@ -19,18 +19,19 @@ import {
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Codex } from './features/codex/Codex'
+import { ChallengeHub } from './features/challenges/ChallengeHub'
 import { ChallengeRun } from './features/challenges/ChallengeRun'
 import { Journal } from './features/journal/Journal'
 import { HistoricalAtlas, type HistoricalAtlasHandle } from './features/journal/HistoricalAtlas'
 import { Settings as SettingsDialog } from './features/settings/Settings'
 import { Worktable } from './features/worktable/Worktable'
 import { elements, eras } from './game/content'
-import { rainmakerChallenge, type ChallengeDefinition } from './game/content/challenges'
+import type { ChallengeDefinition } from './game/content/challenges'
 import { useGameStore } from './game/state/useGameStore'
 import './Simple.css'
 
 function App() {
-  const [activeSection, setActiveSection] = useState<'play' | 'atlas'>('play')
+  const [activeSection, setActiveSection] = useState<'play' | 'atlas' | 'challenges'>('play')
   const previousSection = useRef(activeSection)
   const [activePanel, setActivePanel] = useState<
     'combine' | 'elements' | 'guide'
@@ -39,8 +40,7 @@ function App() {
   const historyReturnTarget = useRef<HTMLButtonElement | null>(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [activeChallenge, setActiveChallenge] = useState<ChallengeDefinition | null>(null)
-  const challengeLaunchId = useRef(rainmakerChallenge.id)
-  const challengeButton = useRef<HTMLButtonElement>(null)
+  const challengeReturnTarget = useRef<HTMLButtonElement | null>(null)
   const challengeSurface = useRef<HTMLDivElement>(null)
   const returningFromChallenge = useRef(false)
   useEffect(() => useGameStore.connectProgress(), [])
@@ -50,17 +50,18 @@ function App() {
     if (historyReturnTarget.current) {
       if (activeSection === 'atlas') {
         document.getElementById('atlas-history-title')?.focus()
-      } else {
+        return
+      } else if (activeSection === 'play') {
         historyReturnTarget.current.focus()
         historyReturnTarget.current = null
+        return
       }
-      return
     }
-    if (activeSection === 'play' && activeChallenge) {
+    if (activeSection === 'challenges' && activeChallenge) {
       challengeSurface.current?.querySelector<HTMLButtonElement>('button')?.focus()
       return
     }
-    const headingId = activeSection === 'atlas' ? 'atlas-title' : {
+    const headingId = activeSection === 'atlas' ? 'atlas-title' : activeSection === 'challenges' ? 'challenges-title' : {
       combine: 'worktable-title',
       elements: 'codex-title',
       guide: 'journal-title',
@@ -72,10 +73,8 @@ function App() {
       challengeSurface.current?.querySelector<HTMLButtonElement>('button')?.focus()
       returningFromChallenge.current = true
     } else if (returningFromChallenge.current) {
-      const trigger = challengeLaunchId.current === rainmakerChallenge.id
-        ? challengeButton.current
-        : document.querySelector<HTMLButtonElement>(`button[data-challenge-id="${challengeLaunchId.current}"]`)
-      trigger?.focus()
+      challengeReturnTarget.current?.focus()
+      challengeReturnTarget.current = null
       returningFromChallenge.current = false
     }
   }, [activeChallenge])
@@ -109,10 +108,9 @@ function App() {
     }
   }
 
-  function launchChallenge(challenge: ChallengeDefinition) {
-    historyReturnTarget.current = null
-    challengeLaunchId.current = challenge.id
-    setActiveSection('play')
+  function launchChallenge(challenge: ChallengeDefinition, trigger: HTMLButtonElement) {
+    challengeReturnTarget.current = trigger
+    setActiveSection('challenges')
     setActiveChallenge(challenge)
   }
 
@@ -158,11 +156,23 @@ function App() {
             <BookOpen size={18} aria-hidden="true" />
             Atlas
           </button>
+          <button
+            type="button"
+            aria-controls="challenges-section"
+            aria-describedby="challenges-navigation-help"
+            aria-pressed={activeSection === 'challenges'}
+            data-active={activeSection === 'challenges'}
+            onClick={() => setActiveSection('challenges')}
+          >
+            <Trophy size={18} aria-hidden="true" />
+            Challenges
+          </button>
           <span id="play-navigation-help" className="sr-only">Gameplay: Elements, Combine, and Guide.</span>
           <span id="atlas-navigation-help" className="sr-only">Historical Encyclopedia for discovered entries. Reading is free.</span>
+          <span id="challenges-navigation-help" className="sr-only">Rainmaker and eleven isolated Learning Labs.</span>
         </nav>
 
-        <nav className="era-switcher" aria-label="Play ages" hidden={activeSection !== 'play' || Boolean(activeChallenge)}>
+        <nav className="era-switcher" aria-label="Play ages" hidden={activeSection !== 'play'}>
           {eras.map((candidate) => {
             const isUnlocked = unlockedEraIds.includes(candidate.id)
             return (
@@ -196,17 +206,6 @@ function App() {
           <button
             type="button"
             className="icon-button"
-            onClick={() => launchChallenge(rainmakerChallenge)}
-            ref={challengeButton}
-            disabled={Boolean(activeChallenge)}
-            aria-label="Play Rainmaker challenge"
-            title="Play Rainmaker challenge"
-          >
-            <Trophy size={18} />
-          </button>
-          <button
-            type="button"
-            className="icon-button"
             onClick={() => setSettingsOpen(true)}
             aria-label="Open settings"
             title="Settings"
@@ -236,16 +235,16 @@ function App() {
         </div>
       </header>
 
-      {persistenceError && activeSection === 'play' && <p className="persistence-error" role="alert">{persistenceError}</p>}
+      {persistenceError && activeSection !== 'atlas' && <p className="persistence-error" role="alert">{persistenceError}</p>}
       {settingsOpen && (
         <SettingsDialog
           onClose={() => setSettingsOpen(false)}
         />
       )}
 
-      {/* Keep both views mounted to preserve gameplay and reading context while switching. */}
+      {/* Keep sections mounted so navigation preserves campaign, reading and unfinished runs. */}
       <main id="play-section" className="play-section" aria-label="Play" hidden={activeSection !== 'play'}>
-        <div className="play-workspace" hidden={Boolean(activeChallenge)}>
+        <div className="play-workspace">
           <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
             <div className="game-layout" data-active-panel={activePanel}>
               <Codex onElementSelected={() => setActivePanel('combine')} />
@@ -256,7 +255,6 @@ function App() {
                 discoveryGoal={era.discoveryGoal}
                 landmarkIds={era.landmarkIds}
                 onCombinationPrepared={() => setActivePanel('combine')}
-                onChallengeSelected={launchChallenge}
                 onViewHistory={viewHistory}
               />
             </div>
@@ -295,14 +293,19 @@ function App() {
             </button>
           </nav>
         </div>
+      </main>
+      <main id="atlas-section" className="atlas-page" aria-label="Atlas" hidden={activeSection !== 'atlas'}>
+        <HistoricalAtlas ref={atlas} />
+      </main>
+      <main id="challenges-section" className="challenges-page" aria-label="Challenges" hidden={activeSection !== 'challenges'}>
+        <div hidden={Boolean(activeChallenge)}>
+          <ChallengeHub onChallengeSelected={launchChallenge} />
+        </div>
         {activeChallenge && (
           <div className="challenge-surface" ref={challengeSurface}>
             <ChallengeRun key={activeChallenge.id} challenge={activeChallenge} onExit={() => setActiveChallenge(null)} />
           </div>
         )}
-      </main>
-      <main id="atlas-section" className="atlas-page" aria-label="Atlas" hidden={activeSection !== 'atlas'}>
-        <HistoricalAtlas ref={atlas} />
       </main>
     </div>
   )

@@ -72,7 +72,7 @@
 .section-nav button:hover { color: var(--ink); border-color: var(--teal); }
 .section-nav button[data-active='true'] { color: #fff; background: var(--teal); border-color: var(--teal-dark); box-shadow: 0 3px 0 var(--teal-dark); }
 .section-nav button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.era-switcher[hidden], .play-section[hidden], .play-workspace[hidden], .atlas-page[hidden] { display: none; }
+.era-switcher[hidden], .play-section[hidden], .play-workspace[hidden], .atlas-page[hidden], .challenges-page[hidden] { display: none; }
 .play-section, .play-workspace { display: flex; flex: 1; flex-direction: column; min-height: 0; }
 .atlas-page { width: 100%; max-width: 1500px; margin: 0 auto; padding: 20px; box-sizing: border-box; }
 .atlas-page > .historical-atlas { padding: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
@@ -85,6 +85,20 @@
 .atlas-discovery-count { margin: 12px 0 6px; color: var(--ink); font-size: 14px; font-weight: 800; }
 .historical-atlas > .detail-desc { font-size: 13px; line-height: 1.6; }
 .challenge-surface { min-height: 0; overflow-y: auto; }
+.challenges-page { flex: 1; min-height: 0; }
+.challenge-hub { width: min(1120px, 100%); margin: 0 auto; padding: 24px; box-sizing: border-box; }
+.challenge-hub h1 { margin: 0 0 12px; font: 900 28px/1.2 var(--display); }
+.challenge-hub > p { color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+.challenge-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; margin-top: 24px; }
+.challenge-card { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+.challenge-kind { display: flex; align-items: center; gap: 6px; color: var(--teal-dark); font-size: 12px; font-weight: 800; }
+.challenge-card h2 { margin: 12px 0; font: 900 20px/1.3 var(--display); overflow-wrap: anywhere; }
+.challenge-card p { margin: 0 0 12px; font-size: 14px; line-height: 1.5; }
+.challenge-starters { color: var(--ink-soft); }
+.challenge-card-record { font-weight: 800; }
+.challenge-card button { min-height: 44px; margin-top: auto; padding: 10px 14px; color: #fff; background: var(--teal-dark); border: 1px solid var(--teal-dark); border-radius: 6px; font: 800 14px/1.3 var(--ui); text-align: left; cursor: pointer; }
+.challenge-card button:hover { background: var(--teal); }
+.challenge-card button:focus-visible, .challenge-hub h1:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 .brand-mark {
   width: 44px;
@@ -717,7 +731,6 @@
 .history-read-tag { margin-left: 5px; color: var(--teal-dark); font-size: 10px; font-weight: 800; }
 .history-read-control { margin-top: 10px; }
 .collection-foundation { display: block; color: var(--teal-dark); font-size: 10px; }
-.learning-challenges .journal-element-btn { margin: 8px 5px 0 0; min-height: 44px; font-size: 12px; }
 .history-search input { width: 100%; min-width: 0; padding: 8px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 4px; font: inherit; }
 .history-index { min-height: 0; overflow-y: auto; display: grid; align-content: start; gap: 5px; padding: 3px; }
 .history-index .journal-element-btn { min-height: 44px; font-size: 12px; flex-wrap: wrap; text-align: left; }
@@ -769,13 +782,15 @@
 
 @media (max-width: 740px) {
   .game-shell { --header-offset: 16px; height: 100svh; padding-bottom: 66px; overflow: hidden; }
-  .game-shell[data-active-section='atlas'], .game-shell[data-challenge-active='true'] { padding-bottom: 0; }
-  .game-header { position: relative; min-height: 116px; padding: 9px 12px 8px; grid-template-columns: 1fr auto; gap: 7px 10px; }
+  .game-shell[data-active-section='atlas'], .game-shell[data-active-section='challenges'] { padding-bottom: 0; }
+  .game-header { position: relative; min-height: 116px; padding: 9px 12px 8px; grid-template-columns: minmax(0, 1fr) auto; gap: 7px 10px; }
   .header-brand { grid-column: 1 / -1; grid-row: 1; }
-  .section-nav { grid-column: 1; grid-row: 2; justify-self: start; }
+  .section-nav { grid-column: 1; grid-row: 2; justify-self: start; flex-wrap: wrap; min-width: 0; }
   .header-actions { grid-column: 2; grid-row: 2; }
   .game-header { flex-shrink: 0; }
   .atlas-page { flex: 1; min-height: 0; padding: 12px; overflow-y: auto; }
+  .challenges-page { overflow-y: auto; }
+  .challenge-hub { padding: 16px; }
   .atlas-page > .historical-atlas { padding: 16px; }
   .atlas-browser { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .atlas-sidebar { position: static; max-height: none; }

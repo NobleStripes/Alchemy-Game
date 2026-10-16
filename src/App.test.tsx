@@ -7,6 +7,7 @@ import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
 import { collections, elements, eras, recipes, starterElementIds } from './game/content'
+import { learningChallenges, rainmakerChallenge } from './game/content/challenges'
 import { historicalResearch } from './game/content/research'
 import { exportProgress, SAVE_KEY, type SavedProgress } from './game/state/persistence'
 import { createGameStore, snapshotProgress, useGameStore } from './game/state/useGameStore'
@@ -30,13 +31,15 @@ describe('alchemy worktable', () => {
     expect(localStorage.getItem(SAVE_KEY)).toBe(saved)
   })
 
-  it('defaults to Play and separates two top-level sections from the three gameplay tabs', async () => {
+  it('defaults to Play and separates three top-level sections from the three gameplay tabs', async () => {
     const user = userEvent.setup()
     render(<App />)
     const navigation = within(screen.getByRole('navigation', { name: 'Main navigation' }))
-    expect(navigation.getAllByRole('button')).toHaveLength(2)
+    expect(navigation.getAllByRole('button')).toHaveLength(3)
     expect(navigation.getByRole('button', { name: 'Play' })).toHaveAttribute('aria-pressed', 'true')
     expect(navigation.getByRole('button', { name: 'Atlas' })).toHaveAttribute('aria-controls', 'atlas-section')
+    expect(navigation.getByRole('button', { name: 'Challenges' })).toHaveAttribute('aria-controls', 'challenges-section')
+    expect(screen.queryByRole('button', { name: 'Play Rainmaker challenge' })).not.toBeInTheDocument()
     expect(screen.getByRole('main', { name: 'Play' })).toBeVisible()
     expect(screen.queryByRole('heading', { name: 'Historical Encyclopedia' })).not.toBeInTheDocument()
     expect(within(screen.getByRole('navigation', { name: 'Game panels' })).getAllByRole('button')).toHaveLength(3)
@@ -47,6 +50,15 @@ describe('alchemy worktable', () => {
     expect(screen.queryByRole('navigation', { name: 'Game panels' })).not.toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Combine' })).not.toBeInTheDocument()
     expect(screen.getByText('The Unwritten Atlas')).toBeVisible()
+    await user.click(navigation.getByRole('button', { name: 'Challenges' }))
+    expect(navigation.getByRole('button', { name: 'Challenges' })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('main', { name: 'Challenges' })).toBeVisible()
+    expect(screen.getAllByRole('article')).toHaveLength(12)
+    expect(screen.queryByRole('navigation', { name: 'Game panels' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('navigation', { name: 'Play ages' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('main', { name: 'Atlas' })).not.toBeInTheDocument()
+    await user.click(navigation.getByRole('button', { name: 'Play' }))
+    expect(within(screen.getByRole('navigation', { name: 'Game panels' })).getAllByRole('button')).toHaveLength(3)
   })
 
   it('focuses the active section heading and skips inactive controls during keyboard navigation', async () => {
@@ -90,6 +102,22 @@ describe('alchemy worktable', () => {
     await user.click(screen.getByRole('button', { name: 'Play' }))
     expect(panelButton).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByRole('heading', { name: heading })).toHaveFocus()
+  })
+
+  it('focuses Challenges and keeps inactive sections out of keyboard navigation', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    const button = screen.getByRole('button', { name: 'Challenges' })
+    act(() => button.focus())
+    await user.keyboard('{Enter}')
+    expect(button).toHaveAccessibleDescription('Rainmaker and eleven isolated Learning Labs.')
+    expect(screen.getByRole('heading', { level: 1, name: 'Challenges' })).toHaveFocus()
+    await user.tab()
+    expect(screen.getByRole('button', { name: 'Play Rainmaker' })).toHaveFocus()
+    for (let step = 0; step < 11; step += 1) {
+      await user.tab()
+      expect(document.activeElement?.closest('#play-section, #atlas-section')).toBeNull()
+    }
   })
 
   it('restores gameplay filters, Guide selection, mobile tab and prepared slots without saving on navigation', async () => {
@@ -206,10 +234,12 @@ describe('alchemy worktable', () => {
     expect(contents.getByText('Open leads')).toBeVisible()
     expect(contents.getByRole('region', { name: 'Origins challenge' })).toBeVisible()
     expect(contents.getByRole('list', { name: 'Collection goals' })).toBeVisible()
-    for (const title of ['Collections', 'Recorded Formulas (0)', 'Recent Experiments', 'Element research', 'Learning Challenges']) {
+    for (const title of ['Collections', 'Recorded Formulas (0)', 'Recent Experiments', 'Element research']) {
       expect(contents.getByText(title, { selector: 'summary' })).toBeInTheDocument()
     }
     expect(contents.queryByRole('heading', { name: 'Historical Encyclopedia', hidden: true })).not.toBeInTheDocument()
+    expect(contents.queryByText('Learning Challenges')).not.toBeInTheDocument()
+    expect(contents.queryByRole('button', { name: /^Play .*Lab$/ })).not.toBeInTheDocument()
     await user.click(contents.getByRole('button', { name: 'Inspect Fire' }))
     expect(contents.getByRole('heading', { name: 'Recorded formulas' })).toBeVisible()
     await user.click(screen.getByRole('button', { name: 'Atlas' }))
@@ -375,6 +405,8 @@ describe('alchemy worktable', () => {
     await user.type(screen.getByRole('searchbox', { name: 'Search discovered historical entries' }), 'cuneiform')
     await user.click(screen.getByRole('button', { name: 'Open historical entry for Writing' }))
     expect(screen.getByRole('article', { name: 'Writing' })).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    expect(screen.getByRole('heading', { level: 1, name: 'Challenges' })).toHaveFocus()
     await user.click(screen.getByRole('button', { name: 'Play' }))
     expect(shortcut).toHaveFocus()
     expect(screen.getByRole('button', { name: 'Show Guide panel' })).toHaveAttribute('aria-pressed', 'true')
@@ -431,31 +463,63 @@ describe('alchemy worktable', () => {
     expect(useGameStore.getState()).toBe(before)
   })
 
-  it('starts on Play again after remount without persisting the section or changing progress', async () => {
+  it.each(['Atlas', 'Challenges'])('starts on Play after remounting from %s without persisting the section or unfinished runs', async (section) => {
     const user = userEvent.setup()
     const view = render(<App />)
     const before = snapshotProgress(useGameStore.getState())
     const disk = localStorage.getItem('unwritten-atlas-progress')
-    await user.click(screen.getByRole('button', { name: 'Atlas' }))
+    await user.click(screen.getByRole('button', { name: section }))
+    if (section === 'Challenges') {
+      await user.click(screen.getByRole('button', { name: 'Play Rainmaker' }))
+      await user.click(screen.getByRole('button', { name: 'Challenge Water' }))
+    }
     view.unmount()
     render(<App />)
     expect(screen.getByRole('button', { name: 'Play' })).toHaveAttribute('aria-pressed', 'true')
     expect(snapshotProgress(useGameStore.getState())).toEqual(before)
     expect(localStorage.getItem('unwritten-atlas-progress')).toBe(disk)
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    expect(screen.getByRole('button', { name: 'Play Rainmaker' })).toBeVisible()
+    expect(screen.queryByRole('button', { name: 'Return to Challenges' })).not.toBeInTheDocument()
   })
 
   it('keeps the header and an isolated challenge available across section switches', async () => {
     const user = userEvent.setup()
     render(<App />)
     const before = snapshotProgress(useGameStore.getState())
-    await user.click(screen.getByRole('button', { name: 'Play Rainmaker challenge' }))
+    const disk = localStorage.getItem(SAVE_KEY)
+    const confirm = vi.spyOn(window, 'confirm')
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    await user.click(screen.getByRole('button', { name: 'Play Rainmaker' }))
     await user.click(screen.getByRole('button', { name: 'Challenge Water' }))
+    await user.click(screen.getByRole('button', { name: 'Challenge Water' }))
+    await user.click(screen.getByRole('button', { name: 'Combine challenge elements' }))
+    await user.click(screen.getByRole('button', { name: 'Challenge Water' }))
+    await user.click(screen.getByRole('button', { name: 'Challenge Air' }))
+    await user.click(screen.getByRole('button', { name: 'Combine challenge elements' }))
+    expect(screen.getByText('Attempts:')).toHaveTextContent('Attempts: 2')
+    expect(screen.getByText('No reaction')).toBeVisible()
     expect(screen.getByRole('button', { name: 'Reset journal' })).toBeDisabled()
     await user.click(screen.getByRole('button', { name: 'Atlas' }))
     expect(screen.getByRole('heading', { name: 'Historical Encyclopedia' })).toBeVisible()
     await user.click(screen.getByRole('button', { name: 'Play' }))
+    expect(screen.getByRole('button', { name: 'Combine' })).toBeVisible()
+    expect(screen.queryByRole('button', { name: 'Combine challenge elements' })).not.toBeInTheDocument()
+    expect(within(screen.getByRole('navigation', { name: 'Game panels' })).getAllByRole('button')).toHaveLength(3)
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    expect(screen.getByRole('button', { name: 'Challenge Sea' })).toBeVisible()
     expect(screen.getByRole('button', { name: 'Remove challenge Water from slot 1' })).toBeVisible()
+    expect(screen.getByText('No reaction')).toBeVisible()
+    expect(screen.getByText('Attempts:')).toHaveTextContent('Attempts: 2')
+    expect(screen.getByRole('button', { name: 'Return to Challenges' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Challenge Air' }))
+    await user.click(screen.getByRole('button', { name: 'Play' }))
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    expect(screen.getByRole('button', { name: 'Remove challenge Water from slot 1' })).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Remove challenge Air from slot 2' })).toBeVisible()
+    expect(confirm).not.toHaveBeenCalled()
     expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+    expect(localStorage.getItem(SAVE_KEY)).toBe(disk)
   })
 
   it('lets a fresh player discover Metal, read free history and resume a prepared combination', async () => {
@@ -487,18 +551,69 @@ describe('alchemy worktable', () => {
     expect(screen.getByText('Discovered Steam')).toBeInTheDocument()
   })
 
-  it('launches a learning lab from any age and restores focus to its Guide trigger', async () => {
+  it.each([rainmakerChallenge, ...learningChallenges])('launches $name from the hub at any age and restores focus to its card', async (challenge) => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('button', { name: 'Show Guide panel' }))
     const before = localStorage.getItem('unwritten-atlas-progress')
-    await user.click(screen.getByRole('button', { name: 'Play Bronze Lab' }))
-    expect(screen.getByRole('heading', { name: 'Bronze Lab' })).toBeVisible()
-    expect(screen.getByRole('button', { name: 'Return to Play' })).toHaveFocus()
-    await user.click(screen.getByRole('button', { name: 'Return to Play' }))
-    expect(screen.getByRole('button', { name: 'Play Bronze Lab' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    await user.click(screen.getByRole('button', { name: `Play ${challenge.name}` }))
+    expect(screen.getByRole('heading', { name: challenge.name })).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Return to Challenges' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Return to Challenges' }))
+    expect(screen.getByRole('button', { name: `Play ${challenge.name}` })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Play' }))
     expect(screen.getByRole('button', { name: 'Show Guide panel' })).toHaveAttribute('aria-pressed', 'true')
     expect(localStorage.getItem('unwritten-atlas-progress')).toBe(before)
+  })
+
+  it('loads v7 challenge cards without writes and preserves saved results and one-time rewards across replay', async () => {
+    await useGameStore.flushProgress()
+    const progress: SavedProgress = {
+      version: 7, ...snapshotProgress(useGameStore.getState()), insightCredits: 0,
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+    }
+    const saved = exportProgress(progress)
+    localStorage.setItem(SAVE_KEY, saved)
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    const user = userEvent.setup()
+    const view = render(<App />)
+    const before = snapshotProgress(useGameStore.getState())
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    const rainmaker = within(screen.getByRole('article', { name: 'Rainmaker' }))
+    expect(rainmaker.getByText('Completed', { exact: true })).toBeVisible()
+    expect(rainmaker.getByText('Best:')).toHaveTextContent('Best: 4 attempts')
+    expect(localStorage.getItem(SAVE_KEY)).toBe(saved)
+    expect(writes).not.toHaveBeenCalled()
+    for (const replay of [false, true]) {
+      await user.click(screen.getByRole('button', { name: 'Play Records Lab' }))
+      for (const [first, second] of [['Papyrus', 'Cordage'], ['Scroll', 'Scroll']]) {
+        await user.click(screen.getByRole('button', { name: `Challenge ${first}` }))
+        await user.click(screen.getByRole('button', { name: `Challenge ${second}` }))
+        await user.click(screen.getByRole('button', { name: 'Combine challenge elements' }))
+      }
+      expect(screen.getByRole('heading', { name: 'Records Lab complete' })).toBeVisible()
+      await user.click(screen.getByRole('button', { name: 'Save result' }))
+      await waitFor(() => expect(screen.getByText(replay ? /No additional reward/ : /First reward: \+1 Insight/)).toBeVisible())
+      await user.click(screen.getByRole('button', { name: 'Return to Challenges' }))
+      const card = within(screen.getByRole('article', { name: 'Records Lab' }))
+      expect(card.getByText('Completed', { exact: true })).toBeVisible()
+      expect(card.getByText('Best:')).toHaveTextContent('Best: 2 attempts')
+      expect(card.getByRole('button', { name: 'Play Records Lab' })).toHaveFocus()
+      expect(useGameStore.getState().insightCredits).toBe(1)
+    }
+    const records = [
+      ...progress.challengeRecords, { challengeId: 'records-lab', completed: true, bestAttemptCount: 2 },
+    ]
+    expect(snapshotProgress(useGameStore.getState())).toEqual({ ...before, challengeRecords: records, insightCredits: 1 })
+    expect(useGameStore.getState().discoveredIds).toEqual(progress.discoveredIds)
+    expect(useGameStore.getState().discoveredRecipeIds).toEqual(progress.discoveredRecipeIds)
+    expect(JSON.parse(localStorage.getItem(SAVE_KEY)!)).toMatchObject({ version: 7, challengeRecords: records, insightCredits: 1 })
+    view.unmount()
+    render(<App />)
+    expect(screen.getByRole('button', { name: 'Play' })).toHaveAttribute('aria-pressed', 'true')
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    expect(within(screen.getByRole('article', { name: 'Records Lab' })).getByText('Best:')).toHaveTextContent('Best: 2 attempts')
   })
 
   it('keeps one save-protection warning visible across sections and during an isolated challenge', async () => {
@@ -508,8 +623,9 @@ describe('alchemy worktable', () => {
     expect(screen.getByRole('alert')).toHaveTextContent('Autosaving is paused')
     await user.click(screen.getByRole('button', { name: 'Atlas' }))
     expect(screen.getByRole('alert')).toHaveTextContent('Autosaving is paused')
-    await user.click(screen.getByRole('button', { name: 'Play' }))
-    await user.click(screen.getByRole('button', { name: 'Play Rainmaker challenge' }))
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    expect(screen.getByRole('alert')).toHaveTextContent('Autosaving is paused')
+    await user.click(screen.getByRole('button', { name: 'Play Rainmaker' }))
     expect(screen.getByRole('alert')).toHaveTextContent('Autosaving is paused')
   })
   it('opens settings and restores focus to its trigger', async () => {
@@ -526,15 +642,17 @@ describe('alchemy worktable', () => {
     render(<App />)
     await user.click(screen.getByRole('button', { name: 'Fire' }))
     const saved = localStorage.getItem('unwritten-atlas-progress')
-    await user.click(screen.getByRole('button', { name: 'Play Rainmaker challenge' }))
-    expect(screen.getByRole('button', { name: 'Return to Play' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    await user.click(screen.getByRole('button', { name: 'Play Rainmaker' }))
+    expect(screen.getByRole('button', { name: 'Return to Challenges' })).toHaveFocus()
     expect(screen.queryByRole('navigation', { name: 'Play ages' })).toBeNull()
     await user.click(screen.getByRole('button', { name: 'Atlas' }))
     expect(screen.getByRole('heading', { level: 1, name: 'Atlas' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Challenges' }))
+    expect(screen.getByRole('button', { name: 'Return to Challenges' })).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Return to Challenges' }))
+    expect(screen.getByRole('button', { name: 'Play Rainmaker' })).toHaveFocus()
     await user.click(screen.getByRole('button', { name: 'Play' }))
-    expect(screen.getByRole('button', { name: 'Return to Play' })).toHaveFocus()
-    await user.click(screen.getByRole('button', { name: 'Return to Play' }))
-    expect(screen.getByRole('button', { name: 'Play Rainmaker challenge' })).toHaveFocus()
     expect(screen.getByRole('button', { name: 'Remove Fire' })).toBeInTheDocument()
     expect(localStorage.getItem('unwritten-atlas-progress')).toBe(saved)
   })

@@ -86,7 +86,7 @@ export function ChallengeRun({ onExit, challenge = rainmakerChallenge }: Challen
   return (
     <section className="challenge-run" aria-labelledby="challenge-title">
       <header className="challenge-header">
-        <button type="button" disabled={savePending} onClick={() => { if (confirmDiscard()) onExit() }}         aria-label="Return to Play" title="Return to Play">
+        <button type="button" disabled={savePending} onClick={() => { if (confirmDiscard()) onExit() }} aria-label="Return to Challenges" title="Return to Challenges">
           <ArrowLeft size={20} aria-hidden="true" />
         </button>
         <div>

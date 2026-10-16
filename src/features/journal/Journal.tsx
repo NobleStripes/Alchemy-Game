@@ -1,7 +1,6 @@
 import { BookOpen, FlaskConical, Lightbulb } from 'lucide-react'
 import { useState } from 'react'
 import { collections, elements, elementsById, eras, recipes } from '../../game/content'
-import { learningChallenges, type ChallengeDefinition } from '../../game/content/challenges'
 import type { CollectionDefinition } from '../../game/domain/types'
 import { isCollectionComplete } from '../../game/engine/collectionRules'
 import { areGlobalHintsUnlocked } from '../../game/engine/hintRules'
@@ -21,7 +20,6 @@ interface JournalProps {
   discoveryGoal: number
   landmarkIds: string[]
   onCombinationPrepared?: () => void
-  onChallengeSelected?: (challenge: ChallengeDefinition) => void
   onViewHistory?: (elementId: string, trigger: HTMLButtonElement) => void
 }
 
@@ -31,7 +29,6 @@ export function Journal({
   discoveryGoal,
   landmarkIds,
   onCombinationPrepared,
-  onChallengeSelected,
   onViewHistory,
 }: JournalProps) {
   const discoveredIds = useGameStore((state) => state.discoveredIds)
@@ -385,23 +382,6 @@ export function Journal({
         </div>
       </details>
 
-      {onChallengeSelected && (
-        <details className="guide-section learning-challenges" open>
-          <summary>Learning Challenges</summary>
-          <p className="detail-desc">Optional isolated labs, available from any age. Experiment with existing combinations; no historical facts to memorize or Insight to spend. +1 Insight for each saved first completion.</p>
-          {learningChallenges.map((challenge) => (
-            <button
-              type="button"
-              className="journal-element-btn"
-              key={challenge.id}
-              data-challenge-id={challenge.id}
-              onClick={() => onChallengeSelected(challenge)}
-            >
-              Play {challenge.name}
-            </button>
-          ))}
-        </details>
-      )}
 
       <details className="guide-section formula-archive">
         <summary>Recorded Formulas ({eraFormulaCount})</summary>

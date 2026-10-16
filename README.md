@@ -2,7 +2,7 @@
 
 An original combination-discovery game with **225 elements and 288 recipes across five gameplay ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
 
-The persistent header switches between **Play** (the default) and **Atlas** (Historical Encyclopedia). Play keeps Elements, Combine, and Guide together on desktop and in three mobile tabs; Atlas is not a fourth gameplay tab. Both sections share discoveries and saved progress, and returning to Play preserves the previous gameplay context. Pointer, touch, and keyboard controls are supported.
+The persistent header switches between **Play** (the default), **Atlas** (Historical Encyclopedia), and **Challenges**. Play keeps Elements, Combine, and Guide together on desktop and in exactly three mobile tabs; Atlas and Challenges are separate top-level sections, not extra gameplay tabs. Challenges lists Rainmaker and all eleven Learning Labs with saved completion status and best attempts; the separate Rainmaker header shortcut has been removed. Switching sections preserves gameplay, reading context and unfinished challenge runs. Pointer, touch, and keyboard controls are supported.
 
 The element shelf groups discoveries into collapsible era drawers with discovered/total counts. **Terminal** means no authored recipe uses the element as an ingredient; **Exhausted for now** means all its outgoing formulas in unlocked ages have been performed. New ages can expose new uses. Optional **Hide Mastered** hides both without disabling selection or history. Search temporarily reveals matches across all discovered elements and filters. Hide Mastered and collapsed drawers persist in backward-compatible version 7 fields; both default off/expanded.
 
@@ -18,7 +18,7 @@ The [Phase 10 roadmap](docs/phase-10-roadmap.md) covers the planned content regi
 
 Optional production foundations, engineering, commerce, scholarship and regional branches, plus the landmark track and eleven learning labs, are covered in the [optional content guide](docs/optional-content.md). They extend exploration without increasing existing age-completion requirements; detailed recipes are kept out of this overview.
 
-Inspect a discovered element in the Guide and choose **View History** to open its Atlas entry directly; returning to Play restores focus to that shortcut. Ordinary section switches focus the Atlas heading or remembered gameplay panel. Navigation does not rewrite saves or change their version 7 format.
+Inspect a discovered element in the Guide and choose **View History** to open its Atlas entry directly; returning to Play restores focus to that shortcut. Ordinary section switches focus the destination heading or the active run's **Return to Challenges** control. Leaving a run uses the existing discard confirmation and restores focus to its originating challenge card. Runs survive section switches, not reloads; saved records and one-time Insight rewards keep their existing version 7 format. Navigation alone never writes a save.
 
 ## Development Methodology & Tooling
 

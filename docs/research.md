@@ -12,11 +12,11 @@ Historical entries now appear in the top-level **Atlas** section, reached from t
 
 ## Application views and state
 
-[`App.tsx`](../src/App.tsx) owns local `activeSection: 'play' | 'atlas'` state, defaulting to Play, separately from the existing mobile `activePanel`. Both views remain mounted; the inactive view is hidden rather than replaced. This preserves component-local filters and selections as well as unsaved worktable slots and the last result. `DndContext` wraps only the Play workspace, not the encyclopedia.
+[`App.tsx`](../src/App.tsx) owns local `activeSection: 'play' | 'atlas' | 'challenges'` state, defaulting to Play, separately from the existing three-tab mobile `activePanel`. All three sections remain mounted; inactive sections are hidden rather than replaced. This preserves component-local filters, selections, unsaved worktable slots, the last result and unfinished challenge runs. `DndContext` wraps only the Play workspace, not the encyclopedia or challenges.
 
-Both views use the existing [`useGameStore`](../src/game/state/useGameStore.ts) Zustand store. There is no second discovery or reading-progress store. Navigation does not change the active gameplay age, reconnect progress synchronization, or write a save; it does not persist the selected view. Explicit read/unread actions still save personal reading markers without changing progression or rewards.
+All sections use the existing [`useGameStore`](../src/game/state/useGameStore.ts) Zustand store. There is no second campaign discovery or reading-progress store. Navigation does not change the active gameplay age, reconnect progress synchronization, or write a save; it does not persist the selected view. Explicit read/unread actions still save personal reading markers without changing progression or rewards. Isolated run state remains local to the mounted runner; the hub reads existing saved challenge records.
 
-The age switcher is labeled **Play ages**. Isolated challenges return via **Return to Play**, restoring focus to the Rainmaker header button or the originating Learning Lab control. Switching to Atlas temporarily hides, rather than discards, an active run.
+The age switcher is labeled **Play ages** and appears only in Play. Isolated challenges live in the top-level Challenges section and return via **Return to Challenges**, restoring focus to the originating Rainmaker or Learning Lab card. Switching to Play or Atlas temporarily hides, rather than discards, an active run. There is no duplicate Rainmaker header shortcut.
 
 The Guide's discovered-element **View History** action uses the mounted encyclopedia's `openEntry` command to select a local reading entry and clear stale historical search text. It neither updates the game store nor marks reading. Returning to Play restores focus to the originating control; direct entry requests still pass through the encyclopedia's discovered-only filter.
 
