@@ -2,17 +2,19 @@
 
 [Back to the project overview](../README.md)
 
-The current catalog contains **277 recipes**, retaining the previous 270 and adding seven optional Stone Age materials and watercraft routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
+The current catalog contains **288 recipes**, retaining the previous 277 and adding eleven optional production, measurement and water-power routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
 
 ## Classifications
 
 | Classification | Count | Meaning |
 | --- | ---: | --- |
 | Material process | 16 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
-| Simplified process | 108 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
-| Symbolic association | 153 | A conceptual, social or fictional link; it must not be read as historical causation. |
+| Simplified process | 113 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
+| Symbolic association | 159 | A conceptual, social or fictional link; it must not be read as historical causation. |
 
-The [foundation chain table](catalog-plan.md#implemented-recipes-and-intermediate-chains) preserves its eleven additions: four symbolic associations, six simplified processes and one material process. The [craft-expansion table](optional-content.md#craft-records-and-engineering) adds twenty symbolic associations and seven simplified processes. The [Stone Age table](optional-content.md#stone-age-materials-and-watercraft) adds six symbolic associations and one simplified process. All seven latest reviews cite inspected background. There are now **172 recipe notes with background references and 105 without attached sources**. These citations do not prove an exact two-input recipe.
+The [foundation chain table](catalog-plan.md#implemented-recipes-and-intermediate-chains) preserves its eleven additions: four symbolic associations, six simplified processes and one material process. The [craft-expansion table](optional-content.md#craft-records-and-engineering) adds twenty symbolic associations and seven simplified processes. The [Stone Age table](optional-content.md#stone-age-materials-and-watercraft) adds six symbolic associations and one simplified process. The [production and water-power table](catalog-plan.md#accepted-production-and-water-power-recipes) adds six symbolic associations and five simplified processes. All eleven latest reviews cite inspected background. There are now **183 recipe notes with background references and 105 without attached sources**. These citations do not prove an exact two-input recipe.
+
+Production cautions separate wheel assistance from full throwing, ordinary pottery firing from metallurgical vessel suitability, and annealing from smelting, melting, alloying, quenching and tempering. Prior working, duration and cooling are omitted, not replaced by a universal treatment rule. The casting route supplies prepared Bronze rather than creating an alloy from copper alone. Plumb-line clues omit suitable assembly and cannot prove a named monument or field survey. Waterwheel configurations depend on supply and site; Barbegal's overshot reconstruction is not an intact surviving machine or a universal design sequence. Powered milling omits transmission and preserves earlier hand-milling routes.
 
 The latest cautions distinguish natural conifer resin, prepared bonding use, plant gum and birch tar. Warming resin need not create a different chemical substance, and the clue is not universal adhesive manufacture. Canoe, paddle and fishing clues omit skilled work, equipment and catches. Dugout and net evidence is not a claimed excavated assemblage; paddle evidence establishes neither sails nor a numerical invention date. The existing Axe and Voyage routes remain independent.
 
@@ -56,7 +58,7 @@ The Iron Age expansion cautions separate symbolic rotation and scribal associati
 
 The 22 Age V expansion routes are all symbolic. They distinguish Greek agoras from Roman forums, elite councils from universal representation, a stoa from a philosophical school, aqueducts from necessarily arched structures, and individual coins from monetary systems. Human + Law adds optional Citizenship: membership is not automatically granted by residence or written rules, and civic status does not imply equal political participation. Natural Inquiry and Bird Inquiry do not grant ancient thinkers modern dinosaur knowledge. Existing Scroll, Coin, and Aqueduct recipes are reused, not replaced or reclassified.
 
-The current recipe reviews total **16 material-process, 107 simplified-process, and 147 symbolic** classifications, including both catalog batches. All 22 earlier expansion routes retain verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **165 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the earlier expansion formulas.
+The current recipe reviews total **16 material-process, 113 simplified-process, and 159 symbolic** classifications, including all four catalog batches. All 22 earlier expansion routes retain verified background references, and the earlier Aqueduct caution adds pre-Roman context. There are **183 cautions with background references and 105 without**; references support the cited context, not proof of an exact two-input formula. No new route establishes a universal invention path, and all earlier routes remain available. See the [optional branch table](gameplay.md#optional-age-v-branches) for the earlier expansion formulas.
 
 ### Scholarship route classifications
 

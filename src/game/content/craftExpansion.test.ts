@@ -60,8 +60,8 @@ describe('craft and engineering expansion', () => {
   it('validates the bundled appendix and combines it without dropping or replacing full articles', () => {
     expect(historicalDatabaseSchema.parse(craftResearch)).toEqual(craftResearch)
     expect(rawResearch.records).toHaveLength(97)
-    expect(craftResearch.records).toHaveLength(38)
-    expect(craftResearch.sources).toHaveLength(20)
+    expect(craftResearch.records).toHaveLength(50)
+    expect(craftResearch.sources).toHaveLength(33)
     expect(historicalResearch.records).toEqual([...rawResearch.records, ...craftResearch.records])
     expect(historicalResearch.sources).toEqual([...craftResearch.sources, ...rawResearch.sources])
   })

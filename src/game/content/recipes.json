@@ -275,5 +275,16 @@
   { "id": "canoe-paddle-equipment", "inputs": ["dugout-canoe", "tree"], "result": "paddle", "flavor": "A watercraft and suitable wood suggest its propulsion equipment, not a boat converted into a paddle." },
   { "id": "adhesive-hafting", "inputs": ["adhesive", "stone-tool"], "result": "axe", "flavor": "Bonding and a stone edge evoke hafting; handles, binding and skilled work remain unstated." },
   { "id": "canoe-net-fishing", "inputs": ["dugout-canoe", "net"], "result": "food", "flavor": "Waterborne fishing evokes a possible catch, not food made from the boat or net themselves." },
-  { "id": "paddled-voyage", "inputs": ["paddle", "boat"], "result": "voyage", "flavor": "Human-powered travel evokes a journey without requiring a sail; the later Voyage page is a gameplay placement." }
+  { "id": "paddled-voyage", "inputs": ["paddle", "boat"], "result": "voyage", "flavor": "Human-powered travel evokes a journey without requiring a sail; the later Voyage page is a gameplay placement." },
+  { "id": "rotating-pottery-workshop", "inputs": ["wheel", "pottery"], "result": "pottery-wheel", "flavor": "Rotation meets pottery forming; hand-built vessels remain a separate, older tradition." },
+  { "id": "metallurgical-vessel", "inputs": ["kiln", "pottery"], "result": "crucible", "flavor": "Ceramic craft suggests a metallurgical vessel, not an ordinary pot made suitable by another firing." },
+  { "id": "copper-heat-treatment", "inputs": ["copper", "heat"], "result": "annealing", "flavor": "Worked copper and heat evoke restored workability; prior deformation, timing and cooling are left unstated." },
+  { "id": "suspended-vertical-reference", "inputs": ["cordage", "rock"], "result": "plumb-line", "flavor": "A suspended weight suggests a vertical reference; a suitable bob and suspension are still needed." },
+  { "id": "river-driven-wheel", "inputs": ["river", "wheel"], "result": "waterwheel", "flavor": "Moving water suggests rotary power, with channels, supports and a fitted wheel left unstated." },
+  { "id": "water-powered-milling", "inputs": ["waterwheel", "rotary-quern"], "result": "watermill", "flavor": "Water power meets rotary grinding; transmission and the milling installation are omitted." },
+  { "id": "wheel-assisted-pottery", "inputs": ["pottery-wheel", "clay"], "result": "pottery", "flavor": "Wheel-assisted shaping suggests a vessel; preparation, drying and firing are not shown." },
+  { "id": "crucible-bronze-casting", "inputs": ["crucible", "bronze"], "result": "bronze-tool", "flavor": "A metalworking vessel and prepared alloy suggest casting, with mold, cooling and finishing omitted." },
+  { "id": "annealed-copper-working", "inputs": ["annealing", "copper"], "result": "tool", "flavor": "Renewed workability suggests a copper toolmaking stage, not an alloy or a finished edge created by heat alone." },
+  { "id": "plumbed-stonework", "inputs": ["plumb-line", "rock"], "result": "masonry", "flavor": "A vertical reference suggests controlled stonework; shaping, support and skilled construction remain unstated." },
+  { "id": "watermill-flour", "inputs": ["watermill", "crop"], "result": "flour", "flavor": "Water-powered grinding suggests flour from suitable grain, not every crop or the invention of milling." }
 ]

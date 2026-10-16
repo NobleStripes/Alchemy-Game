@@ -382,6 +382,12 @@ describe('campaign state', () => {
   })
 
   it.each([
+    ['bronze-age', 'rotating-pottery-workshop', 'wheel', 'pottery', 'pottery-wheel'],
+    ['bronze-age', 'metallurgical-vessel', 'kiln', 'pottery', 'crucible'],
+    ['bronze-age', 'copper-heat-treatment', 'copper', 'heat', 'annealing'],
+    ['bronze-age', 'suspended-vertical-reference', 'cordage', 'rock', 'plumb-line'],
+    ['classical-antiquity', 'river-driven-wheel', 'river', 'wheel', 'waterwheel'],
+    ['classical-antiquity', 'water-powered-milling', 'waterwheel', 'rotary-quern', 'watermill'],
     ['stone-age', 'harvested-forest-resin', 'forest', 'stone-tool', 'resin'],
     ['stone-age', 'prepared-resin-adhesive', 'resin', 'heat', 'adhesive'],
     ['stone-age', 'hollowed-tree-canoe', 'forest', 'axe', 'dugout-canoe'],
@@ -411,6 +417,17 @@ describe('campaign state', () => {
   })
 
   it.each([
+    ['bronze-age', 'rotating-pottery-workshop', 'wheel', 'pottery', 'pottery-wheel'],
+    ['bronze-age', 'metallurgical-vessel', 'kiln', 'pottery', 'crucible'],
+    ['bronze-age', 'copper-heat-treatment', 'copper', 'heat', 'annealing'],
+    ['bronze-age', 'suspended-vertical-reference', 'cordage', 'rock', 'plumb-line'],
+    ['classical-antiquity', 'river-driven-wheel', 'river', 'wheel', 'waterwheel'],
+    ['classical-antiquity', 'water-powered-milling', 'waterwheel', 'rotary-quern', 'watermill'],
+    ['bronze-age', 'wheel-assisted-pottery', 'pottery-wheel', 'clay', 'pottery'],
+    ['bronze-age', 'crucible-bronze-casting', 'crucible', 'bronze', 'bronze-tool'],
+    ['bronze-age', 'annealed-copper-working', 'annealing', 'copper', 'tool'],
+    ['bronze-age', 'plumbed-stonework', 'plumb-line', 'rock', 'masonry'],
+    ['classical-antiquity', 'watermill-flour', 'watermill', 'crop', 'flour'],
     ['first-light', 'drying-sea', 'sea', 'wind', 'salt'],
     ['stone-age', 'harvested-forest-resin', 'forest', 'stone-tool', 'resin'],
     ['stone-age', 'prepared-resin-adhesive', 'resin', 'heat', 'adhesive'],

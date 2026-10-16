@@ -16,6 +16,38 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('preserves a 219/277 v7 save and adds production, water power and old-gap reading without rewards', () => {
+    const previous: SavedProgress = {
+      ...fresh(), discoveredIds: elements.slice(0, 219).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 277).map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      favoriteIds: ['dugout-canoe', 'pottery'], readHistoricalElementIds: ['resin'],
+      insightCredits: 1, insightFailureProgress: 3,
+      hideFinalElements: true, collapsedShelves: ['bronze-age'],
+    }
+    const loaded = parseProgress(exportProgress(previous))!
+    expect(loaded).toEqual(previous)
+    expect(loaded.readHistoricalElementIds).not.toContain('pottery')
+    const expanded: SavedProgress = {
+      ...loaded, discoveredIds: elements.map((element) => element.id),
+      discoveredRecipeIds: recipes.map((recipe) => recipe.id),
+      favoriteIds: [...loaded.favoriteIds, 'watermill'],
+      readHistoricalElementIds: [
+        ...loaded.readHistoricalElementIds,
+        'pottery-wheel', 'crucible', 'annealing', 'plumb-line', 'waterwheel', 'watermill',
+        'pottery', 'wheel', 'mold', 'quarry', 'crop', 'bread',
+      ],
+    }
+    expect(parseProgress(exportProgress(expanded))).toEqual(expanded)
+    expect(expanded.version).toBe(7)
+    expect(expanded.rewardedCollectionIds).toEqual(previous.rewardedCollectionIds)
+    expect(expanded.rewardedChallengeEraIds).toEqual(previous.rewardedChallengeEraIds)
+    expect(expanded.insightCredits).toBe(previous.insightCredits)
+    expect(expanded.insightFailureProgress).toBe(previous.insightFailureProgress)
+  })
+
   it('preserves the 215/270 v7 campaign and round-trips watercraft, resin and explicit reading without new rewards', () => {
     const previous: SavedProgress = {
       ...fresh(),

@@ -10,6 +10,7 @@ This guide describes implemented content. The [catalog plan](catalog-plan.md) se
 - [Production foundations](#production-foundations)
 - [Craft, records and engineering](#craft-records-and-engineering)
 - [Stone Age materials and watercraft](#stone-age-materials-and-watercraft)
+- [Specialized production and water power](#specialized-production-and-water-power)
 - [Landmark track and learning labs](#landmark-track-and-learning-labs)
 - [Engineering](#engineering)
 - [Commerce](#commerce)
@@ -18,9 +19,9 @@ This guide describes implemented content. The [catalog plan](catalog-plan.md) se
 
 ## Classical Antiquity and Iron Age branches
 
-Classical Antiquity is an optional regional chapter with 43 discoveries. It unlocks after Iron, Iron Tool, Road and Market. Its approximate 800 BCE-500 CE gameplay frame covers overlapping Mediterranean histories, not a universal period or a necessary stage in every society's history. Earlier precedents keep their own dates, and regional comparisons do not imply simultaneous Classical ages.
+Classical Antiquity is an optional regional chapter with 45 discoveries. It unlocks after Iron, Iron Tool, Road and Market. Its approximate 800 BCE-500 CE gameplay frame covers overlapping Mediterranean histories, not a universal period or a necessary stage in every society's history. Earlier precedents keep their own dates, and regional comparisons do not imply simultaneous Classical ages.
 
-All 36 discoveries added after the initial seven Age V discoveries are optional even for the unchanged Age V completion target. Existing Scroll, Coin and Aqueduct retain their earlier ages and recipes. The [Age V branch table](gameplay.md#optional-age-v-branches) includes inquiry, civic life, architecture, commerce, scholarship and intellectual practices, with recipe spoilers behind a disclosure.
+All 38 discoveries added after the initial seven Age V discoveries are optional even for the unchanged Age V completion target. Existing Scroll, Coin and Aqueduct retain their earlier ages and recipes. The [Age V branch table](gameplay.md#optional-age-v-branches) includes inquiry, civic life, architecture, commerce, scholarship and intellectual practices, with recipe spoilers behind a disclosure.
 
 Optional Iron Age Rotary Quern, Lathe and Alphabet branches provide additional grinding, woodworking and writing discoveries. Their histories distinguish earlier precedents from regional evidence rather than dating all three inventions to that gameplay page. See the [five gameplay pages](gameplay.md#five-gameplay-pages) for progression requirements.
 
@@ -34,7 +35,7 @@ The catalog plan classifies regional and research-only proposals separately and 
 
 ## Stone Age materials and watercraft
 
-The third batch adds **Resin, Adhesive, Dugout Canoe and Paddle**, all optional Stone Age discoveries, plus seven formulas. The catalog now contains **219 elements and 277 recipes**. Eight full histories cover the four additions and four existing gaps: Stone Tool, Cordage, Net and Hearth. Atlas coverage is **135 histories**, leaving **84 gaps**.
+The third batch added **Resin, Adhesive, Dugout Canoe and Paddle**, all optional Stone Age discoveries, plus seven formulas. That milestone reached **219 elements and 277 recipes**. Eight full histories cover the four additions and four existing gaps: Stone Tool, Cordage, Net and Hearth. Its Atlas snapshot was **135 histories**, leaving **84 gaps**.
 
 Resin is a natural conifer resource, not plant gum, birch tar or every tree's sap. Its preparation represents one adhesive tradition rather than universal glue chemistry. Dugouts are distinct from the existing later Boat page, and paddles are human-powered equipment, not sails. The [audit and evidence limits](catalog-plan.md#milestone-219-stone-age-materials-and-watercraft) distinguish regional objects, contextual dates and interpretations. Paddle has no unsupported numerical date.
 
@@ -54,6 +55,35 @@ All four discoveries are reachable without later Timber or metal tools. Every ne
 | Paddle + Boat | Voyage |
 
 Six pairs are symbolic associations. Resin preparation is a simplified process; warming need not create a new chemical substance. Handles, binding, woodworking skill, catches and journey conditions are omitted. These are not practical manufacturing or watercraft instructions.
+
+</details>
+
+## Specialized production and water power
+
+The fourth batch adds **Pottery Wheel, Crucible, Annealing and Plumb Line** in Bronze Age and **Waterwheel and Watermill** in Classical Antiquity, with eleven formulas. Current totals are **225 elements, 288 recipes and 147 full histories**, leaving **78 original gaps**. Every new node has an onward use. Pottery, Wheel, Mold, Quarry, Crop and Bread also receive full histories.
+
+The [acceptance audit](catalog-plan.md#milestone-225-specialized-production-measurement-and-water-power) separates historical development, regional evidence and gameplay placement. Pottery remains possible without a wheel; an arbitrary pot is not a crucible; annealing is not smelting, alloying or steel hardening; a plumb line is not a complete survey kit; and powered milling does not begin the history of grinding. Abstract-only and reconstructed evidence is labeled.
+
+All six discoveries are optional. The Bronze Age additions are reachable without later tools; water-power results remain locked until Age V. Neither water-power discovery changes Age V unlocks or completion, and the entire older catalog alone still supports every age challenge. Saves remain version 7, and reading remains discovered-only, explicit and free.
+
+<details>
+<summary>Specialized production and water-power recipes (spoilers)</summary>
+
+| Inputs | Result |
+| --- | --- |
+| Wheel + Pottery | Pottery Wheel |
+| Kiln + Pottery | Crucible |
+| Copper + Heat | Annealing |
+| Cordage + Rock | Plumb Line |
+| River + Wheel | Waterwheel |
+| Waterwheel + Rotary Quern | Watermill |
+| Pottery Wheel + Clay | Pottery |
+| Crucible + Bronze | Bronze Tool |
+| Annealing + Copper | Metal Tool |
+| Plumb Line + Rock | Masonry |
+| Watermill + Crop | Flour |
+
+Six routes are symbolic and five are simplified processes. Ceramic preparation, drying/firing, prior metal working and cooling, casting molds/finishing, construction skills and mill transmission are omitted as appropriate. Crop means suitable prepared grain in the mill route. These are not technical operating instructions.
 
 </details>
 

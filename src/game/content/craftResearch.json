@@ -2,6 +2,71 @@
   "schemaVersion": 2,
   "sources": [
     {
+      "id": "berg-potters-wheel", "title": "The Potter's Wheel", "authors": ["Ina Berg"], "institution": "Encyclopedia of Global Archaeology, Springer Nature; University of Manchester research record", "sourceType": "reference-encyclopedia",
+      "url": "https://research.manchester.ac.uk/en/publications/the-potters-wheel/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://research.manchester.ac.uk/en/publications/the-potters-wheel/", "accessLevel": "abstract-only", "locator": "University-hosted abstract and 2020 chapter metadata: fifth-millennium BC Near Eastern development, rotational energy and manual force, early staged/hybrid use rather than universal full throwing. Full encyclopedia chapter not read; no worldwide adoption sequence or exact invention date inferred." }
+    },
+    {
+      "id": "ucl-pottery-production", "title": "Pottery production", "authors": [], "institution": "University College London, Digital Egypt for Universities", "sourceType": "archaeology-institution",
+      "url": "https://www.ucl.ac.uk/museums-static/digitalegypt/pottery/production.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://www.ucl.ac.uk/museums-static/digitalegypt/pottery/production.html", "accessLevel": "selected-passages", "locator": "Original HTML production table: Nile silt/marl, hand pinching, coiling, cores, molds and wheel; Egyptian wheel row Fifth Dynasty (2400 BC); drying and open-fire/kiln firing rows. These are Egyptian examples, not the earliest pottery or wheel worldwide. Table firing figures are not universal metalworking specifications. Copyright year not treated as publication date; a later shell refetch was blocked but original HTML passages were read." }
+    },
+    {
+      "id": "el-argar-crucible", "title": "Rediscovering famous assemblages: A rare Bronze Age crucible from El Argar, Spain", "authors": ["A. Mongiatti", "I. Montero-Ruiz"], "institution": "Archaeometry; British Museum research repository", "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1111/arcm.12519", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://britishmuseum.iro.bl.uk/entities/publication/5110ab08-7784-4900-ba81-e439249e936b", "accessLevel": "abstract-only", "locator": "Original repository abstract and metadata, Archaeometry 62(2), April 2020, pp. 329-345: Siret excavation at El Argar, X-radiography/SEM, thick walls/spout/non-refractory fabric, copper-alloy melting, tin/arsenic. Alloying, refining, recycling and transition interpretations are possibilities, not separately demonstrated operations. No numerical artifact date supplied; full paper not read." }
+    },
+    {
+      "id": "getty-metallography", "title": "Metallography and Microstructure of Ancient and Historic Metals", "authors": ["David A. Scott"], "institution": "Getty Conservation Institute and J. Paul Getty Museum, in association with Archetype Books", "sourceType": "reference-textbook",
+      "url": "https://www.getty.edu/publications-reports/item/248C43", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://media.getty.edu/Text/4dbeaa60-ceda-5377-ac54-e378ed4c2bc9.pdf", "accessLevel": "selected-passages", "locator": "1991 book: printed pp. 3, 7-9 (PDF 27, 31-33), work-hardening, cycles of working/annealing, recrystallization, time/composition and hot-working ambiguity; printed p. 88 (PDF 113), Tell Ajjul Late Bronze Age bronze sword and proposed over-annealing. Structure can suggest heat/work history, not an exact treatment recipe or first invention. Technical treatment instructions are not reproduced." }
+    },
+    {
+      "id": "met-lisht-plumb-bob", "title": "Plumb bob, 22.1.129", "authors": [], "institution": "The Metropolitan Museum of Art", "sourceType": "museum-collection",
+      "url": "https://www.metmuseum.org/art/collection/search/546810", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://collectionapi.metmuseum.org/public/collection/v1/objects/546810", "accessLevel": "collection-record", "locator": "Official collection API: travertine (Egyptian alabaster) plumb bob, ca. 1850-1700 B.C., late Dynasty 12-13, Lisht North cemetery south of pyramid below House A1:2, MMA excavations 1920-21. Object is a bob, not an intact line; excavation/acquisition years are not manufacture. Main collection page rate-limited; official API read." }
+    },
+    {
+      "id": "gem-plumb-level", "title": "Plumb Line Level", "authors": [], "institution": "Grand Egyptian Museum", "sourceType": "museum-collection",
+      "url": "https://gem.eg/en/collection/artefacts/plumb-line-level", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://gem.eg/en/collection/artefacts/plumb-line-level", "accessLevel": "collection-record", "locator": "Original HTML artifact description, GEM3458: Middle Kingdom/Dynasty 12 wooden triangular builders'/carpenters' level, suspended bob and now-missing string. Gravity-based vertical reference helps assess level surfaces. No numerical origin date or attribution to a named pyramid/field survey; simplified extraction showed only ticket overlay." }
+    },
+    {
+      "id": "vitruvius-watermills", "title": "De Architectura, Book X.5: waterwheels and mills", "authors": ["Marcus Vitruvius Pollio"], "institution": "LacusCurtius, hosted by the University of Chicago", "sourceType": "library-collection",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html", "accessLevel": "selected-passages", "locator": "Book X.5.1-2 in the hosted English translation: river-current paddles turning wheels, water lifting, toothed vertical drum engaging horizontal wheel, millstone, hopper, grain and flour. Separately scoped from X.2/X.6 receipt. A technical description is textual evidence, not a complete excavated machine, a first-invention date or independent regional development." }
+    },
+    {
+      "id": "barbegal-carbonates", "title": "The second century CE Roman watermills of Barbegal: Unraveling the enigma of one of the oldest industrial complexes", "authors": ["G. Surmelihindi", "P. Leveau", "C. Spotl", "V. Bernard", "C. W. Passchier"], "institution": "Science Advances", "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1126/sciadv.aar3620", "publicationDate": "2018-09-05",
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6124920/", "accessLevel": "selected-passages", "locator": "Abstract, introduction and selected results/discussion, also via Europe PMC XML: second-century CE Barbegal, southern France, 16 mills, carbonate casts after wood decay and incomplete reconstructions. Isotope-based seasonal operation and proposed hardtack supply are interpretations, not proved consumers/cargo; no worldwide priority claim adopted." }
+    },
+    {
+      "id": "barbegal-hydraulics", "title": "Reconstructing the hydraulics of the world's first industrial complex, the second century CE Barbegal watermills, France", "authors": ["Cees W. Passchier", "Marcel Bourgeois", "Pierre-Louis Viollet", "Gul Surmelihindi", "Vincent Bernard", "Philippe Leveau", "Christoph Spotl"], "institution": "Scientific Reports", "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1038/s41598-020-74900-5", "publicationDate": "2020-10-21",
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7578838/", "accessLevel": "selected-passages", "locator": "Abstract, carbonate reconstruction results, Fig. 4 and Possible undershot mill and bypass/Possible overshot mill: aqueduct-fed complex, lower-mill elbow flume and overshot interpretation fitting deposits/hydraulic modeling. Not a complete surviving wheel; some fragments/geometry uncertain. Title's worldwide-first rhetoric is not adopted. Author/date/DOI metadata checked through original full-text XML." }
+    },
+    {
+      "id": "mgml-wheel-axle", "title": "Ljubljana. History. City.", "authors": [], "institution": "City Museum of Ljubljana, Museum and Galleries of Ljubljana", "sourceType": "museum-essay",
+      "url": "https://mgml.si/en/city-museum/exhibitions/273/ljubljana-history-city/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://mgml.si/en/city-museum/exhibitions/273/ljubljana-history-city/", "accessLevel": "selected-passages", "locator": "Permanent-exhibition introduction and Prehistory: pile-dwelling-period wooden wheel with axle, about 5,200 years old, Ljubljana marshes. Institutional summary, not dating report. Museum superlative is not proof of the first wheel ever or of a transport-to-pottery diffusion route; no exact BCE conversion invented." }
+    },
+    {
+      "id": "ucl-quarries", "title": "Quarries in Ancient Egypt", "authors": [], "institution": "University College London, Digital Egypt for Universities", "sourceType": "archaeology-institution",
+      "url": "https://www.ucl.ac.uk/museums-static/digitalegypt/stone/quarries.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://www.ucl.ac.uk/museums-static/digitalegypt/stone/quarries.html", "accessLevel": "selected-passages", "locator": "Main institutional account: Egyptian limestone/sandstone, open quarries and galleries, clearing unsuitable material, red ochre marking and Aswan granite. Regional construction chronology is not quarry invention. No claim that quarrying proves metal tools, plumb-line use, or an ancient tin mine; copyright is not publication date." }
+    },
+    {
+      "id": "smithsonian-cultivation", "title": "Humans Change the World", "authors": [], "institution": "Smithsonian National Museum of Natural History, Human Origins Program", "sourceType": "museum-essay",
+      "url": "https://humanorigins.si.edu/human-characteristics/humans-change-world", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://humanorigins.si.edu/human-characteristics/humans-change-world", "accessLevel": "selected-passages", "locator": "Original HTML Turning Point and cultivation timeline: growing/breeding plants, food production, landscape change; regional examples of wheat, squash, rice and potatoes. Simplified extraction exposed only title. Schematic relative dates/city labels are not adopted as exact origins; cultivation, domestication and gathering remain distinct." }
+    },
+    {
+      "id": "ucl-metal-casting", "title": "Metal production in Egypt", "authors": [], "institution": "University College London, Digital Egypt for Universities", "sourceType": "archaeology-institution",
+      "url": "https://www.ucl.ac.uk/museums-static/digitalegypt/metal/metal.html", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://www.ucl.ac.uk/museums-static/digitalegypt/metal/metal.html", "accessLevel": "selected-passages", "locator": "Creating an object section: hammering, open stone/shaped-pottery casting molds, late Naqada II/III casting, multipart complex forms. The page distinguishes sand used to subdivide metal, not whole-object casting. Linked unprovenanced Roman/Byzantine molds are not promoted to Bronze Age finds; no global first or technical instructions adopted." }
+    },
+    {
       "id": "latium-resin-hafting", "title": "Hafting of Middle Paleolithic tools in Latium (central Italy): New data from Fossellone and Sant'Agostino caves",
       "authors": ["Ilaria Degano", "Sylvain Soriano", "Paola Villa", "Luca Pollarolo", "Jeannette J. Lucejko", "Zenobia Jacobs", "Katerina Douka", "Silvana Vitagliano", "Carlo Tozzi"],
       "institution": "PLOS ONE", "sourceType": "peer-reviewed-study", "url": "https://doi.org/10.1371/journal.pone.0213473", "publicationDate": "2019-06-20",
@@ -807,6 +872,239 @@
       "historicalUncertainty": ["The overview is not a full excavation report; no origin region or first date is invented.", "Controlled use, fire-making, cooking evidence and naturally burnt deposits require different arguments."],
       "gameplaySimplifications": ["The two-input clue omits maintenance, skill and setting and supplies no operating instructions.", "Hearth, Kiln and Forge retain separate gameplay roles rather than one universal developmental sequence."],
       "furtherResearch": [{ "question": "Which excavated deposits distinguish repeated managed fire use from natural burning?", "sourceIds": ["smithsonian-hearths"] }]
+    },
+    {
+      "elementId": "pottery-wheel", "elementName": "Pottery Wheel",
+      "historicalOverview": { "text": "A pottery wheel applies rotation to forming clay, not to carrying a vehicle. Berg's encyclopedia abstract places Near Eastern development in the fifth millennium BCE and emphasizes early staged or hybrid techniques. Full throwing is therefore not an adequate description of every early wheel-assisted pot, and ceramics themselves are much older.", "sourceIds": ["berg-potters-wheel", "xianrendong-pottery"] },
+      "manufactureOrUse": { "text": "Rotational energy and the potter's hands work together. UCL lists wheel use alongside pinching, coiling, cores and molds, followed by drying and firing. Equipment alone does not supply clay preparation or skill, and the finished fired vessel is not produced simply by spinning wet clay.", "sourceIds": ["berg-potters-wheel", "ucl-pottery-production"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Bronze Age gameplay provides a specialized production branch, not the date of invention. The Near Eastern fifth-millennium development precedes this gate; UCL's Fifth Dynasty example around 2400 BCE is an Egyptian regional attestation, not a universal introduction or adoption date.", "sourceIds": ["berg-potters-wheel", "ucl-pottery-production"] },
+      "relatedDiscoveries": [
+        { "elementId": "pottery", "relationship": "documented", "explanation": "Wheel-assisted forming is one pottery tradition, not a requirement for all ceramics.", "sourceIds": ["ucl-pottery-production"] },
+        { "elementId": "wheel", "relationship": "gameplay-abstraction", "explanation": "Shared rotation supplies a clue without asserting that vehicle wheels invented the potter's equipment.", "sourceIds": ["berg-potters-wheel"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Fifth millennium BCE: Near Eastern development", "dateType": "regional-development", "precision": "approximate", "regions": ["Near East"], "sourceIds": ["berg-potters-wheel"], "note": "Broad encyclopedia abstract chronology, not a directly dated first wheel or proof of full throwing." },
+        { "dateRange": "Circa 2400 BCE: Egyptian Fifth Dynasty wheel use", "dateType": "regional-development", "precision": "approximate", "regions": ["Egypt"], "sourceIds": ["ucl-pottery-production"], "note": "UCL production-table example; regional use is distinct from Near Eastern development and universal adoption." }
+      ],
+      "associatedRegions": ["Near East", "Egypt"],
+      "archaeologicalEvidence": [{ "text": "The encyclopedia abstract synthesizes early wheel use; UCL's Egyptian production table associates the wheel with the Fifth Dynasty. These are scholarly and institutional interpretations, not a newly inspected excavation of an intact fifth-millennium wheel.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["berg-potters-wheel", "ucl-pottery-production"] }],
+      "historicalSignificance": { "text": "Separating a forming tool from its product makes specialization visible without erasing skilled hand-building. Regional uptake and hybrid techniques show why a simple succession from handmade to universally wheel-thrown ceramics would misrepresent craft practice.", "sourceIds": ["berg-potters-wheel", "ucl-pottery-production"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Berg's full chapter was not read; the verified abstract cannot establish every regional diffusion route.", "Wheel-assisted forming and full throwing are not interchangeable labels, and the earliest surviving evidence need not date invention."],
+      "gameplaySimplifications": ["Wheel and Pottery associate rotation with craft rather than physically constructing equipment from a vehicle and pot.", "The Clay route omits preparation, drying and firing and leaves the original hand-built pottery route unchanged."],
+      "furtherResearch": [{ "question": "Which manufacturing traces distinguish staged wheel assistance from full throwing in a particular regional assemblage?", "sourceIds": ["berg-potters-wheel"] }]
+    },
+    {
+      "elementId": "crucible", "elementName": "Crucible",
+      "historicalOverview": { "text": "A crucible is a vessel used in metallurgical work, not an ordinary ceramic container renamed. A study of the Siret-excavated El Argar assemblage in southeast Spain identifies a shallow vessel used for copper-alloy melting. The authors distinguish this example from contemporary regional vessels associated with ore smelting.", "sourceIds": ["el-argar-crucible"] },
+      "manufactureOrUse": { "text": "The studied vessel has thick walls, a spout and non-refractory fabric, illustrating that no single modern ceramic specification describes every ancient crucible. Fabric, vessel shape, exposure and intended operation matter. Ordinary pottery firing, melting already metallic material and chemically reducing ore are different processes; a ceramic kiln is not automatically a metalworking installation.", "sourceIds": ["el-argar-crucible", "ucl-pottery-production", "penn-metallurgy"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement is anchored to the named El Argar example, not a claim that crucibles began there or were absent earlier. The abstract supplies a regional Bronze Age context but no numerical object date, so none is fabricated for the chronology panel.", "sourceIds": ["el-argar-crucible"] },
+      "relatedDiscoveries": [
+        { "elementId": "pottery", "relationship": "gameplay-abstraction", "explanation": "Ceramic knowledge is a useful association, not proof that any fired pot can serve as a crucible.", "sourceIds": ["el-argar-crucible", "ucl-pottery-production"] },
+        { "elementId": "mold", "relationship": "documented", "explanation": "Casting uses a shape-defining form distinct from a vessel containing metal; the exact El Argar products are not identified here.", "sourceIds": ["ucl-metal-casting", "el-argar-crucible"] },
+        { "elementId": "bronze-tool", "relationship": "gameplay-abstraction", "explanation": "The alternate casting route omits mold and finishing rather than identifying a preserved tool from this crucible.", "sourceIds": ["el-argar-crucible"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["El Argar, southeast Spain"],
+      "archaeologicalEvidence": [{ "text": "X-radiography and scanning electron microscopy of the excavated museum object support a melting interpretation and identify tin and arsenic. Suggested alloying, refining, recycling or pre-casting uses are possible explanations, not four separately demonstrated activities.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["el-argar-crucible"] }],
+      "historicalSignificance": { "text": "A specialized working vessel distinguishes handling molten metal from ore reduction and from shaping a cast product. Its archaeological analysis also makes workshop debris informative about production, while showing why residue chemistry alone may not identify every operation or finished object.", "sourceIds": ["el-argar-crucible", "penn-metallurgy"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Only the original research abstract and repository metadata were inspected, not the full paper.", "The proposed transition between arsenic-rich copper and tin bronze, including recycling, remains an interpretation; the abstract does not date the first crucible."],
+      "gameplaySimplifications": ["Kiln and Pottery represent a workshop association, not a vessel converted by another firing.", "The Bronze route starts with prepared alloy; it omits mold, cooling and finishing and does not manufacture bronze from copper alone."],
+      "furtherResearch": [{ "question": "Which residues, wear and fabric properties distinguish melting from smelting in a specific crucible assemblage?", "sourceIds": ["el-argar-crucible"] }]
+    },
+    {
+      "elementId": "annealing", "elementName": "Annealing",
+      "historicalOverview": { "text": "Annealing names heat treatment, not a new metal. Scott's metallographic account explains how working can harden copper and related metals while reducing ductility, and how subsequent heating can produce recrystallization. Cycles of working and annealing can permit further shaping rather than merely producing a stronger alloy.", "sourceIds": ["getty-metallography"] },
+      "manufactureOrUse": { "text": "Prior deformation, composition, treatment time and thermal history affect the result. Annealing is distinct from reducing ore during smelting, melting an existing metal, or mixing an alloy. It must not be equated with quenching or tempering treatments associated with steel; a single cooling rule cannot be assumed across metals. This account supplies no operating instructions.", "sourceIds": ["getty-metallography", "penn-metallurgy"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age gameplay highlights material-working knowledge rather than a first invention. Scott discusses a Late Bronze Age bronze object from Tell Ajjul and interprets grain variation as possibly including over-annealing. That regional worked-alloy example does not prove the first treatment of native copper or supply an exact origin year.", "sourceIds": ["getty-metallography"] },
+      "relatedDiscoveries": [
+        { "elementId": "copper", "relationship": "documented", "explanation": "Copper belongs to the metals whose working and recrystallization Scott discusses; heating alone is not proof of a full ancient treatment sequence.", "sourceIds": ["getty-metallography"] },
+        { "elementId": "tool", "relationship": "gameplay-abstraction", "explanation": "The generic Metal Tool result represents further working, not a finished implement made by annealing alone.", "sourceIds": ["getty-metallography"] },
+        { "elementId": "crucible", "relationship": "gameplay-abstraction", "explanation": "The catalog separates a melting vessel from solid-metal heat treatment rather than requiring one for the other.", "sourceIds": ["el-argar-crucible", "getty-metallography"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Tell Ajjul, southern Levant"],
+      "archaeologicalEvidence": [{ "text": "Scott's Late Bronze Age Tell Ajjul case reports variable grain size and twinning in a worked bronze object; possible over-annealing is an interpretation. His general account warns that hot-working and cold-working followed by annealing can produce similar recrystallized structures.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["getty-metallography"] }],
+      "historicalSignificance": { "text": "Heat treatment changes the relationship between material properties and shaping without necessarily changing alloy composition. Distinguishing it from extraction and casting gives craft knowledge its own role, while metallographic ambiguity prevents reconstructing an exact ancient sequence from a single structural feature.", "sourceIds": ["getty-metallography"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The selected textbook passages establish mechanisms and an archaeological interpretation, not the earliest annealing or a worldwide adoption chronology.", "Similar microstructures may follow different work/heat histories; modern process names do not establish ancient terminology."],
+      "gameplaySimplifications": ["Copper and Heat omit prior working, time, temperature, atmosphere and cooling conditions; not all heated copper has been annealed.", "The toolmaking association omits further shaping and finishing and does not turn copper into bronze or quenched steel."],
+      "furtherResearch": [{ "question": "When can metallography distinguish hot-working from cold-working followed by annealing?", "sourceIds": ["getty-metallography"] }]
+    },
+    {
+      "elementId": "plumb-line", "elementName": "Plumb Line",
+      "historicalOverview": { "text": "A plumb line uses a suspended weight to provide a vertical reference under gravity. The Met preserves an Egyptian travertine plumb bob from Lisht North, dated about 1850-1700 BCE. The weight is evidence for the tool family, not a surviving complete cord assembly or proof of its first invention.", "sourceIds": ["met-lisht-plumb-bob"] },
+      "manufactureOrUse": { "text": "The Grand Egyptian Museum describes a Middle Kingdom wooden triangular level used by builders and carpenters. A line and bob supplied a vertical reference within the frame to assess level surfaces; the string is now missing. A plumb line by itself checks vertical alignment, not every distance, angle or land boundary measured in surveying.", "sourceIds": ["gem-plumb-level"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement reflects these Middle Kingdom Egyptian examples, not a universal onset of construction measurement. The Met object's approximate date and the GEM level's Dynasty 12 attribution describe different collection records and must not be combined into a single intact dated instrument.", "sourceIds": ["met-lisht-plumb-bob", "gem-plumb-level"] },
+      "relatedDiscoveries": [
+        { "elementId": "cordage", "relationship": "gameplay-abstraction", "explanation": "A suspended line motivates the ingredient without claiming the missing Egyptian string was the game's generic Cordage.", "sourceIds": ["gem-plumb-level"] },
+        { "elementId": "masonry", "relationship": "gameplay-abstraction", "explanation": "A building reference suggests controlled stonework without proving use on a named monument or every construction site.", "sourceIds": ["gem-plumb-level"] },
+        { "elementId": "balance", "relationship": "gameplay-abstraction", "explanation": "Both employ weights, but the plumb line references gravity direction rather than comparing mass.", "sourceIds": ["gem-plumb-level"] }
+      ],
+      "approximateDates": [{ "dateRange": "Circa 1850-1700 BCE: Lisht North plumb bob", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Lisht North, Egypt"], "sourceIds": ["met-lisht-plumb-bob"], "note": "Museum dating of the travertine weight, not the first plumb line, a preserved cord, or the date of its twentieth-century excavation." }],
+      "associatedRegions": ["Lisht North, Egypt", "Egypt"],
+      "archaeologicalEvidence": [
+        { "text": "The Met record locates its travertine bob in the Lisht North cemetery south of the pyramid, below House A1:2, excavated in 1920-21. A find near a pyramid does not prove use in building that pyramid.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["met-lisht-plumb-bob"] },
+        { "text": "GEM3458 is a separate wooden triangular level with its string missing. The museum explains the working arrangement; preserved components and reconstructed function must remain distinct.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["gem-plumb-level"] }
+      ],
+      "historicalSignificance": { "text": "A gravity-based reference brings repeatable alignment into building and carpentry without requiring numerical surveying. Distinguishing the bob, complete suspended line and framed level also prevents a single surviving weight from standing in for every ancient measuring instrument.", "sourceIds": ["met-lisht-plumb-bob", "gem-plumb-level"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The records do not establish an origin region, inventor or complete history of surveying.", "Neither inspected object proves the exact game recipe, use on a named pyramid, or a particular field-boundary survey."],
+      "gameplaySimplifications": ["Cordage and Rock symbolize suitable suspension and a weight, not any tied stone or a complete survey kit.", "The Masonry association omits shaped blocks, support and skilled construction; earlier masonry remains available."],
+      "furtherResearch": [{ "question": "What additional evidence is needed to connect a preserved plumb bob to a specific building or surveying operation?", "sourceIds": ["met-lisht-plumb-bob", "gem-plumb-level"] }]
+    },
+    {
+      "elementId": "waterwheel", "elementName": "Waterwheel",
+      "historicalOverview": { "text": "A waterwheel converts water movement into rotary motion rather than naming the entire machine it drives. Vitruvius X.5 describes river-current paddles turning wheels and relates that motion to water lifting and mills. This is ancient textual evidence, not proof of a first inventor or an excavated installation matching every described detail.", "sourceIds": ["vitruvius-watermills"] },
+      "manufactureOrUse": { "text": "An undershot arrangement receives moving water at the lower part of the wheel; an overshot arrangement receives water above, exploiting available head as it descends. The Barbegal hydraulic study tests these alternatives and supports an overshot elbow-flume reconstruction for the lower mills. Configuration, water supply and axis/transmission arrangement must not be collapsed into one universal wheel design or evolutionary ladder.", "sourceIds": ["barbegal-hydraulics", "vitruvius-watermills"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Classical Antiquity placement groups the Roman textual and archaeological examples. Barbegal in southern France supplies second-century CE regional evidence, not the global beginning of water power. Its aqueduct-fed installation also shows why River is a clue rather than a necessary supply for every waterwheel.", "sourceIds": ["barbegal-carbonates", "barbegal-hydraulics", "vitruvius-watermills"] },
+      "relatedDiscoveries": [
+        { "elementId": "watermill", "relationship": "documented", "explanation": "A wheel can supply rotary power to milling; the mill additionally needs transmission and grinding equipment.", "sourceIds": ["vitruvius-watermills"] },
+        { "elementId": "aqueduct", "relationship": "documented", "explanation": "The Barbegal complex was supplied by an aqueduct, not simply a wheel placed in an uncontrolled river.", "sourceIds": ["barbegal-hydraulics"] },
+        { "elementId": "water-screw", "relationship": "gameplay-abstraction", "explanation": "Waterwheel names power conversion here; Water Screw is a distinct water-lifting mechanism, not an alias.", "sourceIds": ["vitruvius-watermills", "vitruvius-machines"] }
+      ],
+      "approximateDates": [{ "dateRange": "Second century CE: Barbegal waterwheel complex", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Barbegal, southern France"], "sourceIds": ["barbegal-carbonates", "barbegal-hydraulics"], "note": "Regional complex chronology; wooden machinery has decayed and wheel/flume geometry is reconstructed from archaeological traces and carbonate deposits." }],
+      "associatedRegions": ["Roman Mediterranean", "Barbegal, southern France"],
+      "archaeologicalEvidence": [
+        { "text": "Vitruvius X.5 describes current-driven wheels and motion transfer. A technical description attests knowledge without proving the date of first construction.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["vitruvius-watermills"] },
+        { "text": "Carbonate casts preserve traces of decayed timber at Barbegal. The lower-mill overshot/elbow-flume model fits deposit geometry and hydraulic calculations, but is a reconstruction rather than a complete surviving wheel.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["barbegal-hydraulics"] }
+      ],
+      "historicalSignificance": { "text": "The wheel separates a natural energy supply from a particular grinding task, making power conversion visible as an engineering role. Ancient designers adapted installations to head, flow and site constraints; the evidence does not require every community to adopt one configuration or pass through the same sequence.", "sourceIds": ["vitruvius-watermills", "barbegal-hydraulics"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The consulted Roman examples are not a worldwide survey or proof of independent invention elsewhere.", "Barbegal geometry depends on fragment attribution and modeling; overshot and undershot are configurations, not a universal chronological succession."],
+      "gameplaySimplifications": ["River and Wheel omit wheel construction, siting, channels, supports and water control.", "This optional branch does not add an Age V unlock requirement or replace earlier mechanical discoveries."],
+      "furtherResearch": [{ "question": "How do deposit geometry and available head discriminate among competing waterwheel reconstructions?", "sourceIds": ["barbegal-hydraulics"] }]
+    },
+    {
+      "elementId": "watermill", "elementName": "Watermill",
+      "historicalOverview": { "text": "A watermill is a powered installation, represented here by grain milling, not the invention of grinding. Hand-operated saddle and rotary querns predate these Roman examples. Vitruvius describes a water-driven transmission, millstone and grain supply, while Barbegal preserves archaeological traces of a large milling complex.", "sourceIds": ["northampton-quern", "vitruvius-watermills", "barbegal-carbonates"] },
+      "manufactureOrUse": { "text": "The Roman text connects a toothed vertical drum on the axle with a horizontal wheel and millstone, with grain fed from a hopper. Supplying power is only part of the installation: grinding surfaces, transmission, grain preparation and maintenance matter. The recipe uses Rotary Quern as an existing grinding concept, not a claim that any hand quern can simply be attached to a wheel.", "sourceIds": ["vitruvius-watermills", "northampton-quern"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Classical Antiquity placement follows Roman written and archaeological examples rather than a universal invention date. Barbegal's second-century CE complex in southern France had sixteen mills. That regional installation is distinct from the earlier history of hand milling and does not make watermills an Age V prerequisite.", "sourceIds": ["barbegal-carbonates", "northampton-quern"] },
+      "relatedDiscoveries": [
+        { "elementId": "waterwheel", "relationship": "documented", "explanation": "Hydraulic power drives the grinding installation but does not by itself supply the whole mill.", "sourceIds": ["vitruvius-watermills"] },
+        { "elementId": "rotary-quern", "relationship": "gameplay-abstraction", "explanation": "The older hand-grinding implement represents a milling principle, not a proven direct component of every Roman mill.", "sourceIds": ["northampton-quern", "vitruvius-watermills"] },
+        { "elementId": "flour", "relationship": "documented", "explanation": "Vitruvius explicitly describes grain being ground to flour; powered milling is not flour's beginning.", "sourceIds": ["vitruvius-watermills", "northampton-quern"] }
+      ],
+      "approximateDates": [{ "dateRange": "Second century CE: Barbegal milling complex", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Barbegal, southern France"], "sourceIds": ["barbegal-carbonates"], "note": "Date of a regional Roman complex, not the first watermill, first flour or first bread." }],
+      "associatedRegions": ["Roman Mediterranean", "Barbegal, southern France"],
+      "archaeologicalEvidence": [
+        { "text": "Vitruvius X.5.2 is written evidence for powered grain milling and its transmission, rather than a complete machine excavated at the writer's location.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["vitruvius-watermills"] },
+        { "text": "Barbegal's mill remains and carbonate casts inform reconstruction after wooden components decayed. Seasonal operation and a proposed hardtack market are research interpretations, not direct identification of every product or consumer.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["barbegal-carbonates"] }
+      ],
+      "historicalSignificance": { "text": "Powered milling changes how energy and labor are organized around an older food-processing task. Barbegal demonstrates a substantial regional installation without making all ancient milling industrial, displacing hand querns everywhere, or establishing a single worldwide path from grain cultivation to mechanization.", "sourceIds": ["barbegal-carbonates", "northampton-quern"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The Barbegal studies do not establish the first watermill worldwide or prove the proposed destination of its output.", "A surviving architectural complex and mineral casts leave gaps in machinery, operating history and reconstruction."],
+      "gameplaySimplifications": ["Waterwheel and Rotary Quern omit transmission, millstones, building, grain supply and maintenance.", "Crop represents suitable grain, not every plant; all older flour recipes, age goals and unlocks remain independent."],
+      "furtherResearch": [{ "question": "What can carbonate deposits establish about operation, and what additional evidence would identify a mill's customers?", "sourceIds": ["barbegal-carbonates", "barbegal-hydraulics"] }]
+    },
+    {
+      "elementId": "pottery", "elementName": "Pottery",
+      "historicalOverview": { "text": "Pottery is shaped and fired clay, not inherently wheel-made ware or evidence of farming. The Xianrendong study's abstract reports pottery in approximately 20,000-year-old cave contexts in China, made by mobile foragers. That early surviving evidence predates the later wheel-assisted forming traditions represented elsewhere in the catalog.", "sourceIds": ["xianrendong-pottery", "berg-potters-wheel"] },
+      "manufactureOrUse": { "text": "UCL's Egyptian production account separates choosing clay, forming, drying and firing, with hand methods as well as wheels. It lists open-fire and kiln firing, so a kiln is not a universal prerequisite. Vessel form and fired fabric do not by themselves identify an exact contents history or prove every proposed use.", "sourceIds": ["ucl-pottery-production"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay accommodates pottery before farming and before the specialized Bronze Age equipment branch. Xianrendong is a regional early-evidence example, not a universal origin or adoption date; the consulted abstract proposes cooking rather than establishing every vessel's function.", "sourceIds": ["xianrendong-pottery", "ucl-pottery-production"] },
+      "relatedDiscoveries": [
+        { "elementId": "clay", "relationship": "documented", "explanation": "Clay selection is part of pottery production, alongside forming, drying and firing.", "sourceIds": ["ucl-pottery-production"] },
+        { "elementId": "pottery-wheel", "relationship": "documented", "explanation": "Rotating equipment is one forming option, not a requirement for pottery.", "sourceIds": ["ucl-pottery-production"] },
+        { "elementId": "kiln", "relationship": "documented", "explanation": "The Egyptian account distinguishes kiln and open-fire firing rather than requiring kilns for all ceramics.", "sourceIds": ["ucl-pottery-production"] }
+      ],
+      "approximateDates": [{ "dateRange": "Approximately 20,000 years ago: Xianrendong pottery contexts", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Xianrendong Cave, China"], "sourceIds": ["xianrendong-pottery"], "note": "Abstract-reported contextual chronology, not a directly verified first invention or a claim that farming was present." }],
+      "associatedRegions": ["Xianrendong Cave, China", "Egypt"],
+      "archaeologicalEvidence": [{ "text": "The Xianrendong abstract reports excavated pottery in forager contexts; its proposed cooking use is an interpretation. Only the original indexed abstract was verified, not the complete excavation and dating argument.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["xianrendong-pottery"] }],
+      "historicalSignificance": { "text": "Ceramic containers bring material transformation into everyday storage and food-related crafts without requiring one farming package. Separating product, forming method and firing structure prevents the later wheel or kiln from erasing earlier successful pottery traditions.", "sourceIds": ["xianrendong-pottery", "ucl-pottery-production"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The Xianrendong full paper was not read; reported early evidence is not proof of a worldwide first.", "The Egyptian production table is regional, and cooking at Xianrendong remains a proposed use rather than a demonstrated contents list."],
+      "gameplaySimplifications": ["The original two-input route compresses material preparation, shaping, drying and firing.", "The later wheel-assisted alternative supplements rather than replaces hand-built pottery."],
+      "furtherResearch": [{ "question": "Which residues or use-wear could test a cooking interpretation independently of a vessel's shape?", "sourceIds": ["xianrendong-pottery"] }]
+    },
+    {
+      "elementId": "wheel", "elementName": "Wheel",
+      "historicalOverview": { "text": "The catalog's Wheel represents transport-related rotation, not every rotating craft device. Ljubljana's City Museum exhibits a wooden wheel with an axle from the local pile-dwelling period, described as about 5,200 years old. A surviving object establishes an example, not the first wheel ever made or a sole inventor.", "sourceIds": ["mgml-wheel-axle"] },
+      "manufactureOrUse": { "text": "A wheel belongs to an arrangement of axle, support and vehicle rather than being a complete transport system on its own. The museum specifically identifies the preserved wheel and axle. Shared rotation motivates comparisons with pottery-forming equipment, but does not demonstrate that one apparatus historically descended from the other.", "sourceIds": ["mgml-wheel-axle", "berg-potters-wheel"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "Bronze Age gameplay groups the transport branch without asserting an invention boundary. The approximately 5,200-year-old Ljubljana example provides an earlier regional precedent. Its rounded museum age is retained as stated rather than converted into a precise BCE year or a universal adoption date.", "sourceIds": ["mgml-wheel-axle"] },
+      "relatedDiscoveries": [
+        { "elementId": "cart", "relationship": "gameplay-abstraction", "explanation": "The transport branch omits a complete vehicle structure rather than treating a wheel as an entire cart.", "sourceIds": ["mgml-wheel-axle"] },
+        { "elementId": "pottery-wheel", "relationship": "gameplay-abstraction", "explanation": "Rotation is a design comparison, not a documented transport-to-pottery invention sequence.", "sourceIds": ["berg-potters-wheel", "mgml-wheel-axle"] },
+        { "elementId": "waterwheel", "relationship": "gameplay-abstraction", "explanation": "A familiar rotary form supplies a clue; a hydraulic machine needs its own engineering.", "sourceIds": ["vitruvius-watermills"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 5,200 years old: Ljubljana wheel and axle", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Ljubljana marshes, Slovenia"], "sourceIds": ["mgml-wheel-axle"], "note": "Rounded age in the museum's institutional exhibition account, not an exact BCE date, direct dating report or proof of invention." }],
+      "associatedRegions": ["Ljubljana marshes, Slovenia"],
+      "archaeologicalEvidence": [{ "text": "The City Museum's permanent-exhibition account identifies a preserved wooden wheel with an axle from the pile-dwelling period. The consulted page summarizes the find; it does not supply a full excavation or radiocarbon report.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["mgml-wheel-axle"] }],
+      "historicalSignificance": { "text": "Treating the wheel as part of an engineered arrangement avoids equating a circular object with a working vehicle. Comparing transport, pottery and hydraulic rotation is educational when their functions and evidence remain distinct, rather than made into one inevitable sequence.", "sourceIds": ["mgml-wheel-axle", "berg-potters-wheel", "vitruvius-watermills"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The museum's superlative is not adopted as a claim about the first wheel ever.", "The exhibition summary does not establish worldwide diffusion or the exact manufacture of every component."],
+      "gameplaySimplifications": ["The two-input discovery omits skilled woodworking, axle, supports and a complete vehicle.", "Shared rotation supplies several symbolic branches without making them one documented invention chain."],
+      "furtherResearch": [{ "question": "What distinguishes evidence for a preserved wheel from evidence for the complete vehicle and its use?", "sourceIds": ["mgml-wheel-axle"] }]
+    },
+    {
+      "elementId": "mold", "elementName": "Mold",
+      "historicalOverview": { "text": "Mold represents a form defining a cast metal object's shape, not the vessel that melts the metal. UCL's Egyptian production account describes open molds in stone and shaped pottery and notes casting by late Naqada II/III. This regional account is not a global first-casting chronology.", "sourceIds": ["ucl-metal-casting"] },
+      "manufactureOrUse": { "text": "A form receives metal and constrains its shape; complex forms may require several sections. The UCL page specifically distinguishes sand used to subdivide metal for further work from casting whole objects. Mold preparation, a suitable melt, cooling and finishing remain distinct parts of production, not all supplied by the shape alone.", "sourceIds": ["ucl-metal-casting"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement groups casting equipment without dating the first mold. The inspected Egyptian production account gives a regional period reference, while linked unprovenanced Roman/Byzantine molds cannot be reassigned to the Bronze Age. No numerical origin is invented here.", "sourceIds": ["ucl-metal-casting"] },
+      "relatedDiscoveries": [
+        { "elementId": "crucible", "relationship": "documented", "explanation": "A melting vessel and a shape-defining form serve different functions in casting; the exact El Argar products are not identified.", "sourceIds": ["el-argar-crucible", "ucl-metal-casting"] },
+        { "elementId": "bronze-tool", "relationship": "gameplay-abstraction", "explanation": "The generic tool branch omits mold preparation, cooling and finishing rather than identifying a particular excavated casting.", "sourceIds": ["ucl-metal-casting"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Egypt"],
+      "archaeologicalEvidence": [{ "text": "UCL's institutional synthesis identifies regional early casting and different form materials. Its linked later mold examples are not treated as newly verified Bronze Age artifacts or as proof that every listed method made every object.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["ucl-metal-casting"] }],
+      "historicalSignificance": { "text": "Separating a form from a melt container makes casting a sequence of different skilled tasks. It also prevents shape-making equipment from being confused with smelting, alloy composition or the heat treatment of a solid object after manufacture.", "sourceIds": ["ucl-metal-casting", "el-argar-crucible", "getty-metallography"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The institutional production overview is not a full excavation report or proof of the earliest mold.", "Regional period labels, linked later objects and general production methods are not interchangeable evidence."],
+      "gameplaySimplifications": ["The existing recipe symbolizes prepared casting equipment without modeling every material or operation.", "No new lost-wax discovery is implied; that proposal remains separately deferred."],
+      "furtherResearch": [{ "question": "Which casting traces can connect a particular mold with a finished metal object?", "sourceIds": ["ucl-metal-casting"] }]
+    },
+    {
+      "elementId": "quarry", "elementName": "Quarry",
+      "historicalOverview": { "text": "A quarry is a worked source of stone, distinct from stone as a naturally occurring material. UCL's Egyptian account describes limestone and sandstone extraction from open workings and galleries, as well as large-scale granite quarrying at Aswan. These are regional examples rather than the origin of quarrying everywhere.", "sourceIds": ["ucl-quarries"] },
+      "manufactureOrUse": { "text": "The account distinguishes clearing unsuitable material, locating useful stone and marking intended blocks with red ochre. Geological quality and access affect the working, while extraction, shaping, transport and final construction are different activities. The page does not make one metal tool or measuring device necessary for every quarry.", "sourceIds": ["ucl-quarries"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay represents access to worked stone without claiming that the reviewed Egyptian examples date quarrying's invention. UCL's chronology concerns regional building materials and changing use, not the first extraction site; unsupported origin dates remain absent.", "sourceIds": ["ucl-quarries"] },
+      "relatedDiscoveries": [
+        { "elementId": "rock", "relationship": "documented", "explanation": "The account distinguishes selected building stone from a worked source.", "sourceIds": ["ucl-quarries"] },
+        { "elementId": "masonry", "relationship": "documented", "explanation": "Quarried stone can supply construction, but extraction is not the finished stonework.", "sourceIds": ["ucl-quarries"] },
+        { "elementId": "tin-ore", "relationship": "gameplay-abstraction", "explanation": "The catalog's ore-access association is not evidence that the cited Egyptian stone quarries produced tin.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Egypt", "Aswan, Egypt"],
+      "archaeologicalEvidence": [{ "text": "UCL's institutional synthesis describes open workings, galleries, clearing and block marking. It is not a newly inspected excavation report or evidence that a particular quarry used every later tool in the catalog.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["ucl-quarries"] }],
+      "historicalSignificance": { "text": "A worked stone source connects geological materials with labor, selection and construction supply. Keeping those activities separate prevents a quarry from implying a complete transport system, a metal mine, or a particular monument built from its output.", "sourceIds": ["ucl-quarries"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The consulted synthesis does not establish the first quarry or a worldwide adoption sequence.", "No site-specific plumb-line use or ancient tin-mining claim follows from this stone-extraction account."],
+      "gameplaySimplifications": ["The original pair compresses access, labor and knowledge rather than creating geological stone.", "Later construction-equipment associations do not become requirements for the older Quarry discovery."],
+      "furtherResearch": [{ "question": "Which marks, unfinished blocks and transport traces connect a quarry to particular building work?", "sourceIds": ["ucl-quarries"] }]
+    },
+    {
+      "elementId": "crop", "elementName": "Crop",
+      "historicalOverview": { "text": "Crop represents cultivated plants, not every gathered plant or a single domesticated species. The Smithsonian describes increasing human control over plant growth and reproduction and offers regional examples including wheat, squash, rice and potatoes. Cultivation, domestication and gathering name different relationships, not one instantaneous global event.", "sourceIds": ["smithsonian-cultivation"] },
+      "manufactureOrUse": { "text": "Food production depends on tending suitable plants and a harvest, with practices and species differing by place. The Smithsonian links greater investment in food production with altered landscapes and settlement, but its broad overview does not establish an inevitable progression for every community. Suitable grain is only one kind of crop.", "sourceIds": ["smithsonian-cultivation"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay groups cultivation with other food-production branches, not a universal agricultural revolution on one date. The institutional timeline is schematic and regional; its rounded relative dates are not adopted here as exact first cultivation, domestication or settlement dates.", "sourceIds": ["smithsonian-cultivation"] },
+      "relatedDiscoveries": [
+        { "elementId": "flour", "relationship": "gameplay-abstraction", "explanation": "Crop stands for suitable grain in milling recipes, although wild plants were also ground and not all crops yield flour.", "sourceIds": ["prehistoric-bread"] },
+        { "elementId": "bread", "relationship": "documented", "explanation": "Bread-like food made from wild plants predates agriculture, so Crop is not a universal historical prerequisite.", "sourceIds": ["prehistoric-bread"] },
+        { "elementId": "watermill", "relationship": "gameplay-abstraction", "explanation": "Mechanized processing is a later optional application, not the beginning of cultivated food or a necessity for harvesting it.", "sourceIds": ["vitruvius-watermills"] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Middle East", "Central America", "China", "South America"],
+      "archaeologicalEvidence": [{ "text": "The Smithsonian's institutional synthesis compares regional cultivation examples and landscape change. This entry does not claim newly inspected seeds, an excavated field, or a single origin event established by that overview.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["smithsonian-cultivation"] }],
+      "historicalSignificance": { "text": "Cultivation changes how people invest labor in future food and reshape environments. Keeping the node broad preserves regional diversity, while separate histories for grinding and bread prevent farming from being treated as the beginning of all plant-food processing.", "sourceIds": ["smithsonian-cultivation", "prehistoric-bread"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["A broad institutional timeline cannot establish every local domestication process, diffusion route or independent invention.", "Cultivated plants need not already have every morphological trait used archaeologically to identify domestication."],
+      "gameplaySimplifications": ["One generic node compresses many species and cultivation practices without making them interchangeable.", "Grinding recipes select suitable harvested grain and omit preparation; wild-plant food traditions remain historically earlier."],
+      "furtherResearch": [{ "question": "Which plant remains and contextual evidence distinguish cultivation from gathering and domestication?", "sourceIds": ["smithsonian-cultivation", "prehistoric-bread"] }]
+    },
+    {
+      "elementId": "bread", "elementName": "Bread",
+      "historicalOverview": { "text": "Bread-like food predates established farming. At Shubayqa 1 in northeastern Jordan, researchers identify charred food remains associated with Natufian hunter-gatherers and report bread-like preparation about 14,400 years ago. The study reconstructs flat products from wild plant ingredients rather than establishing modern loaves, universal recipes or the first bread ever.", "sourceIds": ["prehistoric-bread"] },
+      "manufactureOrUse": { "text": "The study identifies wild cereal and root-food ingredients and reconstructs processing into flat bread-like products. Its introductory discussion separates preparing flour, dough or batter and cooking, with fermentation only one possible variation rather than a requirement for the early finds. Identification of charred remains does not preserve every preparation step.", "sourceIds": ["prehistoric-bread"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age placement accommodates forager preparation before agriculture. The Shubayqa evidence is a dated regional find, not a universal invention date or proof that cultivated Crop, a watermill or a pottery wheel was required. Farming later changed the scale and role of cereal foods without beginning all bread-making.", "sourceIds": ["prehistoric-bread"] },
+      "relatedDiscoveries": [
+        { "elementId": "flour", "relationship": "documented", "explanation": "The study discusses ground wild plant foods and reconstructed processing before fully established farming.", "sourceIds": ["prehistoric-bread"] },
+        { "elementId": "dough", "relationship": "documented", "explanation": "Flour mixed with water into dough or batter is a preparation concept, not a complete recovered ancient formula.", "sourceIds": ["prehistoric-bread"] },
+        { "elementId": "crop", "relationship": "gameplay-abstraction", "explanation": "The game offers cultivated grain routes without making agriculture a historical prerequisite for bread-like food.", "sourceIds": ["prehistoric-bread"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 14,400 years ago: Shubayqa bread-like remains", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Shubayqa 1, northeastern Jordan"], "sourceIds": ["prehistoric-bread"], "note": "Study-reported regional food evidence, not a global first invention, a modern loaf or proof of cultivated cereals." }],
+      "associatedRegions": ["Shubayqa 1, northeastern Jordan"],
+      "archaeologicalEvidence": [{ "text": "The study analyzes 24 charred food remains from Shubayqa 1 and interprets bread-like products from plant and food structure. Wild einkorn and club-rush tubers are among the proposed ingredients; the evidence does not preserve an exact complete recipe.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["prehistoric-bread"] }],
+      "historicalSignificance": { "text": "These food remains challenge the assumption that bread began only after cereal domestication. They show why food preparation deserves its own history, while the later role of cereal staples cannot simply be projected onto every forager community or every early bread-like product.", "sourceIds": ["prehistoric-bread"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Bread-like is an archaeological interpretation of charred material, not a claim of identical modern texture or recipe.", "The reported early example does not settle worldwide invention, routine consumption, leavening or every ingredient."],
+      "gameplaySimplifications": ["Two-input preparation omits gathering, grinding, mixing and skilled cooking.", "Crop and later powered milling remain optional gameplay routes rather than universal prerequisites for ancient bread."],
+      "furtherResearch": [{ "question": "How can charred food microstructure distinguish bread-like preparation from other plant meals?", "sourceIds": ["prehistoric-bread"] }]
     }
   ]
 }

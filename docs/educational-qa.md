@@ -6,7 +6,21 @@ Review date: **2026-10-16**.
 
 ## Status and scope
 
-### Stone Age materials and watercraft: current 219-element milestone
+### Specialized production and water power: current 225-element milestone
+
+The [accepted audit](catalog-plan.md#milestone-225-specialized-production-measurement-and-water-power) adds **six discoveries and eleven formulas**, preserving every preceding **219 definition and 277 recipe**, including the original 215/270 baseline. Totals are **225 elements, 288 recipes, 147 full histories, 176 chronology entries, 160 verified sources and one pending source**. There are **78 original history gaps**. Age totals are **43 / 57 / 54 / 26 / 45**; graph metrics are **179 ingredients, 46 terminal discoveries and zero unused nodes**.
+
+Four Bronze Age discoveries cover pottery-forming equipment, a metallurgical vessel, heat-treatment knowledge and a vertical reference. Two Classical Antiquity discoveries distinguish hydraulic power conversion from a milling installation. Six original gaps also receive histories: Pottery, Wheel, Mold, Quarry, Crop and Bread. Thirteen new receipts disclose abstract-only, collection, selected-textbook and reconstruction limits. Early wheel assistance is not universal throwing; the El Argar non-refractory vessel is not every crucible; an annealing interpretation is not an exact treatment sequence; a preserved bob is not a complete cord assembly; Barbegal models are not intact machinery. Hand-built pottery and hand grinding remain older independent traditions.
+
+[Production regressions](../src/game/content/productionWaterpower.test.ts) fingerprint the 219/277 baseline and unchanged eras/collections, test all eleven pairs in both orders, verify four Bronze Age and two Age V discoveries at their assigned gates, and check all twelve histories and exact coverage totals. Historical milestone fingerprints remain unchanged. Old-only content still supports every age challenge; neither water-power discovery enters Age V unlocks or completion. Persistence and store tests cover old v7 saves, every new formula, result-age locks, explicit reading and unchanged rewards. Atlas tests cover regional chronology, intentionally absent dates, discovered-only visibility and zero-Insight access.
+
+Software checks on 16 October 2026: `npm run typecheck`, `npm run lint`, `npm test -- --reporter=dot` and `npm run build` pass. The full suite reports **1,367 tests across 25 files**. Production chunks are **283.76 kB application**, **303.96 kB vendor**, **443.35 kB original research**, **186.64 kB craft research**, and **36.20 kB CSS**. No chunk-size warning or threshold change. Catalog-dependent tests now expect 54 Bronze Age and 45 Age V entries, and the global discovery percentage reflects the expanded denominator; age-completion thresholds themselves are unchanged.
+
+A production-preview browser smoke check opened **all six new histories at both 1440 px and 390 px** widths. Their expected dated or explicitly undated chronology remained visible, with **no horizontal document overflow**, zero Insight and no automatic reading markers. The temporary browser save was isolated from existing progress and restored after the check; the preview server was stopped. These software checks are not independent historical peer review, physical-device/screen-reader testing or human learning-outcome evaluation.
+
+### Stone Age materials and watercraft: preserved 219-element milestone
+
+The following section records the preceding batch's snapshot and validation, not the current totals.
 
 The [accepted catalog audit](catalog-plan.md#milestone-219-stone-age-materials-and-watercraft) adds **four discoveries and seven formulas**, preserving every preceding 215 element definition and 270 recipe. Totals are **219 elements, 277 recipes, 135 histories, 168 chronology entries, 147 verified sources and one pending source**, with **84 original history gaps**. Age totals are **43 / 57 / 50 / 26 / 43**; graph metrics are **173 ingredients, 46 terminal discoveries and zero unused nodes**. Existing age requirements, collections, challenges, rewards and v7 save fields are unchanged.
 

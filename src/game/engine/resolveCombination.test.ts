@@ -414,7 +414,7 @@ describe('Bronze Age content', () => {
     )
     const bronzeEra = eras.find((era) => era.id === 'bronze-age')
 
-    expect(bronzeElements).toHaveLength(50)
+    expect(bronzeElements).toHaveLength(54)
     expect(bronzeEra?.discoveryGoal).toBe(23)
     expect(bronzeEra?.landmarkIds).toEqual([
       'bronze',

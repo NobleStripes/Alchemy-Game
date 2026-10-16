@@ -6,7 +6,7 @@
 
 Retain the original **194 elements and 232 recipes**, including existing regional Age V discoveries. The target is **250 core elements within the same five gameplay ages**. Newly proposed regional modules are separate editorial backlogs, not a runtime module system or part of the additional 56.
 
-The current milestone is implemented: **219 elements, 277 recipes, 135 full histories, 168 chronology entries, 147 verified sources and one pending source**. The first batch added six discoveries and six backlog histories; the second added fifteen discoveries and fifteen backlog histories; the third adds four Stone Age discoveries and four backlog histories. **84 original elements** still lack full records.
+The current milestone is implemented: **225 elements, 288 recipes, 147 full histories, 176 chronology entries, 160 verified sources and one pending source**. The first three batches reached 219 elements; the fourth adds four Bronze Age production/measurement discoveries and two Classical Antiquity water-power discoveries, plus six existing-gap histories. **78 original elements** still lack full records.
 
 Core means selected for the main catalog, not universal invention or adoption. Regional module means a separately bounded comparative proposal. Research-only means history or evidence without a new gameplay node. A **core candidate** below is not accepted content until it passes all gates.
 
@@ -23,7 +23,7 @@ For every candidate:
 
 The baseline inventory below includes every existing ID. Each candidate's nearest semantic overlap is recorded in the tables, not inferred only from spelling. The validator checks exact IDs, normalized duplicate names and pair conflicts; semantic distinctness remains an editorial decision.
 
-The **25 implemented proposals** have passage-reviewed evidence, individually checked pairs and full histories. Of the original 50 later candidates, thirteen are now accepted under their original IDs and six slots are replaced by the bounded alternatives described below. The remaining **31 active candidates** are deferred on chronology, regional evidence and recipe design. Their target ages are hypotheses, not historical assertions. This is a research queue, not certification of 56 historical discoveries; replace rather than pad candidates that fail.
+The **31 implemented proposals** have passage-reviewed evidence, individually checked pairs and full histories. Of the original 50 later candidates, nineteen are now accepted under their original IDs and six slots are replaced by the bounded alternatives described below. The remaining **25 active candidates** are deferred on chronology, regional evidence and recipe design. Their target ages are hypotheses, not historical assertions. This is a research queue, not certification of 56 historical discoveries; replace rather than pad candidates that fail.
 
 ## Milestone 200: accepted production foundations
 
@@ -140,7 +140,7 @@ Source receipts distinguish selected passages, museum collection fields and abst
 
 The graph is now **173 ingredients, 46 terminal discoveries and zero unused nodes**. Full histories reach **135/219**, leaving **84 original gaps**. All prior 127 histories and source receipts remain. Old saves expose newly researched existing IDs without auto-reading, rewards or replaying recipes.
 
-### Deferred and rejected dispositions
+### Deferred and rejected dispositions at the 219 milestone
 
 The original tables below retain the complete overlap screen. Their **31 active deferred candidates** are Joinery, Pottery Wheel, Crucible, Annealing, Dye, Dyeing, Fermentation, Oil Press, Olive Oil, Lamp, Wick, Plaster, Lever, Winch, Gear, Waterwheel, Watermill, Sundial, Water Clock, Gnomon, Calendar, Abacus, Surveying, Plumb Line, Measuring Rod, Counting Token, Stylus, Mosaic, Tessera, Dome and Wheelbarrow. Their proposed ages are not historical approval. Dye/Dyeing, Gnomon/Sundial and Mosaic/Tessera need separate gameplay value; Plaster and Stylus must avoid existing binder/reed meanings. Merge or reject rather than pad these chains if that test fails.
 
@@ -148,9 +148,52 @@ Six displaced proposals remain separately deferred: generic Chisel, Drill, Malle
 
 Rejected interpretations include universal resin-to-glue transformation, equating gum/resin/tar, inferring an exact harvesting method from residues, treating preserved objects as first inventions, transferring canoe dates to paddles, and reading the museum's English word "sailing" as evidence of a sail. No focus candidate required replacement.
 
+## Milestone 225: specialized production, measurement and water power
+
+All six requested candidates are accepted with bounded meanings, four in Bronze Age and two in Classical Antiquity. The entire **219-element/277-recipe baseline**, including the earlier 215/270 baseline, remains unchanged. [Production and water-power regressions](../src/game/content/productionWaterpower.test.ts) fingerprint definitions, formulas, era requirements and collections. No age, grant, goal, landmark, collection, challenge, reward or v7 field changes.
+
+| Accepted discovery / ID | Existing IDs and meanings; decision | Inspected evidence, chronology and access limits |
+| --- | --- | --- |
+| Pottery Wheel / `pottery-wheel` | Wheel is transport-related; Pottery is the product; Lathe represents a different woodworking arrangement. Add pottery-forming equipment, not a new origin for ceramics. | [Berg's encyclopedia abstract](https://research.manchester.ac.uk/en/publications/the-potters-wheel/): Near Eastern fifth-millennium BCE development and staged/hybrid techniques, not universal full throwing. [UCL production table](https://www.ucl.ac.uk/museums-static/digitalegypt/pottery/production.html): Egyptian Fifth Dynasty use around 2400 BCE alongside hand methods. Earlier development, regional use and Bronze Age gameplay remain separate. Full chapter not read. |
+| Crucible / `crucible` | Pottery is a general product, Kiln a firing structure, Forge a workshop and Mold a shape-defining form. Add a metallurgical working vessel, not every pot or another furnace. | [El Argar study abstract](https://britishmuseum.iro.bl.uk/entities/publication/5110ab08-7784-4900-ba81-e439249e936b): Bronze Age southeast Spain, excavated vessel, thick walls/spout/non-refractory fabric and copper-alloy melting. This example differs from contemporary smelting vessels. Proposed recycling/alloying activities remain possibilities. No numerical object date or full-paper reading claimed. |
+| Annealing / `annealing` | Copper/Bronze are materials; Smelting Furnace, Forge and Crucible serve different roles; Metal Tool (`tool`) is a product. Add solid-metal heat-treatment knowledge, not smelting, alloying, melting, quenching or tempering. | [Scott's Getty textbook](https://www.getty.edu/publications-reports/item/248C43), printed pp. 3, 7-9 and 88: work-hardening, working/annealing cycles, recrystallization and a Late Bronze Age Tell Ajjul interpretation. Hot-working may produce similar structures. Regional Bronze placement, not first annealing; no exact origin date or universal cooling rule. |
+| Plumb Line / `plumb-line` | Cordage is a material, Balance compares mass and Masonry is construction. Add a gravity-direction reference, not a complete survey system. | [Met bob record](https://www.metmuseum.org/art/collection/search/546810), read through the official API: Lisht North, travertine, circa 1850-1700 BCE. [GEM3458](https://gem.eg/en/collection/artefacts/plumb-line-level): separate Dynasty 12 wooden builders'/carpenters' level with missing string. Neither proves use on a named pyramid, exact field surveys or first invention. |
+| Waterwheel / `waterwheel` | Wheel is a rotary transport element; Water Screw lifts water; River/Aqueduct supply water. Add hydraulic power conversion, not the complete milling installation. | [Vitruvius X.5.1-2](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html) is textual evidence for current-driven wheels. [Barbegal hydraulics study](https://pmc.ncbi.nlm.nih.gov/articles/PMC7578838/) supports an aqueduct-fed overshot lower-mill reconstruction in a second-century CE French complex. Undershot/overshot configurations are not a universal chronological ladder; wood has decayed and modeled geometry is not an intact wheel. |
+| Watermill / `watermill` | Rotary Quern is older hand equipment; Flour is output; Waterwheel supplies power. Add a powered installation, not the beginning of grinding. | Vitruvius X.5.2 describes transmission, hopper and flour. [Barbegal study](https://pmc.ncbi.nlm.nih.gov/articles/PMC6124920/) documents a second-century CE complex of sixteen mills and carbonate casts. [Hand-quern evidence](https://timeline.northamptonmuseums.com/timeline/iron-age-rotary-quern) predates it. Seasonal operation and proposed hardtack customers are interpretations, not proven cargo or consumers. |
+
+### Accepted production and water-power recipes
+
+All eleven unordered pairs are new and individually reviewed: **six symbolic associations and five simplified processes**. All have verified background citations, not proof of an exact ancient formula.
+
+| Inputs | Result | Classification and omitted conditions |
+| --- | --- | --- |
+| Wheel + Pottery | Pottery Wheel | Symbolic rotation/craft association, not proven derivation from a vehicle wheel |
+| Kiln + Pottery | Crucible | Symbolic ceramic knowledge; refiring an arbitrary pot does not make it suitable for metallurgy |
+| Copper + Heat | Annealing | Simplified treatment; prior working, time, temperature, atmosphere and cooling omitted |
+| Cordage + Rock | Plumb Line | Symbolic suspension/weight; suitable bob and assembly omitted |
+| River + Wheel | Waterwheel | Symbolic engineering; not every wheel is river-fed, and supply/supports/site are omitted |
+| Waterwheel + Rotary Quern | Watermill | Simplified powered-milling chain; transmission and installation omitted, not direct attachment of any quern |
+| Pottery Wheel + Clay | Pottery | Simplified forming route; preparation, drying and firing omitted; old pottery remains independent |
+| Crucible + Bronze | Bronze Tool | Simplified casting; prepared alloy supplied, mold/cooling/finishing omitted |
+| Annealing + Copper | Metal Tool | Symbolic further-working association; heat alone neither finishes a tool nor creates an alloy |
+| Plumb Line + Rock | Masonry | Symbolic construction control; no claim of this instrument at every quarry or monument |
+| Watermill + Crop | Flour | Simplified grain grinding; Crop means suitable prepared grain, not all cultivated plants |
+
+All four production discoveries are reachable during Bronze Age without later tools; Waterwheel and Watermill are reachable only when their Age V results unlock. Their recipes do not enter the unchanged Age V unlock or completion requirements. The old graph alone still supports every age challenge. Each new discovery is an ingredient in a meaningful onward route; graph totals are **179 ingredients, 46 terminal discoveries and zero unused nodes**.
+
+Six original gaps receive full histories: **Pottery, Wheel, Mold, Quarry, Crop and Bread**. Pottery predates farming and wheel forming; the [Ljubljana museum](https://mgml.si/en/city-museum/exhibitions/273/ljubljana-history-city/) provides a bounded wheel/axle example, not worldwide invention. [UCL casting](https://www.ucl.ac.uk/museums-static/digitalegypt/metal/metal.html) separates molds from melting vessels and does not turn later Roman/Byzantine mold records into Bronze Age evidence. [Egyptian quarrying](https://www.ucl.ac.uk/museums-static/digitalegypt/stone/quarries.html) is regional, not a tin-mine claim. The [Smithsonian cultivation overview](https://humanorigins.si.edu/human-characteristics/humans-change-world) distinguishes food production from gathering; its schematic relative dates are not adopted as exact origins. [Shubayqa bread-like remains](https://pmc.ncbi.nlm.nih.gov/articles/PMC6077754/) document forager plant-food processing before farming, not a modern loaf or universal first.
+
+Thirteen new receipts state the exact inspected passages and abstract/collection/textbook/modeling limits. Previously verified records remain intact. The Cambridge Cyprus paper's introductory possibility of annealing was not used as proof of a directly demonstrated Chalcolithic treatment; Scott's inspected mechanism and archaeological interpretation provide the bounded account instead. Blocked pages and search summaries are not evidence receipts.
+
+### Current deferred and rejected dispositions
+
+The **25 active deferred candidates** are Joinery, Dye, Dyeing, Fermentation, Oil Press, Olive Oil, Lamp, Wick, Plaster, Lever, Winch, Gear, Sundial, Water Clock, Gnomon, Calendar, Abacus, Surveying, Measuring Rod, Counting Token, Stylus, Mosaic, Tessera, Dome and Wheelbarrow. The six displaced proposals remain separately deferred as above. None is approved by this batch.
+
+Rejected interpretations: all pottery is wheel-thrown; any pot becomes a crucible by firing; all ancient crucibles use refractory fabric; heating alone proves annealing or hardens copper like steel; a bob preserves its missing cord or proves a particular pyramid survey; undershot must universally precede overshot; all waterwheels are river-fed; a reconstruction is a complete surviving machine; powered milling invented flour. No requested node required replacement, and no redundant discovery was added to fill a quota.
+
 ## Original later-candidate screen
 
-The tables below preserve the original queue. Thirteen IDs (`axe`, `adze`, `wedge`, `weight-standard`, `clay-tablet`, `wax-tablet`, `pulley`, `water-screw`, `vault`, `resin`, `adhesive`, `dugout-canoe`, `paddle`) are now accepted above; six slots are replaced as listed above. The other 31 active rows remain **core candidate / deferred, evidence blocked**. Displaced rows are deferred outside those slots. Unaccepted ages are hypotheses and chain roles are design objectives, not authored pairs or verified historical dependencies.
+The tables below preserve the original queue. Nineteen IDs (`axe`, `adze`, `wedge`, `weight-standard`, `clay-tablet`, `wax-tablet`, `pulley`, `water-screw`, `vault`, `resin`, `adhesive`, `dugout-canoe`, `paddle`, `pottery-wheel`, `crucible`, `annealing`, `plumb-line`, `waterwheel`, `watermill`) are now accepted above; six slots are replaced as listed above. The other 25 active rows remain **core candidate / deferred, evidence blocked**. Displaced rows are deferred outside those slots. Unaccepted ages are hypotheses and chain roles are design objectives, not authored pairs or verified historical dependencies.
 
 ### Toward 210: ten woodworking and binding candidates
 
@@ -217,7 +260,7 @@ The tables below preserve the original queue. Thirteen IDs (`axe`, `adze`, `wedg
 | `dome` / Dome | Classical Antiquity | Arch, Concrete, Public Bath: a different spanning form; do not make concrete universal or necessary. |
 | `wheelbarrow` / Wheelbarrow | Classical Antiquity | Wheel, Cart, Wagon: a distinct load-carrying arrangement; regional evidence decides main-catalog versus module scope. |
 
-The original screen gave **56 named core slots**. With the six explicit replacements above, 25 slots are shipped and 31 remain active but blocked. Retained displaced rows are not extra accepted slots or a promise that all candidates will qualify.
+The original screen gave **56 named core slots**. With the six explicit replacements above, 31 slots are shipped and 25 remain active but blocked. Retained displaced rows are not extra accepted slots or a promise that all candidates will qualify.
 
 ## Regional-module and research-only dispositions
 
@@ -262,7 +305,7 @@ Alias checks include Fire=`ember`, Water=`tide`, Earth=`stone` (not Rock), Air=`
 | 210 threshold | 10 planned | 16 | 16 | 117 / 210 | 93 | Surpassed by the 215 batch, not a separately shipped snapshot |
 | 215 | 15 after 200 | 21 | 21 | 127 / 215 | 88 | Implemented craft, records and engineering batch |
 | 219 | 4 after 215 | 25 | 25 | 135 / 219 | 84 | Implemented Stone Age materials and watercraft batch |
-| 225 | 6 after 219 | 31 | 31 | 147 / 225 | 78 | Evidence/chain gate pending |
+| 225 | 6 after 219 | 31 | 31 | 147 / 225 | 78 | Implemented specialized production, measurement and water power |
 | 250 | 25 | 56 | 56 | 197 / 250 | 53 | Evidence/chain gate pending |
 
 Every batch requires 100% research coverage for additions, one previously missing full history per added element, unique IDs/pairs, no unused nodes, reviewed recipe semantics, legacy-only completion paths and save compatibility. Source counts and dated-entry counts are not quality quotas; appropriate undated records are preferable to false precision. Independent scholarly review and human learning outcomes remain separate.
@@ -271,6 +314,6 @@ Every batch requires 100% research coverage for additions, one previously missin
 
 [Graph validation](../src/game/engine/validateContent.ts) remains the build-time gate. New synthetic tests cover normalized name collisions, repeated era references, future grants/landmarks, self-pairs, reversed collisions, missing inputs/results/references, legal alternate routes, seeded versus unseeded cycles, grant-dependent deadlocks, starters and exact goal boundaries.
 
-[Foundation regressions](../src/game/content/foundations.test.ts) retain the exact 200/243/97 snapshot. [Craft-expansion regressions](../src/game/content/craftExpansion.test.ts) preserve the 215/270/127 milestone as a historical slice. [Stone Age regressions](../src/game/content/stoneAgeMaterials.test.ts) check the current 219/277/135 totals, all seven routes, full 215/270 preservation fingerprints, age reachability, research limits and downstream hints. Persistence, store and Atlas tests cover old v7 data, new formula IDs, result-age gating and discovered-only free reading. Existing 194-element/232-recipe fingerprints remain unchanged rather than being regenerated. Existing legitimate terminal nodes remain allowed.
+[Foundation regressions](../src/game/content/foundations.test.ts) retain the exact 200/243/97 snapshot. [Craft-expansion regressions](../src/game/content/craftExpansion.test.ts) and [Stone Age regressions](../src/game/content/stoneAgeMaterials.test.ts) preserve the 215/270/127 and 219/277/135 milestones as historical slices. [Production and water-power regressions](../src/game/content/productionWaterpower.test.ts) check the current 225/288/147 totals, all eleven pairs, full 219/277 preservation fingerprints, assigned-age reachability, optionality and research limits. Persistence, store and Atlas tests cover old v7 data, new formula IDs, result-age gating and discovered-only free reading. Existing 194-element/232-recipe fingerprints remain unchanged rather than being regenerated. Existing legitimate terminal nodes remain allowed.
 
 Run focused graph/content/research tests before large additions, then persistence/store, Atlas/Guide/application and challenge regressions. Each release requires typecheck, lint, the complete test suite and the production build. Check narrow/desktop rendering and chunk warnings. Automated checks cannot certify historical truth, live source accessibility, human comprehension or independent peer review.

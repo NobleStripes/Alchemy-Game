@@ -38,6 +38,39 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
+  it('shows Egyptian bob dating without inventing crucible dates and keeps reading explicit and free', async () => {
+    discover('plumb-line', 'crucible', 'pottery')
+    useGameStore.setState({ insightCredits: 0 })
+    const user = await openAtlas()
+    const plumb = await selectEntry(user, 'Plumb Line')
+    expect(within(plumb).getByText('Circa 1850-1700 BCE: Lisht North plumb bob', { exact: true })).toBeVisible()
+    expect(within(plumb).getByText(/string is now missing/)).toBeVisible()
+    expect(screen.queryByRole('button', { name: 'Open historical entry for Watermill' })).not.toBeInTheDocument()
+    const crucible = await selectEntry(user, 'Crucible')
+    expect(within(crucible).getByText('No sourced dates are recorded for this entry.')).toBeVisible()
+    expect(within(crucible).getByRole('link', { name: /Rediscovering famous assemblages/ }))
+      .toHaveAttribute('href', 'https://doi.org/10.1111/arcm.12519')
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+    await user.click(within(crucible).getByRole('button', { name: 'Mark Crucible as read' }))
+    await useGameStore.flushProgress()
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual(['crucible'])
+    expect(useGameStore.getState().insightCredits).toBe(0)
+  })
+
+  it('distinguishes earlier hand milling and reconstructed powered machinery without progression changes', async () => {
+    discover('watermill', 'waterwheel')
+    useGameStore.setState({ insightCredits: 0 })
+    const before = snapshotProgress(useGameStore.getState())
+    const user = await openAtlas()
+    const mill = await selectEntry(user, 'Watermill')
+    expect(within(mill).getByText(/Hand-operated saddle and rotary querns predate/)).toBeVisible()
+    expect(within(mill).getByText('Second century CE: Barbegal milling complex', { exact: true })).toBeVisible()
+    const wheel = await selectEntry(user, 'Waterwheel')
+    expect(within(wheel).getByText(/An undershot arrangement/)).toBeVisible()
+    expect(within(wheel).getByText(/^Carbonate casts preserve traces of decayed timber/)).toBeVisible()
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+  })
+
   it('keeps watercraft histories discovered-only, separates paddle dates and marks reading explicitly for free', async () => {
     discover('dugout-canoe')
     useGameStore.setState({ insightCredits: 0 })
