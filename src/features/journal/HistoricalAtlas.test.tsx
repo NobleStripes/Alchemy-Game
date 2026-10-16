@@ -38,6 +38,29 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
+  it('keeps watercraft histories discovered-only, separates paddle dates and marks reading explicitly for free', async () => {
+    discover('dugout-canoe')
+    useGameStore.setState({ insightCredits: 0 })
+    const user = await openAtlas()
+    expect(screen.queryByRole('button', { name: 'Open historical entry for Paddle' })).not.toBeInTheDocument()
+    const canoe = await selectEntry(user, 'Dugout Canoe')
+    expect(within(canoe).getByText('Circa 8250-7550 BCE: Pesse canoe', { exact: true })).toBeVisible()
+    expect(within(canoe).getByText('Circa 3500 BCE: Broksoe dugout', { exact: true })).toBeVisible()
+    expect(within(canoe).queryByRole('button', { name: 'Read history of Paddle' })).not.toBeInTheDocument()
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+    act(() => discover('dugout-canoe', 'paddle'))
+    const paddle = await selectEntry(user, 'Paddle')
+    expect(within(paddle).getByText('No sourced dates are recorded for this entry.')).toBeVisible()
+    expect(within(paddle).getByRole('link', { name: 'The paddles' })).toHaveAttribute(
+      'href', 'https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-mesolithic-period/the-dugout-boat-from-broksoe/the-paddles/',
+    )
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+    await user.click(within(paddle).getByRole('button', { name: 'Mark Paddle as read' }))
+    await useGameStore.flushProgress()
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual(['paddle'])
+    expect(useGameStore.getState().insightCredits).toBe(0)
+  })
+
   it.each(['Fire', 'Water', 'Earth', 'Air'])('opens %s as a free historical model in a fresh campaign', async (name) => {
     useGameStore.setState({ insightCredits: 0 })
     const before = snapshotProgress(useGameStore.getState())

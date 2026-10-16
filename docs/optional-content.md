@@ -9,6 +9,7 @@ This guide describes implemented content. The [catalog plan](catalog-plan.md) se
 - [Classical Antiquity and Iron Age branches](#classical-antiquity-and-iron-age-branches)
 - [Production foundations](#production-foundations)
 - [Craft, records and engineering](#craft-records-and-engineering)
+- [Stone Age materials and watercraft](#stone-age-materials-and-watercraft)
 - [Landmark track and learning labs](#landmark-track-and-learning-labs)
 - [Engineering](#engineering)
 - [Commerce](#commerce)
@@ -30,6 +31,31 @@ The expansion toward 250 begins with six production foundations: **Grinding Ston
 These discoveries expose useful intermediate stages without replacing legacy formulas. Spindle-free Yarn remains available in Stone Age gameplay; firing a suitable clay unit differs from drying Mud Brick; and recognizing tin ore differs from reducing it to metal. The [foundation chain table](catalog-plan.md#implemented-recipes-and-intermediate-chains) contains recipe spoilers and the historical limits of every new route.
 
 The catalog plan classifies regional and research-only proposals separately and pairs later element milestones with research milestones. Unverified candidates remain blocked. Legacy routes, gates, rewards and v7 saves are retained. Source receipts disclose summary, preprint, selected-passage and abstract-only limits; automated checks are not historical peer review.
+
+## Stone Age materials and watercraft
+
+The third batch adds **Resin, Adhesive, Dugout Canoe and Paddle**, all optional Stone Age discoveries, plus seven formulas. The catalog now contains **219 elements and 277 recipes**. Eight full histories cover the four additions and four existing gaps: Stone Tool, Cordage, Net and Hearth. Atlas coverage is **135 histories**, leaving **84 gaps**.
+
+Resin is a natural conifer resource, not plant gum, birch tar or every tree's sap. Its preparation represents one adhesive tradition rather than universal glue chemistry. Dugouts are distinct from the existing later Boat page, and paddles are human-powered equipment, not sails. The [audit and evidence limits](catalog-plan.md#milestone-219-stone-age-materials-and-watercraft) distinguish regional objects, contextual dates and interpretations. Paddle has no unsupported numerical date.
+
+All four discoveries are reachable without later Timber or metal tools. Every new node has an outgoing use; the Paddle/Boat journey remains gated to Bronze Age Voyage. No existing formula, age goal, collection, challenge, reward or save field changes. Reading remains optional and free.
+
+<details>
+<summary>Stone Age materials and watercraft recipes (spoilers)</summary>
+
+| Inputs | Result |
+| --- | --- |
+| Forest + Stone Tool | Resin |
+| Resin + Heat | Adhesive |
+| Forest + Axe | Dugout Canoe |
+| Dugout Canoe + Tree | Paddle |
+| Adhesive + Stone Tool | Axe |
+| Dugout Canoe + Net | Food |
+| Paddle + Boat | Voyage |
+
+Six pairs are symbolic associations. Resin preparation is a simplified process; warming need not create a new chemical substance. Handles, binding, woodworking skill, catches and journey conditions are omitted. These are not practical manufacturing or watercraft instructions.
+
+</details>
 
 ## Craft, records and engineering
 

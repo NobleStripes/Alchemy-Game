@@ -2,17 +2,19 @@
 
 [Back to the project overview](../README.md)
 
-The current catalog contains **270 recipes**, retaining the previous 243 and adding 27 optional craft, records and engineering routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
+The current catalog contains **277 recipes**, retaining the previous 270 and adding seven optional Stone Age materials and watercraft routes. Every route has an individual review in [`recipeReviews.json`](../src/game/content/recipeReviews.json), validated by [`recipeReviews.ts`](../src/game/content/recipeReviews.ts). Recipe reviews themselves change no recipe IDs, pairs, results, age gates, rewards or save fields.
 
 ## Classifications
 
 | Classification | Count | Meaning |
 | --- | ---: | --- |
 | Material process | 16 | The pair evokes an actual transformation or working operation, not a complete procedure or an invention date. |
-| Simplified process | 107 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
-| Symbolic association | 147 | A conceptual, social or fictional link; it must not be read as historical causation. |
+| Simplified process | 108 | A plausible operation is abbreviated, with missing conditions, stages or materials stated explicitly. |
+| Symbolic association | 153 | A conceptual, social or fictional link; it must not be read as historical causation. |
 
-The [foundation chain table](catalog-plan.md#implemented-recipes-and-intermediate-chains) preserves its eleven additions: four symbolic associations, six simplified processes and one material process. The [craft-expansion table](optional-content.md#craft-records-and-engineering) adds twenty symbolic associations and seven simplified processes. All 27 new reviews cite passage-verified background. There are now **165 recipe notes with background references and 105 without attached sources**. These citations do not prove an exact two-input recipe.
+The [foundation chain table](catalog-plan.md#implemented-recipes-and-intermediate-chains) preserves its eleven additions: four symbolic associations, six simplified processes and one material process. The [craft-expansion table](optional-content.md#craft-records-and-engineering) adds twenty symbolic associations and seven simplified processes. The [Stone Age table](optional-content.md#stone-age-materials-and-watercraft) adds six symbolic associations and one simplified process. All seven latest reviews cite inspected background. There are now **172 recipe notes with background references and 105 without attached sources**. These citations do not prove an exact two-input recipe.
+
+The latest cautions distinguish natural conifer resin, prepared bonding use, plant gum and birch tar. Warming resin need not create a different chemical substance, and the clue is not universal adhesive manufacture. Canoe, paddle and fishing clues omit skilled work, equipment and catches. Dugout and net evidence is not a claimed excavated assemblage; paddle evidence establishes neither sails nor a numerical invention date. The existing Axe and Voyage routes remain independent.
 
 New cautions distinguish ore reduction from melting/alloying, tablets from seal impressions and envelopes, regional weight conventions from a universal standard, and stationary wooden barriers from basket traps and nets. Specialized tool uses remain symbolic where artifact context does not establish a task. Wax, fuel, controlled conditions and other omitted inputs are explicit. Vitruvius' machine descriptions are textual evidence, not sole-inventor proof or practical guidance.
 

@@ -16,6 +16,37 @@ function fresh(): SavedProgress {
 }
 
 describe('progress persistence', () => {
+  it('preserves the 215/270 v7 campaign and round-trips watercraft, resin and explicit reading without new rewards', () => {
+    const previous: SavedProgress = {
+      ...fresh(),
+      discoveredIds: elements.slice(0, 215).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 270).map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+      favoriteIds: ['axe', 'boat'], readHistoricalElementIds: ['axe'],
+      insightCredits: 2, insightFailureProgress: 2,
+      hideFinalElements: true, collapsedShelves: ['stone-age'],
+    }
+    const loaded = parseProgress(exportProgress(previous))!
+    expect(loaded).toEqual(previous)
+    expect(loaded.readHistoricalElementIds).not.toContain('stone-tool')
+    const expanded: SavedProgress = {
+      ...loaded,
+      discoveredIds: elements.map((element) => element.id),
+      discoveredRecipeIds: recipes.map((recipe) => recipe.id),
+      favoriteIds: [...loaded.favoriteIds, 'dugout-canoe'],
+      readHistoricalElementIds: [...loaded.readHistoricalElementIds, 'resin', 'paddle', 'stone-tool', 'cordage', 'net', 'hearth'],
+    }
+    expect(parseProgress(exportProgress(expanded))).toEqual(expanded)
+    expect(expanded.version).toBe(7)
+    expect(expanded.rewardedCollectionIds).toEqual(previous.rewardedCollectionIds)
+    expect(expanded.rewardedChallengeEraIds).toEqual(previous.rewardedChallengeEraIds)
+    expect(expanded.challengeRecords).toEqual(previous.challengeRecords)
+    expect(expanded.insightCredits).toBe(previous.insightCredits)
+  })
+
   it('preserves a complete 200-element v7 campaign and round-trips the craft expansion without new rewards', () => {
     const previous: SavedProgress = {
       ...fresh(), discoveredIds: elements.slice(0, 200).map((element) => element.id),

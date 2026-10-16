@@ -6,13 +6,13 @@
 
 Retain the original **194 elements and 232 recipes**, including existing regional Age V discoveries. The target is **250 core elements within the same five gameplay ages**. Newly proposed regional modules are separate editorial backlogs, not a runtime module system or part of the additional 56.
 
-The current milestone is implemented: **215 elements, 270 recipes, 127 full histories, 160 chronology entries, 140 verified sources and one pending source**. The first batch added six discoveries and six backlog histories; the second adds fifteen discoveries and fifteen backlog histories. **88 original elements** still lack full records.
+The current milestone is implemented: **219 elements, 277 recipes, 135 full histories, 168 chronology entries, 147 verified sources and one pending source**. The first batch added six discoveries and six backlog histories; the second added fifteen discoveries and fifteen backlog histories; the third adds four Stone Age discoveries and four backlog histories. **84 original elements** still lack full records.
 
 Core means selected for the main catalog, not universal invention or adoption. Regional module means a separately bounded comparative proposal. Research-only means history or evidence without a new gameplay node. A **core candidate** below is not accepted content until it passes all gates.
 
 For every candidate:
 
-1. Compare its definition, display name, stable ID, aliases and purpose against all 194 baseline elements, not just adjacent eras. Record the closest existing IDs and reuse/merge/defer/add decision.
+1. Compare its definition, display name, stable ID, aliases and purpose against the complete current catalog, including all 194 baseline elements, not just adjacent eras. Record the closest existing IDs and reuse/merge/defer/add decision.
 2. Separate target gameplay age from dated evidence, adoption and natural formation. Require passage-specific regional evidence; leave unsupported fields empty rather than inventing a first.
 3. Distinguish an excavation, surviving artifact, depiction, textual assertion and modern interpretation. Disclose abstract-only, summary and preprint access. Resemblance alone does not prove diffusion or independent invention.
 4. Identify meaningful inputs, intermediate operations and downstream uses. Check every proposed unordered pair against all 232 baseline pairs and the growing catalog, including reversed pairs and self-pairs.
@@ -23,7 +23,7 @@ For every candidate:
 
 The baseline inventory below includes every existing ID. Each candidate's nearest semantic overlap is recorded in the tables, not inferred only from spelling. The validator checks exact IDs, normalized duplicate names and pair conflicts; semantic distinctness remains an editorial decision.
 
-The **21 implemented proposals** have passage-reviewed evidence, individually checked pairs and full histories. Of the original 50 later candidates, nine are now accepted and six slots are replaced by the bounded alternatives described below. The remaining **35 active candidates** are still blocked on chronology, regional evidence and recipe design. Their target ages are hypotheses, not historical assertions. This is a research queue, not certification of 56 historical discoveries; replace rather than pad candidates that fail.
+The **25 implemented proposals** have passage-reviewed evidence, individually checked pairs and full histories. Of the original 50 later candidates, thirteen are now accepted under their original IDs and six slots are replaced by the bounded alternatives described below. The remaining **31 active candidates** are deferred on chronology, regional evidence and recipe design. Their target ages are hypotheses, not historical assertions. This is a research queue, not certification of 56 historical discoveries; replace rather than pad candidates that fail.
 
 ## Milestone 200: accepted production foundations
 
@@ -99,7 +99,7 @@ The [optional-content guide](optional-content.md#craft-records-and-engineering) 
 
 Fifteen original gaps now receive histories: **Copper, Bronze, Forge, Seal, Scribe, Archive, Balance, Bronze Tool, Masonry, Irrigation, Bellows, Bloomery, Iron, Iron Tool and Blacksmith**. These are bounded entries, not claims of exhaustive research: several deliberately have no numerical chronology, and Irrigation's Roman technical comparison does not date earlier irrigation. Full coverage now reaches **127/215**, with **88 original gaps** remaining.
 
-The current graph is **168 ingredients, 47 terminal discoveries and zero unused nodes**. Lathe gains an outgoing use; saves recompute status rather than storing a permanent terminal flag. Regression coverage fingerprints the entire previous 200/243 catalog, validates both full and prior graphs, checks all 27 pairs in both orders, verifies same-age reachability and cited histories, and round-trips discoveries/formulas/reading in v7.
+The preserved 215 milestone graph is **168 ingredients, 47 terminal discoveries and zero unused nodes**. Lathe gains an outgoing use; saves recompute status rather than storing a permanent terminal flag. Regression coverage fingerprints the entire previous 200/243 catalog, validates both full and prior graphs, checks all 27 pairs in both orders, verifies same-age reachability and cited histories, and round-trips discoveries/formulas/reading in v7.
 
 ### Replacements and rejected evidence
 
@@ -107,9 +107,50 @@ Six original slots are replaced, not silently counted in addition to the 56-slot
 
 A Museum Wales [file record](https://museum.wales/collections/online/object/50a1c79a-a981-3a8e-bf76-5ba889a8e1d2/Iron-Age--Roman-iron-file/) has an ambiguous title but explicitly dates the object to **260-355 CE**. It was rejected as support for an Iron Age file. Blocked Met/British Museum pages and search snippets were not promoted to verified receipts; the Louvre's descriptive HTML and other directly read institutional sources supplied the accepted evidence.
 
+## Milestone 219: Stone Age materials and watercraft
+
+The approved batch appends **Resin, Adhesive, Dugout Canoe and Paddle**, all optional Stone Age discoveries. All **215 preceding definitions and 270 formulas** remain byte-for-byte equivalent as parsed objects, with preservation fingerprints in [Stone Age regressions](../src/game/content/stoneAgeMaterials.test.ts). Ages, gates, grants, goals, landmarks, collections, challenges, rewards and v7 save fields are unchanged.
+
+| Accepted discovery / ID | Existing meanings and decision | Passage-reviewed evidence and age limits |
+| --- | --- | --- |
+| Resin / `resin` | Tree and Forest provide biological context; Ash, Charcoal and Pigment are different resources. Add naturally exuded conifer resin, not all sap, gum, tar or prepared glue. | [Latium residue study](https://pmc.ncbi.nlm.nih.gov/articles/PMC6586293/): Pinaceae resin on varied Middle Paleolithic tools. Fossellone layer 23 is indirectly bracketed about 55-40 ka, not directly dated resin or natural formation. Collection/dehafting interpretations do not prove the game's harvesting action. |
+| Adhesive / `adhesive` | Cordage and Leather are not prepared bonding materials; Lime Mortar and Concrete already represent masonry binders. Add an organic hafting preparation, represented by resin use rather than every adhesive. | Latium resin and one beeswax mixture; [Sibudu study](https://pmc.ncbi.nlm.nih.gov/articles/PMC2700998/) describes approximately 70 ka plant-gum/ochre evidence. Gum is not resin; modern replication is not a preserved ancient recipe. Separate regions do not prove independent invention. |
+| Dugout Canoe / `dugout-canoe` | Boat explicitly acknowledges earlier dugouts while retaining its later page; Timber, Axe, Adze and Gouge are not this watercraft. Add a hollowed-trunk tradition without requiring later tools. | [Pesse record](https://drentsmuseum.nl/en/collection/pesse-canoe-the-oldest-boat-in-the-world), embedded object fields: circa 8250-7550 BCE, wood, Mesolithic, 1955-VIII-2. [Broksoe account](https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-mesolithic-period/the-dugout-boat-from-broksoe/): separate oak craft c. 3500 BCE, axes and wedges. Neither dates the first watercraft. |
+| Paddle / `paddle` | Boat is a craft, Sail wind propulsion, Voyage travel and Wayfinding (`compass`) navigation. Add handheld water-propulsion equipment rather than a duplicate boat or an oar system. | [Danish paddle exhibit](https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-mesolithic-period/the-dugout-boat-from-broksoe/the-paddles/): paddles/poles and Tybrind Vig finds. Shape/decoration interpretations are hypotheses. No numerical paddle date is supplied; the Broksoe date is not transferred. |
+
+### Accepted recipes and downstream uses
+
+All seven unordered pairs were absent from the baseline, including reversed forms. Each has an individual cited review: six symbolic associations and one simplified process.
+
+| Inputs | Result | Classification and limits |
+| --- | --- | --- |
+| Forest + Stone Tool | Resin | Symbolic access to suitable trees, not a verified harvesting method or resin formation |
+| Resin + Heat | Adhesive | Simplified resin preparation; workability changes need not create a new chemical substance; not all adhesives |
+| Forest + Axe | Dugout Canoe | Symbolic woodworking; selection, wedges and skilled work omitted |
+| Dugout Canoe + Tree | Paddle | Symbolic equipment/material relationship, not a boat made into a paddle or a priority claim |
+| Adhesive + Stone Tool | Axe | Symbolic hafting; handle and binding omitted; studied Italian tools are not identified as these axes |
+| Dugout Canoe + Net | Food | Symbolic fishing; catch and ecological conditions omitted; no claimed excavated canoe/net assemblage |
+| Paddle + Boat | Voyage | Symbolic human-powered travel; Voyage remains Bronze Age and old sailing/wayfinding routes remain |
+
+Origins supplies Forest, Tree and Heat; existing Stone Age Stone Tool and Cordage already provide Axe. Thus all four additions are reachable without Timber, Boat, Sail or metal tools. The independent old Axe route prevents an unseeded hafting cycle. Every new discovery has an outgoing use; Paddle's Voyage use is intentionally later-age, not a reason to delay its discovery.
+
+Four old gaps also receive full histories: **Stone Tool, Cordage, Net and Hearth**. Smithsonian process/attribution and hearth-use passages are reused without adopting older first-tool or first-fire dates. The [Abri du Maras study](https://pmc.ncbi.nlm.nih.gov/articles/PMC7145842/) documents a three-ply inner-bark fragment on an in-situ flake; Level 4.2 sample ages are context, not direct fibre dates or evidence of found nets. The [Antrea original abstract](https://journal.fi/iskos/article/view/110409) supports willow-bast net cord and separates the 9140 +/- 135 radiocarbon BP measurement from a proposed 8400-8300 calBC sinking context. The full Antrea paper was not read; dimensions, knots and catch species are not invented.
+
+Source receipts distinguish selected passages, museum collection fields and abstract-only access. Pesse's HTML object data, not its sparse simplified extraction, supplied the dating fields; its 1955 acquisition is not an ancient date. Unknown publication dates remain null. No first-ever adhesive, canoe, paddle or independent-invention claim is accepted.
+
+The graph is now **173 ingredients, 46 terminal discoveries and zero unused nodes**. Full histories reach **135/219**, leaving **84 original gaps**. All prior 127 histories and source receipts remain. Old saves expose newly researched existing IDs without auto-reading, rewards or replaying recipes.
+
+### Deferred and rejected dispositions
+
+The original tables below retain the complete overlap screen. Their **31 active deferred candidates** are Joinery, Pottery Wheel, Crucible, Annealing, Dye, Dyeing, Fermentation, Oil Press, Olive Oil, Lamp, Wick, Plaster, Lever, Winch, Gear, Waterwheel, Watermill, Sundial, Water Clock, Gnomon, Calendar, Abacus, Surveying, Plumb Line, Measuring Rod, Counting Token, Stylus, Mosaic, Tessera, Dome and Wheelbarrow. Their proposed ages are not historical approval. Dye/Dyeing, Gnomon/Sundial and Mosaic/Tessera need separate gameplay value; Plaster and Stylus must avoid existing binder/reed meanings. Merge or reject rather than pad these chains if that test fails.
+
+Six displaced proposals remain separately deferred: generic Chisel, Drill, Mallet, Sailcloth, Loom Weight and Lost-Wax Casting. They are not extra active slots. Regional modules and research-only reuse decisions below remain outside this batch; Resin does not approve Lacquerware.
+
+Rejected interpretations include universal resin-to-glue transformation, equating gum/resin/tar, inferring an exact harvesting method from residues, treating preserved objects as first inventions, transferring canoe dates to paddles, and reading the museum's English word "sailing" as evidence of a sail. No focus candidate required replacement.
+
 ## Original later-candidate screen
 
-The tables below preserve the original queue. Nine IDs (`axe`, `adze`, `wedge`, `weight-standard`, `clay-tablet`, `wax-tablet`, `pulley`, `water-screw`, `vault`) are now accepted above; six slots are replaced as listed above. For all remaining rows, **core candidate / evidence blocked** still applies. Their ages are hypotheses and chain roles are design objectives, not authored pairs or verified historical dependencies.
+The tables below preserve the original queue. Thirteen IDs (`axe`, `adze`, `wedge`, `weight-standard`, `clay-tablet`, `wax-tablet`, `pulley`, `water-screw`, `vault`, `resin`, `adhesive`, `dugout-canoe`, `paddle`) are now accepted above; six slots are replaced as listed above. The other 31 active rows remain **core candidate / deferred, evidence blocked**. Displaced rows are deferred outside those slots. Unaccepted ages are hypotheses and chain roles are design objectives, not authored pairs or verified historical dependencies.
 
 ### Toward 210: ten woodworking and binding candidates
 
@@ -176,7 +217,7 @@ The tables below preserve the original queue. Nine IDs (`axe`, `adze`, `wedge`, 
 | `dome` / Dome | Classical Antiquity | Arch, Concrete, Public Bath: a different spanning form; do not make concrete universal or necessary. |
 | `wheelbarrow` / Wheelbarrow | Classical Antiquity | Wheel, Cart, Wagon: a distinct load-carrying arrangement; regional evidence decides main-catalog versus module scope. |
 
-The original screen gave **56 named core slots**. With the six explicit replacements above, 21 slots are shipped and 35 remain active but blocked. Retained displaced rows are not extra accepted slots or a promise that all candidates will qualify.
+The original screen gave **56 named core slots**. With the six explicit replacements above, 25 slots are shipped and 31 remain active but blocked. Retained displaced rows are not extra accepted slots or a promise that all candidates will qualify.
 
 ## Regional-module and research-only dispositions
 
@@ -220,7 +261,8 @@ Alias checks include Fire=`ember`, Water=`tide`, Earth=`stone` (not Rock), Air=`
 | 200 | 6 | 6 | 6 | 97 / 200 | 103 | Implemented; verification recorded in educational QA |
 | 210 threshold | 10 planned | 16 | 16 | 117 / 210 | 93 | Surpassed by the 215 batch, not a separately shipped snapshot |
 | 215 | 15 after 200 | 21 | 21 | 127 / 215 | 88 | Implemented craft, records and engineering batch |
-| 225 | 10 after 215 | 31 | 31 | 147 / 225 | 78 | Evidence/chain gate pending |
+| 219 | 4 after 215 | 25 | 25 | 135 / 219 | 84 | Implemented Stone Age materials and watercraft batch |
+| 225 | 6 after 219 | 31 | 31 | 147 / 225 | 78 | Evidence/chain gate pending |
 | 250 | 25 | 56 | 56 | 197 / 250 | 53 | Evidence/chain gate pending |
 
 Every batch requires 100% research coverage for additions, one previously missing full history per added element, unique IDs/pairs, no unused nodes, reviewed recipe semantics, legacy-only completion paths and save compatibility. Source counts and dated-entry counts are not quality quotas; appropriate undated records are preferable to false precision. Independent scholarly review and human learning outcomes remain separate.
@@ -229,6 +271,6 @@ Every batch requires 100% research coverage for additions, one previously missin
 
 [Graph validation](../src/game/engine/validateContent.ts) remains the build-time gate. New synthetic tests cover normalized name collisions, repeated era references, future grants/landmarks, self-pairs, reversed collisions, missing inputs/results/references, legal alternate routes, seeded versus unseeded cycles, grant-dependent deadlocks, starters and exact goal boundaries.
 
-[Foundation regressions](../src/game/content/foundations.test.ts) retain the exact 200/243/97 snapshot. [Craft-expansion regressions](../src/game/content/craftExpansion.test.ts) check the current 215/270/127 milestone, all new routes, historical distinctions and the complete preceding catalog fingerprint. Existing 194-element/232-recipe fingerprints remain unchanged rather than being regenerated. Existing legitimate terminal nodes remain allowed.
+[Foundation regressions](../src/game/content/foundations.test.ts) retain the exact 200/243/97 snapshot. [Craft-expansion regressions](../src/game/content/craftExpansion.test.ts) preserve the 215/270/127 milestone as a historical slice. [Stone Age regressions](../src/game/content/stoneAgeMaterials.test.ts) check the current 219/277/135 totals, all seven routes, full 215/270 preservation fingerprints, age reachability, research limits and downstream hints. Persistence, store and Atlas tests cover old v7 data, new formula IDs, result-age gating and discovered-only free reading. Existing 194-element/232-recipe fingerprints remain unchanged rather than being regenerated. Existing legitimate terminal nodes remain allowed.
 
 Run focused graph/content/research tests before large additions, then persistence/store, Atlas/Guide/application and challenge regressions. Each release requires typecheck, lint, the complete test suite and the production build. Check narrow/desktop rendering and chunk warnings. Automated checks cannot certify historical truth, live source accessibility, human comprehension or independent peer review.

@@ -2,11 +2,25 @@
 
 [Back to the project overview](../README.md)
 
-Review date: **2026-10-15**.
+Review date: **2026-10-16**.
 
 ## Status and scope
 
-### Craft, records and engineering: current 215-element milestone
+### Stone Age materials and watercraft: current 219-element milestone
+
+The [accepted catalog audit](catalog-plan.md#milestone-219-stone-age-materials-and-watercraft) adds **four discoveries and seven formulas**, preserving every preceding 215 element definition and 270 recipe. Totals are **219 elements, 277 recipes, 135 histories, 168 chronology entries, 147 verified sources and one pending source**, with **84 original history gaps**. Age totals are **43 / 57 / 50 / 26 / 43**; graph metrics are **173 ingredients, 46 terminal discoveries and zero unused nodes**. Existing age requirements, collections, challenges, rewards and v7 save fields are unchanged.
+
+Resin, Adhesive, Dugout Canoe and Paddle each have a complete sourced history. Stone Tool, Cordage, Net and Hearth fill four existing gaps. Seven new receipts distinguish Latium resin residues from Sibudu plant gum and experiments; Pesse museum object fields from acquisition dates; contextual dating from directly dated organic material; and preserved paddles from hypotheses about shape or decoration. The Antrea account is explicitly abstract-only. No numerical paddle chronology, universal glue formula, first-ever watercraft or independent-invention claim is introduced.
+
+[Stone Age content regressions](../src/game/content/stoneAgeMaterials.test.ts) fingerprint all 215/270 preceding definitions and formulas and unchanged era/collection data, check all seven pairs in both orders, same-age reachability, no unused nodes, individual source-backed reviews, old-only completion and contextual hints. Previous 194/232, 200/243 and 215/270 milestones remain tested rather than replacing historical hashes. Persistence and store tests retain v7 progress and reward records, persist new formulas and gate Voyage to Bronze Age; Atlas checks discovered-only entries, empty paddle chronology and explicit free reading markers.
+
+Software checks on 16 October 2026: `npm run typecheck`, `npm run lint`, `npm test` and `npm run build` pass. The full suite reports **1,296 tests across 24 files**. Production chunks are **275.16 kB application**, **303.96 kB vendor**, **443.35 kB original research**, **131.83 kB craft research**, and **36.20 kB CSS**, with no chunk-size warning or threshold change. The two newly introduced test-fixture failures were corrected: the collection hash now uses the captured raw-JSON ordering, and the save fixture respects the existing three-Insight maximum.
+
+A production-preview browser smoke check opened the new canoe history at **1440 px and 390 px** widths: the article and Pesse chronology remained visible with no horizontal document overflow. Paddle opened with the explicit no-sourced-dates message. These checks supplement the exhaustive parameterized Atlas rendering tests; they are not physical-device, screen-reader, independent historical or learning-outcome evaluation.
+
+### Craft, records and engineering: preserved 215-element milestone
+
+The following section records the preceding batch's snapshot and validation, not the current totals.
 
 The [acceptance audit](catalog-plan.md#milestone-215-craft-records-and-engineering) adds **15 discoveries and 27 formulas**, preserving all previous 200 definitions and 243 routes. Totals are **215 elements, 270 recipes, 127 histories, 160 chronology entries, 140 verified sources and one pending source**. Every new discovery has a full history, and fifteen original gaps receive histories too; **88 original gaps** remain. The five ages contain **43 / 53 / 50 / 26 / 43** discoveries. Current graph metrics are **168 ingredients, 47 terminal discoveries and zero unused nodes**.
 

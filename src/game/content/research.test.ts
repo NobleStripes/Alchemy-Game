@@ -114,10 +114,10 @@ describe('historical research database', () => {
   it('validates the original records, Iron Age additions, classical starters and source registry', () => {
     expect(schema.parse(historicalResearch)).toEqual(historicalResearch)
     expect(historicalResearch.records.map((record) => record.elementId))
-      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds, ...regionalIds, ...naturalResourceIds, ...foundationIds, ...foundationBacklogIds, ...craftExpansionIds, ...craftBacklogIds])
+      .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds, ...regionalIds, ...naturalResourceIds, ...foundationIds, ...foundationBacklogIds, ...craftExpansionIds, ...craftBacklogIds, 'resin', 'adhesive', 'dugout-canoe', 'paddle', 'stone-tool', 'cordage', 'net', 'hearth'])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(140)
+    )).toHaveLength(147)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
@@ -155,7 +155,7 @@ describe('historical research database', () => {
     expect(elements.some((element) => ['flint', 'obsidian'].includes(element.id))).toBe(false)
     expect(researchByElementId.get('rock')!.agePlacement.status).toBe('fictional-prologue')
     expect(researchByElementId.get('stone')!.agePlacement.status).toBe('historical-model')
-    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(88)
+    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(84)
   })
 
   it.each(naturalResourceIds)('fully researches existing %s without inventing archaeological evidence or a natural origin date', (id) => {

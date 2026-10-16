@@ -382,6 +382,11 @@ describe('campaign state', () => {
   })
 
   it.each([
+    ['stone-age', 'harvested-forest-resin', 'forest', 'stone-tool', 'resin'],
+    ['stone-age', 'prepared-resin-adhesive', 'resin', 'heat', 'adhesive'],
+    ['stone-age', 'hollowed-tree-canoe', 'forest', 'axe', 'dugout-canoe'],
+    ['stone-age', 'canoe-paddle-equipment', 'dugout-canoe', 'tree', 'paddle'],
+    ['bronze-age', 'paddled-voyage', 'paddle', 'boat', 'voyage'],
     ['stone-age', 'prepared-leather', 'hide', 'ash', 'leather'],
     ['bronze-age', 'threaded-frame', 'fibre', 'tree', 'loom'],
     ['iron-age', 'iron-specialist', 'iron-tool', 'human', 'blacksmith'],
@@ -407,6 +412,13 @@ describe('campaign state', () => {
 
   it.each([
     ['first-light', 'drying-sea', 'sea', 'wind', 'salt'],
+    ['stone-age', 'harvested-forest-resin', 'forest', 'stone-tool', 'resin'],
+    ['stone-age', 'prepared-resin-adhesive', 'resin', 'heat', 'adhesive'],
+    ['stone-age', 'hollowed-tree-canoe', 'forest', 'axe', 'dugout-canoe'],
+    ['stone-age', 'canoe-paddle-equipment', 'dugout-canoe', 'tree', 'paddle'],
+    ['stone-age', 'adhesive-hafting', 'adhesive', 'stone-tool', 'axe'],
+    ['stone-age', 'canoe-net-fishing', 'dugout-canoe', 'net', 'food'],
+    ['bronze-age', 'paddled-voyage', 'paddle', 'boat', 'voyage'],
     ['stone-age', 'prepared-leather', 'hide', 'ash', 'leather'],
     ['bronze-age', 'threaded-frame', 'fibre', 'tree', 'loom'],
     ['iron-age', 'iron-specialist', 'iron-tool', 'human', 'blacksmith'],

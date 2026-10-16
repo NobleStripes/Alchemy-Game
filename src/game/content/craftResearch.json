@@ -2,6 +2,45 @@
   "schemaVersion": 2,
   "sources": [
     {
+      "id": "latium-resin-hafting", "title": "Hafting of Middle Paleolithic tools in Latium (central Italy): New data from Fossellone and Sant'Agostino caves",
+      "authors": ["Ilaria Degano", "Sylvain Soriano", "Paola Villa", "Luca Pollarolo", "Jeannette J. Lucejko", "Zenobia Jacobs", "Katerina Douka", "Silvana Vitagliano", "Carlo Tozzi"],
+      "institution": "PLOS ONE", "sourceType": "peer-reviewed-study", "url": "https://doi.org/10.1371/journal.pone.0213473", "publicationDate": "2019-06-20",
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6586293/", "accessLevel": "selected-passages", "locator": "Abstract, Fossellone dating, chemical results and discussion, also read via Europe PMC fullTextXML: Pinaceae resin, one beeswax mixture, exudation, workability and alternative residue interpretations. Layer 23 cannot be directly dated; bracket about 55-40 ka derives from adjacent layers. Not a direct date for every residue or Sant'Agostino object. Heating inference varies by sample; no universal first or exact harvesting method." }
+    },
+    {
+      "id": "sibudu-compound-adhesives", "title": "Implications for complex cognition from the hafting of tools with compound adhesives in the Middle Stone Age, South Africa",
+      "authors": ["Lyn Wadley", "Tamaryn Hodgskiss", "Michael Grant"], "institution": "Proceedings of the National Academy of Sciences", "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1073/pnas.0900957106", "publicationDate": "2009-05-11",
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700998/", "accessLevel": "selected-passages", "locator": "Abstract, introduction, Fig. 1 and selected Replication Results: approximately 70 ka Sibudu tool residues, hafting locations, plant gum/ochre and varied preparations. Separate archaeological residues from modern replication; gum is not conifer resin. Broader cognition claims and secondary early-tar dates are not adopted. Publisher blocked; legitimate PMC archive read." }
+    },
+    {
+      "id": "drents-pesse-canoe", "title": "Pesse canoe, the oldest boat in the world", "authors": [], "institution": "Drents Museum", "sourceType": "museum-collection",
+      "url": "https://drentsmuseum.nl/en/collection/pesse-canoe-the-oldest-boat-in-the-world", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://drentsmuseum.nl/en/collection/pesse-canoe-the-oldest-boat-in-the-world", "accessLevel": "collection-record", "locator": "Museum HTML embedded art-object JSON: object 1955-VIII-2, subtitle Drenthe circa 8250-7550 B.C., wood, Mesolithic, discovery place Pesse. Acquisition 20-08-1955 is not manufacture. Simplified extraction exposed only title. Underlying 1957 publication and modern replica were not inspected; museum title is not proof of first-ever watercraft." }
+    },
+    {
+      "id": "natmus-broksoe-dugout", "title": "The dugout boat from Broksoe", "authors": [], "institution": "National Museum of Denmark", "sourceType": "museum-essay",
+      "url": "https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-mesolithic-period/the-dugout-boat-from-broksoe/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-mesolithic-period/the-dugout-boat-from-broksoe/", "accessLevel": "selected-passages", "locator": "Main paragraphs: early Neolithic Broksoe, Holmegards Mose, southern Zealand, c. 3500 BC; oak trunk cut using axes and wedges, stern bulkhead holes; regional wood choices, transport and fishing. Institutional summary, not full excavation report. English 'sailing' does not establish a sail; no global watercraft-origin claim." }
+    },
+    {
+      "id": "natmus-stone-age-paddles", "title": "The paddles", "authors": [], "institution": "National Museum of Denmark", "sourceType": "museum-essay",
+      "url": "https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-mesolithic-period/the-dugout-boat-from-broksoe/the-paddles/", "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-mesolithic-period/the-dugout-boat-from-broksoe/the-paddles/", "accessLevel": "selected-passages", "locator": "Main paragraph and HTML image title/caption: paddles or wooden poles propel dugouts; varied shaft/blade forms; decorated heart-shaped paddles at underwater Stone Age settlement Tybrind Vig, Fyn. Proposed shape/ownership meanings are hypotheses. No numerical paddle date supplied; do not borrow adjacent Broksoe date." }
+    },
+    {
+      "id": "maras-cord-fragment", "title": "Direct evidence of Neanderthal fibre technology and its cognitive and behavioral implications",
+      "authors": ["B. L. Hardy", "M.-H. Moncel", "C. Kerfant", "M. Lebon", "L. Bellot-Gurlet", "N. Melard"],
+      "institution": "Scientific Reports", "sourceType": "peer-reviewed-study", "url": "https://doi.org/10.1038/s41598-020-61839-w", "publicationDate": "2020-04-09",
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7145842/", "accessLevel": "selected-passages", "locator": "Abstract and introduction through site stratigraphy: three-ply inner-bark cord fragment on an in-situ flake at Abri du Maras; Level 4.2 has ESR/U-Th sample ages 41 +/- 2, 46 +/- 5 and 52 +/- 2 ka. These are contextual samples, not direct fibre dates. Nets/bags are technological possibilities, not found objects demonstrated by this fragment. Broader mathematical/cognitive inferences not adopted. Publisher 406; PMC read." }
+    },
+    {
+      "id": "antrea-net-environment", "title": "The palaeoenvironment of the 'Antrea Net Find'",
+      "authors": ["Arto Miettinen", "Kaarina Sarmaja-Korjonen", "Eloni Sonninen", "Hogne Jungner", "Terttu Lempiainen", "Kirsi Ylikoski", "Jari-Pekka Makiaho", "Christian Carpelan"],
+      "institution": "Iskos, Finnish Antiquarian Society", "sourceType": "peer-reviewed-study", "url": "https://journal.fi/iskos/article/view/110409", "publicationDate": "2008-09-15",
+      "verification": { "status": "verified", "checkedOn": "2026-10-16", "accessedUrl": "https://journal.fi/iskos/article/view/110409", "accessLevel": "abstract-only", "locator": "Original journal abstract and bibliographic meta fields: Korpilahti find in 1914, willow-bast cord, net AMS 9140 +/- 135 BP, sediment reinvestigation at assumed findspot, proposed sinking during transgression 8400-8300 calBC. BP measurement and calibrated event estimate differ. Full PDF not read; no mesh, knot, catch-species, dimensions or first-ever-net claims." }
+    },
+    {
       "id": "eretz-copper-furnaces", "title": "Nehushtan Pavilion", "authors": [], "institution": "Eretz Israel Museum", "sourceType": "museum-essay",
       "url": "https://www.eretzmuseum.org.il/en/nehushtan-pavilion/", "publicationDate": null,
       "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.eretzmuseum.org.il/en/nehushtan-pavilion/", "accessLevel": "selected-passages", "locator": "Copper production section: mining, transportation, ore smelting and ingots; displayed fifth-fourth-millennium furnaces, original twelfth-century BCE furnace and tenth-century BCE furnace. Bellows are reconstructions based on Egyptian depictions. Distinguish originals, reconstructions and the wider regional industry; no first-smelting claim." }
@@ -593,6 +632,181 @@
       "historicalUncertainty": ["A reconstruction report cannot establish every ancient occupational boundary or workshop arrangement.", "No numerical first date or single origin is supplied."],
       "gameplaySimplifications": ["Human and Iron Tool remain an association, not a training or occupational certification process.", "Reading the history changes no rewards, costs or progression."],
       "furtherResearch": [{ "question": "How can experiments test an interpretation without turning reconstruction into certainty?", "sourceIds": ["wales-iron-carpentry"] }]
+    },
+    {
+      "elementId": "resin", "elementName": "Resin",
+      "historicalOverview": { "text": "Resin is a plant-produced resource, not a material invented when a tool touches a forest. Chemical study of Middle Paleolithic stone-tool residues from Fossellone and Sant'Agostino in central Italy identified Pinaceae resin used in hafting; one Fossellone sample also contained beeswax. The evidence concerns use and residue identification, not the first appearance of resin in nature.", "sourceIds": ["latium-resin-hafting"] },
+      "manufactureOrUse": { "text": "Conifer resin exudes from trees and changes workability as it dries or is warmed. Its use in a haft is distinct from the living material's formation. The study discusses possible collection and dehafting interpretations of residues, without securely demonstrating the game's exact harvesting action.", "sourceIds": ["latium-resin-hafting"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay places resource access alongside attested Paleolithic use. The indirectly dated Italian evidence does not date natural resin formation, establish first use, or show uniform adoption across regions.", "sourceIds": ["latium-resin-hafting"] },
+      "relatedDiscoveries": [
+        { "elementId": "adhesive", "relationship": "documented", "explanation": "The study identifies resin used for hafting, in one case with beeswax; raw resource and prepared use are distinct gameplay roles.", "sourceIds": ["latium-resin-hafting"] },
+        { "elementId": "tree", "relationship": "documented", "explanation": "The identified Pinaceae resin is a tree exudate, not every kind of sap.", "sourceIds": ["latium-resin-hafting"] },
+        { "elementId": "stone-tool", "relationship": "documented", "explanation": "Stone artifacts retain residues analyzed as evidence for hafting.", "sourceIds": ["latium-resin-hafting"] },
+        { "elementId": "forest", "relationship": "gameplay-abstraction", "explanation": "Forest represents access to suitable trees, not a demonstrated extraction procedure.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Natural resin formation: undated", "dateType": "undated", "precision": "undated", "regions": [], "sourceIds": [], "note": "A biological resource has no human invention date in this entry." },
+        { "dateRange": "Approximately 55-40 thousand years ago: Fossellone context", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Latium, central Italy"], "sourceIds": ["latium-resin-hafting"], "note": "Layer 23 could not be directly dated; the bracket comes from adjacent layers 26 and 21, not a direct resin date or a date for every Sant'Agostino artifact." }
+      ],
+      "associatedRegions": ["Latium, central Italy"],
+      "archaeologicalEvidence": [{ "text": "Molecular analysis identifies Pinaceae resin on stone artifacts. Residue distribution supports hafting interpretations; collection, reworking and contamination alternatives require separate evaluation.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["latium-resin-hafting"] }],
+      "historicalSignificance": { "text": "Residues expose organic components of composite tools that are less visible than stone. They connect biological resources and tool use without reducing all bonding materials to one substance or one preparation.", "sourceIds": ["latium-resin-hafting"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Preservation and contamination require analysis; collection technique and exact botanical species are not automatically known.", "The contextual date bracket is indirect; regional use is not first use."],
+      "gameplaySimplifications": ["Forest and a tool represent access, not resin formation or a verified harvesting technique.", "Resin, gum, birch tar and charcoal are not synonyms; not every tree supplies interchangeable resin.", "Raw resource and prepared bonding use are separate gameplay roles, not necessarily different chemical identities."],
+      "furtherResearch": [{ "question": "What directly dated material or collection traces could refine the contextual resin-use evidence?", "sourceIds": ["latium-resin-hafting"] }]
+    },
+    {
+      "elementId": "adhesive", "elementName": "Adhesive",
+      "historicalOverview": { "text": "Prehistoric bonding preparations used different materials rather than a universal glue formula. Italian evidence identifies conifer-resin hafting, sometimes with beeswax. The Sibudu study describes approximately 70-thousand-year-old southern African evidence for preparations including plant gum and ochre. These regional examples are not stages in one demonstrated invention sequence.", "sourceIds": ["latium-resin-hafting", "sibudu-compound-adhesives"] },
+      "manufactureOrUse": { "text": "This discovery represents prepared organic bonding material for composite tools. Working and applying resin can change its usefulness without producing a different chemical substance. Sibudu's archaeological residues are compared with modern replication; experimental results are not exact preserved ancient recipes.", "sourceIds": ["latium-resin-hafting", "sibudu-compound-adhesives"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Both regional studies support a Stone Age context, not a worldwide invention date or universal adoption. The playable resin example does not make the different plant-gum tradition depend on conifer resin.", "sourceIds": ["latium-resin-hafting", "sibudu-compound-adhesives"] },
+      "relatedDiscoveries": [
+        { "elementId": "resin", "relationship": "documented", "explanation": "Resin is an identified hafting ingredient in the Italian study, not every adhesive's required base.", "sourceIds": ["latium-resin-hafting"] },
+        { "elementId": "stone-tool", "relationship": "documented", "explanation": "Residues and their positions on tools support hafting interpretations.", "sourceIds": ["latium-resin-hafting", "sibudu-compound-adhesives"] },
+        { "elementId": "pigment", "relationship": "documented", "explanation": "Sibudu's ochre comparison concerns a particular material, not every pigment represented by the game.", "sourceIds": ["sibudu-compound-adhesives"] },
+        { "elementId": "axe", "relationship": "gameplay-abstraction", "explanation": "The alternate hafting route is not identification of the studied Italian artifacts as these woodworking axes.", "sourceIds": [] },
+        { "elementId": "heat", "relationship": "documented", "explanation": "The Italian discussion relates warming to resin workability, not a universal chemical transformation into glue.", "sourceIds": ["latium-resin-hafting"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Approximately 70 thousand years ago: Sibudu context", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Sibudu, South Africa"], "sourceIds": ["sibudu-compound-adhesives"], "note": "Context for compound-adhesive residues described in the study, not a global first adhesive or a modern replication date." },
+        { "dateRange": "Approximately 55-40 thousand years ago: Fossellone context", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Latium, central Italy"], "sourceIds": ["latium-resin-hafting"], "note": "Indirect bracket for layer 23 from neighboring layers; not a direct residue date or universal sequence." }
+      ],
+      "associatedRegions": ["Latium, central Italy", "Sibudu, South Africa"],
+      "archaeologicalEvidence": [
+        { "text": "Stone artifacts preserve residues whose chemistry and location inform hafting interpretations; ingredients differ between the selected regional examples.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["latium-resin-hafting", "sibudu-compound-adhesives"] },
+        { "text": "Modern replications test possible properties and working choices. They are comparisons with ancient evidence, not surviving ancient recipes.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["sibudu-compound-adhesives"] }
+      ],
+      "historicalSignificance": { "text": "Bonding evidence makes composite tools and skilled material selection visible. The selected studies show varied organic preparations; this entry does not need a single disputed threshold of human cognition or a universal origin story.", "sourceIds": ["latium-resin-hafting", "sibudu-compound-adhesives"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Gum is not conifer resin, and neither is simply interchangeable with birch tar.", "Ingredient identification and contextual dating differ by site; experiments cannot recover every ancient choice.", "Separate regional examples do not by themselves prove independent invention."],
+      "gameplaySimplifications": ["The heat clue represents one resin preparation, not all adhesives; handles, binding, other ingredients and skilled application are omitted.", "Adhesive is not mandatory for all hafting; the original Axe recipe remains valid.", "This overview supplies no practical manufacturing instructions."],
+      "furtherResearch": [{ "question": "How do further direct residue studies distinguish ingredients from contamination and later alteration?", "sourceIds": ["latium-resin-hafting", "sibudu-compound-adhesives"] }]
+    },
+    {
+      "elementId": "dugout-canoe", "elementName": "Dugout Canoe",
+      "historicalOverview": { "text": "Hollowed-trunk watercraft are documented long before the game's Bronze Age Boat page. Drents Museum catalogues the Mesolithic Pesse canoe from Drenthe at circa 8250-7550 BCE. Denmark's national museum describes a separate early Neolithic oak dugout from Broksoe, southern Zealand, at approximately 3500 BCE. Neither object proves when water travel began.", "sourceIds": ["drents-pesse-canoe", "natmus-broksoe-dugout"] },
+      "manufactureOrUse": { "text": "The Broksoe account describes an oak trunk worked using axes and wedges and discusses travel and fishing on waterways. It supports a woodworking association without proving that Pesse used exactly the same methods or that every dugout used the same wood.", "sourceIds": ["natmus-broksoe-dugout"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay accommodates these regional examples without moving the existing Boat, Timber or Gouge pages. Those later pages are not claims that hollowed-trunk craft depended on metal tools or originated in the Bronze or Iron Age.", "sourceIds": ["drents-pesse-canoe", "natmus-broksoe-dugout"] },
+      "relatedDiscoveries": [
+        { "elementId": "axe", "relationship": "documented", "explanation": "Axes are named in the museum's Broksoe woodworking account.", "sourceIds": ["natmus-broksoe-dugout"] },
+        { "elementId": "wedge", "relationship": "documented", "explanation": "The same account includes wedges, omitted from the two-input clue.", "sourceIds": ["natmus-broksoe-dugout"] },
+        { "elementId": "tree", "relationship": "documented", "explanation": "The Broksoe craft is described as made from an oak trunk.", "sourceIds": ["natmus-broksoe-dugout"] },
+        { "elementId": "paddle", "relationship": "documented", "explanation": "The museum distinguishes paddles and poles as dugout propulsion equipment.", "sourceIds": ["natmus-stone-age-paddles"] },
+        { "elementId": "boat", "relationship": "gameplay-abstraction", "explanation": "The existing Boat page represents a later boatbuilding context, not the first watercraft.", "sourceIds": [] },
+        { "elementId": "net", "relationship": "gameplay-abstraction", "explanation": "The fishing clue does not establish an excavated canoe/net assemblage.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Circa 8250-7550 BCE: Pesse canoe", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Drenthe, Netherlands"], "sourceIds": ["drents-pesse-canoe"], "note": "Museum object 1955-VIII-2 catalog range; its 1955 acquisition and the website's dates are not manufacture dates." },
+        { "dateRange": "Circa 3500 BCE: Broksoe dugout", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Southern Zealand, Denmark"], "sourceIds": ["natmus-broksoe-dugout"], "note": "A separate early Neolithic museum-described example, not a date transferred to Pesse or to paddles." }
+      ],
+      "associatedRegions": ["Drenthe, Netherlands", "Southern Zealand, Denmark"],
+      "archaeologicalEvidence": [
+        { "text": "The Pesse museum record identifies surviving wooden object 1955-VIII-2, its Mesolithic period and find region. A modern replica is not substituted for the ancient object.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["drents-pesse-canoe"] },
+        { "text": "The museum describes the surviving Broksoe oak dugout, woodworking and stern holes associated with a bulkhead.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["natmus-broksoe-dugout"] }
+      ],
+      "historicalSignificance": { "text": "Dugouts illustrate waterborne movement and fishing in the cited Danish Stone Age contexts. They make a specific construction tradition visible without implying that every society used the same watercraft or that only surviving forms existed.", "sourceIds": ["natmus-broksoe-dugout"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Organic survival biases obscure earlier craft; catalog dates cannot establish the first-ever watercraft.", "Institutional summaries do not replace the underlying excavation and dating reports.", "Two regional examples do not prove one shared manufacturing tradition or independent invention."],
+      "gameplaySimplifications": ["Forest and Axe compress selection and skilled work; the pair is not a construction instruction.", "No sail, later Timber, Iron Tool, Gouge or existing Boat discovery is needed for the new craft.", "The Net association omits the actual catch; the museum's English word sailing is not evidence of a sail."],
+      "furtherResearch": [{ "question": "What would the underlying Pesse publication and Broksoe excavation report add to the museum accounts?", "sourceIds": ["drents-pesse-canoe", "natmus-broksoe-dugout"] }]
+    },
+    {
+      "elementId": "paddle", "elementName": "Paddle",
+      "historicalOverview": { "text": "Paddles are water-propulsion equipment, not hulls or wind-catching sails. Denmark's national museum describes dugouts moved by paddles or wooden poles and illustrates preserved, sometimes decorated, paddles from the underwater Stone Age settlement of Tybrind Vig on Fyn.", "sourceIds": ["natmus-stone-age-paddles"] },
+      "manufactureOrUse": { "text": "The exhibit distinguishes longer and shorter shafts and different blade forms. It proposes that water conditions or users might explain the variation. These explanations remain hypotheses, not demonstrated purposes for every object or a complete manufacturing account.", "sourceIds": ["natmus-stone-age-paddles"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The museum's Stone Age context supports this gameplay placement without establishing the oldest paddle or uniform adoption. The later Voyage page dates neither paddling nor human-powered water travel.", "sourceIds": ["natmus-stone-age-paddles"] },
+      "relatedDiscoveries": [
+        { "elementId": "dugout-canoe", "relationship": "documented", "explanation": "The museum identifies paddles and poles as ways to propel dugouts.", "sourceIds": ["natmus-stone-age-paddles"] },
+        { "elementId": "tree", "relationship": "gameplay-abstraction", "explanation": "Tree is a suitable-material clue, not a sourced botanical identification of each paddle.", "sourceIds": [] },
+        { "elementId": "boat", "relationship": "gameplay-abstraction", "explanation": "A broader later watercraft discovery provides an optional human-powered travel association.", "sourceIds": [] },
+        { "elementId": "voyage", "relationship": "gameplay-abstraction", "explanation": "The journey route remains age-gated without dating paddle invention.", "sourceIds": [] },
+        { "elementId": "sail", "relationship": "gameplay-abstraction", "explanation": "Sail contrasts wind-powered propulsion with paddling; no sail is established for these paddle finds.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": ["Tybrind Vig, Fyn, Denmark"],
+      "archaeologicalEvidence": [
+        { "text": "The exhibit illustrates and describes preserved decorated paddles from Tybrind Vig; it supplies no numerical object date in the inspected passage.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["natmus-stone-age-paddles"] },
+        { "text": "The suggestion that decoration identified owners or groups is an interpretation, not a demonstrated reading of the patterns.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["natmus-stone-age-paddles"] }
+      ],
+      "historicalSignificance": { "text": "Paddle finds expose human-powered movement and equipment separately from hull construction. The museum's varied forms also resist reducing all Stone Age watercraft equipment to one universal design or function.", "sourceIds": ["natmus-stone-age-paddles"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No numerical first-use date is established by the inspected passage; the adjacent Broksoe date does not date these paddles.", "Shape and decoration meanings remain interpretive; paddling, poling, rowing and sailing are not identical."],
+      "gameplaySimplifications": ["A discovered canoe does not manufacture a paddle or establish historical priority over it; Tree stands for a suitable material.", "The Boat association retains the Bronze Age Voyage gate and does not imply every journey needed sails."],
+      "furtherResearch": [{ "question": "Which excavation or object records could support direct paddle dates and botanical identifications?", "sourceIds": ["natmus-stone-age-paddles"] }]
+    },
+    {
+      "elementId": "stone-tool", "elementName": "Stone Tool",
+      "historicalOverview": { "text": "Stone Tool is a broad gameplay label rather than one artifact type. The Smithsonian distinguishes hammerstones, cores and sharp flakes, and explains that tools reveal technology and skill without always identifying which hominin species made them. Durable stone can outlast other components of a toolkit.", "sourceIds": ["smithsonian-stone-tools", "maras-cord-fragment"] },
+      "manufactureOrUse": { "text": "Cores, flakes and hammerstones represent different roles rather than interchangeable finished objects. The Smithsonian also describes later points and scrapers with distinct uses. Italian organic residues demonstrate hafting on varied artifacts, not a requirement that every stone edge had a handle.", "sourceIds": ["smithsonian-stone-tools", "latium-resin-hafting"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Stone Age page groups many technologies for play. The selected Smithsonian process passages do not supply a newly accepted global first date, and a generic Human input is not identification of the maker's species at every archaeological site.", "sourceIds": ["smithsonian-stone-tools"] },
+      "relatedDiscoveries": [
+        { "elementId": "rock", "relationship": "documented", "explanation": "Stone cores and flakes are material evidence for toolmaking, not a claim every rock is equally workable.", "sourceIds": ["smithsonian-stone-tools"] },
+        { "elementId": "adhesive", "relationship": "documented", "explanation": "Resin-bearing artifacts support particular hafting interpretations.", "sourceIds": ["latium-resin-hafting"] },
+        { "elementId": "cordage", "relationship": "documented", "explanation": "A stone flake at Abri du Maras preserved a small three-ply cord fragment; this does not establish its exact function.", "sourceIds": ["maras-cord-fragment"] }
+      ],
+      "approximateDates": [], "associatedRegions": [],
+      "archaeologicalEvidence": [{ "text": "Hammerstones, cores and flakes are artifact categories discussed by the Smithsonian. Their presence does not necessarily determine the hominin maker when species overlap.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["smithsonian-stone-tools"] }],
+      "historicalSignificance": { "text": "Distinguishing tool forms and their contexts avoids treating a whole age as one invention. The Smithsonian emphasizes technology, dexterity and inference while cautioning that attribution to a particular species can be difficult.", "sourceIds": ["smithsonian-stone-tools"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["No first-tool chronology is adopted from the older overview timeline.", "A broad catalog term cannot specify every material, use or maker; this bounded entry supplies no invented origin region."],
+      "gameplaySimplifications": ["Human and Rock are an association, not knapping instructions or a universal maker attribution.", "Hafting, Resin and Axe routes preserve independent alternatives rather than a required single sequence."],
+      "furtherResearch": [{ "question": "How do excavated contexts and use-wear refine the interpretation of a specific stone implement?", "sourceIds": ["smithsonian-stone-tools"] }]
+    },
+    {
+      "elementId": "cordage", "elementName": "Cordage",
+      "historicalOverview": { "text": "Cordage represents fibres assembled into a line, not every textile or yarn. A study of Abri du Maras in France reports a small three-ply inner-bark cord fragment adhering to an in-situ stone flake. The find makes a perishable technology visible without establishing the first cord ever made.", "sourceIds": ["maras-cord-fragment"] },
+      "manufactureOrUse": { "text": "The fragment records a multi-component fibre structure rather than merely an isolated loose fibre. Its precise former role is not established by the inspected passages. The study's list of possible applications, including nets and bags, is not evidence that those objects were found with the fragment.", "sourceIds": ["maras-cord-fragment"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age placement is consistent with the Middle Paleolithic site context. The contextual sample ages are not direct fibre dates and do not establish when twisting techniques originated or how they spread.", "sourceIds": ["maras-cord-fragment"] },
+      "relatedDiscoveries": [
+        { "elementId": "fibre", "relationship": "documented", "explanation": "The study identifies inner-bark fibres in the surviving cord fragment.", "sourceIds": ["maras-cord-fragment"] },
+        { "elementId": "stone-tool", "relationship": "documented", "explanation": "The fragment adhered to a recovered stone flake; association does not prove the complete former tool arrangement.", "sourceIds": ["maras-cord-fragment"] },
+        { "elementId": "net", "relationship": "documented", "explanation": "The separate Antrea study identifies willow-bast net cord, not a net at Abri du Maras.", "sourceIds": ["antrea-net-environment"] }
+      ],
+      "approximateDates": [{ "dateRange": "Approximately 52-41 thousand years ago: Abri du Maras contextual samples", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Abri du Maras, Ardeche, France"], "sourceIds": ["maras-cord-fragment"], "note": "Level 4.2 sample estimates include 41 +/- 2, 46 +/- 5 and 52 +/- 2 ka. This summary of contextual estimates is not a direct cord date or a precise closed manufacture interval." }],
+      "associatedRegions": ["Abri du Maras, Ardeche, France"],
+      "archaeologicalEvidence": [{ "text": "The three-ply inner-bark cord fragment was preserved on a flake recovered in situ from Level 4.2. Small fragments and differential preservation constrain interpretation of the original object.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["maras-cord-fragment"] }],
+      "historicalSignificance": { "text": "Perishable fibre technology can be underrepresented beside durable stone. The fragment therefore broadens the visible toolkit while leaving the paper's larger mathematical and cognitive interpretations separate from the directly observed material.", "sourceIds": ["maras-cord-fragment"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Contextual sample ages are not direct fibre dates; original length and function are not established here.", "Possible nets or bags are not found objects demonstrated by this fragment."],
+      "gameplaySimplifications": ["A two-input preparation omits fibre selection and skilled work.", "Cordage, Yarn and Textile retain distinct gameplay roles without imposing universal ancient terminology."],
+      "furtherResearch": [{ "question": "How can microscopic fibre evidence distinguish the surviving structure from its possible former uses?", "sourceIds": ["maras-cord-fragment"] }]
+    },
+    {
+      "elementId": "net", "elementName": "Net",
+      "historicalOverview": { "text": "A net is distinct from loose cord, a basket trap or a stationary fishing barrier. The original Antrea study abstract describes a surviving willow-bast net find from Korpilahti on the Karelian Isthmus. Its material and environmental evidence are stronger than an unsupported claim that it was the first net ever invented.", "sourceIds": ["antrea-net-environment"] },
+      "manufactureOrUse": { "text": "The study identifies willow bast in the net cord and describes re-investigation of the material and sediments around the assumed findspot. The inspected abstract does not supply a complete knotting method, dimensions or a demonstrated catch species, so none is reconstructed here.", "sourceIds": ["antrea-net-environment"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The early Holocene regional example supports Stone Age gameplay without proving universal adoption. Its radiocarbon measurement and the proposed calibrated sinking event are different chronological statements, not interchangeable invention dates.", "sourceIds": ["antrea-net-environment"] },
+      "relatedDiscoveries": [
+        { "elementId": "cordage", "relationship": "documented", "explanation": "The abstract identifies willow-bast cord in the net.", "sourceIds": ["antrea-net-environment"] },
+        { "elementId": "dugout-canoe", "relationship": "gameplay-abstraction", "explanation": "Waterborne fishing is an optional association, not a preserved canoe/net assemblage established by this source.", "sourceIds": [] },
+        { "elementId": "fishing-weir", "relationship": "gameplay-abstraction", "explanation": "A net and a stationary barrier are different catching arrangements, not aliases.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "Approximately 8400-8300 BCE: proposed Antrea sinking context", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Korpilahti, Karelian Isthmus"], "sourceIds": ["antrea-net-environment"], "note": "The abstract proposes an event during the Ancylus transgression at 8400-8300 calBC. The net's AMS measurement is separately reported as 9140 +/- 135 radiocarbon BP; it is not a BCE year or a direct invention date." }],
+      "associatedRegions": ["Korpilahti, Karelian Isthmus"],
+      "archaeologicalEvidence": [{ "text": "The study reports AMS analysis of surviving net material and sediment samples from the assumed findspot. The net's willow-bast identification is direct material evidence; the sinking event is an environmental interpretation.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["antrea-net-environment"] }],
+      "historicalSignificance": { "text": "The surviving material and its environmental setting make early fibre-based fishing equipment visible. The study also demonstrates why an object's radiocarbon measurement and an interpretation of how it entered a deposit must be kept separate.", "sourceIds": ["antrea-net-environment"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Only the original abstract and metadata were read, not the full paper.", "The re-investigation used an assumed findspot; no mesh dimensions, exact knots or catch species are asserted.", "Neither the find's survival nor a historical oldest-known label proves the first invention."],
+      "gameplaySimplifications": ["Cordage and Reed are a symbolic equipment clue, not evidence that this net used a reed or a knotting procedure.", "Combining net and canoe omits the catch, labor and ecological conditions; equipment is not edible."],
+      "furtherResearch": [{ "question": "What can the full report establish about the original recovery and net structure beyond the abstract?", "sourceIds": ["antrea-net-environment"] }]
+    },
+    {
+      "elementId": "hearth", "elementName": "Hearth",
+      "historicalOverview": { "text": "Hearth represents a maintained place for fire use, not fire itself or proof of fire-making. The Smithsonian discusses controlled fire, food preparation and gathering at hearths and shelters. Those activities are distinct from an automatic transition to one universal household form.", "sourceIds": ["smithsonian-hearths"] },
+      "manufactureOrUse": { "text": "The institutional account connects fire use with cooking and social gathering. A maintained fire setting differs from merely finding naturally burnt material, while the presence of fire alone does not establish ignition technique, the exact meal prepared or every activity at a site.", "sourceIds": ["smithsonian-hearths"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Stone Age gameplay groups managed fire with the represented human activities. This entry uses the Smithsonian's functional discussion, not its early chronology as a newly verified invention date or proof of the earliest fire-making.", "sourceIds": ["smithsonian-hearths"] },
+      "relatedDiscoveries": [
+        { "elementId": "cooked-meat", "relationship": "gameplay-abstraction", "explanation": "The cooking branch represents a selected use, not a particular meal demonstrated by this overview.", "sourceIds": [] },
+        { "elementId": "shelter", "relationship": "documented", "explanation": "The Smithsonian discusses gathering at hearths and shelters, without making one universal architecture necessary.", "sourceIds": ["smithsonian-hearths"] },
+        { "elementId": "adhesive", "relationship": "gameplay-abstraction", "explanation": "Managed fire provides context for some preparation traditions; it is not a mandatory ingredient in every adhesive route.", "sourceIds": [] }
+      ],
+      "approximateDates": [], "associatedRegions": [],
+      "archaeologicalEvidence": [{ "text": "The Smithsonian's institutional overview interprets hearths and shelters as settings for fire use and gathering. This bounded entry does not claim a newly inspected excavation or use tentative early cooking dates as direct artifacts.", "evidenceType": "interpretation", "interpretation": "attested", "sourceIds": ["smithsonian-hearths"] }],
+      "historicalSignificance": { "text": "Treating a hearth as a setting for activity keeps cooking and social use visible alongside fire's physical effects. It also distinguishes a maintained place from the natural phenomenon and from later specialized firing structures.", "sourceIds": ["smithsonian-hearths"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The overview is not a full excavation report; no origin region or first date is invented.", "Controlled use, fire-making, cooking evidence and naturally burnt deposits require different arguments."],
+      "gameplaySimplifications": ["The two-input clue omits maintenance, skill and setting and supplies no operating instructions.", "Hearth, Kiln and Forge retain separate gameplay roles rather than one universal developmental sequence."],
+      "furtherResearch": [{ "question": "Which excavated deposits distinguish repeated managed fire use from natural burning?", "sourceIds": ["smithsonian-hearths"] }]
     }
   ]
 }
