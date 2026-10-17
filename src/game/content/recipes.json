@@ -286,5 +286,8 @@
   { "id": "crucible-bronze-casting", "inputs": ["crucible", "bronze"], "result": "bronze-tool", "flavor": "A metalworking vessel and prepared alloy suggest casting, with mold, cooling and finishing omitted." },
   { "id": "annealed-copper-working", "inputs": ["annealing", "copper"], "result": "tool", "flavor": "Renewed workability suggests a copper toolmaking stage, not an alloy or a finished edge created by heat alone." },
   { "id": "plumbed-stonework", "inputs": ["plumb-line", "rock"], "result": "masonry", "flavor": "A vertical reference suggests controlled stonework; shaping, support and skilled construction remain unstated." },
-  { "id": "watermill-flour", "inputs": ["watermill", "crop"], "result": "flour", "flavor": "Water-powered grinding suggests flour from suitable grain, not every crop or the invention of milling." }
+  { "id": "watermill-flour", "inputs": ["watermill", "crop"], "result": "flour", "flavor": "Water-powered grinding suggests flour from suitable grain, not every crop or the invention of milling." },
+  { "id": "dugout-voyage", "inputs": ["paddle", "dugout-canoe"], "result": "voyage", "flavor": "Paddling a dugout evokes a journey; the later Voyage page does not date the beginning of water travel." },
+  { "id": "crucible-copper", "inputs": ["crucible", "copper-ore"], "result": "copper", "flavor": "A suitable crucible-furnace evokes ore reduction, with fuel, controlled heat, atmosphere and metal recovery omitted." },
+  { "id": "aligned-masonry-wall", "inputs": ["plumb-line", "masonry"], "result": "wall", "flavor": "A vertical reference and stonework suggest an aligned wall, not the invention of building or a complete structure." }
 ]

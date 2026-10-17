@@ -62,7 +62,7 @@ Six pairs are symbolic associations. Resin preparation is a simplified process; 
 
 ## Specialized production and water power
 
-The fourth batch adds **Pottery Wheel, Crucible, Annealing and Plumb Line** in Bronze Age and **Waterwheel and Watermill** in Classical Antiquity, with eleven formulas. Current totals are **225 elements, 288 recipes and 147 full histories**, leaving **78 original gaps**. Every new node has an onward use. Pottery, Wheel, Mold, Quarry, Crop and Bread also receive full histories.
+The fourth batch adds **Pottery Wheel, Crucible, Annealing and Plumb Line** in Bronze Age and **Waterwheel and Watermill** in Classical Antiquity, with eleven formulas. Current totals are **225 elements, 291 recipes and 147 full histories**, leaving **78 original gaps**. Every new node has an onward use. Pottery, Wheel, Mold, Quarry, Crop and Bread also receive full histories.
 
 The [acceptance audit](catalog-plan.md#milestone-225-specialized-production-measurement-and-water-power) separates historical development, regional evidence and gameplay placement. Pottery remains possible without a wheel; an arbitrary pot is not a crucible; annealing is not smelting, alloying or steel hardening; a plumb line is not a complete survey kit; and powered milling does not begin the history of grinding. Abstract-only and reconstructed evidence is labeled.
 
@@ -86,6 +86,23 @@ All six discoveries are optional. The Bronze Age additions are reachable without
 | Watermill + Crop | Flour |
 
 Six routes are symbolic and five are simplified processes. Ceramic preparation, drying/firing, prior metal working and cooling, casting molds/finishing, construction skills and mill transmission are omitted as appropriate. Crop means suitable prepared grain in the mill route. These are not technical operating instructions.
+
+</details>
+
+### Additional recipe connections
+
+The [E/F audit](catalog-plan.md#additional-recipe-connections-and-research-sign-off) appends three formulas, reuses the existing Pottery Wheel/Clay and Watermill/Crop routes, and preserves the existing Adhesive/Stone Tool -> Axe result instead of replacing it with Spear. All previous recipe IDs and results remain unchanged.
+
+<details>
+<summary>Additional connections (spoilers)</summary>
+
+| Inputs | Result | Limits |
+| --- | --- | --- |
+| Paddle + Dugout Canoe | Voyage | Symbolic journey; unlocks only in Bronze Age, not a date for the start of paddling or travel |
+| Crucible + Copper Ore | Copper | Simplified crucible-furnace reduction; suitable ore/equipment, preparation, fuel, atmosphere, slag and recovery omitted |
+| Plumb Line + Masonry | Wall | Symbolic alignment; earlier walls and masonry remain independently available |
+
+Each has an individual cited review. Crucible smelting uses an original scholarly abstract on Chalcolithic Iberia, distinct from the El Argar melting vessel. No new element, history-count credit, requirement, reward or save version is introduced; the research backlog remains 78 original gaps.
 
 </details>
 

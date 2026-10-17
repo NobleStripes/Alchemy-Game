@@ -2,11 +2,23 @@
 
 [Back to the project overview](../README.md)
 
-Review date: **2026-10-16**.
+Review date: **2026-10-17**.
 
 ## Status and scope
 
-### Specialized production and water power: current 225-element milestone
+### Additional recipe connections and research sign-off
+
+The [E/F audit](catalog-plan.md#additional-recipe-connections-and-research-sign-off) evaluates all six requested formulas: three pairs are appended, two existing alternatives reused, and the Spear result rejected because its pair already produces Axe. All 225 element definitions and 288 preceding formulas remain unchanged. Current totals are **225 elements, 291 recipes, 147 histories, 176 chronology entries, 161 verified sources plus one pending**, with **78 original history gaps and 25 deferred candidates**. Recipe classifications are **16 material-process / 114 simplified-process / 161 symbolic**; **186 cited reviews / 105 uncited**.
+
+All ten approved B-D discoveries retain full sourced histories. New Crucible evidence is bounded to the Cambridge repository's original Iberian smelting abstract and citation metadata, read on 17 October 2026; the full paper was not read. Separate crucibles and slag cakes, smelting and alloy melting, and proposed versus established ore identifications remain distinct. Existing source access limits remain intact. Paddle and Plumb Line entries explain the new later-unlocked travel and alignment associations without redating earlier technologies. No new history-count credit or unsupported candidate approval is claimed.
+
+[Connection regressions](../src/game/content/optionalConnections.test.ts) fingerprint the entire 225/288 baseline, validate pairs in both orders, preserve older independent routes, and check every approved history, exact research totals, cited reviews and abstract limits. Store tests cover Bronze Age gating of the Stone Age paddle/canoe pair and persistence of all three new formulas in version 7. Software validation cannot establish independent historical peer review or human learning outcomes.
+
+Software checks on 17 October 2026: typecheck, lint, all **1,408 tests across 27 files**, production build and **164 local documentation links/anchors** pass. The build confirms **179 ingredients, 46 terminal discoveries and zero unused nodes**, with no chunk-size warnings or threshold changes. Original and craft research chunks are **443.35 kB** and **190.29 kB**. The new source-count fixture was updated, and test access to verified-only passage locators now uses explicit type guards. These checks do not replace source inspection or independent historical review.
+
+### Specialized production and water power: preserved 225/288 milestone
+
+The following section records the preceding batch's snapshot, not current recipe/source totals.
 
 The [accepted audit](catalog-plan.md#milestone-225-specialized-production-measurement-and-water-power) adds **six discoveries and eleven formulas**, preserving every preceding **219 definition and 277 recipe**, including the original 215/270 baseline. Totals are **225 elements, 288 recipes, 147 full histories, 176 chronology entries, 160 verified sources and one pending source**. There are **78 original history gaps**. Age totals are **43 / 57 / 54 / 26 / 45**; graph metrics are **179 ingredients, 46 terminal discoveries and zero unused nodes**.
 

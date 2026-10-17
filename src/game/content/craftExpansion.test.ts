@@ -61,7 +61,7 @@ describe('craft and engineering expansion', () => {
     expect(historicalDatabaseSchema.parse(craftResearch)).toEqual(craftResearch)
     expect(rawResearch.records).toHaveLength(97)
     expect(craftResearch.records).toHaveLength(50)
-    expect(craftResearch.sources).toHaveLength(33)
+    expect(craftResearch.sources).toHaveLength(34)
     expect(historicalResearch.records).toEqual([...rawResearch.records, ...craftResearch.records])
     expect(historicalResearch.sources).toEqual([...craftResearch.sources, ...rawResearch.sources])
   })

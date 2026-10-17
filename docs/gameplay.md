@@ -2,7 +2,7 @@
 
 [Back to the project overview](../README.md)
 
-The game has 225 elements and 288 recipes across five gameplay ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
+The game has 225 elements and 291 recipes across five gameplay ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
 
 For an overview of implemented branches, landmark objectives and learning labs, see the [optional content guide](optional-content.md). The detailed rules and recipe tables remain below.
 

@@ -119,7 +119,7 @@ describe('historical research database', () => {
       .toEqual([...priorityIds, ...expansionIds, ...classicalIds, ...newDiscoveryIds, ...antiquityIds, ...classicalExpansionIds, ...reusedTechnologyIds, ...naturalMaterialIds, 'citizenship', ...intellectualIds.slice(0, -1), ...engineeringIds, intellectualIds.at(-1), ...commerceIds, ...scholarshipIds, ...regionalIds, ...naturalResourceIds, ...foundationIds, ...foundationBacklogIds, ...craftExpansionIds, ...craftBacklogIds, 'resin', 'adhesive', 'dugout-canoe', 'paddle', 'stone-tool', 'cordage', 'net', 'hearth', ...productionIds, ...productionBacklogIds])
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'verified',
-    )).toHaveLength(160)
+    )).toHaveLength(161)
     expect(historicalResearch.sources.filter(
       (source) => source.verification.status === 'pending',
     )).toHaveLength(1)
