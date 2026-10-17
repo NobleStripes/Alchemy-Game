@@ -6,6 +6,37 @@ Review date: **2026-10-17**.
 
 ## Status and scope
 
+### Gameplay compatibility and release baseline (G/H)
+
+The expansion baseline is **225 elements, 291 recipes, 147 histories, 176 chronology entries, 161 verified sources plus one pending**. No content or source is newly approved by this release pass. The rejected Adhesive/Stone Tool -> Spear collision remains rejected; all accepted/deferred/rejected dispositions and evidence-access limits remain in the [catalog plan](catalog-plan.md#additional-recipe-connections-and-research-sign-off). The pending source and 25 deferred candidates remain excluded from supporting released claims. **78 original history gaps**, independent historical peer review, physical-device/screen-reader checks and learning-outcome evaluation remain outstanding.
+
+| Compatibility requirement | Release evidence |
+| --- | --- |
+| Five ages, landmarks, discovery goals, grants and unlocks unchanged; no new mandatory content | [Stone Age](../src/game/content/stoneAgeMaterials.test.ts) and [production](../src/game/content/productionWaterpower.test.ts) tests fingerprint full era definitions and the complete 215/270 and 219/277 content; old-only validation and objective checks pass. |
+| Valid paths, order independence, no duplicate pairs or blocking cycles | [Graph validation](../src/game/engine/validateContent.test.ts) rejects unseeded cycles, unreachable content, grant/gate deadlocks and reversed duplicates. [Connection regressions](../src/game/content/optionalConnections.test.ts) check all 21 expansion formulas in both orders, reject an injected reversed duplicate of each, and pin the new full 225/291 baseline. |
+| Old performed formulas and v7 progress survive; old campaigns can discover all additions | [Store regressions](../src/game/state/useGameStore.test.ts) load a completed 215/270 v7 campaign without writes, acquire all ten discoveries from available inputs, record the three newest alternatives as known results, reload, and compare exact old/new formula IDs, preferences, records and reward state. [Persistence tests](../src/game/state/persistence.test.ts) retain older-version loading and full v7 round trips. |
+| Favorites, Recently Used, Hide Mastered and Recorded Formulas | [Shelf tests](../src/features/codex/Codex.test.tsx) cover all ten new ingredients in their age/category/starred filters and recent shortcuts. Paddle, Crucible and Plumb Line remain available until their added use is performed, then hide without losing favorites or recent access. [Guide tests](../src/features/journal/Journal.test.tsx) unlock each new alternate's note separately, retain its previous formula and persist both. Recently Used remains session-local rather than a new save field. |
+| Optional collections and all existing labs remain usable | Existing content, engine, persistence, runner and application suites cover collection memberships/rewards, Rainmaker and all eleven Learning Labs, including known solutions, age restrictions, isolated state, explicit saves and one-time capped rewards. No challenge or collection definition changes in this release pass. |
+| Research quality and provenance | Source schemas reject pending/dangling references; all approved additions have complete cited histories and every formula has an individual review. The Iberian abstract remains abstract-only; interpretations, missing numerical dates and regional adoption are not promoted to universal invention claims. |
+
+Release checks on 17 October 2026: `npm run typecheck`, `npm run lint`, `npm test -- --reporter=dot` (**1,427 tests across 27 files**) and `npm run build` pass. All **182 local documentation links/anchors** resolve. The build retains **179 ingredients, 46 terminal elements and zero unused nodes**, with **287.68 kB application**, **37.54 kB CSS**, **303.96 kB vendor**, **443.35 kB original research** and **190.29 kB craft research** chunks. No production warning or threshold change; the benchmark runner's experimental-API notice is documented below. Earlier section totals are preserved historical snapshots, not the new release's test count.
+
+#### Recipe-graph performance review
+
+Run the existing Vitest benchmark runner with `npx --no-install vitest bench --run src\game\content\catalog.bench.ts`. [The benchmark](../src/game/content/catalog.bench.ts) compares actual 215/270 and 225/291 snapshots using the same production functions; it adds no package or timing assertions to unit tests. The repeat run on 17 October 2026 ran without concurrent tests/builds, with 100 ms warmup and 200 ms sampling per operation:
+
+| Operation | 215/270 mean (ms) | 225/291 mean (ms) |
+| --- | ---: | ---: |
+| Construct pair index | 0.0991 | 0.1557 |
+| Resolve one existing unordered pair | <0.001 | <0.001 |
+| Validate references and gated reachability | 0.7260 | 0.6685 |
+| Recompute Hide Mastered status | 0.0723 | 0.0837 |
+| Select contextual hint | 0.1378 | 0.1185 |
+
+These short machine-local observations are not speedup claims, SLAs, mobile/browser rendering measurements or proof of 250-node performance. Warmup, JIT, GC and shared-machine load affect results; the initial concurrent run was noisier. Pair lookup uses a prebuilt map (construction is paid at module initialization), shelf status rebuilds outgoing uses, hints scan candidates, and build-time validation performs fixed-point reachability. The measured size does not justify speculative caching or engine changes. Re-measure after subsequent batches; keep the existing 500 kB build warning threshold and review research chunks as histories grow. Vitest reports its benchmark API as experimental; that warning does not affect production behavior.
+
+The [next gated milestone](catalog-plan.md#paired-element-and-research-milestones) is **235 discoveries / at least 167 histories**, paired with ten original-gap histories, before proceeding to 250/197. It approves no deferred candidate or unsupported claim.
+
 ### Additional recipe connections and research sign-off
 
 The [E/F audit](catalog-plan.md#additional-recipe-connections-and-research-sign-off) evaluates all six requested formulas: three pairs are appended, two existing alternatives reused, and the Spear result rejected because its pair already produces Axe. All 225 element definitions and 288 preceding formulas remain unchanged. Current totals are **225 elements, 291 recipes, 147 histories, 176 chronology entries, 161 verified sources plus one pending**, with **78 original history gaps and 25 deferred candidates**. Recipe classifications are **16 material-process / 114 simplified-process / 161 symbolic**; **186 cited reviews / 105 uncited**.

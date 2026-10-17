@@ -319,6 +319,12 @@ Alias checks include Fire=`ember`, Water=`tide`, Earth=`stone` (not Rock), Air=`
 
 ## Paired element and research milestones
 
+### Release baseline: 225 discoveries and 291 formulas
+
+The A-H materials, watercraft, production and water-power expansion closes at **225 elements / 291 recipes / 147 full histories / 176 chronology entries**, with **161 verified sources and one pending**. All five age definitions, landmark IDs, discovery goals, unlocks and grants remain unchanged. The complete original **215 definitions / 270 formulas** and intervening **219/277** and **225/288** snapshots remain fingerprinted. The [release regression](../src/game/content/optionalConnections.test.ts) also pins the full **225/291** catalog, so future work must append rather than silently replace definitions or formulas.
+
+The [compatibility and performance evidence](educational-qa.md#gameplay-compatibility-and-release-baseline-gh) covers old completed v7 campaigns, all ten acquisition paths, all 21 added formulas in both orders, reversed-pair rejection, gated reachability and old-only completion. New content remains optional for existing objectives; the previous graph alone still satisfies all five ages. No save-version change or automatic reading/reward credit is introduced.
+
 | Catalog target | Added in batch | Cumulative new histories | Cumulative old-gap histories | Minimum full histories | Original gaps remaining | Status |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
 | 194 baseline | 0 | 0 | 0 | 85 / 194 | 109 | Baseline |
@@ -326,8 +332,11 @@ Alias checks include Fire=`ember`, Water=`tide`, Earth=`stone` (not Rock), Air=`
 | 210 threshold | 10 planned | 16 | 16 | 117 / 210 | 93 | Surpassed by the 215 batch, not a separately shipped snapshot |
 | 215 | 15 after 200 | 21 | 21 | 127 / 215 | 88 | Implemented craft, records and engineering batch |
 | 219 | 4 after 215 | 25 | 25 | 135 / 219 | 84 | Implemented Stone Age materials and watercraft batch |
-| 225 | 6 after 219 | 31 | 31 | 147 / 225 | 78 | Implemented specialized production, measurement and water power |
+| 225 | 6 after 219 | 31 | 31 | 147 / 225 | 78 | Released baseline with 291 recipes; G/H compatibility evidence recorded |
+| 235 next | 10 after 225 | 41 | 41 | 167 / 235 | 68 | Next gated research/content milestone; no candidates newly approved |
 | 250 | 25 | 56 | 56 | 197 / 250 | 53 | Evidence/chain gate pending |
+
+The immediate next milestone is **235 discoveries and at least 167 histories**: at most ten accepted new nodes, each paired with one original-gap history. It is an editorial checkpoint on the existing 250/197 path, not permission to ship ten deferred candidates. Select from the 25 active candidates only after semantic, regional-evidence, chronology, pair, downstream-use and optionality gates pass; reject or replace redundancy. The remaining step to 250 would add fifteen discoveries and at least thirty further histories, reducing original gaps to at most 53. Re-run compatibility and graph benchmarks at each accepted batch; recipe and source counts are not padding targets.
 
 Every batch requires 100% research coverage for additions, one previously missing full history per added element, unique IDs/pairs, no unused nodes, reviewed recipe semantics, legacy-only completion paths and save compatibility. Source counts and dated-entry counts are not quality quotas; appropriate undated records are preferable to false precision. Independent scholarly review and human learning outcomes remain separate.
 

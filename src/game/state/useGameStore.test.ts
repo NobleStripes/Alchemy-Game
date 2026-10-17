@@ -23,6 +23,67 @@ const fresh = (): SavedProgress => parseProgress(JSON.stringify({ version: 1, di
 const failWrites = () => vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
 
 describe('campaign state', () => {
+  it('upgrades a completed 215/270 v7 campaign through all ten optional discoveries without invalidating progress', async () => {
+    const previous: SavedProgress = {
+      ...fresh(),
+      discoveredIds: elements.slice(0, 215).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 270).map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      activeEraId: 'classical-antiquity',
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+      favoriteIds: ['pottery', 'forest'],
+      readHistoricalElementIds: ['pottery'],
+      hideFinalElements: true, collapsedShelves: ['first-light'],
+      insightCredits: 1, insightFailureProgress: 0,
+    }
+    localStorage.setItem(saveKey, exportProgress(previous))
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    const store = createGameStore()
+    expect(snapshotProgress(store.getState())).toEqual(snapshotProgress(previous))
+    expect(writes).not.toHaveBeenCalled()
+    const acquisitions = [
+      'harvested-forest-resin', 'prepared-resin-adhesive', 'hollowed-tree-canoe', 'canoe-paddle-equipment',
+      'rotating-pottery-workshop', 'metallurgical-vessel', 'copper-heat-treatment',
+      'suspended-vertical-reference', 'river-driven-wheel', 'water-powered-milling',
+    ]
+    for (const id of acquisitions) {
+      const recipe = recipes.find((entry) => entry.id === id)!
+      expect(store.getState().discoveredIds).toEqual(expect.arrayContaining(recipe.inputs))
+      store.getState().transmuteWith(...recipe.inputs)
+      expect(store.getState().lastAttempt).toMatchObject({ kind: 'discovery', resultId: recipe.result })
+    }
+    const expanded = snapshotProgress(store.getState())
+    expect(expanded).toEqual({
+      ...snapshotProgress(previous),
+      discoveredIds: [...previous.discoveredIds, ...elements.slice(215).map((element) => element.id)],
+      discoveredRecipeIds: [...previous.discoveredRecipeIds, ...acquisitions],
+      experimentHistory: expect.any(Array),
+    })
+    expect(expanded.experimentHistory).toHaveLength(10)
+    for (const recipe of recipes.slice(288, 291)) {
+      store.getState().transmuteWith(recipe.inputs[1], recipe.inputs[0])
+      expect(store.getState().lastAttempt).toMatchObject({ kind: 'known', resultId: recipe.result })
+    }
+    store.getState().toggleFavorite('watermill')
+    store.getState().selectElement('paddle')
+    expect(store.getState().recentIngredientIds[0]).toBe('paddle')
+    await store.flushProgress()
+    const reloaded = createGameStore()
+    expect(snapshotProgress(reloaded.getState())).toEqual(snapshotProgress(store.getState()))
+    expect(reloaded.getState().discoveredRecipeIds).toEqual([
+      ...previous.discoveredRecipeIds, ...acquisitions, ...recipes.slice(288, 291).map((recipe) => recipe.id),
+    ])
+    expect(reloaded.getState()).toMatchObject({
+      favoriteIds: ['pottery', 'forest', 'watermill'],
+      recentIngredientIds: [], hideFinalElements: true, collapsedShelves: ['first-light'],
+      insightCredits: 1, rewardedChallengeEraIds: previous.rewardedChallengeEraIds,
+      rewardedCollectionIds: previous.rewardedCollectionIds, challengeRecords: previous.challengeRecords,
+    })
+    expect(loadProgress()?.version).toBe(7)
+  })
+
   it('persists shelf preferences without changing campaign discoveries and resets them', async () => {
     const before = campaign()
     state().toggleHideFinalElements()

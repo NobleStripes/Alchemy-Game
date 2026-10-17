@@ -180,6 +180,32 @@ describe('Guide preparation', () => {
   })
 
   describe('performed formula historical context', () => {
+    it.each([
+      ['dugout-voyage', 'paddled-voyage', 'bronze-age'],
+      ['crucible-copper', 'smelted-copper', 'bronze-age'],
+      ['aligned-masonry-wall', 'first-wall', 'stone-age'],
+    ])('records %s independently without removing its previously performed alternate', async (id, previousId, eraId) => {
+      const recipe = recipes.find((entry) => entry.id === id)!
+      useGameStore.setState({
+        discoveredIds: elements.map((element) => element.id),
+        unlockedEraIds: eras.map((era) => era.id),
+        activeEraId: eraId,
+        discoveredRecipeIds: [previousId],
+      })
+      const view = render(<Journal {...props} eraId={eraId} />)
+      expect(screen.queryByText(reviewsByRecipeId.get(id)!.caution)).not.toBeInTheDocument()
+      view.unmount()
+      useGameStore.getState().transmuteWith(...recipe.inputs)
+      expect(useGameStore.getState().lastAttempt?.kind).toBe('known')
+      render(<Journal {...props} eraId={eraId} />)
+      await userEvent.setup().click(screen.getByText('Recorded Formulas (2)'))
+      const archive = within(screen.getByRole('list', { name: 'Recorded formula archive' }))
+      expect(archive.getByText(reviewsByRecipeId.get(id)!.caution)).toBeInTheDocument()
+      expect(archive.getByText(reviewsByRecipeId.get(previousId)!.caution)).toBeInTheDocument()
+      expect(useGameStore.getState().discoveredRecipeIds).toEqual([previousId, id])
+      expect(snapshotProgress(createGameStore().getState())).toEqual(snapshotProgress(useGameStore.getState()))
+    })
+
     it('keeps the new alphabetic manuscript caution hidden until that alternate route is performed', async () => {
       useGameStore.setState({
         discoveredIds: elements.map((element) => element.id),

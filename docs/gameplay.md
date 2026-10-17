@@ -4,6 +4,8 @@
 
 The game has 225 elements and 291 recipes across five gameplay ages in a persistent historical Atlas. The simple two-slot workspace, inspectable Guide, local progress, and pointer, touch, and keyboard controls remain available across every unlocked age.
 
+The [225/291 release baseline](catalog-plan.md#release-baseline-225-discoveries-and-291-formulas) preserves all five age definitions, landmarks and discovery goals. A completed 215/270 version 7 campaign keeps its recorded formulas, rewards and preferences while acquiring the ten optional additions. A performed alternate is recorded separately, never substituted for an earlier formula. Favorites and Hide Mastered remain saved preferences; Recently Used remains session-local. New content is not required to re-complete an already completed age, and the next 235/167 catalog/research milestone is an editorial plan, not a new gameplay age.
+
 For an overview of implemented branches, landmark objectives and learning labs, see the [optional content guide](optional-content.md). The detailed rules and recipe tables remain below.
 
 Desktop keeps Elements, Combine, and Guide visible together. Mobile uses a fixed three-tab navigator; choosing an element returns directly to Combine, while the Elements list marks occupied slots. Search matches names and categories, and the Guide separates collections from optional element research with native disclosure controls.

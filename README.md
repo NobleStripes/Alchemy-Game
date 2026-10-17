@@ -16,6 +16,8 @@ The [catalog plan toward 250](docs/catalog-plan.md) pairs element milestones wit
 
 The [additional-connections audit](docs/catalog-plan.md#additional-recipe-connections-and-research-sign-off) adds three missing optional routes, reuses two existing formulas and rejects one conflicting result rather than overwriting it. All ten materials, watercraft, production and water-power additions have complete sourced histories; the recipe-only follow-up leaves the 78-entry research backlog unchanged.
 
+The [225/291 release baseline](docs/catalog-plan.md#release-baseline-225-discoveries-and-291-formulas) retains every previous 215/270 definition and formula, all five age requirements and version 7 saves. The next evidence-gated checkpoint is **235 discoveries and at least 167 histories**, toward 250/197; no deferred candidate is approved merely to meet that target. [Release QA](docs/educational-qa.md#gameplay-compatibility-and-release-baseline-gh) records compatibility coverage and graph-performance observations.
+
 The [Phase 10 roadmap](docs/phase-10-roadmap.md) covers the planned content registry and regional modules, save preservation, an Achaemenid prototype, free-access requirements, concise Atlas summaries, contextual nudges and manual save transfer. PWA support depends on safe backup/restore; community packs and social sharing remain deferred. These are planned features, not current functionality.
 
 Optional production foundations, engineering, commerce, scholarship and regional branches, plus the landmark track and eleven learning labs, are covered in the [optional content guide](docs/optional-content.md). They extend exploration without increasing existing age-completion requirements; detailed recipes are kept out of this overview.

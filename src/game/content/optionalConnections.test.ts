@@ -61,6 +61,22 @@ describe('optional recipe connections and research sign-off', () => {
     expect(recipes.filter((recipe) => recipe.result === 'spear')).toHaveLength(1)
   })
 
+  it('pins the complete 225/291 release baseline for future appended batches', async () => {
+    expect(await fingerprint(elements.slice(0, 225))).toBe('39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a')
+    expect(await fingerprint(recipes.slice(0, 291))).toBe('a6afd9fcf77ad19a8e5735ef03bfec45add65a73ebf6f791c9bec09bce57cffe')
+  })
+
+  it('resolves all 21 post-215 formulas symmetrically and rejects their reversed duplicates', () => {
+    for (const recipe of recipes.slice(270, 291)) {
+      expect(resolveCombination(...recipe.inputs, index)).toEqual(recipe)
+      expect(resolveCombination(recipe.inputs[1], recipe.inputs[0], index)).toEqual(recipe)
+      const duplicate = { ...recipe, id: `${recipe.id}-duplicate`, inputs: [recipe.inputs[1], recipe.inputs[0]] as [string, string] }
+      expect(validateContent(elements, [...recipes, duplicate], eras, collections)).toEqual(
+        expect.arrayContaining([expect.stringContaining(`Recipes ${recipe.id} and ${duplicate.id} share pair`)]),
+      )
+    }
+  })
+
   it('retains older pottery, copper, wall and flour routes independently of later equipment', () => {
     for (const [result, equipment] of [
       ['pottery', 'pottery-wheel'], ['copper', 'crucible'],

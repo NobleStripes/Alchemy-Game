@@ -22,6 +22,8 @@ New cautions distinguish ore reduction from melting/alloying, tablets from seal 
 
 The [additional-connections audit](catalog-plan.md#additional-recipe-connections-and-research-sign-off) reuses the existing wheel-pottery and watermill-flour formulas, adds three missing pairs and rejects Adhesive + Stone Tool -> Spear because that pair already produces Axe. No original ID or result changes. Dugout travel and construction alignment are symbolic; crucible ore reduction is a simplified process supported by a separate Chalcolithic Iberian abstract, not the El Argar alloy-melting example. Its fuel, equipment, atmosphere, slag and recovery omissions are explicit. Bronze Age Voyage remains locked despite its Stone Age ingredients. Later tools do not date the invention of walls, pottery, copper working or flour.
 
+The [G/H release checks](educational-qa.md#gameplay-compatibility-and-release-baseline-gh) preserve all original 215/270 definitions and formulas, pin the complete 225/291 snapshot, test all 21 expansion pairs in both orders and reject reversed duplicates. Guide regressions confirm the three latest alternatives keep their old performed formulas and unlock only their own notes. No classification, source count, result or evidence status changes in the release-only pass.
+
 ## Player-facing context
 
 Performed formulas have an optional **Historical context** disclosure in both Recorded Formulas and selected-element research. Each formula unlocks its own note; discovering a result does not reveal unperformed alternate routes. Notes do not appear in Open Leads or locked/unsuccessful experiments, and stay separate from the element encyclopedia. Reading changes no worktable slots, Insight, progress or storage.

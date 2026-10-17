@@ -139,6 +139,30 @@ describe('element shelf', () => {
     expect(results().queryByRole('button', { name: 'Archive' })).not.toBeInTheDocument()
   })
 
+  it.each([
+    ['paddle', 'Paddle', 'dugout-voyage'],
+    ['crucible', 'Crucible', 'crucible-copper'],
+    ['plumb-line', 'Plumb Line', 'aligned-masonry-wall'],
+  ])('keeps %s usable until its new alternate is performed, retaining favorites and recent access after hiding', async (id, name, recipeId) => {
+    const outgoing = recipes.filter((recipe) => recipe.inputs.includes(id))
+    const recipe = outgoing.find((entry) => entry.id === recipeId)!
+    useGameStore.setState({
+      discoveredIds: elements.map((element) => element.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      discoveredRecipeIds: outgoing.filter((entry) => entry.id !== recipeId).map((entry) => entry.id),
+      favoriteIds: [id], hideFinalElements: true,
+    })
+    renderShelf()
+    expect(results().getByRole('button', { name })).toBeVisible()
+    act(() => useGameStore.getState().transmuteWith(...recipe.inputs))
+    expect(useGameStore.getState().lastAttempt?.kind).toBe('known')
+    expect(results().queryByRole('button', { name })).not.toBeInTheDocument()
+    expect(useGameStore.getState().favoriteIds).toEqual([id])
+    await userEvent.setup().click(within(screen.getByRole('region', { name: /Recently used/ }))
+      .getByRole('button', { name: `Use recent ingredient ${name}` }))
+    expect(useGameStore.getState().firstSlotId).toBe(id)
+  })
+
   it('starts on All Ages independently of the playable age and hides undiscovered elements', () => {
     const craft = craftForAge(1)
     useGameStore.setState({
@@ -287,6 +311,8 @@ describe('element shelf', () => {
     ['diplomatic-mission', 'Diplomatic Mission', /^Society/],
     ['caravan-route', 'Caravan Route', /^Transport/],
     ['cultural-exchange', 'Cultural Exchange', /^Knowledge/],
+    ['waterwheel', 'Waterwheel', /^Craft/],
+    ['watermill', 'Watermill', /^Craft/],
   ] as const)('filters starred Age V %s while retaining its Recently Used shortcut', async (id, name, category) => {
     const user = userEvent.setup()
     useGameStore.setState({
@@ -351,6 +377,14 @@ describe('element shelf', () => {
     ['slaked-lime', 'Slaked Lime', 'stone-age', /^Matter/],
     ['lime-mortar', 'Lime Mortar', 'stone-age', /^Craft/],
     ['volcanic-ash', 'Volcanic Ash', 'first-light', /^Matter/],
+    ['resin', 'Resin', 'stone-age', /^Matter/],
+    ['adhesive', 'Adhesive', 'stone-age', /^Craft/],
+    ['dugout-canoe', 'Dugout Canoe', 'stone-age', /^Transport/],
+    ['paddle', 'Paddle', 'stone-age', /^Transport/],
+    ['pottery-wheel', 'Pottery Wheel', 'bronze-age', /^Craft/],
+    ['crucible', 'Crucible', 'bronze-age', /^Craft/],
+    ['annealing', 'Annealing', 'bronze-age', /^Knowledge/],
+    ['plumb-line', 'Plumb Line', 'bronze-age', /^Craft/],
   ] as const)('keeps %s in its earlier-age filters and Recently Used shortcuts', async (id, name, era, category) => {
     const user = userEvent.setup()
     useGameStore.setState({
