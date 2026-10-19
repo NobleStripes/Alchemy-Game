@@ -71,21 +71,6 @@ export function parseModuleSaveEnvelope(raw: string): ModuleSaveEnvelope | null 
     if (new TextEncoder().encode(raw).byteLength > MAX_SAVE_BYTES) return null
     const result = moduleSaveEnvelopeSchema.safeParse(JSON.parse(raw))
     if (!result.success || assertOwnership(result.data.ownership).length) return null
-    const { progress, ownership } = result.data
-    const knownElements = new Set(ownership.flatMap((item) => item.elementIds))
-    const knownRecipes = new Set(ownership.flatMap((item) => item.recipeIds))
-    const knownCollections = new Set(ownership.flatMap((item) => item.collectionIds))
-    const knownChallenges = new Set(ownership.flatMap((item) => item.challengeIds))
-    if (!progress.discoveredIds.every((id) => knownElements.has(id) || !id.includes(':-'))) {
-      // Legacy core IDs are not constrained by module ownership.
-      // Actual core reference validation is performed by the normal v7 parser.
-    }
-    // Module ownership is metadata, not proof that individual achievements
-    // were earned. Preserve them without granting anything during parsing.
-    void knownElements
-    void knownRecipes
-    void knownCollections
-    void knownChallenges
     return result.data
   } catch {
     return null
