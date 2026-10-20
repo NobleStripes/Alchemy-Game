@@ -1,5 +1,8 @@
 import { z } from 'zod'
-import { collectionsSchema, elementsSchema, recipesSchema } from '../content/schema.ts'
+import {
+  collectionsSchema, elementsSchema, recipesSchema,
+  historicalSourceSchema, historicalEntrySchema, recipeReviewEntrySchema,
+} from '../content/schema.ts'
 
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/)
 const version = z.string().regex(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/)
@@ -7,6 +10,19 @@ const uniqueIds = z.array(id).refine(
   (ids) => new Set(ids).size === ids.length,
   'IDs must be unique.',
 )
+
+export const regionalChallengeSchema = z.strictObject({
+  id,
+  name: z.string().trim().min(1),
+  starterIds: uniqueIds.min(1),
+  targetId: id,
+  allowedResultEraIds: uniqueIds.min(1),
+  minimumAttempts: z.number().int().positive(),
+  education: z.strictObject({
+    overview: z.string().trim().min(1),
+    sourceIds: uniqueIds,
+  }).optional(),
+})
 
 /**
  * Metadata for a trusted, bundled, data-only historical expansion.
@@ -43,6 +59,12 @@ export const regionalModuleSchema = z.strictObject({
   elements: elementsSchema,
   recipes: recipesSchema,
   collections: collectionsSchema,
+  research: z.strictObject({
+    sources: z.array(historicalSourceSchema),
+    records: z.array(historicalEntrySchema),
+  }).default({ sources: [], records: [] }),
+  reviews: z.array(recipeReviewEntrySchema).default([]),
+  challenges: z.array(regionalChallengeSchema).default([]),
 }).superRefine((pack, ctx) => {
   const prefix = `${pack.manifest.id}-`
   const ownedElementIds = new Set(pack.elements.map((element) => element.id))
@@ -103,6 +125,44 @@ export const regionalModuleSchema = z.strictObject({
         code: 'custom',
         path: ['collections', index, 'elementIds'],
         message: 'Regional collections must include a module-owned discovery.',
+      })
+    }
+  })
+
+  const ownedRecipeIds = new Set(pack.recipes.map((recipe) => recipe.id))
+  pack.research.sources.forEach((source, index) => {
+    if (!source.id.startsWith(prefix)) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['research', 'sources', index, 'id'],
+        message: 'Regional source IDs must use the module prefix.',
+      })
+    }
+  })
+  pack.research.records.forEach((record, index) => {
+    if (!ownedElementIds.has(record.elementId)) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['research', 'records', index, 'elementId'],
+        message: 'Regional histories must describe module-owned discoveries.',
+      })
+    }
+  })
+  pack.reviews.forEach((review, index) => {
+    if (!ownedRecipeIds.has(review.recipeId)) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['reviews', index, 'recipeId'],
+        message: 'Regional recipe reviews must describe module-owned formulas.',
+      })
+    }
+  })
+  pack.challenges.forEach((challenge, index) => {
+    if (!challenge.id.startsWith(prefix)) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['challenges', index, 'id'],
+        message: 'Regional challenge IDs must use the module prefix.',
       })
     }
   })
