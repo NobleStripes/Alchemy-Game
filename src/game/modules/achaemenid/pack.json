@@ -105,25 +105,7 @@
           "checkedOn": "2026-10-20",
           "accessedUrl": "https://www.iranicaonline.org/articles/commerce-ii/",
           "accessLevel": "selected-passages",
-          "locator": "Opening paragraphs on trade routes, Sardis–Susa Royal Road, staging stations, and intersecting communication networks; secondary summary, not proof of a single road-building invention."
-        }
-      },
-      {
-        "id": "achaemenid-iranica-tablets",
-        "title": "Persepolis Elamite Tablets",
-        "authors": [
-          "Muhammad A. Dandamayev"
-        ],
-        "institution": "Encyclopaedia Iranica",
-        "sourceType": "reference-encyclopedia",
-        "url": "https://www.iranicaonline.org/articles/persepolis-elamite-tablets/",
-        "publicationDate": "2002-07-20",
-        "verification": {
-          "status": "verified",
-          "checkedOn": "2026-10-20",
-          "accessedUrl": "https://www.iranicaonline.org/articles/persepolis-elamite-tablets/",
-          "accessLevel": "selected-passages",
-          "locator": "Opening paragraphs: 1930s excavation contexts, Fortification tablets dated c. 509–494 BCE, and regional food/ration transactions in Persis and Elam; limits to published corpus and geographic generalization."
+          "locator": "Article opening, 'Trade and communication': Royal Road Sardis to Susa, multiple roads and caravan routes, resting stations; source directly inspected 2026-10-20. Does not establish a universal origin for road technology."
         }
       }
     ],
@@ -326,21 +308,21 @@
           "text": "The Persepolis Fortification tablets are an Achaemenid administrative archive excavated in the 1930s. Many Elamite records concern commodities, rations and travel authorization in southwestern Iran.",
           "sourceIds": [
             "isac-fortification",
-            "achaemenid-iranica-tablets"
+            "isac-fortification"
           ]
         },
         "manufactureOrUse": {
           "text": "Administrative personnel inscribed and sealed clay documents that recorded allocations of food, labor and travel provisions. The texts reflect specific institutions, locales and surviving records rather than a complete portrait of ordinary life across the empire.",
           "sourceIds": [
             "isac-fortification",
-            "achaemenid-iranica-tablets"
+            "isac-fortification"
           ]
         },
         "agePlacement": {
           "status": "regional-gameplay-placement",
           "text": "These records belong to the reign of Darius I, although clay tablet administration existed long before the Achaemenid Empire.",
           "sourceIds": [
-            "achaemenid-iranica-tablets"
+            "isac-fortification"
           ]
         },
         "relatedDiscoveries": [
@@ -349,7 +331,7 @@
             "relationship": "documented",
             "explanation": "Clay tablets are the recording medium; the Fortification archive is a historically localized corpus.",
             "sourceIds": [
-              "achaemenid-iranica-tablets"
+              "isac-fortification"
             ]
           },
           {
@@ -370,7 +352,7 @@
               "Persepolis region, southwestern Iran"
             ],
             "sourceIds": [
-              "achaemenid-iranica-tablets"
+              "isac-fortification"
             ],
             "note": "Dating refers to records attributed to Darius I's regnal years, not invention of clay documents."
           }
@@ -386,7 +368,7 @@
             "evidenceType": "excavated-context",
             "interpretation": "attested",
             "sourceIds": [
-              "achaemenid-iranica-tablets"
+              "isac-fortification"
             ]
           },
           {
@@ -395,7 +377,7 @@
             "interpretation": "attested",
             "sourceIds": [
               "isac-fortification",
-              "achaemenid-iranica-tablets"
+              "isac-fortification"
             ]
           }
         ],
@@ -403,7 +385,7 @@
           "text": "The surviving corpus makes Achaemenid logistics, administration, provisioning and the movement of individuals available to historical study.",
           "sourceIds": [
             "isac-fortification",
-            "achaemenid-iranica-tablets"
+            "isac-fortification"
           ]
         },
         "independentDevelopments": [],
@@ -448,7 +430,7 @@
       "caution": "Administrative clay tablets were documented and sealed by scribes; this formula symbolizes a surviving archival corpus rather than an artifact-production procedure.",
       "sourceIds": [
         "isac-fortification",
-        "achaemenid-iranica-tablets"
+        "isac-fortification"
       ]
     }
   ],
