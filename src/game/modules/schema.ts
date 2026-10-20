@@ -14,9 +14,9 @@ const uniqueIds = z.array(id).refine(
 export const regionalChallengeSchema = z.strictObject({
   id,
   name: z.string().trim().min(1),
-  starterIds: uniqueIds.min(1),
+  starterIds: z.array(id).min(1).refine((ids) => new Set(ids).size === ids.length),
   targetId: id,
-  allowedResultEraIds: uniqueIds.min(1),
+  allowedResultEraIds: z.array(id).min(1).refine((ids) => new Set(ids).size === ids.length),
   minimumAttempts: z.number().int().positive(),
   education: z.strictObject({
     overview: z.string().trim().min(1),
