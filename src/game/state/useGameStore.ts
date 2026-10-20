@@ -257,8 +257,9 @@ export function createGameStore(options: GameStoreOptions = {}) {
   },
 
   selectElement: (elementId) => {
-    soundEngine.playSelect()
     const state = get()
+    if (challengePending || !elementsById.has(elementId) || !state.discoveredIds.includes(elementId)) return
+    soundEngine.playSelect()
     const { firstSlotId, secondSlotId } = state
     const recentIngredientIds = recentIngredients(state, [elementId])
     if (!firstSlotId) {
@@ -271,8 +272,9 @@ export function createGameStore(options: GameStoreOptions = {}) {
   },
 
   placeElement: (slot, elementId) => {
-    soundEngine.playSelect()
     const state = get()
+    if (challengePending || !elementsById.has(elementId) || !state.discoveredIds.includes(elementId)) return
+    soundEngine.playSelect()
     set({
       [slot === 'first' ? 'firstSlotId' : 'secondSlotId']: elementId,
       lastAttempt: null,
@@ -298,7 +300,7 @@ export function createGameStore(options: GameStoreOptions = {}) {
   },
 
   transmuteWith: (firstId: string, secondId: string) => {
-    if (challengePending) return
+    if (challengePending || !elementsById.has(firstId) || !elementsById.has(secondId)) return
     set({
       firstSlotId: firstId, secondSlotId: secondId,
       recentIngredientIds: recentIngredients(get(), [firstId, secondId]),
@@ -310,6 +312,7 @@ export function createGameStore(options: GameStoreOptions = {}) {
     if (challengePending) return
     const state = get()
     const { firstSlotId, secondSlotId } = state
+    if ((firstSlotId && !elementsById.has(firstSlotId)) || (secondSlotId && !elementsById.has(secondSlotId))) return
     if (!firstSlotId || !secondSlotId) {
       soundEngine.playFailure()
       set({

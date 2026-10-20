@@ -42,6 +42,20 @@ Challenge cards show **Not completed** or **Completed** and the best saved attem
 
 The Element shelf defaults to **All Ages**, because earlier ingredients remain useful for cross-age combinations. Choose Origins, Stone Age, Bronze Age, Iron Age, or Classical Antiquity to filter the shelf without changing the playable age. Search, category tabs, and the independent **Starred** toggle combine; none exposes undiscovered ingredients. The counter shows matching discoveries out of the whole collection. **Clear filters** resets search, age, category, and Starred while retaining the selected sort and layout.
 
+When a region is enabled, **Region** adds an independent filter for **All
+content**, **Core content**, or an enabled pack. It combines with age, category
+and Starred without introducing a sixth age. Clear filters also resets Region.
+Search temporarily bypasses these filters, including Region, but only searches
+discoveries in the active catalog; disabled content cannot appear. Recently
+used shortcuts remain across all filters, restricted to active discoveries.
+Region selection is session-only and never changes progress, Insight or rewards.
+
+The Guide's **Core and regional discovery progress** separates discoveries out
+of the 225-element core from each enabled pack's optional discoveries. These
+campaign-wide exploration counts are separate from the selected age's original
+Catalogue target and landmarks. The header continues to show total active
+exploration, not a replacement age-completion requirement.
+
 Search and filter controls remain visible while the results scroll separately. **Compact layout** replaces illustrated tiles with denser rows; selection, favorites, occupied-slot markers, and dragging still work. Focus an ingredient and press Enter to select it; the existing Space-based keyboard dragging remains available.
 
 Category filters stay in a single horizontal row with a visible scrollbar rather than shrinking or hiding overflow. The row is keyboard-focusable for native scrolling; Tab moves into its filter buttons. Scrollbar visibility can still follow the operating system's overlay-scrollbar preferences.
@@ -52,7 +66,7 @@ On mobile viewports no taller than 650 pixels, the whole Element shelf scrolls s
 
 ## Five gameplay pages
 
-The Play age selector always lists all five pages; locked pages are disabled. Keyboard users can focus an unlocked age and press Enter or Space. The selected page is marked as current, and the age row scrolls horizontally when needed without clipping its first button. Selecting a page changes the Guide's discoveries, performed formulas, category totals, landmarks and collections, but the header counter still measures discoveries across all 215 elements. Alternate recipes count as separate recorded formulas only after each is performed; they never count as extra discovered elements.
+The Play age selector always lists all five pages; locked pages are disabled. Keyboard users can focus an unlocked age and press Enter or Space. The selected page is marked as current, and the age row scrolls horizontally when needed without clipping its first button. Selecting a page changes the Guide's discoveries, performed formulas, category totals, landmarks and collections, but the header counter measures the complete active catalog: 225 core elements, or 228 with the Achaemenid pilot. Alternate recipes count as separate recorded formulas only after each is performed; they never count as extra discovered elements.
 
 Origins is an undated, symbolic gameplay prologue, not an archaeological period or a scientific account of creation. Its four starting essences draw on documented Greek natural philosophy, not modern chemical elements or a universal ancient belief; their free Atlas histories explain the distinction. The historical pages draw on several traditions; their approximate dates are explained in the [chronology guide](historical-interpretation.md), not a single worldwide timeline.
 

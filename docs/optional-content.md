@@ -2,7 +2,7 @@
 
 [Back to the project overview](../README.md) | [Gameplay and Atlas](gameplay.md) | [Catalog plan](catalog-plan.md)
 
-Optional discoveries, collection objectives and isolated learning labs extend the main campaign without increasing existing age-completion requirements. They reuse the same discoveries, Atlas histories and version 7 saves; reading history is always free and never required for rewards.
+Optional discoveries, collection objectives and isolated learning labs extend the main campaign without increasing existing age-completion requirements. Core additions reuse version 7 saves; optional regional packs use the confirmed durable migration described below. Reading history is always free and never required for rewards.
 
 Open **Challenges** in the persistent main navigation for Rainmaker and all eleven Learning Labs, their completion status and best saved attempts. The isolated runner stays mounted when visiting Play or Atlas; return to Challenges to resume. Leaving a run restores focus to its originating card. The former Guide lab listing and separate Rainmaker header shortcut are removed; mobile Play still has only Elements, Combine and Guide tabs. Runs are transient across reloads, while existing v7 records and first-completion rewards are unchanged.
 
@@ -24,6 +24,7 @@ All views share one validated catalog per session. See
 and the [Phase 11 integration audit](phase-11-integration.md).
 
 - [Classical Antiquity and Iron Age branches](#classical-antiquity-and-iron-age-branches)
+- [Achaemenid pilot gameplay](#achaemenid-pilot-gameplay)
 - [Production foundations](#production-foundations)
 - [Craft, records and engineering](#craft-records-and-engineering)
 - [Stone Age materials and watercraft](#stone-age-materials-and-watercraft)
@@ -33,6 +34,57 @@ and the [Phase 11 integration audit](phase-11-integration.md).
 - [Commerce](#commerce)
 - [Scholarship](#scholarship)
 - [Regional administration and exchange](#regional-administration-and-exchange)
+
+## Achaemenid pilot gameplay
+
+Enable the bundled pilot in **Settings > Regional Modules**, then confirm the
+validated save change and reload. All three discoveries belong to the existing
+**Classical Antiquity** gameplay page. They add no age, core landmark, mandatory
+gate or core completion requirement; already-completed age objectives remain
+completed. Their ingredient pairs are unique in either order and reachable
+through the campaign.
+
+<details>
+<summary>Pilot symbolic formulas (recipe spoilers)</summary>
+
+| Optional discovery | Symbolic ingredients |
+| --- | --- |
+| Achaemenid Satrapy | Provincial Government + Empire |
+| Achaemenid Royal Road | Road Network + Imperial Bureaucracy |
+| Persepolis Fortification Tablets | Clay Tablet + Imperial Bureaucracy |
+
+These are conceptual gameplay associations, not literal manufacturing
+instructions or claims of Achaemenid invention of government, roads or writing.
+
+</details>
+
+Use the ordinary two-slot worktable. Older formulas remain recorded unchanged.
+New active recipes can make a formerly Terminal or Exhausted ingredient useful
+again. Hide Mastered, Starred, Recently Used, hints and Open Leads all use the
+same active catalog; disabled ingredients and leads remain hidden, not deleted.
+The shelf's Region filter and the Guide's separate core/regional progress
+display do not change the five chronological pages.
+
+The optional **Imperial Connections** collection tracks all three discoveries.
+Its existing one-time +1 Insight reward is capped by the three-credit wallet and
+recorded independently of reading. Each discovered item has a full Atlas entry
+with historical explanation, regional/dating cautions and source references.
+Explicit read/unread markers are free and are not collection requirements.
+
+**Imperial Communications** appears in Challenges only while the pack is active.
+It supplies Road Network and Imperial Bureaucracy and targets Achaemenid Royal
+Road. Its actual shortest solution and minimum attempt value are both **one**:
+the target is absent from the starters and one available combination reaches it.
+Completing the isolated run does not discover campaign elements or save a
+receipt. Only **Save result** records completion/best attempts and the existing
+one-time reward; retries and later reactivation cannot pay that receipt again.
+
+Disabling and re-enabling a compatible pack preserves discoveries, performed
+formulas, favorites, reading markers, collection receipts and saved challenge
+results. The selection change itself spends no Insight, performs no experiment
+and triggers no reward. Reload clears transient selections and unsaved runs,
+but the full archive retains inactive records. Use the save guide before import
+or deliberate total reset, which have different replacement/deletion semantics.
 
 ## Classical Antiquity and Iron Age branches
 

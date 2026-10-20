@@ -127,8 +127,10 @@ interface CodexProps {
 type SortOrder = 'alphabetical' | 'category' | 'recent'
 
 export function Codex({ onElementSelected }: CodexProps) {
-  const { elements, elementsById, eras, recipes } = useGameStore((state) => state.catalog)
+  const { elements, elementsById, eras, recipes, regions } = useGameStore((state) => state.catalog)
   const elementEras = useMemo(() => new Map(elements.map((element) => [element.id, element.era])), [elements])
+  const regionalElementIds = useMemo(() => new Set(regions.flatMap((region) => region.elementIds)), [regions])
+  const [selectedRegion, setSelectedRegion] = useState('all')
   const [query, setQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<ElementCategory | 'all'>('all')
   const [selectedAge, setSelectedAge] = useState('all')
@@ -176,11 +178,15 @@ export function Codex({ onElementSelected }: CodexProps) {
       }
       if (starredOnly && !favoriteIds.includes(element.id)) return false
       if (selectedAge !== 'all' && element.era !== selectedAge) return false
+      if (selectedRegion === 'core' && regionalElementIds.has(element.id)) return false
+      if (selectedRegion !== 'all' && selectedRegion !== 'core' &&
+        !regions.find((region) => region.id === selectedRegion)?.elementIds.includes(element.id)) return false
       if (hideFinalElements && (terminalIds.has(element.id) || exhaustedIds.has(element.id))) return false
 
       return true
     })
-  }, [elements, discoveredIds, favoriteIds, starredOnly, selectedAge, deferredQuery, searching, hideFinalElements, terminalIds, exhaustedIds, draggedId])
+  }, [elements, discoveredIds, favoriteIds, starredOnly, selectedAge, selectedRegion,
+    regionalElementIds, regions, deferredQuery, searching, hideFinalElements, terminalIds, exhaustedIds, draggedId])
 
   const visibleElements = useMemo(() => {
     const result = matchingElements.filter(
@@ -201,11 +207,13 @@ export function Codex({ onElementSelected }: CodexProps) {
     .filter((id) => discoveredIds.includes(id))
     .map((id) => elementsById.get(id))
     .filter((element) => element !== undefined)
-  const hasFilters = query !== '' || selectedAge !== 'all' || selectedCategory !== 'all' || starredOnly || hideFinalElements
+  const hasFilters = query !== '' || selectedAge !== 'all' || selectedRegion !== 'all' ||
+    selectedCategory !== 'all' || starredOnly || hideFinalElements
 
   function clearFilters() {
     setQuery('')
     setSelectedAge('all')
+    setSelectedRegion('all')
     setSelectedCategory('all')
     setStarredOnly(false)
     if (hideFinalElements) toggleHideFinalElements()
@@ -280,6 +288,19 @@ export function Codex({ onElementSelected }: CodexProps) {
             Starred
           </button>
         </div>
+
+        {regions.length > 0 && (
+          <div className="codex-filter-row">
+            <label className="age-filter region-filter">
+              Region
+              <select value={selectedRegion} onChange={(event) => setSelectedRegion(event.target.value)}>
+                <option value="all">All content</option>
+                <option value="core">Core content</option>
+                {regions.map((region) => <option key={region.id} value={region.id}>{region.title}</option>)}
+              </select>
+            </label>
+          </div>
+        )}
 
         <div className="category-tabs" role="tablist" aria-label="Element categories" tabIndex={0}>
           {categories.map((cat) => {

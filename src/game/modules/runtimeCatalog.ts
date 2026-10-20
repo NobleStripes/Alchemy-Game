@@ -16,6 +16,11 @@ export interface RuntimeCatalog {
   readonly histories: readonly HistoricalResearchRecord[]
   readonly recipeReviews: readonly (typeof recipeReviews.reviews)[number][]
   readonly challenges: readonly ChallengeDefinition[]
+  readonly regions: readonly {
+    id: string
+    title: string
+    elementIds: readonly string[]
+  }[]
   readonly elementsById: ReadonlyMap<string, ElementDefinition>
   readonly researchByElementId: ReadonlyMap<string, HistoricalResearchRecord>
   readonly challengesById: ReadonlyMap<string, ChallengeDefinition>
@@ -26,7 +31,8 @@ export interface RuntimeCatalog {
 
 /** A single immutable snapshot of all gameplay and educational content. */
 export function createRuntimeCatalog(input: Pick<RuntimeCatalog,
-  'elements' | 'recipes' | 'eras' | 'collections' | 'sources' | 'histories' | 'recipeReviews' | 'challenges'>,
+  'elements' | 'recipes' | 'eras' | 'collections' | 'sources' | 'histories' | 'recipeReviews' | 'challenges'>
+  & { regions?: RuntimeCatalog['regions'] },
 ): RuntimeCatalog {
   return {
     elements: input.elements,
@@ -37,6 +43,7 @@ export function createRuntimeCatalog(input: Pick<RuntimeCatalog,
     histories: input.histories,
     recipeReviews: input.recipeReviews,
     challenges: input.challenges,
+    regions: input.regions ?? [],
     elementsById: new Map(input.elements.map((item) => [item.id, item])),
     researchByElementId: new Map(input.histories.map((item) => [item.elementId, item])),
     challengesById: new Map(input.challenges.map((item) => [item.id, item])),

@@ -28,6 +28,47 @@ function seedCore() {
 }
 
 describe('production save management', () => {
+  it('switches modules without spending Insight, experimenting, rewriting core formulas or paying unsolicited rewards', async () => {
+    const progress = { ...seedCore(), insightCredits: 3 }
+    localStorage.setItem(SAVE_KEY, exportProgress(progress))
+    let store = createGameStore()
+    const before = snapshotProgress(store.getState())
+    const preview = await store.previewModules(['achaemenid'])
+    expect(snapshotProgress(store.getState())).toEqual(before)
+    await store.confirmSaveReplacement(preview)
+    store = createGameStore()
+    expect(snapshotProgress(store.getState())).toEqual(before)
+    expect(store.getState().rewardedCollectionIds).not.toContain('achaemenid-connections')
+    store.getState().requestHint()
+    await store.flushProgress()
+    const lead = store.getState().revealedHintRecipeIds
+    expect(lead).toHaveLength(1)
+    expect(pack.recipes.map((recipe) => recipe.id)).toContain(lead[0])
+    const complete = archive().progress
+    expect(complete.insightCredits).toBe(2)
+    expect(complete.experimentHistory).toEqual([])
+    await store.confirmSaveReplacement(await store.previewModules([]))
+    expect(archive().progress).toEqual(complete)
+    store = createGameStore()
+    expect(store.getState().revealedHintRecipeIds).toEqual([])
+    const disabled = snapshotProgress(store.getState())
+    store.getState().requestHint()
+    store.getState().selectElement(pack.elements[0].id)
+    store.getState().placeElement('second', pack.elements[0].id)
+    store.getState().transmuteWith(pack.elements[0].id, 'ember')
+    expect(store.getState().prepareCombination(pack.elements[0].id, 'ember')).toBe(false)
+    expect(snapshotProgress(store.getState())).toEqual(disabled)
+    expect(store.getState().firstSlotId).toBeNull()
+    expect(store.getState().secondSlotId).toBeNull()
+    await store.confirmSaveReplacement(await store.previewModules(['achaemenid']))
+    store = createGameStore()
+    expect(snapshotProgress(store.getState())).toEqual(snapshotProgress(complete))
+    expect(store.getState().discoveredRecipeIds).toEqual(progress.discoveredRecipeIds)
+    expect(store.getState().rewardedChallengeEraIds).toEqual(progress.rewardedChallengeEraIds)
+    expect(store.getState().rewardedCollectionIds).toEqual(progress.rewardedCollectionIds)
+    expect(store.getState().challengeRecords).toEqual([])
+  })
+
   it.each([1, 2, 3, 4, 5, 6, 7])('keeps legacy v%i until a confirmed, validated module migration', async (version) => {
     const original = JSON.stringify({ ...freshProgress(), version, hintCredits: 2 })
     localStorage.setItem(SAVE_KEY, original)

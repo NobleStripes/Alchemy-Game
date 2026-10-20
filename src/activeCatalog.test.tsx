@@ -9,8 +9,120 @@ import { coreRuntimeCatalog as core } from './game/modules/runtimeCatalog'
 import { installedRegionalModules } from './game/modules/installed'
 import { exportProgress, freshProgress, SAVE_KEY } from './game/state/persistence'
 import { createGameStore, snapshotProgress } from './game/state/useGameStore'
+import { parseModuleSaveEnvelope } from './game/state/moduleProgress'
 
 afterEach(cleanup)
+
+it('plays all three pilot formulas, reads their full histories, saves the lab explicitly, and restores receipts after switching', async () => {
+  const pack = installedRegionalModules[0]
+  localStorage.setItem(SAVE_KEY, exportProgress({
+    ...freshProgress(),
+    discoveredIds: [...new Set([...core.starterElementIds, ...pack.recipes.flatMap((recipe) => recipe.inputs)])],
+    unlockedEraIds: core.eras.map((era) => era.id),
+    activeEraId: 'classical-antiquity', insightCredits: 1,
+  }))
+  let store = createGameStore()
+  await store.confirmSaveReplacement(await store.previewModules(['achaemenid']))
+  store = createGameStore()
+  setTestGameStore(store)
+  const coreCount = store.getState().discoveredIds.length
+  const coreAgeCount = core.elements.filter((element) =>
+    element.era === 'classical-antiquity' && store.getState().discoveredIds.includes(element.id)).length
+  const user = userEvent.setup()
+  let view = render(<App />)
+  const worktable = screen.getByRole('main', { name: 'What will you make?' })
+  const shelf = within(screen.getByRole('region', { name: 'Matching discovered elements' }))
+  const discoveryProgress = screen.getByRole('region', { name: 'Core and regional discovery progress' })
+  expect(discoveryProgress).toHaveTextContent(`Core discoveries: ${coreCount}/225`)
+  expect(discoveryProgress).toHaveTextContent(`${pack.manifest.title}: 0/3`)
+  for (const recipe of pack.recipes) {
+    act(() => { store.getState().clearAllSlots() })
+    for (const id of recipe.inputs) {
+      await user.click(shelf.getByRole('button', { name: core.elementsById.get(id)!.name }))
+    }
+    await user.click(within(worktable).getByRole('button', { name: 'Combine' }))
+    const element = store.getState().catalog.elementsById.get(recipe.result)!
+    expect(worktable).toHaveTextContent(`Discovered ${element.name}`)
+    await user.click(shelf.getByRole('button', { name: `Favorite ${element.name}` }))
+  }
+  expect(discoveryProgress).toHaveTextContent(`${pack.manifest.title}: 3/3`)
+  expect(discoveryProgress).toHaveTextContent(`Core discoveries: ${coreCount}/225`)
+  expect(screen.getByRole('region', { name: 'Classical Antiquity challenge' }))
+    .toHaveTextContent(`Catalogue ${coreAgeCount}/6`)
+  const collection = within(screen.getByRole('list', { name: 'Collection goals' }))
+    .getByText('Imperial Connections').closest('li')!
+  expect(collection).toHaveTextContent('3/3')
+  expect(collection).toHaveTextContent('+1 Insight reward earned')
+  expect(store.getState().rewardedCollectionIds).toContain('achaemenid-connections')
+
+  const readingCredits = store.getState().insightCredits
+  await user.click(screen.getByRole('button', { name: 'Atlas' }))
+  for (const record of pack.research.records) {
+    await user.click(screen.getByRole('button', { name: `Open historical entry for ${record.elementName}` }))
+    const article = within(screen.getByRole('article', { name: record.elementName }))
+    expect(article.getByRole('heading', { name: 'Sources and references' })).toBeVisible()
+    expect(article.getByText(record.historicalOverview.text)).toBeVisible()
+    expect(article.getByText(record.manufactureOrUse.text)).toBeVisible()
+    for (const id of record.historicalOverview.sourceIds) {
+      const source = store.getState().catalog.sources.find((entry) => entry.id === id)!
+      expect(article.getByRole('link', { name: source.title })).toBeVisible()
+    }
+    await user.click(article.getByRole('button', { name: `Mark ${record.elementName} as read` }))
+  }
+  expect(store.getState().insightCredits).toBe(readingCredits)
+  await act(async () => { await store.flushProgress() })
+  await user.click(screen.getByRole('button', { name: 'Challenges' }))
+  await user.click(screen.getByRole('button', { name: 'Play Imperial Communications' }))
+  const beforeRun = snapshotProgress(store.getState())
+  const storedBeforeRun = localStorage.getItem(SAVE_KEY)
+  await user.click(screen.getByRole('button', { name: 'Challenge Road Network' }))
+  await user.click(screen.getByRole('button', { name: 'Challenge Imperial Bureaucracy' }))
+  await user.click(screen.getByRole('button', { name: 'Combine challenge elements' }))
+  expect(snapshotProgress(store.getState())).toEqual(beforeRun)
+  expect(localStorage.getItem(SAVE_KEY)).toBe(storedBeforeRun)
+  await user.click(screen.getByRole('button', { name: 'Save result' }))
+  await act(async () => { await store.flushProgress() })
+  expect(store.getState().challengeRecords).toEqual([{
+    challengeId: 'achaemenid-courier-lab', completed: true, bestAttemptCount: 1,
+  }])
+  const complete = parseModuleSaveEnvelope(localStorage.getItem(SAVE_KEY)!)!.progress
+  view.unmount()
+
+  await store.confirmSaveReplacement(await store.previewModules([]))
+  expect(parseModuleSaveEnvelope(localStorage.getItem(SAVE_KEY)!)!.progress).toEqual(complete)
+  store = createGameStore()
+  setTestGameStore(store)
+  view = render(<App />)
+  expect(screen.queryByRole('combobox', { name: 'Region' })).not.toBeInTheDocument()
+  expect(screen.queryByRole('region', { name: 'Core and regional discovery progress' })).not.toBeInTheDocument()
+  for (const element of pack.elements) {
+    expect(screen.queryByRole('button', { name: element.name })).not.toBeInTheDocument()
+  }
+  await user.click(screen.getByRole('button', { name: 'Challenges' }))
+  expect(screen.queryByRole('button', { name: 'Play Imperial Communications' })).not.toBeInTheDocument()
+  await user.click(screen.getByRole('button', { name: 'Atlas' }))
+  for (const element of pack.elements) {
+    expect(screen.queryByRole('button', { name: `Open historical entry for ${element.name}` })).not.toBeInTheDocument()
+  }
+  view.unmount()
+
+  await store.confirmSaveReplacement(await store.previewModules(['achaemenid']))
+  expect(parseModuleSaveEnvelope(localStorage.getItem(SAVE_KEY)!)!.progress).toEqual(complete)
+  store = createGameStore()
+  setTestGameStore(store)
+  view = render(<App />)
+  expect(store.getState().favoriteIds).toEqual(pack.elements.map((element) => element.id))
+  expect(store.getState().readHistoricalElementIds).toEqual(pack.elements.map((element) => element.id))
+  expect(snapshotProgress(store.getState())).toEqual(snapshotProgress(complete))
+  expect(screen.getByRole('list', { name: 'Collection goals' })).toHaveTextContent('+1 Insight reward earned')
+  await user.click(screen.getByRole('button', { name: 'Challenges' }))
+  const card = screen.getByRole('article', { name: 'Imperial Communications' })
+  expect(card).toHaveTextContent('Completed')
+  expect(card).toHaveTextContent(/Best.*1/)
+  expect(await store.getState().recordChallengeCompletion('achaemenid-courier-lab', 1))
+    .toMatchObject({ saved: true, firstCompletion: false, insightEarned: 0 })
+  view.unmount()
+}, 15000)
 
 it('uses one regional catalog across Play, formula context, Atlas, and an isolated saved challenge', async () => {
   const pack = installedRegionalModules[0]

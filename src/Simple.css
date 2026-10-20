@@ -273,6 +273,11 @@
 .codex-results { flex: 1; min-height: 0; padding: 5px 3px 10px; overflow-y: auto; overscroll-behavior: contain; }
 .codex-filter-row, .codex-results-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .codex-filter-row { margin-bottom: 10px; }
+.region-filter select { min-height: 44px; }
+.regional-progress { margin: 12px 0; padding: 12px; border: 1px solid var(--line); border-radius: 6px; overflow-wrap: anywhere; }
+.regional-progress h3 { margin: 0 0 8px; font-size: 13px; }
+.regional-progress p, .regional-progress li { font-size: 12px; line-height: 1.5; }
+.regional-progress ul { padding-left: 18px; }
 .age-filter { min-width: 0; flex: 1; display: flex; align-items: center; gap: 6px; color: var(--ink-soft); font-size: 11px; }
 .age-filter select { width: 100%; min-width: 0; height: 32px; padding: 0 6px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 5px; font-size: 11px; }
 .codex-results-count { margin: 0; color: var(--ink-soft); font-size: 10px; }

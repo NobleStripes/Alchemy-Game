@@ -119,6 +119,41 @@ retain their own receipts and the existing three-credit Insight cap.
 See [Saves and settings](saves.md) for player-facing migration, backup,
 replacement, reset and recovery instructions.
 
+## 11E/F: campaign integration and Achaemenid pilot gameplay
+
+- The validated runtime catalog now carries enabled-region labels and element
+  ownership for presentation. Only the installed, resolved set supplies this
+  metadata; views do not compose a second static module lookup.
+- The shelf offers All content, Core content and enabled-region filters,
+  independent of the unchanged five-age selector. Age, category and Starred
+  combine; search and recents retain their established cross-filter behavior
+  without exposing disabled content. Filter changes do not save or award.
+- The Guide separates all core discoveries out of 225 from each pack's optional
+  discoveries. Core age goals still count only core IDs; the header retains
+  total active exploration. Module switching preserves completed objectives,
+  existing formulas, Insight balances and receipts without unsolicited rewards.
+- Terminal, Exhausted for now, Hide Mastered, Starred and Recently Used use active
+  definitions. New regional outgoing recipes reactivate mastered ingredients
+  until actually performed. Store selection/drop guards also reject unavailable
+  or undiscovered ingredients; immediate combinations cannot use inactive IDs.
+- All three reviewed symbolic formulas resolve in either input order on the
+  normal worktable. Combined validation proves unique unordered pairs and
+  campaign reachability. No pilot discovery is a starter, core age landmark,
+  grant or mandatory unlock requirement.
+- The full Satrapy, Royal Road and Fortification Tablets histories and cited
+  sources render in Atlas. Imperial Connections tracks all three discoveries,
+  with the existing one-time capped reward independent of reading.
+- Imperial Communications is active only with the pack. Its target is not a
+  starter and an available one-step formula reaches it, proving its declared
+  one-attempt minimum is the actual shortest solution. The reducer uses the
+  active catalog; campaign state and disk remain unchanged until Save result.
+- Production disable/reload/re-enable tests restore all three discoveries,
+  recorded formulas, stars, reading marks, collection receipts and the lab's
+  completed/best-score record. Replaying the lab does not pay a second reward.
+
+See [pilot gameplay](optional-content.md#achaemenid-pilot-gameplay) for the
+player-facing explanation and optional recipe spoilers.
+
 ## Closed release gates and remaining boundaries
 
 Production durable loading/writing, deliberate migration, backup/restore,
@@ -145,10 +180,12 @@ Remaining boundaries are deliberate, not silent repair paths:
 | `npm run typecheck` | Passed |
 | `npm run lint` | Passed |
 | `npm run build` | Passed; core graph remains 225 nodes, 179 ingredients, 46 terminals, zero unused |
-| `npm test -- --maxWorkers=2` | Passed: 37 files, 1,511 tests |
+| `npm test -- --maxWorkers=2` | Passed: 37 files, 1,520 tests |
 | Production preview HTTP smoke | Passed; temporary preview servers stopped after validation |
 | Browser save/module workflow | Legacy import preview did not replace storage; explicit import/reload and module migration succeeded; regional discovery, performed recipe, favorite and reading marker survived disable/reload/re-enable |
 | Browser modal checks | Preview focus and close/cancel focus restoration passed; at 390 x 844 the dialog measured 352 x 812 with no horizontal overflow |
+| Browser pilot gameplay | All three formulas discovered normally; regional filter showed 3 of 14 discoveries while core stayed 11/225, with exactly five age buttons; filter changes left stored bytes unchanged |
+| Browser short mobile and lab | At 390 x 600, Region control was 44px high and the progress card 343px wide with no horizontal overflow; one-attempt lab completion did not save until explicit Save result |
 | Live import audit | No fixed-content value imports in live views; only explicit core-goal baseline and type imports remain |
 | Whitespace check | Passed with `core.whitespace=cr-at-eol`, honoring existing Windows line endings |
 
@@ -157,12 +194,17 @@ an App test timeout under parallel contention. That App test passed in isolation
 the complete suite subsequently passed with bounded workers. No existing App
 timeout was increased and no production validation rule was weakened.
 
-The production management suite adds 22 tests for v1-v7 migration, complete
+The production management suite contains 23 tests for v1-v7 migration, complete
 dormant roundtrips after 55 core experiments, reset, retries, locks, stale
 previews/conflicts, future/corrupt/oversized input, missing modules, incompatible
 upgrades, forged ownership, duplicate receipts and ID exhaustion. Settings has
 10 tests covering metadata, previews, cancellation/focus, challenge warnings,
 explicit replacement/reload, import errors and exact exported Blob contents.
+
+11E/F adds nine regression cases across installed content, shelf, production
+management and rendered App coverage, including the complete three-discovery
+campaign/Atlas/collection/lab/reactivation flow. All 226 tests in the five
+focused suites passed before the full core-only and regional regression run.
 
 The integrated browser did not provide a download event, so a downloaded-file
 roundtrip is not claimed; export bytes, filename and object-URL cleanup are

@@ -207,6 +207,11 @@ export function resolveFullRuntimeCatalog(
   if (errors.length) return { ok: false, errors }
   const catalog = createRuntimeCatalog({
     ...result.catalog, sources, histories, recipeReviews: reviews, challenges,
+    regions: enabled.map((pack) => ({
+      id: pack.manifest.id,
+      title: pack.manifest.title,
+      elementIds: pack.elements.map((element) => element.id),
+    })),
   })
   const verifiedSources = new Set(
     sources.filter((source) => source.verification.status === 'verified').map((source) => source.id),
