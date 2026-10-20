@@ -43,6 +43,8 @@ it('plays all three pilot formulas, reads their full histories, saves the lab ex
     await user.click(within(worktable).getByRole('button', { name: 'Combine' }))
     const element = store.getState().catalog.elementsById.get(recipe.result)!
     expect(worktable).toHaveTextContent(`Discovered ${element.name}`)
+    expect(worktable.querySelector('img.element-photo-icon'))
+      .toHaveAttribute('src', `${import.meta.env.BASE_URL}${element.image!.thumbnailSrc ?? element.image!.src}`)
     await user.click(shelf.getByRole('button', { name: `Favorite ${element.name}` }))
   }
   expect(discoveryProgress).toHaveTextContent(`${pack.manifest.title}: 3/3`)
@@ -60,6 +62,10 @@ it('plays all three pilot formulas, reads their full histories, saves the lab ex
   for (const record of pack.research.records) {
     await user.click(screen.getByRole('button', { name: `Open historical entry for ${record.elementName}` }))
     const article = within(screen.getByRole('article', { name: record.elementName }))
+    const image = pack.elements.find((element) => element.id === record.elementId)!.image!
+    const figure = within(article.getByRole('figure', { name: `${record.elementName} image and credit` }))
+    expect(figure.getByRole('img', { name: image.description })).toBeVisible()
+    expect(figure.getByRole('link', { name: image.license })).toHaveAttribute('href', image.licenseUrl)
     expect(article.getByRole('heading', { name: 'Sources and references' })).toBeVisible()
     expect(article.getByText(record.historicalOverview.text)).toBeVisible()
     expect(article.getByText(record.manufactureOrUse.text)).toBeVisible()
@@ -78,6 +84,11 @@ it('plays all three pilot formulas, reads their full histories, saves the lab ex
   await user.click(screen.getByRole('button', { name: 'Challenge Road Network' }))
   await user.click(screen.getByRole('button', { name: 'Challenge Imperial Bureaucracy' }))
   await user.click(screen.getByRole('button', { name: 'Combine challenge elements' }))
+  const labImages = screen.getByRole('region', { name: 'Imperial Communications' }).querySelectorAll('img.element-photo-icon')
+  expect(labImages).toHaveLength(2)
+  for (const image of labImages) {
+    expect(image).toHaveAttribute('src', `${import.meta.env.BASE_URL}images/achaemenid/royal-road.jpg`)
+  }
   expect(snapshotProgress(store.getState())).toEqual(beforeRun)
   expect(localStorage.getItem(SAVE_KEY)).toBe(storedBeforeRun)
   await user.click(screen.getByRole('button', { name: 'Save result' }))

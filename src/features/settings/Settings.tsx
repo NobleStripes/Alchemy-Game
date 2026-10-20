@@ -188,6 +188,7 @@ export function Settings({ onClose, hasActiveChallenge = false, onReload = () =>
             <legend>Regional Modules</legend>
             <p>Optional, free, bundled historical content. Disabling a region hides its discoveries, formulas and achievements but preserves them in your save.</p>
             <p>Changes are validated before saving and take effect after a confirmed reload. Core age goals and rewards do not change.</p>
+            <p><a href={`${import.meta.env.BASE_URL}images/achaemenid/CREDITS.txt`} target="_blank" rel="noreferrer">Image credits and licenses</a></p>
             <div className="module-list">
               {modules.map((module) => (
                 <article className="module-card" key={module.id} aria-labelledby={`module-${module.id}`}>

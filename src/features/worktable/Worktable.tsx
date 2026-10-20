@@ -1,6 +1,7 @@
 import { useDroppable } from '@dnd-kit/core'
 import { CopyPlus, FlaskConical, Sparkles, Trash2, X } from 'lucide-react'
 import { useGameStore } from '../../game/state/useGameStore'
+import { ElementIcon } from '../../components/ElementIcon'
 
 interface TableSlotProps {
   name: 'first' | 'second'
@@ -29,7 +30,7 @@ function TableSlot({ name, elementId, canRepeat }: TableSlotProps) {
             data-category={element.category}
             aria-hidden="true"
           >
-            {element.icon || element.sigil}
+            <ElementIcon element={element} />
           </span>
           <strong className="slot-name">{element.name}</strong>
           <span className="slot-cat">{element.category}</span>
@@ -153,7 +154,7 @@ export function Worktable() {
                 data-category={result.category}
                 aria-hidden="true"
               >
-                {result.icon || result.sigil}
+                <ElementIcon element={result} />
               </span>
             )}
             <div className="attempt-copy">

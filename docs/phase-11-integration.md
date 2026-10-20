@@ -154,6 +154,23 @@ replacement, reset and recovery instructions.
 See [pilot gameplay](optional-content.md#achaemenid-pilot-gameplay) for the
 player-facing explanation and optional recipe spoilers.
 
+## Licensed module photography
+
+The three pilot text sigils now have locally bundled photo counterparts:
+the Met's CC0 Persian guard relief (explicitly contextual, not a satrap portrait),
+Bahar019's GFDL regional route photograph, and Pfa16's CC BY-SA 4.0 Fortification
+Archive tablet photo. The tablet icon crops a readable artifact detail.
+One shared renderer covers shelf tiles, recents, slots, results, Guide and lab
+surfaces; existing core emoji/text fallbacks are unchanged.
+
+Each Atlas figure includes a caption, creator/institution, source link, license
+link and modification notice. Settings links to the bundled credit notices;
+the road image includes the complete GFDL 1.3 text. These image licenses do not
+replace the source-code license. No images are hotlinked or remotely fetched
+while playing, and subpath deployment uses the configured application base.
+All four JPEG files together remain below 200 KiB, with each below 100 KiB.
+See [image credits](../public/images/achaemenid/CREDITS.txt).
+
 ## Closed release gates and remaining boundaries
 
 Production durable loading/writing, deliberate migration, backup/restore,
@@ -180,12 +197,13 @@ Remaining boundaries are deliberate, not silent repair paths:
 | `npm run typecheck` | Passed |
 | `npm run lint` | Passed |
 | `npm run build` | Passed; core graph remains 225 nodes, 179 ingredients, 46 terminals, zero unused |
-| `npm test -- --maxWorkers=2` | Passed: 37 files, 1,520 tests |
+| `npm test -- --maxWorkers=2` | Passed: 39 files, 1,527 tests |
 | Production preview HTTP smoke | Passed; temporary preview servers stopped after validation |
 | Browser save/module workflow | Legacy import preview did not replace storage; explicit import/reload and module migration succeeded; regional discovery, performed recipe, favorite and reading marker survived disable/reload/re-enable |
 | Browser modal checks | Preview focus and close/cancel focus restoration passed; at 390 x 844 the dialog measured 352 x 812 with no horizontal overflow |
 | Browser pilot gameplay | All three formulas discovered normally; regional filter showed 3 of 14 discoveries while core stayed 11/225, with exactly five age buttons; filter changes left stored bytes unchanged |
 | Browser short mobile and lab | At 390 x 600, Region control was 44px high and the progress card 343px wide with no horizontal overflow; one-attempt lab completion did not save until explicit Save result |
+| Browser module photography | All three local shelf thumbnails decoded at 38 x 38; full Atlas images decoded and fit a 283px mobile article without overflow; credits and bundled GFDL text returned HTTP 200 |
 | Live import audit | No fixed-content value imports in live views; only explicit core-goal baseline and type imports remain |
 | Whitespace check | Passed with `core.whitespace=cr-at-eol`, honoring existing Windows line endings |
 
@@ -205,6 +223,11 @@ explicit replacement/reload, import errors and exact exported Blob contents.
 management and rendered App coverage, including the complete three-discovery
 campaign/Atlas/collection/lab/reactivation flow. All 226 tests in the five
 focused suites passed before the full core-only and regional regression run.
+
+Photography adds six component/schema/base-path cases and a Node-side asset
+integrity/license/budget test. Rendered campaign coverage also checks worktable,
+Atlas and lab imagery. All 19 tests in the four focused image/gameplay/Settings
+suites passed before the full regression run.
 
 The integrated browser did not provide a download event, so a downloaded-file
 roundtrip is not claimed; export bytes, filename and object-URL cleanup are

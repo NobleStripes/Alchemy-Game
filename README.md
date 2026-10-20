@@ -74,6 +74,15 @@ Game definitions live in [`src/game/content`](src/game/content). Every recipe is
 
 Production builds also enforce outgoing-use safeguards for starters and foundational tools, and print graph-derived counts. The current catalog has **168 crafting ingredients, 47 terminal elements and zero unused nodes**; no manual `isFinal` metadata is needed. These are authored gameplay statuses, not claims about real-world usefulness or historical mastery.
 
+### Image credits
+
+The optional Achaemenid module uses locally bundled photographs from The Met's
+Open Access collection and licensed Wikimedia Commons sources. Their CC0,
+CC BY-SA and GFDL terms are separate from the application's source-code license.
+See the [image credits and reuse notices](public/images/achaemenid/CREDITS.txt)
+and the accompanying [GFDL text](public/images/achaemenid/GFDL-1.3.txt).
+Credits are also available in Settings and beside each Atlas photograph.
+
 ## A Note from the Developer
 
 The Unwritten Atlas is a personal, open-source side project by a solo developer who loves history, philosophy, and puzzle design.

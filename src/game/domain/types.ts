@@ -8,11 +8,26 @@ export type ElementCategory =
   | 'knowledge'
   | 'transport'
 
+export interface ElementImage {
+  src: string
+  thumbnailSrc?: string
+  width: number
+  height: number
+  description: string
+  credit: string
+  sourceUrl: string
+  license: string
+  licenseUrl: string
+  licensePath?: string
+  changes: string
+}
+
 export interface ElementDefinition {
   id: string
   name: string
   sigil: string
   icon?: string
+  image?: ElementImage
   category: ElementCategory
   description: string
   starter: boolean

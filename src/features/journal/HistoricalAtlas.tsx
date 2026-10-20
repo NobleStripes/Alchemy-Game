@@ -3,6 +3,7 @@ import type { HistoricalResearchRecord } from '../../game/content/research'
 import type { RuntimeCatalog } from '../../game/modules/runtimeCatalog'
 import { useGameStore } from '../../game/state/useGameStore'
 import { SourceReference } from './SourceReference'
+import { ElementImageFigure } from '../../components/ElementIcon'
 
 const dateLabels = {
   'dated-evidence': 'Dated evidence',
@@ -309,6 +310,7 @@ export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
             <p className="detail-cat-badge">
               {eras.find((era) => era.id === selected.era)?.name} · {selected.category}
             </p>
+            <ElementImageFigure element={selected} />
             <details className="guide-section" key={selected.id}>
               <summary>About gameplay ages</summary>
               <p>

@@ -1,10 +1,26 @@
 import { z } from 'zod'
 
+const imagePath = z.string().regex(/^images\/[a-z0-9-]+\/[a-z0-9-]+\.jpg$/)
+export const elementImageSchema = z.strictObject({
+  src: imagePath,
+  thumbnailSrc: imagePath.optional(),
+  width: z.number().int().positive(),
+  height: z.number().int().positive(),
+  description: z.string().trim().min(1),
+  credit: z.string().trim().min(1),
+  sourceUrl: z.url({ protocol: /^https$/ }),
+  license: z.string().trim().min(1),
+  licenseUrl: z.url({ protocol: /^https$/ }),
+  licensePath: z.string().regex(/^images\/[a-z0-9-]+\/[A-Z0-9.-]+\.txt$/).optional(),
+  changes: z.string().trim().min(1),
+})
+
 export const elementSchema = z.object({
   id: z.string().regex(/^[a-z][a-z0-9-]*$/),
   name: z.string().min(1),
   sigil: z.string().min(1).max(3),
   icon: z.string().optional(),
+  image: elementImageSchema.optional(),
   category: z.enum([
     'essence',
     'matter',

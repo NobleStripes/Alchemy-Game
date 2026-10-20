@@ -13,6 +13,7 @@ import { getExhaustedElements, getTemporarilyExhaustedElements } from '../../gam
 import { pairKey } from '../../game/engine/resolveCombination'
 import { useGameStore } from '../../game/state/useGameStore'
 import { RecipeHistory } from './RecipeHistory'
+import { ElementIcon } from '../../components/ElementIcon'
 
 interface JournalProps {
   eraId: string
@@ -325,7 +326,7 @@ export function Journal({
               data-found={discoveredIds.includes(landmark.id)}
             >
               <span className="landmark-icon" aria-hidden="true">
-                {landmark.icon || landmark.sigil}
+                <ElementIcon element={landmark} />
               </span>
               <span>{landmark.name}</span>
             </span>
@@ -389,7 +390,7 @@ export function Journal({
               aria-label={`Inspect ${element.name}`}
             >
               <span className="journal-el-icon" aria-hidden="true">
-                {element.icon || element.sigil}
+                <ElementIcon element={element} />
               </span>
               <span className="journal-el-name">{element.name}</span>
               {isElementUnstudied(element.id, recipes, discoveredRecipeIds) && (
@@ -470,7 +471,7 @@ export function Journal({
             <>
             <div className="element-detail-heading">
               <span className="detail-sigil" data-category={selectedElement.category} aria-hidden="true">
-                {selectedElement.icon || selectedElement.sigil}
+                <ElementIcon element={selectedElement} />
               </span>
               <div>
                 <h3>{selectedElement.name}</h3>

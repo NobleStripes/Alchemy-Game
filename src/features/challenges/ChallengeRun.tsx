@@ -6,6 +6,7 @@ import { createChallengeReducer, createChallengeState, type ChallengeAction, typ
 import { useGameStore } from '../../game/state/useGameStore'
 import { RecipeHistory } from '../journal/RecipeHistory'
 import { SourceReference } from '../journal/SourceReference'
+import { ElementIcon } from '../../components/ElementIcon'
 
 export interface ChallengeRunProps {
   onExit: () => void
@@ -92,7 +93,7 @@ export function ChallengeRun({ onExit, challenge: selectedChallenge }: Challenge
         </button>
         <div>
           <h1 id="challenge-title">{challenge.name}</h1>
-          <p><span aria-hidden="true">{target.icon || target.sigil} </span>Target: {target.name}</p>
+          <p><span aria-hidden="true"><ElementIcon element={target} /> </span>Target: {target.name}</p>
         </div>
         <div className="challenge-score">
           <p>Attempts: <strong>{run.attemptCount}</strong></p>
@@ -124,7 +125,7 @@ export function ChallengeRun({ onExit, challenge: selectedChallenge }: Challenge
                 <button type="button" className="element-tile" data-category={element.category} data-selected={selected}
                   key={elementId} disabled={run.completed} aria-label={`Challenge ${element.name}`} aria-pressed={selected}
                   title={element.name} onClick={() => act({ type: 'select', elementId })}>
-                  <span className="element-sigil" data-category={element.category} aria-hidden="true">{element.icon || element.sigil}</span>
+                  <span className="element-sigil" data-category={element.category} aria-hidden="true"><ElementIcon element={element} /></span>
                   <span className="element-copy"><strong>{element.name}</strong><small>{element.category}</small></span>
                 </button>
               )
@@ -142,7 +143,7 @@ export function ChallengeRun({ onExit, challenge: selectedChallenge }: Challenge
                 <div className="challenge-slot" key={slot} data-category={element?.category}>
                   <span>Slot {index + 1}</span>
                   {element ? <>
-                    <span aria-hidden="true">{element.icon || element.sigil}</span>
+                    <span aria-hidden="true"><ElementIcon element={element} /></span>
                     <strong>{element.name}</strong>
                     <button type="button" disabled={run.completed} aria-label={`Remove challenge ${element.name} from slot ${index + 1}`}
                       title={`Clear slot ${index + 1}`} onClick={() => act({ type: 'clearSlot', slot })}><X size={18} aria-hidden="true" /></button>
@@ -167,7 +168,7 @@ export function ChallengeRun({ onExit, challenge: selectedChallenge }: Challenge
           <div className="challenge-result" role="status" aria-live="polite" data-outcome={run.result?.kind}>
             {run.completed ? <h2><Trophy size={22} aria-hidden="true" /> {challenge.name} complete</h2>
               : run.result?.kind === 'failure' ? <p>No reaction</p>
-                : resultElement ? <p><span aria-hidden="true">{resultElement.icon || resultElement.sigil} </span>{run.result?.kind === 'known' ? 'Known' : 'Discovered'} {resultElement.name}</p>
+                : resultElement ? <p><span aria-hidden="true"><ElementIcon element={resultElement} /> </span>{run.result?.kind === 'known' ? 'Known' : 'Discovered'} {resultElement.name}</p>
                   : null}
             {run.completed && <p>{target.name} in {run.attemptCount} attempts</p>}
             {savedMessage && <p><Check size={18} aria-hidden="true" /> {savedMessage}</p>}

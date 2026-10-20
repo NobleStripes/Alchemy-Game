@@ -71,6 +71,17 @@ recorded independently of reading. Each discovered item has a full Atlas entry
 with historical explanation, regional/dating cautions and source references.
 Explicit read/unread markers are free and are not collection requirements.
 
+Photo thumbnails replace the pilot's text sigils throughout gameplay and labs.
+The Atlas shows each full photograph with its source, creator/institution,
+license and modification notice. **Settings > Image credits and licenses**
+opens the bundled [credit notices](../public/images/achaemenid/CREDITS.txt).
+The Met's guard relief is a contextual image for Satrapy, not an identified
+satrap. The road image shows a regional route in Fars, not the entire Royal
+Road. The tablet photo is specifically identified as Fortification Archive
+material. Assets are local, not hotlinked; their CC0, CC BY-SA and GFDL terms
+remain separate from the application's source-code license. The complete
+[GFDL 1.3 text](../public/images/achaemenid/GFDL-1.3.txt) accompanies the road image.
+
 **Imperial Communications** appears in Challenges only while the pack is active.
 It supplies Road Network and Imperial Bureaucracy and targets Achaemenid Royal
 Road. Its actual shortest solution and minimum attempt value are both **one**:

@@ -4,6 +4,7 @@ import { useDeferredValue, useLayoutEffect, useMemo, useRef, useState, type CSSP
 import type { ElementCategory } from '../../game/domain/types'
 import { getExhaustedElements, getTemporarilyExhaustedElements } from '../../game/engine/elementStatus'
 import { useGameStore } from '../../game/state/useGameStore'
+import { ElementIcon } from '../../components/ElementIcon'
 
 function EraShelf({ eraId, children }: { eraId: string; children: ReactNode }) {
   const ref = useRef<HTMLElement | null>(null)
@@ -94,7 +95,7 @@ function ElementTile({ elementId, onSelected, status }: ElementTileProps) {
       }}
     >
       <span className="element-sigil" data-category={element.category} aria-hidden="true">
-        {element.icon || element.sigil}
+        <ElementIcon element={element} />
       </span>
       <span className="element-copy">
         <strong>{element.name}</strong>
@@ -369,7 +370,7 @@ export function Codex({ onElementSelected }: CodexProps) {
                     onElementSelected?.()
                   }}
                 >
-                  <span aria-hidden="true">{element.icon || element.sigil}</span>
+                  <span aria-hidden="true"><ElementIcon element={element} /></span>
                   {element.name}
                 </button>
               ))}
