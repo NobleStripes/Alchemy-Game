@@ -1,6 +1,8 @@
 import { useDroppable } from '@dnd-kit/core'
 import { CopyPlus, FlaskConical, Sparkles, Trash2, X } from 'lucide-react'
-import { elementsById } from '../../game/content'
+import { runtimeCatalog } from '../../game/modules/runtimeCatalog.ts'
+
+const { elementsById } = runtimeCatalog
 import { useGameStore } from '../../game/state/useGameStore'
 
 interface TableSlotProps {
