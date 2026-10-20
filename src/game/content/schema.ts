@@ -207,6 +207,13 @@ export const historicalEntrySchema = z.strictObject({
   })),
 })
 
+export const recipeReviewEntrySchema = z.strictObject({
+  recipeId: z.string().regex(/^[a-z][a-z0-9-]*$/),
+  classification: z.enum(['material-process', 'simplified-process', 'symbolic']),
+  caution: z.string().trim().min(1),
+  sourceIds: historicalSourceIds,
+})
+
 export const historicalDatabaseSchema = z.strictObject({
   schemaVersion: z.literal(2),
   sources: z.array(historicalSourceSchema).nonempty(),
