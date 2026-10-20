@@ -903,6 +903,18 @@
 .challenge-run button:disabled { opacity: 0.5; cursor: not-allowed; }
 .sound-preference { min-height: 44px; display: flex; align-items: center; gap: 10px; font-weight: 800; }
 .sound-preference input { width: 20px; height: 20px; accent-color: var(--teal); }
+.settings-controls { border: 0; padding: 0; margin: 24px 0 0; min-width: 0; }
+.settings-controls legend { font-weight: 800; font-size: 1.15rem; }
+.module-list { display: grid; gap: 12px; }
+.module-card, .save-preview { border: 1px solid var(--ink); border-radius: 6px; padding: 14px; overflow-wrap: anywhere; }
+.module-card h3, .save-preview h3 { margin-top: 0; }
+.module-card button, .settings-controls > button, .settings-actions button, .save-dialog > section button { min-height: 44px; padding: 8px 12px; max-width: 100%; white-space: normal; }
+.save-file-label { display: grid; gap: 8px; margin-top: 16px; }
+.save-file-label input { max-width: 100%; min-height: 44px; }
+.save-preview { margin-top: 20px; }
+.save-preview dl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.save-preview dd { margin: 0; }
+.settings-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .challenge-run { width: min(1120px, 100%); margin: 0 auto; padding: 24px; box-sizing: border-box; }
 .challenge-education { margin-top: 16px; }

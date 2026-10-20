@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import type { SavedProgress } from './persistence.ts'
-import { savedProgressSchema, MAX_SAVE_BYTES } from './persistence.ts'
+import { savedProgressSchema, MAX_SAVE_BYTES, MAX_EXPERIMENT_HISTORY } from './persistence.ts'
 import { pairKey } from '../engine/resolveCombination.ts'
 
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/)
@@ -22,7 +22,11 @@ export const moduleSaveEnvelopeSchema = z.strictObject({
   envelopeVersion: z.literal(1),
   progress: savedProgressSchema,
   ownership: z.array(moduleOwnershipSchema),
-})
+  enabledModuleIds: unique.default([]),
+}).refine((archive) =>
+  archive.enabledModuleIds.every((moduleId) => archive.ownership.some((owner) => owner.moduleId === moduleId)),
+  'Enabled modules must have archived ownership.',
+)
 
 export type ModuleSaveEnvelope = z.infer<typeof moduleSaveEnvelopeSchema>
 export type ModuleOwnership = z.infer<typeof moduleOwnershipSchema>
@@ -108,7 +112,7 @@ export function projectModuleProgress(
         (entry) => entry.inputs.every((id) => discoveredIds.has(id)) &&
           (!entry.recipeId || !inactiveRecipes.has(entry.recipeId)) &&
           (!entry.resultId || discoveredIds.has(entry.resultId)),
-      ),
+      ).sort((a, b) => a.id - b.id).slice(-MAX_EXPERIMENT_HISTORY),
       failedPairKeys: progress.failedPairKeys.filter(
         (key) => {
           const inputs = key.split('::')
@@ -125,12 +129,14 @@ export function projectModuleProgress(
 export function createModuleSaveEnvelope(
   progress: SavedProgress,
   ownership: readonly ModuleOwnership[],
+  enabledModuleIds: readonly string[] = [],
 ): ModuleSaveEnvelope {
   const archive = moduleSaveEnvelopeSchema.parse({
     format: 'unwritten-atlas-module-save',
     envelopeVersion: 1,
     progress,
     ownership,
+    enabledModuleIds,
   })
   const errors = assertOwnership(archive.ownership)
   if (errors.length) throw new Error(errors.join(' '))

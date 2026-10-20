@@ -250,7 +250,9 @@ describe('unified active catalog sessions', () => {
     seedCore()
     const original = disk()
     const store = regional()
-    store.setState({ collapsedShelves: Array.from({ length: 60000 }, () => 'classical-antiquity') })
+    store.setState({ experimentHistory: Array.from({ length: 12000 }, (_, index) => ({
+      id: index + 1, inputs: ['imperial-bureaucracy', 'provincial-government'], outcome: 'no-reaction',
+    })) })
     expect(new TextEncoder().encode(JSON.stringify(snapshotProgress(store.getState()))).byteLength)
       .toBeGreaterThan(MAX_SAVE_BYTES)
     store.getState().toggleSound()
@@ -288,7 +290,7 @@ describe('unified active catalog sessions', () => {
     expect(disk()).toBe(winner)
   })
 
-  it('requires locks and prevents production v7 sessions from overwriting an internal archive', async () => {
+  it('requires locks and prevents legacy v7 readers from overwriting an archive', async () => {
     seedCore()
     const original = disk()
     const noLocks = regional()
@@ -303,7 +305,7 @@ describe('unified active catalog sessions', () => {
     internal.getState().toggleFavorite('ember')
     await internal.flushProgress()
     const archive = disk()
-    const production = createGameStore()
+    const production = createGameStore({ mode: 'core' })
     expect(production.getState().persistenceError).toMatch(/could not be read/)
     production.getState().toggleSound()
     await production.flushProgress()

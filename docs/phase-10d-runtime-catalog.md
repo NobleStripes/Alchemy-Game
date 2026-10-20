@@ -1,9 +1,9 @@
 # Phase 10D — unified runtime catalog (core-only integration slice)
 
 **Phase 11 update:** the live store, Play views, Atlas, recipe context, and
-Challenges now share a validated catalog per session. Production remains
-core-only/v7; regional sessions are internal/test-only and use durable archives.
-See the [baseline audit and remaining toggle gates](phase-11-integration.md).
+Challenges now share a validated catalog per session. Production defaults to
+core-only/v7; Settings offers optional regional activation with confirmed
+durable migration and reload. See the [integration audit](phase-11-integration.md).
 The implementation notes below describe the original Phase 10D slice.
 
 The current game still runs with the **original five ages**, 225 core discoveries, 291 recipes and version 7 local progress. This branch begins replacing scattered static lookups with a single, validated runtime catalog; **no regional module is enabled**.

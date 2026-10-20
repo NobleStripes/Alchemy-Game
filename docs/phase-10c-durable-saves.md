@@ -1,14 +1,15 @@
 # Phase 10C — durable module-save integration foundation
 
-**Phase 11 status:** internal regional sessions now use this service through
-`internalProgressPersistence.ts`; production remains core-only with its v7
-writer. The [integration audit](phase-11-integration.md) records the baseline,
-validation, and remaining production migration/toggle gates.
+**Phase 11 status:** production regional sessions now use this service through
+`internalProgressPersistence.ts`. Settings offers validated previews, backups,
+confirmed migration, module selection and import. Legacy campaigns retain their
+v7 writer until confirmed migration. The [integration audit](phase-11-integration.md)
+and [save guide](saves.md) record current behavior and validation.
 
 The original Phase 10C slice introduced transactional archive writes using the
 existing `unwritten-atlas-progress` key only when explicitly opted in. Its
-original boundaries below are historical; Phase 11 connects isolated internal
-sessions without changing ordinary players' save format.
+original boundaries below are historical; Phase 11 makes migration explicit
+and preserves disabled-module progress in ordinary production archive writes.
 
 ## Added
 

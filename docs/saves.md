@@ -8,11 +8,11 @@ The four catalog batches add 31 optional discoveries and 56 formulas without cha
 
 Progress is stored locally in the browser under `unwritten-atlas-progress`. Version 7 includes discovered elements, performed formulas, Insight credits and stall progress, age challenge reward markers, Open Leads, failed unordered pairs, unlocked ages, and the active page, plus favorites, sound preference, the latest 50 experiments, collection reward markers, Rainmaker and learning-lab completion/best-score records, and explicit historical reading markers. The reading field is additive: older v7 saves default to an empty list, as do migrated v1-v6 saves. Only discovered, researched element IDs are retained as reading markers. In-flight challenge state is not saved. There are no accounts or cloud sync.
 
-Two additive shelf preferences also use version 7: `hideFinalElements` defaults to `false`, and `collapsedShelves` defaults to `[]` (all expanded). Collapsed IDs are deduplicated and restricted to canonical age IDs: `first-light`, `stone-age`, `bronze-age`, `iron-age` and `classical-antiquity`. Legacy v1-v7 saves with missing fields receive defaults without a version bump. Malformed values retain normal invalid-save protection rather than silently resetting corrupted data. Serialized exports and parsing preserve valid preferences; this does not add a manual import/export interface.
+Two additive shelf preferences also use version 7: `hideFinalElements` defaults to `false`, and `collapsedShelves` defaults to `[]` (all expanded). Collapsed IDs are deduplicated and restricted to canonical age IDs: `first-light`, `stone-age`, `bronze-age`, `iron-age` and `classical-antiquity`. Legacy v1-v7 saves with missing fields receive defaults without a version bump. Malformed values retain normal invalid-save protection rather than silently resetting corrupted data. Serialized exports and parsing preserve valid preferences.
 
 The twelve Phase 9I histories attach to existing element IDs. Old discoveries become readable without repeating formulas, rewriting progress on navigation, or awarding collections. The researched-entry reading denominator can increase, but discovery and age-completion counters do not. Marking one of these entries read uses the same optional v7 field; recorded formulas, stars, shelf preferences and Rainmaker receipts are retained.
 
-Campaign progress is saved automatically and restored on reload. Settings controls the persistent sound preference; favorites also persist immediately. Manual file import and export are not available. Existing local saves remain compatible. Storage failures are reported, so continued in-memory play is not a guarantee that progress was saved.
+Campaign progress is saved automatically and restored on reload. Settings controls the persistent sound preference and offers Regional Modules, save export, and validated file import. Favorites also persist immediately. Existing local saves remain compatible and stay on the v7 writer until a module migration is explicitly confirmed. Storage failures are reported, so continued in-memory play is not a guarantee that progress was saved.
 
 Play/Atlas/Challenges navigation is local interface state, not a saved field. Opening a section or using View History does not autosave, spend Insight, change the active age, or clear prepared ingredients. In-progress isolated runs survive section switches because the runner stays mounted, but do not survive reloads. Challenge cards read completion and best attempts from existing `challengeRecords`; only explicit confirmed result saves update those records and the unchanged one-time Insight reward. No migration exists solely for this navigation. Explicit read/unread controls still persist reading markers, and local save errors remain visible whichever section is active.
 
@@ -24,7 +24,7 @@ Hide Mastered and drawer expansion are persistent exceptions: changing either us
 
 A missing save starts a writable campaign. An existing save that is invalid, unsupported, too large, or unreadable instead starts in-memory play with autosaving blocked for that page session. Nothing overwrites the original, including reset, preference changes, and challenge-result saving. The warning remains visible; reload after addressing the storage problem to try loading again. Reloading discards unsaved session changes.
 
-Writes use browser Web Locks to serialize cooperating tabs and check the original stored snapshot inside the lock. Clean tabs automatically adopt valid external updates on storage events, focus, visibility changes, or before the next action, without replaying rewards. Sound updates immediately; still-valid occupied slots are retained. External reset or save removal restores fresh campaign defaults. If an external save changes while this tab has unsaved progress, saving and adoption pause until reload, preserving this tab's in-memory session rather than silently discarding or merging it. Invalid or unreadable external updates also pause saving. Ordinary quota failures remain retryable when the stored snapshot has not changed.
+Writes use browser Web Locks to serialize cooperating tabs and check the original stored snapshot inside the lock. Clean legacy-v7 tabs automatically adopt valid external updates on storage events, focus, visibility changes, or before the next action, without replaying rewards. Sound updates immediately; still-valid occupied slots are retained. External reset or save removal restores fresh campaign defaults. If an external save changes while this tab has unsaved progress, saving and adoption pause until reload, preserving this tab's in-memory session rather than silently discarding or merging it. Durable archive sessions instead treat any external byte change as a conflict requiring reload, even when this tab is clean. Invalid or unreadable external updates also pause saving. Ordinary quota failures remain retryable when the stored snapshot has not changed.
 
 Safe autosaving requires Web Locks support (and a secure context, including localhost). Unsupported browsers allow in-memory play but do not fall back to unsafe writes. All open tabs should run the updated app: older versions and external scripts do not honor its lock, so they cannot be guaranteed to cooperate. This is local browser synchronization, not cloud sync or a backup.
 
@@ -36,30 +36,86 @@ The optional Agora, Library, Aqueduct and Mint landmark objectives use four new 
 
 Earlier saves migrate to v7, preserving old hint credits as Insights within the three-credit cap. Favorites, experiment history, and challenge records default to empty, and sound defaults to enabled. Already-completed collections in v1-v6 saves are marked rewarded without retroactive Insight; existing age challenge reward migration is retained. Migration removes failed pairs that are valid in the current graph, and successful formulas defensively clear stale failures. Correct guesses from locked pages remain free Open Leads. Historical discoveries reconcile matching age unlocks and grants without retroactive unlock rewards.
 
-Reset returns the campaign to Origins with four starting elements and three Insights. It clears discoveries beyond the starters, formulas, leads, failure progress, favorites, experiment history, reward markers, historical reading markers, and challenge completion/best-score records, while preserving the sound preference. Hide Mastered returns to off and all era drawers expand.
+Reset returns the campaign to Origins with four starting elements and three Insights. It clears discoveries beyond the starters, formulas, leads, failure progress, favorites, experiment history, reward markers, historical reading markers, and challenge completion/best-score records, while preserving the sound preference. Hide Mastered returns to off and all era drawers expand. In a module archive this deliberately clears dormant regional progress too, but retains the enabled-module selection. Disabling a module is not a reset.
 
 See [Gameplay and Atlas](gameplay.md) for challenge rewards and manual reading controls, and [historical interpretation](historical-interpretation.md#element-review) for reclassified legacy discoveries.
 
-## Internal regional sessions (not a production save migration)
+## Regional Modules and durable archives
 
-Phase 11 validates a complete active catalog before constructing a session.
-Ordinary startup remains core-only with all v7 behavior above. Internal regional
-startup uses the durable module envelope exclusively and must run with isolated
-storage/origins; there is no settings toggle or URL shortcut.
+Open **Settings > Regional Modules**, independently of Play, Atlas and Challenges.
+Regional packs are disabled by default for new and existing legacy campaigns.
+The bundled Achaemenid Imperial Connections pilot lists its region, historical
+period, description, version and content counts: three discoveries, recipes and
+histories, one collection and one challenge. Installed packs show enabled,
+disabled or incompatible status; archived packs absent from this installation
+show unavailable status. Save metadata cannot install content.
 
-The internal writer migrates its isolated legacy save only on a successful
-locked transaction. It validates enabled ownership against bundled definitions,
-checks active formulas, histories, collections, and challenge scores, and
-rebases writes onto the full archive. Disabled/missing modules remain dormant;
-incompatible ownership cannot become active without a migration. Explicit total
-reset clears dormant progress too. Reading stays free, and challenge reward
-acknowledgment waits for durable success.
+Enabling or disabling first validates the complete selected catalog, installed
+ownership, save compatibility and active references. A focused preview shows
+the resulting enabled set, active/dormant discoveries and stored record counts.
+Queued ordinary autosaves are flushed before management operations; the preview
+does not commit a replacement. Canceling leaves the selection unchanged.
 
-Internal durable synchronization reports any external save change as a conflict
-and requires reload; it does not silently merge or adopt another tab's archive.
-Quota failures remain retryable. Experiment IDs account for dormant history,
-and the shared 50-experiment archive limit still applies. Production v7 readers
-refuse these envelopes and block overwrites rather than discard module fields.
-Backup/downgrade UX, production migration, archive-aware import/export, module
-upgrades, and player-facing selection remain
-[explicit rollout gates](phase-11-integration.md).
+Before the first activation, export the offered backup: confirmation replaces
+the legacy save with envelope version 1 of `unwritten-atlas-module-save` under
+the same storage key. Its progress record retains the v7 fields and adds trusted
+ownership and persisted `enabledModuleIds` alongside them. Older archives without
+that selection default to no enabled modules. Earlier v1-v7 migrations retain
+their existing behavior. A failed validation, lock, conflict, size check or write
+does not replace the old save.
+
+**Confirm module change and reload** is required before any selection takes
+effect. Successful replacement pauses the old session until reload, preventing
+it from overwriting the new save. Reload clears prepared ingredients, hint
+selection, recently used shortcuts, and unfinished or unsaved isolated runs;
+Settings warns when a challenge is open. Persisted Open Leads remain saved.
+If automatic reload does not complete, use the offered reload control.
+
+All live gameplay and research use one validated catalog for that session.
+Regional discoveries contribute to exploration totals, never to unchanged core
+age goals or age rewards. Disabling hides discoveries, recipes, favorites,
+reading markers and achievements without deleting them. Ordinary writes rebase
+active progress onto the full archive, also retaining dormant failed pairs,
+Open Leads, experiment histories and one-time reward receipts. Reactivation
+restores compatible records without paying rewards again.
+
+Recent Experiments shows the latest 50 active records. Inactive experiments
+are retained in addition to that active window, subject to the overall 1 MiB
+serialized UTF-8 limit. IDs are allocated above retained histories and compacted
+together at session boundaries near safe-integer exhaustion. A save exceeding
+the limit reports an error rather than deleting dormant history.
+
+Missing or incompatible packs stay hidden with a compatibility warning.
+Reactivation requires exact installed ownership and version compatibility;
+module upgrades requiring record changes need an explicit supported migration.
+There is no automatic module-version migration or destructive repair. Keep a
+backup and use a compatible installation or a validated compatible import.
+Legacy-only releases refuse archives rather than stripping module records.
+
+## Manual backup and restore
+
+1. Open **Settings > Save backup and restore** and choose **Export saved progress**.
+   The JSON download contains the complete stored save, including dormant
+   records. It exports the exact stored bytes after flushing pending writes;
+   unsaved in-memory progress after a storage error is not included. Existing
+   invalid/future-format bytes can still be exported for recovery.
+2. Choose **Import save file** with a legacy v1-v7 JSON save or a durable archive,
+   up to 1 MiB. Parsing, migration, module compatibility and reference validation
+   run before the preview. No content is installed from the file.
+3. Review visible/dormant counts and warnings, and export the current save if
+   needed. Import is **total replacement, not a merge**: regional progress absent
+   from the file will be lost. A legacy import into an archive remains in archive
+   format with no enabled regions or retained old regional records.
+4. Choose **Replace all progress and reload** explicitly, or cancel. Confirmation
+   revalidates the candidate and checks the expected raw stored bytes under the
+   shared Web Lock. A changed save, malformed/oversized file, unsupported format,
+   or failed write leaves the previous stored save intact.
+
+Unsupported future saves are never rewritten, including by management actions;
+export them for recovery and use a compatible application version. Successful
+imports reload into a coherent catalog/progress session without replaying
+rewards. Files stay local: there are no accounts, uploads, payment controls,
+advertising or notification prompts.
+
+See the [Phase 11 integration audit](phase-11-integration.md) for regression
+coverage and remaining boundaries.

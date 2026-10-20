@@ -16,6 +16,14 @@ The persistent **The Unwritten Atlas** header offers **Play**, **Atlas**, and **
 
 **Play** contains the existing Elements, Combine, and Guide layout, including its age switcher and exactly three mobile gameplay tabs. **Atlas** opens the Historical Encyclopedia directly and can browse all discovered entries regardless of the selected gameplay age. **Challenges** contains Rainmaker and all eleven Learning Labs, available from any campaign age, and hosts the isolated challenge runner. Neither section adds a mobile gameplay tab. The separate Rainmaker header shortcut is removed to avoid duplicate navigation.
 
+**Settings** remains separate from these three sections. Its optional **Regional
+Modules** manager offers the disabled-by-default Achaemenid pilot, validated
+activation/deactivation with confirmed reload, and manual save backup/restore.
+Disabling preserves regional progress; total reset does not. See
+[saves and settings](saves.md#regional-modules-and-durable-archives) before
+migrating or importing a save. Enabling the pilot adds its own learning lab
+without changing core age goals or rewards.
+
 Atlas has its own page heading and introduction. Desktop uses the full application-shell width, with a viewport-sized, independently scrollable discovery index beside an article capped at a readable 80-character measure. Mobile stacks browsing above reading and scrolls the full page without fixed gameplay tabs covering its bibliography. Long references wrap, and reduced-motion preferences suppress transitions and animations. Research explanations, citations, and explicit **Mark as Read / Mark as Unread** controls remain available without Insight.
 
 Each article keeps the general chronology caveat in a collapsed **About gameplay ages** disclosure. Expand it for the distinction between symbolic Origins, regional archaeological periods and overlapping Classical Antiquity; entry-specific evidence and cautions remain in the article.

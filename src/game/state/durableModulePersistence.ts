@@ -1,6 +1,6 @@
 import { MAX_SAVE_BYTES, SAVE_KEY, parseProgress, type SavedProgress } from './persistence.ts'
 import { createModuleSaveEnvelope, parseModuleSaveEnvelope, projectModuleProgress, type ModuleOwnership, type ModuleSaveEnvelope } from './moduleProgress.ts'
-import { prepareModuleArchive, rebaseActiveModuleProgress, clearModuleArchiveProgress } from './moduleArchiveRules.ts'
+import { compactModuleHistory, prepareModuleArchive, rebaseActiveModuleProgress, clearModuleArchiveProgress } from './moduleArchiveRules.ts'
 
 export type DurableLoad =
   | { status: 'missing'; raw: null; archive: null }
@@ -28,19 +28,26 @@ export const DURABLE_INVALID = 'Existing save is invalid, unreadable, or from an
 export const DURABLE_LOCK = 'Web Locks are required for safe module progress writing.'
 
 /**
- * Internal durable transaction manager. Production core-only sessions keep
- * the v7 writer; regional sessions use this service exclusively.
+ * Durable transaction manager. Existing archives always use this writer;
+ * legacy production sessions migrate only after confirmed activation.
  * A successful migration replaces the same storage key only inside its lock,
  * after comparing the original raw bytes.
  */
-export function createDurableModulePersistence(ownership: readonly ModuleOwnership[] = []) {
-  const loaded = readDurableModuleSave()
+export function createDurableModulePersistence(ownership: readonly ModuleOwnership[] = [], loaded = readDurableModuleSave()) {
   let baseline = loaded.status === 'loaded' ? loaded.raw : null
   let archive = loaded.status === 'loaded' ? loaded.archive : null
   let error: string | null = loaded.status === 'failed' ? DURABLE_INVALID : null
   let blocked = loaded.status === 'failed'
   const pending = new Set<Promise<boolean>>()
   let notify = (_error: string | null) => { void _error }
+  if (archive) {
+    try {
+      archive = compactModuleHistory(prepareModuleArchive(archive, ownership))
+    } catch (cause) {
+      blocked = true
+      error = `Module progress cannot be activated: ${cause instanceof Error ? cause.message : String(cause)}`
+    }
+  }
 
   function report(message: string | null) {
     error = message
@@ -70,7 +77,7 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
         }
         try {
           const current = prepareModuleArchive(
-            disk.status === 'loaded' ? disk.archive :
+            archive ??
               createModuleSaveEnvelope(parseProgress(JSON.stringify({ version: 1, discoveredIds: [] }))!, []),
             ownership,
           )
@@ -137,6 +144,7 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
     get raw() { return baseline },
     get active() { return archive ? projectModuleProgress(archive, ownership.map((owner) => owner.moduleId)).progress : null },
     onError(listener: (error: string | null) => void) { notify = listener },
+    replaceArchive(candidate: ModuleSaveEnvelope) { return transact(() => candidate) },
     writeActive, resetAll, synchronize, flush,
   }
 }

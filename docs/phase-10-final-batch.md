@@ -1,11 +1,12 @@
 # Phase 10 — Final Batch: Achaemenid Pilot and Activation Gates
 
 This batch added the first **free, optional, first-party historical region pack**.
-It is **not selectable in the production game**. Phase 11 routes Play, Atlas,
-and Challenges through one validated catalog per session, with regional startup
-available internally for tests using durable archives. The production session
-remains core-only with version 7 saves. See the
-[integration audit and remaining toggle gates](phase-11-integration.md).
+Phase 11 now makes it selectable through **Settings > Regional Modules**,
+disabled by default. Play, Atlas and Challenges use one validated catalog per
+session; activation requires a validated preview, explicit durable-save
+migration confirmation and reload. Legacy campaigns remain core-only/v7 until
+confirmation. See the [integration audit](phase-11-integration.md) and
+[save guide](saves.md). The Phase 10 implementation notes below are historical.
 
 ## Phase 10G — Pilot data and combined catalog
 
@@ -19,9 +20,9 @@ remains core-only with version 7 saves. See the
 
 - `src/game/modules/ownership.ts` derives the declared ownership of each bundled pack from its actual definitions. Archive claims do not become installed content merely because they appear in a save.
 - `ownership.test.ts` checks dormant progress, explicit read markers, favorites, awarded collections, challenge results, and successful reactivation in the isolated archive projection.
-- The Phase 10B/10C archive now backs internal regional sessions exclusively.
-  Production still writes v7. Do not expose module toggles before the production
-  migration, compatibility, and activation UX gates pass.
+- The Phase 10B/10C archive now backs production regional sessions. Phase 11
+  supplies the migration, compatibility, backup/import and activation interface;
+  ordinary writes preserve dormant records and reward receipts.
 
 ## Phase 10I — Research and educational bounds
 
@@ -31,9 +32,9 @@ The module is about specific administrative, transport, and archival institution
 
 ## Original activation checklist
 
-Phase 11 completes shared runtime lookups and internal archive roundtrips.
+Phase 11 completes shared runtime lookups and production archive roundtrips.
 The following describes the original checklist; the integration audit
-distinguishes those completed internal checks from outstanding production work.
+records completed production checks and remaining version-migration boundaries.
 
 - Route the Zustand store, all Play and Atlas components, Challenges, research/context displays, hints, and reward logic through **one selected active catalog**, not mixed static and dynamic imports.
 - Make the core game's save writer fully archive-aware and preserve dormant data on every write; handle cross-tab conflict, failed writes, migration, downgrade, import/export and deliberate reset.

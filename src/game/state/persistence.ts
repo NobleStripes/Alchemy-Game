@@ -316,6 +316,7 @@ export function createProgressPersistence() {
   return {
     initial: accepted,
     historyIdFloor: 0,
+    get raw() { return raw },
     get error() { return error },
     synchronize,
     write,

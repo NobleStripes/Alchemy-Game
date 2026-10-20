@@ -8,11 +8,20 @@ Open **Challenges** in the persistent main navigation for Rainmaker and all elev
 
 This guide describes implemented content. The [catalog plan](catalog-plan.md) separately tracks proposed discoveries, regional modules and research-only work; evidence-blocked candidates are not playable additions.
 
-The Achaemenid pilot is validated and integrated through internal regional
-sessions, but has no player-facing activation control. Production still uses
-the 225-element core catalog and v7 saves. All views share the session catalog;
-regional exploration counts never change core age-completion conditions.
-See the [Phase 11 audit and activation gates](phase-11-integration.md).
+The free, bundled Achaemenid Imperial Connections pilot is available through
+**Settings > Regional Modules**, disabled by default. Its three discoveries,
+three recipes, three histories, one collection and one challenge reuse existing
+ingredients without changing core age-completion conditions. The core-only
+baseline remains 225 elements and 291 recipes; enabling the pilot produces
+228 elements and 294 recipes across the same five ages.
+
+Activation offers a backup and validated preview before explicitly confirmed
+save migration and reload. Disabling hides regional content while preserving
+its discoveries, reading marks, favorites and achievement receipts in the
+durable archive. Re-enabling a compatible installed version restores them.
+All views share one validated catalog per session. See
+[save management and recovery](saves.md#regional-modules-and-durable-archives)
+and the [Phase 11 integration audit](phase-11-integration.md).
 
 - [Classical Antiquity and Iron Age branches](#classical-antiquity-and-iron-age-branches)
 - [Production foundations](#production-foundations)

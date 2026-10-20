@@ -4,7 +4,7 @@
 
 ## Status and boundaries
 
-This is a **roadmap and design brief, not a shipped-feature announcement**. The current game has a flat bundled catalog, version 7 local saves, full Atlas articles and the existing Insight system. Dedicated regional-module manifests, module toggles, concise article summaries, contextual nudges, manual save-transfer controls and PWA support are not implemented.
+This is the **original roadmap and design brief, not a shipped-feature announcement**. Its starting-point descriptions and checkboxes below are historical. Phase 11 now implements the validated shared catalog, bundled regional manifest, dormant-progress preservation, optional Settings module manager and manual save-transfer controls. See the [current integration audit](phase-11-integration.md) and [save guide](saves.md). This update does not authorize PWA support or the other deferred proposals.
 
 Phase 10 establishes the framework needed for optional regional content without risking progress or weakening free access. It does not replace the [catalog's evidence and research gates](catalog-plan.md#validation-and-regression-gates), certify proposed discoveries, or move existing Age V content into a removable pack. The existing 200-element catalog remains the compatibility baseline.
 

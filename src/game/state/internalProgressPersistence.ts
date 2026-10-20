@@ -1,12 +1,12 @@
 import type { RuntimeCatalog } from '../modules/runtimeCatalog.ts'
 import { isCollectionComplete } from '../engine/collectionRules.ts'
 import { pairKey } from '../engine/resolveCombination.ts'
-import { createDurableModulePersistence } from './durableModulePersistence.ts'
+import { createDurableModulePersistence, type DurableLoad } from './durableModulePersistence.ts'
 import { prepareModuleArchive } from './moduleArchiveRules.ts'
 import { projectModuleProgress, type ModuleOwnership } from './moduleProgress.ts'
 import { freshProgress, savedProgressSchema, type SavedProgress } from './persistence.ts'
 
-function validateActiveProgress(progress: SavedProgress, catalog: RuntimeCatalog) {
+export function validateActiveProgress(progress: SavedProgress, catalog: RuntimeCatalog) {
   savedProgressSchema.parse(progress)
   const discovered = new Set(progress.discoveredIds)
   const recipes = new Map(catalog.recipes.map((recipe) => [recipe.id, recipe]))
@@ -55,13 +55,14 @@ function validateActiveProgress(progress: SavedProgress, catalog: RuntimeCatalog
   }
 }
 
-/** Internal sessions must use isolated storage; this can migrate that save. */
-export function createInternalProgressPersistence(
+/** Existing archives and explicitly opted-in internal sessions only. */
+export function createModuleProgressPersistence(
   catalog: RuntimeCatalog,
   ownership: readonly ModuleOwnership[],
   enabledIds: readonly string[],
+  loaded?: DurableLoad,
 ) {
-  const durable = createDurableModulePersistence(ownership)
+  const durable = createDurableModulePersistence(ownership, loaded)
   let error = durable.error
   let initial = freshProgress()
   let invalid = false
@@ -94,6 +95,7 @@ export function createInternalProgressPersistence(
 
   return {
     initial,
+    get raw() { return durable.raw },
     get historyIdFloor() {
       return Math.max(0, ...durable.initial?.progress.experimentHistory.map((entry) => entry.id) ?? [])
     },
@@ -108,3 +110,5 @@ export function createInternalProgressPersistence(
     onError(listener: (next: string | null) => void) { notify = listener },
   }
 }
+
+export const createInternalProgressPersistence = createModuleProgressPersistence

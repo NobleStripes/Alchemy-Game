@@ -1,6 +1,6 @@
 # Phase 10A — regional module registry (prototype)
 
-This is an **inactive, data-only foundation** for free first-party historical expansions. No modules are activated in the current game, and the existing 225 elements, 291 recipes, five era gates, challenge records, Historical Atlas, and version 7 saves are unchanged.
+This document records the original **inactive, data-only foundation** for free first-party historical expansions. Phase 11 now provides optional Settings activation, validated durable migration and a shared catalog; see the [current integration audit](phase-11-integration.md). The original implementation boundaries below are historical. The protected core baseline remains 225 elements, 291 recipes and five ages.
 
 ## Implemented
 
@@ -10,7 +10,7 @@ This is an **inactive, data-only foundation** for free first-party historical ex
 
 This first contract deliberately allows only **new module-owned recipe results**. It does not change core recipes. Existing core eras remain authoritative; a module cannot add a new mandatory age or starter. Synthetic test discoveries are not historical claims or shipped game content.
 
-## Still blocked before player-facing activation
+## Original gates before player-facing activation
 
 1. Expand registration and validation to referenced historical sources, full Atlas records, individual recipe reviews, isolated learning labs, and optional collection rewards. Enforce provenance and avoid silently overwriting core records.
 2. Refactor all active gameplay and UI consumers to use the same resolved catalog, including progress, hints, labels, shelves, encyclopedia lookup, and challenge play.

@@ -87,6 +87,7 @@ function App() {
   const soundEnabled = useGameStore((state) => state.soundEnabled)
   const toggleSound = useGameStore((state) => state.toggleSound)
   const persistenceError = useGameStore((state) => state.persistenceError)
+  const moduleWarnings = useGameStore((state) => state.moduleWarnings)
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
     useSensor(KeyboardSensor),
@@ -104,7 +105,7 @@ function App() {
   }
 
   function handleReset() {
-    if (window.confirm('Return the journal to its first four essences?')) {
+    if (window.confirm('Return the journal to its first four essences? This permanently clears all progress, including disabled regional discoveries and achievements.')) {
       resetProgress()
     }
   }
@@ -239,9 +240,11 @@ function App() {
       </header>
 
       {persistenceError && activeSection !== 'atlas' && <p className="persistence-error" role="alert">{persistenceError}</p>}
+      {moduleWarnings.length > 0 && <p className="persistence-error" role="status">Some saved regional content is hidden. Open Settings, Regional Modules for compatibility details. Dormant progress is preserved.</p>}
       {settingsOpen && (
         <SettingsDialog
           onClose={() => setSettingsOpen(false)}
+          hasActiveChallenge={activeChallenge !== null}
         />
       )}
 

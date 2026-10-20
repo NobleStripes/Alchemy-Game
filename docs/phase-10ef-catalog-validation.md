@@ -1,7 +1,8 @@
 # Phase 10E–10F batch: full catalog validation
 
 **Phase 11 update:** all live consumers now share a catalog per session.
-Production remains core-only/v7; durable regional sessions are internal-only.
+Production defaults to core-only/v7; Settings offers optional regional
+activation with confirmed durable migration and reload.
 See the [integration audit](phase-11-integration.md). The boundary checklist
 below describes the original Phase 10E/F slice, not current missing UI wiring.
 

@@ -1,4 +1,4 @@
-# Phase 11: baseline and active-catalog integration
+# Phase 11: baseline, active catalog, durable saves and Regional Modules
 
 ## Protected baseline
 
@@ -25,27 +25,24 @@ are removed; strict citation uniqueness and historical prose are preserved.
 | App / Codex / Worktable / Journal | Core imports or module-scope core maps | Active exploration totals; core-only age objectives |
 | HistoricalAtlas / RecipeHistory | Core records, reviews, links and sources | Pass the same snapshot into nested research helpers |
 | ChallengeHub / ChallengeRun / reducer | Fixed challenge list and core default reducer | Active list and explicitly supplied session catalog |
-| v7 persistence | Core-only legacy migration/normalization and clean-tab adoption | Remains production behavior; never normalize regional progress |
-| Durable persistence | Locked raw-byte transactions; opt-in archive service | Internal sessions only, explicit conflicts, dormant rebase, acknowledged saves |
+| v7 persistence | Core-only legacy migration/normalization and clean-tab adoption | Retained until confirmed migration; never normalize regional progress |
+| Durable persistence | Locked raw-byte transactions; opt-in archive service | Production archive sessions, explicit conflicts, dormant rebase, acknowledged saves |
 | Archive rules | Namespace/reference checks; inactive data retained | Validate active records against installed definitions, not archive claims |
 
 Static content imports remain appropriate for constructing the core baseline,
 legacy v1-v7 normalization, core ownership exclusions, and compatibility APIs.
 Type-only imports do not provide competing runtime definitions.
 
-## Implemented integration
+## 11A/B: shared catalog and protected baseline
 
-- `createGameStore()` resolves the empty enabled set before publishing the
-  production catalog. The internal `{ mode: 'internal-regional',
-  enabledModuleIds: [...] }` configuration resolves the selected bundled set
-  before publishing catalog, indexes, and canonical module IDs together.
-- The catalog and enabled IDs are session metadata, never v7 save fields.
+- `createGameStore()` defaults legacy campaigns to the validated core catalog.
+  Archive startup resolves persisted selection against installed definitions
+  before publishing catalog, indexes, and canonical enabled IDs together.
+  The explicit internal-regional configuration remains available for tests.
+- The catalog is fixed session metadata; enabled IDs are persisted alongside
+  archive progress, never inserted into legacy v7 fields.
   All live store/view lookups use that catalog. The named core snapshot is used
   only for protected core progression, resolver input, and legacy compatibility.
-- Internal sessions use `internalProgressPersistence.ts` and the durable service
-  exclusively. Startup verifies ownership and active references; invalid active
-  progress is reported and cannot replace the stored archive. Production uses
-  the unchanged v7 parser/writer and clean-tab adoption policy.
 - The pilot resolves to 228 elements, 294 recipes, five unchanged ages, and
   150 histories, including its sources, three reviews, collection, and challenge.
 - SHA-256 fingerprints of normalized raw core elements, recipes, eras, and
@@ -53,7 +50,7 @@ Type-only imports do not provide competing runtime definitions.
 - Integration tests cover combinations, hints, favorites, reading, formula
   context and sources, active counters versus core goals, isolated challenge
   completion, capped/idempotent rewards, dormant roundtrips, and total reset.
-- Internal migration tests cover each legacy version 1 through 7. Lock failures,
+- Migration tests cover each legacy version 1 through 7. Lock failures,
   corrupt progress, invalid active references, ownership incompatibility,
   competing tabs, retryable quota failures, and the 1 MiB byte limit are checked.
 - Wiring exposed an archive comparison bug: experiment equality depended on JSON
@@ -63,35 +60,83 @@ Type-only imports do not provide competing runtime definitions.
   while adding an unknown age, ensuring it exercises the intended registry
   diagnostic rather than failing earlier manifest/element consistency checks.
 
-## Session boundary
+## 11C: production durable save integration
 
-Production remains core-only and writes v7. Regional startup is internal/test-only,
-uses durable archives, and is not exposed through settings or URLs. A selected
-catalog is fixed for the lifetime of a store. Recreate a session to change the
-enabled set; do not mutate a global active catalog or an in-progress challenge.
+- Missing/legacy saves retain the v7 reader/writer and existing migration
+  behavior. Existing archives automatically use the durable service.
+  Installed manifests, not archive claims, authorize active ownership.
+- Enabling first offers a backup and validated preview. Only explicit
+  confirmation replaces a legacy save with the module envelope. The shared
+  Web Lock, raw-byte baseline, candidate revalidation and 1 MiB limit protect
+  replacement; failed migration leaves the original recoverable.
+- Persisted `enabledModuleIds` is additive to envelope version 1, defaulting
+  to `[]` for older archives. Missing/incompatible modules remain dormant with
+  warnings. Exact ownership/version compatibility is required for reactivation.
+- Every ordinary archive write rebases active progress onto the complete
+  archive. Disabled discoveries, performed formulas, favorites, reading marks,
+  failed pairs, Open Leads, collection/challenge receipts and histories survive.
+  Duplicate progress identifiers, receipt IDs and experiment IDs are rejected.
+- Recent Experiments projects the latest 50 active records, retaining dormant
+  histories beyond that window within the overall size limit. ID allocation
+  accounts for dormant records; safe-integer exhaustion compacts all histories
+  together at session boundaries, never between queued writes.
+- Confirmed challenge receipts remain idempotent across reactivation. Deliberate
+  total reset clears active and dormant progress while retaining module selection
+  and the sound preference; disabling is non-destructive.
+- Durable tabs fail closed on external byte changes and require reload.
+  Retryable storage errors remain explicit. Invalid/future saves are protected
+  from autosave, reset and management replacement, but stored bytes are exportable.
+- Manual export returns the complete stored bytes after flushing, not unsaved
+  in-memory changes after an error. Import accepts legacy v1-v7 and archives,
+  validates a focused active/dormant preview, offers a backup, and requires
+  explicit total-replacement confirmation. Import is not a merge.
+
+## 11D: Regional Modules interface and session boundary
+
+Settings contains the optional module manager and save-transfer workflow,
+separate from Play, Atlas and Challenges. The bundled Achaemenid card shows
+region, period, description, version and counts. Installed/enabled/disabled,
+unavailable and incompatible states have readable explanations; invalid
+activations cannot proceed. Regions default to disabled for legacy players.
+
+Changes are saved only after explicit confirmation, then take effect on reload.
+The old store is paused after replacement until that reload, preventing a mixed
+catalog/progress state or an overwrite by the old session. Prepared elements,
+selected hints, recents and unfinished challenge runs are cleared by reload;
+an open-challenge warning precedes confirmation. Persisted Open Leads survive.
+There is no URL activation shortcut or live global-catalog mutation.
+
+The modal retains native modality and its fallback keyboard focus handling,
+focused previews, cancel/close focus restoration, accessible labels, readable
+status/errors and wrapping touch-sized controls. After durable replacement,
+closing is blocked until reload and a reload retry remains available.
+There are no accounts, payment controls, advertising or notification prompts.
 
 Regional discoveries contribute to active exploration totals, not the core age
 discovery goals or age-completion rewards. Regional collections and challenges
 retain their own receipts and the existing three-credit Insight cap.
 
-Durable sessions must run in isolated storage/origins. Their first successful
-write can migrate that isolated v7 save to an archive under the same storage key.
-Production v7 readers refuse archives and must not overwrite them. Ordinary
-archive writes preserve disabled/missing module records; explicit total reset
-clears them. Unknown or incompatible active ownership fails closed. Conflicting
-durable tabs require reload rather than silently merging unsaved state.
+See [Saves and settings](saves.md) for player-facing migration, backup,
+replacement, reset and recovery instructions.
 
-## Gates before any player-facing module toggle
+## Closed release gates and remaining boundaries
 
-Internal integration is not a production activation rollout. Remaining gates:
+Production durable loading/writing, deliberate migration, backup/restore,
+persisted selection, atomic reload transitions, dormant preservation and the
+optional Settings interface are implemented. The integration dependencies
+recorded before exposing a toggle were resolved with regression coverage.
 
-1. Production durable loading/writing/synchronization and deliberate migration.
-2. Manual backup, compatibility warning, and downgrade/recovery UX.
-3. Persisted installed/enabled selection and a defined live-transition policy.
-4. Module version/content migrations without deleting dormant progress.
-5. Archive-aware import/export and recovery guarantees.
-6. End-user activation, removal, reinstallation, and cross-tab recovery coverage.
-7. Human historical editorial review; structural tests cannot establish truth.
+Remaining boundaries are deliberate, not silent repair paths:
+
+1. No automatic module-version/content migration. An incompatible upgrade stays
+   dormant until an explicit supported migration or compatible import is supplied.
+2. Legacy-only app versions cannot read module archives; export before migrating
+   and use a compatible client or a legacy backup to downgrade.
+3. Only vetted bundled first-party content is installable. Archive provenance
+   cannot install missing modules or authorize untrusted content.
+4. Structural validation cannot establish historical truth; additional packs
+   still require human historical editorial review.
+5. No PWA/service-worker rollout, account sync or public pack loader is included.
 
 ## Executed validation
 
@@ -100,8 +145,10 @@ Internal integration is not a production activation rollout. Remaining gates:
 | `npm run typecheck` | Passed |
 | `npm run lint` | Passed |
 | `npm run build` | Passed; core graph remains 225 nodes, 179 ingredients, 46 terminals, zero unused |
-| `npm test -- --maxWorkers=2` | Passed: 36 files, 1,484 tests |
-| Production preview HTTP smoke | HTML and built entry JavaScript both returned 200; temporary preview stopped |
+| `npm test -- --maxWorkers=2` | Passed: 37 files, 1,511 tests |
+| Production preview HTTP smoke | Passed; temporary preview servers stopped after validation |
+| Browser save/module workflow | Legacy import preview did not replace storage; explicit import/reload and module migration succeeded; regional discovery, performed recipe, favorite and reading marker survived disable/reload/re-enable |
+| Browser modal checks | Preview focus and close/cancel focus restoration passed; at 390 x 844 the dialog measured 352 x 812 with no horizontal overflow |
 | Live import audit | No fixed-content value imports in live views; only explicit core-goal baseline and type imports remain |
 | Whitespace check | Passed with `core.whitespace=cr-at-eol`, honoring existing Windows line endings |
 
@@ -110,8 +157,16 @@ an App test timeout under parallel contention. That App test passed in isolation
 the complete suite subsequently passed with bounded workers. No existing App
 timeout was increased and no production validation rule was weakened.
 
-Browser automation tools were unavailable, so no real-browser visual or
-interaction pass is claimed. Play/Atlas/Challenges interactions are covered by
-the component integration tests, including a regional campaign and saved lab.
-Real-browser activation/recovery UX remains part of the future production
-rollout gate, not an enabled player feature.
+The production management suite adds 22 tests for v1-v7 migration, complete
+dormant roundtrips after 55 core experiments, reset, retries, locks, stale
+previews/conflicts, future/corrupt/oversized input, missing modules, incompatible
+upgrades, forged ownership, duplicate receipts and ID exhaustion. Settings has
+10 tests covering metadata, previews, cancellation/focus, challenge warnings,
+explicit replacement/reload, import errors and exact exported Blob contents.
+
+The integrated browser did not provide a download event, so a downloaded-file
+roundtrip is not claimed; export bytes, filename and object-URL cleanup are
+verified by component tests. Its synthetic Escape key did not invoke native
+dialog cancellation; browser cancel-event and close-button focus restoration
+were verified, and fallback keyboard behavior is covered by component tests.
+Browser checks used isolated temporary origins, never an existing player save.

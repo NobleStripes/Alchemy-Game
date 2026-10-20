@@ -69,6 +69,14 @@ function allowedIDs(owners: readonly ModuleOwnership[]) {
 }
 
 function assertReferences(progress: SavedProgress, owners: readonly ModuleOwnership[]) {
+  for (const ids of [
+    progress.discoveredIds, progress.discoveredRecipeIds, progress.revealedHintRecipeIds,
+    progress.favoriteIds, progress.readHistoricalElementIds, progress.rewardedCollectionIds,
+    progress.rewardedChallengeEraIds, progress.unlockedEraIds, progress.collapsedShelves,
+    progress.failedPairKeys, progress.challengeRecords.map((record) => record.challengeId),
+  ]) {
+    if (new Set(ids).size !== ids.length) reject('Duplicate progress receipt or identifier.')
+  }
   const allowed = allowedIDs(owners)
   const ensure = (kind: OwnedKind, ids: readonly string[]) => {
     for (const id of ids) {
@@ -95,7 +103,10 @@ function assertReferences(progress: SavedProgress, owners: readonly ModuleOwners
     }
     ensure('elementIds', inputs)
   }
+  const historyIds = new Set<number>()
   for (const entry of progress.experimentHistory) {
+    if (historyIds.has(entry.id)) reject('Duplicate experiment ID ' + entry.id + '.')
+    historyIds.add(entry.id)
     ensure('elementIds', entry.inputs)
     if (entry.resultId) ensure('elementIds', [entry.resultId])
     if (entry.recipeId) ensure('recipeIds', [entry.recipeId])
@@ -123,7 +134,16 @@ export function prepareModuleArchive(
   const owners = [...byId.values()].sort((a, b) => a.moduleId.localeCompare(b.moduleId))
   assertOwnershipSafety(owners)
   assertReferences(saved.progress, owners)
-  return createModuleSaveEnvelope(saved.progress, owners)
+  return createModuleSaveEnvelope(saved.progress, owners, saved.enabledModuleIds)
+}
+
+/** Compact the complete history at a session boundary, never between queued writes. */
+export function compactModuleHistory(saved: ModuleSaveEnvelope): ModuleSaveEnvelope {
+  const history = [...saved.progress.experimentHistory].sort((a, b) => a.id - b.id)
+  if (!history.some((entry) => entry.id >= Number.MAX_SAFE_INTEGER - MAX_EXPERIMENT_HISTORY)) return saved
+  return createModuleSaveEnvelope({
+    ...saved.progress, experimentHistory: history.map((entry, index) => ({ ...entry, id: index + 1 })),
+  }, saved.ownership, saved.enabledModuleIds)
 }
 
 function intersectsInactive(
@@ -196,7 +216,6 @@ export function rebaseActiveModuleProgress(
 
   const mergedHistory = [...inactiveHistory, ...activeHistory]
     .sort((a, b) => a.id - b.id)
-    .slice(-MAX_EXPERIMENT_HISTORY)
 
   const challengeRecords = [
     ...activeProgress.challengeRecords,
@@ -217,7 +236,7 @@ export function rebaseActiveModuleProgress(
     experimentHistory: mergedHistory,
   }
   assertReferences(merged, archive.ownership)
-  return createModuleSaveEnvelope(merged, archive.ownership)
+  return createModuleSaveEnvelope(merged, archive.ownership, enabledIds)
 }
 
 /** Explicit full reset clears dormant progress too, unlike merely disabling a pack. */
@@ -227,5 +246,5 @@ export function clearModuleArchiveProgress(
 ): ModuleSaveEnvelope {
   assertOwnershipSafety(archive.ownership)
   assertReferences(fresh, [])
-  return createModuleSaveEnvelope(fresh, archive.ownership)
+  return createModuleSaveEnvelope(fresh, archive.ownership, archive.enabledModuleIds)
 }
