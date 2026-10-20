@@ -2,17 +2,7 @@ import { z } from 'zod'
 import { recipes } from './index'
 import { historicalResearch, type HistoricalResearchSource } from './research'
 import rawReviews from './recipeReviews.json'
-
-const id = z.string().regex(/^[a-z][a-z0-9-]*$/)
-const reviewSchema = z.strictObject({
-  recipeId: id,
-  classification: z.enum(['material-process', 'simplified-process', 'symbolic']),
-  caution: z.string().trim().min(1),
-  sourceIds: z.array(id).refine(
-    (ids) => new Set(ids).size === ids.length,
-    'Source references must be unique.',
-  ),
-})
+import { recipeReviewEntrySchema } from './schema.ts'
 
 export function createRecipeReviewsSchema(
   catalog: readonly { id: string }[],
@@ -22,7 +12,7 @@ export function createRecipeReviewsSchema(
   const sourcesById = new Map(sources.map((source) => [source.id, source]))
   return z.strictObject({
     schemaVersion: z.literal(1),
-    reviews: z.array(reviewSchema),
+    reviews: z.array(recipeReviewEntrySchema),
   }).superRefine((database, ctx) => {
     const seen = new Set<string>()
     database.reviews.forEach((review, index) => {
