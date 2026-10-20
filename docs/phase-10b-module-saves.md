@@ -1,5 +1,10 @@
 # Phase 10B — module-aware save preservation (inactive prototype)
 
+**Historical slice:** Phase 11 now uses this envelope in internal regional
+sessions, with trusted ownership validation and durable rebasing. Production
+remains core-only/v7. See the [integration audit](phase-11-integration.md) for
+current behavior and remaining rollout gates.
+
 This branch introduces a **separate versioned module-save envelope** and a pure active-progress projection. It does not install, activate or disable modules in the running game. The ordinary `unwritten-atlas-progress` save key, legacy version 1–7 migration, Web Locks, conflict detection, reward handling and current user interface remain unchanged.
 
 ## Implemented

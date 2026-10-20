@@ -1,4 +1,4 @@
-import { runtimeCatalog, type RuntimeCatalog } from '../modules/runtimeCatalog.ts'
+import { coreRuntimeCatalog, type RuntimeCatalog } from '../modules/runtimeCatalog.ts'
 import { rainmakerChallenge, type ChallengeDefinition } from '../content/challenges'
 import { createRecipeIndex, resolveCombination } from './resolveCombination'
 
@@ -32,7 +32,7 @@ export function createChallengeState(challenge: ChallengeDefinition = rainmakerC
   }
 }
 
-export function createChallengeReducer(challenge: ChallengeDefinition, catalog: RuntimeCatalog = runtimeCatalog) {
+export function createChallengeReducer(challenge: ChallengeDefinition, catalog: RuntimeCatalog = coreRuntimeCatalog) {
   const { elementsById, recipes } = catalog
   const recipeIndex = createRecipeIndex(recipes.filter((recipe) => {
     const result = elementsById.get(recipe.result)

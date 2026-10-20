@@ -8,6 +8,12 @@ Open **Challenges** in the persistent main navigation for Rainmaker and all elev
 
 This guide describes implemented content. The [catalog plan](catalog-plan.md) separately tracks proposed discoveries, regional modules and research-only work; evidence-blocked candidates are not playable additions.
 
+The Achaemenid pilot is validated and integrated through internal regional
+sessions, but has no player-facing activation control. Production still uses
+the 225-element core catalog and v7 saves. All views share the session catalog;
+regional exploration counts never change core age-completion conditions.
+See the [Phase 11 audit and activation gates](phase-11-integration.md).
+
 - [Classical Antiquity and Iron Age branches](#classical-antiquity-and-iron-age-branches)
 - [Production foundations](#production-foundations)
 - [Craft, records and engineering](#craft-records-and-engineering)

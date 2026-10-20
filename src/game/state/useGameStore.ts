@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 import { soundEngine } from '../audio/audioEngine'
-import { collections, elements, elementsById, eras, recipes, starterElementIds } from '../content'
-import { challengesById } from '../content/challenges'
-import { researchByElementId } from '../content/research'
+import { coreRuntimeCatalog, type RuntimeCatalog } from '../modules/runtimeCatalog'
+import { resolveInstalledRegions } from '../modules/installed'
+import { installedModuleOwnership } from '../modules/ownership'
 import { getNewlyCompletedCollectionIds } from '../engine/collectionRules'
 import { reconcileEraProgress } from '../engine/eraProgress'
 import { areGlobalHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
@@ -13,12 +13,12 @@ import {
   resetInsightProgress,
 } from '../engine/insightRules'
 import {
-  createRecipeIndex,
   pairKey,
   resolveCombination,
 } from '../engine/resolveCombination'
 import { triggerConfetti } from '../fx/confetti'
 import { createProgressPersistence, SAVE_KEY, MAX_EXPERIMENT_HISTORY, type ExperimentEntry, type SavedProgress } from './persistence'
+import { createInternalProgressPersistence } from './internalProgressPersistence'
 
 type SlotName = 'first' | 'second'
 type PersistedState = Omit<SavedProgress, 'version'>
@@ -36,6 +36,8 @@ interface AttemptResult {
 }
 
 interface GameState extends PersistedState {
+  readonly catalog: RuntimeCatalog
+  readonly activeModuleIds: readonly string[]
   recentIngredientIds: string[]
   firstSlotId: string | null
   secondSlotId: string | null
@@ -65,8 +67,6 @@ interface ChallengeSaveReceipt {
   insightEarned: number
 }
 
-const recipeIndex = createRecipeIndex(recipes)
-
 export function snapshotProgress(state: PersistedState): PersistedState {
   return {
     discoveredIds: state.discoveredIds,
@@ -89,23 +89,40 @@ export function snapshotProgress(state: PersistedState): PersistedState {
   }
 }
 
-function appendExperiment(state: PersistedState, entry: Omit<ExperimentEntry, 'id'>): ExperimentEntry[] {
-  const maximumId = Math.max(0, ...state.experimentHistory.map((experiment) => experiment.id))
+function appendExperiment(state: PersistedState, entry: Omit<ExperimentEntry, 'id'>, historyIdFloor: number): ExperimentEntry[] {
+  const maximumId = Math.max(historyIdFloor, ...state.experimentHistory.map((experiment) => experiment.id))
   const history = maximumId >= Number.MAX_SAFE_INTEGER
     ? state.experimentHistory.map((experiment, index) => ({ ...experiment, id: index + 1 }))
     : state.experimentHistory
-  const id = Math.max(0, ...history.map((experiment) => experiment.id)) + 1
+  const id = (maximumId >= Number.MAX_SAFE_INTEGER
+    ? Math.max(0, ...history.map((experiment) => experiment.id))
+    : maximumId) + 1
   return [...history, { ...entry, id }].slice(-MAX_EXPERIMENT_HISTORY)
 }
 
 function recentIngredients(state: GameState, selectedIds: string[]): string[] {
   return [...new Set([...selectedIds].reverse().concat(state.recentIngredientIds))]
-    .filter((id) => state.discoveredIds.includes(id) && elementsById.has(id))
+    .filter((id) => state.discoveredIds.includes(id) && state.catalog.elementsById.has(id))
     .slice(0, 8)
 }
 
-export function createGameStore() {
-  const persistence = createProgressPersistence()
+type GameStoreOptions =
+  | { mode?: 'core'; enabledModuleIds?: never }
+  | { mode: 'internal-regional'; enabledModuleIds: readonly string[] }
+
+export function createGameStore(options: GameStoreOptions = {}) {
+  const enabledIds = options.mode === 'internal-regional' ? options.enabledModuleIds : []
+  const resolved = resolveInstalledRegions(enabledIds)
+  if (!resolved.ok) throw new Error(`Cannot initialize active catalog: ${resolved.errors.join('; ')}`)
+  const catalog = resolved.catalog
+  const { elements, elementsById, eras, recipes, collections, starterElementIds, recipeIndex,
+    challengesById, researchByElementId } = catalog
+  const coreElements = coreRuntimeCatalog.elements
+  const persistence = options.mode === 'internal-regional'
+    ? createInternalProgressPersistence(catalog,
+      installedModuleOwnership.filter((owner) => resolved.activeModuleIds.includes(owner.moduleId)),
+      resolved.activeModuleIds)
+    : createProgressPersistence()
   let challengePending = false
   const savedProgress = snapshotProgress(persistence.initial)
   soundEngine.setEnabled(savedProgress.soundEnabled)
@@ -121,6 +138,8 @@ export function createGameStore() {
     }
     return ({
   ...savedProgress,
+  catalog,
+  activeModuleIds: resolved.activeModuleIds,
   recentIngredientIds: [],
   firstSlotId: null,
   secondSlotId: null,
@@ -288,7 +307,7 @@ export function createGameStore() {
         : [...state.revealedHintRecipeIds, recipe!.id]
       const experimentHistory = appendExperiment(state, {
         inputs: [firstSlotId, secondSlotId], outcome: 'locked', lockedEraId: result.era,
-      })
+      }, persistence.historyIdFloor)
       const progress = { ...state, revealedHintRecipeIds: nextOpenLeads, experimentHistory }
       const persistenceError = writeProgress(progress)
       set({
@@ -321,7 +340,7 @@ export function createGameStore() {
       )
       const progress = {
         ...state,
-        experimentHistory: appendExperiment(state, { inputs: [firstSlotId, secondSlotId], outcome: 'no-reaction' }),
+        experimentHistory: appendExperiment(state, { inputs: [firstSlotId, secondSlotId], outcome: 'no-reaction' }, persistence.historyIdFloor),
         failedPairKeys: nextFailedPairs,
         insightCredits: insight.credits,
         insightFailureProgress: insight.failureProgress,
@@ -360,7 +379,7 @@ export function createGameStore() {
     const nextEraProgress = reconcileEraProgress(
       nextDiscoveries,
       state.unlockedEraIds,
-      elements,
+      coreElements,
       eras,
     )
     const unlockedEraId = nextEraProgress.unlockedEraIds.find(
@@ -387,7 +406,7 @@ export function createGameStore() {
           isEraChallengeComplete(
             era,
             nextEraProgress.discoveredIds,
-            elements,
+            coreElements,
           ),
       )
       .map((era) => era.id)
@@ -410,7 +429,7 @@ export function createGameStore() {
       ...snapshotProgress(state),
       experimentHistory: appendExperiment(state, {
         inputs: [firstSlotId, secondSlotId], outcome: isNew ? 'discovery' : 'known', resultId: result.id, recipeId: recipe.id,
-      }),
+      }, persistence.historyIdFloor),
       rewardedCollectionIds: [...state.rewardedCollectionIds, ...newlyCompletedCollectionIds],
       discoveredIds: nextEraProgress.discoveredIds,
       discoveredRecipeIds: nextRecipeIds,
@@ -467,7 +486,7 @@ export function createGameStore() {
       !areGlobalHintsUnlocked(
         state.discoveredIds,
         state.failedPairKeys,
-        elements,
+        coreElements,
         origins,
       )
     ) {
@@ -533,7 +552,8 @@ export function createGameStore() {
       unlockedEraIds: ['first-light'],
       activeEraId: 'first-light',
     }
-    const persistenceError = writeProgress(progress)
+    void persistence.reset(snapshotProgress(progress))
+    const persistenceError = persistence.error
     soundEngine.setEnabled(progress.soundEnabled)
     set({
       ...progress,

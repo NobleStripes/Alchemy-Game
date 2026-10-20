@@ -28,8 +28,8 @@ export const DURABLE_INVALID = 'Existing save is invalid, unreadable, or from an
 export const DURABLE_LOCK = 'Web Locks are required for safe module progress writing.'
 
 /**
- * Opt-in durable transaction manager. The live v7 writer is intentionally
- * untouched; this service must replace it atomically during future activation.
+ * Internal durable transaction manager. Production core-only sessions keep
+ * the v7 writer; regional sessions use this service exclusively.
  * A successful migration replaces the same storage key only inside its lock,
  * after comparing the original raw bytes.
  */
@@ -40,11 +40,17 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
   let error: string | null = loaded.status === 'failed' ? DURABLE_INVALID : null
   let blocked = loaded.status === 'failed'
   const pending = new Set<Promise<boolean>>()
+  let notify = (_error: string | null) => { void _error }
 
-  async function transact(next: (current: ModuleSaveEnvelope) => ModuleSaveEnvelope): Promise<boolean> {
+  function report(message: string | null) {
+    error = message
+    notify(error)
+  }
+
+  async function transact(next: (current: ModuleSaveEnvelope) => ModuleSaveEnvelope, commit?: () => void): Promise<boolean> {
     if (blocked) return false
     if (typeof navigator === 'undefined' || !navigator.locks?.request) {
-      error = DURABLE_LOCK
+      report(DURABLE_LOCK)
       blocked = true
       return false
     }
@@ -54,12 +60,12 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
         const disk = readDurableModuleSave()
         if (disk.status === 'failed') {
           blocked = true
-          error = DURABLE_INVALID
+          report(DURABLE_INVALID)
           return false
         }
         if (disk.raw !== baseline) {
           blocked = true
-          error = DURABLE_CONFLICT
+          report(DURABLE_CONFLICT)
           return false
         }
         try {
@@ -72,22 +78,23 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
           const verified = prepareModuleArchive(candidate, ownership)
           const raw = JSON.stringify(verified)
           if (new TextEncoder().encode(raw).byteLength > MAX_SAVE_BYTES) {
-            error = 'Module save exceeds the storage size limit.'
+            report('Module save exceeds the storage size limit.')
             return false
           }
           window.localStorage.setItem(SAVE_KEY, raw)
           archive = verified
           baseline = raw
-          error = null
+          report(null)
+          commit?.()
           return true
         } catch {
-          error = 'Module progress could not be validated or saved.'
+          report('Module progress could not be validated or saved.')
           return false
         }
       },
     )).catch(() => {
       blocked = true
-      error = DURABLE_LOCK
+      report(DURABLE_LOCK)
       return false
     })
     pending.add(job)
@@ -95,12 +102,12 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
     return job
   }
 
-  async function writeActive(progress: SavedProgress, enabledIds: readonly string[]) {
-    return transact((current) => rebaseActiveModuleProgress(current, progress, enabledIds))
+  async function writeActive(progress: SavedProgress, enabledIds: readonly string[], commit?: () => void) {
+    return transact((current) => rebaseActiveModuleProgress(current, progress, enabledIds), commit)
   }
 
-  async function resetAll(fresh: SavedProgress) {
-    return transact((current) => clearModuleArchiveProgress(current, fresh))
+  async function resetAll(fresh: SavedProgress, commit?: () => void) {
+    return transact((current) => clearModuleArchiveProgress(current, fresh), commit)
   }
 
   function synchronize(): ModuleSaveEnvelope | null {
@@ -108,14 +115,14 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
     const disk = readDurableModuleSave()
     if (disk.status === 'failed') {
       blocked = true
-      error = DURABLE_INVALID
+      report(DURABLE_INVALID)
       return null
     }
     if (disk.raw === baseline) return null
     // External modifications are reported, not automatically merged with
     // potentially unsaved local changes.
     blocked = true
-    error = DURABLE_CONFLICT
+    report(DURABLE_CONFLICT)
     return null
   }
 
@@ -129,6 +136,7 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
     get blocked() { return blocked },
     get raw() { return baseline },
     get active() { return archive ? projectModuleProgress(archive, ownership.map((owner) => owner.moduleId)).progress : null },
+    onError(listener: (error: string | null) => void) { notify = listener },
     writeActive, resetAll, synchronize, flush,
   }
 }

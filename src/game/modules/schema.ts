@@ -50,9 +50,8 @@ export const regionalModuleManifestSchema = z.strictObject({
 })
 
 /**
- * Initial registry payload: gameplay-only definitions. Historical records,
- * cited recipe reviews, and challenges must gain their own validated
- * composition before any module is made playable through the UI.
+ * Bundled data payload. Full-catalog resolution additionally validates
+ * historical coverage, citations, reviews, dependencies, and challenge routes.
  */
 export const regionalModuleSchema = z.strictObject({
   manifest: regionalModuleManifestSchema,

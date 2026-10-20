@@ -20,11 +20,11 @@ export function areHintsUnlocked(
 }
 
 export function selectHintRecipe(
-  recipes: RecipeDefinition[],
+  recipes: readonly RecipeDefinition[],
   discoveredIds: string[],
   discoveredRecipeIds: string[],
   revealedHintRecipeIds: string[],
-  elements: ElementDefinition[] = [],
+  elements: readonly ElementDefinition[] = [],
   activeEraId?: string,
 ) {
   const eligibleRecipes = recipes.filter(
@@ -69,7 +69,7 @@ export function selectHintRecipe(
 export function areGlobalHintsUnlocked(
   discoveredIds: string[],
   failedPairKeys: string[],
-  elements: ElementDefinition[],
+  elements: readonly ElementDefinition[],
   origins: EraDefinition,
 ) {
   const originsDiscoveryCount = elements.filter(

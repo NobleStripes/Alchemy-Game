@@ -307,14 +307,12 @@
         "historicalOverview": {
           "text": "The Persepolis Fortification tablets are an Achaemenid administrative archive excavated in the 1930s. Many Elamite records concern commodities, rations and travel authorization in southwestern Iran.",
           "sourceIds": [
-            "isac-fortification",
             "isac-fortification"
           ]
         },
         "manufactureOrUse": {
           "text": "Administrative personnel inscribed and sealed clay documents that recorded allocations of food, labor and travel provisions. The texts reflect specific institutions, locales and surviving records rather than a complete portrait of ordinary life across the empire.",
           "sourceIds": [
-            "isac-fortification",
             "isac-fortification"
           ]
         },
@@ -376,7 +374,6 @@
             "evidenceType": "textual-evidence",
             "interpretation": "attested",
             "sourceIds": [
-              "isac-fortification",
               "isac-fortification"
             ]
           }
@@ -384,7 +381,6 @@
         "historicalSignificance": {
           "text": "The surviving corpus makes Achaemenid logistics, administration, provisioning and the movement of individuals available to historical study.",
           "sourceIds": [
-            "isac-fortification",
             "isac-fortification"
           ]
         },
@@ -429,7 +425,6 @@
       "classification": "symbolic",
       "caution": "Administrative clay tablets were documented and sealed by scribes; this formula symbolizes a surviving archival corpus rather than an artifact-production procedure.",
       "sourceIds": [
-        "isac-fortification",
         "isac-fortification"
       ]
     }

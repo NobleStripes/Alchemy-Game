@@ -2,7 +2,7 @@ import type { RecipeDefinition } from '../domain/types'
 
 export function isElementUnstudied(
   elementId: string,
-  recipes: RecipeDefinition[],
+  recipes: readonly RecipeDefinition[],
   discoveredRecipeIds: string[],
 ) {
   const outgoingRecipes = recipes.filter((recipe) =>

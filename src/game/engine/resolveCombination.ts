@@ -4,7 +4,7 @@ export function pairKey(firstId: string, secondId: string) {
   return [firstId, secondId].sort().join('::')
 }
 
-export function createRecipeIndex(recipes: RecipeDefinition[]) {
+export function createRecipeIndex(recipes: readonly RecipeDefinition[]) {
   return new Map(
     recipes.map((recipe) => [pairKey(...recipe.inputs), recipe]),
   )
@@ -13,7 +13,7 @@ export function createRecipeIndex(recipes: RecipeDefinition[]) {
 export function resolveCombination(
   firstId: string,
   secondId: string,
-  recipeIndex: Map<string, RecipeDefinition>,
+  recipeIndex: ReadonlyMap<string, RecipeDefinition>,
 ) {
   return recipeIndex.get(pairKey(firstId, secondId)) ?? null
 }

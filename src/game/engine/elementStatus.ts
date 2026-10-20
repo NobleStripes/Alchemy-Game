@@ -1,7 +1,7 @@
 import type { ElementDefinition, RecipeDefinition } from '../domain/types.ts'
 
 export function getExhaustedElements(
-  recipes: RecipeDefinition[],
+  recipes: readonly RecipeDefinition[],
   unlockedElements: Set<string>,
 ): Set<string> {
   const ingredients = new Set(recipes.flatMap((recipe) => recipe.inputs))
@@ -11,7 +11,7 @@ export function getExhaustedElements(
 }
 
 export function getTemporarilyExhaustedElements(
-  recipes: RecipeDefinition[],
+  recipes: readonly RecipeDefinition[],
   discoveredElements: Set<string>,
   performedRecipes: Set<string>,
   unlockedEras: Set<string>,

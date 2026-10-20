@@ -62,9 +62,8 @@ function assertOwnership(ownership: readonly ModuleOwnership[]): string[] {
 }
 
 /**
- * Strict archive validation. This is not wired to the runtime save writer:
- * installed module descriptors must be checked against the registry before
- * actual activation or import. Unknown ownership remains in the archive.
+ * Shape validation is not activation. Internal session startup also checks
+ * installed ownership and active definitions. Unknown ownership stays dormant.
  */
 export function parseModuleSaveEnvelope(raw: string): ModuleSaveEnvelope | null {
   try {

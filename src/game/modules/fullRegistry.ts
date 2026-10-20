@@ -3,7 +3,7 @@ import { createRecipeReviewsSchema } from '../content/recipeReviews.ts'
 import type { ChallengeDefinition } from '../content/challenges.ts'
 import type { HistoricalResearchRecord } from '../content/schema.ts'
 import { resolveRegionalCatalog } from './registry.ts'
-import { createRuntimeCatalog, runtimeCatalog, type RuntimeCatalog } from './runtimeCatalog.ts'
+import { createRuntimeCatalog, coreRuntimeCatalog as runtimeCatalog, type RuntimeCatalog } from './runtimeCatalog.ts'
 import { regionalModuleSchema, type RegionalModule } from './schema.ts'
 
 export type FullCatalogResolution =

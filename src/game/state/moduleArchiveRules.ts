@@ -182,7 +182,9 @@ export function rebaseActiveModuleProgress(
   const activeHistory = activeProgress.experimentHistory.map((entry) => {
     const existing = activeById.get(entry.id)
     if (existing) {
-      if (JSON.stringify(existing) !== JSON.stringify(entry)) {
+      if (existing.outcome !== entry.outcome || existing.resultId !== entry.resultId ||
+        existing.recipeId !== entry.recipeId || existing.lockedEraId !== entry.lockedEraId ||
+        existing.inputs[0] !== entry.inputs[0] || existing.inputs[1] !== entry.inputs[1]) {
         reject('Historical experiment ' + entry.id + ' was changed rather than appended.')
       }
       return entry

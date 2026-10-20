@@ -1,5 +1,4 @@
-import { reviewsByRecipeId } from '../../game/content/recipeReviews'
-import { historicalResearch } from '../../game/content/research'
+import { useGameStore } from '../../game/state/useGameStore'
 import { SourceReference } from './SourceReference'
 
 const classificationLabels = {
@@ -9,9 +8,10 @@ const classificationLabels = {
 }
 
 export function RecipeHistory({ recipeId }: { recipeId: string }) {
+  const { reviewsByRecipeId, sources: catalogSources } = useGameStore((state) => state.catalog)
   const review = reviewsByRecipeId.get(recipeId)
   if (!review) throw new Error(`Missing historical recipe review: ${recipeId}`)
-  const sources = historicalResearch.sources.filter((source) => review.sourceIds.includes(source.id))
+  const sources = catalogSources.filter((source) => review.sourceIds.includes(source.id))
 
   return (
     <details className="recipe-history">

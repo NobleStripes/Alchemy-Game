@@ -315,9 +315,11 @@ export function createProgressPersistence() {
 
   return {
     initial: accepted,
+    historyIdFloor: 0,
     get error() { return error },
     synchronize,
     write,
+    reset: write,
     flush,
     onError(listener: (error: string | null) => void) { notify = listener },
   }

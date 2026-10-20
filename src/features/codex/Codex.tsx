@@ -1,12 +1,9 @@
 import { useDndContext, useDraggable } from '@dnd-kit/core'
 import { ArrowUpDown, ChevronDown, EyeOff, Layers, Search, Star, X } from 'lucide-react'
 import { useDeferredValue, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from 'react'
-import { elements, elementsById, eras, recipes } from '../../game/content'
 import type { ElementCategory } from '../../game/domain/types'
 import { getExhaustedElements, getTemporarilyExhaustedElements } from '../../game/engine/elementStatus'
 import { useGameStore } from '../../game/state/useGameStore'
-
-const elementEras = new Map(elements.map((element) => [element.id, element.era]))
 
 function EraShelf({ eraId, children }: { eraId: string; children: ReactNode }) {
   const ref = useRef<HTMLElement | null>(null)
@@ -28,7 +25,9 @@ interface ElementTileProps {
 }
 
 function ElementTile({ elementId, onSelected, status }: ElementTileProps) {
+  const { elementsById } = useGameStore((state) => state.catalog)
   const element = elementsById.get(elementId)
+  const elementEra = element?.era
   const selectElement = useGameStore((state) => state.selectElement)
   const firstSlotId = useGameStore((state) => state.firstSlotId)
   const secondSlotId = useGameStore((state) => state.secondSlotId)
@@ -41,11 +40,11 @@ function ElementTile({ elementId, onSelected, status }: ElementTileProps) {
     const node = tileRef.current
     return () => {
       if (!node?.contains(document.activeElement) || node.closest('[hidden]')) return
-      const header = document.getElementById(`shelf-header-${elementEras.get(elementId)}`)
+      const header = document.getElementById(`shelf-header-${elementEra}`)
       if (header?.isConnected) header.focus()
       else document.getElementById('codex-title')?.focus()
     }
-  }, [elementId])
+  }, [elementEra])
 
   if (!element) return null
   const isFavorite = favoriteIds.includes(element.id)
@@ -128,6 +127,8 @@ interface CodexProps {
 type SortOrder = 'alphabetical' | 'category' | 'recent'
 
 export function Codex({ onElementSelected }: CodexProps) {
+  const { elements, elementsById, eras, recipes } = useGameStore((state) => state.catalog)
+  const elementEras = useMemo(() => new Map(elements.map((element) => [element.id, element.era])), [elements])
   const [query, setQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<ElementCategory | 'all'>('all')
   const [selectedAge, setSelectedAge] = useState('all')
@@ -148,10 +149,10 @@ export function Codex({ onElementSelected }: CodexProps) {
   const { active } = useDndContext()
   const draggedId = typeof active?.id === 'string' && active.id.startsWith('element/')
     ? active.id.slice('element/'.length) : null
-  const terminalIds = useMemo(() => getExhaustedElements(recipes, new Set(discoveredIds)), [discoveredIds])
+  const terminalIds = useMemo(() => getExhaustedElements(recipes, new Set(discoveredIds)), [recipes, discoveredIds])
   const exhaustedIds = useMemo(() => getTemporarilyExhaustedElements(
     recipes, new Set(discoveredIds), new Set(discoveredRecipeIds), new Set(unlockedEraIds), elementEras,
-  ), [discoveredIds, discoveredRecipeIds, unlockedEraIds])
+  ), [recipes, discoveredIds, discoveredRecipeIds, unlockedEraIds, elementEras])
   const searching = Boolean(query.trim())
 
   const categories: Array<{ id: ElementCategory | 'all'; label: string }> = [
@@ -179,7 +180,7 @@ export function Codex({ onElementSelected }: CodexProps) {
 
       return true
     })
-  }, [discoveredIds, favoriteIds, starredOnly, selectedAge, deferredQuery, searching, hideFinalElements, terminalIds, exhaustedIds, draggedId])
+  }, [elements, discoveredIds, favoriteIds, starredOnly, selectedAge, deferredQuery, searching, hideFinalElements, terminalIds, exhaustedIds, draggedId])
 
   const visibleElements = useMemo(() => {
     const result = matchingElements.filter(

@@ -1,6 +1,6 @@
 import { BookOpen, FlaskConical, Lightbulb } from 'lucide-react'
 import { useState } from 'react'
-import { collections, elements, elementsById, eras, recipes } from '../../game/content'
+import { coreRuntimeCatalog } from '../../game/modules/runtimeCatalog'
 import type { CollectionDefinition } from '../../game/domain/types'
 import { isCollectionComplete } from '../../game/engine/collectionRules'
 import { areGlobalHintsUnlocked } from '../../game/engine/hintRules'
@@ -31,6 +31,7 @@ export function Journal({
   onCombinationPrepared,
   onViewHistory,
 }: JournalProps) {
+  const { collections, elements, elementsById, eras, recipes } = useGameStore((state) => state.catalog)
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const discoveredRecipeIds = useGameStore(
     (state) => state.discoveredRecipeIds,
@@ -119,6 +120,9 @@ export function Journal({
     (element) =>
       element.era === eraId && discoveredIds.includes(element.id),
   )
+  const coreDiscoveryCount = coreRuntimeCatalog.elements.filter(
+    (element) => element.era === eraId && discoveredIds.includes(element.id),
+  ).length
   const availableElements = elements.filter((element) => element.era === eraId)
   const recordedFormulas = recipes.filter((recipe) =>
     discoveredRecipeIds.includes(recipe.id) && elementsById.get(recipe.result)?.era === eraId,
@@ -137,7 +141,7 @@ export function Journal({
     discoveredIds.includes(elementId),
   ).length
   const challengeComplete =
-    discoveredElements.length >= discoveryGoal &&
+    coreDiscoveryCount >= discoveryGoal &&
     foundLandmarkCount === landmarkIds.length
   const categoryProgress = [
     ['essence', 'Essence'],
@@ -163,7 +167,7 @@ export function Journal({
   const insightsUnlocked = areGlobalHintsUnlocked(
     discoveredIds,
     failedPairKeys,
-    elements,
+    coreRuntimeCatalog.elements,
     eras[0],
   )
   const walletPaused =
@@ -297,7 +301,7 @@ export function Journal({
       <section className="challenge-status" aria-label={`${challengeName} challenge`}>
         <strong>{challengeName} challenge</strong>
         <p>
-          Catalogue {Math.min(discoveredElements.length, discoveryGoal)}/
+          Catalogue {Math.min(coreDiscoveryCount, discoveryGoal)}/
           {discoveryGoal} · Landmarks {foundLandmarkCount}/{landmarkIds.length}
         </p>
         <div className="landmark-list">            {landmarks.map((landmark) => (

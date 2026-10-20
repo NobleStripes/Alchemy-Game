@@ -100,7 +100,7 @@ describe('Phase 10A regional module registry', () => {
     expectRejected(resolveRegionalCatalog(core, [starter], ['test-region'], '0.0.0'), /cannot add starting essences/)
 
     const wrongAge = modulePack()
-    wrongAge.manifest.targetEraIds = ['imaginary-era']
+    wrongAge.manifest.targetEraIds = ['classical-antiquity', 'imaginary-era']
     expectRejected(resolveRegionalCatalog(core, [wrongAge], ['test-region'], '0.0.0'), /missing core era/)
   })
 

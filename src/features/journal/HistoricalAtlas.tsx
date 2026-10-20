@@ -1,10 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react'
-import { elements, elementsById, eras } from '../../game/content'
-import {
-  historicalResearch,
-  researchByElementId,
-  type HistoricalResearchRecord,
-} from '../../game/content/research'
+import type { HistoricalResearchRecord } from '../../game/content/research'
+import type { RuntimeCatalog } from '../../game/modules/runtimeCatalog'
 import { useGameStore } from '../../game/state/useGameStore'
 import { SourceReference } from './SourceReference'
 
@@ -27,7 +23,7 @@ const placementLabels = {
   'historical-model': 'Historical model: documented natural philosophy',
 }
 
-function entrySources(record: HistoricalResearchRecord, discoveredIds: readonly string[]) {
+function entrySources(record: HistoricalResearchRecord, discoveredIds: readonly string[], catalog: RuntimeCatalog) {
   const citedIds = new Set([
     ...record.historicalOverview.sourceIds,
     ...record.manufactureOrUse.sourceIds,
@@ -40,10 +36,10 @@ function entrySources(record: HistoricalResearchRecord, discoveredIds: readonly 
       .filter((link) => discoveredIds.includes(link.elementId))
       .flatMap((link) => link.sourceIds),
   ])
-  return historicalResearch.sources.filter((source) => citedIds.has(source.id))
+  return catalog.sources.filter((source) => citedIds.has(source.id))
 }
 
-function historicalSearchText(record: HistoricalResearchRecord, discoveredIds: readonly string[]) {
+function historicalSearchText(record: HistoricalResearchRecord, discoveredIds: readonly string[], catalog: RuntimeCatalog) {
   return [
     record.historicalOverview.text,
     record.manufactureOrUse.text,
@@ -61,8 +57,8 @@ function historicalSearchText(record: HistoricalResearchRecord, discoveredIds: r
     ...record.gameplaySimplifications,
     ...record.relatedDiscoveries
       .filter((link) => discoveredIds.includes(link.elementId))
-      .flatMap((link) => [elementsById.get(link.elementId)!.name, link.explanation]),
-    ...entrySources(record, discoveredIds).flatMap((source) => [
+      .flatMap((link) => [catalog.elementsById.get(link.elementId)!.name, link.explanation]),
+    ...entrySources(record, discoveredIds, catalog).flatMap((source) => [
       source.title, source.institution, ...source.authors,
     ]),
   ].join(' ')
@@ -75,10 +71,12 @@ function ResearchEntry({
   discoveredIds: string[]
   onSelect: (elementId: string) => void
 }) {
+  const catalog = useGameStore((state) => state.catalog)
+  const { elementsById } = catalog
   const related = record.relatedDiscoveries.filter(
     (link) => discoveredIds.includes(link.elementId),
   )
-  const sources = entrySources(record, discoveredIds)
+  const sources = entrySources(record, discoveredIds, catalog)
   const isHistoricalModel = record.agePlacement.status === 'historical-model'
 
   function citations(sourceIds: string[]) {
@@ -207,6 +205,8 @@ export interface HistoricalAtlasHandle {
 }
 
 export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
+  const catalog = useGameStore((state) => state.catalog)
+  const { elements, eras, researchByElementId } = catalog
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const readHistoricalElementIds = useGameStore((state) => state.readHistoricalElementIds)
   const toggleHistoricalRead = useGameStore((state) => state.toggleHistoricalRead)
@@ -232,7 +232,7 @@ export function HistoricalAtlas({ ref }: { ref?: Ref<HistoricalAtlasHandle> }) {
       const research = researchByElementId.get(element.id)
       const text = [
         element.name,
-        research ? historicalSearchText(research, discoveredIds) : '',
+        research ? historicalSearchText(research, discoveredIds, catalog) : '',
       ].join(' ').toLowerCase()
       return searchTerms.every((term) => text.includes(term))
     })

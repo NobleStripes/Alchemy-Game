@@ -9,6 +9,10 @@ vi.mock('./useGameStore', async (importOriginal) => {
   return { ...actual, get useGameStore() { return holder.store } }
 })
 
+export function setTestGameStore(store: ReturnType<typeof createGameStore>) {
+  holder.store = store
+}
+
 beforeEach(() => {
   vi.restoreAllMocks()
   Object.defineProperty(navigator, 'locks', {

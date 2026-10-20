@@ -1,5 +1,10 @@
 # Phase 10E–10F batch: full catalog validation
 
+**Phase 11 update:** all live consumers now share a catalog per session.
+Production remains core-only/v7; durable regional sessions are internal-only.
+See the [integration audit](phase-11-integration.md). The boundary checklist
+below describes the original Phase 10E/F slice, not current missing UI wiring.
+
 This batch advances the free first-party regional-module framework without enabling unverified content or changing the current campaign.
 
 ## Phase 10E — Combined historical and gameplay validation
@@ -38,4 +43,5 @@ npm test
 npm run build
 ```
 
-These commands have not been run in this connector-only session. This change must remain in draft review pending validation and inspection.
+Executed validation and remaining production activation gates are recorded in
+the Phase 11 audit.

@@ -1,6 +1,11 @@
 # Phase 10 — Final Batch: Achaemenid Pilot and Activation Gates
 
-This branch adds the first **free, optional, first-party historical region pack** as validated content. It is **not yet selectable in the live game**. The core Play, Atlas, and Challenges views and the production version 7 save writer still use core-only content.
+This batch added the first **free, optional, first-party historical region pack**.
+It is **not selectable in the production game**. Phase 11 routes Play, Atlas,
+and Challenges through one validated catalog per session, with regional startup
+available internally for tests using durable archives. The production session
+remains core-only with version 7 saves. See the
+[integration audit and remaining toggle gates](phase-11-integration.md).
 
 ## Phase 10G — Pilot data and combined catalog
 
@@ -14,7 +19,9 @@ This branch adds the first **free, optional, first-party historical region pack*
 
 - `src/game/modules/ownership.ts` derives the declared ownership of each bundled pack from its actual definitions. Archive claims do not become installed content merely because they appear in a save.
 - `ownership.test.ts` checks dormant progress, explicit read markers, favorites, awarded collections, challenge results, and successful reactivation in the isolated archive projection.
-- The Phase 10B/10C archive remains a separate opt-in persistence foundation. The live store does **not** yet save modular campaigns. Do not enable module toggles until all write paths use one module-aware archive.
+- The Phase 10B/10C archive now backs internal regional sessions exclusively.
+  Production still writes v7. Do not expose module toggles before the production
+  migration, compatibility, and activation UX gates pass.
 
 ## Phase 10I — Research and educational bounds
 
@@ -22,7 +29,11 @@ The Royal Road history uses the inspected `Encyclopaedia Iranica` entry by Muham
 
 The module is about specific administrative, transport, and archival institutions. It does not claim that the Persians invented provincial rule, roads, or writing, or that the Fortification tablets document all Achaemenid territory.
 
-## Still required before enabling the pack
+## Original activation checklist
+
+Phase 11 completes shared runtime lookups and internal archive roundtrips.
+The following describes the original checklist; the integration audit
+distinguishes those completed internal checks from outstanding production work.
 
 - Route the Zustand store, all Play and Atlas components, Challenges, research/context displays, hints, and reward logic through **one selected active catalog**, not mixed static and dynamic imports.
 - Make the core game's save writer fully archive-aware and preserve dormant data on every write; handle cross-tab conflict, failed writes, migration, downgrade, import/export and deliberate reset.
@@ -33,7 +44,8 @@ The module is about specific administrative, transport, and archival institution
 
 ## Quality gates
 
-The branch has a static recipe-ID/source-reference audit but **has not run npm typecheck, lint, Vitest or production build**. Use:
+Run these gates when changing content or integration; executed Phase 11 results
+are recorded in its audit:
 
 ```bash
 npm run typecheck

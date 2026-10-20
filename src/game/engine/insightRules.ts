@@ -52,7 +52,7 @@ export function awardInsight(state: InsightState): InsightState {
 export function isEraChallengeComplete(
   era: EraDefinition,
   discoveredIds: string[],
-  elements: ElementDefinition[],
+  elements: readonly ElementDefinition[],
 ) {
   const eraDiscoveryCount = elements.filter(
     (element) =>

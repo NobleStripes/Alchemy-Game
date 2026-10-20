@@ -39,3 +39,27 @@ Earlier saves migrate to v7, preserving old hint credits as Insights within the 
 Reset returns the campaign to Origins with four starting elements and three Insights. It clears discoveries beyond the starters, formulas, leads, failure progress, favorites, experiment history, reward markers, historical reading markers, and challenge completion/best-score records, while preserving the sound preference. Hide Mastered returns to off and all era drawers expand.
 
 See [Gameplay and Atlas](gameplay.md) for challenge rewards and manual reading controls, and [historical interpretation](historical-interpretation.md#element-review) for reclassified legacy discoveries.
+
+## Internal regional sessions (not a production save migration)
+
+Phase 11 validates a complete active catalog before constructing a session.
+Ordinary startup remains core-only with all v7 behavior above. Internal regional
+startup uses the durable module envelope exclusively and must run with isolated
+storage/origins; there is no settings toggle or URL shortcut.
+
+The internal writer migrates its isolated legacy save only on a successful
+locked transaction. It validates enabled ownership against bundled definitions,
+checks active formulas, histories, collections, and challenge scores, and
+rebases writes onto the full archive. Disabled/missing modules remain dormant;
+incompatible ownership cannot become active without a migration. Explicit total
+reset clears dormant progress too. Reading stays free, and challenge reward
+acknowledgment waits for durable success.
+
+Internal durable synchronization reports any external save change as a conflict
+and requires reload; it does not silently merge or adopt another tab's archive.
+Quota failures remain retryable. Experiment IDs account for dormant history,
+and the shared 50-experiment archive limit still applies. Production v7 readers
+refuse these envelopes and block overwrites rather than discard module fields.
+Backup/downgrade UX, production migration, archive-aware import/export, module
+upgrades, and player-facing selection remain
+[explicit rollout gates](phase-11-integration.md).

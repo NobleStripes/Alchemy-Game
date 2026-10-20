@@ -25,12 +25,12 @@ import { Journal } from './features/journal/Journal'
 import { HistoricalAtlas, type HistoricalAtlasHandle } from './features/journal/HistoricalAtlas'
 import { Settings as SettingsDialog } from './features/settings/Settings'
 import { Worktable } from './features/worktable/Worktable'
-import { elements, eras } from './game/content'
 import type { ChallengeDefinition } from './game/content/challenges'
 import { useGameStore } from './game/state/useGameStore'
 import './Simple.css'
 
 function App() {
+  const { elements, elementsById, eras, challenges } = useGameStore((state) => state.catalog)
   const [activeSection, setActiveSection] = useState<'play' | 'atlas' | 'challenges'>('play')
   const previousSection = useRef(activeSection)
   const [activePanel, setActivePanel] = useState<
@@ -92,7 +92,8 @@ function App() {
     useSensor(KeyboardSensor),
   )
   const era = eras.find((candidate) => candidate.id === activeEraId) ?? eras[0]
-  const progress = Math.round((discoveredIds.length / elements.length) * 100)
+  const discoveredCount = discoveredIds.filter((id) => elementsById.has(id)).length
+  const progress = Math.round((discoveredCount / elements.length) * 100)
 
   function handleDragEnd(event: DragEndEvent) {
     const elementId = String(event.active.id).replace('element/', '')
@@ -169,7 +170,9 @@ function App() {
           </button>
           <span id="play-navigation-help" className="sr-only">Gameplay: Elements, Combine, and Guide.</span>
           <span id="atlas-navigation-help" className="sr-only">Historical Encyclopedia for discovered entries. Reading is free.</span>
-          <span id="challenges-navigation-help" className="sr-only">Rainmaker and eleven isolated Learning Labs.</span>
+          <span id="challenges-navigation-help" className="sr-only">
+            {challenges.length === 12 ? 'Rainmaker and eleven isolated Learning Labs.' : `${challenges.length} isolated challenges.`}
+          </span>
         </nav>
 
         <nav className="era-switcher" aria-label="Play ages" hidden={activeSection !== 'play'}>
@@ -197,7 +200,7 @@ function App() {
         <div className="header-progress" aria-label={`${progress}% discovered`}>
           <Trophy size={17} aria-hidden="true" />
           <span className="progress-label">
-            <strong>{discoveredIds.length}</strong> / {elements.length}
+            <strong>{discoveredCount}</strong> / {elements.length}
           </span>
           <div className="progress-track" aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
         </div>

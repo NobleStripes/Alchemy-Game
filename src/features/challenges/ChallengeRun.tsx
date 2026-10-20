@@ -1,9 +1,7 @@
 import { ArrowLeft, Check, FlaskConical, Plus, RotateCcw, Save, Trash2, Trophy, X } from 'lucide-react'
 import { useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { soundEngine } from '../../game/audio/audioEngine'
-import { elementsById } from '../../game/content'
-import { rainmakerChallenge, type ChallengeDefinition } from '../../game/content/challenges'
-import { historicalResearch } from '../../game/content/research'
+import type { ChallengeDefinition } from '../../game/content/challenges'
 import { createChallengeReducer, createChallengeState, type ChallengeAction, type ChallengeSlot } from '../../game/engine/challengeRules'
 import { useGameStore } from '../../game/state/useGameStore'
 import { RecipeHistory } from '../journal/RecipeHistory'
@@ -14,8 +12,11 @@ export interface ChallengeRunProps {
   challenge?: ChallengeDefinition
 }
 
-export function ChallengeRun({ onExit, challenge = rainmakerChallenge }: ChallengeRunProps) {
-  const reducer = useMemo(() => createChallengeReducer(challenge), [challenge])
+export function ChallengeRun({ onExit, challenge: selectedChallenge }: ChallengeRunProps) {
+  const catalog = useGameStore((state) => state.catalog)
+  const { elementsById } = catalog
+  const challenge = selectedChallenge ?? catalog.challengesById.get('rainmaker')!
+  const reducer = useMemo(() => createChallengeReducer(challenge, catalog), [challenge, catalog])
   const [run, dispatch] = useReducer(reducer, challenge, createChallengeState)
   const [savedMessage, setSavedMessage] = useState<string | null>(null)
   const [saveError, setSaveError] = useState<string | null>(null)
@@ -30,7 +31,7 @@ export function ChallengeRun({ onExit, challenge = rainmakerChallenge }: Challen
   const best = useGameStore((state) => state.challengeRecords.find((record) => record.challengeId === challenge.id)?.bestAttemptCount)
   const soundEnabled = useGameStore((state) => state.soundEnabled)
   const target = elementsById.get(challenge.targetId)!
-  const sources = historicalResearch.sources.filter((source) => challenge.education?.sourceIds.includes(source.id))
+  const sources = catalog.sources.filter((source) => challenge.education?.sourceIds.includes(source.id))
 
   function act(action: ChallengeAction) {
     const next = reducer(run, action)

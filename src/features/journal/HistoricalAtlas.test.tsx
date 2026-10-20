@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event'
 import { createRef } from 'react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { elements, recipes, starterElementIds } from '../../game/content'
-import { historicalResearch, researchByElementId } from '../../game/content/research'
+import { historicalResearch } from '../../game/content/research'
 import { historicalEntrySchema } from '../../game/content/schema'
 import { SAVE_KEY } from '../../game/state/persistence'
 import { createGameStore, snapshotProgress, useGameStore } from '../../game/state/useGameStore'
@@ -211,6 +211,7 @@ describe('Historical Encyclopedia', () => {
 
   it('searches visible related context and citations only after discovering that related entry', async () => {
     discover('metal')
+    const { researchByElementId } = useGameStore.getState().catalog
     const originalGet = researchByElementId.get.bind(researchByElementId)
     const record = originalGet('metal')!
     const source = historicalResearch.sources.find((entry) => entry.id === 'met-barley-account')!
@@ -241,6 +242,7 @@ describe('Historical Encyclopedia', () => {
 
   it('shows absent optional chronology and geography without a fabricated date or empty region label', async () => {
     discover('metal')
+    const { researchByElementId } = useGameStore.getState().catalog
     const originalGet = researchByElementId.get.bind(researchByElementId)
     const entry = historicalEntrySchema.parse({
       ...originalGet('metal'), approximateDates: undefined, associatedRegions: undefined,

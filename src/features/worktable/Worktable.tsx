@@ -1,8 +1,5 @@
 import { useDroppable } from '@dnd-kit/core'
 import { CopyPlus, FlaskConical, Sparkles, Trash2, X } from 'lucide-react'
-import { runtimeCatalog } from '../../game/modules/runtimeCatalog.ts'
-
-const { elementsById } = runtimeCatalog
 import { useGameStore } from '../../game/state/useGameStore'
 
 interface TableSlotProps {
@@ -12,6 +9,7 @@ interface TableSlotProps {
 }
 
 function TableSlot({ name, elementId, canRepeat }: TableSlotProps) {
+  const { elementsById } = useGameStore((state) => state.catalog)
   const element = elementId ? elementsById.get(elementId) : null
   const clearSlot = useGameStore((state) => state.clearSlot)
   const placeElement = useGameStore((state) => state.placeElement)
@@ -72,6 +70,7 @@ function TableSlot({ name, elementId, canRepeat }: TableSlotProps) {
 }
 
 export function Worktable() {
+  const { elementsById } = useGameStore((state) => state.catalog)
   const firstSlotId = useGameStore((state) => state.firstSlotId)
   const secondSlotId = useGameStore((state) => state.secondSlotId)
   const lastAttempt = useGameStore((state) => state.lastAttempt)

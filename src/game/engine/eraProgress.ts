@@ -8,8 +8,8 @@ export interface EraProgress {
 export function reconcileEraProgress(
   discoveredIds: string[],
   unlockedEraIds: string[],
-  elements: ElementDefinition[],
-  eras: EraDefinition[],
+  elements: readonly ElementDefinition[],
+  eras: readonly EraDefinition[],
 ): EraProgress {
   const discovered = new Set(discoveredIds)
   const unlocked = new Set([eras[0]?.id, ...unlockedEraIds].filter(Boolean))
