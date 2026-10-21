@@ -115,16 +115,34 @@ it('plays all three pilot formulas, reads their full histories, saves the lab ex
   for (const element of pack.elements) {
     expect(screen.queryByRole('button', { name: `Open historical entry for ${element.name}` })).not.toBeInTheDocument()
   }
+  await user.click(screen.getByRole('button', { name: 'Play' }))
+  act(() => { store.getState().prepareCombination('ember', 'tide') })
+  await user.click(within(screen.getByRole('main', { name: 'What will you make?' }))
+    .getByRole('button', { name: 'Combine' }))
+  await act(async () => { await store.flushProgress() })
+  expect(store.getState().discoveredIds).toContain('steam')
+  const afterCorePlay = parseModuleSaveEnvelope(localStorage.getItem(SAVE_KEY)!)!.progress
+  expect(new Set(afterCorePlay.discoveredIds)).toEqual(new Set([...complete.discoveredIds, 'steam']))
+  expect(new Set(afterCorePlay.discoveredRecipeIds)).toEqual(new Set([
+    ...complete.discoveredRecipeIds, core.recipeIndex.get('ember::tide')!.id,
+  ]))
+  expect(afterCorePlay.favoriteIds).toEqual(complete.favoriteIds)
+  expect(afterCorePlay.readHistoricalElementIds).toEqual(complete.readHistoricalElementIds)
+  expect(afterCorePlay.rewardedCollectionIds).toEqual(complete.rewardedCollectionIds)
+  expect(afterCorePlay.challengeRecords).toEqual(complete.challengeRecords)
+  expect(afterCorePlay.experimentHistory.slice(0, complete.experimentHistory.length)).toEqual(complete.experimentHistory)
+  expect(new Set(afterCorePlay.experimentHistory.map((entry) => entry.id)).size)
+    .toBe(afterCorePlay.experimentHistory.length)
   view.unmount()
 
   await store.confirmSaveReplacement(await store.previewModules(['achaemenid']))
-  expect(parseModuleSaveEnvelope(localStorage.getItem(SAVE_KEY)!)!.progress).toEqual(complete)
+  expect(parseModuleSaveEnvelope(localStorage.getItem(SAVE_KEY)!)!.progress).toEqual(afterCorePlay)
   store = createGameStore()
   setTestGameStore(store)
   view = render(<App />)
   expect(store.getState().favoriteIds).toEqual(pack.elements.map((element) => element.id))
   expect(store.getState().readHistoricalElementIds).toEqual(pack.elements.map((element) => element.id))
-  expect(snapshotProgress(store.getState())).toEqual(snapshotProgress(complete))
+  expect(snapshotProgress(store.getState())).toEqual(snapshotProgress(afterCorePlay))
   expect(screen.getByRole('list', { name: 'Collection goals' })).toHaveTextContent('+1 Insight reward earned')
   await user.click(screen.getByRole('button', { name: 'Challenges' }))
   const card = screen.getByRole('article', { name: 'Imperial Communications' })

@@ -137,10 +137,33 @@
         "publicationDate": "1992-12-15",
         "verification": {
           "status": "verified",
-          "checkedOn": "2026-10-20",
+          "checkedOn": "2026-10-21",
           "accessedUrl": "https://www.iranicaonline.org/articles/commerce-ii/",
           "accessLevel": "selected-passages",
-          "locator": "Article opening, 'Trade and communication': Royal Road Sardis to Susa, multiple roads and caravan routes, resting stations; source directly inspected 2026-10-20. Does not establish a universal origin for road technology."
+          "locator": "Browser-rendered article: byline Muhammad A. Dandamayev; published 15 December 1992, updated 5 April 2013, Vol. VI, Fasc. 1, pp. 59-61. Read the opening road-network paragraph citing Herodotus 5.52-54 and Hallock p. 6, plus bibliography and publication metadata. This is an encyclopedia synthesis, not direct inspection of Herodotus, Hallock's tablets or excavated road sections. Does not establish a universal origin for road technology."
+        }
+      },
+      {
+        "id": "achaemenid-iranica-fortification",
+        "title": "Persepolis Administrative Archives i. Persepolis Fortification Archive",
+        "authors": [
+          "Matthew W. Stolper",
+          "Wouter F. M. Henkelman",
+          "Elspeth R. M. Dusinberre",
+          "Charles E. Jones",
+          "Mark B. Garrison",
+          "Annalisa Azzoni"
+        ],
+        "institution": "Encyclopaedia Iranica",
+        "sourceType": "reference-encyclopedia",
+        "url": "https://www.iranicaonline.org/articles/persepolis-admin-archive/persepolis-administrative-archives-i-persepolis-fortification-archive/",
+        "publicationDate": "2017-06-09",
+        "verification": {
+          "status": "verified",
+          "checkedOn": "2026-10-21",
+          "accessedUrl": "https://www.iranicaonline.org/articles/persepolis-admin-archive/persepolis-administrative-archives-i-persepolis-fortification-archive/",
+          "accessLevel": "selected-passages",
+          "locator": "Browser-rendered bylines and publication metadata (published 9 June 2017, updated 20 June 2017); Discovery, Locations, Components, Numbers; Elamite Fortification Documents (509-493 BCE dated texts, earlier references and later consultation, geographic scope); Aramaic and Uninscribed Fortification Documents. Specialist synthesis inspected, not original tablets, all editions or every bibliographic item. Counts and holdings reflect the survey's date, not a current inventory."
         }
       }
     ],
@@ -219,7 +242,8 @@
         },
         "independentDevelopments": [],
         "historicalUncertainty": [
-          "The authority and practical autonomy of individual satraps differed; generic summaries must not be treated as comprehensive regional evidence."
+          "The authority and practical autonomy of individual satraps differed; generic summaries must not be treated as comprehensive regional evidence.",
+          "Regional ration accounts are not a complete constitutional description of satrapies. A missing record does not establish that an institution was absent."
         ],
         "gameplaySimplifications": [
           "Provincial Government + Empire is a symbolic association, not a causal or chronological recipe."
@@ -237,7 +261,7 @@
         "elementId": "achaemenid-royal-road",
         "elementName": "Achaemenid Royal Road",
         "historicalOverview": {
-          "text": "The Royal Road is conventionally associated with the Achaemenid communication route between Sardis and Susa, described by Herodotus. It belonged to a wider imperial road and relay network, not a single newly invented technology.",
+          "text": "The Royal Road is conventionally associated with the Achaemenid communication route between Sardis and Susa, described in Herodotus' fifth-century BCE literary account (Histories 5.52-54), as cited by the encyclopedia survey. It belonged to a wider imperial road and relay network, not a single newly invented technology.",
           "sourceIds": [
             "achaemenid-iranica-commerce"
           ]
@@ -285,7 +309,7 @@
             "sourceIds": [
               "achaemenid-iranica-commerce"
             ],
-            "note": "The empire-wide frame does not date the initial construction of every road section."
+            "note": "This is the empire's contextual span, not a construction date. Herodotus' fifth-century BCE account is literary testimony, not an excavated date for each road section."
           }
         ],
         "associatedRegions": [
@@ -296,7 +320,7 @@
         ],
         "archaeologicalEvidence": [
           {
-            "text": "The Sardis–Susa route and its stations are discussed in Herodotus, a literary description requiring critical comparison with archaeological and documentary evidence.",
+            "text": "The encyclopedia cites Herodotus, Histories 5.52-54, for the Sardis–Susa route and stations. This is literary testimony transmitted through a modern synthesis, not an excavation report or a direct reading of the Greek text.",
             "evidenceType": "textual-evidence",
             "interpretation": "attested",
             "sourceIds": [
@@ -321,7 +345,8 @@
         "independentDevelopments": [],
         "historicalUncertainty": [
           "Ancient distance figures, route reconstructions and the precise dating of individual road sections are not equivalent to directly excavated evidence for one uniform highway.",
-          "Royal use of older routes does not establish Achaemenid invention of long-distance roads."
+          "Royal use of older routes does not establish Achaemenid invention of long-distance roads.",
+          "The regional route photograph is contextual, not proof that the pictured surface is an excavated, securely dated segment of the Sardis–Susa road. Lack of an identified road section is not proof that travel or an institution did not exist."
         ],
         "gameplaySimplifications": [
           "Road Network + Imperial Bureaucracy is a conceptual game combination; no pair of abstractions physically builds a road."
@@ -340,15 +365,17 @@
         "elementId": "achaemenid-fortification-tablets",
         "elementName": "Persepolis Fortification Tablets",
         "historicalOverview": {
-          "text": "The Persepolis Fortification tablets are an Achaemenid administrative archive excavated in the 1930s. Many Elamite records concern commodities, rations and travel authorization in southwestern Iran.",
+          "text": "The Persepolis Fortification archive was excavated in 1933 at Persepolis. It includes Elamite and Aramaic documents and uninscribed sealed tablets. Many records concern commodities, rations and authorized travel within a southwestern Iranian administrative region, not the whole empire.",
           "sourceIds": [
-            "isac-fortification"
+            "isac-fortification",
+            "achaemenid-iranica-fortification"
           ]
         },
         "manufactureOrUse": {
-          "text": "Administrative personnel inscribed and sealed clay documents that recorded allocations of food, labor and travel provisions. The texts reflect specific institutions, locales and surviving records rather than a complete portrait of ordinary life across the empire.",
+          "text": "Administrative personnel recorded and sealed transactions involving food, workers and travel provisions. Elamite texts, Aramaic records and seal-only documents preserve different aspects of this administration; perishable records have not survived in the same way. Travellers' distant destinations do not make this an empire-wide census or an account of every journey.",
           "sourceIds": [
-            "isac-fortification"
+            "isac-fortification",
+            "achaemenid-iranica-fortification"
           ]
         },
         "agePlacement": {
@@ -378,16 +405,16 @@
         ],
         "approximateDates": [
           {
-            "dateRange": "c. 509–494 BCE",
-            "dateType": "regional-development",
+            "dateRange": "c. 509–493 BCE",
+            "dateType": "dated-evidence",
             "precision": "approximate",
             "regions": [
               "Persepolis region, southwestern Iran"
             ],
             "sourceIds": [
-              "isac-fortification"
+              "achaemenid-iranica-fortification"
             ],
-            "note": "Dating refers to records attributed to Darius I's regnal years, not invention of clay documents."
+            "note": "The specialist survey places known dated Elamite texts between Darius I's regnal years 13 and 28 (April 509 to March/April 493 BCE). Some texts refer to earlier activity and later consultation; these are not dates for the invention of clay writing or the entire lifetime of the institution."
           }
         ],
         "associatedRegions": [
@@ -397,11 +424,11 @@
         ],
         "archaeologicalEvidence": [
           {
-            "text": "Fortification tablets were recovered at Persepolis in the 1930s; surviving Elamite administrative entries and sealings provide documentary and excavated evidence.",
+            "text": "The 1933 find came from spaces in the northeastern fortification at Persepolis. The excavated context and the surviving texts and sealings are described in the specialist survey; no direct examination of tablets or excavation records is claimed here.",
             "evidenceType": "excavated-context",
             "interpretation": "attested",
             "sourceIds": [
-              "isac-fortification"
+              "achaemenid-iranica-fortification"
             ]
           },
           {
@@ -422,7 +449,8 @@
         "independentDevelopments": [],
         "historicalUncertainty": [
           "Administrative records do not demonstrate that every official complied with an empire-wide prescription.",
-          "The surviving corpus is partial and geographically uneven; the archives cannot stand for the entire empire."
+          "The surviving corpus is partial and geographically uneven; the archives cannot stand for the entire empire.",
+          "Missing or unpublished records and lost perishable documents do not prove the nonexistence of an activity, technology or institution. Publication counts in the 1990 excerpt and 2017 survey are historical snapshots, not current totals."
         ],
         "gameplaySimplifications": [
           "Clay Tablet + Imperial Bureaucracy symbolizes the survival of an administrative corpus, not the invention of tablets or a literal way to manufacture an excavation."

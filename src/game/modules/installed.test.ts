@@ -5,8 +5,72 @@ import { pairKey, resolveCombination } from '../engine/resolveCombination.ts'
 import { createRecipeIndex } from '../engine/resolveCombination.ts'
 import { validateContent } from '../engine/validateContent.ts'
 import { createChallengeReducer, createChallengeState } from '../engine/challengeRules.ts'
+import { resolveFullRuntimeCatalog } from './fullRegistry.ts'
 
 describe('Achaemenid first-party regional pilot', () => {
+  it('retains reviewed publication metadata and bounded source-inspection receipts', () => {
+    const resolved = resolveInstalledRegions(['achaemenid'])
+    expect(resolved.ok).toBe(true)
+    if (!resolved.ok) return
+    const source = (id: string) => resolved.catalog.sources.find((entry) => entry.id === id)!
+    expect(source('whe-persian-governor')).toMatchObject({
+      authors: ['Joshua J. Mark'], publicationDate: '2019-11-15',
+      verification: { checkedOn: '2026-10-21', accessLevel: 'selected-passages' },
+    })
+    expect(source('isac-fortification').publicationDate).toBeNull()
+    expect(source('isac-fortification').verification).toMatchObject({
+      locator: expect.stringContaining('not the full chapter'),
+    })
+    expect(source('achaemenid-iranica-commerce')).toMatchObject({
+      authors: ['Muhammad A. Dandamayev'], publicationDate: '1992-12-15',
+      verification: { locator: expect.stringContaining('not direct inspection of Herodotus') },
+    })
+    expect(source('achaemenid-iranica-fortification')).toMatchObject({
+      publicationDate: '2017-06-09',
+      authors: expect.arrayContaining(['Matthew W. Stolper', 'Wouter F. M. Henkelman']),
+      verification: { locator: expect.stringContaining('not original tablets') },
+    })
+  })
+
+  it.each(installedRegionalModules[0].research.records)('preserves chronology, citations and symbolic limits for $elementName', (record) => {
+    const resolved = resolveInstalledRegions(['achaemenid'])
+    expect(resolved.ok).toBe(true)
+    if (!resolved.ok) return
+    for (const chronology of record.approximateDates) {
+      expect(chronology.regions.length).toBeGreaterThan(0)
+      expect(chronology.sourceIds.length).toBeGreaterThan(0)
+      for (const id of chronology.sourceIds) {
+        expect(resolved.catalog.sources.find((source) => source.id === id)?.verification.status).toBe('verified')
+      }
+    }
+    for (const related of record.relatedDiscoveries) {
+      expect(resolved.catalog.elementsById.has(related.elementId)).toBe(true)
+      if (related.relationship === 'documented') expect(related.sourceIds.length).toBeGreaterThan(0)
+    }
+    expect(record.agePlacement.status).toBe('regional-gameplay-placement')
+    expect(record.gameplaySimplifications.join(' ')).toMatch(/symbolic|conceptual|symbolizes/)
+    expect(record.historicalUncertainty.join(' ')).toMatch(/absent|not proof|nonexistence/)
+    const recipe = installedRegionalModules[0].recipes.find((entry) => entry.result === record.elementId)!
+    expect(resolved.catalog.reviewsByRecipeId.get(recipe.id)?.classification).toBe('symbolic')
+  })
+
+  it('separates literary road testimony, excavated context and the limited dated tablet corpus', () => {
+    const records = installedRegionalModules[0].research.records
+    const road = records.find((entry) => entry.elementId === 'achaemenid-royal-road')!
+    expect(road.archaeologicalEvidence.every((entry) => entry.evidenceType === 'textual-evidence')).toBe(true)
+    expect(road.archaeologicalEvidence[0].text).toContain('not an excavation report')
+    expect(road.approximateDates[0].note).toContain('not a construction date')
+    const tablets = records.find((entry) => entry.elementId === 'achaemenid-fortification-tablets')!
+    expect(tablets.approximateDates).toEqual([expect.objectContaining({
+      dateRange: 'c. 509–493 BCE', dateType: 'dated-evidence',
+      sourceIds: ['achaemenid-iranica-fortification'],
+    })])
+    expect(tablets.historicalOverview.text).toContain('1933')
+    expect(tablets.historicalOverview.text).toContain('not the whole empire')
+    expect(tablets.manufactureOrUse.text).toContain('perishable records')
+    expect(tablets.archaeologicalEvidence.some((entry) => entry.evidenceType === 'excavated-context')).toBe(true)
+  })
+
   it.each([
     ['achaemenid-satrapy', 'provincial-government', 'empire'],
     ['achaemenid-royal-road', 'road-network', 'imperial-bureaucracy'],
@@ -111,5 +175,18 @@ describe('Achaemenid first-party regional pilot', () => {
     const result = resolveInstalledRegions(['not-installed'])
     expect(result.ok).toBe(false)
     if (!result.ok) expect(result.errors.join(' ')).toMatch(/not installed/)
+  })
+
+  it('rejects an unsatisfied pilot dependency before publishing any active content', () => {
+    const pack = structuredClone(installedRegionalModules[0])
+    pack.manifest.dependencies = ['missing-region']
+    const result = resolveFullRuntimeCatalog([pack], ['achaemenid'], '0.0.0')
+    expect(result.ok).toBe(false)
+    if (!result.ok) {
+      expect(result.errors.join(' ')).toMatch(/missing module missing-region/)
+      expect(result).not.toHaveProperty('catalog')
+    }
+    expect(runtimeCatalog.elements).toHaveLength(225)
+    expect(runtimeCatalog.recipes).toHaveLength(291)
   })
 })

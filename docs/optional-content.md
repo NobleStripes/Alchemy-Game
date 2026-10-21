@@ -71,6 +71,17 @@ recorded independently of reading. Each discovered item has a full Atlas entry
 with historical explanation, regional/dating cautions and source references.
 Explicit read/unread markers are free and are not collection requirements.
 
+The research review distinguishes the Achaemenid satrapal case from generic
+provincial administration. The Royal Road account is literary testimony
+(Herodotus 5.52-54, accessed through a modern encyclopedia), not excavated dating
+for one uniform highway. Known dated Elamite Fortification texts span roughly
+509-493 BCE; this dates a surviving corpus, not the beginning or end of clay
+writing or the administrative institution. The archive is geographically and
+documentarily partial, includes Aramaic and seal-only material, and cannot
+represent every territory or journey. Missing records do not prove an activity
+or institution did not exist. See the
+[research review and editorial follow-ups](phase-11-integration.md#11g-historical-integrity-and-research-qa).
+
 Photo thumbnails replace the pilot's text sigils throughout gameplay and labs.
 The Atlas shows each full photograph with its source, creator/institution,
 license and modification notice. **Settings > Image credits and licenses**

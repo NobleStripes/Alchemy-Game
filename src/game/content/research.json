@@ -89,7 +89,7 @@
     {
       "id": "isac-fortification", "title": "Persepolis Fortification Tablets", "authors": ["D. M. Lewis"], "institution": "University of Chicago, Institute for the Study of Ancient Cultures", "sourceType": "archaeology-institution",
       "url": "https://isac.uchicago.edu/publications/persepolis-fortification-tablets", "publicationDate": null,
-      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://isac.uchicago.edu/publications/persepolis-fortification-tablets", "accessLevel": "selected-passages", "locator": "Online publication summary quoting Lewis (1990), pp. 2-6: food accounting around Persepolis in the fifteen years down to 493 BCE, sealed travel authorizations, ration receipts, and explicit limits to generalizing across the empire. Summary read, not Hallock's entire corpus or original tablets." }
+      "verification": { "status": "verified", "checkedOn": "2026-10-21", "accessedUrl": "https://isac.uchicago.edu/publications/persepolis-fortification-tablets", "accessLevel": "selected-passages", "locator": "ISAC's undated web excerpt from D. M. Lewis, 'The Persepolis Fortification Texts,' in Achaemenid History IV: Centre and Periphery, edited by Heleen Sancisi-Weerdenburg and Amelie Kuhrt (Leiden: Nederlands Instituut voor het Nabije Oosten, 1990), pp. 2-6. Read the hosted excerpt on regional food accounts, sealed travel authorizations and limits of empire-wide generalization, not the full chapter, Hallock's corpus or original tablets. The excerpt's publication counts describe its historical survey, not current project totals; 1990 is the chapter year, not a known web publication date." }
     },
     {
       "id": "csu-asoka-edicts", "title": "The Edicts of King Asoka", "authors": ["S. Dhammika"], "institution": "Colorado State University personal faculty web space (hosted translation)", "sourceType": "reference-textbook",
@@ -102,9 +102,9 @@
       "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://whc.unesco.org/en/list/666/", "accessLevel": "selected-passages", "locator": "Brief synthesis and authenticity: surviving sandstone Ashoka pillar, Brahmi inscription and 249 BCE erection attribution; archaeological conservation context. The page's Buddha birth date is not used to settle disputed chronology. No original inscription decipherment performed." }
     },
     {
-      "id": "whe-persian-governor", "title": "Ancient Persian Governors", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
-      "url": "https://www.worldhistory.org/Persian_Governor/", "publicationDate": null,
-      "verification": { "status": "verified", "checkedOn": "2026-10-14", "accessedUrl": "https://www.worldhistory.org/Persian_Governor/", "accessLevel": "selected-passages", "locator": "Opening definition of satrap/satrapy and Achaemenid regional rule, taxes and military obligations. Do not adopt blanket efficiency/tolerance claims, fixed counts of provinces, speculative Median origins or claims that Rome and modern states simply copied Persia. Byline/publication date not captured in accessed passages." }
+      "id": "whe-persian-governor", "title": "Ancient Persian Governors", "authors": ["Joshua J. Mark"], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
+      "url": "https://www.worldhistory.org/Persian_Governor/", "publicationDate": "2019-11-15",
+      "verification": { "status": "verified", "checkedOn": "2026-10-21", "accessedUrl": "https://www.worldhistory.org/Persian_Governor/", "accessLevel": "selected-passages", "locator": "Opening definition of satrap/satrapy and Achaemenid regional rule, taxes and military obligations; Cite This Work and License & Copyright confirm Joshua J. Mark and 15 November 2019. Secondary overview read, not original Persian records or the cited books. Do not adopt blanket efficiency/tolerance claims, fixed counts of provinces, speculative Median origins or claims that Rome and modern states simply copied Persia." }
     },
     {
       "id": "whe-qin", "title": "Qin Dynasty", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",

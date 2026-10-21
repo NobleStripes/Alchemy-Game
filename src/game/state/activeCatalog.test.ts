@@ -5,6 +5,7 @@ import { coreRuntimeCatalog as core } from '../modules/runtimeCatalog'
 import { installedRegionalModules } from '../modules/installed'
 import { installedModuleOwnership } from '../modules/ownership'
 import { createChallengeReducer, createChallengeState } from '../engine/challengeRules'
+import { isEraChallengeComplete } from '../engine/insightRules'
 import { exportProgress, freshProgress, MAX_SAVE_BYTES, parseProgress, SAVE_KEY, type SavedProgress } from './persistence'
 import { createModuleSaveEnvelope, parseModuleSaveEnvelope } from './moduleProgress'
 import { DURABLE_CONFLICT, DURABLE_LOCK } from './durableModulePersistence'
@@ -31,6 +32,44 @@ function seedCore(): SavedProgress {
 }
 
 describe('unified active catalog sessions', () => {
+  it.each(['legacy', 'archive'] as const)('completes every age from a fresh %s campaign using only original core formulas', async (format) => {
+    if (format === 'archive') {
+      localStorage.setItem(SAVE_KEY, JSON.stringify(createModuleSaveEnvelope(freshProgress(), [])))
+    }
+    let store = createGameStore()
+    expect(store.getState().activeModuleIds).toEqual([])
+    expect(store.getState().catalog.elements).toHaveLength(225)
+    expect(store.getState().catalog.recipes).toHaveLength(291)
+    expect(store.getState().catalog.eras).toHaveLength(5)
+    expect(store.getState().discoveredIds).toEqual(core.starterElementIds)
+    const performed = new Set<string>()
+    let advanced = true
+    while (advanced) {
+      advanced = false
+      for (const recipe of core.recipes) {
+        const state = store.getState()
+        if (performed.has(recipe.id) ||
+          !recipe.inputs.every((id) => state.discoveredIds.includes(id)) ||
+          !state.unlockedEraIds.includes(core.elementsById.get(recipe.result)!.era)) continue
+        state.transmuteWith(...recipe.inputs)
+        expect(store.getState().lastAttempt?.kind).toMatch(/discovery|known/)
+        performed.add(recipe.id)
+        advanced = true
+      }
+    }
+    await store.flushProgress()
+    expect(store.getState().persistenceError).toBeNull()
+    store = createGameStore()
+    expect(store.getState().saveFormat).toBe(format)
+    expect(new Set(store.getState().discoveredIds)).toEqual(new Set(core.elements.map((element) => element.id)))
+    expect(new Set(store.getState().discoveredRecipeIds)).toEqual(new Set(core.recipes.map((recipe) => recipe.id)))
+    expect(store.getState().unlockedEraIds).toEqual(core.eras.map((era) => era.id))
+    expect(new Set(store.getState().rewardedChallengeEraIds)).toEqual(new Set(core.eras.map((era) => era.id)))
+    for (const era of core.eras) {
+      expect(isEraChallengeComplete(era, store.getState().discoveredIds, core.elements)).toBe(true)
+    }
+  })
+
   it.each([1, 2, 3, 4, 5, 6, 7])('migrates internal legacy v%i only on a successful write', async (version) => {
     const original = JSON.stringify({ ...freshProgress(), version, hintCredits: 2 })
     localStorage.setItem(SAVE_KEY, original)
