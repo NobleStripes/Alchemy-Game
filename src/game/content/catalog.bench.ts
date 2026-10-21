@@ -4,6 +4,11 @@ import { getTemporarilyExhaustedElements } from '../engine/elementStatus'
 import { selectHintRecipe } from '../engine/hintRules'
 import { createRecipeIndex, resolveCombination } from '../engine/resolveCombination'
 import { validateContent } from '../engine/validateContent'
+import { installedRegionalModules, resolveInstalledRegions } from '../modules/installed'
+import { installedModuleOwnership } from '../modules/ownership'
+import { createModuleSaveEnvelope, projectModuleProgress } from '../state/moduleProgress'
+import { previewModuleChange } from '../state/saveManagement'
+import { freshProgress } from '../state/persistence'
 
 const options = { time: 200, warmupTime: 100, iterations: 50 }
 
@@ -33,3 +38,29 @@ for (const [name, elementCount, recipeCount] of [
     }, options)
   })
 }
+
+const pilot = installedRegionalModules[0]
+const complete = createModuleSaveEnvelope({
+  ...freshProgress(),
+  discoveredIds: [...elements, ...pilot.elements].map((element) => element.id),
+  discoveredRecipeIds: [...recipes, ...pilot.recipes].map((recipe) => recipe.id),
+  unlockedEraIds: eras.map((era) => era.id),
+  activeEraId: 'classical-antiquity',
+  rewardedChallengeEraIds: eras.map((era) => era.id),
+  rewardedCollectionIds: [...collections, ...pilot.collections].map((collection) => collection.id),
+}, installedModuleOwnership, ['achaemenid'])
+const dormant = { ...complete, enabledModuleIds: [] }
+const activeRaw = JSON.stringify(complete)
+const dormantRaw = JSON.stringify(dormant)
+const dormantProgress = projectModuleProgress(dormant, []).progress
+
+describe('regional activation / complete archive', () => {
+  bench('resolve core-only catalog', () => { resolveInstalledRegions([]) }, options)
+  bench('resolve enabled pilot catalog', () => { resolveInstalledRegions(['achaemenid']) }, options)
+  bench('validate disable preview', () => {
+    previewModuleChange(activeRaw, complete.progress, ['achaemenid'], [])
+  }, options)
+  bench('validate reactivation preview', () => {
+    previewModuleChange(dormantRaw, dormantProgress, [], ['achaemenid'])
+  }, options)
+})

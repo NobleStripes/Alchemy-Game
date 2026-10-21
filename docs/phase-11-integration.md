@@ -256,7 +256,160 @@ ordering: active records precede dormant records during rebasing. Complete
 progress is compared again after reactivation. No preservation requirement was
 weakened to work around this ordering.
 
-## Closed release gates and remaining boundaries
+## 11I: documentation and release verification
+
+Verification date: **2026-10-21**. This section records a verified working-tree
+candidate, not a new release tag. The production implementation already exists
+on local and remote `main` at
+`ce61c51754af1baa63068600de77c5d146dfaf88`. Before this pass, all 101 dirty
+tracked files differed from that commit only in line endings
+(`git diff --ignore-space-at-eol --stat` was empty). This pass changes
+documentation and the existing benchmark, not production gameplay code.
+
+### Release checklist and publication gates
+
+- [x] README distinguishes 225/291 core from 228/294 with the optional pilot,
+  and 147 versus 150 histories.
+- [x] Phase 10 roadmap marks implemented features and outstanding proposals.
+- [x] Save guide describes archives, migrations, backup and restoration.
+- [x] Regional Modules controls, reload boundary and compatibility are documented.
+- [x] Interpretation, research and educational QA documents include regional limits.
+- [x] All three regional discoveries and their four consulted sources are listed.
+- [x] `npm run typecheck` passed.
+- [x] `npm run lint` passed.
+- [x] `npm test -- --maxWorkers=2` passed: **1,538 tests in 39 files**.
+- [x] `npm run build` passed, with unchanged core graph and no chunk warning.
+- [x] Failure paths, bundle sizes, heap observations and switching costs reviewed.
+- [x] Production-preview manual checks used representative v1, v4, v6 and v7 saves.
+- [ ] Commit/merge this release-documentation and benchmark update only after the
+  activation/restoration tests pass; do not bundle unrelated line-ending edits.
+- [ ] Tag the first playable regional release only after verifying the actual
+  final merged commit and its built assets.
+
+The activation/restoration suite passes against the existing merged gameplay
+implementation. However, the new release-documentation/benchmark changes are
+not yet committed, there is no existing tag, and GitHub CLI is unauthenticated,
+so PR/required-check state and an authenticated merge cannot be verified here.
+No branch, commit, push, merge or tag was created by this pass. An unauthenticated
+`git ls-remote origin refs/heads/main` confirmed the remote hash above; a cached
+tracking ref alone was not used as proof.
+
+For publication, commit only reviewed changes, verify the final merged SHA
+(including any intervening changes), rerun the four normal checks and the
+production activation/restoration smoke, then choose the project's release
+version and create/push a tag pointing to that verified SHA. Do not tag the
+earlier SHA merely because it contains the gameplay implementation, or treat
+this local report as evidence that new remote commits have passed.
+
+### Production build and failure review
+
+All normal commands passed on this shared Windows environment. Complete tests
+use two workers to bound contention; no timeout or assertion was weakened.
+All **172 local file/anchor links across the eight updated release documents**
+resolve, and touched-file whitespace checks pass with Windows line endings.
+The benchmark runner emits its existing experimental-API notice, not a
+production warning. No new dependency, cache layer or larger bundle threshold
+was introduced. The graph is still **225 nodes, 179 ingredients, 46 terminals,
+zero unused**. The complete suite retains explicit missing/incompatible/dependency,
+corrupt/future/oversized-save, raw-byte-conflict, Web Lock, quota/retry and
+cancellation coverage described in 11H.
+
+| Production asset | Raw kB | Build-reported gzip kB |
+| --- | ---: | ---: |
+| Application | 348.55 | 97.51 |
+| Vendor | 303.95 | 92.85 |
+| Core research | 443.77 | 111.14 |
+| Craft research | 190.29 | 49.94 |
+| CSS | 39.17 | 8.66 |
+| Rolldown runtime | 0.58 | 0.36 |
+
+Every JavaScript chunk remains below the unchanged 500 kB warning threshold.
+The local four-photo payload is **190,596 bytes**, under 200 KiB, plus 26,278
+bytes of credit/license text. Local generated JS/CSS/HTML and these image/license
+files total **1,544,095 bytes**; this is an asset inventory, not a measured
+first-load transfer. Research and bundled manifest data are eager even while
+the pilot is disabled. Photos are requested by their rendered surfaces; disabling
+content is not an on-demand code-download system or an offline/PWA guarantee.
+
+### Module-switching performance and memory
+
+The existing [benchmark](../src/game/content/catalog.bench.ts) now also measures
+the actual installed resolver and validated disable/reactivation previews
+against an archive with all 228 discoveries and 294 recorded formulas.
+Command: `npx --no-install vitest bench --run src\game\content\catalog.bench.ts`.
+The run followed the full suite/build, not concurrent unit tests; 100 ms warmup,
+200 ms sampling and at least 50 iterations retain the existing benchmark setup.
+
+| Operation | Mean ms |
+| --- | ---: |
+| Core 225/291 pair index | 0.1943 |
+| Existing pair lookup | <0.001 |
+| Core gated reachability | 1.0371 |
+| Core Hide Mastered calculation | 0.1302 |
+| Core contextual hint | 0.1433 |
+| Resolve core-only catalog | 9.2045 |
+| Resolve enabled pilot | 8.3663 |
+| Validate disable preview | 18.8880 |
+| Validate reactivation preview | 21.7265 |
+
+These noisy short samples are not evidence that adding content is faster,
+mobile SLAs or a benchmark of maximum-size archives.
+
+Production browser measurements used the migrated 219/277 v7 fixture after all
+three regional discoveries (222 discoveries / 280 formulas), desktop 1440 x 900,
+and three complete disable/re-enable cycles. Preview timings include opening
+Settings and automation overhead; confirmation timings include storage
+validation and actual reload/render. Disable previews took **210-324 ms**,
+enable previews **307-339 ms**; confirmation/reload took **461-576 ms** and
+**575-643 ms**, respectively. Every transition preserved exact archive progress.
+
+CDP `Performance.getMetrics` after explicit `HeapProfiler.collectGarbage` observed:
+
+| State | Used JS heap bytes, cycles 1 / 2 / 3 | DOM nodes | Documents |
+| --- | --- | ---: | ---: |
+| Disabled | 13,367,252 / 12,335,276 / 12,336,640 | 7,908 | 1 |
+| Enabled | 12,524,724 / 12,525,388 / 12,525,660 | 8,268 | 1 |
+
+The first disabled sample was higher; subsequent same-state observations did
+not show accumulating documents/nodes or material heap growth in this short
+run. This is not proof of no leak, total process/GPU memory, low-memory-device
+capacity or long-session stability. Archive sizes were 9,454/9,466 UTF-8 bytes.
+No speculative optimization is justified by these observations; remeasure for
+larger packs, near-limit saves and representative physical mobile devices.
+
+### Production-preview older-save smoke
+
+All checks used generated fixtures on an isolated localhost origin, never a
+player's existing save. Initial load, navigation and compatibility preview left
+legacy bytes unchanged until explicit confirmation. The v1 four-essence save
+migrated with its existing legacy defaults (including three Insight); v4, v6
+and v7 fixtures retained **219 discoveries / 277 performed formulas and two
+Insight**. The v7 fixture also retained stars, reading, Rainmaker best attempts,
+collection and age receipts. No migration silently installed content or paid a
+new reward.
+
+From that migrated v7 campaign, rendered controls discovered all three pilot
+items, starred them, marked all three histories read and explicitly saved the
+one-attempt lab. Disabling and reloading hid the content but kept its records.
+Core play then discovered Pottery Wheel while regional progress was dormant.
+Re-enabling restored every saved field, including the added core discovery,
+regional collection/lab receipts and the original Rainmaker record (string-ID
+arrays compared as sets where rebasing changes order).
+
+A local file-input preview of an older save was canceled without changing
+stored bytes. Explicit import of the complete archive then restored exactly the
+same bytes after confirmation/reload. This verifies actual file-input and
+replacement controls, not an OS-downloaded-file roundtrip; export Blob/download
+metadata remain component-tested as noted below.
+
+At 390 x 600 with reduced motion, keyboard-only disable/confirm/reload worked;
+the dialog was **352 x 568**, had no horizontal overflow, and button transition
+duration was **0.00001 s**. This supplements, not replaces, the desktop,
+keyboard, mobile, conflict and reward checks in 11H.
+Temporary browser fixture data was removed after verification; the production
+preview server was stopped.
+
+## Closed integration gates and remaining boundaries
 
 Production durable loading/writing, deliberate migration, backup/restore,
 persisted selection, atomic reload transitions, dormant preservation and the

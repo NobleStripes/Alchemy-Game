@@ -50,6 +50,22 @@ histories, one collection and one challenge. Installed packs show enabled,
 disabled or incompatible status; archived packs absent from this installation
 show unavailable status. Save metadata cannot install content.
 
+### Compatibility at a glance
+
+| Stored format / content | Behavior |
+| --- | --- |
+| Legacy versions 1-7 | Load through existing migrations; remain legacy until a confirmed module archive replacement |
+| Module envelope version 1, matching bundled ownership/version | Project the saved enabled set; inactive records remain in the complete archive |
+| Disabled or missing regional pack | Hide regional gameplay and research records; preserve progress and receipts |
+| Installed version/ownership mismatch | Keep records dormant, report incompatibility and require explicit supported migration or compatible import |
+| Unsupported future format, corrupt or oversized save | Block writes and replacement; preserve original bytes for export/recovery |
+| Legacy-only client reading an archive | Cannot safely load it; do not downgrade without a pre-migration legacy backup |
+
+Installed manifests, not a file's ownership claims, authorize activation.
+The current pilot is `achaemenid` version `0.1.0`; no automatic content-version
+upgrade migration exists. Exact compatible ownership is required as well as a
+matching version. The manager does not download or install packs.
+
 Enabling or disabling first validates the complete selected catalog, installed
 ownership, save compatibility and active references. A focused preview shows
 the resulting enabled set, active/dormant discoveries and stored record counts.
@@ -119,3 +135,21 @@ advertising or notification prompts.
 
 See the [Phase 11 integration audit](phase-11-integration.md) for regression
 coverage and remaining boundaries.
+
+### Restoration check after changing modules
+
+1. Export before migration or replacement and retain the downloaded file outside
+   browser storage. Backups are not automatic or cloud-synced.
+2. Disable and confirm/reload. The optional shelf entries, Atlas entries, leads
+   and challenge disappear; this is not a total reset.
+3. Core play can continue and save while the regional progress is dormant.
+4. Re-enable the compatible bundled pack and confirm/reload. Discoveries,
+   performed formulas, favorites, reading markers, collection receipts and saved
+   challenge results return; previously earned rewards are not paid again.
+5. If a conflict appears, stop and reload the winning saved version. Export
+   stored bytes for recovery; an export after a failed write does not capture
+   unsaved memory. Do not resolve a conflict by importing an older file unless
+   replacing all later progress is intentional.
+
+The activation/restoration suite and manual older-save checks are recorded in
+the [release verification evidence](phase-11-integration.md#11i-documentation-and-release-verification).

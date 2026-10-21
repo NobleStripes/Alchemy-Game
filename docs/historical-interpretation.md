@@ -12,6 +12,34 @@ Tin Ore is a pre-existing resource, not something created by quarrying ordinary 
 
 ## Regional administration, diplomacy and exchange
 
+### Optional Achaemenid case study
+
+The optional module does not move generic Imperial Bureaucracy, Provincial
+Government, Road Network, Archive or Clay Tablet out of core. Its three
+discoveries are localized examples in the existing Classical Antiquity gameplay
+page, not an additional chronological age or necessary stage of development:
+
+- **Achaemenid Satrapy:** delegated provincial authority varied by locality and
+  period; the empire's c. 550-330 BCE span is context, not a single foundation
+  date or evidence of uniform administration.
+- **Achaemenid Royal Road:** Herodotus' literary account (Histories 5.52-54,
+  consulted through Dandamayev's modern synthesis) and regional ration/travel
+  documents are different witnesses. They do not securely date the construction
+  of every road section or establish the invention of roads. The Fars photograph
+  is contextual, not authentication of an excavated Sardis-Susa surface.
+- **Persepolis Fortification Tablets:** the 1933 find includes Elamite, Aramaic
+  and seal-only records. Known dated Elamite documents span roughly 509-493 BCE,
+  with earlier references and later consultation; this does not date the whole
+  lifetime of the institution. Regional administration in southwestern Iran,
+  publication selection and lost perishable records limit generalization.
+
+All three two-input recipes are symbolic associations, not manufacturing
+procedures or proven causal sequences. Missing documents or unidentified
+road sections do not prove the absence of a technology or institution.
+Atlas explanations, bibliography and interpretive cautions cost no Insight.
+See the [discovery/source inventory](optional-content.md#pilot-research-inventory)
+and [bounded verification receipts and editorial follow-ups](phase-11-integration.md#11g-historical-integrity-and-research-qa).
+
 Imperial Bureaucracy and Provincial Government are comparative gameplay labels, not identical institutions across empires. Achaemenid satrapies had regional fiscal and military obligations; Persepolis tablets document particular food transactions and travel entitlements. Their survival does not establish uniform practice across Persia. Mauryan Rajjukas and Dhamma Mahamatras appear in Ashoka's prescriptions; Roman proconsuls arose in a different magistracy and provincial-command context. No simple line of Persian-to-Roman institutional copying is asserted.
 
 Ashoka's Pillar Edicts IV and VII describe justice, officers and royal communications. UNESCO documents the surviving Lumbini pillar, attributed to 249 BCE; this does not settle the Buddha's birth chronology or reconstruct all Mauryan provinces. The hosted English edict rendering has translation uncertainties and is not an inspected original or complete critical edition. Prescriptive inscriptions attest royal intentions and claims, not automatic local compliance.

@@ -108,9 +108,31 @@ and triggers no reward. Reload clears transient selections and unsaved runs,
 but the full archive retains inactive records. Use the save guide before import
 or deliberate total reset, which have different replacement/deletion semantics.
 
+### Pilot research inventory
+
+| Regional discovery | Researched sources | Interpretation limit |
+| --- | --- | --- |
+| Achaemenid Satrapy | Joshua J. Mark, [Ancient Persian Governors](https://www.worldhistory.org/Persian_Governor/) (2019-11-15); ISAC's [Persepolis Fortification Tablets](https://isac.uchicago.edu/publications/persepolis-fortification-tablets), excerpt attributed to D. M. Lewis (1990), pp. 2-6 | Generic satrapy overview plus a particular documentary region, not a constitutional manual for every province |
+| Achaemenid Royal Road | Muhammad A. Dandamayev, [Commerce ii. In the Achaemenid period](https://www.iranicaonline.org/articles/commerce-ii/) (1992-12-15; updated 2013-04-05), Vol. VI, Fasc. 1, pp. 59-61; ISAC/Lewis excerpt above | Herodotus 5.52-54 through a secondary synthesis; travel records do not excavate or date an entire highway |
+| Persepolis Fortification Tablets | ISAC/Lewis excerpt above; Matthew W. Stolper, Wouter F. M. Henkelman, Elspeth R. M. Dusinberre, Charles E. Jones, Mark B. Garrison and Annalisa Azzoni, [Persepolis Administrative Archives i. Persepolis Fortification Archive](https://www.iranicaonline.org/articles/persepolis-admin-archive/persepolis-administrative-archives-i-persepolis-fortification-archive/) (2017-06-09; updated 2017-06-20) | Selected specialist passages on excavation, dates, languages and regional scope; not direct examination of tablets or all editions |
+
+Inspection receipts are dated **2026-10-21** in the
+[manifest](../src/game/modules/achaemenid/pack.json) and shared
+[core bibliography](../src/game/content/research.json). The undated ISAC web page
+does not acquire a 1990 publication date merely because it excerpts that chapter.
+All source links, full histories and caveats remain free. These bibliography
+links are not image licenses; [photograph credits](../public/images/achaemenid/CREDITS.txt)
+remain separate.
+
 ## Classical Antiquity and Iron Age branches
 
-Classical Antiquity is an optional regional chapter with 45 discoveries. It unlocks after Iron, Iron Tool, Road and Market. Its approximate 800 BCE-500 CE gameplay frame covers overlapping Mediterranean histories, not a universal period or a necessary stage in every society's history. Earlier precedents keep their own dates, and regional comparisons do not imply simultaneous Classical ages.
+Classical Antiquity is a mandatory core gameplay page with 45 core discoveries,
+not a removable regional pack. It unlocks after Iron, Iron Tool, Road and Market.
+Its approximate 800 BCE-500 CE gameplay frame covers overlapping Mediterranean
+histories, not a universal period or a necessary stage in every society's history.
+Earlier precedents keep their own dates, and regional comparisons do not imply
+simultaneous Classical ages. Its expansion branches are optional for completing
+the unchanged core age objectives.
 
 All 38 discoveries added after the initial seven Age V discoveries are optional even for the unchanged Age V completion target. Existing Scroll, Coin and Aqueduct retain their earlier ages and recipes. The [Age V branch table](gameplay.md#optional-age-v-branches) includes inquiry, civic life, architecture, commerce, scholarship and intellectual practices, with recipe spoilers behind a disclosure.
 

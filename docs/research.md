@@ -4,7 +4,7 @@
 
 Research lives in [`research.json`](../src/game/content/research.json) and the static [`craftResearch.json`](../src/game/content/craftResearch.json) appendix, not inside element definitions or a hosted database. Schema version 2 adds educational Atlas fields. Historical source, chronology, entry, and database schemas are exported from [`schema.ts`](../src/game/content/schema.ts); [`research.ts`](../src/game/content/research.ts) validates the appendix's structure and combines both files before catalog-aware validation. Duplicate IDs, collisions and cross-file references remain checked in the resolved database. [`research.test.ts`](../src/game/content/research.test.ts) and [craft regressions](../src/game/content/craftExpansion.test.ts) test the structure and aggregation.
 
-The appendix contains fifty complete histories and thirty-four source receipts. Separate static chunks keep both research payloads below the unchanged 500 kB build warning threshold without truncating articles. Research remains eagerly bundled; this is not a runtime module registry, optional pack loader or network-loaded research system.
+The appendix contains fifty complete histories and thirty-four source receipts. Separate static chunks keep both core research payloads below the unchanged 500 kB build warning threshold without truncating articles. Research remains eagerly bundled. Regional research is bundled separately as data in the first-party manifest, validated and composed into the same active catalog; there is no network-loaded research or public pack loader.
 
 This separation keeps factual entries and bibliographic references out of gameplay definitions and save-game progression. Research entries refer to stable element IDs; they do not define recipe dependencies, unlock conditions, or rewards. Version 7 saves remain compatible and store only explicit reading IDs, never copies of research text or sources. The schema update does not itself define age assignments or recipe routes.
 
@@ -33,6 +33,25 @@ Research records and verified references remain content data, not navigation sta
 [`HistoricalAtlas.tsx`](../src/features/journal/HistoricalAtlas.tsx) remains in `src/features/journal` for this update. A future `src/features/atlas` directory could clarify ownership as independent Atlas features grow, but moving files now would add import churn without changing behavior. The Guide already has no encyclopedia import; its recipe disclosures and shared source presentation remain gameplay features. No old embedded-encyclopedia disclosure styles remain; shared historical-context styles still serve Atlas, recipe notes and Learning Labs. Timelines and bibliography browsing remain outside this interface update; all Classical Antiquity research entries use the existing discovered-only Atlas experience.
 
 ## Research coverage
+
+These totals distinguish the mandatory core from enabled regional additions:
+
+| Catalog | Histories | Verified sources | Pending leads | Unresearched discoveries |
+| --- | ---: | ---: | ---: | ---: |
+| Core: 225 discoveries / 291 recipes | 147 | 161 | 1 | 78 |
+| Core + Achaemenid: 228 / 294 | 150 | 163 | 1 | 78 |
+
+The three regional histories and two regional receipts live in the
+[pilot manifest](../src/game/modules/achaemenid/pack.json). They also reference
+two existing core sources; those shared references are not counted as new.
+The [pilot research inventory](optional-content.md#pilot-research-inventory)
+lists every discovery and source. The
+[21 October review](phase-11-integration.md#11g-historical-integrity-and-research-qa)
+records corrected publication metadata, the 509-493 BCE documentary range,
+summary-versus-primary inspection limits and remaining editorial uncertainties.
+Disabled regional entries are hidden with the module; reading markers stay
+archived. Free access means no Insight cost for available explanations or
+bibliography, not that disabled discoveries remain in the active Atlas.
 
 Research covers **147 of 225 elements**, including all **45 Age V discoveries**. All 135 preceding records remain. The registry contains **161 verified sources and one pending source**, including recipe-review background. The remaining **78 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **176 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
 

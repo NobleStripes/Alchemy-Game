@@ -2,9 +2,42 @@
 
 [Back to the project overview](../README.md)
 
-Review date: **2026-10-17**.
+Latest regional/release review: **2026-10-21**. Earlier dated sections below
+remain historical core-release snapshots.
 
 ## Status and scope
+
+### Regional pilot and release verification (11G-I)
+
+The protected core remains **225 elements, 291 recipes, five ages, 147 histories
+and 161 verified sources plus one pending lead**. The enabled Achaemenid pilot
+adds three discoveries, three symbolic formulas, three histories, two verified
+sources, one collection and one isolated lab. It does not fill or increase the
+78-entry core research backlog or alter mandatory goals.
+
+The [historical QA review](phase-11-integration.md#11g-historical-integrity-and-research-qa)
+records actual passage access, publication versus inspection dates, author
+metadata, literary/archaeological distinctions, geographic limits and the
+corrected **509-493 BCE** range for known dated Elamite Fortification documents.
+The [complete discovery/source inventory](optional-content.md#pilot-research-inventory)
+and [interpretation guide](historical-interpretation.md#optional-achaemenid-case-study)
+retain uncertainties; no absence-of-evidence inference is accepted as proof
+of nonexistence. Photo attribution is not archaeological authentication.
+
+Three rendered tests check complete regional explanations, chronology, cautions,
+bibliography and explicit read markers at **zero Insight**. The
+[restoration evidence](phase-11-integration.md#11h-end-to-end-activation-and-restoration-evidence)
+covers actual formulas, recorded progress, explicit lab saving, disabled/reloaded
+core play, restoration and duplicate-reward prevention, as well as failure and
+keyboard/mobile/reduced-motion paths. Fresh campaigns in both save formats can
+complete all core discoveries/formulas and every age without the module.
+
+The [11I release gate](phase-11-integration.md#11i-documentation-and-release-verification)
+separates local tests, bundle/runtime measurements, older-save browser checks
+and merged-commit/tag verification. Passing software tests is not independent
+historical peer review, physical-device or screen-reader certification, a
+learning-outcome study, or approval of deferred content. Those reviews remain
+outstanding; no new factual claim is approved by the release checklist alone.
 
 ### Gameplay compatibility and release baseline (G/H)
 

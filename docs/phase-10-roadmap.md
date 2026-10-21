@@ -4,22 +4,36 @@
 
 ## Status and boundaries
 
-This is the **original roadmap and design brief, not a shipped-feature announcement**. Its starting-point descriptions and checkboxes below are historical. Phase 11 now implements the validated shared catalog, bundled regional manifest, dormant-progress preservation, optional Settings module manager and manual save-transfer controls. See the [current integration audit](phase-11-integration.md) and [save guide](saves.md). This update does not authorize PWA support or the other deferred proposals.
+This roadmap retains the original design brief below, with a current delivery
+status as of **2026-10-21**. Phase 11 implements the validated shared catalog,
+bundled regional manifest, dormant-progress preservation, optional Settings
+module manager and manual save-transfer controls. See the
+[integration and release audit](phase-11-integration.md) and [save guide](saves.md).
+Implementation and local verification do not imply a tagged player-facing release.
 
-Phase 10 establishes the framework needed for optional regional content without risking progress or weakening free access. It does not replace the [catalog's evidence and research gates](catalog-plan.md#validation-and-regression-gates), certify proposed discoveries, or move existing Age V content into a removable pack. The existing 200-element catalog remains the compatibility baseline.
+Phase 10 establishes the framework needed for optional regional content without risking progress or weakening free access. It does not replace the [catalog's evidence and research gates](catalog-plan.md#validation-and-regression-gates), certify proposed discoveries, or move existing Age V content into a removable pack. The original brief started at 200 elements; the protected merged Phase 10 baseline is now **225 core elements, 291 recipes, five ages and 147 histories**. The enabled Achaemenid pilot gives **228/294 and 150 histories**, with the same core objectives.
 
 ## Delivery checklist
 
-- [ ] [Finish the content registry and module manifest architecture](#1-content-registry-and-module-manifests).
-- [ ] [Protect saves against disabling or removing regional content](#2-preserve-progress-when-regional-content-is-unavailable).
-- [ ] [Create and validate the Achaemenid prototype](#3-achaemenid-prototype).
-- [ ] [Document and enforce free-access and non-predatory requirements](#4-free-access-and-non-predatory-design).
+- [x] [Finish the content registry and module manifest architecture](#1-content-registry-and-module-manifests).
+- [x] [Protect saves against disabling or removing regional content](#2-preserve-progress-when-regional-content-is-unavailable).
+- [x] [Create and validate the Achaemenid prototype](#3-achaemenid-prototype).
+- [x] [Document and enforce free-access and non-predatory requirements](#4-free-access-and-non-predatory-design).
 - [ ] [Design concise Historical Atlas summaries while retaining full articles](#5-concise-atlas-summaries-with-full-articles).
 - [ ] [Prototype a free contextual nudge alongside Insight](#6-free-contextual-nudge).
-- [ ] [Design manual save export/import before PWA support](#7-manual-save-export-and-import-before-pwa-support).
-- [ ] [Keep community-uploaded packs and social sharing deferred](#8-deferred-community-packs-and-social-sharing).
+- [x] [Design manual save export/import before PWA support](#7-manual-save-export-and-import-before-pwa-support).
+- [x] [Keep community-uploaded packs and social sharing deferred](#8-deferred-community-packs-and-social-sharing).
 
-The requirements below are acceptance criteria for later implementation. Proposed data shapes and interaction choices must be reviewed before they become contracts; no runtime or save-schema change is authorized by this document alone.
+Completed items are backed by the [11A-H implementation and QA evidence](phase-11-integration.md).
+Outstanding implementation: concise Atlas summaries, a separate free contextual
+nudge, automatic module-upgrade migrations, and a separately designed PWA.
+Independent historical peer review, physical-device/screen-reader checks and
+learning-outcome evaluation also remain outstanding. Community uploads, accounts,
+social features and monetization remain outside scope.
+
+The following proposed contracts and "starting point" paragraphs preserve the
+original brief; they are not descriptions of the current implementation.
+Current behavior is authoritative in the linked integration and save guides.
 
 ## 1. Content registry and module manifests
 
@@ -156,4 +170,9 @@ Reconsider only after the registry/manifest contract, optional-content save pres
 
 Before a Phase 10 implementation is released, run focused schema, graph, research, persistence/store and affected UI regressions, then the project's typecheck, lint, complete tests and production build. Preserve the existing catalog and save fixtures. Test supported active-module combinations and explicit failure paths; a passing all-enabled graph is insufficient.
 
-This documentation change implements none of the checklist features. Research-coverage milestones remain governed by the [catalog plan](catalog-plan.md#paired-element-and-research-milestones), and historical truth, independent peer review and human comprehension are not certified by software tests.
+The checked delivery items above are implemented; unchecked proposals are not
+silently included in this release. Research-coverage milestones remain governed
+by the [catalog plan](catalog-plan.md#paired-element-and-research-milestones).
+Historical truth, independent peer review and human comprehension are not
+certified by software tests. Before tagging, verify the actual merged main
+commit and its production build, not only an earlier branch or local worktree.
