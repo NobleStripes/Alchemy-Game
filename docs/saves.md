@@ -153,3 +153,7 @@ coverage and remaining boundaries.
 
 The activation/restoration suite and manual older-save checks are recorded in
 the [release verification evidence](phase-11-integration.md#11i-documentation-and-release-verification).
+The [October 26 downloaded-file follow-up](save-roundtrip-verification.md)
+records actual legacy, enabled-archive and disabled-archive browser downloads,
+fresh-context imports and reloads, with reproducible regression commands and
+the remaining browser/environment limits.
