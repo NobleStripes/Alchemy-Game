@@ -32,17 +32,20 @@ async function fingerprint(value: unknown) {
 
 describe('specialized production, measurement and water power', () => {
   it('meets the paired 225-element / 147-history milestone without unused discoveries', () => {
-    expect(elements).toHaveLength(225)
+    const milestoneElements = elements.slice(0, 225)
+    const milestoneResearch = historicalResearch.records.slice(0, 147)
+    const researchedIds = new Set(milestoneResearch.map((record) => record.elementId))
+    expect(milestoneElements).toHaveLength(225)
     expect(recipes.slice(0, 288)).toHaveLength(288)
-    expect(elements.slice(219).map((element) => element.id)).toEqual(additions)
+    expect(milestoneElements.slice(219).map((element) => element.id)).toEqual(additions)
     expect(recipes.slice(277, 288).map((recipe) => recipe.id)).toEqual(routes.map((route) => route[3]))
-    expect(historicalResearch.records).toHaveLength(147)
-    expect(historicalResearch.records.slice(135).map((record) => record.elementId)).toEqual([...additions, ...backlog])
-    expect(historicalResearch.records.flatMap((record) => record.approximateDates)).toHaveLength(176)
-    expect(elements.slice(0, 194).filter((element) => !researchByElementId.has(element.id))).toHaveLength(78)
-    expect(getGraphMetrics(elements, recipes)).toEqual({ total: 225, ingredients: 179, terminal: 46, unused: 0 })
+    expect(milestoneResearch).toHaveLength(147)
+    expect(milestoneResearch.slice(135).map((record) => record.elementId)).toEqual([...additions, ...backlog])
+    expect(milestoneResearch.flatMap((record) => record.approximateDates)).toHaveLength(176)
+    expect(elements.slice(0, 194).filter((element) => !researchedIds.has(element.id))).toHaveLength(78)
+    expect(getGraphMetrics(milestoneElements, recipes.slice(0, 291))).toEqual({ total: 225, ingredients: 179, terminal: 46, unused: 0 })
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
-    expect(eras.map((era) => elements.filter((element) => element.era === era.id).length)).toEqual([43, 57, 54, 26, 45])
+    expect(eras.map((era) => milestoneElements.filter((element) => element.era === era.id).length)).toEqual([43, 57, 54, 26, 45])
     for (const id of additions) {
       expect(elements.find((element) => element.id === id)?.starter).toBe(false)
       expect(recipes.some((recipe) => recipe.inputs.includes(id))).toBe(true)

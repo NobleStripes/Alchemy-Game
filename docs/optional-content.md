@@ -8,7 +8,7 @@ Open **Challenges** in the persistent main navigation for Rainmaker and all elev
 
 This guide describes implemented content. The [catalog plan](catalog-plan.md) separately tracks proposed discoveries, regional modules and research-only work; evidence-blocked candidates are not playable additions.
 
-The playable catalog is base-only: **225 elements and 291 recipes** across five ages. Existing optional base discoveries and regional histories remain included; they are not DLC. There is no Regional Modules manager or playable pilot. See [legacy archive compatibility](saves.md#regional-modules-and-durable-archives).
+The playable catalog is base-only: **235 elements and 311 recipes** across five ages. Existing optional base discoveries and regional histories remain included; they are not DLC. There is no Regional Modules manager or playable pilot. See [legacy archive compatibility](saves.md#regional-modules-and-durable-archives).
 
 - [Classical Antiquity and Iron Age branches](#classical-antiquity-and-iron-age-branches)
 - [Achaemenid pilot gameplay](#achaemenid-pilot-gameplay)
@@ -16,6 +16,7 @@ The playable catalog is base-only: **225 elements and 291 recipes** across five 
 - [Craft, records and engineering](#craft-records-and-engineering)
 - [Stone Age materials and watercraft](#stone-age-materials-and-watercraft)
 - [Specialized production and water power](#specialized-production-and-water-power)
+- [Everyday crafts and practical engineering](#everyday-crafts-and-practical-engineering)
 - [Landmark track and learning labs](#landmark-track-and-learning-labs)
 - [Engineering](#engineering)
 - [Commerce](#commerce)
@@ -32,7 +33,7 @@ The [historical Phase 11 review](phase-11-integration.md#11g-historical-integrit
 
 ## Classical Antiquity and Iron Age branches
 
-Classical Antiquity is a mandatory core gameplay page with 45 core discoveries,
+Classical Antiquity is a mandatory core gameplay page with 48 core discoveries,
 not a removable regional pack. It unlocks after Iron, Iron Tool, Road and Market.
 Its approximate 800 BCE-500 CE gameplay frame covers overlapping Mediterranean
 histories, not a universal period or a necessary stage in every society's history.
@@ -40,9 +41,54 @@ Earlier precedents keep their own dates, and regional comparisons do not imply
 simultaneous Classical ages. Its expansion branches are optional for completing
 the unchanged core age objectives.
 
-All 38 discoveries added after the initial seven Age V discoveries are optional even for the unchanged Age V completion target. Existing Scroll, Coin and Aqueduct retain their earlier ages and recipes. The [Age V branch table](gameplay.md#optional-age-v-branches) includes inquiry, civic life, architecture, commerce, scholarship and intellectual practices, with recipe spoilers behind a disclosure.
+All 41 discoveries added after the initial seven Age V discoveries are optional even for the unchanged Age V completion target. Existing Scroll, Coin and Aqueduct retain their earlier ages and recipes. The [Age V branch table](gameplay.md#optional-age-v-branches) includes inquiry, civic life, architecture, commerce, scholarship and intellectual practices, with recipe spoilers behind a disclosure.
 
 Optional Iron Age Rotary Quern, Lathe and Alphabet branches provide additional grinding, woodworking and writing discoveries. Their histories distinguish earlier precedents from regional evidence rather than dating all three inventions to that gameplay page. See the [five gameplay pages](gameplay.md#five-gameplay-pages) for progression requirements.
+
+## Everyday crafts and practical engineering
+
+The latest base-game batch adds **ten discoveries and twenty recipes** within the existing ages:
+
+- Stone Age: **Sewing**.
+- Bronze Age: **Salted Meat, Sailcloth, Wick and Lamp**.
+- Iron Age: **Loom Weight and Lever**.
+- Classical Antiquity: **Winch, Sundial and Dome**.
+
+The graph now contains **235 discoveries, 311 recipes, 193 ingredients, 42 terminals and zero unused nodes**. Needle, Salt and Textile gain their first outgoing recipes. Each addition has an onward use and a full history; ten original gaps also gain histories: Needle, Hide, Clothing, Meat, Food, Storage, Sail, Boat, Trade and Merchant. There are **167 histories and 68 remaining gaps**.
+
+These are optional routes, not new age requirements. The older 225/291 graph still completes every age; goals, grants, landmarks, collections, labs, rewards and v7 save fields are unchanged. Existing exhausted ingredients can become useful again under Hide Mastered. New formula notes appear only after their particular formula is performed.
+
+The [acceptance audit](catalog-plan.md#milestone-235-everyday-crafts-and-practical-engineering) separates regional examples from invention dates. La Prele garments are inferred, not surviving complete outfits. The cited loom weights are Ptolemaic; their Iron Age gameplay page overlaps Classical Antiquity and does not date weighted weaving. Clay lamps have earlier stone precedents. Wicks need fuel, reservoirs and preparation; salt preservation is not food-safety advice. Lever/winch accounts are texts, and the harbor route is a conceptual association. Sundial hours are not automatically modern clock hours; not all vaults are domes or baths domed.
+
+<details>
+<summary>Everyday craft recipes (spoilers)</summary>
+
+| Inputs | Result |
+| --- | --- |
+| Needle + Fibre | Sewing |
+| Sewing + Hide | Clothing |
+| Salt + Meat | Salted Meat |
+| Salted Meat + Pottery | Storage |
+| Clay + Loom | Loom Weight |
+| Loom Weight + Yarn | Textile |
+| Textile + Boat | Sailcloth |
+| Sailcloth + Cordage | Sail |
+| Fibre + Cordage | Wick |
+| Pottery + Wick | Lamp |
+| Lamp + House | Home |
+| Timber + Rock | Lever |
+| Lever + Rock | Quarry |
+| Lever + Cordage | Winch |
+| Winch + Anchor | Harbor |
+| Observation + Mathematical Astronomy | Sundial |
+| Sundial + Geometry | Knowledge |
+| Vault + Geometry | Dome |
+| Dome + Concrete | Public Bath |
+| Needle + Textile | Clothing |
+
+Seven formulas are simplified processes and thirteen symbolic associations. Fuel, frames, rigging, construction, material preparation and skilled work are omitted where stated in the individual notes. Older independent routes remain available; later equipment does not date the invention of their results.
+
+</details>
 
 ## Production foundations
 
@@ -79,7 +125,7 @@ Six pairs are symbolic associations. Resin preparation is a simplified process; 
 
 ## Specialized production and water power
 
-The fourth batch adds **Pottery Wheel, Crucible, Annealing and Plumb Line** in Bronze Age and **Waterwheel and Watermill** in Classical Antiquity, with eleven formulas. Current totals are **225 elements, 291 recipes and 147 full histories**, leaving **78 original gaps**. Every new node has an onward use. Pottery, Wheel, Mold, Quarry, Crop and Bread also receive full histories.
+The fourth batch adds **Pottery Wheel, Crucible, Annealing and Plumb Line** in Bronze Age and **Waterwheel and Watermill** in Classical Antiquity, with eleven formulas. That release reached **225 elements, 291 recipes and 147 full histories**, leaving **78 original gaps**. Every new node has an onward use. Pottery, Wheel, Mold, Quarry, Crop and Bread also receive full histories.
 
 The [acceptance audit](catalog-plan.md#milestone-225-specialized-production-measurement-and-water-power) separates historical development, regional evidence and gameplay placement. Pottery remains possible without a wheel; an arbitrary pot is not a crucible; annealing is not smelting, alloying or steel hardening; a plumb line is not a complete survey kit; and powered milling does not begin the history of grinding. Abstract-only and reconstructed evidence is labeled.
 
@@ -119,7 +165,7 @@ The [E/F audit](catalog-plan.md#additional-recipe-connections-and-research-sign-
 | Crucible + Copper Ore | Copper | Simplified crucible-furnace reduction; suitable ore/equipment, preparation, fuel, atmosphere, slag and recovery omitted |
 | Plumb Line + Masonry | Wall | Symbolic alignment; earlier walls and masonry remain independently available |
 
-Each has an individual cited review. Crucible smelting uses an original scholarly abstract on Chalcolithic Iberia, distinct from the El Argar melting vessel. No new element, history-count credit, requirement, reward or save version is introduced; the research backlog remains 78 original gaps.
+Each has an individual cited review. Crucible smelting uses an original scholarly abstract on Chalcolithic Iberia, distinct from the El Argar melting vessel. That sign-off introduced no new element, history-count credit, requirement, reward or save version; its backlog remained 78 original gaps, before the latest 235 batch.
 
 </details>
 

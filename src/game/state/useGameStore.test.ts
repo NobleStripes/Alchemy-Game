@@ -23,6 +23,49 @@ const fresh = (): SavedProgress => parseProgress(JSON.stringify({ version: 1, di
 const failWrites = () => vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
 
 describe('campaign state', () => {
+  it('expands a completed 225/291 v7 campaign without reward replay or automatic reading credit', async () => {
+    const previous: SavedProgress = {
+      ...fresh(),
+      discoveredIds: elements.slice(0, 225).map((element) => element.id),
+      discoveredRecipeIds: recipes.slice(0, 291).map((recipe) => recipe.id),
+      unlockedEraIds: eras.map((era) => era.id),
+      activeEraId: 'classical-antiquity',
+      rewardedChallengeEraIds: eras.map((era) => era.id),
+      rewardedCollectionIds: collections.map((collection) => collection.id),
+      challengeRecords: [{ challengeId: 'rainmaker', completed: true, bestAttemptCount: 4 }],
+      favoriteIds: ['needle', 'salt'],
+      readHistoricalElementIds: ['pottery'],
+      hideFinalElements: true, collapsedShelves: ['first-light'],
+      insightCredits: 1,
+    }
+    localStorage.setItem(saveKey, exportProgress(previous))
+    const writes = vi.spyOn(Storage.prototype, 'setItem')
+    const store = createGameStore()
+    expect(snapshotProgress(store.getState())).toEqual(snapshotProgress(previous))
+    expect(writes).not.toHaveBeenCalled()
+    for (const recipe of recipes.slice(291)) {
+      const before = store.getState().discoveredIds.includes(recipe.result)
+      expect(store.getState().discoveredIds).toEqual(expect.arrayContaining(recipe.inputs))
+      store.getState().transmuteWith(recipe.inputs[1], recipe.inputs[0])
+      expect(store.getState().lastAttempt).toMatchObject({ kind: before ? 'known' : 'discovery', resultId: recipe.result })
+    }
+    expect(snapshotProgress(store.getState())).toEqual({
+      ...snapshotProgress(previous),
+      discoveredIds: elements.map((element) => element.id),
+      discoveredRecipeIds: recipes.map((recipe) => recipe.id),
+      experimentHistory: expect.any(Array),
+    })
+    expect(store.getState().experimentHistory).toHaveLength(20)
+    store.getState().toggleHistoricalRead('sewing')
+    await store.flushProgress()
+    expect(store.getState().persistenceError).toBeNull()
+    const reloaded = createGameStore()
+    expect(snapshotProgress(reloaded.getState())).toEqual(snapshotProgress(store.getState()))
+    expect(reloaded.getState().readHistoricalElementIds).toEqual(['pottery', 'sewing'])
+    expect(reloaded.getState().insightCredits).toBe(1)
+    expect(loadProgress()?.version).toBe(7)
+  })
+
   it('upgrades a completed 215/270 v7 campaign through all ten optional discoveries without invalidating progress', async () => {
     const previous: SavedProgress = {
       ...fresh(),
@@ -57,7 +100,7 @@ describe('campaign state', () => {
     const expanded = snapshotProgress(store.getState())
     expect(expanded).toEqual({
       ...snapshotProgress(previous),
-      discoveredIds: [...previous.discoveredIds, ...elements.slice(215).map((element) => element.id)],
+      discoveredIds: [...previous.discoveredIds, ...elements.slice(215, 225).map((element) => element.id)],
       discoveredRecipeIds: [...previous.discoveredRecipeIds, ...acquisitions],
       experimentHistory: expect.any(Array),
     })
@@ -443,6 +486,16 @@ describe('campaign state', () => {
   })
 
   it.each([
+    ['stone-age', 'stitched-material', 'needle', 'fibre', 'sewing'],
+    ['bronze-age', 'salt-preserved-meat', 'salt', 'meat', 'salted-meat'],
+    ['iron-age', 'weighted-loom-equipment', 'clay', 'loom', 'loom-weight'],
+    ['bronze-age', 'prepared-sail-textile', 'textile', 'boat', 'sailcloth'],
+    ['bronze-age', 'prepared-fibre-wick', 'fibre', 'cordage', 'wick'],
+    ['bronze-age', 'wicked-pottery-lamp', 'pottery', 'wick', 'lamp'],
+    ['iron-age', 'supported-timber-lever', 'timber', 'rock', 'lever'],
+    ['classical-antiquity', 'rope-winding-winch', 'lever', 'cordage', 'winch'],
+    ['classical-antiquity', 'observed-shadow-time', 'observation', 'mathematical-astronomy', 'sundial'],
+    ['classical-antiquity', 'curved-roof-design', 'vault', 'geometry', 'dome'],
     ['bronze-age', 'rotating-pottery-workshop', 'wheel', 'pottery', 'pottery-wheel'],
     ['bronze-age', 'metallurgical-vessel', 'kiln', 'pottery', 'crucible'],
     ['bronze-age', 'copper-heat-treatment', 'copper', 'heat', 'annealing'],

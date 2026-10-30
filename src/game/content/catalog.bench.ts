@@ -10,6 +10,7 @@ const options = { time: 200, warmupTime: 100, iterations: 50 }
 for (const [name, elementCount, recipeCount] of [
   ['215 elements / 270 recipes', 215, 270],
   ['225 elements / 291 recipes', 225, 291],
+  ['235 elements / 311 recipes', 235, 311],
 ] as const) {
   const catalog = elements.slice(0, elementCount)
   const graph = recipes.slice(0, recipeCount)

@@ -2,14 +2,28 @@
 
 [Back to the project overview](../README.md)
 
-Latest regional/release review: **2026-10-21**. Earlier dated sections below
+Earlier regional/release review: **2026-10-21**. Earlier dated sections below
 remain historical core-release snapshots.
 
 ## Status and scope
 
+### Everyday crafts and practical engineering
+
+The current base catalog has **235 discoveries, 311 recipes and 167 full histories**, with **184 chronology entries, 167 verified sources and one pending lead**. The latest ten discoveries each have an onward use and a full history, paired with ten original-gap histories. The remaining backlog is **68 discoveries**. Origins receives no new historical craft node; its Salt feeds a later preservation branch.
+
+The [new content regressions](../src/game/content/everydayCrafts.test.ts) test all twenty routes in both orders, reject reversed duplicates, check assigned-age reachability and retain old-only completion. The original 225/291 definitions, reviews and both research-file prefixes remain fingerprinted. Age, collection and challenge definitions, reward rules and v7 save fields are unchanged. The new batch's seven simplified processes and thirteen symbolic associations carry individual cited cautions; regional examples, inferred garments, missing fuel/equipment and textual machine evidence are explicit.
+
+Store regressions load a completed 225/291 campaign without writes or automatic reading/reward credit, perform all twenty routes, acquire all ten discoveries and compare exact v7 progress across reload. Rendered checks cover result-age locks without spoilers, independently recorded formula notes, discovered-only Atlas entries, zero-Insight reading and explicit saved markers. Needle, Salt and Textile remain usable under Hide Mastered until their new outgoing formulas have been performed.
+
+Verification passes: `npm run typecheck`, `npm run lint`, `npm test -- --reporter=dot --maxWorkers=2` (**1,588 tests across 35 files**), `npm run build`, and all **three Playwright download/import/reload tests**. The production graph has **193 ingredients, 42 terminals and zero unused nodes**. Chunks remain below the unchanged 500 kB warning threshold: **323.65 kB application**, **443.77 kB original research**, **254.62 kB craft research**, **303.95 kB vendor** and **38.77 kB CSS**.
+
+The existing benchmark now includes the 235/311 graph. With no concurrent build/test run, the 225/291 versus 235/311 means (ms) were pair indexing **0.0991 / 0.1061**, pair resolution **0.0003 / 0.0003**, gated validation **0.6426 / 0.5881**, Hide Mastered **0.0797 / 0.0852** and hint selection **0.1342 / 0.1655**. These local short-run observations are not performance guarantees; the runner reports its existing experimental-API notice. Automated checks and inspected passages do not substitute for independent historical peer review, physical-device accessibility certification or learning-outcome evaluation.
+
+No next age or DLC is introduced. Earlier dated sections below preserve their release snapshots.
+
 ### Base-game-first rollback
 
-The protected base remains **225 elements, 291 recipes, five ages, 147 histories and 161 verified sources plus one pending lead**. The DLC registry, Achaemenid pack, activation UI and photographs have been removed. The 78-entry research backlog and historical review limits are unchanged.
+At the rollback, the protected base remained **225 elements, 291 recipes, five ages, 147 histories and 161 verified sources plus one pending lead**. The DLC registry, Achaemenid pack, activation UI and photographs have been removed. The 78-entry research backlog and historical review limits are unchanged.
 
 Core catalog tests fingerprint the complete gameplay definitions, research and recipe reviews. Fresh legacy and archive campaigns are checked for all core discoveries, formulas and age objectives. Compatibility regressions cover previously enabled, disabled and unavailable archives, inactive record preservation, import/export/reset, conflict and storage protection, and base-only rendered UI.
 

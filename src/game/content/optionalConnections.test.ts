@@ -26,15 +26,16 @@ async function fingerprint(value: unknown) {
 
 describe('optional recipe connections and research sign-off', () => {
   it('appends only three missing pairs and preserves the complete 225/288 catalog', async () => {
-    expect(elements).toHaveLength(225)
-    expect(recipes).toHaveLength(291)
-    expect(await fingerprint(elements)).toBe('39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a')
+    const milestoneElements = elements.slice(0, 225)
+    expect(milestoneElements).toHaveLength(225)
+    expect(recipes.slice(0, 291)).toHaveLength(291)
+    expect(await fingerprint(milestoneElements)).toBe('39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a')
     expect(await fingerprint(recipes.slice(0, 288))).toBe('68c4e25fafefb8056365fdc479e38525f96062bbef05cebdf12e8a4647ba3187')
-    expect(recipes.slice(288).map((recipe) => recipe.id)).toEqual([
+    expect(recipes.slice(288, 291).map((recipe) => recipe.id)).toEqual([
       'dugout-voyage', 'crucible-copper', 'aligned-masonry-wall',
     ])
     expect(validateContent(elements, recipes, eras, collections)).toEqual([])
-    expect(validateContent(elements, recipes.slice(0, 288), eras, collections)).toEqual([])
+    expect(validateContent(milestoneElements, recipes.slice(0, 288), eras, collections)).toEqual([])
   })
 
   it.each(routes)('keeps %s + %s as %s under %s with a cited %s review', (a, b, result, id, classification) => {
@@ -127,13 +128,13 @@ describe('optional recipe connections and research sign-off', () => {
     )
   })
 
-  it('reports unchanged history gaps rather than counting new formulas as researched elements', () => {
-    expect(historicalResearch.records).toHaveLength(147)
-    expect(historicalResearch.records.flatMap((record) => record.approximateDates)).toHaveLength(176)
-    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(78)
-    expect(historicalResearch.sources.filter((source) => source.verification.status === 'verified')).toHaveLength(161)
+  it('reports current history gaps rather than counting new formulas as researched elements', () => {
+    expect(historicalResearch.records).toHaveLength(167)
+    expect(historicalResearch.records.flatMap((record) => record.approximateDates)).toHaveLength(184)
+    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(68)
+    expect(historicalResearch.sources.filter((source) => source.verification.status === 'verified')).toHaveLength(167)
     expect(historicalResearch.sources.filter((source) => source.verification.status === 'pending')).toHaveLength(1)
-    expect(recipeReviews.reviews.filter((review) => review.sourceIds.length > 0)).toHaveLength(186)
+    expect(recipeReviews.reviews.filter((review) => review.sourceIds.length > 0)).toHaveLength(206)
     expect(recipeReviews.reviews.filter((review) => review.sourceIds.length === 0)).toHaveLength(105)
   })
 })

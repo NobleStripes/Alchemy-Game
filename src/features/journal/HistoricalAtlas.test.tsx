@@ -38,6 +38,25 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
+  it('shows new crafts and newly researched old discoveries without revealing undiscovered content or charging Insight', async () => {
+    discover('needle', 'sewing', 'lamp')
+    useGameStore.setState({ insightCredits: 0 })
+    const before = snapshotProgress(useGameStore.getState())
+    const user = await openAtlas()
+    expect(screen.queryByRole('button', { name: 'Open historical entry for Sundial' })).not.toBeInTheDocument()
+    const needle = await selectEntry(user, 'Needle')
+    expect(within(needle).getByText(/ZooMS and Micro-CT support identification/)).toBeVisible()
+    const sewing = await selectEntry(user, 'Sewing')
+    expect(within(sewing).getByText(/rather than a surviving garment/)).toBeVisible()
+    const lamp = await selectEntry(user, 'Lamp')
+    expect(within(lamp).getByText(/Earlier stone lamps and other lighting devices remain earlier precedents/)).toBeVisible()
+    expect(snapshotProgress(useGameStore.getState())).toEqual(before)
+    await user.click(within(lamp).getByRole('button', { name: 'Mark Lamp as read' }))
+    await useGameStore.flushProgress()
+    expect(createGameStore().getState().readHistoricalElementIds).toEqual(['lamp'])
+    expect(useGameStore.getState().insightCredits).toBe(0)
+  })
+
   it('shows Egyptian bob dating without inventing crucible dates and keeps reading explicit and free', async () => {
     discover('plumb-line', 'crucible', 'pottery')
     useGameStore.setState({ insightCredits: 0 })

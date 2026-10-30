@@ -6,7 +6,7 @@
 
 Retain the original **194 elements and 232 recipes**, including existing regional Age V discoveries. The target is **250 core elements within the same five gameplay ages**. Newly proposed regional modules are separate editorial backlogs, not a runtime module system or part of the additional 56.
 
-The current milestone is implemented: **225 elements, 291 recipes, 147 full histories, 176 chronology entries, 161 verified sources and one pending source**. The first three batches reached 219 elements; the fourth adds four Bronze Age production/measurement discoveries and two Classical Antiquity water-power discoveries, plus six existing-gap histories. **78 original elements** still lack full records.
+The current milestone is implemented: **235 elements, 311 recipes, 167 full histories, 184 chronology entries, 167 verified sources and one pending source**. The latest batch adds ten everyday-craft and practical-engineering discoveries with twenty formulas, pairing each discovery history with one original-gap history. **68 original elements** still lack full records. No sixth age or DLC is added.
 
 Core means selected for the main catalog, not universal invention or adoption. Regional module means a separately bounded comparative proposal. Research-only means history or evidence without a new gameplay node. A **core candidate** below is not accepted content until it passes all gates.
 
@@ -23,7 +23,7 @@ For every candidate:
 
 The baseline inventory below includes every existing ID. Each candidate's nearest semantic overlap is recorded in the tables, not inferred only from spelling. The validator checks exact IDs, normalized duplicate names and pair conflicts; semantic distinctness remains an editorial decision.
 
-The **31 implemented proposals** have passage-reviewed evidence, individually checked pairs and full histories. Of the original 50 later candidates, nineteen are now accepted under their original IDs and six slots are replaced by the bounded alternatives described below. The remaining **25 active candidates** are deferred on chronology, regional evidence and recipe design. Their target ages are hypotheses, not historical assertions. This is a research queue, not certification of 56 historical discoveries; replace rather than pad candidates that fail.
+The **41 implemented additions** have passage-reviewed evidence, individually checked pairs and full histories. The prior 225 milestone had 31 additions and 25 active deferred candidates, plus six displaced proposals. This batch accepts six active candidates, revisits displaced Sailcloth and Loom Weight, and adds Sewing and Salted Meat to give Needle and Salt useful onward routes. **19 active candidates and four displaced proposals remain deferred**, competing for at most fifteen remaining discoveries toward 250. Their target ages are hypotheses, not historical assertions; the target is not a promise to ship every candidate.
 
 ## Milestone 200: accepted production foundations
 
@@ -103,7 +103,7 @@ The preserved 215 milestone graph is **168 ingredients, 47 terminal discoveries 
 
 ### Replacements and rejected evidence
 
-Six original slots are replaced, not silently counted in addition to the 56-slot target: generic Chisel -> Iron Chisel; Drill -> Fishhook; Mallet -> Fishing Weir; Sailcloth -> Smelting Furnace; Loom Weight -> Sealed Tablet; Lost-Wax Casting -> Gouge. Displaced proposals remain documented below as deferred research/design candidates; none is certified or shipped.
+At the 215 milestone, six original slots were replaced: generic Chisel -> Iron Chisel; Drill -> Fishhook; Mallet -> Fishing Weir; Sailcloth -> Smelting Furnace; Loom Weight -> Sealed Tablet; Lost-Wax Casting -> Gouge. The 235 batch separately accepts Sailcloth and Loom Weight after review, without removing their replacements. The other four displaced proposals remain deferred; the 250 target still allows only fifteen further discoveries.
 
 A Museum Wales [file record](https://museum.wales/collections/online/object/50a1c79a-a981-3a8e-bf76-5ba889a8e1d2/Iron-Age--Roman-iron-file/) has an ambiguous title but explicitly dates the object to **260-355 CE**. It was rejected as support for an Iron Age file. Blocked Met/British Museum pages and search snippets were not promoted to verified receipts; the Louvre's descriptive HTML and other directly read institutional sources supplied the accepted evidence.
 
@@ -144,7 +144,7 @@ The graph is now **173 ingredients, 46 terminal discoveries and zero unused node
 
 The original tables below retain the complete overlap screen. Their **31 active deferred candidates** are Joinery, Pottery Wheel, Crucible, Annealing, Dye, Dyeing, Fermentation, Oil Press, Olive Oil, Lamp, Wick, Plaster, Lever, Winch, Gear, Waterwheel, Watermill, Sundial, Water Clock, Gnomon, Calendar, Abacus, Surveying, Plumb Line, Measuring Rod, Counting Token, Stylus, Mosaic, Tessera, Dome and Wheelbarrow. Their proposed ages are not historical approval. Dye/Dyeing, Gnomon/Sundial and Mosaic/Tessera need separate gameplay value; Plaster and Stylus must avoid existing binder/reed meanings. Merge or reject rather than pad these chains if that test fails.
 
-Six displaced proposals remain separately deferred: generic Chisel, Drill, Mallet, Sailcloth, Loom Weight and Lost-Wax Casting. They are not extra active slots. Regional modules and research-only reuse decisions below remain outside this batch; Resin does not approve Lacquerware.
+At this milestone, six displaced proposals remained separately deferred: generic Chisel, Drill, Mallet, Sailcloth, Loom Weight and Lost-Wax Casting. They are not extra active slots. Regional modules and research-only reuse decisions below remain outside this batch; Resin does not approve Lacquerware.
 
 Rejected interpretations include universal resin-to-glue transformation, equating gum/resin/tar, inferring an exact harvesting method from residues, treating preserved objects as first inventions, transferring canoe dates to paddles, and reading the museum's English word "sailing" as evidence of a sail. No focus candidate required replacement.
 
@@ -204,17 +204,17 @@ The new `iberian-crucible-smelting` receipt records the **original abstract and 
 
 Rechecked background passages include the Danish paddle paragraph, Penn Museum's primary-production/slag paragraph and tuyere caption, and the GEM description exposed in original HTML metadata (the simplified page showed a ticket overlay). Earlier receipts retain their actual passage/access limits. Unverified candidates remain deferred; the pending source cannot support shipped claims.
 
-Current coverage is **147/225 histories**, **176 chronology entries**, **161 verified sources plus one pending**, and **291 individual recipe reviews**: **16 material-process, 114 simplified-process, 161 symbolic**, with **186 cited and 105 uncited**. This recipe-only pass adds no history-count credit: **78 original gaps** and **25 deferred core candidates** remain. Graph totals remain **179 ingredients, 46 terminal and zero unused**. Independent scholarly review remains outstanding.
+At the E/F sign-off, coverage was **147/225 histories**, **176 chronology entries**, **161 verified sources plus one pending**, and **291 individual recipe reviews**: **16 material-process, 114 simplified-process, 161 symbolic**, with **186 cited and 105 uncited**. This recipe-only pass adds no history-count credit: **78 original gaps** and **25 deferred core candidates** remain. Graph totals remain **179 ingredients, 46 terminal and zero unused**. Independent scholarly review remains outstanding.
 
 ### Current deferred and rejected dispositions
 
-The **25 active deferred candidates** are Joinery, Dye, Dyeing, Fermentation, Oil Press, Olive Oil, Lamp, Wick, Plaster, Lever, Winch, Gear, Sundial, Water Clock, Gnomon, Calendar, Abacus, Surveying, Measuring Rod, Counting Token, Stylus, Mosaic, Tessera, Dome and Wheelbarrow. The six displaced proposals remain separately deferred as above. None is approved by this batch.
+The **19 active deferred candidates** are Joinery, Dye, Dyeing, Fermentation, Oil Press, Olive Oil, Plaster, Gear, Water Clock, Gnomon, Calendar, Abacus, Surveying, Measuring Rod, Counting Token, Stylus, Mosaic, Tessera and Wheelbarrow. Generic Chisel, Drill, Mallet and Lost-Wax Casting remain separately displaced/deferred. Sailcloth and Loom Weight were displaced earlier but are now accepted alongside Lamp, Wick, Lever, Winch, Sundial and Dome in the 235 batch.
 
 Rejected interpretations: all pottery is wheel-thrown; any pot becomes a crucible by firing; all ancient crucibles use refractory fabric; heating alone proves annealing or hardens copper like steel; a bob preserves its missing cord or proves a particular pyramid survey; undershot must universally precede overshot; all waterwheels are river-fed; a reconstruction is a complete surviving machine; powered milling invented flour. No requested node required replacement, and no redundant discovery was added to fill a quota.
 
 ## Original later-candidate screen
 
-The tables below preserve the original queue. Nineteen IDs (`axe`, `adze`, `wedge`, `weight-standard`, `clay-tablet`, `wax-tablet`, `pulley`, `water-screw`, `vault`, `resin`, `adhesive`, `dugout-canoe`, `paddle`, `pottery-wheel`, `crucible`, `annealing`, `plumb-line`, `waterwheel`, `watermill`) are now accepted above; six slots are replaced as listed above. The other 25 active rows remain **core candidate / deferred, evidence blocked**. Displaced rows are deferred outside those slots. Unaccepted ages are hypotheses and chain roles are design objectives, not authored pairs or verified historical dependencies.
+The tables below preserve the original queue and age hypotheses, not a current approval list. The accepted batches above and the [235 audit](#milestone-235-everyday-crafts-and-practical-engineering) record actual dispositions. Nineteen active candidates and four displaced proposals remain deferred. Unaccepted ages are hypotheses and chain roles are design objectives, not authored pairs or verified historical dependencies.
 
 ### Toward 210: ten woodworking and binding candidates
 
@@ -232,6 +232,8 @@ The tables below preserve the original queue. Nineteen IDs (`axe`, `adze`, `wedg
 | `paddle` / Paddle | Stone Age | Boat, Sail, Voyage: human-powered propulsion rather than a duplicate watercraft; require appropriate regional artifact evidence. |
 
 ### Toward 225: fifteen craft and processing candidates
+
+These are retained proposal rows, not a current approval list. Sailcloth, Wick and Lamp are accepted in the 235 batch; Loom Weight is accepted with an Iron Age gameplay placement explicitly distinguished from the cited Ptolemaic date. See the [235 audit](#milestone-235-everyday-crafts-and-practical-engineering).
 
 | ID / proposed discovery | Target age hypothesis | Closest baseline IDs; distinctness test and proposed chain role |
 | --- | --- | --- |
@@ -252,6 +254,8 @@ The tables below preserve the original queue. Nineteen IDs (`axe`, `adze`, `wedg
 | `plaster` / Plaster | Stone Age | Quicklime, Slaked Lime, Lime Mortar, Wall: a surface treatment distinct from masonry binder; defer/merge unless the definition avoids generic Mortar duplication. |
 
 ### Toward 250: twenty-five mechanics, records and built-environment candidates
+
+Lever, Winch, Sundial and Dome are now accepted in the 235 batch. Lever uses the overlapping Iron Age page rather than the original Classical hypothesis; the cited Roman text does not date its invention.
 
 | ID / proposed discovery | Target age hypothesis | Closest baseline IDs; distinctness test and proposed chain role |
 | --- | --- | --- |
@@ -281,7 +285,7 @@ The tables below preserve the original queue. Nineteen IDs (`axe`, `adze`, `wedg
 | `dome` / Dome | Classical Antiquity | Arch, Concrete, Public Bath: a different spanning form; do not make concrete universal or necessary. |
 | `wheelbarrow` / Wheelbarrow | Classical Antiquity | Wheel, Cart, Wagon: a distinct load-carrying arrangement; regional evidence decides main-catalog versus module scope. |
 
-The original screen gave **56 named core slots**. With the six explicit replacements above, 31 slots are shipped and 25 remain active but blocked. Retained displaced rows are not extra accepted slots or a promise that all candidates will qualify.
+The original screen gave **56 named core slots**. At the 225 baseline, 31 were shipped and 25 active candidates remained blocked, with six displaced proposals separate. The 235 batch accepts six active candidates, two formerly displaced proposals and two additions outside that screen. There are now 41 discoveries beyond the 194 baseline; 19 active candidates and four displaced proposals remain unapproved. At most fifteen can fit the 250 target, so the queue is not a promise that all candidates will qualify.
 
 ## Regional-module and research-only dispositions
 
@@ -335,12 +339,35 @@ The [compatibility and performance evidence](educational-qa.md#gameplay-compatib
 | 215 | 15 after 200 | 21 | 21 | 127 / 215 | 88 | Implemented craft, records and engineering batch |
 | 219 | 4 after 215 | 25 | 25 | 135 / 219 | 84 | Implemented Stone Age materials and watercraft batch |
 | 225 | 6 after 219 | 31 | 31 | 147 / 225 | 78 | Released baseline with 291 recipes; G/H compatibility evidence recorded |
-| 235 next | 10 after 225 | 41 | 41 | 167 / 235 | 68 | Next gated research/content milestone; no candidates newly approved |
-| 250 | 25 | 56 | 56 | 197 / 250 | 53 | Evidence/chain gate pending |
+| 235 | 10 after 225 | 41 | 41 | 167 / 235 | 68 | Implemented everyday crafts and practical engineering; 311 recipes |
+| 250 | 15 after 235 | 56 | 56 | 197 / 250 | 53 | Evidence/chain gate pending |
 
-The immediate next milestone is **235 discoveries and at least 167 histories**: at most ten accepted new nodes, each paired with one original-gap history. It is an editorial checkpoint on the existing 250/197 path, not permission to ship ten deferred candidates. Select from the 25 active candidates only after semantic, regional-evidence, chronology, pair, downstream-use and optionality gates pass; reject or replace redundancy. The remaining step to 250 would add fifteen discoveries and at least thirty further histories, reducing original gaps to at most 53. Re-run compatibility and graph benchmarks at each accepted batch; recipe and source counts are not padding targets.
+The **235-discovery / 167-history checkpoint is implemented** in the [everyday-craft batch](#milestone-235-everyday-crafts-and-practical-engineering). The remaining step to 250 would add at most fifteen discoveries and at least thirty further histories, reducing original gaps to at most 53. Nineteen active candidates and four displaced proposals remain deferred, so not every queued item can fit; reject or replace redundancy after evidence and chain review. Re-run compatibility and graph benchmarks at each accepted batch; recipe and source counts are not padding targets.
 
 Every batch requires 100% research coverage for additions, one previously missing full history per added element, unique IDs/pairs, no unused nodes, reviewed recipe semantics, legacy-only completion paths and save compatibility. Source counts and dated-entry counts are not quality quotas; appropriate undated records are preferable to false precision. Independent scholarly review and human learning outcomes remain separate.
+
+## Milestone 235: everyday crafts and practical engineering
+
+This batch reaches **235 discoveries / 311 recipes / 167 histories**, with **184 chronology entries**, **167 verified sources plus one pending**, and **68 original history gaps**. Every earlier definition, pair, review and history remains intact. All ten discoveries have onward uses; Salt, Needle and Textile gain their first outgoing recipes. The graph has **193 ingredients, 42 terminals and zero unused nodes**.
+
+| Discovery | Gameplay age / distinctness decision | Inspected evidence and limits |
+| --- | --- | --- |
+| Sewing | Stone Age; operation distinct from Needle, Hide and finished Clothing | [La Prele study](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0313610), abstract and introduction: identified needle materials, with garment/pelt interpretation rather than complete surviving outfits. |
+| Salted Meat | Bronze Age; preserved provisions distinct from Meat, Food and Storage | [Hallstatt study](https://pmc.ncbi.nlm.nih.gov/articles/PMC5899323/), abstract, introduction and sampled assemblage: Late Bronze Age pork processing and interpreted log curing basins. The genetic pilot is not a curing procedure or proof of first preservation. |
+| Loom Weight | Iron Age; tensioning equipment, not Loom or Spindle | [Alexandria museum](https://antiquities.bibalex.org/Collection/Detail.aspx?collection=743&a=1226&lang=en): Ptolemaic terracotta examples, 323-31 BCE. Iron Age has variable regional ends and overlaps the Classical page; this is not Bronze Age evidence or an invention date. Egyptian ground/two-beam looms remain distinct. |
+| Sailcloth | Bronze Age; prepared textile rather than assembled Sail | [UCL textile uses](https://www.ucl.ac.uk/museums-static/digitalegypt/textil/other.html), opening: sails among Egyptian textile uses. Dated bags and ropes elsewhere on the page do not date a complete sail. |
+| Wick | Bronze Age; lighting component distinct from generic Cordage | [Milwaukee lamp overview](https://www.mpm.edu/research-collections/anthropology/anthropology-collections-research/mediterranean-oil-lamps/description-and-history-oil-lamps), definition/history: wick, reservoir, fuel and air. No universal fibre species or first wick date is claimed. |
+| Lamp | Bronze Age; clay lighting device, not Hearth or Beacon | Same museum overview: earlier stone/fat lamps, Bronze Age clay examples and later forms. Fuel and suitable preparation remain omitted; not every pot is a lamp. |
+| Lever | Iron Age; explicit load-moving principle distinct from generic Tool | [Vitruvius X.2-3](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html), iron lever/fulcrum and axle handles. Timber/Rock is an abstraction, not an excavated prototype. The late textual attestation does not establish an Iron Age invention. |
+| Winch | Classical Antiquity; supported winding axle, not Pulley or Wheel | Same text X.2.2-4: rope, axle, levers and lifting blocks. No complete excavated harbor machine or sole inventor is established; Anchor/Harbor is symbolic. |
+| Sundial | Classical Antiquity; instrument distinct from Observation or Mathematical Astronomy | [Vitruvius IX.7.7-8.1](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/9*.html): local diagrams, seasonal daylight divisions and named dial types. Attribution traditions are not independently verified inventorship. |
+| Dome | Classical Antiquity; roof form distinct from other Vaults | [Roman architecture overview](https://www.worldhistory.org/Roman_Architecture/), architectural orders/materials: domed bath spaces including the Pompeian cold room. Broad priority claims are not adopted; not all domes use concrete or baths domes. |
+
+The [twenty-formula table](optional-content.md#everyday-crafts-and-practical-engineering) includes seven simplified processes and thirteen symbolic associations. Every pair was absent from the previous 291, including reversed forms. Older clothing, textile, sail, home, quarry, harbor, knowledge and bath routes remain independent. Later inputs do not redetermine the invention date or original age of their result. Origins gains no historical craft node; its underused Salt instead feeds the later preservation branch.
+
+The ten paired original-gap histories are **Needle, Hide, Clothing, Meat, Food, Storage, Sail, Boat, Trade and Merchant**. Their histories bound the selected evidence rather than claiming universal origins. Egyptian containers, Hallstatt basins, Paleolithic needles and Roman trade belong to separate contexts. Unsupported dates and independent-development assertions remain empty.
+
+The 235/167 checkpoint is implemented. Further progress toward **250/197** requires at most fifteen additional nodes and at least thirty histories, with the same evidence and compatibility gates. This is not preparation or approval for another age. New regression coverage is in [everydayCrafts.test.ts](../src/game/content/everydayCrafts.test.ts); all prior snapshots remain protected.
 
 ## Validation and regression gates
 

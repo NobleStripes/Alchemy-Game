@@ -128,7 +128,7 @@ describe('settings', () => {
     expect(screen.getByRole('button', { name: 'Close settings' })).toBeDisabled()
     await user.keyboard('{Escape}')
     expect(onClose).not.toHaveBeenCalled()
-    expect(createGameStore().getState().catalog.elements).toHaveLength(225)
+    expect(createGameStore().getState().catalog.elements).toHaveLength(235)
   })
 
   it('previews file imports without writing and requires explicit all-progress replacement', async () => {

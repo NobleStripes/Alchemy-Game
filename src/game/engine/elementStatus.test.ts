@@ -44,7 +44,7 @@ describe('graph-derived element status', () => {
   })
 
   it('reports the current graph and distinguishes unused non-produced nodes', () => {
-    expect(getGraphMetrics(elements, recipes)).toEqual({ total: 225, ingredients: 179, terminal: 46, unused: 0 })
+    expect(getGraphMetrics(elements, recipes)).toEqual({ total: 235, ingredients: 193, terminal: 42, unused: 0 })
     expect(getGraphMetrics([...elements, { ...elements[0], id: 'unused' }], recipes).unused).toBe(1)
     expect(getExhaustedElements(recipes, new Set(elements.map((e) => e.id)))).toContain('wax-tablet')
   })

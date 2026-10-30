@@ -140,6 +140,9 @@ describe('element shelf', () => {
   })
 
   it.each([
+    ['salt', 'Salt', 'salt-preserved-meat'],
+    ['needle', 'Needle', 'stitched-woven-clothing'],
+    ['textile', 'Textile', 'prepared-sail-textile'],
     ['paddle', 'Paddle', 'dugout-voyage'],
     ['crucible', 'Crucible', 'crucible-copper'],
     ['plumb-line', 'Plumb Line', 'aligned-masonry-wall'],

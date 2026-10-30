@@ -4,7 +4,7 @@
 
 ## Local progress
 
-The four catalog batches add 31 optional discoveries and 56 formulas without changing version 7, gates, goals or reward definitions. Complete pre-expansion 194-element/232-formula, 200-element/243-formula, 215-element/270-formula and 219-element/277-formula campaigns retain every prior field and can discover the additions normally. The total catalog denominator grows to 225; old completion thresholds do not increase. Newly researched existing discoveries become readable without repeating formulas or receiving automatic reading markers, including Pottery, Wheel, Mold, Quarry, Crop and Bread in the latest batch. New outgoing uses can reactivate an exhausted ingredient under Hide Mastered because status is computed from the current graph, not stored; Lathe has a Water Screw association and Forest gains resin and canoe routes. Production and water-power formulas and explicit reading markers round-trip in the existing format. The latest 50 experiments remain the history limit even as the recipe catalog grows. See the [catalog milestones](catalog-plan.md#paired-element-and-research-milestones).
+The five catalog batches add 41 optional discoveries and 79 formulas beyond the original 194/232 snapshot without changing version 7, gates, goals or reward definitions. Complete pre-expansion campaigns, including the previous 225/291 catalog, retain their prior fields and can discover additions normally. The total denominator grows to 235; old completion thresholds do not increase. New histories become readable without repeating formulas or receiving automatic reading markers. Salt, Needle and Textile can reappear under Hide Mastered because they now have onward uses. Newly performed formulas and explicit reading markers round-trip in v7. The latest 50 experiments remain the history limit. See the [catalog milestones](catalog-plan.md#paired-element-and-research-milestones).
 
 Progress is stored locally in the browser under `unwritten-atlas-progress`. Version 7 includes discovered elements, performed formulas, Insight credits and stall progress, age challenge reward markers, Open Leads, failed unordered pairs, unlocked ages, and the active page, plus favorites, sound preference, the latest 50 experiments, collection reward markers, Rainmaker and learning-lab completion/best-score records, and explicit historical reading markers. The reading field is additive: older v7 saves default to an empty list, as do migrated v1-v6 saves. Only discovered, researched element IDs are retained as reading markers. In-flight challenge state is not saved. There are no accounts or cloud sync.
 
@@ -42,7 +42,7 @@ See [Gameplay and Atlas](gameplay.md) for challenge rewards and manual reading c
 
 ## Regional Modules and durable archives
 
-DLC is deferred. This heading is retained for existing documentation links; there is no Regional Modules manager, installed pack registry, activation or reactivation workflow. Every session uses the unchanged 225-element, 291-recipe core catalog.
+DLC is deferred. This heading is retained for existing documentation links; there is no Regional Modules manager, installed pack registry, activation or reactivation workflow. Every session uses the 235-element, 311-recipe core catalog.
 
 | Stored format / content | Behavior |
 | --- | --- |

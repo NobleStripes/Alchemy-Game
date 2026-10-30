@@ -16,8 +16,8 @@ describe('core-only catalog sessions', () => {
     if (format === 'archive') localStorage.setItem(SAVE_KEY, JSON.stringify(createModuleSaveEnvelope(freshProgress(), [])))
     let store = createGameStore()
     expect(store.getState().catalog).toBe(core)
-    expect(core.elements).toHaveLength(225)
-    expect(core.recipes).toHaveLength(291)
+    expect(core.elements).toHaveLength(235)
+    expect(core.recipes).toHaveLength(311)
     expect(core.eras).toHaveLength(5)
     const performed = new Set<string>()
     let advanced = true

@@ -174,6 +174,106 @@
       "id": "whe-roman-architecture", "title": "Roman Architecture", "authors": [], "institution": "World History Encyclopedia", "sourceType": "reference-encyclopedia",
       "url": "https://www.worldhistory.org/Roman_Architecture/", "publicationDate": null,
       "verification": { "status": "verified", "checkedOn": "2026-10-15", "accessedUrl": "https://www.worldhistory.org/Roman_Architecture/", "accessLevel": "selected-passages", "locator": "Architectural Orders and Materials & Techniques: arched and domed bath spaces, masonry and laid concrete, widespread concrete in foundations/walls/vaults by first century BCE. Broad priority rhetoric is not adopted; no claim that all vaults need concrete or began in Rome. Byline/date not independently captured." }
+    },
+    {
+      "id": "alexandria-loom-weights",
+      "title": "Loom weights",
+      "authors": [],
+      "institution": "Bibliotheca Alexandrina, Antiquities Museum",
+      "sourceType": "museum-collection",
+      "url": "https://antiquities.bibalex.org/Collection/Detail.aspx?collection=743&a=1226&lang=en",
+      "publicationDate": null,
+      "verification": {
+        "status": "verified",
+        "checkedOn": "2026-10-30",
+        "accessedUrl": "https://antiquities.bibalex.org/Collection/Detail.aspx?collection=743&a=1226&lang=en",
+        "accessLevel": "collection-record",
+        "locator": "Date, provenance, materials and description: terracotta weights from Nelson Island, Alexandria, Ptolemaic Period (323-31 BCE). Weights kept loom threads taut; some were found in a basket in a house. This is a regional example, not the invention of weighted weaving."
+      }
+    },
+    {
+      "id": "ucl-textile-other-uses",
+      "title": "Textile production and clothing: Other uses in ancient Egypt",
+      "authors": [],
+      "institution": "University College London, Digital Egypt for Universities",
+      "sourceType": "archaeology-institution",
+      "url": "https://www.ucl.ac.uk/museums-static/digitalegypt/textil/other.html",
+      "publicationDate": null,
+      "verification": {
+        "status": "verified",
+        "checkedOn": "2026-10-30",
+        "accessedUrl": "https://www.ucl.ac.uk/museums-static/digitalegypt/textil/other.html",
+        "accessLevel": "selected-passages",
+        "locator": "Opening names sacks and sails among textile uses. Lahun bags UC 7502 and 7423, probably about 1850-1750 BC; carrying nets, jars and ropes. The bag dates do not date sailcloth or prove survival of a complete sail or ship."
+      }
+    },
+    {
+      "id": "hallstatt-meat-industry",
+      "title": "Bronze Age meat industry: ancient mitochondrial DNA analyses of pig bones from the prehistoric salt mines of Hallstatt (Austria)",
+      "authors": [],
+      "institution": "BMC Research Notes, hosted by PubMed Central",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5899323/",
+      "publicationDate": null,
+      "verification": {
+        "status": "verified",
+        "checkedOn": "2026-10-30",
+        "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5899323/",
+        "accessLevel": "selected-passages",
+        "locator": "Abstract, Introduction and Animals and sample collection: pork preservation with salt; butchery bones and eight log basins interpreted as curing facilities; sampled teeth from an assemblage dated to the thirteenth/twelfth century BC. Genetic results concern maternal lineages, not a reconstructed curing procedure or proof of the first preserved food. Supplementary data not reviewed."
+      }
+    },
+    {
+      "id": "mpm-oil-lamps",
+      "title": "Description and History of Oil Lamps",
+      "authors": [],
+      "institution": "Milwaukee Public Museum",
+      "sourceType": "museum-essay",
+      "url": "https://www.mpm.edu/research-collections/anthropology/anthropology-collections-research/mediterranean-oil-lamps/description-and-history-oil-lamps",
+      "publicationDate": null,
+      "verification": {
+        "status": "verified",
+        "checkedOn": "2026-10-30",
+        "accessedUrl": "https://www.mpm.edu/research-collections/anthropology/anthropology-collections-research/mediterranean-oil-lamps/description-and-history-oil-lamps",
+        "accessLevel": "selected-passages",
+        "locator": "Roman Oil Lamps Defined, History and Uses: wick, fuel, reservoir and air supply; earlier stone/fat lamps, Bronze Age clay lamps around the sixteenth century BC, saucer and nozzle examples, domestic and ritual uses. Broad priority and attribution claims are not adopted. No specific fibre species, universal fuel or safe operating procedure is established."
+      }
+    },
+    {
+      "id": "vitruvius-sundials",
+      "title": "De Architectura, Book IX.7-8: dials and their geometry",
+      "authors": [
+        "Marcus Vitruvius Pollio"
+      ],
+      "institution": "LacusCurtius, hosted by the University of Chicago",
+      "sourceType": "library-collection",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/9*.html",
+      "publicationDate": null,
+      "verification": {
+        "status": "verified",
+        "checkedOn": "2026-10-30",
+        "accessedUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/9*.html",
+        "accessLevel": "selected-passages",
+        "locator": "Hosted English translation IX.7.7 and IX.8.1: diagrams appropriate to place, seasonal day divisions and named dial types. Attribution lists are the ancient author reporting traditions, not independent proof of first invention. A technical text is not an excavated sundial or evidence of modern equal-hour clocks."
+      }
+    },
+    {
+      "id": "vitruvius-levers",
+      "title": "De Architectura, Book X.2-3: lifting machines and levers",
+      "authors": [
+        "Marcus Vitruvius Pollio"
+      ],
+      "institution": "LacusCurtius, hosted by the University of Chicago",
+      "sourceType": "library-collection",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html",
+      "publicationDate": null,
+      "verification": {
+        "status": "verified",
+        "checkedOn": "2026-10-30",
+        "accessedUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html",
+        "accessLevel": "selected-passages",
+        "locator": "Hosted English translation X.2.2-4 and X.3.2-3: rope wound around an axle turned by levers; supported axle, pulley blocks and lifting stone; a separate iron lever and fulcrum. This textual account does not establish a first lever, a wooden prototype, a complete excavated harbor winch or operating guidance."
+      }
     }
   ],
   "records": [
@@ -1116,6 +1216,1818 @@
       "historicalUncertainty": ["Bread-like is an archaeological interpretation of charred material, not a claim of identical modern texture or recipe.", "The reported early example does not settle worldwide invention, routine consumption, leavening or every ingredient."],
       "gameplaySimplifications": ["Two-input preparation omits gathering, grinding, mixing and skilled cooking.", "Crop and later powered milling remain optional gameplay routes rather than universal prerequisites for ancient bread."],
       "furtherResearch": [{ "question": "How can charred food microstructure distinguish bread-like preparation from other plant meals?", "sourceIds": ["prehistoric-bread"] }]
+    },
+    {
+      "elementId": "sewing",
+      "elementName": "Sewing",
+      "historicalOverview": {
+        "text": "Sewing joins material with stitches. The La Prele study identifies animal bones used for needles in a roughly 12,900-year-old camp and interprets these tools in relation to tailored garments, without preserving an entire sewn outfit.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The authors connect close stitching with fitted garments and distinguish needles from awls. Their material identifications concern the needles; the specific seams, threads and complete garments used at the site remain indirect interpretations.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Stone Age placement represents prehistoric stitching supported by needle evidence. It does not imply that all clothing was sewn, that La Prele was the first sewing site, or that the game fibre identifies its actual thread.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "needle",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sewing with Needle as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        },
+        {
+          "elementId": "hide",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sewing with Hide as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        },
+        {
+          "elementId": "clothing",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sewing with Clothing as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ],
+      "approximateDates": [
+        {
+          "dateRange": "About 12,900 calibrated years BP",
+          "dateType": "dated-evidence",
+          "precision": "approximate",
+          "regions": [
+            "La Prele, Wyoming, North America"
+          ],
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ],
+          "note": "Date of the needle-bearing archaeological context, not a first invention or a directly surviving garment."
+        }
+      ],
+      "associatedRegions": [
+        "La Prele, Wyoming, North America"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "ZooMS and Micro-CT analyses identify canid, felid and hare bone used for the La Prele needles; the proposed link to pelt garments is an interpretation rather than a surviving garment.",
+          "evidenceType": "excavated-context",
+          "interpretation": "hypothesis",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Stitching offers one way to join material into fitted coverings. The study treats needles as evidence bearing on cold-weather garment technologies, while distinguishing material identification from inferences about dress and animal procurement.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The surviving tools do not establish the exact thread, seam pattern or complete garment at La Prele."
+      ],
+      "gameplaySimplifications": [
+        "Needle and Fibre omit the material being joined, preparation and learned stitching work."
+      ],
+      "furtherResearch": [
+        {
+          "question": "Which kinds of surviving seam or thread evidence could test the garment interpretations drawn from bone needles?",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "salted-meat",
+      "elementName": "Salted Meat",
+      "historicalOverview": {
+        "text": "Salted meat represents preservation in a specific archaeological setting rather than a universal invention. The Hallstatt study discusses large-scale Late Bronze Age pork processing alongside the local salt-mining economy.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The study relates butchery patterns, pig bones and log basins to organized curing. These observations describe a historical production context, not a tested preservation procedure, safe food-handling method or recipe for consumption.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Bronze Age placement follows the Hallstatt context, including a sampled assemblage assigned to the thirteenth and twelfth centuries BCE. It is not a claim that people elsewhere first preserved food at this time.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "salt",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Salted Meat with Salt as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        },
+        {
+          "elementId": "meat",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Salted Meat with Meat as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        },
+        {
+          "elementId": "storage",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Salted Meat with Storage as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ],
+      "approximateDates": [
+        {
+          "dateRange": "13th-12th centuries BCE",
+          "dateType": "dated-evidence",
+          "precision": "approximate",
+          "regions": [
+            "Hallstatt, Upper Austria"
+          ],
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ],
+          "note": "Date reported for the sampled bone assemblage; it does not establish the first use of salt preservation."
+        }
+      ],
+      "associatedRegions": [
+        "Hallstatt, Upper Austria"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The introduction reports thousands of pig bones and eight log basins as evidence for meat processing and curing; the molecular pilot study itself analyzes ten prehistoric teeth.",
+          "evidenceType": "excavated-context",
+          "interpretation": "hypothesis",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Preserved provisions connect food supply to specialized production communities. Hallstatt provides a regional case for studying provisioning and animal supply without making its scale or organization universal across Bronze Age societies.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The genetic pilot does not reconstruct the complete curing operation or establish a worldwide first use of salted meat."
+      ],
+      "gameplaySimplifications": [
+        "Salt and Meat omit preparation, time, environment and food safety; no practical curing instructions are provided."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How do butchery patterns, basin interpretation and molecular evidence contribute different information about Hallstatt provisioning?",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "loom-weight",
+      "elementName": "Loom Weight",
+      "historicalOverview": {
+        "text": "Loom weights maintain tension on suspended warp threads. The Alexandria Antiquities Museum records terracotta examples from Nelson Island in the Ptolemaic period, including weights found together in a domestic setting.",
+        "sourceIds": [
+          "alexandria-loom-weights"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The museum explains that small weights hung from the thread ends kept the warp taut. Weights belonged to a larger loom arrangement; their presence does not imply that every vertical loom, or every ancient weaving system, was weighted.",
+        "sourceIds": [
+          "alexandria-loom-weights"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Iron Age placement uses the game age with variable regional end dates; the cited example is explicitly Ptolemaic Egypt, overlapping the Classical age. It does not move Egyptian ground looms into a weighted system or claim an invention date.",
+        "sourceIds": [
+          "alexandria-loom-weights"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "loom",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Loom Weight with Loom as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "alexandria-loom-weights"
+          ]
+        },
+        {
+          "elementId": "yarn",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Loom Weight with Yarn as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "alexandria-loom-weights"
+          ]
+        },
+        {
+          "elementId": "textile",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Loom Weight with Textile as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "alexandria-loom-weights"
+          ]
+        }
+      ],
+      "approximateDates": [
+        {
+          "dateRange": "323-31 BCE",
+          "dateType": "dated-evidence",
+          "precision": "approximate",
+          "regions": [
+            "Nelson Island, Alexandria, Egypt"
+          ],
+          "sourceIds": [
+            "alexandria-loom-weights"
+          ],
+          "note": "Museum period attribution for the collection, not a date for the invention of loom weights."
+        }
+      ],
+      "associatedRegions": [
+        "Nelson Island, Alexandria, Egypt"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The collection description identifies pottery weights from Nelson Island and reports some found in a basket beside a loom in a house; the museum notes that interpretation may change with research.",
+          "evidenceType": "excavated-context",
+          "interpretation": "attested",
+          "sourceIds": [
+            "alexandria-loom-weights"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Durable loom equipment can outlast the frame and textile, helping researchers investigate weaving spaces. The domestic find context is local evidence and should not be generalized into one universal organization of textile labor.",
+        "sourceIds": [
+          "alexandria-loom-weights"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The cited collection illustrates a regional period, not the earliest weighted loom or the equipment used for all Egyptian textiles."
+      ],
+      "gameplaySimplifications": [
+        "Clay and Loom signal equipment; shaping and firing weights are omitted, and Loom Weight plus Yarn still needs a frame and weft."
+      ],
+      "furtherResearch": [
+        {
+          "question": "What associations between weights, thread and architectural remains distinguish a weaving space from stored equipment?",
+          "sourceIds": [
+            "alexandria-loom-weights"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "sailcloth",
+      "elementName": "Sailcloth",
+      "historicalOverview": {
+        "text": "Sailcloth distinguishes a textile prepared for sailing from the complete sail and its rigging. UCL lists sails among ancient Egyptian textile uses, alongside containers, bedding and other applications beyond clothing.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "A piece of woven fabric has to be suitable for its intended task and incorporated into a larger arrangement. The inspected UCL passage establishes sail use but does not describe a complete sailmaking procedure or one universal fibre.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Bronze Age placement is a regional gameplay context shared with the existing Sail and Boat discoveries. The inspected overview does not provide a securely dated sailcloth object, so no numerical invention or artifact date is attached here.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "textile",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sailcloth with Textile as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        },
+        {
+          "elementId": "sail",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sailcloth with Sail as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        },
+        {
+          "elementId": "boat",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sailcloth with Boat as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Egypt"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "UCL names sails in its overview of Egyptian textile uses. The dated bags, ropes and nets illustrated on the same page are not presented as an excavated complete sail.",
+          "evidenceType": "textual-evidence",
+          "interpretation": "attested",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Sails illustrate a use for textile beyond dress and a connection between textile work and transport. This association broadens the role of cloth without claiming that every boat was sailed or every ancient sail had the same construction.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The inspected passage does not identify a complete surviving sail, a first sailcloth date or a universal material."
+      ],
+      "gameplaySimplifications": [
+        "Textile and Boat express intended use; the boat is not consumed to manufacture cloth, and later rigging omits spars and skilled assembly."
+      ],
+      "furtherResearch": [
+        {
+          "question": "Which directly dated sail fragments or rigging finds could refine this broad Egyptian textile association?",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "wick",
+      "elementName": "Wick",
+      "historicalOverview": {
+        "text": "A wick is one component of an oil lamp, distinct from its reservoir and fuel. The Milwaukee Public Museum describes these components together and illustrates how lamp nozzles could support the wick in different forms.",
+        "sourceIds": [
+          "mpm-oil-lamps"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The museum contrasts open saucers with later pinched or more enclosed forms that hold the wick. The inspected passages do not identify a single plant fibre used in every ancient wick or make an unattached strand a complete light.",
+        "sourceIds": [
+          "mpm-oil-lamps"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Bronze Age placement pairs the wick with the clay-lamp examples discussed by the museum. It does not date the first wick, exclude earlier lighting devices or identify the fibre represented by the game strand.",
+        "sourceIds": [
+          "mpm-oil-lamps"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "fibre",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Wick with Fibre as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        },
+        {
+          "elementId": "cordage",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Wick with Cordage as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        },
+        {
+          "elementId": "lamp",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Wick with Lamp as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Mediterranean"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The museum illustrates saucer and nozzle lamps and explains the role of the wick alongside a reservoir, fuel and air. The illustrations are not identified as surviving examples of the game fibre itself.",
+          "evidenceType": "interpretation",
+          "interpretation": "attested",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Separating wick, reservoir and fuel makes ancient lighting more understandable as a system rather than a single material. Different lamp forms address how components work together without demonstrating one universal sequence of invention.",
+        "sourceIds": [
+          "mpm-oil-lamps"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The selected museum passages do not establish the botanical species or preparation of every ancient wick."
+      ],
+      "gameplaySimplifications": [
+        "Fibre and Cordage symbolize prepared strands; fuel and a suitable reservoir are omitted until the separate lamp association."
+      ],
+      "furtherResearch": [
+        {
+          "question": "What preserved fibres or residue studies would allow a particular lamp wick and fuel to be identified?",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "lamp",
+      "elementName": "Lamp",
+      "historicalOverview": {
+        "text": "Lamps hold fuel for lighting. The Milwaukee Public Museum distinguishes early stone examples from Bronze Age clay lamps and later Mediterranean forms, illustrating saucers, nozzles and more enclosed ceramic reservoirs.",
+        "sourceIds": [
+          "mpm-oil-lamps"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "A lamp brings together a suitable reservoir, wick, fuel and air. The museum describes both everyday and ritual uses; a pot and wick alone do not establish a complete working light or identify the fuel in any particular artifact.",
+        "sourceIds": [
+          "mpm-oil-lamps"
+        ]
+      },
+      "agePlacement": {
+        "status": "earlier-precedents",
+        "text": "Bronze Age placement represents the museum overview of clay lamps around the sixteenth century BCE. Earlier stone lamps and other lighting devices remain earlier precedents, rather than being erased by this optional discovery.",
+        "sourceIds": [
+          "mpm-oil-lamps"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "wick",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Lamp with Wick as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        },
+        {
+          "elementId": "pottery",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Lamp with Pottery as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        },
+        {
+          "elementId": "home",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Lamp with Home as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        }
+      ],
+      "approximateDates": [
+        {
+          "dateRange": "Around the 16th century BCE",
+          "dateType": "dated-evidence",
+          "precision": "approximate",
+          "regions": [
+            "Mediterranean"
+          ],
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ],
+          "note": "Approximate clay-lamp context in the museum overview; not the beginning of all artificial lighting."
+        }
+      ],
+      "associatedRegions": [
+        "Mediterranean"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "Illustrated museum objects include open saucers, pinched nozzles, later enclosed forms and a lamp bearing burn scars. Such objects document lighting equipment, not every original fuel or operating condition.",
+          "evidenceType": "excavated-context",
+          "interpretation": "attested",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Lamps supplied light in domestic, public and ritual contexts. Their forms and decoration also offer evidence about production and use, without proving that every household had the same lighting resources or customs.",
+        "sourceIds": [
+          "mpm-oil-lamps"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "A lamp shape or burn mark does not by itself identify all original fuels, users or settings."
+      ],
+      "gameplaySimplifications": [
+        "Pottery and Wick omit fuel, suitable shaping and preparation. The later Home result is symbolic, not a prerequisite for belonging or shelter."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How can residue, wear and find context distinguish lamp use from assumptions based on shape alone?",
+          "sourceIds": [
+            "mpm-oil-lamps"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "lever",
+      "elementName": "Lever",
+      "historicalOverview": {
+        "text": "A lever acts about a support to move a load. Vitruvius describes an iron lever with a fulcrum and discusses leverage alongside winding axles; his text records a mechanical account rather than the beginning of the principle.",
+        "sourceIds": [
+          "vitruvius-levers"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The text distinguishes a lever acting on a load from levers turning an axle in a larger lifting machine. These are related mechanical applications, not proof that one game pair supplies a complete or safely rated tool.",
+        "sourceIds": [
+          "vitruvius-levers"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Iron Age placement is a broad regional gameplay choice with variable end dates and overlap with Classical Antiquity. The cited Roman text is a later attestation, not evidence that leverage was invented in the Iron Age or first made from timber.",
+        "sourceIds": [
+          "vitruvius-levers"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "timber",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Lever with Timber as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        },
+        {
+          "elementId": "quarry",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Lever with Quarry as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        },
+        {
+          "elementId": "winch",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Lever with Winch as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Roman Mediterranean"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "Book X.3.2-3 describes an iron lever and fulcrum; X.2 describes levers turning the axle of a hoist. This is technical textual evidence, not a recovered wooden prototype.",
+          "evidenceType": "textual-evidence",
+          "interpretation": "attested",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Leverage links a simple mechanical principle with different kinds of work. The account allows comparison of load movement and rotary handling without making ancient technical explanation equivalent to a modern experimental history of invention.",
+        "sourceIds": [
+          "vitruvius-levers"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The inspected passage does not date the earliest lever or document the precise timber-and-stone game arrangement."
+      ],
+      "gameplaySimplifications": [
+        "Timber and Rock symbolize member and support; material suitability, forces and safe assembly are omitted."
+      ],
+      "furtherResearch": [
+        {
+          "question": "What contextual evidence could distinguish an ordinary timber from one actually used as a lever?",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "winch",
+      "elementName": "Winch",
+      "historicalOverview": {
+        "text": "A winch or windlass winds rope around a supported rotating axle to move loads. Vitruvius describes such winding gear within lifting machines, making the axle mechanism distinct from the complete hoist or crane.",
+        "sourceIds": [
+          "vitruvius-levers"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The description includes an axle turned by levers, rope, supports and lifting blocks. Lever and Cordage select two recognizable features while omitting much of the arrangement; they cannot be read as assembly or load-handling guidance.",
+        "sourceIds": [
+          "vitruvius-levers"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Classical Antiquity placement follows the ancient technical tradition represented by Vitruvius. The account does not establish a sole inventor, a universal date or a single configuration used at every building site and harbor.",
+        "sourceIds": [
+          "vitruvius-levers"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "lever",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Winch with Lever as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        },
+        {
+          "elementId": "cordage",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Winch with Cordage as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        },
+        {
+          "elementId": "pulley",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Winch with Pulley as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        },
+        {
+          "elementId": "harbor",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Winch with Harbor as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Roman Mediterranean"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "Book X.2.2-4 describes rope winding on an axle turned with levers and working with pulley blocks. It documents a written machine account, not an excavated complete harbor installation.",
+          "evidenceType": "textual-evidence",
+          "interpretation": "attested",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Winding equipment helps distinguish rotary handling from direct pulling or isolated pulley use. That distinction makes ancient machinery more legible without implying that one mechanism explains all construction or maritime labor.",
+        "sourceIds": [
+          "vitruvius-levers"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The source does not identify the game harbor association as a particular excavated machine or verify first invention."
+      ],
+      "gameplaySimplifications": [
+        "Lever and Cordage omit axle, frame and bearings. Winch and Anchor evoke harbor work rather than constructing a port."
+      ],
+      "furtherResearch": [
+        {
+          "question": "Which surviving fittings or wear traces would support identification of a particular winding installation?",
+          "sourceIds": [
+            "vitruvius-levers"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "sundial",
+      "elementName": "Sundial",
+      "historicalOverview": {
+        "text": "Sundials relate the sun and shadow to divisions of the day. Vitruvius discusses diagrams, local arrangement and several dial types, providing textual evidence for a varied tradition rather than one universal clock.",
+        "sourceIds": [
+          "vitruvius-sundials"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The account links dial layout with place and seasonal divisions of daylight. Such hours should not automatically be equated with modern equal clock hours; a gnomon and marked surface require an appropriate local arrangement.",
+        "sourceIds": [
+          "vitruvius-sundials"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Classical Antiquity placement represents the mathematical dial traditions discussed by Vitruvius. His lists of named inventors report ancient attributions, not independent proof of the first sundial or the origin of timekeeping.",
+        "sourceIds": [
+          "vitruvius-sundials"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "observation",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sundial with Observation as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-sundials"
+          ]
+        },
+        {
+          "elementId": "mathematical-astronomy",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sundial with Mathematical Astronomy as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-sundials"
+          ]
+        },
+        {
+          "elementId": "geometry",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sundial with Geometry as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "vitruvius-sundials"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Greek and Roman Mediterranean"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "Book IX.7.7 and IX.8.1 discuss projected dial lines and named dial forms. These passages are textual evidence and do not constitute an excavated instrument or verification of every attribution.",
+          "evidenceType": "textual-evidence",
+          "interpretation": "attested",
+          "sourceIds": [
+            "vitruvius-sundials"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "A sundial connects practical observation with spatial reasoning and social divisions of time. Its dependence on place and season offers an example of a useful historical model that is not identical to modern clock practice.",
+        "sourceIds": [
+          "vitruvius-sundials"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The selected text cannot establish the first dial or independently verify every named inventor."
+      ],
+      "gameplaySimplifications": [
+        "Observation and Mathematical Astronomy are conceptual clues; gnomon, surface, installation and local calibration are omitted."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How would a dial intended for one location differ from a portable or differently oriented dial?",
+          "sourceIds": [
+            "vitruvius-sundials"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "dome",
+      "elementName": "Dome",
+      "historicalOverview": {
+        "text": "A dome spans a space with a curved roof form distinct from other vaults. The Roman architecture overview discusses domed bath spaces, including the Stabian Baths at Pompeii, alongside later large spans.",
+        "sourceIds": [
+          "whe-roman-architecture"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "Domes belong to an architectural system of supports, materials and construction work. The game pairs a vault concept with geometry, but neither a geometric idea nor a generic curved roof supplies the physical structure.",
+        "sourceIds": [
+          "whe-roman-architecture"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Classical Antiquity placement follows Roman architectural examples, not a claim that Romans invented all domes. The reported Pompeian example is a regional dated context; broad priority language in the overview is not adopted.",
+        "sourceIds": [
+          "whe-roman-architecture"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "vault",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Dome with Vault as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-architecture"
+          ]
+        },
+        {
+          "elementId": "geometry",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Dome with Geometry as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-architecture"
+          ]
+        },
+        {
+          "elementId": "public-bath",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Dome with Public Bath as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-architecture"
+          ]
+        }
+      ],
+      "approximateDates": [
+        {
+          "dateRange": "2nd century BCE",
+          "dateType": "dated-evidence",
+          "precision": "approximate",
+          "regions": [
+            "Roman Italy"
+          ],
+          "sourceIds": [
+            "whe-roman-architecture"
+          ],
+          "note": "Period assigned in the overview to the domed cold room of the Stabian Baths at Pompeii; no universal priority claim is adopted."
+        }
+      ],
+      "associatedRegions": [
+        "Roman Italy"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The overview describes the domed cold room at the Stabian Baths and later bath complexes. It is a secondary architectural account, not a newly excavated assemblage or direct dating report.",
+          "evidenceType": "interpretation",
+          "interpretation": "attested",
+          "sourceIds": [
+            "whe-roman-architecture"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Domed spaces connect roof form with how buildings organize interiors. Roman baths provide a useful case without implying that all public baths were domed, all domes were concrete or every vaulted roof was a dome.",
+        "sourceIds": [
+          "whe-roman-architecture"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The source overview is not sufficient to establish a universal first dome or a single sequence of development."
+      ],
+      "gameplaySimplifications": [
+        "Vault and Geometry are conceptual; supports, materials and work are omitted, and the bath route is an optional association."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How do surviving supports and roof remains distinguish a dome from other vault forms in a bath complex?",
+          "sourceIds": [
+            "whe-roman-architecture"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "needle",
+      "elementName": "Needle",
+      "historicalOverview": {
+        "text": "Needles are evidence for fine joining work, but their materials and tasks require investigation. The La Prele study identifies canid, felid and hare bones used in needles from a roughly 12,900-year-old archaeological context.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The authors distinguish tightly stitched seams made with needles from coarser perforation with awls. Their analyses concern surviving needle material; linking those tools with particular pelts and garments remains an interpretive step.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Stone Age placement is supported by Paleolithic needle finds and is not contingent on later woven textile. The La Prele context is one regional example, not the beginning of needles or a date for every sewing tradition.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "bone",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Needle with Bone as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        },
+        {
+          "elementId": "sewing",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Needle with Sewing as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        },
+        {
+          "elementId": "clothing",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Needle with Clothing as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ],
+      "approximateDates": [
+        {
+          "dateRange": "About 12,900 calibrated years BP",
+          "dateType": "dated-evidence",
+          "precision": "approximate",
+          "regions": [
+            "La Prele, Wyoming, North America"
+          ],
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ],
+          "note": "Date of the needle-bearing archaeological context, not a first invention or a directly surviving garment."
+        }
+      ],
+      "associatedRegions": [
+        "La Prele, Wyoming, North America"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "ZooMS and Micro-CT support identification of the animal bones used for La Prele needles. Garment reconstructions and access to fur-bearing animals involve further interpretation beyond that material result.",
+          "evidenceType": "excavated-context",
+          "interpretation": "attested",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Needles connect tool manufacture with questions about dress, adaptation and material choice. The case shows why identifying a tool material is different from recovering the complete clothing or social practice associated with it.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "Tool survival does not reveal the whole garment, all thread materials or a universal purpose for every needle."
+      ],
+      "gameplaySimplifications": [
+        "Needle, Fibre, Hide and Textile routes omit preparation, thread selection and skilled work."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How do molecular material identification and wear analysis contribute different evidence about a needle?",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "hide",
+      "elementName": "Hide",
+      "historicalOverview": {
+        "text": "Hide and pelt use is investigated through more than surviving skins. At La Prele, needle materials and fur-bearing animal remains inform a proposal about pelt procurement and garment work, rather than directly preserving whole dressed skins.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The authors propose that bones suitable for needles remained associated with pelts used in garments. That interpretation is distinct from identifying the needle species and does not demonstrate a particular tanning or hide-treatment method.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Stone Age placement represents prehistoric use of animal coverings. The regional La Prele discussion is indirect evidence about garment materials, not the first hide use or proof that every hide was sewn, tanned or made into clothing.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "animal",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Hide with Animal as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        },
+        {
+          "elementId": "sewing",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Hide with Sewing as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        },
+        {
+          "elementId": "clothing",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Hide with Clothing as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "La Prele, Wyoming, North America"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The paper relates identified needle materials and animal remains to a pelt-use hypothesis. No complete hide garment is established by the material identification alone.",
+          "evidenceType": "excavated-context",
+          "interpretation": "hypothesis",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Studying hide use links animal remains with questions about coverings and craft, while exposing preservation limits. It also cautions against treating all animal remains as food waste or every pelt interpretation as a recovered finished object.",
+        "sourceIds": [
+          "plos-la-prele-needles"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The selected evidence does not establish a complete hide, tanning chemistry or the exact garment construction."
+      ],
+      "gameplaySimplifications": [
+        "Hide remains a broad game material; its use with Sewing assumes preparation and does not equate pelt use with tanning."
+      ],
+      "furtherResearch": [
+        {
+          "question": "What surviving skin, residues or wear would distinguish hide treatment from a proposed pelt-use context?",
+          "sourceIds": [
+            "plos-la-prele-needles"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "clothing",
+      "elementName": "Clothing",
+      "historicalOverview": {
+        "text": "Clothing encompasses different materials and ways of covering the body. Paleolithic needles provide indirect evidence about tailored garments, while Egyptian textile evidence documents a separate woven-material tradition rather than one universal origin.",
+        "sourceIds": [
+          "plos-la-prele-needles",
+          "ucl-textile-tools"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The La Prele study discusses close stitching and fitted garments; the UCL account examines yarn, looms and surviving textiles. Woven cloth, prepared skins and draped coverings should not be collapsed into a single manufacturing sequence.",
+        "sourceIds": [
+          "plos-la-prele-needles",
+          "ucl-textile-tools"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Stone Age placement does not require Bronze Age weaving or later textile equipment. The Egyptian examples supply comparisons for woven clothing, not dates for the first clothing or proof that all early coverings were sewn.",
+        "sourceIds": [
+          "plos-la-prele-needles",
+          "ucl-textile-tools"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "hide",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Clothing with Hide as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles",
+            "ucl-textile-tools"
+          ]
+        },
+        {
+          "elementId": "textile",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Clothing with Textile as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles",
+            "ucl-textile-tools"
+          ]
+        },
+        {
+          "elementId": "sewing",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Clothing with Sewing as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "plos-la-prele-needles",
+            "ucl-textile-tools"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "La Prele, Wyoming, North America",
+        "Egypt"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "Bone needles and fur-bearing remains support garment interpretations at La Prele; workshop depictions and surviving cloth support Egyptian weaving. These are separate contexts with different preservation limits.",
+          "evidenceType": "excavated-context",
+          "interpretation": "hypothesis",
+          "sourceIds": [
+            "plos-la-prele-needles",
+            "ucl-textile-tools"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Clothing combines material work with bodily and social use. Comparing distinct evidence types makes its diversity clearer without implying one climate, community or tool explains all dress and garment traditions.",
+        "sourceIds": [
+          "plos-la-prele-needles",
+          "ucl-textile-tools"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "Indirect garment evidence does not preserve every form of dress, and weaving equipment does not identify a particular complete outfit."
+      ],
+      "gameplaySimplifications": [
+        "The sewing and woven-cloth alternatives omit preparation, thread and fitting; the original clothing route stays available."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How can directly surviving garments constrain reconstructions made from tools and workshop depictions?",
+          "sourceIds": [
+            "plos-la-prele-needles",
+            "ucl-textile-tools"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "meat",
+      "elementName": "Meat",
+      "historicalOverview": {
+        "text": "Meat in the game is a broad food category, illustrated here by a specific pork-processing economy. At Hallstatt, abundant pig bones and their treatment inform research into Late Bronze Age provisioning and preservation.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The study describes specialized butchery patterns and curing facilities in the high valley. Its ten-tooth genetic pilot investigates animal lineages, not nutritional value, a universal diet or practical instructions for preparing meat.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "agePlacement": {
+        "status": "earlier-precedents",
+        "text": "The existing Stone Age placement does not originate meat use at Bronze Age Hallstatt. Hallstatt is a later regional case for organized processing, and the dated bone context must not be presented as the first consumption of animal foods.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "animal",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Meat with Animal as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        },
+        {
+          "elementId": "salted-meat",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Meat with Salted Meat as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        },
+        {
+          "elementId": "food",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Meat with Food as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ],
+      "approximateDates": [
+        {
+          "dateRange": "13th-12th centuries BCE",
+          "dateType": "dated-evidence",
+          "precision": "approximate",
+          "regions": [
+            "Hallstatt, Upper Austria"
+          ],
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ],
+          "note": "Date reported for the sampled bone assemblage; it does not establish the first use of salt preservation."
+        }
+      ],
+      "associatedRegions": [
+        "Hallstatt, Upper Austria"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "Pig bones and interpreted log curing basins support the regional processing account; sampled teeth come from an assemblage dated to the thirteenth and twelfth centuries BCE.",
+          "evidenceType": "excavated-context",
+          "interpretation": "attested",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Animal remains can illuminate provisioning, transport and specialized labor rather than merely the presence of food. Hallstatt exemplifies these questions locally without making its production system universal.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The study does not reconstruct every food practice or establish a first date for eating meat."
+      ],
+      "gameplaySimplifications": [
+        "Meat does not encode species or safe preparation, and the Salt route provides no preservation instructions."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How do cut marks, animal age profiles and genetic lineages constrain different aspects of provisioning?",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "food",
+      "elementName": "Food",
+      "historicalOverview": {
+        "text": "Food covers many resources and practices rather than a single invention. Hallstatt provides one case in which pork processing and salt resources were connected with sustaining a specialized production community.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The Hallstatt account places preserved meat within provisioning and animal-supply networks. This regional example is not a complete account of the community diet, and neither its salt resources nor its scale is necessary for all food production.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "Stone Age placement is a broad gameplay organization, not a date for the beginning of food. The later Bronze Age case illustrates provisioning only and cannot date earlier gathering, hunting, cooking or plant consumption.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "meat",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Food with Meat as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        },
+        {
+          "elementId": "salted-meat",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Food with Salted Meat as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        },
+        {
+          "elementId": "storage",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Food with Storage as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Hallstatt, Upper Austria"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The paper describes pig-bone assemblages, processing and interpreted curing facilities. These evidence a particular part of food supply, not all foods consumed by every person at Hallstatt.",
+          "evidenceType": "excavated-context",
+          "interpretation": "attested",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "A provisioning case links food with labor and settlement rather than treating it as only a material. The limits of the evidence matter because abundant meat-processing remains do not demonstrate a uniform or complete diet.",
+        "sourceIds": [
+          "hallstatt-meat-industry"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "One specialized production assemblage cannot establish the full diet, social distribution or universal history of food."
+      ],
+      "gameplaySimplifications": [
+        "The general Food discovery compresses diverse edible resources and practices; no recipe here is dietary or safety guidance."
+      ],
+      "furtherResearch": [
+        {
+          "question": "Which plant, residue or household evidence could complement a specialized meat-processing assemblage?",
+          "sourceIds": [
+            "hallstatt-meat-industry"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "storage",
+      "elementName": "Storage",
+      "historicalOverview": {
+        "text": "Storage holds materials for later use and takes many physical forms. UCL illustrates a sealed linen bag and a small bundle from Lahun, documenting containers beyond pottery and large architectural stores.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "One small bag contains hardened organic material and has a mud seal over its closure; another bundle encloses a mineral. The proposed identity of the organic contents is uncertain and should not be turned into a proven medicine or food.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "agePlacement": {
+        "status": "earlier-precedents",
+        "text": "Stone Age placement is not dated by the later Egyptian objects. The probable late Middle Kingdom bags illustrate a regional storage practice, while earlier storage and other container materials remain independent.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "pottery",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Storage with Pottery as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        },
+        {
+          "elementId": "basket",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Storage with Basket as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        },
+        {
+          "elementId": "salted-meat",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Storage with Salted Meat as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ],
+      "approximateDates": [
+        {
+          "dateRange": "About 1850-1750 BCE",
+          "dateType": "dated-evidence",
+          "precision": "approximate",
+          "regions": [
+            "Lahun, Egypt"
+          ],
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ],
+          "note": "Probable late Middle Kingdom attribution of the illustrated bags, not the beginning of storage."
+        }
+      ],
+      "associatedRegions": [
+        "Lahun, Egypt"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "UCL identifies Lahun objects UC 7502 and UC 7423, probably about 1850-1750 BCE. The photographed bags document wrapping and closure but do not establish salted pork inside those containers.",
+          "evidenceType": "excavated-context",
+          "interpretation": "attested",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Small containers show that retaining and protecting material was not limited to granaries or pots. Their contents and closures can raise questions about handling and access while leaving the exact stored substance uncertain.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The organic material is only tentatively identified; these bags are not evidence of the game salted-meat-and-pottery assemblage."
+      ],
+      "gameplaySimplifications": [
+        "Salted Meat and Pottery are a symbolic provisions-and-container association, separate from the Egyptian bag finds."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How could residue analysis refine the uncertain contents of a sealed bag without relying on appearance?",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "sail",
+      "elementName": "Sail",
+      "historicalOverview": {
+        "text": "A sail is a working part of a sailing arrangement rather than merely a sheet of cloth. UCL names sails among Egyptian textile applications, providing background for distinguishing prepared sailcloth from the complete rig.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "Sail use brings fabric together with support and attachment arrangements. The inspected overview establishes the textile association and discusses ropes separately; it does not document one complete rig or a universal ancient sail design.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "agePlacement": {
+        "status": "regional-gameplay-placement",
+        "text": "The existing Bronze Age placement is a regional gameplay context, not a worldwide start date. No numerical sail date is added because the inspected textile passage does not securely date an individual sail object.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "sailcloth",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sail with Sailcloth as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        },
+        {
+          "elementId": "cordage",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sail with Cordage as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        },
+        {
+          "elementId": "boat",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Sail with Boat as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Egypt"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The UCL overview names sails as a use of Egyptian textile. Its dated ropes and bags are not automatically an excavated sail assemblage, and their dates cannot be transferred to a complete rig.",
+          "evidenceType": "textual-evidence",
+          "interpretation": "attested",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Sails connect textile work with transport and the use of wind, while remaining only one component of a vessel. Separating these roles prevents cloth evidence alone from becoming a full reconstruction of ancient navigation.",
+        "sourceIds": [
+          "ucl-textile-other-uses"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The passage does not establish the earliest sail, a uniform fibre or a single rigging system."
+      ],
+      "gameplaySimplifications": [
+        "Sailcloth and Cordage omit spars, seams, attachments and suitable vessel design; the original sail formula remains independent."
+      ],
+      "furtherResearch": [
+        {
+          "question": "Which combinations of sail fragments, fittings and depictions allow a particular rig to be reconstructed?",
+          "sourceIds": [
+            "ucl-textile-other-uses"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "boat",
+      "elementName": "Boat",
+      "historicalOverview": {
+        "text": "Boats and ships belong to varied transport traditions. Egyptian textile use includes sails, while the Roman trade overview describes maritime cargo transport; neither account supplies a universal origin for watercraft.",
+        "sourceIds": [
+          "ucl-textile-other-uses",
+          "whe-roman-trade"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "Textiles and ropes could form part of sailing equipment, and vessels transported goods within trade networks. These associations do not mean every boat carried a sail, used the same construction or served commercial transport.",
+        "sourceIds": [
+          "ucl-textile-other-uses",
+          "whe-roman-trade"
+        ]
+      },
+      "agePlacement": {
+        "status": "earlier-precedents",
+        "text": "The existing Bronze Age placement is not a claim that boats began with Bronze Age sails. Earlier watercraft remain represented separately, and the later Roman trade example cannot date the invention of boats.",
+        "sourceIds": [
+          "ucl-textile-other-uses",
+          "whe-roman-trade"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "sail",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Boat with Sail as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses",
+            "whe-roman-trade"
+          ]
+        },
+        {
+          "elementId": "sailcloth",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Boat with Sailcloth as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses",
+            "whe-roman-trade"
+          ]
+        },
+        {
+          "elementId": "trade",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Boat with Trade as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "ucl-textile-other-uses",
+            "whe-roman-trade"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Egypt",
+        "Roman Mediterranean"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "UCL names Egyptian sail textiles and the trade overview discusses maritime movement of goods. These are broad accounts rather than a recovered boat with all its original textile equipment.",
+          "evidenceType": "textual-evidence",
+          "interpretation": "attested",
+          "sourceIds": [
+            "ucl-textile-other-uses",
+            "whe-roman-trade"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Watercraft link movement with equipment and social organization, but the roles should remain distinct. A boat can provide context for sailcloth without proving that all early vessels were sailed or merchant-owned.",
+        "sourceIds": [
+          "ucl-textile-other-uses",
+          "whe-roman-trade"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The selected accounts do not establish the first boat, one standard vessel or an intact sail-and-hull assemblage."
+      ],
+      "gameplaySimplifications": [
+        "Textile and Boat express a purpose for cloth, not the physical consumption of a hull to produce a sail panel."
+      ],
+      "furtherResearch": [
+        {
+          "question": "What hull, rigging and cargo evidence distinguishes vessel construction from its eventual use?",
+          "sourceIds": [
+            "ucl-textile-other-uses",
+            "whe-roman-trade"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "trade",
+      "elementName": "Trade",
+      "historicalOverview": {
+        "text": "Trade involves the movement and exchange of goods through varied networks. The Roman trade overview distinguishes local, regional and longer-distance activity, providing a bounded example rather than a universal origin story.",
+        "sourceIds": [
+          "whe-roman-trade"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "The overview discusses commodities, land and sea routes, transport costs and a mixture of public intervention and private activity. Its Roman examples should not be treated as one uniform market system for all ancient communities.",
+        "sourceIds": [
+          "whe-roman-trade"
+        ]
+      },
+      "agePlacement": {
+        "status": "earlier-precedents",
+        "text": "The existing Bronze Age placement does not imply exchange began in that age. The Roman evidence is a later regional example that helps contextualize transport and merchants without dating the first trade.",
+        "sourceIds": [
+          "whe-roman-trade"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "merchant",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Trade with Merchant as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        },
+        {
+          "elementId": "boat",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Trade with Boat as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        },
+        {
+          "elementId": "harbor",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Trade with Harbor as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Roman Mediterranean"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The overview discusses transport and archaeological cargo evidence within Roman networks. It is a secondary synthesis, not a single excavated transaction or proof that all goods moved by the same route.",
+          "evidenceType": "interpretation",
+          "interpretation": "attested",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Studying trade connects material distributions with transport and institutions. These links support questions about exchange while cautioning that an object found far from its source does not alone identify its traders or full journey.",
+        "sourceIds": [
+          "whe-roman-trade"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "A broad synthesis cannot establish every transaction, trader identity or universal pattern of ancient exchange."
+      ],
+      "gameplaySimplifications": [
+        "The game Trade discovery compresses different scales and institutions rather than modeling prices, contracts or every movement of goods."
+      ],
+      "furtherResearch": [
+        {
+          "question": "How can cargo, containers and written accounts be compared without assuming they describe identical transactions?",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        }
+      ]
+    },
+    {
+      "elementId": "merchant",
+      "elementName": "Merchant",
+      "historicalOverview": {
+        "text": "Merchants participated in exchange within wider transport and institutional networks. The Roman trade overview describes varied commercial settings, rather than identifying a single social role that applied unchanged everywhere.",
+        "sourceIds": [
+          "whe-roman-trade"
+        ]
+      },
+      "manufactureOrUse": {
+        "text": "Moving goods could involve producers, carriers, intermediaries and public institutions as well as merchants. The overview helps place trading activity in context without equating every sailor, cargo owner or harbor worker with the same occupation.",
+        "sourceIds": [
+          "whe-roman-trade"
+        ]
+      },
+      "agePlacement": {
+        "status": "earlier-precedents",
+        "text": "The existing Bronze Age placement is a gameplay context, not the first appearance of merchants. The Roman synthesis is a later regional comparison and cannot establish a single worldwide date or social status for this role.",
+        "sourceIds": [
+          "whe-roman-trade"
+        ]
+      },
+      "relatedDiscoveries": [
+        {
+          "elementId": "trade",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Merchant with Trade as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        },
+        {
+          "elementId": "harbor",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Merchant with Harbor as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        },
+        {
+          "elementId": "merchant-network",
+          "relationship": "gameplay-abstraction",
+          "explanation": "Compare Merchant with Merchant Network as a discovered topic; this link is not an additional formula or proof of a shared excavated assemblage.",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        }
+      ],
+      "approximateDates": [],
+      "associatedRegions": [
+        "Roman Mediterranean"
+      ],
+      "archaeologicalEvidence": [
+        {
+          "text": "The overview brings together transport, commodities and commercial organization. As a secondary account it contextualizes trading roles but does not identify the person responsible for any particular game cargo.",
+          "evidenceType": "interpretation",
+          "interpretation": "attested",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        }
+      ],
+      "historicalSignificance": {
+        "text": "Distinguishing people from goods and routes makes exchange networks more understandable. Merchants were participants in systems of production and movement, not an automatic result whenever a vessel or market existed.",
+        "sourceIds": [
+          "whe-roman-trade"
+        ]
+      },
+      "independentDevelopments": [],
+      "historicalUncertainty": [
+        "The selected synthesis does not identify every participant or demonstrate a universal merchant class."
+      ],
+      "gameplaySimplifications": [
+        "Merchant remains a broad social discovery; the game omits contracts, legal status and the different participants behind a shipment."
+      ],
+      "furtherResearch": [
+        {
+          "question": "Which inscriptions or documents can distinguish merchants, carriers and owners in a particular trading context?",
+          "sourceIds": [
+            "whe-roman-trade"
+          ]
+        }
+      ]
     }
   ]
 }

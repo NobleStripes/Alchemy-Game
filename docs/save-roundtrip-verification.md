@@ -2,6 +2,11 @@
 
 ## Current base-only merge verification
 
+The suite also passes after the everyday-craft expansion to **235 discoveries
+and 311 formulas**. Its fixtures derive all current core IDs, so downloaded
+backups include the ten new discoveries and twenty new recipes while preserving
+inactive archive records. No activation behavior has returned.
+
 The browser suite has been reconciled with the DLC rollback. It no longer
 imports a removed pack or attempts activation/reactivation. All three cases
 pass on Windows with Node 24.15.0, Playwright 1.62.1 and Playwright-managed
