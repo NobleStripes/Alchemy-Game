@@ -1,5 +1,7 @@
 # Phase 10 roadmap: a safe, free expansion framework
 
+> **Superseded DLC development record.** DLC is deferred while development focuses on the base game. The playable pack, registries, activation UI and DLC assets described below have been removed. Shared core catalog helpers, manual save transfer and legacy-archive preservation remain. Historical paths, test counts and activation instructions below are not current implementation guidance. See [current saves](saves.md) and [base content](optional-content.md).
+
 [Back to the project overview](../README.md) | [Implemented optional content](optional-content.md) | [Catalog plan toward 250](catalog-plan.md)
 
 ## Status and boundaries

@@ -1,6 +1,5 @@
 import { BookOpen, FlaskConical, Lightbulb } from 'lucide-react'
 import { useState } from 'react'
-import { coreRuntimeCatalog } from '../../game/modules/runtimeCatalog'
 import type { CollectionDefinition } from '../../game/domain/types'
 import { isCollectionComplete } from '../../game/engine/collectionRules'
 import { areGlobalHintsUnlocked } from '../../game/engine/hintRules'
@@ -32,7 +31,7 @@ export function Journal({
   onCombinationPrepared,
   onViewHistory,
 }: JournalProps) {
-  const { collections, elements, elementsById, eras, recipes, regions } = useGameStore((state) => state.catalog)
+  const { collections, elements, elementsById, eras, recipes } = useGameStore((state) => state.catalog)
   const discoveredIds = useGameStore((state) => state.discoveredIds)
   const discoveredRecipeIds = useGameStore(
     (state) => state.discoveredRecipeIds,
@@ -121,9 +120,6 @@ export function Journal({
     (element) =>
       element.era === eraId && discoveredIds.includes(element.id),
   )
-  const coreDiscoveryCount = coreRuntimeCatalog.elements.filter(
-    (element) => element.era === eraId && discoveredIds.includes(element.id),
-  ).length
   const availableElements = elements.filter((element) => element.era === eraId)
   const recordedFormulas = recipes.filter((recipe) =>
     discoveredRecipeIds.includes(recipe.id) && elementsById.get(recipe.result)?.era === eraId,
@@ -142,7 +138,7 @@ export function Journal({
     discoveredIds.includes(elementId),
   ).length
   const challengeComplete =
-    coreDiscoveryCount >= discoveryGoal &&
+    discoveredElements.length >= discoveryGoal &&
     foundLandmarkCount === landmarkIds.length
   const categoryProgress = [
     ['essence', 'Essence'],
@@ -168,7 +164,7 @@ export function Journal({
   const insightsUnlocked = areGlobalHintsUnlocked(
     discoveredIds,
     failedPairKeys,
-    coreRuntimeCatalog.elements,
+    elements,
     eras[0],
   )
   const walletPaused =
@@ -292,20 +288,6 @@ export function Journal({
         <span><strong>{discoveredElements.length}</strong> discovered</span>
         <span><strong>{eraFormulaCount}</strong> formulas recorded</span>
       </div>
-      {regions.length > 0 && (
-        <section className="regional-progress" aria-labelledby="regional-progress-title">
-          <h3 id="regional-progress-title">Core and regional discovery progress</h3>
-          <p>Core discoveries: {coreRuntimeCatalog.elements.filter((element) => discoveredIds.includes(element.id)).length}/{coreRuntimeCatalog.elements.length}</p>
-          <ul>
-            {regions.map((region) => (
-              <li key={region.id}>
-                {region.title}: {region.elementIds.filter((id) => discoveredIds.includes(id)).length}/{region.elementIds.length}
-              </li>
-            ))}
-          </ul>
-          <p>Regional discoveries are optional and do not count toward core age targets.</p>
-        </section>
-      )}
       {era?.education && (
         <details className="guide-section" key={era.id}>
           <summary>About {era.name}</summary>
@@ -316,7 +298,7 @@ export function Journal({
       <section className="challenge-status" aria-label={`${challengeName} challenge`}>
         <strong>{challengeName} challenge</strong>
         <p>
-          Catalogue {Math.min(coreDiscoveryCount, discoveryGoal)}/
+          Catalogue {Math.min(discoveredElements.length, discoveryGoal)}/
           {discoveryGoal} · Landmarks {foundLandmarkCount}/{landmarkIds.length}
         </p>
         <div className="landmark-list">            {landmarks.map((landmark) => (

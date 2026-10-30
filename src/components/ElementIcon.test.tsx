@@ -2,12 +2,19 @@
 import '@testing-library/jest-dom/vitest'
 import { cleanup, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { installedRegionalModules } from '../game/modules/installed'
-import { coreRuntimeCatalog } from '../game/modules/runtimeCatalog'
+import { coreRuntimeCatalog } from '../game/content/runtimeCatalog'
 import { elementImageSchema } from '../game/content/schema'
 import { ElementIcon, ElementImageFigure } from './ElementIcon'
 
-const elements = installedRegionalModules[0].elements
+const elements = [{
+  ...coreRuntimeCatalog.elementsById.get('ember')!,
+  image: {
+    src: 'images/test/photo.jpg', thumbnailSrc: 'images/test/icon.jpg',
+    width: 640, height: 480, description: 'Test photograph', credit: 'Test creator',
+    sourceUrl: 'https://example.com/photo', license: 'CC0', licenseUrl: 'https://example.com/license',
+    licensePath: 'images/test/LICENSE.txt', changes: 'Resized.',
+  },
+}]
 
 afterEach(() => {
   cleanup()
@@ -45,11 +52,11 @@ describe('credited element photography', () => {
 
   it('respects a subpath deployment for thumbnails, full photos and bundled license links', () => {
     vi.stubEnv('BASE_URL', '/alchemy/')
-    const element = elements[1]
+    const element = elements[0]
     const { container } = render(<><ElementIcon element={element} /><ElementImageFigure element={element} /></>)
-    expect(container.querySelector('.element-photo-icon')).toHaveAttribute('src', '/alchemy/images/achaemenid/royal-road.jpg')
-    expect(screen.getByRole('img', { name: element.image!.description })).toHaveAttribute('src', '/alchemy/images/achaemenid/royal-road.jpg')
-    expect(screen.getByRole('link', { name: 'Full license text' })).toHaveAttribute('href', '/alchemy/images/achaemenid/GFDL-1.3.txt')
+    expect(container.querySelector('.element-photo-icon')).toHaveAttribute('src', '/alchemy/images/test/icon.jpg')
+    expect(screen.getByRole('img', { name: element.image!.description })).toHaveAttribute('src', '/alchemy/images/test/photo.jpg')
+    expect(screen.getByRole('link', { name: 'Full license text' })).toHaveAttribute('href', '/alchemy/images/test/LICENSE.txt')
   })
 
   it('rejects remote assets, traversal and incomplete attribution metadata', () => {

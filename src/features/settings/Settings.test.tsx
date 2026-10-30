@@ -2,13 +2,13 @@
 
 import { setTestGameStore } from '../../game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
-import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { exportProgress, freshProgress, loadProgress, MAX_SAVE_BYTES, SAVE_KEY } from '../../game/state/persistence'
 import { createGameStore, useGameStore } from '../../game/state/useGameStore'
-import { createModuleSaveEnvelope, parseModuleSaveEnvelope } from '../../game/state/moduleProgress'
-import { installedModuleOwnership } from '../../game/modules/ownership'
+import { parseModuleSaveEnvelope } from '../../game/state/moduleProgress'
+import { legacyArchive } from '../../game/state/legacyArchiveFixture'
 import { Settings } from './Settings'
 
 const originalShowModal = Object.getOwnPropertyDescriptor(HTMLDialogElement.prototype, 'showModal')
@@ -38,7 +38,7 @@ afterEach(() => {
 })
 
 describe('settings', () => {
-  it('offers module management and validated manual save controls without changing progress', () => {
+  it('offers base-game settings and validated manual save controls without changing progress', () => {
     useGameStore.getState().transmuteWith('ember', 'tide')
     useGameStore.getState().toggleFavorite('steam')
     const saved = localStorage.getItem('unwritten-atlas-progress')
@@ -46,7 +46,8 @@ describe('settings', () => {
     expect(screen.getByRole('checkbox', { name: 'Sound' })).toBeChecked()
     expect(screen.getByRole('button', { name: 'Export saved progress' })).toBeVisible()
     expect(screen.getByLabelText(/Import save file/)).toHaveAttribute('type', 'file')
-    expect(screen.getByRole('button', { name: 'Enable Achaemenid Imperial Connections' })).toBeVisible()
+    expect(screen.queryByRole('group', { name: 'Regional Modules' })).toBeNull()
+    expect(screen.queryByRole('link', { name: 'Image credits and licenses' })).toBeNull()
     expect(screen.queryByRole('alert')).toBeNull()
     expect(localStorage.getItem('unwritten-atlas-progress')).toBe(saved)
     expect(loadProgress()?.discoveredIds).toContain('steam')
@@ -101,35 +102,33 @@ describe('settings', () => {
     expect(onClose).toHaveBeenCalledOnce()
   })
 
-  it('previews module migration, warns about an open challenge, supports cancellation, then reloads only after confirmation', async () => {
+  it('previews archive imports, warns about an open challenge, supports cancellation and reloads only after confirmation', async () => {
     const onReload = vi.fn()
     const onClose = vi.fn()
     const original = localStorage.getItem(SAVE_KEY)
     render(<Settings onClose={onClose} onReload={onReload} hasActiveChallenge />)
-    expect(screen.getByText(/Installed · disabled/)).toBeVisible()
-    expect(screen.getByText(/Historical period:.*550/)).toBeVisible()
-    expect(screen.getByText(/3 discoveries · 3 recipes · 3 histories · 1 collections · 1 challenges/)).toBeVisible()
     const user = userEvent.setup()
-    await user.click(screen.getByRole('button', { name: 'Enable Achaemenid Imperial Connections' }))
-    const heading = await screen.findByRole('heading', { name: 'Review regional module change' })
+    const file = new File([JSON.stringify(legacyArchive())], 'archive.json', { type: 'application/json' })
+    await user.upload(screen.getByLabelText(/Import save file/), file)
+    const heading = await screen.findByRole('heading', { name: 'Review save replacement' })
     expect(heading).toHaveFocus()
-    expect(screen.getByText(/Older releases cannot read it/)).toBeVisible()
+    expect(screen.getByText(/remain inactive/)).toBeVisible()
     expect(screen.getByText(/A challenge run is open/)).toBeVisible()
     expect(localStorage.getItem(SAVE_KEY)).toBe(original)
     expect(onReload).not.toHaveBeenCalled()
     await user.click(screen.getByRole('button', { name: 'Cancel replacement' }))
-    expect(screen.getByRole('button', { name: 'Enable Achaemenid Imperial Connections' })).toHaveFocus()
+    expect(screen.getByLabelText(/Import save file/)).toHaveFocus()
     expect(localStorage.getItem(SAVE_KEY)).toBe(original)
-    await user.click(screen.getByRole('button', { name: 'Enable Achaemenid Imperial Connections' }))
-    await screen.findByRole('heading', { name: 'Review regional module change' })
-    await user.click(screen.getByRole('button', { name: 'Confirm module change and reload' }))
+    await user.upload(screen.getByLabelText(/Import save file/), file)
+    await screen.findByRole('heading', { name: 'Review save replacement' })
+    await user.click(screen.getByRole('button', { name: 'Replace all progress and reload' }))
     await waitFor(() => expect(onReload).toHaveBeenCalledOnce())
-    expect(parseModuleSaveEnvelope(localStorage.getItem(SAVE_KEY)!)?.enabledModuleIds).toEqual(['achaemenid'])
+    expect(parseModuleSaveEnvelope(localStorage.getItem(SAVE_KEY)!)?.enabledModuleIds).toEqual([])
     expect(screen.getByRole('button', { name: 'Reload game' })).toHaveFocus()
     expect(screen.getByRole('button', { name: 'Close settings' })).toBeDisabled()
     await user.keyboard('{Escape}')
     expect(onClose).not.toHaveBeenCalled()
-    expect(createGameStore().getState().catalog.elements).toHaveLength(228)
+    expect(createGameStore().getState().catalog.elements).toHaveLength(225)
   })
 
   it('previews file imports without writing and requires explicit all-progress replacement', async () => {
@@ -199,20 +198,14 @@ describe('settings', () => {
     expect(localStorage.getItem(SAVE_KEY)).toBe(original)
   })
 
-  it('shows unavailable and incompatible archived modules without allowing unsafe activation', () => {
-    const archive = createModuleSaveEnvelope(freshProgress(), [
-      { ...installedModuleOwnership[0], version: '9.0.0' },
-      { moduleId: 'missing-region', version: '1.0.0', elementIds: [], recipeIds: [], collectionIds: [], researchElementIds: [], challengeIds: [] },
-    ], ['achaemenid', 'missing-region'])
+  it('describes legacy archive backups without offering DLC activation', () => {
+    const archive = legacyArchive()
     localStorage.setItem(SAVE_KEY, JSON.stringify(archive))
     setTestGameStore(createGameStore())
     render(<Settings onClose={vi.fn()} />)
-    const installed = screen.getByRole('article', { name: 'Achaemenid Imperial Connections' })
-    expect(installed).toHaveTextContent('Installed · incompatible')
-    expect(within(installed).getByRole('button', { name: /Enable/ })).toBeDisabled()
-    expect(installed).toHaveTextContent('migration required')
-    const missing = screen.getByRole('article', { name: 'missing-region' })
-    expect(missing).toHaveTextContent('Not installed · unavailable')
-    expect(within(missing).queryByRole('button')).toBeNull()
+    expect(screen.getByText(/legacy archive \(base game only\)/)).toBeVisible()
+    expect(screen.queryByRole('group', { name: 'Regional Modules' })).toBeNull()
+    expect(screen.queryByRole('button', { name: /Enable|Disable/ })).toBeNull()
+    expect(localStorage.getItem(SAVE_KEY)).toBe(JSON.stringify(archive))
   })
 })

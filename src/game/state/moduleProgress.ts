@@ -66,8 +66,8 @@ function assertOwnership(ownership: readonly ModuleOwnership[]): string[] {
 }
 
 /**
- * Shape validation is not activation. Internal session startup also checks
- * installed ownership and active definitions. Unknown ownership stays dormant.
+ * Shape validation never activates content. The legacy adapter validates
+ * ownership safety and core references before exposing a base-only projection.
  */
 export function parseModuleSaveEnvelope(raw: string): ModuleSaveEnvelope | null {
   try {
@@ -82,10 +82,8 @@ export function parseModuleSaveEnvelope(raw: string): ModuleSaveEnvelope | null 
 
 export function projectModuleProgress(
   archive: ModuleSaveEnvelope,
-  enabledModuleIds: readonly string[],
 ): ActiveModuleProjection {
-  const active = new Set(enabledModuleIds)
-  const inactive = archive.ownership.filter((owner) => !active.has(owner.moduleId))
+  const inactive = archive.ownership
   const excluded = <T extends keyof ModuleOwnership>(field: T) =>
     new Set(inactive.flatMap((owner) => owner[field] as string[]))
   const inactiveElements = excluded('elementIds')

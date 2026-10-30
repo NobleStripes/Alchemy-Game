@@ -107,7 +107,7 @@ const progressSchema = versionSixProgressSchema.extend({
   collapsedShelves: z.array(z.string()).default([]),
 })
 
-// Reused by the inactive Phase 10B archive schema; v7 parsing/writing is unchanged.
+// Also validates retained legacy archives; v7 parsing/writing is unchanged.
 export const savedProgressSchema = progressSchema
 
 export interface SavedProgress {

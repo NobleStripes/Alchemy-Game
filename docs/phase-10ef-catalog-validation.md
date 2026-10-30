@@ -1,5 +1,7 @@
 # Phase 10E–10F batch: full catalog validation
 
+> **Superseded DLC development record.** DLC is deferred while development focuses on the base game. The playable pack, registries, activation UI and DLC assets described below have been removed. Shared core catalog helpers, manual save transfer and legacy-archive preservation remain. Historical paths, test counts and activation instructions below are not current implementation guidance. See [current saves](saves.md) and [base content](optional-content.md).
+
 **Phase 11 update:** all live consumers now share a catalog per session.
 Production defaults to core-only/v7; Settings offers optional regional
 activation with confirmed durable migration and reload.

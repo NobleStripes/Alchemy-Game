@@ -2,26 +2,13 @@
 
 [Back to the project overview](../README.md) | [Gameplay and Atlas](gameplay.md) | [Catalog plan](catalog-plan.md)
 
-Optional discoveries, collection objectives and isolated learning labs extend the main campaign without increasing existing age-completion requirements. Core additions reuse version 7 saves; optional regional packs use the confirmed durable migration described below. Reading history is always free and never required for rewards.
+Optional discoveries, collection objectives and isolated learning labs extend the main campaign without increasing existing age-completion requirements. Core additions reuse version 7 saves. DLC is deferred; existing archives retain inactive records for backup. Reading history is always free and never required for rewards.
 
 Open **Challenges** in the persistent main navigation for Rainmaker and all eleven Learning Labs, their completion status and best saved attempts. The isolated runner stays mounted when visiting Play or Atlas; return to Challenges to resume. Leaving a run restores focus to its originating card. The former Guide lab listing and separate Rainmaker header shortcut are removed; mobile Play still has only Elements, Combine and Guide tabs. Runs are transient across reloads, while existing v7 records and first-completion rewards are unchanged.
 
 This guide describes implemented content. The [catalog plan](catalog-plan.md) separately tracks proposed discoveries, regional modules and research-only work; evidence-blocked candidates are not playable additions.
 
-The free, bundled Achaemenid Imperial Connections pilot is available through
-**Settings > Regional Modules**, disabled by default. Its three discoveries,
-three recipes, three histories, one collection and one challenge reuse existing
-ingredients without changing core age-completion conditions. The core-only
-baseline remains 225 elements and 291 recipes; enabling the pilot produces
-228 elements and 294 recipes across the same five ages.
-
-Activation offers a backup and validated preview before explicitly confirmed
-save migration and reload. Disabling hides regional content while preserving
-its discoveries, reading marks, favorites and achievement receipts in the
-durable archive. Re-enabling a compatible installed version restores them.
-All views share one validated catalog per session. See
-[save management and recovery](saves.md#regional-modules-and-durable-archives)
-and the [Phase 11 integration audit](phase-11-integration.md).
+The playable catalog is base-only: **225 elements and 291 recipes** across five ages. Existing optional base discoveries and regional histories remain included; they are not DLC. There is no Regional Modules manager or playable pilot. See [legacy archive compatibility](saves.md#regional-modules-and-durable-archives).
 
 - [Classical Antiquity and Iron Age branches](#classical-antiquity-and-iron-age-branches)
 - [Achaemenid pilot gameplay](#achaemenid-pilot-gameplay)
@@ -37,92 +24,11 @@ and the [Phase 11 integration audit](phase-11-integration.md).
 
 ## Achaemenid pilot gameplay
 
-Enable the bundled pilot in **Settings > Regional Modules**, then confirm the
-validated save change and reload. All three discoveries belong to the existing
-**Classical Antiquity** gameplay page. They add no age, core landmark, mandatory
-gate or core completion requirement; already-completed age objectives remain
-completed. Their ingredient pairs are unique in either order and reachable
-through the campaign.
-
-<details>
-<summary>Pilot symbolic formulas (recipe spoilers)</summary>
-
-| Optional discovery | Symbolic ingredients |
-| --- | --- |
-| Achaemenid Satrapy | Provincial Government + Empire |
-| Achaemenid Royal Road | Road Network + Imperial Bureaucracy |
-| Persepolis Fortification Tablets | Clay Tablet + Imperial Bureaucracy |
-
-These are conceptual gameplay associations, not literal manufacturing
-instructions or claims of Achaemenid invention of government, roads or writing.
-
-</details>
-
-Use the ordinary two-slot worktable. Older formulas remain recorded unchanged.
-New active recipes can make a formerly Terminal or Exhausted ingredient useful
-again. Hide Mastered, Starred, Recently Used, hints and Open Leads all use the
-same active catalog; disabled ingredients and leads remain hidden, not deleted.
-The shelf's Region filter and the Guide's separate core/regional progress
-display do not change the five chronological pages.
-
-The optional **Imperial Connections** collection tracks all three discoveries.
-Its existing one-time +1 Insight reward is capped by the three-credit wallet and
-recorded independently of reading. Each discovered item has a full Atlas entry
-with historical explanation, regional/dating cautions and source references.
-Explicit read/unread markers are free and are not collection requirements.
-
-The research review distinguishes the Achaemenid satrapal case from generic
-provincial administration. The Royal Road account is literary testimony
-(Herodotus 5.52-54, accessed through a modern encyclopedia), not excavated dating
-for one uniform highway. Known dated Elamite Fortification texts span roughly
-509-493 BCE; this dates a surviving corpus, not the beginning or end of clay
-writing or the administrative institution. The archive is geographically and
-documentarily partial, includes Aramaic and seal-only material, and cannot
-represent every territory or journey. Missing records do not prove an activity
-or institution did not exist. See the
-[research review and editorial follow-ups](phase-11-integration.md#11g-historical-integrity-and-research-qa).
-
-Photo thumbnails replace the pilot's text sigils throughout gameplay and labs.
-The Atlas shows each full photograph with its source, creator/institution,
-license and modification notice. **Settings > Image credits and licenses**
-opens the bundled [credit notices](../public/images/achaemenid/CREDITS.txt).
-The Met's guard relief is a contextual image for Satrapy, not an identified
-satrap. The road image shows a regional route in Fars, not the entire Royal
-Road. The tablet photo is specifically identified as Fortification Archive
-material. Assets are local, not hotlinked; their CC0, CC BY-SA and GFDL terms
-remain separate from the application's source-code license. The complete
-[GFDL 1.3 text](../public/images/achaemenid/GFDL-1.3.txt) accompanies the road image.
-
-**Imperial Communications** appears in Challenges only while the pack is active.
-It supplies Road Network and Imperial Bureaucracy and targets Achaemenid Royal
-Road. Its actual shortest solution and minimum attempt value are both **one**:
-the target is absent from the starters and one available combination reaches it.
-Completing the isolated run does not discover campaign elements or save a
-receipt. Only **Save result** records completion/best attempts and the existing
-one-time reward; retries and later reactivation cannot pay that receipt again.
-
-Disabling and re-enabling a compatible pack preserves discoveries, performed
-formulas, favorites, reading markers, collection receipts and saved challenge
-results. The selection change itself spends no Insight, performs no experiment
-and triggers no reward. Reload clears transient selections and unsaved runs,
-but the full archive retains inactive records. Use the save guide before import
-or deliberate total reset, which have different replacement/deletion semantics.
+Deferred. The former three-discovery pilot, its collection and lab, activation infrastructure, and bundled photographs are no longer shipped. Base Imperial Bureaucracy, Provincial Government, Road Network, Archive and Clay Tablet remain unchanged.
 
 ### Pilot research inventory
 
-| Regional discovery | Researched sources | Interpretation limit |
-| --- | --- | --- |
-| Achaemenid Satrapy | Joshua J. Mark, [Ancient Persian Governors](https://www.worldhistory.org/Persian_Governor/) (2019-11-15); ISAC's [Persepolis Fortification Tablets](https://isac.uchicago.edu/publications/persepolis-fortification-tablets), excerpt attributed to D. M. Lewis (1990), pp. 2-6 | Generic satrapy overview plus a particular documentary region, not a constitutional manual for every province |
-| Achaemenid Royal Road | Muhammad A. Dandamayev, [Commerce ii. In the Achaemenid period](https://www.iranicaonline.org/articles/commerce-ii/) (1992-12-15; updated 2013-04-05), Vol. VI, Fasc. 1, pp. 59-61; ISAC/Lewis excerpt above | Herodotus 5.52-54 through a secondary synthesis; travel records do not excavate or date an entire highway |
-| Persepolis Fortification Tablets | ISAC/Lewis excerpt above; Matthew W. Stolper, Wouter F. M. Henkelman, Elspeth R. M. Dusinberre, Charles E. Jones, Mark B. Garrison and Annalisa Azzoni, [Persepolis Administrative Archives i. Persepolis Fortification Archive](https://www.iranicaonline.org/articles/persepolis-admin-archive/persepolis-administrative-archives-i-persepolis-fortification-archive/) (2017-06-09; updated 2017-06-20) | Selected specialist passages on excavation, dates, languages and regional scope; not direct examination of tablets or all editions |
-
-Inspection receipts are dated **2026-10-21** in the
-[manifest](../src/game/modules/achaemenid/pack.json) and shared
-[core bibliography](../src/game/content/research.json). The undated ISAC web page
-does not acquire a 1990 publication date merely because it excerpts that chapter.
-All source links, full histories and caveats remain free. These bibliography
-links are not image licenses; [photograph credits](../public/images/achaemenid/CREDITS.txt)
-remain separate.
+The [historical Phase 11 review](phase-11-integration.md#11g-historical-integrity-and-research-qa) retains the earlier evidence review and its limits as a superseded development record, not a current content inventory or activation guide. Inactive save records remain preserved as described in the [save guide](saves.md#regional-modules-and-durable-archives).
 
 ## Classical Antiquity and Iron Age branches
 

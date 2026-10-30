@@ -1,9 +1,9 @@
-import type { RuntimeCatalog } from '../modules/runtimeCatalog.ts'
+import type { RuntimeCatalog } from '../content/runtimeCatalog.ts'
 import { isCollectionComplete } from '../engine/collectionRules.ts'
 import { pairKey } from '../engine/resolveCombination.ts'
 import { createDurableModulePersistence, type DurableLoad } from './durableModulePersistence.ts'
 import { prepareModuleArchive } from './moduleArchiveRules.ts'
-import { projectModuleProgress, type ModuleOwnership } from './moduleProgress.ts'
+import { projectModuleProgress } from './moduleProgress.ts'
 import { freshProgress, savedProgressSchema, type SavedProgress } from './persistence.ts'
 
 export function validateActiveProgress(progress: SavedProgress, catalog: RuntimeCatalog) {
@@ -55,28 +55,26 @@ export function validateActiveProgress(progress: SavedProgress, catalog: Runtime
   }
 }
 
-/** Existing archives and explicitly opted-in internal sessions only. */
-export function createModuleProgressPersistence(
+/** Compatibility writer for existing archives; archived DLC is never active. */
+export function createLegacyArchivePersistence(
   catalog: RuntimeCatalog,
-  ownership: readonly ModuleOwnership[],
-  enabledIds: readonly string[],
   loaded?: DurableLoad,
 ) {
-  const durable = createDurableModulePersistence(ownership, loaded)
+  const durable = createDurableModulePersistence(loaded)
   let error = durable.error
   let initial = freshProgress()
   let invalid = false
   let notify = (_error: string | null) => { void _error }
   try {
     if (durable.initial) {
-      const archive = prepareModuleArchive(durable.initial, ownership)
-      const candidate = projectModuleProgress(archive, enabledIds).progress
+      const archive = prepareModuleArchive(durable.initial)
+      const candidate = projectModuleProgress(archive).progress
       validateActiveProgress(candidate, catalog)
       initial = candidate
     }
   } catch (cause) {
     invalid = true
-    error = `Module progress cannot be activated: ${cause instanceof Error ? cause.message : String(cause)}`
+    error = `Legacy archive cannot be loaded: ${cause instanceof Error ? cause.message : String(cause)}`
   }
   durable.onError((next) => { error = next; notify(error) })
 
@@ -86,11 +84,11 @@ export function createModuleProgressPersistence(
     try {
       validateActiveProgress(saved, catalog)
     } catch (cause) {
-      error = `Module progress cannot be saved: ${cause instanceof Error ? cause.message : String(cause)}`
+      error = `Legacy archive cannot be saved: ${cause instanceof Error ? cause.message : String(cause)}`
       notify(error)
       return Promise.resolve(false)
     }
-    return reset ? durable.resetAll(saved, commit) : durable.writeActive(saved, enabledIds, commit)
+    return reset ? durable.resetAll(saved, commit) : durable.writeActive(saved, commit)
   }
 
   return {
@@ -110,5 +108,3 @@ export function createModuleProgressPersistence(
     onError(listener: (next: string | null) => void) { notify = listener },
   }
 }
-
-export const createInternalProgressPersistence = createModuleProgressPersistence

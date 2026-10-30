@@ -1,5 +1,7 @@
 # Phase 10B — module-aware save preservation (inactive prototype)
 
+> **Superseded DLC development record.** DLC is deferred while development focuses on the base game. The playable pack, registries, activation UI and DLC assets described below have been removed. Shared core catalog helpers, manual save transfer and legacy-archive preservation remain. Historical paths, test counts and activation instructions below are not current implementation guidance. See [current saves](saves.md) and [base content](optional-content.md).
+
 **Historical slice:** Phase 11 now uses this envelope in production regional
 sessions, with trusted ownership validation, durable rebasing and a Settings
 manager. Legacy campaigns stay core-only/v7 until confirmed migration. See the

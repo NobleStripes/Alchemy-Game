@@ -1,11 +1,11 @@
-import { elements, recipes, eras, collections } from '../content/index.ts'
-import { historicalResearch } from '../content/research.ts'
-import { recipeReviews } from '../content/recipeReviews.ts'
-import { challenges } from '../content/challenges.ts'
+import { elements, recipes, eras, collections } from './index.ts'
+import { historicalResearch } from './research.ts'
+import { recipeReviews } from './recipeReviews.ts'
+import { challenges } from './challenges.ts'
 import { createRecipeIndex } from '../engine/resolveCombination.ts'
 import type { ElementDefinition, RecipeDefinition, EraDefinition, CollectionDefinition } from '../domain/types.ts'
-import type { HistoricalResearchRecord, HistoricalResearchSource } from '../content/schema.ts'
-import type { ChallengeDefinition } from '../content/challenges.ts'
+import type { HistoricalResearchRecord, HistoricalResearchSource } from './schema.ts'
+import type { ChallengeDefinition } from './challenges.ts'
 
 export interface RuntimeCatalog {
   readonly elements: readonly ElementDefinition[]
@@ -16,11 +16,6 @@ export interface RuntimeCatalog {
   readonly histories: readonly HistoricalResearchRecord[]
   readonly recipeReviews: readonly (typeof recipeReviews.reviews)[number][]
   readonly challenges: readonly ChallengeDefinition[]
-  readonly regions: readonly {
-    id: string
-    title: string
-    elementIds: readonly string[]
-  }[]
   readonly elementsById: ReadonlyMap<string, ElementDefinition>
   readonly researchByElementId: ReadonlyMap<string, HistoricalResearchRecord>
   readonly challengesById: ReadonlyMap<string, ChallengeDefinition>
@@ -31,8 +26,7 @@ export interface RuntimeCatalog {
 
 /** A single immutable snapshot of all gameplay and educational content. */
 export function createRuntimeCatalog(input: Pick<RuntimeCatalog,
-  'elements' | 'recipes' | 'eras' | 'collections' | 'sources' | 'histories' | 'recipeReviews' | 'challenges'>
-  & { regions?: RuntimeCatalog['regions'] },
+  'elements' | 'recipes' | 'eras' | 'collections' | 'sources' | 'histories' | 'recipeReviews' | 'challenges'>,
 ): RuntimeCatalog {
   return {
     elements: input.elements,
@@ -43,7 +37,6 @@ export function createRuntimeCatalog(input: Pick<RuntimeCatalog,
     histories: input.histories,
     recipeReviews: input.recipeReviews,
     challenges: input.challenges,
-    regions: input.regions ?? [],
     elementsById: new Map(input.elements.map((item) => [item.id, item])),
     researchByElementId: new Map(input.histories.map((item) => [item.elementId, item])),
     challengesById: new Map(input.challenges.map((item) => [item.id, item])),
@@ -61,5 +54,5 @@ export const coreRuntimeCatalog = createRuntimeCatalog({
   challenges,
 })
 
-/** Core-only compatibility API. Live consumers use their store's catalog. */
+/** Shared core catalog; live consumers use their store's snapshot. */
 export const runtimeCatalog = coreRuntimeCatalog

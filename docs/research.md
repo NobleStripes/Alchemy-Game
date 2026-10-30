@@ -34,24 +34,13 @@ Research records and verified references remain content data, not navigation sta
 
 ## Research coverage
 
-These totals distinguish the mandatory core from enabled regional additions:
+The shipped catalog is base-only; DLC research is deferred.
 
 | Catalog | Histories | Verified sources | Pending leads | Unresearched discoveries |
 | --- | ---: | ---: | ---: | ---: |
-| Core: 225 discoveries / 291 recipes | 147 | 161 | 1 | 78 |
-| Core + Achaemenid: 228 / 294 | 150 | 163 | 1 | 78 |
+| Base: 225 discoveries / 291 recipes | 147 | 161 | 1 | 78 |
 
-The three regional histories and two regional receipts live in the
-[pilot manifest](../src/game/modules/achaemenid/pack.json). They also reference
-two existing core sources; those shared references are not counted as new.
-The [pilot research inventory](optional-content.md#pilot-research-inventory)
-lists every discovery and source. The
-[21 October review](phase-11-integration.md#11g-historical-integrity-and-research-qa)
-records corrected publication metadata, the 509-493 BCE documentary range,
-summary-versus-primary inspection limits and remaining editorial uncertainties.
-Disabled regional entries are hidden with the module; reading markers stay
-archived. Free access means no Insight cost for available explanations or
-bibliography, not that disabled discoveries remain in the active Atlas.
+The earlier pilot's review is retained in the [superseded Phase 11 audit](phase-11-integration.md), not in a shipped manifest or active Atlas. Existing legacy reading markers are preserved as inactive archive records. All base explanations and bibliography remain free.
 
 Research covers **147 of 225 elements**, including all **45 Age V discoveries**. All 135 preceding records remain. The registry contains **161 verified sources and one pending source**, including recipe-review background. The remaining **78 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **176 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
 

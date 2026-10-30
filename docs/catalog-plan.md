@@ -285,6 +285,8 @@ The original screen gave **56 named core slots**. With the six explicit replacem
 
 ## Regional-module and research-only dispositions
 
+DLC work is deferred in favor of the base game. Regional-module proposals below remain editorial backlog, not installed or activatable content. Existing regional histories in the base catalog remain included.
+
 These do not count toward 250. All unverified dates/regions remain blockers rather than accepted historical claims.
 
 | Proposal | Classification | Target / evidence status | Baseline overlap and disposition |

@@ -1,5 +1,7 @@
 # Phase 10C — durable module-save integration foundation
 
+> **Superseded DLC development record.** DLC is deferred while development focuses on the base game. The playable pack, registries, activation UI and DLC assets described below have been removed. Shared core catalog helpers, manual save transfer and legacy-archive preservation remain. Historical paths, test counts and activation instructions below are not current implementation guidance. See [current saves](saves.md) and [base content](optional-content.md).
+
 **Phase 11 status:** production regional sessions now use this service through
 `internalProgressPersistence.ts`. Settings offers validated previews, backups,
 confirmed migration, module selection and import. Legacy campaigns retain their

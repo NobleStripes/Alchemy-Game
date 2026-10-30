@@ -14,9 +14,11 @@ Tin Ore is a pre-existing resource, not something created by quarrying ordinary 
 
 ### Optional Achaemenid case study
 
-The optional module does not move generic Imperial Bureaucracy, Provincial
+Historical development note: this DLC case study is deferred and is not shipped. The following evidence limits describe the former pilot, not active gameplay.
+
+The former optional module did not move generic Imperial Bureaucracy, Provincial
 Government, Road Network, Archive or Clay Tablet out of core. Its three
-discoveries are localized examples in the existing Classical Antiquity gameplay
+discoveries were localized examples in the existing Classical Antiquity gameplay
 page, not an additional chronological age or necessary stage of development:
 
 - **Achaemenid Satrapy:** delegated provincial authority varied by locality and
@@ -25,8 +27,8 @@ page, not an additional chronological age or necessary stage of development:
 - **Achaemenid Royal Road:** Herodotus' literary account (Histories 5.52-54,
   consulted through Dandamayev's modern synthesis) and regional ration/travel
   documents are different witnesses. They do not securely date the construction
-  of every road section or establish the invention of roads. The Fars photograph
-  is contextual, not authentication of an excavated Sardis-Susa surface.
+  of every road section or establish the invention of roads. The former Fars photograph
+  was contextual, not authentication of an excavated Sardis-Susa surface.
 - **Persepolis Fortification Tablets:** the 1933 find includes Elamite, Aramaic
   and seal-only records. Known dated Elamite documents span roughly 509-493 BCE,
   with earlier references and later consultation; this does not date the whole
@@ -36,7 +38,7 @@ page, not an additional chronological age or necessary stage of development:
 All three two-input recipes are symbolic associations, not manufacturing
 procedures or proven causal sequences. Missing documents or unidentified
 road sections do not prove the absence of a technology or institution.
-Atlas explanations, bibliography and interpretive cautions cost no Insight.
+Base Atlas explanations, bibliography and interpretive cautions cost no Insight.
 See the [discovery/source inventory](optional-content.md#pilot-research-inventory)
 and [bounded verification receipts and editorial follow-ups](phase-11-integration.md#11g-historical-integrity-and-research-qa).
 

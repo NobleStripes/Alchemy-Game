@@ -273,11 +273,6 @@
 .codex-results { flex: 1; min-height: 0; padding: 5px 3px 10px; overflow-y: auto; overscroll-behavior: contain; }
 .codex-filter-row, .codex-results-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .codex-filter-row { margin-bottom: 10px; }
-.region-filter select { min-height: 44px; }
-.regional-progress { margin: 12px 0; padding: 12px; border: 1px solid var(--line); border-radius: 6px; overflow-wrap: anywhere; }
-.regional-progress h3 { margin: 0 0 8px; font-size: 13px; }
-.regional-progress p, .regional-progress li { font-size: 12px; line-height: 1.5; }
-.regional-progress ul { padding-left: 18px; }
 .age-filter { min-width: 0; flex: 1; display: flex; align-items: center; gap: 6px; color: var(--ink-soft); font-size: 11px; }
 .age-filter select { width: 100%; min-width: 0; height: 32px; padding: 0 6px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 5px; font-size: 11px; }
 .codex-results-count { margin: 0; color: var(--ink-soft); font-size: 10px; }
@@ -919,10 +914,9 @@
 .sound-preference input { width: 20px; height: 20px; accent-color: var(--teal); }
 .settings-controls { border: 0; padding: 0; margin: 24px 0 0; min-width: 0; }
 .settings-controls legend { font-weight: 800; font-size: 1.15rem; }
-.module-list { display: grid; gap: 12px; }
-.module-card, .save-preview { border: 1px solid var(--ink); border-radius: 6px; padding: 14px; overflow-wrap: anywhere; }
-.module-card h3, .save-preview h3 { margin-top: 0; }
-.module-card button, .settings-controls > button, .settings-actions button, .save-dialog > section button { min-height: 44px; padding: 8px 12px; max-width: 100%; white-space: normal; }
+.save-preview { border: 1px solid var(--ink); border-radius: 6px; padding: 14px; overflow-wrap: anywhere; }
+.save-preview h3 { margin-top: 0; }
+.settings-controls > button, .settings-actions button, .save-dialog > section button { min-height: 44px; padding: 8px 12px; max-width: 100%; white-space: normal; }
 .save-file-label { display: grid; gap: 8px; margin-top: 16px; }
 .save-file-label input { max-width: 100%; min-height: 44px; }
 .save-preview { margin-top: 20px; }

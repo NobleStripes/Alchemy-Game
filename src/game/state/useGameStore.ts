@@ -1,8 +1,6 @@
 import { create } from 'zustand'
 import { soundEngine } from '../audio/audioEngine'
-import { coreRuntimeCatalog, type RuntimeCatalog } from '../modules/runtimeCatalog'
-import { resolveInstalledRegions } from '../modules/installed'
-import { installedModuleOwnership } from '../modules/ownership'
+import { coreRuntimeCatalog, type RuntimeCatalog } from '../content/runtimeCatalog'
 import { getNewlyCompletedCollectionIds } from '../engine/collectionRules'
 import { reconcileEraProgress } from '../engine/eraProgress'
 import { areGlobalHintsUnlocked, selectHintRecipe } from '../engine/hintRules'
@@ -18,11 +16,10 @@ import {
 } from '../engine/resolveCombination'
 import { triggerConfetti } from '../fx/confetti'
 import { createProgressPersistence, exportProgress, SAVE_KEY, MAX_EXPERIMENT_HISTORY, type ExperimentEntry, type SavedProgress } from './persistence'
-import { createModuleProgressPersistence } from './internalProgressPersistence'
+import { createLegacyArchivePersistence } from './legacyArchivePersistence'
 import { readDurableModuleSave } from './durableModulePersistence'
-import { parseModuleSaveEnvelope } from './moduleProgress'
 import {
-  commitSavePreview, describeModules, previewModuleChange, previewSaveImport, resolveSavedSelection,
+  commitSavePreview, previewSaveImport,
   type SavePreview,
 } from './saveManagement'
 
@@ -43,9 +40,7 @@ interface AttemptResult {
 
 interface GameState extends PersistedState {
   readonly catalog: RuntimeCatalog
-  readonly activeModuleIds: readonly string[]
   readonly saveFormat: 'legacy' | 'archive'
-  readonly moduleWarnings: readonly string[]
   reloadRequired: boolean
   recentIngredientIds: string[]
   firstSlotId: string | null
@@ -115,35 +110,16 @@ function recentIngredients(state: GameState, selectedIds: string[]): string[] {
     .slice(0, 8)
 }
 
-type GameStoreOptions =
-  | { mode?: 'core'; enabledModuleIds?: never }
-  | { mode: 'internal-regional'; enabledModuleIds: readonly string[] }
-
-export function createGameStore(options: GameStoreOptions = {}) {
-  const loaded = options.mode === undefined ? readDurableModuleSave() : undefined
+export function createGameStore() {
+  const loaded = readDurableModuleSave()
   const savedArchive = loaded?.status === 'loaded' && !loaded.legacy ? loaded.archive : null
-  let enabledIds: readonly string[] = options.mode === 'internal-regional' ? options.enabledModuleIds : []
-  let moduleWarnings: readonly string[] = []
-  if (savedArchive) {
-    try {
-      const selected = resolveSavedSelection(savedArchive)
-      enabledIds = selected.activeModuleIds
-      moduleWarnings = selected.warnings
-    } catch (cause) {
-      moduleWarnings = [`Saved modules cannot be loaded: ${cause instanceof Error ? cause.message : String(cause)}`]
-    }
-  }
-  const resolved = resolveInstalledRegions(enabledIds)
-  if (!resolved.ok) throw new Error(`Cannot initialize active catalog: ${resolved.errors.join('; ')}`)
-  const catalog = resolved.catalog
+  const catalog = coreRuntimeCatalog
   const { elements, elementsById, eras, recipes, collections, starterElementIds, recipeIndex,
     challengesById, researchByElementId } = catalog
   const coreElements = coreRuntimeCatalog.elements
-  const usesArchive = options.mode === 'internal-regional' || savedArchive !== null
+  const usesArchive = savedArchive !== null
   const persistence = usesArchive
-    ? createModuleProgressPersistence(catalog,
-      installedModuleOwnership.filter((owner) => resolved.activeModuleIds.includes(owner.moduleId)),
-      resolved.activeModuleIds, loaded)
+    ? createLegacyArchivePersistence(catalog, loaded)
     : createProgressPersistence()
   let challengePending = false
   const savedProgress = snapshotProgress(persistence.initial)
@@ -161,9 +137,7 @@ export function createGameStore(options: GameStoreOptions = {}) {
     return ({
   ...savedProgress,
   catalog,
-  activeModuleIds: resolved.activeModuleIds,
   saveFormat: usesArchive ? 'archive' : 'legacy',
-  moduleWarnings,
   reloadRequired: false,
   recentIngredientIds: [],
   firstSlotId: null,
@@ -646,12 +620,6 @@ export function createGameStore(options: GameStoreOptions = {}) {
 
   return Object.assign(store, {
     synchronizeProgress, connectProgress, flushProgress: persistence.flush,
-    getModuleStatuses: () => describeModules(
-      persistence.raw === null ? null : parseModuleSaveEnvelope(persistence.raw), resolved.activeModuleIds,
-    ),
-    previewModules: (ids: readonly string[]) => manage(() => previewModuleChange(
-      persistence.raw, { ...snapshotProgress(store.getState()), version: 7 }, resolved.activeModuleIds, ids,
-    )),
     previewImport: (raw: string) => manage(() => previewSaveImport(raw, persistence.raw)),
     confirmSaveReplacement: (preview: SavePreview) => manage(async () => {
       if (persistence.raw !== preview.expectedRaw) throw new Error('Progress changed after preview. Review a new preview.')

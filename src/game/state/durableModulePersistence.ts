@@ -1,5 +1,5 @@
 import { MAX_SAVE_BYTES, SAVE_KEY, parseProgress, type SavedProgress } from './persistence.ts'
-import { createModuleSaveEnvelope, parseModuleSaveEnvelope, projectModuleProgress, type ModuleOwnership, type ModuleSaveEnvelope } from './moduleProgress.ts'
+import { createModuleSaveEnvelope, parseModuleSaveEnvelope, type ModuleSaveEnvelope } from './moduleProgress.ts'
 import { compactModuleHistory, prepareModuleArchive, rebaseActiveModuleProgress, clearModuleArchiveProgress } from './moduleArchiveRules.ts'
 
 export type DurableLoad =
@@ -28,12 +28,10 @@ export const DURABLE_INVALID = 'Existing save is invalid, unreadable, or from an
 export const DURABLE_LOCK = 'Web Locks are required for safe module progress writing.'
 
 /**
- * Durable transaction manager. Existing archives always use this writer;
- * legacy production sessions migrate only after confirmed activation.
- * A successful migration replaces the same storage key only inside its lock,
- * after comparing the original raw bytes.
+ * Compatibility transaction manager for legacy archives. Replacements use the
+ * same storage key only inside its lock, after comparing original raw bytes.
  */
-export function createDurableModulePersistence(ownership: readonly ModuleOwnership[] = [], loaded = readDurableModuleSave()) {
+export function createDurableModulePersistence(loaded = readDurableModuleSave()) {
   let baseline = loaded.status === 'loaded' ? loaded.raw : null
   let archive = loaded.status === 'loaded' ? loaded.archive : null
   let error: string | null = loaded.status === 'failed' ? DURABLE_INVALID : null
@@ -42,7 +40,7 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
   let notify = (_error: string | null) => { void _error }
   if (archive) {
     try {
-      archive = compactModuleHistory(prepareModuleArchive(archive, ownership))
+      archive = compactModuleHistory(prepareModuleArchive(archive))
     } catch (cause) {
       blocked = true
       error = `Module progress cannot be activated: ${cause instanceof Error ? cause.message : String(cause)}`
@@ -79,10 +77,9 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
           const current = prepareModuleArchive(
             archive ??
               createModuleSaveEnvelope(parseProgress(JSON.stringify({ version: 1, discoveredIds: [] }))!, []),
-            ownership,
           )
           const candidate = next(current)
-          const verified = prepareModuleArchive(candidate, ownership)
+          const verified = prepareModuleArchive(candidate)
           const raw = JSON.stringify(verified)
           if (new TextEncoder().encode(raw).byteLength > MAX_SAVE_BYTES) {
             report('Module save exceeds the storage size limit.')
@@ -109,8 +106,8 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
     return job
   }
 
-  async function writeActive(progress: SavedProgress, enabledIds: readonly string[], commit?: () => void) {
-    return transact((current) => rebaseActiveModuleProgress(current, progress, enabledIds), commit)
+  async function writeActive(progress: SavedProgress, commit?: () => void) {
+    return transact((current) => rebaseActiveModuleProgress(current, progress), commit)
   }
 
   async function resetAll(fresh: SavedProgress, commit?: () => void) {
@@ -142,7 +139,6 @@ export function createDurableModulePersistence(ownership: readonly ModuleOwnersh
     get error() { return error },
     get blocked() { return blocked },
     get raw() { return baseline },
-    get active() { return archive ? projectModuleProgress(archive, ownership.map((owner) => owner.moduleId)).progress : null },
     onError(listener: (error: string | null) => void) { notify = listener },
     replaceArchive(candidate: ModuleSaveEnvelope) { return transact(() => candidate) },
     writeActive, resetAll, synchronize, flush,

@@ -1,6 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react'
 import type { HistoricalResearchRecord } from '../../game/content/research'
-import type { RuntimeCatalog } from '../../game/modules/runtimeCatalog'
+import type { RuntimeCatalog } from '../../game/content/runtimeCatalog'
 import { useGameStore } from '../../game/state/useGameStore'
 import { SourceReference } from './SourceReference'
 import { ElementImageFigure } from '../../components/ElementIcon'

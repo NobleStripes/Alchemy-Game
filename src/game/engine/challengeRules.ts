@@ -1,4 +1,4 @@
-import { coreRuntimeCatalog, type RuntimeCatalog } from '../modules/runtimeCatalog.ts'
+import { coreRuntimeCatalog, type RuntimeCatalog } from '../content/runtimeCatalog.ts'
 import { rainmakerChallenge, type ChallengeDefinition } from '../content/challenges'
 import { createRecipeIndex, resolveCombination } from './resolveCombination'
 

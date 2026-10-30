@@ -1,5 +1,7 @@
 # Phase 10 — Final Batch: Achaemenid Pilot and Activation Gates
 
+> **Superseded DLC development record.** DLC is deferred while development focuses on the base game. The playable pack, registries, activation UI and DLC assets described below have been removed. Shared core catalog helpers, manual save transfer and legacy-archive preservation remain. Historical paths, test counts and activation instructions below are not current implementation guidance. See [current saves](saves.md) and [base content](optional-content.md).
+
 This batch added the first **free, optional, first-party historical region pack**.
 Phase 11 now makes it selectable through **Settings > Regional Modules**,
 disabled by default. Play, Atlas and Challenges use one validated catalog per

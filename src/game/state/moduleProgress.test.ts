@@ -34,7 +34,7 @@ function fixture() {
   }, [ownership])
 }
 
-describe('Phase 10B module progress archive', () => {
+describe('legacy module archive compatibility', () => {
   it('keeps legacy version 7 serialization independent of module records', () => {
     const core = parseProgress(JSON.stringify({ version: 1, discoveredIds: [] }))!
     const envelope = createModuleSaveEnvelope(core, [])
@@ -46,7 +46,7 @@ describe('Phase 10B module progress archive', () => {
   it('hides inactive module progress without modifying durable records', () => {
     const archive = fixture()
     const before = JSON.stringify(archive)
-    const projected = projectModuleProgress(archive, [])
+    const projected = projectModuleProgress(archive)
     expect(projected.inactiveModuleIds).toEqual(['achaemenid'])
     expect(projected.progress.discoveredIds).not.toContain('achaemenid-royal-road')
     expect(projected.progress.discoveredRecipeIds).toEqual([])
@@ -60,15 +60,15 @@ describe('Phase 10B module progress archive', () => {
     expect(JSON.stringify(archive)).toEqual(before)
   })
 
-  it('restores achievements and discovered records when compatible module returns', () => {
+  it('keeps formerly enabled records inactive after archive parsing', () => {
     const archive = fixture()
-    const initial = projectModuleProgress(archive, [])
-    const restored = projectModuleProgress(archive, ['achaemenid'])
-    expect(initial.inactiveModuleIds).toEqual(['achaemenid'])
-    expect(restored.inactiveModuleIds).toEqual([])
-    expect(restored.progress).toEqual(archive.progress)
-    expect(restored.progress.challengeRecords[0].completed).toBe(true)
-    expect(restored.progress.rewardedCollectionIds).toContain('achaemenid-connections')
+    archive.enabledModuleIds = ['achaemenid']
+    const parsed = parseModuleSaveEnvelope(JSON.stringify(archive))!
+    const projected = projectModuleProgress(parsed)
+    expect(projected.inactiveModuleIds).toEqual(['achaemenid'])
+    expect(projected.progress.challengeRecords).toEqual([])
+    expect(projected.progress.rewardedCollectionIds).toEqual([])
+    expect(parsed.progress).toEqual(archive.progress)
   })
 
   it('parses a module archive without passing it to the legacy v7 loader', () => {

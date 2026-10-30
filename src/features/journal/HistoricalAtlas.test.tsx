@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { setTestGameStore } from '../../game/state/testSupport'
+import '../../game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
 import { act, cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
@@ -9,11 +9,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { elements, recipes, starterElementIds } from '../../game/content'
 import { historicalResearch } from '../../game/content/research'
 import { historicalEntrySchema } from '../../game/content/schema'
-import { installedRegionalModules } from '../../game/modules/installed'
-import { installedModuleOwnership } from '../../game/modules/ownership'
-import { coreRuntimeCatalog } from '../../game/modules/runtimeCatalog'
-import { createModuleSaveEnvelope } from '../../game/state/moduleProgress'
-import { freshProgress } from '../../game/state/persistence'
 import { SAVE_KEY } from '../../game/state/persistence'
 import { createGameStore, snapshotProgress, useGameStore } from '../../game/state/useGameStore'
 import { HistoricalAtlas, type HistoricalAtlasHandle } from './HistoricalAtlas'
@@ -43,37 +38,6 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
-  it.each(installedRegionalModules[0].research.records)('keeps the entire regional $elementName explanation and bibliography free at zero Insight', async (record) => {
-    const pack = installedRegionalModules[0]
-    localStorage.setItem(SAVE_KEY, JSON.stringify(createModuleSaveEnvelope({
-      ...freshProgress(),
-      discoveredIds: [...coreRuntimeCatalog.elements.map((element) => element.id), ...pack.elements.map((element) => element.id)],
-      rewardedCollectionIds: [...coreRuntimeCatalog.collections.map((collection) => collection.id), ...pack.collections.map((collection) => collection.id)],
-      insightCredits: 0,
-    }, installedModuleOwnership, ['achaemenid'])))
-    const store = createGameStore()
-    setTestGameStore(store)
-    const before = snapshotProgress(store.getState())
-    const original = localStorage.getItem(SAVE_KEY)
-    const user = await openAtlas()
-    const article = within(await selectEntry(user, record.elementName))
-    expect(article.getByText(record.historicalOverview.text)).toBeVisible()
-    expect(article.getByText(record.manufactureOrUse.text)).toBeVisible()
-    for (const entry of record.approximateDates) expect(article.getByText(entry.dateRange)).toBeVisible()
-    for (const caution of record.historicalUncertainty) expect(article.getByText(caution)).toBeVisible()
-    for (const explanation of record.gameplaySimplifications) expect(article.getByText(explanation)).toBeVisible()
-    for (const id of new Set([...record.historicalOverview.sourceIds, ...record.approximateDates.flatMap((entry) => entry.sourceIds)])) {
-      const source = store.getState().catalog.sources.find((entry) => entry.id === id)!
-      expect(article.getByRole('link', { name: source.title })).toHaveAttribute('href', source.url)
-    }
-    expect(snapshotProgress(store.getState())).toEqual(before)
-    expect(localStorage.getItem(SAVE_KEY)).toBe(original)
-    await user.click(article.getByRole('button', { name: `Mark ${record.elementName} as read` }))
-    await store.flushProgress()
-    expect(store.getState().insightCredits).toBe(0)
-    expect(createGameStore().getState().readHistoricalElementIds).toEqual([record.elementId])
-  })
-
   it('shows Egyptian bob dating without inventing crucible dates and keeps reading explicit and free', async () => {
     discover('plumb-line', 'crucible', 'pottery')
     useGameStore.setState({ insightCredits: 0 })

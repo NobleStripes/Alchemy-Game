@@ -12,7 +12,7 @@ export function ElementIcon({ element }: { element: ElementDefinition }) {
       width={64}
       height={64}
       decoding="async"
-      title={`${image.description} ${image.credit}. ${image.license}. Credits and licenses are available in Settings.`}
+      title={`${image.description} ${image.credit}. ${image.license}.`}
     />
   )
 }

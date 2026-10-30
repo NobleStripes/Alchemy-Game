@@ -1,16 +1,13 @@
 # The Unwritten Atlas
 
-An original combination-discovery game with **225 core elements and 291 core recipes across five gameplay ages**, a two-slot worktable, an inspectable Guide, and locally saved progress. The free, optional **Achaemenid Imperial Connections** module adds three discoveries and three symbolic recipes: **228 elements and 294 recipes** when enabled, with no additional age or change to core completion requirements.
+An original combination-discovery game with **225 elements and 291 recipes across five gameplay ages**, a two-slot worktable, an inspectable Guide, and locally saved progress.
 
-Open **Settings > Regional Modules** to review the bundled pilot, disabled by
-default. Activation validates content and save compatibility, offers a backup,
-and requires explicit confirmation and reload. Disabling hides regional content
-without deleting discoveries, formulas, favorites, reading markers or earned
-receipts. Compatible reactivation restores them without repeating rewards.
-See [module gameplay and sources](docs/optional-content.md#achaemenid-pilot-gameplay)
-and [backup, migration and restoration](docs/saves.md#regional-modules-and-durable-archives).
+Development is focused on the **base game**. DLC and the Achaemenid pilot are
+deferred: no packs, activation controls or DLC assets are shipped. Existing
+DLC archives load as base-only campaigns while retaining inactive records for
+backup and ordinary saves. See [save compatibility and backups](docs/saves.md#regional-modules-and-durable-archives).
 
-The persistent header switches between **Play** (the default), **Atlas** (Historical Encyclopedia), and **Challenges**. Play keeps Elements, Combine, and Guide together on desktop and in exactly three mobile tabs; Atlas and Challenges are separate top-level sections, not extra gameplay tabs. Challenges lists Rainmaker and eleven core Learning Labs, plus Imperial Communications while the pilot is enabled, with saved completion status and best attempts. Switching sections preserves gameplay, reading context and unfinished challenge runs. Pointer, touch, and keyboard controls are supported.
+The persistent header switches between **Play** (the default), **Atlas** (Historical Encyclopedia), and **Challenges**. Play keeps Elements, Combine, and Guide together on desktop and in exactly three mobile tabs; Atlas and Challenges are separate top-level sections, not extra gameplay tabs. Challenges lists Rainmaker and eleven Learning Labs, with saved completion status and best attempts. Switching sections preserves gameplay, reading context and unfinished challenge runs. Pointer, touch, and keyboard controls are supported.
 
 The element shelf groups discoveries into collapsible era drawers with discovered/total counts. **Terminal** means no authored recipe uses the element as an ingredient; **Exhausted for now** means all its outgoing formulas in unlocked ages have been performed. New ages can expose new uses. Optional **Hide Mastered** hides both without disabling selection or history. Search temporarily reveals matches across all discovered elements and filters. Hide Mastered and collapsed drawers persist in backward-compatible version 7 fields; both default off/expanded.
 
@@ -18,7 +15,7 @@ Origins is an undated, symbolic gameplay prologue. Its four starting essences dr
 
 Empedocles' fifth-century BCE roots and Aristotle's fourth-century BCE elemental qualities provide the [historical foundation](docs/historical-interpretation.md#classical-elements-historical-theory-symbolic-gameplay). This inspiration does not place Greek philosophy before prehistoric humanity. All four starting elements have immediately accessible, sourced Atlas histories.
 
-Historical explanations are free; **Insight reveals recipe leads, never factual information**. The core Atlas has **147 researched entries** and **161 verified sources plus one pending lead**. Enabling the pilot gives **150 entries** and **163 verified sources plus the same pending lead**. Natural-history coverage includes Clay, Rock, Sand, Limestone, ores, Salt, Bone, Tree, Timber, Soil, Mud, Sea and five water/weather phenomena. Water's philosophical history also distinguishes the modern water cycle. Natural formation is distinguished from human manufacture; flint and obsidian remain examples under Rock, not new elements. Citizenship distinguishes political membership from residence and equal participation, without treating Greek and Roman institutions as interchangeable. Intellectual histories compare Greek, Mesopotamian, Egyptian, Indian and Chinese examples without equating ancient inquiry with modern science. Fossil and Bird link to optional historical inquiry; the disputed griffin proposal is not established history. Four optional core Age V collections and four isolated labs cover civic life, engineering, commerce, and inquiry. The pilot adds Imperial Connections and the isolated Imperial Communications lab without changing core completion targets or earned rewards.
+Historical explanations are free; **Insight reveals recipe leads, never factual information**. The core Atlas has **147 researched entries** and **161 verified sources plus one pending lead**. Natural-history coverage includes Clay, Rock, Sand, Limestone, ores, Salt, Bone, Tree, Timber, Soil, Mud, Sea and five water/weather phenomena. Water's philosophical history also distinguishes the modern water cycle. Natural formation is distinguished from human manufacture; flint and obsidian remain examples under Rock, not new elements. Citizenship distinguishes political membership from residence and equal participation, without treating Greek and Roman institutions as interchangeable. Intellectual histories compare Greek, Mesopotamian, Egyptian, Indian and Chinese examples without equating ancient inquiry with modern science. Fossil and Bird link to optional historical inquiry; the disputed griffin proposal is not established history. Four optional core Age V collections and four isolated labs cover civic life, engineering, commerce, and inquiry.
 
 The [catalog plan toward 250](docs/catalog-plan.md) pairs element milestones with research milestones and separates core, regional and research-only proposals. The latest batch adds Pottery Wheel, Crucible, Annealing and Plumb Line in Bronze Age, plus Waterwheel and Watermill in Classical Antiquity, eleven optional routes and six existing-gap histories: Pottery, Wheel, Mold, Quarry, Crop and Bread. Hand-built pottery and hand milling remain older independent traditions; regional evidence is not universal invention. **78 catalog elements** still have no full history; 25 active candidates remain deferred. Source receipts disclose access limits, and automated checks are not historical peer review.
 
@@ -26,11 +23,11 @@ The [additional-connections audit](docs/catalog-plan.md#additional-recipe-connec
 
 The [225/291 release baseline](docs/catalog-plan.md#release-baseline-225-discoveries-and-291-formulas) retains every previous 215/270 definition and formula, all five age requirements and version 7 saves. The next evidence-gated checkpoint is **235 discoveries and at least 167 histories**, toward 250/197; no deferred candidate is approved merely to meet that target. [Release QA](docs/educational-qa.md#gameplay-compatibility-and-release-baseline-gh) records compatibility coverage and graph-performance observations.
 
-The [Phase 10 roadmap](docs/phase-10-roadmap.md) distinguishes the implemented registry, regional manager, durable archives, Achaemenid pilot and manual save transfer from outstanding concise Atlas summaries, free contextual nudges and PWA work. Community packs and social sharing remain deferred. The [Phase 11 release audit](docs/phase-11-integration.md) records historical QA, activation/restoration evidence and merge/tag gates; local validation alone is not a tagged-release announcement.
+The [Phase 10 roadmap](docs/phase-10-roadmap.md) and [Phase 11 release audit](docs/phase-11-integration.md) are historical records of the now-deferred DLC work, not current activation instructions. Shared catalog indexes, safe legacy-archive preservation and manual save transfer remain. Concise Atlas summaries, contextual nudges, PWA support, community packs and social sharing are not added by this rollback.
 
 Optional production foundations, engineering, commerce, scholarship and regional branches, plus the landmark track and eleven learning labs, are covered in the [optional content guide](docs/optional-content.md). They extend exploration without increasing existing age-completion requirements; detailed recipes are kept out of this overview.
 
-Inspect a discovered element in the Guide and choose **View History** to open its Atlas entry directly; returning to Play restores focus to that shortcut. Ordinary section switches focus the destination heading or the active run's **Return to Challenges** control. Leaving a run uses the existing discard confirmation and restores focus to its originating challenge card. Runs survive section switches, not reloads. Core-only campaigns retain legacy v7 saving until confirmed migration; module archives preserve the v7 progress fields together with module ownership and selection. Navigation alone never writes a save.
+Inspect a discovered element in the Guide and choose **View History** to open its Atlas entry directly; returning to Play restores focus to that shortcut. Ordinary section switches focus the destination heading or the active run's **Return to Challenges** control. Leaving a run uses the existing discard confirmation and restores focus to its originating challenge card. Runs survive section switches, not reloads. Fresh campaigns and legacy saves use v7 saving; old DLC archives retain inactive records without enabling content. Navigation alone never writes a save.
 
 ## Development Methodology & Tooling
 
@@ -52,7 +49,7 @@ npm run dev
 | --- | --- |
 | [Gameplay and Atlas](docs/gameplay.md) | Five gameplay ages, progression, Insights, collections, Rainmaker, historical entries, and learning labs. |
 | [Optional content](docs/optional-content.md) | Implemented optional branches, production foundations, landmark objectives, learning labs, recipe spoilers, and historical limits. |
-| [Phase 10 roadmap](docs/phase-10-roadmap.md) | Planned expansion architecture, module-safe saves, Achaemenid prototype, free-access requirements, Atlas summaries, nudges, manual save transfer, and deferred features. |
+| [Phase 10 roadmap](docs/phase-10-roadmap.md) | Historical DLC architecture and prototype notes (superseded); retained save compatibility and deferred features. |
 | [Chronology and historical interpretation](docs/historical-interpretation.md) | Regional dates, fictional gates, element corrections, and historical references. |
 | [Historical research](docs/research.md) | Research coverage, record fields, source verification, authoring standards, and optional future directions. |
 | [Recipe review](docs/recipe-review.md) | Recipe classifications, historical-context disclosures, and citation limits. |
@@ -80,16 +77,7 @@ Game definitions live in [`src/game/content`](src/game/content). Every recipe is
 
 [`validateContent`](src/game/engine/validateContent.ts) checks references, duplicate pairs, and era contracts, then simulates actual gated play: resolve recipes in unlocked eras, check landmarks, grant newly unlocked elements, and repeat. Circular gates and unreachable page content fail validation before build.
 
-Production builds also enforce outgoing-use safeguards for starters and foundational tools, and print graph-derived core counts: **179 crafting ingredients, 46 terminal elements and zero unused nodes**. Active shelf status includes enabled module recipes; no manual `isFinal` metadata is needed. These are authored gameplay statuses, not claims about real-world usefulness or historical mastery.
-
-### Image credits
-
-The optional Achaemenid module uses locally bundled photographs from The Met's
-Open Access collection and licensed Wikimedia Commons sources. Their CC0,
-CC BY-SA and GFDL terms are separate from the application's source-code license.
-See the [image credits and reuse notices](public/images/achaemenid/CREDITS.txt)
-and the accompanying [GFDL text](public/images/achaemenid/GFDL-1.3.txt).
-Credits are also available in Settings and beside each Atlas photograph.
+Production builds also enforce outgoing-use safeguards for starters and foundational tools, and print graph-derived core counts: **179 crafting ingredients, 46 terminal elements and zero unused nodes**. Shelf status uses the base recipe graph; no manual `isFinal` metadata is needed. These are authored gameplay statuses, not claims about real-world usefulness or historical mastery.
 
 ## A Note from the Developer
 

@@ -1,22 +1,26 @@
 import { describe, expect, it } from 'vitest'
-import rawElements from '../content/elements.json'
-import rawRecipes from '../content/recipes.json'
-import rawEras from '../content/eras.json'
-import rawCollections from '../content/collections.json'
-import { elements, recipes, eras, collections } from '../content/index.ts'
-import { challenges } from '../content/challenges.ts'
-import { historicalResearch } from '../content/research.ts'
-import { recipeReviews } from '../content/recipeReviews.ts'
+import rawElements from './elements.json'
+import rawRecipes from './recipes.json'
+import rawEras from './eras.json'
+import rawCollections from './collections.json'
+import rawResearch from './research.json'
+import rawReviews from './recipeReviews.json'
+import { elements, recipes, eras, collections } from './index.ts'
+import { challenges } from './challenges.ts'
+import { historicalResearch } from './research.ts'
+import { recipeReviews } from './recipeReviews.ts'
 import { createChallengeReducer, createChallengeState } from '../engine/challengeRules.ts'
 import { createRuntimeCatalog, runtimeCatalog } from './runtimeCatalog.ts'
 
-describe('Phase 10D shared runtime catalog', () => {
+describe('shared core runtime catalog', () => {
   it.each([
     ['elements', rawElements, '39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a'],
     ['recipes', rawRecipes, 'a6afd9fcf77ad19a8e5735ef03bfec45add65a73ebf6f791c9bec09bce57cffe'],
     ['eras', rawEras, '3d526226733e65e43b32c5bea4722fc0ab3629b90a152164b04f59edb4c63884'],
     ['collections', rawCollections, '455170eb41f0df382c01538f7d174950fbaacc2d877a3f089fdcbbb79f7665fe'],
-  ])('preserves merged Phase 10 %s definitions', async (_name, definitions, fingerprint) => {
+    ['research', rawResearch, '860d7c46ac27d0514e6a20ea6b74b9717295ae9658eadd97159ec399a7ed6677'],
+    ['recipe reviews', rawReviews, 'a786e2dd23da5552072c20b4ad21174ad5f5743e73755f09deb1fe461e9f0e4e'],
+  ])('preserves exact base %s definitions', async (_name, definitions, fingerprint) => {
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(definitions)))
     expect(Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')).toBe(fingerprint)
   })

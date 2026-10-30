@@ -1,5 +1,7 @@
 # Phase 11: regional integration, historical QA and restoration tests
 
+> **Superseded DLC development record.** DLC is deferred while development focuses on the base game. The playable pack, registries, activation UI and DLC assets described below have been removed. Shared core catalog helpers, manual save transfer and legacy-archive preservation remain. Historical paths, test counts and activation instructions below are not current implementation guidance. See [current saves](saves.md) and [base content](optional-content.md).
+
 ## Protected baseline
 
 Merged Phase 10 reference: `90e3ad6297d6bcbddfa85558bf18a83f02f17ab0`.
@@ -169,7 +171,7 @@ the road image includes the complete GFDL 1.3 text. These image licenses do not
 replace the source-code license. No images are hotlinked or remotely fetched
 while playing, and subpath deployment uses the configured application base.
 All four JPEG files together remain below 200 KiB, with each below 100 KiB.
-See [image credits](../public/images/achaemenid/CREDITS.txt).
+See image credits (historical file removed in the base-game rollback).
 
 ## 11G: historical integrity and research QA
 

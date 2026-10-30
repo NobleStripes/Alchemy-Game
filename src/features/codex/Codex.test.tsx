@@ -1,14 +1,13 @@
 // @vitest-environment jsdom
 
-import { setTestGameStore } from '../../game/state/testSupport'
+import '../../game/state/testSupport'
 import '@testing-library/jest-dom/vitest'
 import { DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { elements, eras, recipes, starterElementIds } from '../../game/content'
-import { createGameStore, snapshotProgress, useGameStore } from '../../game/state/useGameStore'
-import { coreRuntimeCatalog } from '../../game/modules/runtimeCatalog'
+import { snapshotProgress, useGameStore } from '../../game/state/useGameStore'
 import { Codex } from './Codex'
 
 afterEach(cleanup)
@@ -30,82 +29,6 @@ function ShelfHarness({ onElementSelected }: { onElementSelected?: () => void })
 }
 
 describe('element shelf', () => {
-  function regionalShelf() {
-    const store = createGameStore({ mode: 'internal-regional', enabledModuleIds: ['achaemenid'] })
-    store.setState({
-      discoveredIds: store.getState().catalog.elements.map((element) => element.id),
-      discoveredRecipeIds: coreRuntimeCatalog.recipes.map((recipe) => recipe.id),
-      unlockedEraIds: eras.map((era) => era.id),
-      favoriteIds: ['achaemenid-royal-road'],
-      recentIngredientIds: ['achaemenid-royal-road', 'ember'],
-    })
-    setTestGameStore(store)
-    return store
-  }
-
-  it('filters enabled regions independently of the five ages, combines filters, and keeps search and recents global', async () => {
-    const store = regionalShelf()
-    const before = snapshotProgress(store.getState())
-    const user = userEvent.setup()
-    renderShelf()
-    const region = screen.getByRole('combobox', { name: 'Region' })
-    expect(within(screen.getByRole('combobox', { name: 'Age' })).getAllByRole('option')).toHaveLength(6)
-    await user.selectOptions(region, 'achaemenid')
-    expect(counter()).toHaveTextContent('3 of 228 discovered elements')
-    expect(results().getByRole('button', { name: 'Achaemenid Satrapy' })).toBeVisible()
-    expect(results().queryByRole('button', { name: 'Fire' })).not.toBeInTheDocument()
-    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'first-light')
-    expect(counter()).toHaveTextContent('0 of 228 discovered elements')
-    await user.selectOptions(screen.getByRole('combobox', { name: 'Age' }), 'classical-antiquity')
-    await user.click(screen.getByRole('button', { name: 'Starred' }))
-    expect(counter()).toHaveTextContent('1 of 228 discovered elements')
-    await user.type(screen.getByRole('searchbox'), 'fire')
-    expect(results().getByRole('button', { name: 'Fire' })).toBeVisible()
-    await user.click(screen.getByRole('button', { name: 'Clear search' }))
-    expect(counter()).toHaveTextContent('1 of 228 discovered elements')
-    await user.click(screen.getByRole('button', { name: 'Use recent ingredient Fire' }))
-    expect(store.getState().firstSlotId).toBe('ember')
-    await user.click(screen.getByRole('button', { name: 'Clear filters' }))
-    expect(region).toHaveValue('all')
-    await user.selectOptions(region, 'core')
-    expect(counter()).toHaveTextContent('225 of 228 discovered elements')
-    expect(results().queryByRole('button', { name: 'Achaemenid Royal Road' })).not.toBeInTheDocument()
-    expect(snapshotProgress(store.getState())).toEqual(before)
-  })
-
-  it('reactivates mastered core ingredients for regional recipes and retains terminal stars and recent access', async () => {
-    useGameStore.setState({
-      discoveredIds: elements.map((element) => element.id),
-      discoveredRecipeIds: recipes.map((recipe) => recipe.id),
-      unlockedEraIds: eras.map((era) => era.id), hideFinalElements: true,
-    })
-    const view = renderShelf()
-    expect(screen.queryByRole('combobox', { name: 'Region' })).not.toBeInTheDocument()
-    expect(results().queryByRole('button', { name: 'Imperial Bureaucracy' })).not.toBeInTheDocument()
-    view.unmount()
-    const store = regionalShelf()
-    store.setState({ hideFinalElements: true })
-    const user = userEvent.setup()
-    renderShelf()
-    expect(results().getByRole('button', { name: 'Imperial Bureaucracy' })).toBeVisible()
-    expect(results().queryByRole('button', { name: 'Achaemenid Royal Road' })).not.toBeInTheDocument()
-    await user.type(screen.getByRole('searchbox'), 'Achaemenid Royal Road')
-    const royalRoad = results().getByRole('button', { name: 'Achaemenid Royal Road' })
-    expect(royalRoad).toHaveAccessibleDescription(/Terminal/)
-    expect(results().getByRole('button', { name: 'Unfavorite Achaemenid Royal Road' })).toBeVisible()
-    await user.click(royalRoad)
-    await user.click(screen.getByRole('button', { name: 'Clear search' }))
-    expect(screen.getByRole('button', { name: 'Use recent ingredient Achaemenid Royal Road' })).toBeVisible()
-    await act(async () => {
-      store.getState().transmuteWith('road-network', 'imperial-bureaucracy')
-      store.getState().transmuteWith('clay-tablet', 'imperial-bureaucracy')
-      await store.flushProgress()
-    })
-    expect(results().queryByRole('button', { name: 'Imperial Bureaucracy' })).not.toBeInTheDocument()
-    expect(store.getState().favoriteIds).toContain('achaemenid-royal-road')
-    expect(store.getState().discoveredRecipeIds).toEqual(expect.arrayContaining(recipes.map((recipe) => recipe.id)))
-  })
-
   it('groups eras chronologically, keeps completion counts stable and remembers collapsed drawers', async () => {
     const user = userEvent.setup()
     useGameStore.setState({ discoveredIds: [...starterElementIds, 'bread'], unlockedEraIds: eras.slice(0, 2).map((era) => era.id) })

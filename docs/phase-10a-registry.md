@@ -1,5 +1,7 @@
 # Phase 10A — regional module registry (prototype)
 
+> **Superseded DLC development record.** DLC is deferred while development focuses on the base game. The playable pack, registries, activation UI and DLC assets described below have been removed. Shared core catalog helpers, manual save transfer and legacy-archive preservation remain. Historical paths, test counts and activation instructions below are not current implementation guidance. See [current saves](saves.md) and [base content](optional-content.md).
+
 This document records the original **inactive, data-only foundation** for free first-party historical expansions. Phase 11 now provides optional Settings activation, validated durable migration and a shared catalog; see the [current integration audit](phase-11-integration.md). The original implementation boundaries below are historical. The protected core baseline remains 225 elements, 291 recipes and five ages.
 
 ## Implemented
