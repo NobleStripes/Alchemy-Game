@@ -485,3 +485,14 @@ verified by component tests. Its synthetic Escape key did not invoke native
 dialog cancellation; browser cancel-event and close-button focus restoration
 were verified, and fallback keyboard behavior is covered by component tests.
 Browser checks used isolated temporary origins, never an existing player save.
+
+The [October 26 downloaded-file follow-up](save-roundtrip-verification.md)
+subsequently exercised actual downloads and fresh-context file imports with
+Playwright against a local production build for legacy v7, enabled archives
+and disabled archives. It documents the tested browser and remaining limits;
+the download limitation above describes the original integrated-browser audit.
+
+The follow-up suite now also documents its base-only merge verification:
+legacy archives retain inactive records without any pack dependency or
+activation controls. The October 26 enabled/restoration evidence is retained
+as historical pre-rollback behavior, not a current DLC workflow.

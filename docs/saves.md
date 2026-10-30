@@ -90,3 +90,10 @@ coverage and remaining boundaries.
 ### Legacy archive preservation checks
 
 The store, save-management and rendered application regressions load previously enabled, disabled and unavailable DLC archives as base-only campaigns. They check no load/navigation writes, exact backup export, inactive-record retention after core play and reload, no repeated rewards, explicit replacement/reset, stale previews, conflicts and storage/lock failures. No reactivation is offered.
+
+The [downloaded-file verification guide](save-roundtrip-verification.md)
+describes real browser downloads, fresh-context imports and reload checks.
+The browser suite covers legacy v7 and archives that previously selected or
+disabled DLC; both archive cases now remain base-only and preserve inactive
+records. The earlier activation/restoration results are historical, not
+instructions to re-enable removed content.
