@@ -67,6 +67,8 @@ npm run build
 
 The test suite covers combination rules, gated reachability, rendered controls, experimentation, collection and challenge rewards, reading markers, persistence, and save migration/reset.
 
+For real-browser regression checks, install Chromium with `npx playwright install chromium`, then run `npm run test:e2e`. The suite builds a production preview with isolated browser storage. It plays all 311 formulas from a fresh campaign, checks all five age and collection receipts, completes all twelve isolated challenges, exercises pointer/keyboard dragging and touch selection, and checks desktop/short-mobile layouts, reduced motion, cross-tab updates, save-error recovery and actual backup restoration. It does not use a player profile or a deployed save. Chromium touch emulation is not physical-device or cross-browser verification.
+
 Phase 9 also verifies the fifth-age selector, keyboard activation, per-age discovery/category/formula counters, optional collection views, and Age V gate reconciliation for saves from versions 1 through 7. The age row scrolls without clipping its first button when all five ages exceed the available width.
 
 Production builds separate dependencies and static Atlas research into vendor, research-content and craft-research-content chunks using Vite's Rolldown configuration. The research appendix preserves complete articles while keeping individual chunks below the unchanged 500 kB warning threshold. These payloads remain independently cacheable and eagerly available, not fetched on demand or loaded as optional packs.

@@ -43,6 +43,10 @@ does not replace or increase an age-completion requirement.
 
 Search and filter controls remain visible while the results scroll separately. **Compact layout** replaces illustrated tiles with denser rows; selection, favorites, occupied-slot markers, and dragging still work. Focus an ingredient and press Enter to select it; the existing Space-based keyboard dragging remains available.
 
+To drag with the keyboard, focus an ingredient, press Space, move it with the arrow keys, and press Space again to drop it into a vessel; Escape cancels. A separate drag preview follows the ingredient outside the scrolling shelf, while its source stays in place. Pointer dragging uses the same preview. Touch users can tap ingredients, including across mobile panels, without disabling shelf scrolling.
+
+Reduced-motion preferences also disable discovery confetti, not only CSS transitions and animations.
+
 Category filters stay in a single horizontal row with a visible scrollbar rather than shrinking or hiding overflow. The row is keyboard-focusable for native scrolling; Tab moves into its filter buttons. Scrollbar visibility can still follow the operating system's overlay-scrollbar preferences.
 
 On mobile viewports no taller than 650 pixels, the whole Element shelf scrolls so the toolbar cannot crowd out the ingredient list. Taller mobile and desktop layouts keep the controls stationary while the ingredient list scrolls independently. Horizontal category and Recently Used scrolling remain available in either layout.

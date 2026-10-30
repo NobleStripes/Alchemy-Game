@@ -432,7 +432,8 @@
 .element-tile:hover { z-index: 2; transform: translateY(-2px) rotate(-1deg); box-shadow: 0 5px 0 rgba(38, 50, 56, 0.18); }
 .element-tile:nth-child(even):hover { transform: translateY(-2px) rotate(1deg); }
 .element-tile[data-selected='true'] { outline: 3px solid var(--yellow); outline-offset: 1px; }
-.element-tile[data-dragging='true'] { z-index: 50; opacity: 0.9; transform: scale(1.06) rotate(2deg); }
+.element-tile[data-dragging='true'] { opacity: 0.45; }
+.drag-preview { width: 100%; height: 100%; box-shadow: var(--shadow); }
 
 [data-category='essence'] { --cat-color: #ef6a4d; --cat-surface: #fff0ea; }
 [data-category='matter'] { --cat-color: #9a7651; --cat-surface: #f4ece2; }

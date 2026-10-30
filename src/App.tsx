@@ -1,5 +1,6 @@
 import {
   DndContext,
+  DragOverlay,
   KeyboardSensor,
   PointerSensor,
   useSensor,
@@ -18,6 +19,7 @@ import {
   VolumeX,
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { ElementIcon } from './components/ElementIcon'
 import { Codex } from './features/codex/Codex'
 import { ChallengeHub } from './features/challenges/ChallengeHub'
 import { ChallengeRun } from './features/challenges/ChallengeRun'
@@ -40,6 +42,7 @@ function App() {
   const historyReturnTarget = useRef<HTMLButtonElement | null>(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [activeChallenge, setActiveChallenge] = useState<ChallengeDefinition | null>(null)
+  const [draggedElementId, setDraggedElementId] = useState<string | null>(null)
   const challengeReturnTarget = useRef<HTMLButtonElement | null>(null)
   const challengeSurface = useRef<HTMLDivElement>(null)
   const returningFromChallenge = useRef(false)
@@ -94,8 +97,10 @@ function App() {
   const era = eras.find((candidate) => candidate.id === activeEraId) ?? eras[0]
   const discoveredCount = discoveredIds.filter((id) => elementsById.has(id)).length
   const progress = Math.round((discoveredCount / elements.length) * 100)
+  const draggedElement = draggedElementId ? elementsById.get(draggedElementId) : undefined
 
   function handleDragEnd(event: DragEndEvent) {
+    setDraggedElementId(null)
     const elementId = String(event.active.id).replace('element/', '')
     const slotId = event.over?.id
     if (slotId === 'slot-first' || slotId === 'slot-second') {
@@ -249,7 +254,12 @@ function App() {
       {/* Keep sections mounted so navigation preserves campaign, reading and unfinished runs. */}
       <main id="play-section" className="play-section" aria-label="Play" hidden={activeSection !== 'play'}>
         <div className="play-workspace">
-          <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
+          <DndContext
+            sensors={sensors}
+            onDragStart={(event) => setDraggedElementId(String(event.active.id).replace('element/', ''))}
+            onDragCancel={() => setDraggedElementId(null)}
+            onDragEnd={handleDragEnd}
+          >
             <div className="game-layout" data-active-panel={activePanel}>
               <Codex onElementSelected={() => setActivePanel('combine')} />
               <Worktable />
@@ -262,6 +272,14 @@ function App() {
                 onViewHistory={viewHistory}
               />
             </div>
+            <DragOverlay dropAnimation={null}>
+              {draggedElement && (
+                <div className="element-tile drag-preview" data-category={draggedElement.category} aria-hidden="true">
+                  <span className="element-sigil" aria-hidden="true"><ElementIcon element={draggedElement} /></span>
+                  <span className="element-copy"><strong>{draggedElement.name}</strong></span>
+                </div>
+              )}
+            </DragOverlay>
           </DndContext>
 
           <nav className="mobile-panel-nav" aria-label="Game panels">

@@ -1,6 +1,6 @@
 import { useDndContext, useDraggable } from '@dnd-kit/core'
 import { ArrowUpDown, ChevronDown, EyeOff, Layers, Search, Star, X } from 'lucide-react'
-import { useDeferredValue, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from 'react'
+import { useDeferredValue, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode } from 'react'
 import type { ElementCategory } from '../../game/domain/types'
 import { getExhaustedElements, getTemporarilyExhaustedElements } from '../../game/engine/elementStatus'
 import { useGameStore } from '../../game/state/useGameStore'
@@ -34,7 +34,7 @@ function ElementTile({ elementId, onSelected, status }: ElementTileProps) {
   const secondSlotId = useGameStore((state) => state.secondSlotId)
   const favoriteIds = useGameStore((state) => state.favoriteIds)
   const toggleFavorite = useGameStore((state) => state.toggleFavorite)
-  const { attributes, listeners, setNodeRef, transform, isDragging } =
+  const { attributes, listeners, setNodeRef, isDragging } =
     useDraggable({ id: `element/${elementId}` })
   const tileRef = useRef<HTMLDivElement | null>(null)
   useLayoutEffect(() => {
@@ -56,10 +56,6 @@ function ElementTile({ elementId, onSelected, status }: ElementTileProps) {
         ? 'Slot 2'
         : null
 
-  const style: CSSProperties | undefined = transform
-    ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)` }
-    : undefined
-
   function handleFavoriteClick(e: MouseEvent) {
     e.stopPropagation()
     toggleFavorite(elementId)
@@ -74,7 +70,6 @@ function ElementTile({ elementId, onSelected, status }: ElementTileProps) {
       data-category={element.category}
       data-dragging={isDragging}
       data-status={status}
-      style={style}
       onClick={() => {
         selectElement(element.id)
         onSelected?.()

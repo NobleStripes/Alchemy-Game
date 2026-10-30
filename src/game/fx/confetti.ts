@@ -5,6 +5,10 @@ export function triggerConfetti(originX?: number, originY?: number) {
     return
   }
 
+  if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+    return
+  }
+
   const isTest =
     (globalThis as unknown as { process?: { env?: { NODE_ENV?: string } } })
       .process?.env?.NODE_ENV === 'test'
