@@ -40,7 +40,7 @@ The shipped catalog is base-only; DLC research is deferred.
 | --- | ---: | ---: | ---: | ---: |
 | Base: 235 discoveries / 311 recipes | 182 | 190 | 2 | 53 |
 
-The earlier pilot's review is retained in the [superseded Phase 11 audit](phase-11-integration.md), not in a shipped manifest or active Atlas. Existing legacy reading markers are preserved as inactive archive records. All base explanations and bibliography remain free.
+The earlier pilot is not included in a shipped manifest or active Atlas. Existing legacy reading markers are preserved as inactive archive records. All base explanations and bibliography remain free.
 
 Research covers **182 of 235 elements**, including all **48 Age V discoveries**. All 167 preceding records remain unchanged. The registry contains **190 verified sources and two pending sources**, including recipe-review background. The remaining **53 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **210 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
 

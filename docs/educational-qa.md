@@ -27,7 +27,7 @@ At the rollback, the protected base remained **225 elements, 291 recipes, five a
 
 Core catalog tests fingerprint the complete gameplay definitions, research and recipe reviews. Fresh legacy and archive campaigns are checked for all core discoveries, formulas and age objectives. Compatibility regressions cover previously enabled, disabled and unavailable archives, inactive record preservation, import/export/reset, conflict and storage protection, and base-only rendered UI.
 
-The [Phase 11 audit](phase-11-integration.md) is a superseded historical record of the former pilot. Its activation test counts and bundle measurements are not claims about the current rollback. Software tests remain distinct from independent historical peer review, physical-device or screen-reader certification and learning-outcome evaluation. Earlier dated base-release results below are historical snapshots.
+Software tests remain distinct from independent historical peer review, physical-device or screen-reader certification and learning-outcome evaluation. Earlier dated base-release results below are historical snapshots.
 
 Rollback verification: `npm run typecheck`, `npm run lint`, `npm run build` and `npm test -- --reporter=dot` pass, with **1,487 tests across 34 files**. Exact semantic hashes retain the base elements, recipes, ages, collections, research and recipe reviews. All **225 local documentation links/anchors** resolve. The build retains **179 crafting ingredients, 46 terminal elements and zero unused nodes** and contains no playable DLC identifiers, activation controls or DLC assets. A local production-preview smoke check serves the application document and entry scripts with HTTP 200; it is not a physical-device or visual-browser certification.
 

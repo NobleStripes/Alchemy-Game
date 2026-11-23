@@ -44,9 +44,7 @@ Verification date: **October 26, 2026**. Gameplay/save implementation tested:
 `2eb81db263d27c23c0459d64df4b4a4593c6d936` (main at checkout).
 The accompanying changes add tests, development tooling and documentation only.
 
-This follows the [Phase 11 integration audit](phase-11-integration.md), whose
-browser could not provide a download event. The new
-[Playwright regression suite](../e2e/save-roundtrip.pw.mjs) requires an actual
+The [Playwright regression suite](../e2e/save-roundtrip.pw.mjs) requires an actual
 browser download; it does not mock the anchor, Blob, object URL, file reader,
 save manager, storage, Web Locks or reload callback.
 

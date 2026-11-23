@@ -39,8 +39,7 @@ All three two-input recipes are symbolic associations, not manufacturing
 procedures or proven causal sequences. Missing documents or unidentified
 road sections do not prove the absence of a technology or institution.
 Base Atlas explanations, bibliography and interpretive cautions cost no Insight.
-See the [discovery/source inventory](optional-content.md#pilot-research-inventory)
-and [bounded verification receipts and editorial follow-ups](phase-11-integration.md#11g-historical-integrity-and-research-qa).
+See the [discovery/source inventory](optional-content.md#pilot-research-inventory).
 
 Imperial Bureaucracy and Provincial Government are comparative gameplay labels, not identical institutions across empires. Achaemenid satrapies had regional fiscal and military obligations; Persepolis tablets document particular food transactions and travel entitlements. Their survival does not establish uniform practice across Persia. Mauryan Rajjukas and Dhamma Mahamatras appear in Ashoka's prescriptions; Roman proconsuls arose in a different magistracy and provincial-command context. No simple line of Persian-to-Roman institutional copying is asserted.
 

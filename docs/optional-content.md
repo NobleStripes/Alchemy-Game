@@ -29,7 +29,7 @@ Deferred. The former three-discovery pilot, its collection and lab, activation i
 
 ### Pilot research inventory
 
-The [historical Phase 11 review](phase-11-integration.md#11g-historical-integrity-and-research-qa) retains the earlier evidence review and its limits as a superseded development record, not a current content inventory or activation guide. Inactive save records remain preserved as described in the [save guide](saves.md#regional-modules-and-durable-archives).
+The pilot is not shipped or playable. Existing legacy archive records remain inactive and are preserved for backup, as described in the [save guide](saves.md#regional-modules-and-durable-archives).
 
 ## Classical Antiquity and Iron Age branches
 

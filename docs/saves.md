@@ -86,9 +86,6 @@ imports reload into a coherent catalog/progress session without replaying
 rewards. Files stay local: there are no accounts, uploads, payment controls,
 advertising or notification prompts.
 
-See the [Phase 11 integration audit](phase-11-integration.md) for regression
-coverage and remaining boundaries.
-
 ### Legacy archive preservation checks
 
 The store, save-management and rendered application regressions load previously enabled, disabled and unavailable DLC archives as base-only campaigns. They check no load/navigation writes, exact backup export, inactive-record retention after core play and reload, no repeated rewards, explicit replacement/reset, stale previews, conflicts and storage/lock failures. No reactivation is offered.
