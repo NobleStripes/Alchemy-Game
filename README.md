@@ -23,7 +23,7 @@ The earlier [additional-connections audit](docs/catalog-plan.md#additional-recip
 
 The [225/291 release baseline](docs/catalog-plan.md#release-baseline-225-discoveries-and-291-formulas) remains fingerprinted, with explicit exceptions for six Atlas description corrections. The **235-discovery / 167-history checkpoint preceded the 15-entry Atlas batch**, retaining all five age requirements and version 7 saves. Further expansion toward 250/197 remains evidence-gated; no next age or DLC is introduced. [Release QA](docs/educational-qa.md#everyday-crafts-and-practical-engineering) records the current compatibility checks.
 
-The [Phase 10 roadmap](docs/phase-10-roadmap.md) and [Phase 11 release audit](docs/phase-11-integration.md) are historical records of the now-deferred DLC work, not current activation instructions. Shared catalog indexes, safe legacy-archive preservation and manual save transfer remain. Concise Atlas summaries, contextual nudges, PWA support, community packs and social sharing are not added by this rollback.
+The [Phase 11 release audit](docs/phase-11-integration.md) is a historical record of the now-deferred DLC work, not current activation instructions. Shared catalog indexes, safe legacy-archive preservation and manual save transfer remain. Concise Atlas summaries, contextual nudges, PWA support, community packs and social sharing are not added by this rollback.
 
 Optional production foundations, engineering, commerce, scholarship and regional branches, plus the landmark track and eleven learning labs, are covered in the [optional content guide](docs/optional-content.md). They extend exploration without increasing existing age-completion requirements; detailed recipes are kept out of this overview.
 
@@ -49,7 +49,6 @@ npm run dev
 | --- | --- |
 | [Gameplay and Atlas](docs/gameplay.md) | Five gameplay ages, progression, Insights, collections, Rainmaker, historical entries, and learning labs. |
 | [Optional content](docs/optional-content.md) | Implemented optional branches, production foundations, landmark objectives, learning labs, recipe spoilers, and historical limits. |
-| [Phase 10 roadmap](docs/phase-10-roadmap.md) | Historical DLC architecture and prototype notes (superseded); retained save compatibility and deferred features. |
 | [Chronology and historical interpretation](docs/historical-interpretation.md) | Regional dates, fictional gates, element corrections, and historical references. |
 | [Historical research](docs/research.md) | Research coverage, record fields, source verification, authoring standards, and optional future directions. |
 | [Recipe review](docs/recipe-review.md) | Recipe classifications, historical-context disclosures, and citation limits. |
