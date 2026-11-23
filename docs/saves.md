@@ -65,7 +65,9 @@ Web Locks, expected-byte conflict checks, invalid-save protection and visible wr
    The JSON download contains the complete stored save, including dormant
    records. It exports the exact stored bytes after flushing pending writes;
    unsaved in-memory progress after a storage error is not included. Existing
-   invalid/future-format bytes can still be exported for recovery.
+   invalid/future-format bytes can still be exported for recovery. If no saved
+   progress exists, export reports this instead of downloading session progress
+   as a stored backup.
 2. Choose **Import save file** with a legacy v1-v7 JSON save or a durable archive,
    up to 1 MiB. Parsing, migration, archive integrity and core reference validation
    run before the preview. No content is installed from the file.

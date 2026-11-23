@@ -71,6 +71,14 @@ describe('settings', () => {
     expect(screen.getByRole('alert')).toHaveTextContent('Progress could not be saved')
   })
 
+  it('reports when there is no stored save to export', async () => {
+    localStorage.clear()
+    setTestGameStore(createGameStore())
+    render(<Settings onClose={vi.fn()} />)
+    await userEvent.setup().click(screen.getByRole('button', { name: 'Export saved progress' }))
+    expect(await screen.findByRole('alert')).toHaveTextContent('No saved progress exists to export')
+  })
+
   it('opens a modal, handles cancellation, and restores focus', () => {
     const showModal = vi.spyOn(HTMLDialogElement.prototype, 'showModal').mockImplementation(function (this: HTMLDialogElement) { this.setAttribute('open', '') })
     const close = vi.spyOn(HTMLDialogElement.prototype, 'close').mockImplementation(() => {})

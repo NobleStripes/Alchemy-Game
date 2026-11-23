@@ -15,7 +15,7 @@ import {
   resolveCombination,
 } from '../engine/resolveCombination'
 import { triggerConfetti } from '../fx/confetti'
-import { createProgressPersistence, exportProgress, SAVE_KEY, MAX_EXPERIMENT_HISTORY, type ExperimentEntry, type SavedProgress } from './persistence'
+import { createProgressPersistence, SAVE_KEY, MAX_EXPERIMENT_HISTORY, type ExperimentEntry, type SavedProgress } from './persistence'
 import { createLegacyArchivePersistence } from './legacyArchivePersistence'
 import { readDurableModuleSave } from './durableModulePersistence'
 import {
@@ -628,11 +628,14 @@ export function createGameStore() {
     }),
     exportSave: async () => {
       await persistence.flush()
+      let raw: string | null
       try {
-        return window.localStorage.getItem(SAVE_KEY) ?? exportProgress(snapshotProgress(store.getState()))
+        raw = window.localStorage.getItem(SAVE_KEY)
       } catch {
         throw new Error('Stored progress cannot be read for export. Nothing was changed.')
       }
+      if (raw === null) throw new Error('No saved progress exists to export. Unsaved session changes are not included.')
+      return raw
     },
   })
 }

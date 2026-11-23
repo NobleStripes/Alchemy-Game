@@ -6,19 +6,6 @@ import type {
 
 export const HINT_FAILURE_UNLOCK_COUNT = 3
 
-export function areHintsUnlocked(
-  discoveredIds: string[],
-  failedPairKeys: string[],
-  discoveryGoal: number,
-  landmarkIds: string[],
-) {
-  return (
-    (discoveredIds.length >= discoveryGoal &&
-      landmarkIds.every((elementId) => discoveredIds.includes(elementId))) ||
-    failedPairKeys.length >= HINT_FAILURE_UNLOCK_COUNT
-  )
-}
-
 export function selectHintRecipe(
   recipes: readonly RecipeDefinition[],
   discoveredIds: string[],

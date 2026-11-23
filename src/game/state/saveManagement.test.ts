@@ -156,6 +156,34 @@ describe('base-game save management', () => {
     await expect(store.exportSave()).rejects.toThrow(/cannot be read/)
   })
 
+  it('reports when there is no stored save to export', async () => {
+    const store = createGameStore()
+    await expect(store.exportSave()).rejects.toThrow(/no saved progress/i)
+  })
+
+  it('does not present unsaved progress as a stored backup after the first write fails', async () => {
+    const store = createGameStore()
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
+    store.getState().transmuteWith('ember', 'tide')
+    await store.flushProgress()
+    expect(store.getState().discoveredIds).toContain('steam')
+    expect(store.getState().persistenceError).toBeTruthy()
+    expect(localStorage.getItem(SAVE_KEY)).toBeNull()
+    await expect(store.exportSave()).rejects.toThrow(/no saved progress/i)
+  })
+
+  it('exports existing stored bytes rather than unsaved changes after a write failure', async () => {
+    const original = exportProgress(freshProgress())
+    localStorage.setItem(SAVE_KEY, original)
+    const store = createGameStore()
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota') })
+    store.getState().transmuteWith('ember', 'tide')
+    await store.flushProgress()
+    expect(store.getState().discoveredIds).toContain('steam')
+    expect(store.getState().persistenceError).toBeTruthy()
+    expect(await store.exportSave()).toBe(original)
+  })
+
   it('rejects forged ownership, invalid core receipts and duplicate challenge records', () => {
     const forged = createModuleSaveEnvelope(freshProgress(), [{
       ...legacyOwnership, elementIds: ['ember'], researchElementIds: [],

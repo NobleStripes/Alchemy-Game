@@ -79,7 +79,7 @@ Game definitions live in [`src/game/content`](src/game/content). Every recipe is
 
 [`validateContent`](src/game/engine/validateContent.ts) checks references, duplicate pairs, and era contracts, then simulates actual gated play: resolve recipes in unlocked eras, check landmarks, grant newly unlocked elements, and repeat. Circular gates and unreachable page content fail validation before build.
 
-Production builds also enforce outgoing-use safeguards for starters and foundational tools, and print graph-derived core counts: **179 crafting ingredients, 46 terminal elements and zero unused nodes**. Shelf status uses the base recipe graph; no manual `isFinal` metadata is needed. These are authored gameplay statuses, not claims about real-world usefulness or historical mastery.
+Production builds also enforce outgoing-use safeguards for starters and foundational tools, and print graph-derived core counts: **193 crafting ingredients, 42 terminal elements and zero unused nodes**. Shelf status uses the base recipe graph; no manual `isFinal` metadata is needed. These are authored gameplay statuses, not claims about real-world usefulness or historical mastery.
 
 ## A Note from the Developer
 

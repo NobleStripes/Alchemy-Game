@@ -4,16 +4,8 @@ class SoundEngine {
   private ctx: AudioContext | null = null
   private enabled: boolean = true
 
-  constructor() {
-    // AudioContext will be initialized on first user gesture
-  }
-
   public setEnabled(enabled: boolean) {
     this.enabled = enabled
-  }
-
-  public isEnabled(): boolean {
-    return this.enabled
   }
 
   private getContext(): AudioContext | null {
@@ -24,7 +16,12 @@ class SoundEngine {
         (window as unknown as { webkitAudioContext: typeof AudioContext })
           .webkitAudioContext
       if (AudioCtx) {
-        this.ctx = new AudioCtx()
+        try {
+          this.ctx = new AudioCtx()
+        } catch (error) {
+          console.warn('Game audio could not be initialized.', error)
+          return null
+        }
       }
     }
     if (this.ctx && this.ctx.state === 'suspended') {
