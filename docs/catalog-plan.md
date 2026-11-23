@@ -6,7 +6,7 @@
 
 Retain the original **194 elements and 232 recipes**, including existing regional Age V discoveries. The target is **250 core elements within the same five gameplay ages**. Newly proposed regional modules are separate editorial backlogs, not a runtime module system or part of the additional 56.
 
-The current milestone is implemented: **235 elements, 311 recipes, 182 full histories, 209 chronology entries, 189 verified sources and two pending sources**. The preceding gameplay batch added ten discoveries and twenty formulas, pairing each discovery history with one original-gap history. The latest Atlas batch fills 15 more gaps without adding discoveries or recipes. **53 original elements** still lack full records. No sixth age or DLC is added.
+The current milestone is implemented: **235 elements, 311 recipes, 182 full histories, 210 chronology entries, 190 verified sources and two pending sources**. The preceding gameplay batch added ten discoveries and twenty formulas, pairing each discovery history with one original-gap history. The latest Atlas batch fills 15 more gaps without adding discoveries or recipes. **53 original elements** still lack full records. No sixth age or DLC is added.
 
 Core means selected for the main catalog, not universal invention or adoption. Regional module means a separately bounded comparative proposal. Research-only means history or evidence without a new gameplay node. A **core candidate** below is not accepted content until it passes all gates.
 

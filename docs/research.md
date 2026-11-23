@@ -4,7 +4,7 @@
 
 Research lives in [`research.json`](../src/game/content/research.json) and the static [`craftResearch.json`](../src/game/content/craftResearch.json) appendix, not inside element definitions or a hosted database. Schema version 2 adds educational Atlas fields. Historical source, chronology, entry, and database schemas are exported from [`schema.ts`](../src/game/content/schema.ts); [`research.ts`](../src/game/content/research.ts) validates the appendix's structure and combines both files before catalog-aware validation. Duplicate IDs, collisions and cross-file references remain checked in the resolved database. [`research.test.ts`](../src/game/content/research.test.ts) and [craft regressions](../src/game/content/craftExpansion.test.ts) test the structure and aggregation.
 
-The appendix contains 85 complete histories and 63 source receipts. Separate static chunks keep both core research payloads below the unchanged 500 kB build warning threshold without truncating articles. Research remains eagerly bundled and base-only; there is no playable DLC, network-loaded research or public pack loader.
+The appendix contains 85 histories and 64 source receipts. Separate static chunks keep both core research payloads below the unchanged 500 kB build warning threshold without truncating articles. Research remains eagerly bundled and base-only; there is no playable DLC, network-loaded research or public pack loader.
 
 This separation keeps factual entries and bibliographic references out of gameplay definitions and save-game progression. Research entries refer to stable element IDs; they do not define recipe dependencies, unlock conditions, or rewards. Version 7 saves remain compatible and store only explicit reading IDs, never copies of research text or sources. The schema update does not itself define age assignments or recipe routes.
 
@@ -38,11 +38,11 @@ The shipped catalog is base-only; DLC research is deferred.
 
 | Catalog | Histories | Verified sources | Pending leads | Unresearched discoveries |
 | --- | ---: | ---: | ---: | ---: |
-| Base: 235 discoveries / 311 recipes | 182 | 189 | 2 | 53 |
+| Base: 235 discoveries / 311 recipes | 182 | 190 | 2 | 53 |
 
 The earlier pilot's review is retained in the [superseded Phase 11 audit](phase-11-integration.md), not in a shipped manifest or active Atlas. Existing legacy reading markers are preserved as inactive archive records. All base explanations and bibliography remain free.
 
-Research covers **182 of 235 elements**, including all **48 Age V discoveries**. All 167 preceding records remain unchanged. The registry contains **189 verified sources and two pending sources**, including recipe-review background. The remaining **53 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **209 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
+Research covers **182 of 235 elements**, including all **48 Age V discoveries**. All 167 preceding records remain unchanged. The registry contains **190 verified sources and two pending sources**, including recipe-review background. The remaining **53 elements** have no full research record. These focused entries are not exhaustive histories or certification of every claim in existing gameplay descriptions. There are **210 chronology entries**, including explicitly undated natural processes; archaeological dates identify evidence or regional contexts, not universal inventions.
 
 The 15-entry evidence batch fills existing gaps in writing materials, color and images, dwellings and storage, transport, law and mapping. It keeps the blank Hemaka roll separate from the written Wadi el-Jarf archive, calcite minimum ages separate from paint dates, and Girsu shell ages separate from canal construction. The Basket entry uses the reported excavation-team briefing for the intact vessel and its approximate date. The full Murabba‘at Cave 4 chapter remains a pending lead; the entry does not claim a named weave, plant species or precise calibrated range from it. Six short descriptions were revised (Basket, Chariot, House, Ink, Map and Pigment); ingredients, recipes, eras and save data did not change.
 

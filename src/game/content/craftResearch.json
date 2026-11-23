@@ -376,6 +376,16 @@
       "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0167151", "accessLevel": "abstract-only", "locator": "Abstract on the five glossed blades, use-wear indicators for cutting near-ripe wild cereals, and distinction between handheld and hafted blades." }
     },
     {
+      "id": "wales-glascoed-bronze-sickle",
+      "title": "Late Bronze Age bronze sickle (2007.43H/10)",
+      "authors": [],
+      "institution": "Amgueddfa Cymru – Museum Wales",
+      "sourceType": "museum-collection",
+      "url": "https://museum.wales/collections/online/object/5f5f46c1-05de-3739-b46b-0c5b68d82b60/Late-Bronze-Age-bronze-sickle/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://museum.wales/collections/online/object/5f5f46c1-05de-3739-b46b-0c5b68d82b60/Late-Bronze-Age-bronze-sickle/", "accessLevel": "collection-record", "locator": "Object 2007.43H/10: title, description, Material and Find Information. Bronze handle-end fragment with two rivet holes and sharpening marks, Late Bronze Age, Glascoed, Monmouthshire. The 2001 date is recovery, not manufacture." }
+    },
+    {
       "id": "iaa-murabbaat-basket-briefing",
       "title": "Israel Antiquities Authority briefing on the Murabba‘at basket",
       "authors": ["Chaim Cohen", "Naama Sukenik"],
@@ -383,7 +393,7 @@
       "sourceType": "archaeology-institution",
       "url": "https://www.jpost.com/archaeology/oldest-woven-basket-in-the-world-found-in-israel-dates-back-10000-years-662183",
       "publicationDate": "2021-03-16",
-      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.jpost.com/archaeology/oldest-woven-basket-in-the-world-found-in-israel-dates-back-10000-years-662183", "accessLevel": "selected-passages", "locator": "Reported excavation-team briefing and find photograph: lidded vessel, samples from four parts, plant identification not established in the briefing, and dry preservation; not a full excavation report." }
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.jpost.com/archaeology/oldest-woven-basket-in-the-world-found-in-israel-dates-back-10000-years-662183", "accessLevel": "selected-passages", "locator": "Tercatin’s 16 March 2021 report, IAA find photograph and caption, paragraphs beginning ‘Materials from four different parts’ and ‘The basket was found empty’, Cohen’s remarks on the 92-litre capacity, unidentified plant material and possible storage, and Sukenik’s remarks on dry preservation. This is the reported briefing, not the excavation chapter." }
     },
     {
       "id": "iaa-murabbaat-cave-four-chapter",
@@ -3263,13 +3273,14 @@
       "elementId": "papyrus",
       "elementName": "Papyrus",
       "historicalOverview": { "text": "Papyrus is a writing surface made from the inner pith of the papyrus stem, not paper made from pulped fibres. A First Dynasty roll from Hemaka’s tomb at Saqqara is blank. The later Wadi el-Jarf archive, including Merer’s log, preserves the earliest surviving written papyri identified by the excavation team.", "sourceIds": ["hamburg-papyrus-support", "ifao-wadi-el-jarf"] },
-      "manufactureOrUse": { "text": "Accounts based on Pliny and modern experiments describe thin strips laid side by side in two layers running at right angles. The layers were pressed or beaten flat and dried; the surface could then be smoothed. Overlapping sheet edges allowed multiple sheets to be joined into a roll. Pliny wrote much later, and some details of strip cutting may have varied.", "sourceIds": ["hamburg-papyrus-support"] },
+      "manufactureOrUse": { "text": "Accounts based on Pliny and modern experiments describe removing the outer rind and cutting the pith lengthwise into thin strips. The strips were laid side by side in two layers at right angles, pressed or beaten flat, then dried and sometimes smoothed. Strips projecting at one edge made it easier to join sheets into a roll. Pliny wrote much later, and some details of strip cutting may have varied.", "sourceIds": ["hamburg-papyrus-support"] },
       "agePlacement": { "status": "regional-gameplay-placement", "text": "The Egyptian examples fit the Atlas’s Bronze Age chapter. The blank roll dates a surviving manufactured object, not the invention of the material or the first act of writing on it.", "sourceIds": ["hamburg-papyrus-support", "ifao-wadi-el-jarf"] },
       "relatedDiscoveries": [
         { "elementId": "writing", "relationship": "documented", "explanation": "The Wadi el-Jarf documents show inked writing on papyrus; the Mesopotamian barley account shows a different medium, clay.", "sourceIds": ["ifao-wadi-el-jarf", "met-barley-account"] },
         { "elementId": "quill", "relationship": "documented", "explanation": "The reed pen and papyrus sheet are different parts of a writing kit. The pen’s catalog does not specify its nib manufacture or identify the tool that wrote Merer’s log.", "sourceIds": ["ba-reed-pen"] },
         { "elementId": "clinical-observation", "relationship": "documented", "explanation": "The substantially later Edwin Smith Papyrus preserves structured trauma cases; its NLM summary does not establish manufacturing methods.", "sourceIds": ["nlm-smith-papyrus"] },
-        { "elementId": "scroll", "relationship": "documented", "explanation": "Joining papyrus sheets makes a longer support that can be stored rolled.", "sourceIds": ["hamburg-papyrus-support"] }
+        { "elementId": "scroll", "relationship": "documented", "explanation": "Joining papyrus sheets makes a longer support that can be stored rolled.", "sourceIds": ["hamburg-papyrus-support"] },
+        { "elementId": "ink", "relationship": "documented", "explanation": "Ink analyses on much later Tebtunis papyri concern the marks, not the manufacture of the sheet or the composition of Merer’s ink.", "sourceIds": ["tebtunis-ink-analysis"] }
       ],
       "approximateDates": [
         { "dateRange": "c. 3000–2900 BCE: blank Hemaka roll", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Egypt"], "note": "First Dynasty burial evidence for a roll without inscriptions.", "sourceIds": ["hamburg-papyrus-support"] },
@@ -3329,7 +3340,7 @@
       "historicalSignificance": { "text": "Tools, residues and containers together show planning and deliberate preparation. A colored substance may be useful without being paint, and a specific use needs evidence of where it was applied.", "sourceIds": ["blombos-ochre-workshop", "sibudu-compound-adhesives"] },
       "independentDevelopments": [],
       "historicalUncertainty": ["The original liquid and the end use remain unknown. The observed materials are not a universal ingredient list."],
-      "gameplaySimplifications": ["The Ash and Water association is a clue, not the composition of the Blombos material or a rule that all pigments are suspended in water."],
+      "gameplaySimplifications": ["Ash and Tide suggest wetting fine material. The combination does not describe the Blombos mixture or imply that all pigments are suspended in water."],
       "furtherResearch": [{ "question": "What residues on tools or surfaces might distinguish the preparation of an ochre mixture from applying it?", "sourceIds": ["blombos-ochre-workshop"] }]
     },
     {
@@ -3408,7 +3419,7 @@
       "elementId": "sickle",
       "elementName": "Sickle",
       "historicalOverview": { "text": "The Iron Age discovery represents an iron harvesting blade. The Met catalogs an Edomite iron sickle from Tawilan. Much older flint evidence from Ohalo II points to the cutting of wild cereal stems, including the use of composite tools with blades mounted in handles.", "sourceIds": ["met-tawilan-iron-sickle", "ohalo-composite-sickles"] },
-      "manufactureOrUse": { "text": "A harvesting edge cuts plant stems; neither iron nor already domesticated crops is necessary to do that. Of the glossed flint blades analyzed at Ohalo II, wear suggested handheld tools as well as hafted inserts. The Tawilan catalog identifies a blade material and object type, not the crops it cut or the precise way it was forged.", "sourceIds": ["ohalo-composite-sickles", "met-tawilan-iron-sickle"] },
+      "manufactureOrUse": { "text": "A harvesting edge cuts plant stems; neither iron nor domesticated crops are necessary. At Ohalo II, wear on flint blades suggested handheld tools as well as hafted inserts. A much later bronze fragment from Glascoed has rivet holes at the handle end and sharpening marks. The Tawilan catalog identifies an iron sickle but does not tell us what plants it cut or exactly how it was made.", "sourceIds": ["ohalo-composite-sickles", "wales-glascoed-bronze-sickle", "met-tawilan-iron-sickle"] },
       "agePlacement": { "status": "earlier-precedents", "text": "The Tawilan piece supports the Iron Age focus on iron. The Ohalo II blades are earlier evidence for harvesting technology, not earlier iron sickles.", "sourceIds": ["met-tawilan-iron-sickle", "ohalo-composite-sickles"] },
       "relatedDiscoveries": [
         { "elementId": "iron-tool", "relationship": "documented", "explanation": "The Tawilan object is cataloged as iron, not simply as an object found in an Iron Age layer.", "sourceIds": ["met-tawilan-iron-sickle"] },
@@ -3417,14 +3428,16 @@
       ],
       "approximateDates": [
         { "dateRange": "About 23,000 years ago: harvesting blades", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Ohalo II, Sea of Galilee"], "note": "Site context for flint blades, not the date of iron harvesting tools.", "sourceIds": ["ohalo-composite-sickles"] },
+        { "dateRange": "Late Bronze Age: Glascoed sickle fragment", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Glascoed, Monmouthshire, Wales"], "note": "Museum period attribution for a specific bronze object, not a date for the adoption of bronze sickles.", "sourceIds": ["wales-glascoed-bronze-sickle"] },
         { "dateRange": "First millennium BCE: Edomite iron sickle", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Tawilan, Levant"], "note": "Broad collection date, attributed to Iron Age II; not the first iron sickle.", "sourceIds": ["met-tawilan-iron-sickle"] }
       ],
-      "associatedRegions": ["Ohalo II, Sea of Galilee", "Tawilan, Levant"],
+      "associatedRegions": ["Ohalo II, Sea of Galilee", "Glascoed, Monmouthshire, Wales", "Tawilan, Levant"],
       "archaeologicalEvidence": [
         { "text": "Object 1977.234.23 is identified as an iron sickle from Tawilan.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["met-tawilan-iron-sickle"] },
+        { "text": "Museum Wales records a bronze sickle fragment, 2007.43H/10, with two rivet holes at the handle end.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["wales-glascoed-bronze-sickle"] },
         { "text": "Microscopic gloss and other wear traces support the study’s inference that some of the flint blades were held directly and others hafted.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["ohalo-composite-sickles"] }
       ],
-      "historicalSignificance": { "text": "The two cases answer different questions: the flint study investigates harvesting behavior and the cataloged sickle documents an iron example. They do not demonstrate a direct line of descent.", "sourceIds": ["ohalo-composite-sickles", "met-tawilan-iron-sickle"] },
+      "historicalSignificance": { "text": "The flint study investigates harvesting behavior, while the cataloged bronze and iron pieces document different blade materials in different places and periods. These examples do not establish a direct line of descent.", "sourceIds": ["ohalo-composite-sickles", "wales-glascoed-bronze-sickle", "met-tawilan-iron-sickle"] },
       "independentDevelopments": [],
       "historicalUncertainty": ["The iron object’s broad date and identification do not reconstruct its use history. A flint insert does not necessarily preserve the shape of the missing handle."],
       "gameplaySimplifications": ["Iron Tool and Crop suggest an iron version. They do not date the invention of harvesting or require domesticated grain in earlier contexts."],
@@ -3438,7 +3451,7 @@
       "agePlacement": { "status": "regional-gameplay-placement", "text": "The recovered basket belongs to the Pre-Pottery Neolithic, a regional Stone Age context. Survival of a whole vessel is not the beginning of basket making.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
       "relatedDiscoveries": [
         { "elementId": "fibre", "relationship": "documented", "explanation": "Flexible plant material can make a vessel; the exact plant in this example was not identified in the checked briefing.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
-        { "elementId": "storage", "relationship": "documented", "explanation": "The lid and capacity are consistent with storage, but the vessel was nearly empty when recovered.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
+        { "elementId": "storage", "relationship": "documented", "explanation": "The team proposed storage from the vessel’s form and context, but found only a little soil inside; its original contents are unknown.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
         { "elementId": "reed", "relationship": "gameplay-abstraction", "explanation": "Reed is a playable material choice, not an identification for this basket.", "sourceIds": [] }
       ],
       "approximateDates": [{ "dateRange": "About 10,500 years ago: surviving complete basket", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Murabba‘at Cave 4, Judean Desert"], "note": "Approximate age publicized from sampling four parts of the vessel; not the date of the first basket.", "sourceIds": ["iaa-murabbaat-basket-briefing"] }],
@@ -3446,7 +3459,7 @@
       "archaeologicalEvidence": [{ "text": "The lidded vessel survived in a dry cave with a little soil inside. The excavation photograph and team’s remarks document its overall construction and context.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["iaa-murabbaat-basket-briefing"] }],
       "historicalSignificance": { "text": "Dry conditions preserve plant containers that decay at many other sites. Looking only at complete artifacts would underestimate both the age and the range of basketry.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
       "independentDevelopments": [],
-      "historicalUncertainty": ["The briefing does not establish a plant species, named weave, calibration range or what the basket originally held."],
+      "historicalUncertainty": ["The evidence checked for this entry comes from the reported excavation briefing, not the full Cave 4 report. The briefing does not establish a plant species, named weave, calibration range or what the basket originally held."],
       "gameplaySimplifications": ["Reed and Stone Tool evoke preparing and weaving a material, not a claim that this object was woven from reeds or that all baskets need the same splitting tool."],
       "furtherResearch": [{ "question": "Does direct inspection of the final Cave 4 report identify the weave and the plant, and how are the dated samples reported?", "sourceIds": ["iaa-murabbaat-basket-briefing", "iaa-murabbaat-cave-four-chapter"] }]
     },

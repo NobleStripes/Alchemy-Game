@@ -131,9 +131,9 @@ describe('optional recipe connections and research sign-off', () => {
 
   it('reports current history gaps rather than counting new formulas as researched elements', () => {
     expect(historicalResearch.records).toHaveLength(182)
-    expect(historicalResearch.records.flatMap((record) => record.approximateDates)).toHaveLength(209)
+    expect(historicalResearch.records.flatMap((record) => record.approximateDates)).toHaveLength(210)
     expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(53)
-    expect(historicalResearch.sources.filter((source) => source.verification.status === 'verified')).toHaveLength(189)
+    expect(historicalResearch.sources.filter((source) => source.verification.status === 'verified')).toHaveLength(190)
     expect(historicalResearch.sources.filter((source) => source.verification.status === 'pending')).toHaveLength(2)
     expect(recipeReviews.reviews.filter((review) => review.sourceIds.length > 0)).toHaveLength(206)
     expect(recipeReviews.reviews.filter((review) => review.sourceIds.length === 0)).toHaveLength(105)

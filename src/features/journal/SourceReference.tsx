@@ -2,7 +2,7 @@ import type { HistoricalResearchSource } from '../../game/content/research'
 
 const accessLabels = {
   'collection-record': 'Collection metadata reviewed',
-  'selected-passages': 'Selected original passages reviewed',
+  'selected-passages': 'Selected passages reviewed',
   'abstract-only': 'Abstract only; full paper not reviewed',
 }
 
@@ -21,7 +21,7 @@ export function SourceReference({ source }: { source: HistoricalResearchSource }
           <p>Checked {source.verification.checkedOn}. {source.verification.locator}</p>
           {source.verification.accessedUrl !== source.url && (
             <a href={source.verification.accessedUrl} target="_blank" rel="noreferrer">
-              Consulted original record
+              Consulted source
             </a>
           )}
         </details>

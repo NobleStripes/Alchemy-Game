@@ -9,7 +9,7 @@ remain historical core-release snapshots.
 
 ### Everyday crafts and practical engineering
 
-The current base catalog has **235 discoveries, 311 recipes and 182 full histories**, with **209 chronology entries, 189 verified sources and two pending leads**. The latest ten discoveries each have an onward use and a full history, paired with ten original-gap histories. The latest Atlas-only batch adds 15 histories; the remaining backlog is **53 discoveries**. Origins receives no new historical craft node; its Salt feeds a later preservation branch.
+The current base catalog has **235 discoveries, 311 recipes and 182 full histories**, with **210 chronology entries, 190 verified sources and two pending leads**. The latest ten discoveries each have an onward use and a full history, paired with ten original-gap histories. The latest Atlas-only batch adds 15 histories; the remaining backlog is **53 discoveries**. Origins receives no new historical craft node; its Salt feeds a later preservation branch.
 
 The [new content regressions](../src/game/content/everydayCrafts.test.ts) test all twenty routes in both orders, reject reversed duplicates, check assigned-age reachability and retain old-only completion. The original 225/291 definitions, reviews and both research-file prefixes remain fingerprinted. Age, collection and challenge definitions, reward rules and v7 save fields are unchanged. The new batch's seven simplified processes and thirteen symbolic associations carry individual cited cautions; regional examples, inferred garments, missing fuel/equipment and textual machine evidence are explicit.
 

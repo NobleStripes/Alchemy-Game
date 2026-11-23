@@ -37,7 +37,66 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
   return screen.getByRole('article', { name })
 }
 
+const evidenceAudit = [
+  ['Papyrus', /roll from Hemaka’s tomb.*is blank/],
+  ['Pigment', /Ash and Tide suggest wetting fine material/],
+  ['Cave Painting', /calcite therefore sets a minimum age/],
+  ['Granary', /predates domesticated cereals/],
+  ['House', /three perspectives, not successive inventions/],
+  ['Sickle', /The Ohalo II blades are earlier evidence for harvesting technology, not earlier iron sickles/],
+  ['Basket', /reported excavation briefing, not the full Cave 4 report/],
+  ['Ink', /Roman-period measurements must not be silently assigned to Bronze Age writing/],
+  ['Anchor', /evidence of immersion rather than a map/],
+  ['Harbor', /an intermittent state expedition port/],
+  ['Canal', /older dissolved carbon/],
+  ['Cart', /The parallel tracks at Flintbek record movement without preserving the vehicle/],
+  ['Law', /They need not be written or depend on centralized cities/],
+  ['Map', /do not show a charcoal drawing stage/],
+  ['Chariot', /Wheel count alone is not decisive/],
+] as const
+
 describe('Historical Encyclopedia', () => {
+  it.each(evidenceAudit)('renders the evidence, limits and source receipts for %s', async (name, distinction) => {
+    const record = historicalResearch.records.find((entry) => entry.elementName === name)!
+    discover(record.elementId, ...record.relatedDiscoveries.map((link) => link.elementId))
+    const user = await openAtlas()
+    const article = await selectEntry(user, name)
+    const entry = within(article)
+    expect(entry.getByText(distinction)).toBeVisible()
+    for (const heading of ['Historical overview', 'Historical dates and geography', 'Manufacture and use',
+      'Why it mattered', 'Archaeological context', 'Gameplay interpretation', 'Historical uncertainty',
+      'Related discoveries', 'Sources and references']) {
+      expect(entry.getByRole('heading', { name: heading })).toBeVisible()
+    }
+    for (const { dateRange, note } of record.approximateDates) {
+      expect(entry.getByText(dateRange, { exact: true })).toBeVisible()
+      expect(entry.getByText(note, { exact: true })).toBeVisible()
+    }
+    for (const evidence of record.archaeologicalEvidence) {
+      expect(entry.getByText(evidence.text, { exact: true })).toBeVisible()
+    }
+    for (const related of record.relatedDiscoveries) {
+      expect(entry.getByText(related.explanation, { exact: true })).toBeVisible()
+    }
+    const sources = new Set<HTMLElement>()
+    const citations = entry.getAllByRole('link', { name: /^Reference / })
+    for (const citation of citations) {
+      expect(citation).toHaveAccessibleName(/^Reference [1-9]\d*$/)
+      const target = document.getElementById(citation.getAttribute('href')!.slice(1))!
+      expect(article).toContainElement(target)
+      sources.add(target)
+    }
+    expect(sources.size).toBe(entry.getAllByText(/reviewed$/, { selector: 'summary' }).length)
+    for (const target of sources) {
+      const receipt = within(target)
+      const source = historicalResearch.sources.find(({ id }) => target.id === `history-source-${id}`)!
+      if (source.verification.status !== 'verified') throw new Error(`Pending source rendered: ${source.id}`)
+      expect(receipt.getByRole('link', { name: source.title })).toHaveAttribute('href', source.url)
+      await user.click(receipt.getByText(/reviewed$/, { selector: 'summary' }))
+      expect(receipt.getByText(`Checked ${source.verification.checkedOn}. ${source.verification.locator}`)).toBeVisible()
+    }
+  })
+
   it('reveals a new Atlas history only after discovery and connects its citations to the bibliography', async () => {
     const user = await openAtlas()
     expect(screen.queryByRole('button', { name: 'Open historical entry for Sickle' })).not.toBeInTheDocument()
