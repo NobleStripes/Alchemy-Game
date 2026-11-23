@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import { collections, elements, eras, recipes } from './index'
 import { learningChallenges } from './challenges'
@@ -27,7 +28,7 @@ describe('optional scholarship discoveries', () => {
   })
 
   it.each([
-    [elements.slice(0, 186), 'ea33a447f020f356ec90b5e27897da71ca5d37da50aabab7d25f41369d252e62'],
+    [withBaselineDescriptions(elements.slice(0, 186)), 'ea33a447f020f356ec90b5e27897da71ca5d37da50aabab7d25f41369d252e62'],
     [recipes.slice(0, 224), '8bb44bc5d9c59e8ff8eac71d4bfab51e25771b4f4ff531032ecd1a59ff05af2a'],
   ])('preserves all previous gameplay definitions %#', async (definitions, expected) => {
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(definitions)))

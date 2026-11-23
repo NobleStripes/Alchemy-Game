@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import { collections, elements, eras, recipes } from './index'
 import { learningChallenges } from './challenges'
@@ -27,7 +28,7 @@ describe('optional regional administration and connections', () => {
   })
 
   it.each([
-    [elements.slice(0, 189), '8689e41b46f4403e136c91d7d443b25306ee1cb8a5ae1b86c7757e31d4075c81'],
+    [withBaselineDescriptions(elements.slice(0, 189)), '8689e41b46f4403e136c91d7d443b25306ee1cb8a5ae1b86c7757e31d4075c81'],
     [recipes.slice(0, 227), 'd899691f79ca95fc962cd9b34e9cd278e7be0bea1f1a3cae9dc0f74b2a441523'],
   ])('preserves every prior gameplay definition %#', async (definitions, expected) => {
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(definitions)))

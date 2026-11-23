@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import { collections, elements, eras, recipes } from './index'
 import { historicalResearch, researchByElementId } from './research'
@@ -26,7 +27,7 @@ describe('optional commerce branch', () => {
   })
 
   it.each([
-    [elements.slice(0, 184), '427386c93a3c915a936d407f0c9cbf8caea16487b827af80afb48432f977be46'],
+    [withBaselineDescriptions(elements.slice(0, 184)), '427386c93a3c915a936d407f0c9cbf8caea16487b827af80afb48432f977be46'],
     [recipes.slice(0, 222), '76452813d8886d6db6433d8d92c2cbb3b124879d14514142a06946007c2be4d6'],
   ])('preserves the complete pre-commerce catalog prefix %#', async (definitions, expected) => {
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(definitions)))

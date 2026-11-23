@@ -38,6 +38,20 @@ async function selectEntry(user: ReturnType<typeof userEvent.setup>, name: strin
 }
 
 describe('Historical Encyclopedia', () => {
+  it('reveals a new Atlas history only after discovery and connects its citations to the bibliography', async () => {
+    const user = await openAtlas()
+    expect(screen.queryByRole('button', { name: 'Open historical entry for Sickle' })).not.toBeInTheDocument()
+    act(() => discover('sickle'))
+    const article = await selectEntry(user, 'Sickle')
+    const citation = within(article).getAllByRole('link', { name: /^Reference / })
+      .find((link) => link.getAttribute('href') === '#history-source-met-tawilan-iron-sickle')
+    expect(citation).toBeVisible()
+    const target = document.getElementById('history-source-met-tawilan-iron-sickle')!
+    expect(within(target).getByRole('link', { name: 'Sickle (1977.234.23)' }))
+      .toHaveAttribute('href', 'https://www.metmuseum.org/art/collection/search/326254')
+    expect(useGameStore.getState().readHistoricalElementIds).toEqual([])
+  })
+
   it('shows new crafts and newly researched old discoveries without revealing undiscovered content or charging Insight', async () => {
     discover('needle', 'sewing', 'lamp')
     useGameStore.setState({ insightCredits: 0 })
@@ -442,8 +456,9 @@ describe('Historical Encyclopedia', () => {
     expect(screen.queryByRole('heading', { name: 'Historical notes not yet researched' })).not.toBeInTheDocument()
     await user.click(within(screen.getByRole('article', { name: 'Clay' })).getByRole('button', { name: 'Read history of Writing' }))
     await user.click(within(screen.getByRole('article', { name: 'Writing' })).getByRole('button', { name: 'Read history of Papyrus' }))
-    expect(screen.getByRole('article', { name: 'Papyrus' })).toBeVisible()
-    expect(screen.getByRole('heading', { name: 'Historical notes not yet researched' })).toBeVisible()
+    const papyrus = screen.getByRole('article', { name: 'Papyrus' })
+    expect(within(papyrus).getByRole('heading', { name: 'Historical overview' })).toBeVisible()
+    expect(within(papyrus).getByText(/earliest surviving written papyri/)).toBeVisible()
   })
 
   it('browses related entries across ages, supports revisiting, and changes no slots, progress, rewards or saved data', async () => {

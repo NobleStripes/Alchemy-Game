@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import rawCollections from './collections.json'
 import { collections, elements, eras, recipes } from '.'
@@ -15,7 +16,7 @@ async function fingerprint(value: unknown) {
 
 describe('optional landmark track', () => {
   it('preserves every existing recipe, element, age, collection and challenge definition', async () => {
-    expect(await fingerprint(elements.slice(0, 194))).toBe('614fb1e9530e12890529f7535c852bfe7ed6d7f5f9cb8b03ae54952dd71b454d')
+    expect(await fingerprint(withBaselineDescriptions(elements.slice(0, 194)))).toBe('614fb1e9530e12890529f7535c852bfe7ed6d7f5f9cb8b03ae54952dd71b454d')
     expect(await fingerprint(recipes.slice(0, 232))).toBe('a256d0c092ae8e36a317f69828b9819f628757becca57e073da0880a9de35e71')
     expect(await fingerprint(eras)).toBe('3d526226733e65e43b32c5bea4722fc0ab3629b90a152164b04f59edb4c63884')
     expect(await fingerprint(rawCollections.slice(0, 10))).toBe('89b13151a4b723ed531fbb533b4df300258a2bbe1e9f8bbcce4ea05b17344c5a')

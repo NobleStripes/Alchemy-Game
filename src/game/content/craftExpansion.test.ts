@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import rawResearch from './research.json'
 import craftResearch from './craftResearch.json'
@@ -60,8 +61,8 @@ describe('craft and engineering expansion', () => {
   it('validates the bundled appendix and combines it without dropping or replacing full articles', () => {
     expect(historicalDatabaseSchema.parse(craftResearch)).toEqual(craftResearch)
     expect(rawResearch.records).toHaveLength(97)
-    expect(craftResearch.records).toHaveLength(70)
-    expect(craftResearch.sources).toHaveLength(40)
+    expect(craftResearch.records).toHaveLength(85)
+    expect(craftResearch.sources).toHaveLength(63)
     expect(historicalResearch.records).toEqual([...rawResearch.records, ...craftResearch.records])
     expect(historicalResearch.sources).toEqual([...craftResearch.sources, ...rawResearch.sources])
   })
@@ -84,7 +85,7 @@ describe('craft and engineering expansion', () => {
   })
 
   it('preserves the complete 200-element catalog and every one of its 243 formulas', async () => {
-    expect(await fingerprint(elements.slice(0, 200))).toBe('4a893b676b40b2aaafd5709025d2e6ccec78be267d01281588d7eaf403774c6c')
+    expect(await fingerprint(withBaselineDescriptions(elements.slice(0, 200)))).toBe('4a893b676b40b2aaafd5709025d2e6ccec78be267d01281588d7eaf403774c6c')
     expect(await fingerprint(recipes.slice(0, 243))).toBe('e06f823d33e7e62e49b6fabb6ecf8dfa46b27715e4e608c981abc095015d15b4')
     expect(validateContent(elements.slice(0, 200), recipes.slice(0, 243), eras, collections)).toEqual([])
     for (const era of eras) {

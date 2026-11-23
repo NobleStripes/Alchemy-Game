@@ -274,6 +274,236 @@
         "accessLevel": "selected-passages",
         "locator": "Hosted English translation X.2.2-4 and X.3.2-3: rope wound around an axle turned by levers; supported axle, pulley blocks and lifting stone; a separate iron lever and fulcrum. This textual account does not establish a first lever, a wooden prototype, a complete excavated harbor winch or operating guidance."
       }
+    },
+    {
+      "id": "hamburg-papyrus-support",
+      "title": "Papyrus",
+      "authors": ["Olivier Bonnerot", "Grzegorz Nehring"],
+      "institution": "Centre for the Study of Manuscript Cultures, Universität Hamburg",
+      "sourceType": "archaeology-institution",
+      "url": "https://www.csmc.uni-hamburg.de/profiling-guide-alt/alt-materials/writing-surfaces/papyrus.html",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.csmc.uni-hamburg.de/profiling-guide-alt/alt-materials/writing-surfaces/papyrus.html", "accessLevel": "selected-passages", "locator": "Opening paragraphs on Hemaka and Merer and reconstruction of cutting, laying, drying and joining sheets; cites Pliny and modern experiments, not a surviving Bronze Age workshop manual." }
+    },
+    {
+      "id": "ifao-wadi-el-jarf",
+      "title": "Ouadi el-Jarf",
+      "authors": ["Pierre Tallet"],
+      "institution": "Institut français d’archéologie orientale",
+      "sourceType": "archaeology-institution",
+      "url": "https://www.ifao.egnet.net/archeologie/ouadi-el-jarf/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.ifao.egnet.net/archeologie/ouadi-el-jarf/", "accessLevel": "selected-passages", "locator": "English expedition overview after nine seasons: reef gap and L-shaped jetty, anchor storage, galleries, Fourth-Dynasty material and late-Khufu accounts and logs. The Nile transport described by Merer is distinct from the port where the papers were found." }
+    },
+    {
+      "id": "tebtunis-ink-analysis",
+      "title": "Insights into the composition of ancient Egyptian red and black inks on papyri achieved by synchrotron-based microanalyses",
+      "authors": ["Thomas Christiansen et al."],
+      "institution": "Proceedings of the National Academy of Sciences",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1073/pnas.2004534117",
+      "publicationDate": "2020-10-26",
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7668004/", "accessLevel": "selected-passages", "locator": "Significance, Abstract, introduction and analytical discussion: 12 Roman-period Tebtunis fragments, red ochre and lead-bearing compounds, proposed drying role distinguished from measured composition." }
+    },
+    {
+      "id": "blombos-ochre-workshop",
+      "title": "A 100,000-Year-Old Ochre-Processing Workshop at Blombos Cave, South Africa",
+      "authors": ["Christopher S. Henshilwood", "Francesco d’Errico", "Karen L. van Niekerk", "Yvan Coquinot", "Zenobia Jacobs", "Stein-Erik Lauritzen", "Michel Menu", "Renata García-Moreno"],
+      "institution": "Science",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1126/science.1211535",
+      "publicationDate": "2011-10-14",
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://in-africa.org/wp-content/uploads/2012/12/Henshilwood-et-al-2011-100000-yr-old-ochre-processing-Blombos_Science.pdf", "accessLevel": "selected-passages", "locator": "Article PDF, toolkit and Tk1-S1 residue descriptions and preparation interpretation (pp. 219–222); distinction between observed bone, charcoal and mineral particles and inferred liquid or binder." }
+    },
+    {
+      "id": "sulawesi-stencils-2014",
+      "title": "Pleistocene cave art from Sulawesi, Indonesia",
+      "authors": ["Maxime Aubert et al."],
+      "institution": "Nature",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1038/nature13422",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1038%2Fnature13422&resultType=core&format=json", "accessLevel": "abstract-only", "locator": "Original abstract via Europe PMC: dated coralloid deposits associated with 12 hand stencils and two animal depictions; minimum ages of 39.9 and 35.4 thousand years for selected motifs." }
+    },
+    {
+      "id": "sulawesi-scene-2024",
+      "title": "Narrative cave art in Indonesia by 51,200 years ago",
+      "authors": ["Adhi Agus Oktaviana et al."],
+      "institution": "Nature",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1038/s41586-024-07541-7",
+      "publicationDate": "2024-07-03",
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11269172/", "accessLevel": "selected-passages", "locator": "Abstract and Main on overlying calcium carbonate, laser-ablation U-series imaging and the Leang Karampuang and Leang Bulu’ Sipong 4 estimates." }
+    },
+    {
+      "id": "dhra-predomestication-storage",
+      "title": "Evidence for food storage and predomestication granaries 11,000 years ago in the Jordan Valley",
+      "authors": ["Ian Kuijt", "Bill Finlayson"],
+      "institution": "Proceedings of the National Academy of Sciences",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1073/pnas.0812764106",
+      "publicationDate": "2009-06-22",
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700141/", "accessLevel": "selected-passages", "locator": "Abstract and Structure 4 discussion and Figs. 3–4: supports, burned structural remains, plant traces, calibrated context and proposed functions." }
+    },
+    {
+      "id": "ohalo-brush-hut-study",
+      "title": "Abundance or stress? Faunal exploitation patterns and subsistence strategies: The case study of Brush Hut 1 at Ohalo II, a submerged 23,000-year-old camp in the Sea of Galilee, Israel",
+      "authors": ["Tikvah Steiner et al."],
+      "institution": "PLOS ONE",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1371/journal.pone.0262434",
+      "publicationDate": "2022-01-26",
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8791512/", "accessLevel": "selected-passages", "locator": "Site and Brush Hut 1 section, Fig. 1 and floor-specific remains: three floor layers, bedding and indoor hearth on Floor III and grain distributions around the Floor II grinding stone." }
+    },
+    {
+      "id": "met-tawilan-iron-sickle",
+      "title": "Sickle (1977.234.23)",
+      "authors": [],
+      "institution": "The Metropolitan Museum of Art",
+      "sourceType": "museum-collection",
+      "url": "https://www.metmuseum.org/art/collection/search/326254",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://collectionapi.metmuseum.org/public/collection/v1/objects/326254", "accessLevel": "collection-record", "locator": "Official collection data: accession 1977.234.23, Edomite, Tawilan, medium iron, Iron Age II, dated broadly to the first millennium BCE." }
+    },
+    {
+      "id": "ohalo-composite-sickles",
+      "title": "Composite Sickles and Cereal Harvesting Methods at 23,000-Years-Old Ohalo II, Israel",
+      "authors": ["Iris Groman-Yaroslavski", "Ehud Weiss", "Dani Nadel"],
+      "institution": "PLOS ONE",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1371/journal.pone.0167151",
+      "publicationDate": "2016-11-23",
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0167151", "accessLevel": "abstract-only", "locator": "Abstract on the five glossed blades, use-wear indicators for cutting near-ripe wild cereals, and distinction between handheld and hafted blades." }
+    },
+    {
+      "id": "iaa-murabbaat-basket-briefing",
+      "title": "Israel Antiquities Authority briefing on the Murabba‘at basket",
+      "authors": ["Chaim Cohen", "Naama Sukenik"],
+      "institution": "Israel Antiquities Authority (remarks reported by Rossella Tercatin, The Jerusalem Post)",
+      "sourceType": "archaeology-institution",
+      "url": "https://www.jpost.com/archaeology/oldest-woven-basket-in-the-world-found-in-israel-dates-back-10000-years-662183",
+      "publicationDate": "2021-03-16",
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.jpost.com/archaeology/oldest-woven-basket-in-the-world-found-in-israel-dates-back-10000-years-662183", "accessLevel": "selected-passages", "locator": "Reported excavation-team briefing and find photograph: lidded vessel, samples from four parts, plant identification not established in the briefing, and dry preservation; not a full excavation report." }
+    },
+    {
+      "id": "iaa-murabbaat-cave-four-chapter",
+      "title": "The Forgotten Cave: The Renewed Excavations at Murabba‘at Cave 4",
+      "authors": ["Chaim Cohen", "Hagay Hamer", "Oriya Amichay", "Eitan Klein", "Naama Sukenik", "Ilan Hadad", "Elisabetta Boaretto"],
+      "institution": "Israel Antiquities Authority",
+      "sourceType": "archaeology-institution",
+      "url": "https://doi.org/10.2307/jj.10329820.8",
+      "publicationDate": "2023-06-09",
+      "verification": { "status": "pending", "attemptedOn": "2026-11-23", "reason": "Crossref confirms the chapter metadata; the publisher-hosted chapter and alternate copy did not load. Indexed extracts do not substitute for direct verification of the construction and dating passages." }
+    },
+    {
+      "id": "tallet-marouard-jarf-anchors",
+      "title": "The Harbor of Khufu on the Red Sea Coast at Wadi al-Jarf, Egypt",
+      "authors": ["Pierre Tallet", "Grégory Marouard"],
+      "institution": "Near Eastern Archaeology",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.5615/neareastarch.77.1.0004",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://archive.org/download/theharborofkhufuontheredseacoastatwadialjarfegypt/THE%20HARBOR%20OF%20KHUFU%20on%20the%20Red%20Sea%20Coast%20at%20Wadi%20al-Jarf%2C%20Egypt_djvu.txt", "accessLevel": "selected-passages", "locator": "Digitized text of the excavation article, mooring context and anchor deposit with descriptions accompanying Figs. 8, 17–18: stone shapes, rope features, attached marine remains and storage." }
+    },
+    {
+      "id": "girsu-canal-radiocarbon",
+      "title": "Dating Ancient Canal Systems Using Radiocarbon Dating and Archaeological Evidence at Tello/Girsu, Southern Mesopotamia, Iraq",
+      "authors": ["Ella Egberts", "Jaafar Jotheri", "Angelo Di Michele", "Antony Baxter", "Sebastien Rey"],
+      "institution": "Radiocarbon",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1017/S0033822223000401",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.cambridge.org/core/journals/radiocarbon/article/dating-ancient-canal-systems-using-radiocarbon-dating-and-archaeological-evidence-at-tellogirsu-southern-mesopotamia-iraq/DFCB7F569B744396C9E4BDA923A8EB07", "accessLevel": "selected-passages", "locator": "Fig. 2 and Sample Collection (especially E4 at canal 3), Chronological Framework, sample discussions for canals 5 and 6, and the reservoir-effect comparison." }
+    },
+    {
+      "id": "bakker-wheeled-vehicles",
+      "title": "The earliest evidence of wheeled vehicles in Europe and the Near East",
+      "authors": ["Jan Albert Bakker", "Janusz Kruk", "Albert E. Lanting", "Sarunas Milisauskas"],
+      "institution": "Antiquity",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1017/S0003598X00065522",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.cambridge.org/core/journals/antiquity/article/abs/earliest-evidence-of-wheeled-vehicles-in-europe-and-the-near-east/4835B594180234DC116F6F0105771573", "accessLevel": "abstract-only", "locator": "Abstract compares radiocarbon and excavation evidence in Funnel Beaker and Late Uruk contexts; supports comparable timing, not a mechanism of transmission." }
+    },
+    {
+      "id": "flintbek-cart-tracks",
+      "title": "The Neolithic burial sequence at Flintbek LA 3, north Germany, and its cart tracks: a precise chronology",
+      "authors": ["Doris Mischka"],
+      "institution": "Antiquity",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://www.cambridge.org/core/journals/antiquity/article/abs/neolithic-burial-sequence-at-flintbek-la-3-north-germany-and-its-cart-tracks-a-precise-chronology/760E97687C27589B1BD8C4C8E078FC78",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.cambridge.org/core/journals/antiquity/article/abs/neolithic-burial-sequence-at-flintbek-la-3-north-germany-and-its-cart-tracks-a-precise-chronology/760E97687C27589B1BD8C4C8E078FC78", "accessLevel": "abstract-only", "locator": "Publisher extract: track date of 3420–3385 cal BCE from Bayesian chronology of 32 stratigraphic samples, not a date measured on the tracks." }
+    },
+    {
+      "id": "krakow-bronocice-vase",
+      "title": "Vase from Bronocice",
+      "authors": ["A. Zastawny"],
+      "institution": "Archaeological Museum in Kraków",
+      "sourceType": "museum-essay",
+      "url": "https://ma.krakow.pl/en/tour/vase-from-bronocice/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://ma.krakow.pl/en/tour/vase-from-bronocice/", "accessLevel": "selected-passages", "locator": "Vase motif, household-pit context and approximate radiocarbon date; distinguishes original vessel from display copy." }
+    },
+    {
+      "id": "lindner-steppe-chariots",
+      "title": "Chariots in the Eurasian Steppe: a Bayesian approach to the emergence of horse-drawn transport in the early second millennium BC",
+      "authors": ["Stephan Lindner"],
+      "institution": "Antiquity",
+      "sourceType": "peer-reviewed-study",
+      "url": "https://doi.org/10.1017/S0003598X2000037X",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.cambridge.org/core/journals/antiquity/article/chariots-in-the-eurasian-steppe-a-bayesian-approach-to-the-emergence-of-horsedrawn-transport-in-the-early-second-millennium-bc/C4FDF8C5E7D1D20A28BEB7F6C50A9AF4", "accessLevel": "selected-passages", "locator": "Introduction and Early Eurasian chariots and absolute chronology, Fig. 3 and Table 1: grave 8 pits, horse bones, cheekpieces, human-bone date and comparison with Kültepe seals." }
+    },
+    {
+      "id": "louvre-hammurabi-stele",
+      "title": "The Code of Hammurabi",
+      "authors": [],
+      "institution": "Musée du Louvre",
+      "sourceType": "museum-essay",
+      "url": "https://www.louvre.fr/en/the-code-of-hammurabi",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.louvre.fr/en/the-code-of-hammurabi", "accessLevel": "selected-passages", "locator": "Sections on the basalt monument, date around 1750 BCE, conditional wording, royal relief and later findspot at Susa; not a record of courtroom enforcement." }
+    },
+    {
+      "id": "cdli-ur-namma-collection",
+      "title": "RIME 3/2.01.01.20 (Laws of Ur-Namma) composite",
+      "authors": [],
+      "institution": "Cuneiform Digital Library Initiative",
+      "sourceType": "library-collection",
+      "url": "https://cdli.earth/artifacts/432130",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://cdli.earth/artifacts/432130", "accessLevel": "collection-record", "locator": "Composite edition including references to physical fragments, Civil’s edition and Frayne’s Ur III edition; composite is not a single excavated tablet." }
+    },
+    {
+      "id": "isac-nippur-neighborhoods",
+      "title": "Nippur Neighborhoods",
+      "authors": ["Elizabeth C. Stone"],
+      "institution": "Institute for the Study of Ancient Cultures, University of Chicago",
+      "sourceType": "archaeology-institution",
+      "url": "https://isac.uchicago.edu/publications/nippur-neighborhoods",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://isac.uchicago.edu/publications/nippur-neighborhoods", "accessLevel": "selected-passages", "locator": "Institutional publication page excerpting Norman Yoffee’s review: house texts on sales and inheritance in area TA, rentals and loans in area TB. The page summarizes Stone’s analysis." }
+    },
+    {
+      "id": "penn-nippur-field-map",
+      "title": "An Ancient Babylonian Map",
+      "authors": [],
+      "institution": "Penn Museum, The Museum Journal",
+      "sourceType": "museum-essay",
+      "url": "https://www.penn.museum/sites/journal/530/",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.penn.museum/sites/journal/530/", "accessLevel": "selected-passages", "locator": "Fig. 202 and discussion of B13885: clay map of canals, villages and a field marked as palace land near Nippur. The proposed royal commission is the author’s interpretation, not established." }
+    },
+    {
+      "id": "bmimages-world-tablet",
+      "title": "The Map of the World",
+      "authors": [],
+      "institution": "British Museum Images",
+      "sourceType": "museum-collection",
+      "url": "https://www.bmimages.com/preview.asp?image=01613595898",
+      "publicationDate": null,
+      "verification": { "status": "verified", "checkedOn": "2026-11-23", "accessedUrl": "https://www.bmimages.com/preview.asp?image=01613595898", "accessLevel": "collection-record", "locator": "Image and item fields for clay medium and approximate sixth-century BCE dating; fuller reading of the design is supported by the existing Cartography receipt." }
     }
   ],
   "records": [
@@ -3028,6 +3258,372 @@
           ]
         }
       ]
+    },
+    {
+      "elementId": "papyrus",
+      "elementName": "Papyrus",
+      "historicalOverview": { "text": "Papyrus is a writing surface made from the inner pith of the papyrus stem, not paper made from pulped fibres. A First Dynasty roll from Hemaka’s tomb at Saqqara is blank. The later Wadi el-Jarf archive, including Merer’s log, preserves the earliest surviving written papyri identified by the excavation team.", "sourceIds": ["hamburg-papyrus-support", "ifao-wadi-el-jarf"] },
+      "manufactureOrUse": { "text": "Accounts based on Pliny and modern experiments describe thin strips laid side by side in two layers running at right angles. The layers were pressed or beaten flat and dried; the surface could then be smoothed. Overlapping sheet edges allowed multiple sheets to be joined into a roll. Pliny wrote much later, and some details of strip cutting may have varied.", "sourceIds": ["hamburg-papyrus-support"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Egyptian examples fit the Atlas’s Bronze Age chapter. The blank roll dates a surviving manufactured object, not the invention of the material or the first act of writing on it.", "sourceIds": ["hamburg-papyrus-support", "ifao-wadi-el-jarf"] },
+      "relatedDiscoveries": [
+        { "elementId": "writing", "relationship": "documented", "explanation": "The Wadi el-Jarf documents show inked writing on papyrus; the Mesopotamian barley account shows a different medium, clay.", "sourceIds": ["ifao-wadi-el-jarf", "met-barley-account"] },
+        { "elementId": "quill", "relationship": "documented", "explanation": "The reed pen and papyrus sheet are different parts of a writing kit. The pen’s catalog does not specify its nib manufacture or identify the tool that wrote Merer’s log.", "sourceIds": ["ba-reed-pen"] },
+        { "elementId": "clinical-observation", "relationship": "documented", "explanation": "The substantially later Edwin Smith Papyrus preserves structured trauma cases; its NLM summary does not establish manufacturing methods.", "sourceIds": ["nlm-smith-papyrus"] },
+        { "elementId": "scroll", "relationship": "documented", "explanation": "Joining papyrus sheets makes a longer support that can be stored rolled.", "sourceIds": ["hamburg-papyrus-support"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "c. 3000–2900 BCE: blank Hemaka roll", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Egypt"], "note": "First Dynasty burial evidence for a roll without inscriptions.", "sourceIds": ["hamburg-papyrus-support"] },
+        { "dateRange": "Mid-26th century BCE: written Wadi el-Jarf papyri", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Wadi el-Jarf, Egypt"], "note": "Accounts and logs from late in Khufu’s reign; survival is not the beginning of writing on papyrus.", "sourceIds": ["hamburg-papyrus-support", "ifao-wadi-el-jarf"] }
+      ],
+      "associatedRegions": ["Egypt", "Wadi el-Jarf, Egypt"],
+      "archaeologicalEvidence": [{ "text": "The blank roll and the written archive come from different finds, a tomb at Saqqara and a gallery entrance at Wadi el-Jarf.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["hamburg-papyrus-support", "ifao-wadi-el-jarf"] }],
+      "historicalSignificance": { "text": "The portable sheet could carry accounts, work logs and medical case texts. The early archive and the much later medical manuscript illustrate different uses rather than a single scribal tradition frozen in time.", "sourceIds": ["ifao-wadi-el-jarf", "nlm-smith-papyrus"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["A surviving blank roll cannot date the first inscription. Later descriptions and replication do not establish every step for the earliest rolls."],
+      "gameplaySimplifications": ["Reed and a tool evoke plant preparation; any reed is not interchangeable with papyrus pith, and the clue omits sheet and roll assembly."],
+      "furtherResearch": [{ "question": "What can visible fibres and sheet joins reveal about the production of individual surviving rolls?", "sourceIds": ["hamburg-papyrus-support", "ifao-wadi-el-jarf"] }]
+    },
+    {
+      "elementId": "ink",
+      "elementName": "Ink",
+      "historicalOverview": { "text": "Egyptian scribes could use black for running text and red to set words or headings apart. Soot-based black and ochre-based red are different preparations, not two shades of one universal formula. The research on Tebtunis below concerns Roman-period writing, not Bronze Age recipes.", "sourceIds": ["tebtunis-ink-analysis", "met-scribe-palette"] },
+      "manufactureOrUse": { "text": "A scribal palette held colorants ready for writing; the Met’s palette documents equipment rather than a chemical analysis. The Tebtunis study describes carbon black and red ochre in its overview of Egyptian materials, typically with a binder and liquid. Its analysis used X-rays to map elements and characterize compounds on surviving fragments.", "sourceIds": ["met-scribe-palette", "tebtunis-ink-analysis"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement reflects earlier Egyptian scribal equipment. Roman-period measurements must not be silently assigned to Bronze Age writing.", "sourceIds": ["met-scribe-palette", "tebtunis-ink-analysis"] },
+      "relatedDiscoveries": [
+        { "elementId": "quill", "relationship": "documented", "explanation": "The separate reed pen and palette records attest writing equipment but do not identify a particular recipe.", "sourceIds": ["ba-reed-pen", "met-scribe-palette"] },
+        { "elementId": "papyrus", "relationship": "documented", "explanation": "Tebtunis fragments preserve ink on a papyrus writing surface.", "sourceIds": ["tebtunis-ink-analysis"] },
+        { "elementId": "pigment", "relationship": "documented", "explanation": "Carbon and iron-rich earth can supply colour; a pigment and a usable writing ink are not the same thing.", "sourceIds": ["tebtunis-ink-analysis"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "c. 2030–1550 BCE: Egyptian scribal palette", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Egypt"], "note": "The Met's date for a wood-and-pigment palette, not the age of any laboratory-tested ink in this entry.", "sourceIds": ["met-scribe-palette"] },
+        { "dateRange": "c. 100–200 CE: analyzed Tebtunis fragments", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Tebtunis, Egypt"], "note": "Roman-period temple library samples, not dates for the introduction of black or red ink.", "sourceIds": ["tebtunis-ink-analysis"] }
+      ],
+      "associatedRegions": ["Egypt", "Tebtunis, Egypt"],
+      "archaeologicalEvidence": [
+        { "text": "The study examined 12 fragments. Red ochre was identified by iron-bearing material including hematite; lead was detected in ten red and three black samples, not in every ink.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["tebtunis-ink-analysis"] },
+        { "text": "The researchers propose that lead compounds could have acted as drying agents rather than supplying the red color. The function is an interpretation, not a recovered recipe.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["tebtunis-ink-analysis"] }
+      ],
+      "historicalSignificance": { "text": "Palettes show what writing equipment looked like; chemical analysis shows that even inks of the same visible color need not share the same composition. These are complementary kinds of evidence, not interchangeable dates.", "sourceIds": ["met-scribe-palette", "tebtunis-ink-analysis"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The palette does not prove how its contents were mixed. Measured lead in some later inks does not demonstrate its presence in earlier Egyptian inks."],
+      "gameplaySimplifications": ["Pigment and Charcoal suggest one carbon ink; they are not ingredients for every ink and the clue omits binder and liquid."],
+      "furtherResearch": [{ "question": "How do analyses of securely dated samples distinguish an ink ingredient from contamination or later alteration?", "sourceIds": ["tebtunis-ink-analysis", "met-scribe-palette"] }]
+    },
+    {
+      "elementId": "pigment",
+      "elementName": "Pigment",
+      "historicalOverview": { "text": "Pigment supplies color. At Blombos Cave an ochre-rich preparation survived in two abalone shells alongside grinding and hammering tools. This is evidence of processing and storing colored material; no painted surface was shown to have been made with the mixture.", "sourceIds": ["blombos-ochre-workshop"] },
+      "manufactureOrUse": { "text": "The better-preserved shell held red mineral material including hematite-bearing ochre, with crushed bone, charcoal and quartz or quartzite particles. The team inferred mixing with a liquid; the exact liquid was not identified. The suggestion that bone fat helped bind the mixture is a reconstruction, not a measurement of the original liquid.", "sourceIds": ["blombos-ochre-workshop"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The deposits belong to the southern African Middle Stone Age. The game’s Stone Age groups this evidence without treating one workshop as the start of all pigment processing.", "sourceIds": ["blombos-ochre-workshop"] },
+      "relatedDiscoveries": [
+        { "elementId": "adhesive", "relationship": "documented", "explanation": "At Sibudu, separate evidence and replication address plant gum and ochre in hafting; they do not establish the Blombos mixture as glue.", "sourceIds": ["sibudu-compound-adhesives"] },
+        { "elementId": "cave-painting", "relationship": "gameplay-abstraction", "explanation": "Some pigments make images, but Blombos is not evidence for the use of this mixture on a wall.", "sourceIds": [] },
+        { "elementId": "grinding-stone", "relationship": "documented", "explanation": "Grinding implements formed part of the Blombos toolkit.", "sourceIds": ["blombos-ochre-workshop"] }
+      ],
+      "approximateDates": [{ "dateRange": "About 100,000 years ago: ochre-processing context", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Blombos Cave, South Africa"], "note": "Dates the excavated context of the toolkits, not the invention of color, paint or adhesive.", "sourceIds": ["blombos-ochre-workshop"] }],
+      "associatedRegions": ["Blombos Cave, South Africa"],
+      "archaeologicalEvidence": [
+        { "text": "Two abalone shells with colored compound were recovered with associated tools in the lower M3 deposits.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["blombos-ochre-workshop"] },
+        { "text": "The authors discuss possible uses such as decoration or skin protection, but do not establish the application.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["blombos-ochre-workshop"] }
+      ],
+      "historicalSignificance": { "text": "Tools, residues and containers together show planning and deliberate preparation. A colored substance may be useful without being paint, and a specific use needs evidence of where it was applied.", "sourceIds": ["blombos-ochre-workshop", "sibudu-compound-adhesives"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The original liquid and the end use remain unknown. The observed materials are not a universal ingredient list."],
+      "gameplaySimplifications": ["The Ash and Water association is a clue, not the composition of the Blombos material or a rule that all pigments are suspended in water."],
+      "furtherResearch": [{ "question": "What residues on tools or surfaces might distinguish the preparation of an ochre mixture from applying it?", "sourceIds": ["blombos-ochre-workshop"] }]
+    },
+    {
+      "elementId": "cave-painting",
+      "elementName": "Cave Painting",
+      "historicalOverview": { "text": "Painted marks on cave walls include hand stencils and recognizable figures. In Sulawesi, researchers dated mineral deposits associated with both a hand stencil and animal paintings. Later work at Leang Karampuang described a different panel in which human-like figures appear with a pig.", "sourceIds": ["sulawesi-stencils-2014", "sulawesi-scene-2024"] },
+      "manufactureOrUse": { "text": "A hand stencil marks the outline around a hand, while figurative painting depicts a recognizable subject. Uranium-series dating measures when calcite grew, not when pigment was applied. Where intact calcite overlies paint, the paint was already there when that layer formed: the calcite therefore sets a minimum age.", "sourceIds": ["sulawesi-stencils-2014", "sulawesi-scene-2024"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The selected examples fall well within the Pleistocene. Stone Age placement does not establish the first cave painting or a worldwide sequence from stencils to figures.", "sourceIds": ["sulawesi-stencils-2014", "sulawesi-scene-2024"] },
+      "relatedDiscoveries": [
+        { "elementId": "pigment", "relationship": "gameplay-abstraction", "explanation": "A prepared colorant is not by itself evidence of a surviving image or a known painting technique.", "sourceIds": [] },
+        { "elementId": "art", "relationship": "gameplay-abstraction", "explanation": "The game groups these motifs as images without assigning an original purpose to them.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "At least 39,900 years ago: a hand stencil", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Maros-Pangkep, Sulawesi, Indonesia"], "note": "Minimum reported for one stencil in the 2014 study, not an age for all the stencils.", "sourceIds": ["sulawesi-stencils-2014"] },
+        { "dateRange": "At least 35,400 years ago: a figure interpreted as a babirusa", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Maros-Pangkep, Sulawesi, Indonesia"], "note": "Minimum for a separate animal depiction in the 2014 study; lower bounds do not order when two paintings were made.", "sourceIds": ["sulawesi-stencils-2014"] },
+        { "dateRange": "At least 51,200 years ago: Leang Karampuang scene", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Maros-Pangkep, Sulawesi, Indonesia"], "note": "Conservative lower bound from a calcite estimate of 53.5 ± 2.3 thousand years, not the measured age of paint.", "sourceIds": ["sulawesi-scene-2024"] }
+      ],
+      "associatedRegions": ["Maros-Pangkep, Sulawesi, Indonesia"],
+      "archaeologicalEvidence": [
+        { "text": "Mineral crusts sampled over Sulawesi motifs preserve a physical order between paint and later growth. The 2024 imaging approach also revised the minimum bound for the Leang Bulu’ Sipong 4 panel to about 48,000 years.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["sulawesi-stencils-2014", "sulawesi-scene-2024"] },
+        { "text": "The Leang Karampuang grouping is interpreted as a narrative composition; dating the crust does not reveal the story or the painters’ intentions.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["sulawesi-scene-2024"] }
+      ],
+      "historicalSignificance": { "text": "Hand outlines, isolated figures and composed groups are different surviving forms of image-making. Taken together, the dated examples show the deep history of these practices in Sulawesi without fixing their origin or original meaning.", "sourceIds": ["sulawesi-stencils-2014", "sulawesi-scene-2024"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Minimum ages leave open how long before the calcite grew a motif was painted. Images need not record literal events or have a known ritual meaning."],
+      "gameplaySimplifications": ["Art and Rock stand for marking a cave surface; the game does not reproduce a documented pigment preparation or explain the images."],
+      "furtherResearch": [{ "question": "What changes when scientists can isolate the oldest undisturbed calcite immediately above a painted layer?", "sourceIds": ["sulawesi-stencils-2014", "sulawesi-scene-2024"] }]
+    },
+    {
+      "elementId": "granary",
+      "elementName": "Granary",
+      "historicalOverview": { "text": "A granary is a dedicated structure for storing grain. At Dhra′ near the Dead Sea, excavators identified purpose-built storage structures among buildings used for food processing and residence. This Pre-Pottery Neolithic evidence predates domesticated cereals; food could be stored systematically while the plants were still morphologically wild.", "sourceIds": ["dhra-predomestication-storage"] },
+      "manufactureOrUse": { "text": "In Structure 4, notched upright stones, some reused grinding stones, supported the reconstruction of a raised floor. Burned wood, impressions in mud and plant traces help explain the construction. The investigators interpret the suspended floor as allowing airflow and reducing exposure to moisture and rodents.", "sourceIds": ["dhra-predomestication-storage"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The Bronze Age chapter uses Granary for organized reserves, but storage buildings already existed thousands of years earlier. Dhra′ does not date the first granary, nor does storage require Bronze Age administration.", "sourceIds": ["dhra-predomestication-storage"] },
+      "relatedDiscoveries": [
+        { "elementId": "storage", "relationship": "documented", "explanation": "Storage is the wider practice; these structures are evidence for one dedicated architectural form.", "sourceIds": ["dhra-predomestication-storage"] },
+        { "elementId": "grinding-stone", "relationship": "documented", "explanation": "Some upright supports were repurposed grinding stones, not evidence of grain being milled inside the granary.", "sourceIds": ["dhra-predomestication-storage"] },
+        { "elementId": "village", "relationship": "gameplay-abstraction", "explanation": "The recipe associates settlement with reserves without determining who controlled them.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "c. 11,300–11,175 cal BP: early granaries", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Dhra′, Jordan"], "note": "Cal BP means calibrated years before 1950. The range is the paper’s context for pre-domestication storage.", "sourceIds": ["dhra-predomestication-storage"] }],
+      "associatedRegions": ["Dhra′, Jordan"],
+      "archaeologicalEvidence": [
+        { "text": "Structure 4 preserved notched stones, burned wood and impressions in mud; preliminary phytolith work identified a concentration of barley husk traces.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["dhra-predomestication-storage"] },
+        { "text": "The proposed raised floor and comparison with nearby dwellings support a storage interpretation; plant traces in construction mud are not an inventory of stored grain.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["dhra-predomestication-storage"] }
+      ],
+      "historicalSignificance": { "text": "Dhra′ breaks the assumption that people first domesticated crops and only then built storage facilities. The authors relate the buildings to managing wild food resources and possible cultivation, which is distinct from domestication.", "sourceIds": ["dhra-predomestication-storage"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The architecture does not settle ownership, distribution rules or the full contents of individual structures."],
+      "gameplaySimplifications": ["Storage and Village summarize reserve keeping; neither the recipe nor the find establishes communal ownership at every site."],
+      "furtherResearch": [{ "question": "How can plant traces incorporated into construction be distinguished from residues of stored foods?", "sourceIds": ["dhra-predomestication-storage"] }]
+    },
+    {
+      "elementId": "house",
+      "elementName": "House",
+      "historicalOverview": { "text": "House in the Atlas means the built dwelling and the way its interior was arranged. Shelter emphasizes protection from the weather; Home emphasizes the experience of living together. These are three perspectives, not successive inventions. The brush huts at Ohalo II show that a house need not have masonry walls or belong to a farming village.", "sourceIds": ["ohalo-brush-hut-study"] },
+      "manufactureOrUse": { "text": "Excavators found three successive floors in Brush Hut 1. The lowest preserved overlapping grass bedding around a central indoor hearth. On the middle floor, distributions of remains around a grinding stone and elsewhere led researchers to distinguish probable cereal processing, flint work and access areas. These are interpretations of activity, not named rooms.", "sourceIds": ["ohalo-brush-hut-study"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "A dwelling made of brush and used at a fisher-hunter-gatherer camp fits the game’s Stone Age grouping. It is an example of arranged living space, not the earliest possible house or a fixed stage before settlement.", "sourceIds": ["ohalo-brush-hut-study"] },
+      "relatedDiscoveries": [
+        { "elementId": "shelter", "relationship": "gameplay-abstraction", "explanation": "Shelter focuses on protection rather than on the arrangement of activity inside.", "sourceIds": [] },
+        { "elementId": "home", "relationship": "gameplay-abstraction", "explanation": "Home focuses on social life, which a floor plan cannot fully recover.", "sourceIds": [] },
+        { "elementId": "hearth", "relationship": "documented", "explanation": "The lower floor preserves a hearth within the hut; other hearths at the site were outside.", "sourceIds": ["ohalo-brush-hut-study"] }
+      ],
+      "approximateDates": [{ "dateRange": "c. 23,500–22,500 cal BP: Ohalo II occupation", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Ohalo II, Sea of Galilee"], "note": "Cal BP means calibrated years before 1950. This site range does not date every activity on each floor separately.", "sourceIds": ["ohalo-brush-hut-study"] }],
+      "associatedRegions": ["Ohalo II, Sea of Galilee"],
+      "archaeologicalEvidence": [
+        { "text": "Floor I was partly eroded. Floors II and III preserved plant, stone and animal remains, with laid grass and a central hearth on Floor III.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["ohalo-brush-hut-study"] },
+        { "text": "Concentrations of finds suggest different activities in different parts of the interior; the evidence does not determine a year-round household.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["ohalo-brush-hut-study"] }
+      ],
+      "historicalSignificance": { "text": "The unusually well-preserved floors let archaeologists ask where people worked, placed bedding and used fire rather than simply whether a shelter existed. The floor sequence also separates repeated occupations from a single idealized layout.", "sourceIds": ["ohalo-brush-hut-study"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The floors do not establish who lived together, the exact occupation schedule or the complete shape of the vanished upper structure."],
+      "gameplaySimplifications": ["The two Wall inputs are a spatial clue. Brush Hut 1 did not require brick walls or define a universal house plan."],
+      "furtherResearch": [{ "question": "How do researchers tell whether an artifact cluster marks work itself or debris moved afterward?", "sourceIds": ["ohalo-brush-hut-study"] }]
+    },
+    {
+      "elementId": "sickle",
+      "elementName": "Sickle",
+      "historicalOverview": { "text": "The Iron Age discovery represents an iron harvesting blade. The Met catalogs an Edomite iron sickle from Tawilan. Much older flint evidence from Ohalo II points to the cutting of wild cereal stems, including the use of composite tools with blades mounted in handles.", "sourceIds": ["met-tawilan-iron-sickle", "ohalo-composite-sickles"] },
+      "manufactureOrUse": { "text": "A harvesting edge cuts plant stems; neither iron nor already domesticated crops is necessary to do that. Of the glossed flint blades analyzed at Ohalo II, wear suggested handheld tools as well as hafted inserts. The Tawilan catalog identifies a blade material and object type, not the crops it cut or the precise way it was forged.", "sourceIds": ["ohalo-composite-sickles", "met-tawilan-iron-sickle"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The Tawilan piece supports the Iron Age focus on iron. The Ohalo II blades are earlier evidence for harvesting technology, not earlier iron sickles.", "sourceIds": ["met-tawilan-iron-sickle", "ohalo-composite-sickles"] },
+      "relatedDiscoveries": [
+        { "elementId": "iron-tool", "relationship": "documented", "explanation": "The Tawilan object is cataloged as iron, not simply as an object found in an Iron Age layer.", "sourceIds": ["met-tawilan-iron-sickle"] },
+        { "elementId": "stone-tool", "relationship": "documented", "explanation": "Some flint blades were interpreted as mounted cutting inserts.", "sourceIds": ["ohalo-composite-sickles"] },
+        { "elementId": "crop", "relationship": "documented", "explanation": "The Ohalo II wear study points to wild cereals; growing a domesticated crop is not a prerequisite for cutting grain stems.", "sourceIds": ["ohalo-composite-sickles"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "About 23,000 years ago: harvesting blades", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Ohalo II, Sea of Galilee"], "note": "Site context for flint blades, not the date of iron harvesting tools.", "sourceIds": ["ohalo-composite-sickles"] },
+        { "dateRange": "First millennium BCE: Edomite iron sickle", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Tawilan, Levant"], "note": "Broad collection date, attributed to Iron Age II; not the first iron sickle.", "sourceIds": ["met-tawilan-iron-sickle"] }
+      ],
+      "associatedRegions": ["Ohalo II, Sea of Galilee", "Tawilan, Levant"],
+      "archaeologicalEvidence": [
+        { "text": "Object 1977.234.23 is identified as an iron sickle from Tawilan.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["met-tawilan-iron-sickle"] },
+        { "text": "Microscopic gloss and other wear traces support the study’s inference that some of the flint blades were held directly and others hafted.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["ohalo-composite-sickles"] }
+      ],
+      "historicalSignificance": { "text": "The two cases answer different questions: the flint study investigates harvesting behavior and the cataloged sickle documents an iron example. They do not demonstrate a direct line of descent.", "sourceIds": ["ohalo-composite-sickles", "met-tawilan-iron-sickle"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The iron object’s broad date and identification do not reconstruct its use history. A flint insert does not necessarily preserve the shape of the missing handle."],
+      "gameplaySimplifications": ["Iron Tool and Crop suggest an iron version. They do not date the invention of harvesting or require domesticated grain in earlier contexts."],
+      "furtherResearch": [{ "question": "What distinguishes cutting wear from traces of hafting on a composite harvesting tool?", "sourceIds": ["met-tawilan-iron-sickle", "ohalo-composite-sickles"] }]
+    },
+    {
+      "elementId": "basket",
+      "elementName": "Basket",
+      "historicalOverview": { "text": "Baskets are containers formed by interlacing flexible material. A large complete example with a lid survived at Murabba‘at Cave 4 in the Judean Desert. An intact find is exceptionally informative about form, but it is not the first basket ever made.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
+      "manufactureOrUse": { "text": "The visible woven body and separate cover show how the vessel could enclose its contents; the excavators estimated a capacity of about 92 litres and suggested storage. The reported briefing did not identify the plant used. Reeds are plausible basket material in general but should not be assigned to this object from the game clue.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The recovered basket belongs to the Pre-Pottery Neolithic, a regional Stone Age context. Survival of a whole vessel is not the beginning of basket making.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
+      "relatedDiscoveries": [
+        { "elementId": "fibre", "relationship": "documented", "explanation": "Flexible plant material can make a vessel; the exact plant in this example was not identified in the checked briefing.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
+        { "elementId": "storage", "relationship": "documented", "explanation": "The lid and capacity are consistent with storage, but the vessel was nearly empty when recovered.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
+        { "elementId": "reed", "relationship": "gameplay-abstraction", "explanation": "Reed is a playable material choice, not an identification for this basket.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "About 10,500 years ago: surviving complete basket", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Murabba‘at Cave 4, Judean Desert"], "note": "Approximate age publicized from sampling four parts of the vessel; not the date of the first basket.", "sourceIds": ["iaa-murabbaat-basket-briefing"] }],
+      "associatedRegions": ["Murabba‘at Cave 4, Judean Desert"],
+      "archaeologicalEvidence": [{ "text": "The lidded vessel survived in a dry cave with a little soil inside. The excavation photograph and team’s remarks document its overall construction and context.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["iaa-murabbaat-basket-briefing"] }],
+      "historicalSignificance": { "text": "Dry conditions preserve plant containers that decay at many other sites. Looking only at complete artifacts would underestimate both the age and the range of basketry.", "sourceIds": ["iaa-murabbaat-basket-briefing"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The briefing does not establish a plant species, named weave, calibration range or what the basket originally held."],
+      "gameplaySimplifications": ["Reed and Stone Tool evoke preparing and weaving a material, not a claim that this object was woven from reeds or that all baskets need the same splitting tool."],
+      "furtherResearch": [{ "question": "Does direct inspection of the final Cave 4 report identify the weave and the plant, and how are the dated samples reported?", "sourceIds": ["iaa-murabbaat-basket-briefing", "iaa-murabbaat-cave-four-chapter"] }]
+    },
+    {
+      "elementId": "anchor",
+      "elementName": "Anchor",
+      "historicalOverview": { "text": "An anchor helps hold a vessel without permanently attaching it to shore. At Wadi el-Jarf excavators found stone anchors both in a mooring area and stored together near the coastal buildings. The two contexts show different stages in the life of the equipment.", "sourceIds": ["tallet-marouard-jarf-anchors", "ifao-wadi-el-jarf"] },
+      "manufactureOrUse": { "text": "The anchors vary in shape; most were roughly worked limestone and some sandstone. Many have an upper perforation and grooves which the excavators associate with holding and handling rope. Some bear marine remains such as shells and sea urchins, evidence of immersion rather than a map of where the rope or vessel travelled.", "sourceIds": ["tallet-marouard-jarf-anchors"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Old Kingdom port fits the Atlas’s Bronze Age grouping. It documents stone anchoring gear; the playable metal route does not date the first anchors or imply that these anchors were metal.", "sourceIds": ["tallet-marouard-jarf-anchors", "ifao-wadi-el-jarf"] },
+      "relatedDiscoveries": [
+        { "elementId": "harbor", "relationship": "documented", "explanation": "Anchors in the mooring area and an onshore stock link this equipment to the operation of this particular port.", "sourceIds": ["tallet-marouard-jarf-anchors"] },
+        { "elementId": "boat", "relationship": "documented", "explanation": "The gear is evidence for boats, but a stone anchor alone does not show a hull’s dimensions or itinerary.", "sourceIds": ["tallet-marouard-jarf-anchors"] }
+      ],
+      "approximateDates": [{ "dateRange": "c. 2600–2500 BCE: Wadi el-Jarf port context", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Wadi el-Jarf, Egypt"], "note": "Broad early Fourth Dynasty site range, not a direct date for each worked stone.", "sourceIds": ["ifao-wadi-el-jarf"] }],
+      "associatedRegions": ["Wadi el-Jarf, Egypt"],
+      "archaeologicalEvidence": [
+        { "text": "The early survey reported at least 22 limestone anchors underwater in the sheltered mooring area and a separate deposit of 99 stored onshore.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["tallet-marouard-jarf-anchors"] },
+        { "text": "Deposits of marine organisms support prior immersion. Some painted signs may identify vessels or crews; they do not identify every vessel or voyage.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["tallet-marouard-jarf-anchors"] }
+      ],
+      "historicalSignificance": { "text": "Repeated forms of attachment and separate storage show equipment prepared for use and reuse. Studying the anchor separately from the ship keeps evidence for mooring from becoming speculation about a whole fleet.", "sourceIds": ["tallet-marouard-jarf-anchors", "ifao-wadi-el-jarf"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Individual rigging, vessel assignments and voyages are not recoverable from the shape or weight of the stone alone."],
+      "gameplaySimplifications": ["Boat and Metal symbolically produce anchoring equipment. The Wadi el-Jarf examples are worked stone, and a stone weight alone does not reproduce the full system."],
+      "furtherResearch": [{ "question": "How do undersea finds and stored gear reveal different aspects of the use life of an anchor?", "sourceIds": ["tallet-marouard-jarf-anchors", "ifao-wadi-el-jarf"] }]
+    },
+    {
+      "elementId": "harbor",
+      "elementName": "Harbor",
+      "historicalOverview": { "text": "A harbor is a sheltered place where vessels can arrive or moor, with or without major construction. Wadi el-Jarf on the Gulf of Suez was an intermittent state expedition port, not a model for all landing places or a settlement necessarily busy throughout the year.", "sourceIds": ["ifao-wadi-el-jarf", "tallet-marouard-jarf-anchors"] },
+      "manufactureOrUse": { "text": "A gap in the coastal reef provided access, and a massive L-shaped jetty sheltered the mooring area. The site also had temporary accommodation, an onshore anchor store and inland rock-cut galleries used for equipment and boat parts. Accounts and logs from the gallery area attest organized work, including records that the crew brought from its earlier work on the Nile.", "sourceIds": ["ifao-wadi-el-jarf", "tallet-marouard-jarf-anchors"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The early Fourth Dynasty site provides a regional example for the Bronze Age chapter. Its scale and state organization do not establish a minimum design for an ancient port.", "sourceIds": ["ifao-wadi-el-jarf"] },
+      "relatedDiscoveries": [
+        { "elementId": "anchor", "relationship": "documented", "explanation": "The underwater and stored anchors are evidence of facilities for mooring and resupply.", "sourceIds": ["tallet-marouard-jarf-anchors"] },
+        { "elementId": "papyrus", "relationship": "documented", "explanation": "Late-Khufu accounts and logs were recovered at a gallery entrance.", "sourceIds": ["ifao-wadi-el-jarf"] },
+        { "elementId": "maritime-trade", "relationship": "gameplay-abstraction", "explanation": "A state expedition base is not necessarily a commercial market.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "c. 2600–2500 BCE: early Fourth Dynasty port use", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Wadi el-Jarf, Egypt"], "note": "The expedition overview attributes use to Snefru and Khufu; the written deposit comes from late in Khufu’s reign.", "sourceIds": ["ifao-wadi-el-jarf"] }],
+      "associatedRegions": ["Wadi el-Jarf, Egypt"],
+      "archaeologicalEvidence": [
+        { "text": "Excavation connects the coastal jetty and mooring area with nearby buildings, stored anchors, inland galleries and boat fragments.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["ifao-wadi-el-jarf", "tallet-marouard-jarf-anchors"] },
+        { "text": "Papyri found at the port include Merer’s log of limestone transport for the Giza project. The findspot is not the route described.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["ifao-wadi-el-jarf"] }
+      ],
+      "historicalSignificance": { "text": "Wadi el-Jarf shows a harbor as more than sheltered water: this one joined landing infrastructure, storage ashore and administration so expeditions could be mounted intermittently.", "sourceIds": ["ifao-wadi-el-jarf"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The structures and documents do not record every voyage. A proposed Sinai supply role is not evidence that Merer’s documented limestone traveled through this harbor."],
+      "gameplaySimplifications": ["Sea, Village, Anchor or load-handling tools cue port activities; none is a universal requirement and no pair creates navigable shelter by itself."],
+      "furtherResearch": [{ "question": "Which traces would distinguish an occasional expedition base from a permanently occupied commercial harbor?", "sourceIds": ["ifao-wadi-el-jarf", "tallet-marouard-jarf-anchors"] }]
+    },
+    {
+      "elementId": "canal",
+      "elementName": "Canal",
+      "historicalOverview": { "text": "A canal is a channel built or deliberately modified to direct water; an old river course is not automatically a canal. At Girsu researchers combined mapped watercourses and terrain with field observations and trench sections. That let them examine individual channels within a larger landscape of floodplain and lake deposits.", "sourceIds": ["girsu-canal-radiocarbon"] },
+      "manufactureOrUse": { "text": "A trench across canal 3 exposed sand and silt filling a channel that cut earlier occupation deposits containing ovens and pottery. It lay by an engineered crossing commonly called the bridge, whose precise hydraulic function is debated. The team used the channel cut, layers, mapped relationships and built context together; water-laid sediment alone would not distinguish an engineered channel from a river.", "sourceIds": ["girsu-canal-radiocarbon"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The reconstructed local use history fits Bronze Age southern Mesopotamia. The sequence brackets episodes of channel activity and infilling, not when canals were first built anywhere.", "sourceIds": ["girsu-canal-radiocarbon"] },
+      "relatedDiscoveries": [
+        { "elementId": "irrigation", "relationship": "documented", "explanation": "Bringing water to fields is one use of a canal, not the definition of all channels.", "sourceIds": ["girsu-canal-radiocarbon"] },
+        { "elementId": "river", "relationship": "gameplay-abstraction", "explanation": "Natural channels help shape the landscape; the tool recipe does not turn every old riverbed into a canal.", "sourceIds": [] },
+        { "elementId": "map", "relationship": "gameplay-abstraction", "explanation": "Mapping channels aids modern interpretation but is not proof of how their builders planned them.", "sourceIds": [] }
+      ],
+      "approximateDates": [{ "dateRange": "Third to early second millennium BCE: Girsu canal evidence", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Girsu (Tello), southern Iraq"], "note": "The study places canal use by the Early Dynastic I period and relates later filling or disuse to Isin-Larsa and subsequent deposits. This is not a direct construction date for each canal.", "sourceIds": ["girsu-canal-radiocarbon"] }],
+      "associatedRegions": ["Girsu (Tello), southern Iraq"],
+      "archaeologicalEvidence": [
+        { "text": "At canal 3 the cross-section separated earlier deposits cut by the channel from the sediment and ceramics in its later fill.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["girsu-canal-radiocarbon"] },
+        { "text": "Freshwater shells can incorporate older dissolved carbon and yield ages too old for deposition. At Girsu the authors compare the shells with charcoal dates, dated pottery and layer order; even corrected estimates do not make a fill sample a date for digging the channel.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["girsu-canal-radiocarbon"] }
+      ],
+      "historicalSignificance": { "text": "Disagreement among dates is useful evidence about the samples. The study shows why a dated object, the sediment around it, the period of water flow and the construction of the cut need not be the same event.", "sourceIds": ["girsu-canal-radiocarbon"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The freshwater reservoir effect can vary, and material may have been reworked into younger deposits. The proposed chronology is a model constrained by several lines of evidence."],
+      "gameplaySimplifications": ["Irrigation and Stone Tool symbolize deliberate water control, omitting surveying, excavation, maintenance and local water conditions."],
+      "furtherResearch": [{ "question": "How can pairing shells and short-lived terrestrial material from the same stratigraphic context test a reservoir offset?", "sourceIds": ["girsu-canal-radiocarbon"] }]
+    },
+    {
+      "elementId": "cart",
+      "elementName": "Cart",
+      "historicalOverview": { "text": "Cart represents a wheeled carrier for moving loads, not a single ancient design. Early vehicles can leave different traces: a preserved component, marks made as wheels move over a surface, or images on objects. The evidence compared for late Neolithic Europe and Late Uruk contexts in the Near East does not establish one place of invention.", "sourceIds": ["bakker-wheeled-vehicles", "mgml-wheel-axle", "flintbek-cart-tracks", "krakow-bronocice-vase"] },
+      "manufactureOrUse": { "text": "The Ljubljana wheel and axle are real wooden components, not a complete loaded cart. The parallel tracks at Flintbek record movement without preserving the vehicle. Lines on the Bronocice vessel are interpreted as four-wheeled wagons, but an image need not show every structural detail.", "sourceIds": ["mgml-wheel-axle", "flintbek-cart-tracks", "krakow-bronocice-vase"] },
+      "agePlacement": { "status": "earlier-precedents", "text": "The Bronze Age transport branch groups carts with other wheeled discoveries, but the late Neolithic tracks and depictions predate that placement. Comparable ages in distant regions do not establish a single origin or separate invention.", "sourceIds": ["bakker-wheeled-vehicles", "flintbek-cart-tracks", "krakow-bronocice-vase"] },
+      "relatedDiscoveries": [
+        { "elementId": "wheel", "relationship": "documented", "explanation": "The Ljubljana artifact contains a wheel and axle, not a surviving vehicle body.", "sourceIds": ["mgml-wheel-axle"] },
+        { "elementId": "wagon", "relationship": "gameplay-abstraction", "explanation": "Wagon emphasizes the game’s later reinforced load carrier, not the date when wagons first existed.", "sourceIds": [] },
+        { "elementId": "chariot", "relationship": "gameplay-abstraction", "explanation": "Chariot emphasizes a light vehicle for people, rather than classifying all wheeled carriers by wheel count.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "c. 3500 BCE: Bronocice vessel context", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Bronocice, Poland"], "note": "Rounded pit date given by the museum, not a direct date on a wooden vehicle.", "sourceIds": ["krakow-bronocice-vase"] },
+        { "dateRange": "3420–3385 cal BCE: Flintbek tracks", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Flintbek, northern Germany"], "note": "Modeled date from the burial site sequence, not a measurement on a surviving wheel.", "sourceIds": ["flintbek-cart-tracks"] },
+        { "dateRange": "About 5,200 years old: Ljubljana wheel and axle", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Ljubljana marshes, Slovenia"], "note": "Rounded museum age retained as reported.", "sourceIds": ["mgml-wheel-axle"] }
+      ],
+      "associatedRegions": ["Bronocice, Poland", "Flintbek, northern Germany", "Ljubljana marshes, Slovenia"],
+      "archaeologicalEvidence": [
+        { "text": "The Ljubljana find preserves a wooden wheel and axle.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["mgml-wheel-axle"] },
+        { "text": "Cart tracks lay below the final Flintbek barrow.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["flintbek-cart-tracks"] },
+        { "text": "The Bronocice marks are read as depictions of wagons; the decorated vessel is not the vehicle itself.", "evidenceType": "interpretation", "interpretation": "hypothesis", "sourceIds": ["krakow-bronocice-vase"] }
+      ],
+      "historicalSignificance": { "text": "Different traces answer different questions: parts show material construction, tracks show movement, and depictions show how vehicles were represented. Agreement in broad dates improves chronological comparison without resolving origins.", "sourceIds": ["bakker-wheeled-vehicles", "mgml-wheel-axle", "flintbek-cart-tracks", "krakow-bronocice-vase"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["Broadly contemporary finds do not show who copied whom, whether designs traveled, or whether similar vehicles arose independently."],
+      "gameplaySimplifications": ["Wheel and Tree suggest a wooden vehicle, omitting the axle arrangement, body, skilled work and means of pulling it."],
+      "furtherResearch": [{ "question": "Which features of a lost vehicle can be inferred from a trackway, and which require a surviving component or depiction?", "sourceIds": ["bakker-wheeled-vehicles", "mgml-wheel-axle", "flintbek-cart-tracks", "krakow-bronocice-vase"] }]
+    },
+    {
+      "elementId": "chariot",
+      "elementName": "Chariot",
+      "historicalOverview": { "text": "The Atlas uses Chariot for a light horse-drawn vehicle for people, typically with two spoked wheels. Cart and Wagon emphasize carrying loads. Wheel count alone is not decisive: earlier heavy vehicles could also have two wheels, and some early light vehicles are known only from traces in graves.", "sourceIds": ["lindner-steppe-chariots"] },
+      "manufactureOrUse": { "text": "At Kamennyj Ambar-5, parallel pits or impressions associated with wheels help reconstruct their placement, not the entire vehicle. Horse skulls and bridle equipment such as cheekpieces are a separate line of evidence for horses in the burial context. The combination supports identification of light horse-drawn vehicles without preserving a complete chariot.", "sourceIds": ["lindner-steppe-chariots"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Early second-millennium BCE evidence in the Southern Trans-Urals and roughly comparable Anatolian imagery fit the Bronze Age chapter. The dates do not uniquely settle invention or transmission.", "sourceIds": ["lindner-steppe-chariots"] },
+      "relatedDiscoveries": [
+        { "elementId": "cart", "relationship": "gameplay-abstraction", "explanation": "A load carrier need not be a light passenger vehicle; the game uses a cart as a clue rather than a documented ancestor.", "sourceIds": [] },
+        { "elementId": "wagon", "relationship": "documented", "explanation": "Earlier disc-wheeled vehicles could be heavy regardless of the number of wheels.", "sourceIds": ["lindner-steppe-chariots"] },
+        { "elementId": "wheel", "relationship": "documented", "explanation": "Spoked wheels help distinguish the light form from many earlier disc-wheeled vehicles.", "sourceIds": ["lindner-steppe-chariots"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "1970–1770 cal BCE: human bone from grave 8, Kamennyj Ambar-5", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Southern Trans-Urals"], "note": "The calibrated range given for the burial sample, not direct dating of wooden wheels or the invention of chariots.", "sourceIds": ["lindner-steppe-chariots"] },
+        { "dateRange": "Late 20th to early 19th century BCE: Kültepe seals", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Kültepe, central Anatolia"], "note": "Chronology of the seal context given in the comparative study, not a date on a surviving vehicle.", "sourceIds": ["lindner-steppe-chariots"] }
+      ],
+      "associatedRegions": ["Southern Trans-Urals", "Kültepe, central Anatolia"],
+      "archaeologicalEvidence": [
+        { "text": "Parallel wheel pits at Kamennyj Ambar-5 preserve a burial feature even though the complete wooden vehicle is missing.", "evidenceType": "excavated-context", "interpretation": "attested", "sourceIds": ["lindner-steppe-chariots"] },
+        { "text": "Cheekpieces and other evidence associated with horses were reported alongside the grave features.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["lindner-steppe-chariots"] },
+        { "text": "Kültepe cylinder seals depict spoked vehicles. The evidence is imagery, not remains of their horse equipment or frames.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["lindner-steppe-chariots"] }
+      ],
+      "historicalSignificance": { "text": "The evidence concerns a shift in what some wheeled vehicles were designed to carry. Combining grave plans, horse equipment and pictures helps reconstruct the differences while keeping the origin question open.", "sourceIds": ["lindner-steppe-chariots"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["A grave deposit reflects funerary choices, not every everyday use. Overlapping date ranges and different evidence types leave the routes, direction and number of transmissions disputed."],
+      "gameplaySimplifications": ["Animal and Cart are associative clues; not every animal-drawn cart is a chariot and the recipe is not a documented development sequence."],
+      "furtherResearch": [{ "question": "How do burial evidence and seal images constrain different parts of a reconstruction?", "sourceIds": ["lindner-steppe-chariots"] }]
+    },
+    {
+      "elementId": "law",
+      "elementName": "Law",
+      "historicalOverview": { "text": "Law includes rules and customs that communities recognize and enforce. They need not be written or depend on centralized cities. Written Mesopotamian collections such as those associated with Ur-Namma and Hammurabi preserve one tradition of setting out cases and outcomes, not the beginning of rules.", "sourceIds": ["cdli-ur-namma-collection", "louvre-hammurabi-stele"] },
+      "manufactureOrUse": { "text": "The earlier Sumerian collection associated with Ur-Namma is represented today by a scholarly composite drawn from text witnesses. Hammurabi’s later basalt stele puts conditional rulings about matters such as property and family alongside a relief asserting the king’s relationship to justice. Separately, texts found in houses at Nippur record transactions including house sales and inheritances.", "sourceIds": ["cdli-ur-namma-collection", "louvre-hammurabi-stele", "isac-nippur-neighborhoods"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "Bronze Age placement fits these written collections and records of practice. Earlier or unwritten rules are not ruled out by the survival of these texts.", "sourceIds": ["cdli-ur-namma-collection", "louvre-hammurabi-stele", "isac-nippur-neighborhoods"] },
+      "relatedDiscoveries": [
+        { "elementId": "writing", "relationship": "documented", "explanation": "Writing preserves collections and records but is not needed for the existence of rules.", "sourceIds": ["cdli-ur-namma-collection", "louvre-hammurabi-stele"] },
+        { "elementId": "city", "relationship": "documented", "explanation": "An excavated urban neighborhood provides a snapshot of practice; communities need not be cities to have rules.", "sourceIds": ["isac-nippur-neighborhoods"] },
+        { "elementId": "seal", "relationship": "gameplay-abstraction", "explanation": "The recipe’s seal indicates authority symbolically, not a necessary condition for law.", "sourceIds": [] }
+      ],
+      "approximateDates": [
+        { "dateRange": "Late third millennium BCE: Ur III setting of the Ur-Namma collection", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Southern Mesopotamia"], "note": "Context for the earlier collection, not the date of each surviving text witness.", "sourceIds": ["cdli-ur-namma-collection"] },
+        { "dateRange": "c. 1750 BCE: Hammurabi’s stele", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Babylonia, Mesopotamia"], "note": "Approximate date of engraving; its later recovery at Susa is a separate fact.", "sourceIds": ["louvre-hammurabi-stele"] }
+      ],
+      "associatedRegions": ["Southern Mesopotamia", "Babylonia, Mesopotamia"],
+      "archaeologicalEvidence": [
+        { "text": "An earlier Sumerian collection and a later Babylonian monument preserve distinct texts.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["cdli-ur-namma-collection", "louvre-hammurabi-stele"] },
+        { "text": "House sales, inheritances, rentals and loans are documented in Nippur neighborhood texts, not inferred simply from provisions on a stele.", "evidenceType": "textual-evidence", "interpretation": "attested", "sourceIds": ["isac-nippur-neighborhoods"] }
+      ],
+      "historicalSignificance": { "text": "Collections can tell us how justice and authority were presented, while a transaction record tells us about a particular action. Neither alone shows all the ways communities resolved disputes or how consistently a provision was used.", "sourceIds": ["cdli-ur-namma-collection", "louvre-hammurabi-stele", "isac-nippur-neighborhoods"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The stele is not a modern statutory code or a transcript of everyday enforcement. Text survival does not measure the prevalence of oral custom."],
+      "gameplaySimplifications": ["Seal and Writing evoke a written collection. Neither is required for customary rules, and the recipe does not enact laws."],
+      "furtherResearch": [{ "question": "How can contract records and court documents test whether written provisions matched practice?", "sourceIds": ["cdli-ur-namma-collection", "louvre-hammurabi-stele"] }]
+    },
+    {
+      "elementId": "map",
+      "elementName": "Map",
+      "historicalOverview": { "text": "A map selects places and relationships to show on a surface. Clay tablet B13885 represents an agricultural area near Nippur. The later Babylonian Map of the World combines recognizable geography with a ring of water and regions beyond it. These maps do different work; the latter is not a field plan or an ordinary route chart.", "sourceIds": ["penn-nippur-field-map", "bmimages-world-tablet", "whe-babylonian-map"] },
+      "manufactureOrUse": { "text": "The Nippur tablet shows canals, villages and fields, including a field marked as palace land. The Babylonian world tablet sets named places within a schematic, cosmic geography. Lines and signs preserved on these clay objects do not show a charcoal drawing stage, and a map need not be based on travel.", "sourceIds": ["penn-nippur-field-map", "whe-babylonian-map"] },
+      "agePlacement": { "status": "regional-gameplay-placement", "text": "The Kassite-period field map illustrates a Bronze Age example. The Babylonian world map is a later comparison; it does not date the origin of mapping and is not evidence for Bronze Age cosmological mapmaking.", "sourceIds": ["penn-nippur-field-map", "bmimages-world-tablet", "whe-babylonian-map"] },
+      "relatedDiscoveries": [
+        { "elementId": "cartography", "relationship": "documented", "explanation": "The world tablet is shared evidence; Cartography also compares distinct traditions of geographic representation.", "sourceIds": ["whe-babylonian-map"] },
+        { "elementId": "clay-tablet", "relationship": "documented", "explanation": "Both surviving examples are on clay rather than charcoal-marked papyrus.", "sourceIds": ["penn-nippur-field-map", "bmimages-world-tablet"] },
+        { "elementId": "canal", "relationship": "documented", "explanation": "On the Nippur tablet, canals organize the representation of land and settlements.", "sourceIds": ["penn-nippur-field-map"] }
+      ],
+      "approximateDates": [
+        { "dateRange": "c. 1500 BCE: Kassite-period field map B13885", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Nippur, Mesopotamia"], "note": "Approximate date attributed by the museum to the specific clay tablet.", "sourceIds": ["penn-nippur-field-map"] },
+        { "dateRange": "c. 700–500 BCE: Babylonian world map", "dateType": "dated-evidence", "precision": "approximate", "regions": ["Babylonia, Mesopotamia"], "note": "Broad range used in Cartography; British Museum Images places it approximately in the sixth century BCE.", "sourceIds": ["whe-babylonian-map", "bmimages-world-tablet"] }
+      ],
+      "associatedRegions": ["Nippur, Mesopotamia", "Babylonia, Mesopotamia"],
+      "archaeologicalEvidence": [
+        { "text": "B13885 shows local land, canals and villages on clay.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["penn-nippur-field-map"] },
+        { "text": "The clay world map combines inscribed place labels, signs and a schematic surrounding ring.", "evidenceType": "artifact", "interpretation": "attested", "sourceIds": ["whe-babylonian-map", "bmimages-world-tablet"] }
+      ],
+      "historicalSignificance": { "text": "A practical plan can record land and waterways; a world map can organize ideas about known and distant places. The contrast makes it important to ask what each map was intended to represent rather than judging all maps by the same standard.", "sourceIds": ["penn-nippur-field-map", "whe-babylonian-map"] },
+      "independentDevelopments": [],
+      "historicalUncertainty": ["The field plan does not establish who commissioned it or exactly how it was used. These surviving clay maps do not settle what earlier maps on perishable surfaces looked like."],
+      "gameplaySimplifications": ["The Papyrus and Charcoal route is a symbolic clue, not a description of either tablet. Lenses, compasses and voyages are not prerequisites for mapmaking."],
+      "furtherResearch": [{ "question": "How can the scale, labels or measurements in a map help distinguish its subject from its intended use?", "sourceIds": ["penn-nippur-field-map", "bmimages-world-tablet", "whe-babylonian-map"] }]
     }
   ]
 }

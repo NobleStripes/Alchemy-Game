@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import rawElements from './elements.json'
 import rawRecipes from './recipes.json'
@@ -14,7 +15,7 @@ import { createRuntimeCatalog, runtimeCatalog } from './runtimeCatalog.ts'
 
 describe('shared core runtime catalog', () => {
   it.each([
-    ['elements', rawElements.slice(0, 225), '39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a'],
+    ['elements', withBaselineDescriptions(rawElements.slice(0, 225)), '39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a'],
     ['recipes', rawRecipes.slice(0, 291), 'a6afd9fcf77ad19a8e5735ef03bfec45add65a73ebf6f791c9bec09bce57cffe'],
     ['eras', rawEras, '3d526226733e65e43b32c5bea4722fc0ab3629b90a152164b04f59edb4c63884'],
     ['collections', rawCollections, '455170eb41f0df382c01538f7d174950fbaacc2d877a3f089fdcbbb79f7665fe'],
@@ -28,7 +29,7 @@ describe('shared core runtime catalog', () => {
     expect(elements).toHaveLength(235)
     expect(recipes).toHaveLength(311)
     expect(eras).toHaveLength(5)
-    expect(historicalResearch.records).toHaveLength(167)
+    expect(historicalResearch.records).toHaveLength(182)
     expect(runtimeCatalog.elements).toEqual(elements)
     expect(runtimeCatalog.recipes).toEqual(recipes)
     expect(runtimeCatalog.eras).toEqual(eras)

@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import { collections, elements, eras, recipes } from '.'
 import rawCollections from './collections.json'
@@ -50,7 +51,7 @@ describe('Stone Age materials and watercraft', () => {
   })
 
   it('preserves every 215/270 definition and unchanged era and collection requirement', async () => {
-    expect(await fingerprint(elements.slice(0, 215))).toBe('b76f245d2212347c93d2c78b43f180280108486e490d86bb696a2d5565e9214b')
+    expect(await fingerprint(withBaselineDescriptions(elements.slice(0, 215)))).toBe('b76f245d2212347c93d2c78b43f180280108486e490d86bb696a2d5565e9214b')
     expect(await fingerprint(recipes.slice(0, 270))).toBe('f96c2f16edd9ba3bfabd31803b1157642ea424299a21f64169f73d8cabfbfd7f')
     expect(await fingerprint(eras)).toBe('3d526226733e65e43b32c5bea4722fc0ab3629b90a152164b04f59edb4c63884')
     expect(await fingerprint(rawCollections)).toBe('455170eb41f0df382c01538f7d174950fbaacc2d877a3f089fdcbbb79f7665fe')

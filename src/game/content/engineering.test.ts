@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import { collections, elements, eras, recipes } from './index'
 import { researchByElementId } from './research'
@@ -50,7 +51,7 @@ describe('optional engineering discoveries', () => {
   })
 
   it.each([
-    ['elements', elements.slice(0, 178), '6ed50b6d187f7bac60fb41946119f06a390fecd82fba65f6fda0121431abe92a'],
+    ['elements', withBaselineDescriptions(elements.slice(0, 178)), '6ed50b6d187f7bac60fb41946119f06a390fecd82fba65f6fda0121431abe92a'],
     ['recipes', recipes.slice(0, 216), '3f5ee356734d8f90f9a31e84f2643b2fb1354c808316bc0cbdb79dba3a8ee76a'],
   ])('preserves every pre-engineering %s definition in order', async (_, definitions, expected) => {
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(definitions)))

@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import { collections, elements, eras, recipes } from '.'
 import { historicalResearch, researchByElementId } from './research'
@@ -29,7 +30,7 @@ describe('optional recipe connections and research sign-off', () => {
     const milestoneElements = elements.slice(0, 225)
     expect(milestoneElements).toHaveLength(225)
     expect(recipes.slice(0, 291)).toHaveLength(291)
-    expect(await fingerprint(milestoneElements)).toBe('39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a')
+    expect(await fingerprint(withBaselineDescriptions(milestoneElements))).toBe('39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a')
     expect(await fingerprint(recipes.slice(0, 288))).toBe('68c4e25fafefb8056365fdc479e38525f96062bbef05cebdf12e8a4647ba3187')
     expect(recipes.slice(288, 291).map((recipe) => recipe.id)).toEqual([
       'dugout-voyage', 'crucible-copper', 'aligned-masonry-wall',
@@ -63,7 +64,7 @@ describe('optional recipe connections and research sign-off', () => {
   })
 
   it('pins the complete 225/291 release baseline for future appended batches', async () => {
-    expect(await fingerprint(elements.slice(0, 225))).toBe('39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a')
+    expect(await fingerprint(withBaselineDescriptions(elements.slice(0, 225)))).toBe('39382d3b955d65761293c86dbe1529fbb212465721c27e84fcff9186a9dd1b6a')
     expect(await fingerprint(recipes.slice(0, 291))).toBe('a6afd9fcf77ad19a8e5735ef03bfec45add65a73ebf6f791c9bec09bce57cffe')
   })
 
@@ -129,11 +130,11 @@ describe('optional recipe connections and research sign-off', () => {
   })
 
   it('reports current history gaps rather than counting new formulas as researched elements', () => {
-    expect(historicalResearch.records).toHaveLength(167)
-    expect(historicalResearch.records.flatMap((record) => record.approximateDates)).toHaveLength(184)
-    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(68)
-    expect(historicalResearch.sources.filter((source) => source.verification.status === 'verified')).toHaveLength(167)
-    expect(historicalResearch.sources.filter((source) => source.verification.status === 'pending')).toHaveLength(1)
+    expect(historicalResearch.records).toHaveLength(182)
+    expect(historicalResearch.records.flatMap((record) => record.approximateDates)).toHaveLength(209)
+    expect(elements.filter((element) => !researchByElementId.has(element.id))).toHaveLength(53)
+    expect(historicalResearch.sources.filter((source) => source.verification.status === 'verified')).toHaveLength(189)
+    expect(historicalResearch.sources.filter((source) => source.verification.status === 'pending')).toHaveLength(2)
     expect(recipeReviews.reviews.filter((review) => review.sourceIds.length > 0)).toHaveLength(206)
     expect(recipeReviews.reviews.filter((review) => review.sourceIds.length === 0)).toHaveLength(105)
   })

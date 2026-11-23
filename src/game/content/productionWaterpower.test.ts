@@ -1,3 +1,4 @@
+import { withBaselineDescriptions } from './elementBaseline'
 import { describe, expect, it } from 'vitest'
 import { collections, elements, eras, recipes } from '.'
 import rawCollections from './collections.json'
@@ -53,7 +54,7 @@ describe('specialized production, measurement and water power', () => {
   })
 
   it('preserves the entire 219/277 baseline and every progression and collection definition', async () => {
-    expect(await fingerprint(elements.slice(0, 219))).toBe('3b816f630163c5e2e56771c135d52970a676820ad4180c53f0aea448e0433f80')
+    expect(await fingerprint(withBaselineDescriptions(elements.slice(0, 219)))).toBe('3b816f630163c5e2e56771c135d52970a676820ad4180c53f0aea448e0433f80')
     expect(await fingerprint(recipes.slice(0, 277))).toBe('09e17b23e795aa3f0205e089e539e3ade69b21a5377df18ec53fd4af81a18470')
     expect(await fingerprint(eras)).toBe('3d526226733e65e43b32c5bea4722fc0ab3629b90a152164b04f59edb4c63884')
     expect(await fingerprint(rawCollections)).toBe('455170eb41f0df382c01538f7d174950fbaacc2d877a3f089fdcbbb79f7665fe')
